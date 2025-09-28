@@ -30,7 +30,7 @@ public class Kael extends  Character{
         int damage = RandomUtil.range(attack+10,attack+20);
         damage = bladeSwift(damage);
 
-        System.out.println("You used Blade Rush on " + target.getName() + " for " + damage + " damage.");
+        System.out.println("You used Blade Rush on " + target.getName() + " for " + damage + " damage! " +  "(Energy: " + energy + "/" + maxEnergy + ")");
         target.takeDamage(damage,target.getDefense());
     }
 
@@ -45,7 +45,7 @@ public class Kael extends  Character{
         int damage = RandomUtil.range(attack+15,attack+25);
         damage = bladeSwift(damage);
 
-        System.out.println("You used Guard Breaker on " + target.getName() +  " for " + damage + " pure damage!");
+        System.out.println("You used Guard Breaker on " + target.getName() +  " for " + damage + " pure damage! " +  "(Energy: " + energy + "/" + maxEnergy + ")");
         target.takeDamage(damage,0); // defense ignored
     }
 
@@ -61,11 +61,12 @@ public class Kael extends  Character{
         for(int i = 0; i < 3; i++){
             int damage = RandomUtil.range(attack+10,attack+30);
             damage = bladeSwift(damage);
+            totalDamage += damage;
 
             System.out.println("You slashed " + target.getName() + " for " + damage + " damage (Hit " + (i + 1) + ").");
             target.takeDamage(damage, target.getDefense());
         }
 
-        System.out.println("Eternal Cross Slash finished! Total damage: " + totalDamage);
+        System.out.println("Eternal Cross Slash finished! Total damage: " + totalDamage +  " (Energy: " + energy + "/" + maxEnergy + ")");
     }
 }
