@@ -1,6 +1,6 @@
 package characters;
 
-import java.util.Random;
+import utils.RandomUtil;
 
 public abstract class Character {
     protected String name;
@@ -10,25 +10,17 @@ public abstract class Character {
     protected int defense;
     protected int energy;
     protected int maxEnergy;       // track max energy
-    protected int attackMin;
-    protected int attackMax;
+    protected int attack;
 
-    private Random random = new Random();
-
-    public Character(String name, int hp, int defense, int energy, int attackMin, int attackMax) {
+    public Character(String name, int hp, int defense, int energy, int attack) {
         this.name = name;
         this.hp = hp;
         this.maxHp = hp;
         this.defense = defense;
         this.energy = energy;
         this.maxEnergy = energy;
-        this.attackMin = attackMin;
-        this.attackMax = attackMax;
+        this.attack = attack;
         this.level = 1; // default starting level
-    }
-
-    public int basicAttack() {
-        return random.nextInt((attackMax - attackMin) + 1) + attackMin;
     }
 
     public void showStats() {
@@ -38,8 +30,42 @@ public abstract class Character {
         System.out.println("Health  : " + hp + "/" + maxHp);
         System.out.println("Energy  : " + energy + "/" + maxEnergy);
         System.out.println("Defense : " + defense);
-        System.out.println("Attack  : " + attackMin + " - " + attackMax);
+        System.out.println("Attack  : " + attack);
         System.out.println("==============================");
+    }
+
+    //GETTERS
+    public String getName() { return name; }
+    public int getHp() { return hp; }
+    public int getDefense() { return defense; }
+    public int getEnergy() { return energy; }
+    public int getLevel() { return level; }
+
+    public void takeDamage(int damage, int defenseValue) {           //0 is passed if defense is ignored
+        int reduced = damage - defenseValue;
+        if (reduced < 0) reduced = 0;
+        hp -= reduced;
+        if (hp < 0) hp = 0;
+        System.out.println(name + " took " + reduced + " damage. (HP: " + hp + "/" + maxHp + ")");
+    }
+
+    public boolean isAlive() {
+        return hp > 0;
+    }
+
+    public void heal(int amount) {
+        hp += amount;
+        if (hp > maxHp) hp = maxHp; // clamp to max
+        System.out.println("You healed " + amount + " HP. (HP: " + hp + "/" + maxHp + ")");
+    }
+
+    public boolean consumeEnergy(int cost) {
+        if (energy < cost) {
+            energy = 0;
+            return false; // not enough energy
+        }
+        energy -= cost;
+        return true; // successful
     }
 
 }
