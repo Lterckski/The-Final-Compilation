@@ -2,6 +2,7 @@ import characters.Kael;
 import characters.Karl;
 import characters.Simon;
 import characters.testEnemy;
+
 public class Tester {
     public static void main(String[] args){
         Kael kael = new Kael();
