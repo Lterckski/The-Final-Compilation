@@ -1,7 +1,5 @@
 package characters;
 
-import utils.RandomUtil;
-
 public abstract class Character {
     protected String name;
     protected int level;

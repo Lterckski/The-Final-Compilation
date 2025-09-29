@@ -3,59 +3,59 @@ package characters;
 import utils.RandomUtil;
 
 public class Simon extends  Character{
-    private static final int ARCANE_FLOW_RESTORE = 5;
 
     public Simon() {
         super("Simon Versace", 60, 2, 150, 15);
     }
 
-    private void arcaneFlow(int damage) {
-        if (damage > 0) {
-            energy = Math.min(maxEnergy, energy + ARCANE_FLOW_RESTORE);
-            System.out.println(name + " restores " + ARCANE_FLOW_RESTORE + " energy from Arcane Flow! (Energy: " + energy + "/" + maxEnergy + ")");
-        }
+    private void arcaneFlow() {
+        int restored = (int)(maxEnergy * 0.05);
+        energy += restored;
+        if (energy > maxEnergy) energy = maxEnergy;
+
+        System.out.println("✨ Arcane Flow restores " + restored + " energy! " + "(Energy: " + energy + "/" + maxEnergy + ")");
     }
 
+    // Skill 1 - Fireball
     public void fireball(Character target) {
         int cost = 15;
         if (!consumeEnergy(cost)) {
-            System.out.println("Insufficient energy to cast Fireball!");
+            System.out.println("Not enough energy to cast Fireball!");
             return;
         }
 
-        int damage = RandomUtil.range(25, 35);
+        int damage = (int) RandomUtil.range(attack * 1.25, attack * 1.55);
         target.takeDamage(damage, target.getDefense());
-        System.out.println(name + " casts Fireball on " + target.getName() + " for " + damage + " damage! (Energy: " + energy + "/" + maxEnergy + ")");
-        arcaneFlow(damage);
+        // Fireball
+        System.out.println("🔥 You cast Fireball on " + target.getName() + " for " + damage + " dmg! (Energy: " + energy + "/" + maxEnergy + ")");
+        arcaneFlow();
     }
 
+    // Skill 2 - Ice Prison (Freeze not implemented)
     public void icePrison(Character target) {
         int cost = 20;
         if (!consumeEnergy(cost)) {
-            System.out.println("Insufficient energy to cast Ice Prison!");
+            System.out.println("Not enough energy to cast Ice Prison!");
             return;
         }
 
-        int damage = RandomUtil.range(10, 15);
+        int damage = (int) RandomUtil.range(attack * 0.60, attack * 0.90);
         target.takeDamage(damage, target.getDefense());
-        System.out.println(name + " casts Ice Prison on " + target.getName() + " for " + damage + " damage! " + target.getName() + " is frozen for 1 turn! (Energy: " + energy + "/" + maxEnergy + ")");
-        arcaneFlow(damage);
+        System.out.println("❄️ You cast Ice Prison on " + target.getName() + " for " + damage + " dmg! " + target.getName() + " is frozen! (Energy: " + energy + "/" + maxEnergy + ")");
+        arcaneFlow();
     }
 
-    public void meteorStorm(Character... targets) {
+    // Ultimate - Meteor Storm
+    public void meteorStorm(Character target) {
         int cost = 40;
         if (!consumeEnergy(cost)) {
-            System.out.println("Insufficient energy to cast Meteor Storm!");
+            System.out.println("Not enough energy to cast Meteor Storm!");
             return;
         }
 
-        for (Character target : targets) {
-            int damage = RandomUtil.range(40, 60);
-            target.takeDamage(damage, target.getDefense());
-            System.out.println(name + " calls down Meteor Storm on " + target.getName() + " for " + damage + " damage!");
-            arcaneFlow(damage);
-        }
-
-        System.out.println("Meteor Storm finished! (Energy: " + energy + "/" + maxEnergy + ")");
+        int damage = (int) RandomUtil.range(attack * 2.50 , attack * 3.50);
+        target.takeDamage(damage, target.getDefense());
+        System.out.println("☄️ You call Meteor Storm on " + target.getName() + " for " + damage + " dmg! (Energy: " + energy + "/" + maxEnergy + ")");
+        arcaneFlow();
     }
 }

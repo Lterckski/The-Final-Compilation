@@ -6,9 +6,7 @@ public class Kael extends  Character{
     private static final double CRIT_CHANCE = 0.15;  //passive
     private static final double CRIT_MULTIPLIER = 2.0;
 
-    public Kael() {
-        super("Kael Saint Laurent", 100, 5, 60, 10);
-    }
+    public Kael() { super("Kael Saint Laurent", 100, 5, 60, 10); }
 
     // Passive - Blade Swift
     private int bladeSwift(int damage){
@@ -27,10 +25,10 @@ public class Kael extends  Character{
             return;
         }
 
-        int damage = RandomUtil.range(attack+10,attack+20);
+        int damage = (int) RandomUtil.range(attack * 1.15,attack * 1.35);
         damage = bladeSwift(damage);
 
-        System.out.println("You used Blade Rush on " + target.getName() + " for " + damage + " damage! " +  "(Energy: " + energy + "/" + maxEnergy + ")");
+        System.out.println("\uD83D\uDDE1\uFE0F You used Blade Rush on " + target.getName() + " for " + damage + " damage! " +  "(Energy: " + energy + "/" + maxEnergy + ")");
         target.takeDamage(damage,target.getDefense());
     }
 
@@ -42,14 +40,14 @@ public class Kael extends  Character{
             return;
         }
 
-        int damage = RandomUtil.range(attack+15,attack+25);
+        int damage = (int) RandomUtil.range(attack * 1.35,attack * 1.55);
         damage = bladeSwift(damage);
 
-        System.out.println("You used Guard Breaker on " + target.getName() +  " for " + damage + " pure damage! " +  "(Energy: " + energy + "/" + maxEnergy + ")");
+        System.out.println("\uD83D\uDCA5 You used Guard Breaker on " + target.getName() +  " for " + damage + " pure damage! " +  "(Energy: " + energy + "/" + maxEnergy + ")");
         target.takeDamage(damage,0); // defense ignored
     }
 
-    //Skill 3 Eternal Cross Slash
+    //Ultimate - Eternal Cross Slash
     public void eternalCrossSlash(Character target){
         int energyCost = 30;
         if (!consumeEnergy(energyCost)) {
@@ -58,15 +56,17 @@ public class Kael extends  Character{
         }
 
         int totalDamage = 0;
+        System.out.println("✝\uFE0F You unleash your ultimate technique: Eternal Cross Slash!");
+
         for(int i = 0; i < 3; i++){
-            int damage = RandomUtil.range(attack+10,attack+30);
+            int damage = (int) RandomUtil.range(attack * 0.85,attack * 1.10);
             damage = bladeSwift(damage);
             totalDamage += damage;
 
-            System.out.println("You slashed " + target.getName() + " for " + damage + " damage (Hit " + (i + 1) + ").");
+            System.out.println(" → Hit " + (i + 1) + ": You slashed " + target.getName() +  " for " + damage + " damage!");
             target.takeDamage(damage, target.getDefense());
         }
 
-        System.out.println("Eternal Cross Slash finished! Total damage: " + totalDamage +  " (Energy: " + energy + "/" + maxEnergy + ")");
+        System.out.println("Eternal Cross Slash finished! Total damage dealt: " + totalDamage + " (Energy: " + energy + "/" + maxEnergy + ")");
     }
 }
