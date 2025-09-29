@@ -72,5 +72,6 @@ public abstract class Character {
         energy -= cost;
         return true; // successful
     }
-
+    public abstract void showSkills();
+    public abstract void showBackstory();
 }

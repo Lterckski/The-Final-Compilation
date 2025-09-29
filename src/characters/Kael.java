@@ -69,4 +69,29 @@ public class Kael extends  Character{
 
         System.out.println("Eternal Cross Slash finished! Total damage dealt: " + totalDamage + " (Energy: " + energy + "/" + maxEnergy + ")");
     }
+    @Override
+    public void showSkills() {
+        System.out.println("Kael — Skills");
+        System.out.println(" • Blade Rush (single-target slash)");
+        System.out.println(" • Guard Breaker (ignores defense)");
+        System.out.println(" • Eternal Cross Slash (3-hit finisher)");
+        System.out.println(" Passive: Blade Swift (crit chance)");
+    }
+
+   @Override
+public void showBackstory() {
+    System.out.println("Kael Saint Laurent was born in the shadow of the Black Castle, in a family");
+    System.out.println("that lived modestly within the crumbling Town of Decay. His childhood was");
+    System.out.println("marked by sickness in the streets and guards demanding bribes, yet Kael never");
+    System.out.println("let the rot of the world steal his spirit. He spent hours watching the castle");
+    System.out.println("soldiers train, imitating their sword movements with sticks until his hands");
+    System.out.println("blistered, slowly turning mimicry into skill.");
+    System.out.println();
+    System.out.println("Even as a child, he carried himself with the bearing of a leader. Kael would");
+    System.out.println("gather the other children of the town into ragtag games of knights and kings,");
+    System.out.println("but unlike the corrupted rulers above, he always played the protector—");
+    System.out.println("shielding his friends from imagined dangers. In a place where hope was rare,");
+    System.out.println("Kael's presence became a quiet anchor, hinting that even in the midst of");
+    System.out.println("decay, someone could rise to stand against the darkness.");
+}
 }
