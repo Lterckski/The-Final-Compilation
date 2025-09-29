@@ -48,12 +48,25 @@ public class Tester {
         enemy.showStats();
         */
 
+        /*
         Enemy1World1 mob = new Enemy1World1();
         mob.showStats();
         kael.showStats();
         kael.bladeRush(mob);
         System.out.println();
         mob.savageHowl(kael);
+        */
 
+        kael.showBackstory();
+        System.out.println();
+        kael.showSkills();
+        System.out.println();
+        karl.showBackstory();
+        System.out.println();
+        karl.showSkills();
+        System.out.println();
+        simon.showBackstory();
+        System.out.println();
+        simon.showSkills();
     }
 }
