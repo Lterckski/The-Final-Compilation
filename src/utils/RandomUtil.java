@@ -13,11 +13,8 @@ public class RandomUtil {
         return chance.nextInt((max - min) + 1) + min;
     }
 
-
-    // damage multiplier for Karl Clover Dior IV
     public static double range(double min, double max){
         return min + (max - min) * chance.nextDouble();
     }
 
-    
 }
