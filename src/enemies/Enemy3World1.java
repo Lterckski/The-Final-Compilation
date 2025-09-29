@@ -1,5 +1,8 @@
 package enemies;
 
+import characters.Character;
+import utils.RandomUtil;
+
 public class Enemy3World1 extends Enemy {
     // Constructor
     public Enemy3World1() {
@@ -7,9 +10,10 @@ public class Enemy3World1 extends Enemy {
     }
 
     // Skill: Root Snare (6–9 damage, immobilize 1 turn)
-    public int rootSnare() {
-        int dmg = rand.nextInt(4) + 6; // generates 6–9
-        System.out.println(name + " used Root Snare! Deals " + dmg + " damage and may immobilize for 1 turn.");
-        return dmg;
+    public void rootSnare(Character target) {
+        int damage = RandomUtil.range(6, 9);
+        System.out.println("🌳 " + name + " used Root Snare on you! You are immobilized for 1 turn!");
+        target.takeDamage(damage, target.getDefense());
+        // TODO: implement immobilize effect (status system needed)
     }
 }

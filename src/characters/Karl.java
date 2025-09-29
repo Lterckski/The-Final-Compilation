@@ -72,6 +72,5 @@ public class Karl extends Character {
         }
 
         System.out.println("Rain of a Thousand Arrows finished! Total damage dealt: " + totalDamage + " (Energy: " + energy + "/" + maxEnergy + ")");
-
        }
 }

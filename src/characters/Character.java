@@ -21,6 +21,13 @@ public abstract class Character {
         this.level = 1; // default starting level
     }
 
+    public Character(String name, int hp, int defense) { // for enemies
+        this.name = name;
+        this.hp = hp;
+        this.maxHp = hp;
+        this.defense = defense;
+    }
+
     public void showStats() {
         System.out.println("=========== Stats ============");
         System.out.println("Name    : " + name);

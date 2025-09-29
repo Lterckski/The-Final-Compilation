@@ -1,5 +1,8 @@
 package enemies;
 
+import characters.Character;
+import utils.RandomUtil;
+
 public class Miniboss1World1 extends Enemy {
     // Constructor
     public Miniboss1World1() {
@@ -7,10 +10,11 @@ public class Miniboss1World1 extends Enemy {
     }
 
     // Skill 1: Deathly Charge (47–56 damage, stun 1 turn)
-    public int deathlyCharge() {
-        int dmg = rand.nextInt(10) + 47; // generates 47–56
-        System.out.println(name + " used Deathly Charge! Deals " + dmg + " damage and may stun for 1 turn.");
-        return dmg;
+    public void deathlyCharge(Character target) {
+        int damage = RandomUtil.range(47, 56);
+        System.out.println("🦌 " + name + " used Deathly Charge on you! You are stunned for 1 turn!");
+        target.takeDamage(damage, target.getDefense());
+        // TODO: implement stun effect (status system needed)
     }
 
     // Skill 2: Blackened Howl (reduces target DEF by 20% for 2 turns)
@@ -19,6 +23,7 @@ public class Miniboss1World1 extends Enemy {
         int reducedDef = target.getDefense() - (int) reduction;
         System.out.println(name + " used Blackened Howl! " + target.getName() +
                            "'s DEF reduced from " + target.getDefense() + " to " + reducedDef + " for 2 turns.");
-        target.defense = reducedDef; // temporarily reduce DEF
+        //target.defense = reducedDef; // temporarily reduce DEF
+        // TODO: add duration tracking (restore DEF after 2 turns)
     }
 }
