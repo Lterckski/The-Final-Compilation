@@ -1,7 +1,5 @@
 package characters;
 
-import utils.RandomUtil;
-
 public abstract class Character {
     protected String name;
     protected int level;
@@ -21,6 +19,13 @@ public abstract class Character {
         this.maxEnergy = energy;
         this.attack = attack;
         this.level = 1; // default starting level
+    }
+
+    public Character(String name, int hp, int defense) { // for enemies
+        this.name = name;
+        this.hp = hp;
+        this.maxHp = hp;
+        this.defense = defense;
     }
 
     public void showStats() {
