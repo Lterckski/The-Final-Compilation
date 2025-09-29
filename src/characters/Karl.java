@@ -78,5 +78,30 @@ public class Karl extends Character {
            
         }
        }
-    
+    @Override
+    public void showSkills() {
+        System.out.println("Karl — Skills");
+        System.out.println(" • Piercing Arrow (armor-shred single shot)");
+        System.out.println(" • Volley Storm (cone multi-shot)");
+        System.out.println(" • Rain of a Thousand Arrows (area burst)");
+        System.out.println(" Passive: Hunter’s Instinct (bonus vs low HP)");
+    }
+
+    @Override
+public void showBackstory() {
+    System.out.println("Karl Clover Dior IV was born and raised in the Forest of Silence, a place");
+    System.out.println("where the air is thick with mist and danger lurks in every shadow.");
+    System.out.println("His father, once a skilled archer, taught him the bow not as a weapon of");
+    System.out.println("glory but as a means of survival against Rotfang Wolves, Carrion Bats, and");
+    System.out.println("the twisted Dreadbark Treants that haunted their home.");
+    System.out.println();
+    System.out.println("The forest shaped Karl's instincts—quiet, patient, always watching—and his");
+    System.out.println("arrows rarely missed their mark. When the silence deepened and the Hollow");
+    System.out.println("Stag began to prowl, Karl realized that the forest itself had become");
+    System.out.println("corrupted, demanding a hunter strong enough to fight back.");
+    System.out.println();
+    System.out.println("Now, with his father's teachings in his heart and the weight of his homeland");
+    System.out.println("on his shoulders, Karl hunts not just for survival but to restore the balance");
+    System.out.println("of the place he calls home.");
 }
+ }
