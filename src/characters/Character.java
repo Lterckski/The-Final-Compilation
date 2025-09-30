@@ -10,7 +10,7 @@ public abstract class Character {
     protected int maxEnergy;       // track max energy
     protected int attack;
 
-    public Character(String name, int hp, int defense, int energy, int attack) { // for enemies
+    public Character(String name, int hp, int defense, int energy, int attack) { // for players
         this.name = name;
         this.hp = hp;
         this.maxHp = hp;
