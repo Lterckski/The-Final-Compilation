@@ -19,4 +19,15 @@ public class Enemy3World1 extends Enemy {
         target.takeDamage(reduced);
         // TODO: implement immobilize effect (status system needed)
     }
+
+    @Override
+    public void showSkills(){
+        System.out.println("\nSkill — Root Snare (offensive): Damage 6–9, immobilize 1 turn");
+    }
+
+    @Override
+    public void turn(Character target) {
+        System.out.println("\n-- Enemy Turn --");
+        rootSnare(target);
+    }
 }

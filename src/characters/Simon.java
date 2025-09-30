@@ -2,20 +2,19 @@ package characters;
 
 import utils.RandomUtil;
 
-public class Simon extends  Character implements CharacterInfo{
+public class Simon extends  Character{
 
     public Simon() { super("Simon Versace", 60, 2, 150, 15); }
 
     @Override
     public void showSkills() {
-        System.out.println("Simon — Skills");
+        System.out.println("\nSimon — Skills");
         System.out.println(" • Fireball (burst single-target)");
         System.out.println(" • Ice Prison (control + damage)");
         System.out.println(" • Meteor Storm (AoE devastation)");
         System.out.println(" Passive: Arcane Flow (restore energy on successful casts)");
     }
 
-    @Override
     public void showBackstory() {
         System.out.println("Simon Versace—a mage with an unshakable dream of becoming the most");
         System.out.println("powerful sorcerer alive. From childhood, mana coursed naturally through");
@@ -54,9 +53,9 @@ public class Simon extends  Character implements CharacterInfo{
         int reduced = damage - target.getDefense();
         if (reduced < 0) reduced = 0;
 
-        target.takeDamage(reduced);
         // Fireball
         System.out.println("🔥 You cast Fireball on " + target.getName() + " for " + reduced + " damage! (Energy: " + energy + "/" + maxEnergy + ")");
+        target.takeDamage(reduced);
         arcaneFlow();
     }
 
@@ -93,5 +92,25 @@ public class Simon extends  Character implements CharacterInfo{
         System.out.println("☄️ You call Meteor Storm on " + target.getName() + " for " + reduced + " damage! (Energy: " + energy + "/" + maxEnergy + ")");
         target.takeDamage(reduced);
         arcaneFlow();
+    }
+
+    @Override
+    public void turn(Character target) {
+        System.out.println("\n-- Your Turn --");
+
+        System.out.println("(1) Skill 1  - Fireball");
+        System.out.println("(2) Skill 2  - Ice Prison");
+        System.out.println("(3) Ultimate - Meteor Storm");
+        System.out.print("Choose your action: ");
+
+        int choice = utils.InputUtil.scan.nextInt();
+        System.out.println("---------------");
+
+        switch (choice) {
+            case 1 -> fireball(target);
+            case 2 -> icePrison(target);
+            case 3 -> meteorStorm(target);
+            default -> System.out.println("❌ Invalid action! You missed your turn.");
+        }
     }
 }

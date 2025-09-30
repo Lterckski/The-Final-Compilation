@@ -11,10 +11,10 @@ public abstract class Enemy extends Character{
     // Show stats
     @Override
     public void showStats() {
-        System.out.println("======== Enemy Stats ========");
+        System.out.println("\n======== Enemy Stats ========");
         System.out.println("Name    : " + name);
         System.out.println("HP      : " + hp + "/" + maxHp);
         System.out.println("Defense : " + defense);
-        System.out.println("=============================");
+        System.out.println("=============================\n");
     }
 }
