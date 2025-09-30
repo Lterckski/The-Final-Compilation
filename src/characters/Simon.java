@@ -51,9 +51,12 @@ public class Simon extends  Character implements CharacterInfo{
         }
 
         int damage = (int) RandomUtil.range(attack * 1.25, attack * 1.55);
-        target.takeDamage(damage, target.getDefense());
+        int reduced = damage - target.getDefense();
+        if (reduced < 0) reduced = 0;
+
+        target.takeDamage(reduced);
         // Fireball
-        System.out.println("🔥 You cast Fireball on " + target.getName() + " for " + damage + " dmg! (Energy: " + energy + "/" + maxEnergy + ")");
+        System.out.println("🔥 You cast Fireball on " + target.getName() + " for " + reduced + " damage! (Energy: " + energy + "/" + maxEnergy + ")");
         arcaneFlow();
     }
 
@@ -66,9 +69,13 @@ public class Simon extends  Character implements CharacterInfo{
         }
 
         int damage = (int) RandomUtil.range(attack * 0.60, attack * 0.90);
-        target.takeDamage(damage, target.getDefense());
-        System.out.println("❄️ You cast Ice Prison on " + target.getName() + " for " + damage + " dmg! " + target.getName() + " is frozen! (Energy: " + energy + "/" + maxEnergy + ")");
+        int reduced = damage - target.getDefense();
+        if (reduced < 0) reduced = 0;
+
+        System.out.println("❄️ You cast Ice Prison on " + target.getName() + " for " + reduced + " damage! " + target.getName() + " is frozen! (Energy: " + energy + "/" + maxEnergy + ")");
+        target.takeDamage(reduced);
         arcaneFlow();
+        // TODO: Apply freeze for 1 turn
     }
 
     // Ultimate - Meteor Storm
@@ -80,8 +87,11 @@ public class Simon extends  Character implements CharacterInfo{
         }
 
         int damage = (int) RandomUtil.range(attack * 2.50 , attack * 3.50);
-        target.takeDamage(damage, target.getDefense());
-        System.out.println("☄️ You call Meteor Storm on " + target.getName() + " for " + damage + " dmg! (Energy: " + energy + "/" + maxEnergy + ")");
+        int reduced = damage - target.getDefense();
+        if (reduced < 0) reduced = 0;
+
+        System.out.println("☄️ You call Meteor Storm on " + target.getName() + " for " + reduced + " damage! (Energy: " + energy + "/" + maxEnergy + ")");
+        target.takeDamage(reduced);
         arcaneFlow();
     }
 }

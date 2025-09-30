@@ -46,12 +46,10 @@ public abstract class Character {
     public int getEnergy() { return energy; }
     public int getLevel() { return level; }
 
-    public void takeDamage(int damage, int defenseValue) {           //0 is passed if defense is ignored
-        int reduced = damage - defenseValue;
-        if (reduced < 0) reduced = 0;
-        hp -= reduced;
+    public void takeDamage(int damage) {           //0 is passed if defense is ignored
+        hp -= damage;
         if (hp < 0) hp = 0;
-        System.out.println(name + " took " + reduced + " damage. (HP: " + hp + "/" + maxHp + ")");
+        System.out.println(name + " HP : " + hp + "/" + maxHp);
     }
 
     public boolean isAlive() {

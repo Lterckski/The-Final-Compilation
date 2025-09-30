@@ -12,8 +12,11 @@ public class Enemy4World1 extends Enemy {
     // Skill: Screech (6–8 damage, chance to confuse 1 turn)
     public void screech(Character target) {
         int damage = RandomUtil.range(6, 8);
-        System.out.println("🦇 " + name + " used Screech on you! You may be confused for 1 turn!");
-        target.takeDamage(damage, target.getDefense());
+        int reduced = damage - target.getDefense();
+        if (reduced < 0) reduced = 0;
+
+        System.out.println("🦇 " + name + " used Screech on you for " + reduced + " damage! You may be confused for 1 turn!");
+        target.takeDamage(reduced);
         // TODO: Apply confuse effect (requires status system)
     }
 }

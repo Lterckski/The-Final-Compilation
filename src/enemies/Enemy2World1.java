@@ -12,7 +12,10 @@ public class Enemy2World1 extends Enemy {
     // Skill: Trickster Strike (8–13 damage)
     public void tricksterStrike(Character target) {
         int damage = RandomUtil.range(8, 13);
-        System.out.println("🧚 " + name + " used Trickster Strike on you!");
-        target.takeDamage(damage, target.getDefense());
+        int reduced = damage - target.getDefense();
+        if (reduced < 0) reduced = 0;
+
+        System.out.println("🧚 " + name + " used Trickster Strike on you for " + reduced + " damage!");
+        target.takeDamage(reduced);
     }
 }

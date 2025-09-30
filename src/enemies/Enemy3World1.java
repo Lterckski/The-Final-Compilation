@@ -12,8 +12,11 @@ public class Enemy3World1 extends Enemy {
     // Skill: Root Snare (6–9 damage, immobilize 1 turn)
     public void rootSnare(Character target) {
         int damage = RandomUtil.range(6, 9);
-        System.out.println("🌳 " + name + " used Root Snare on you! You are immobilized for 1 turn!");
-        target.takeDamage(damage, target.getDefense());
+        int reduced = damage - target.getDefense();
+        if (reduced < 0) reduced = 0;
+
+        System.out.println("🌳 " + name + " used Root Snare on you for " + reduced + " damage! You are immobilized for 1 turn!");
+        target.takeDamage(reduced);
         // TODO: implement immobilize effect (status system needed)
     }
 }
