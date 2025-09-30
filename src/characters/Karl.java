@@ -55,9 +55,11 @@ public class Karl extends Character implements CharacterInfo {
         damage = hunterInstincts(damage, target);
 
         int reducedDefense = (int)(target.getDefense() * 0.7);
+        int reduced = damage - reducedDefense;
+        if (reduced < 0) reduced = 0;
 
-        System.out.println("\uD83C\uDFF9 You used Piercing Arrow on " + target.getName() +  " for " + damage + " damage (30% defense ignored). " +  "(Energy: " + energy + "/" + maxEnergy + ")");
-        target.takeDamage(damage, reducedDefense);
+        System.out.println("\uD83C\uDFF9 You used Piercing Arrow on " + target.getName() +  " for " + reduced + " damage (30% defense ignored). " +  "(Energy: " + energy + "/" + maxEnergy + ")");
+        target.takeDamage(reduced);
     }
 
     // Skill 2 - Bullseye
@@ -69,12 +71,14 @@ public class Karl extends Character implements CharacterInfo {
         }
 
         int damage = (int) RandomUtil.range(attack*1.25, attack*1.50);
-
         damage = (int) (damage * 1.1); // <-- applies 10% critical damage(always crit);
         damage = hunterInstincts(damage, target);
 
-        System.out.println("\uD83C\uDFAF\uD83D\uDD25 You used Bullseye on " + target.getName() + " for " + damage + " critical damage! " + "(Energy: " + energy + "/" + maxEnergy + ")");
-        target.takeDamage(damage, target.getDefense());
+        int reduced = damage - target.getDefense();
+        if (reduced < 0) reduced = 0;
+
+        System.out.println("\uD83C\uDFAF\uD83D\uDD25 You used Bullseye on " + target.getName() + " for " + reduced + " critical damage! " + "(Energy: " + energy + "/" + maxEnergy + ")");
+        target.takeDamage(reduced);
     }
 
         // Ultimate
@@ -88,16 +92,18 @@ public class Karl extends Character implements CharacterInfo {
         int totalDamage = 0;
         System.out.println("\uD83C\uDF27\uFE0F\uD83C\uDFF9 You unleash your ultimate: Rain of a Thousand Arrows!");
 
+        int reduced = 0;
         for (int i = 0; i < 5; i++) {
             int damage = (int) RandomUtil.range(attack * 1.5, attack * 2.5);
             damage = hunterInstincts(damage, target);
-            totalDamage += damage;
-
-            target.takeDamage(damage, target.getDefense());
-            System.out.println(" → Arrow " + (i + 1) + " pierced " + target.getName() + " for " + damage + " damage!");
+            reduced = damage - target.getDefense();
+            if (reduced < 0) reduced = 0;
+            totalDamage += reduced;
+            System.out.println(" → Arrow " + (i + 1) + " pierced " + target.getName() + " for " + reduced + " damage!");
         }
 
         System.out.println("Rain of a Thousand Arrows finished! Total damage dealt: " + totalDamage + " (Energy: " + energy + "/" + maxEnergy + ")");
+        target.takeDamage(reduced);
        }
 }
 

@@ -10,7 +10,10 @@ public class Enemy1World1 extends Enemy {
     // Skill: Savage Howl (10–15 damage)
     public void savageHowl(Character target) {
         int damage = RandomUtil.range(10, 15);
-        System.out.println("🐺 " + name + " used Savage Howl on you!");
-        target.takeDamage(damage, target.getDefense());
+        int reduced = damage - target.getDefense();
+        if (reduced < 0) reduced = 0;
+
+        System.out.println("🐺 " + name + " used Savage Howl on you for " + reduced + " damage!");
+        target.takeDamage(reduced);
     }
 }

@@ -53,9 +53,11 @@ public class Kael extends  Character implements CharacterInfo {
 
         int damage = (int) RandomUtil.range(attack * 1.15,attack * 1.35);
         damage = bladeSwift(damage);
+        int reduced = damage - target.getDefense();
+        if (reduced < 0) reduced = 0;
 
-        System.out.println("\uD83D\uDDE1\uFE0F You used Blade Rush on " + target.getName() + " for " + damage + " damage! " +  "(Energy: " + energy + "/" + maxEnergy + ")");
-        target.takeDamage(damage,target.getDefense());
+        System.out.println("\uD83D\uDDE1\uFE0F You used Blade Rush on " + target.getName() + " for " + reduced + " damage! " +  "(Energy: " + energy + "/" + maxEnergy + ")");
+        target.takeDamage(reduced);
     }
 
     // Skill 2 - Guard Breaker
@@ -68,9 +70,10 @@ public class Kael extends  Character implements CharacterInfo {
 
         int damage = (int) RandomUtil.range(attack * 1.35,attack * 1.55);
         damage = bladeSwift(damage);
+        int reduced = damage;
 
-        System.out.println("\uD83D\uDCA5 You used Guard Breaker on " + target.getName() +  " for " + damage + " pure damage! " +  "(Energy: " + energy + "/" + maxEnergy + ")");
-        target.takeDamage(damage,0); // defense ignored
+        System.out.println("\uD83D\uDCA5 You used Guard Breaker on " + target.getName() +  " for " + reduced + " pure damage! " +  "(Energy: " + energy + "/" + maxEnergy + ")");
+        target.takeDamage(reduced); // defense ignored
     }
 
     //Ultimate - Eternal Cross Slash
@@ -87,10 +90,12 @@ public class Kael extends  Character implements CharacterInfo {
         for(int i = 0; i < 3; i++){
             int damage = (int) RandomUtil.range(attack * 0.85,attack * 1.10);
             damage = bladeSwift(damage);
-            totalDamage += damage;
+            int reduced = damage - target.getDefense();
+            if (reduced < 0) reduced = 0;
+            totalDamage += reduced;
 
-            System.out.println(" → Hit " + (i + 1) + ": You slashed " + target.getName() +  " for " + damage + " damage!");
-            target.takeDamage(damage, target.getDefense());
+            System.out.println(" → Hit " + (i + 1) + ": You slashed " + target.getName() +  " for " + reduced + " damage!");
+            target.takeDamage(reduced);
         }
 
         System.out.println("Eternal Cross Slash finished! Total damage dealt: " + totalDamage + " (Energy: " + energy + "/" + maxEnergy + ")");
