@@ -10,7 +10,7 @@ public abstract class Character {
     protected int maxEnergy;       // track max energy
     protected int attack;
 
-    public Character(String name, int hp, int defense, int energy, int attack) {
+    public Character(String name, int hp, int defense, int energy, int attack) { // for enemies
         this.name = name;
         this.hp = hp;
         this.maxHp = hp;
@@ -18,7 +18,6 @@ public abstract class Character {
         this.energy = energy;
         this.maxEnergy = energy;
         this.attack = attack;
-        this.level = 1; // default starting level
     }
 
     public Character(String name, int hp, int defense) { // for enemies
@@ -29,15 +28,17 @@ public abstract class Character {
     }
 
     public void showStats() {
-        System.out.println("=========== Stats ============");
+        System.out.println("\n=========== Stats ============");
         System.out.println("Name    : " + name);
         System.out.println("Level   : " + level);
         System.out.println("Health  : " + hp + "/" + maxHp);
         System.out.println("Energy  : " + energy + "/" + maxEnergy);
         System.out.println("Defense : " + defense);
         System.out.println("Attack  : " + attack);
-        System.out.println("==============================");
+        System.out.println("==============================\n");
     }
+
+    public abstract void showSkills();
 
     //GETTERS
     public String getName() { return name; }
@@ -46,10 +47,12 @@ public abstract class Character {
     public int getEnergy() { return energy; }
     public int getLevel() { return level; }
 
+    public abstract void turn (Character target);
+
     public void takeDamage(int damage) {           //0 is passed if defense is ignored
         hp -= damage;
         if (hp < 0) hp = 0;
-        System.out.println(name + " HP : " + hp + "/" + maxHp);
+        System.out.println("♥ " + name + " (HP : " + hp + "/" + maxHp + ")");
     }
 
     public boolean isAlive() {

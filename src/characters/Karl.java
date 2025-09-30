@@ -2,20 +2,19 @@ package characters;
 
 import utils.RandomUtil;
 
-public class Karl extends Character implements CharacterInfo {
+public class Karl extends Character{
 
     public Karl() { super("Karl Clover Dior IV", 80, 3, 80, 12); }
 
     @Override
     public void showSkills() {
-        System.out.println("Karl — Skills");
+        System.out.println("\nKarl — Skills");
         System.out.println(" • Piercing Arrow (armor-shred single shot)");
         System.out.println(" • Volley Storm (cone multi-shot)");
         System.out.println(" • Rain of a Thousand Arrows (area burst)");
         System.out.println(" Passive: Hunter’s Instinct (bonus vs low HP)");
     }
 
-    @Override
     public void showBackstory() {
         System.out.println("Karl Clover Dior IV was born and raised in the Forest of Silence, a place");
         System.out.println("where the air is thick with mist and danger lurks in every shadow.");
@@ -81,8 +80,7 @@ public class Karl extends Character implements CharacterInfo {
         target.takeDamage(reduced);
     }
 
-        // Ultimate
-       public void rainOfAThousandArrows(Character target){
+    public void rainOfAThousandArrows(Character target){
         int energyCost = 35;
         if(!consumeEnergy(energyCost)){
             System.out.println("Not enough energy to Rain of a Thousand arrows!");
@@ -103,8 +101,28 @@ public class Karl extends Character implements CharacterInfo {
         }
 
         System.out.println("Rain of a Thousand Arrows finished! Total damage dealt: " + totalDamage + " (Energy: " + energy + "/" + maxEnergy + ")");
-        target.takeDamage(reduced);
-       }
+        target.takeDamage(totalDamage);
+    }
+
+    @Override
+    public void turn(Character target) {
+        System.out.println("\n-- Your Turn --");
+
+        System.out.println("(1) Skill 1  - Piercing Arrow");
+        System.out.println("(2) Skill 2  - Bullseye");
+        System.out.println("(3) Ultimate - Rain of A Thousand Arrows");
+        System.out.print("Choose your action: ");
+
+        int choice = utils.InputUtil.scan.nextInt();
+        System.out.println("---------------");
+
+        switch (choice) {
+            case 1 -> piercingArrow(target);
+            case 2 -> bullsEye(target);
+            case 3 -> rainOfAThousandArrows(target);
+            default -> System.out.println("❌ Invalid action! You missed your turn.");
+        }
+    }
 }
 
 

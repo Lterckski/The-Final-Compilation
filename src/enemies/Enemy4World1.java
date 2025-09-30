@@ -19,4 +19,15 @@ public class Enemy4World1 extends Enemy {
         target.takeDamage(reduced);
         // TODO: Apply confuse effect (requires status system)
     }
+
+    @Override
+    public void showSkills(){
+        System.out.println("\nSkill — Screech: Damage 6–8, chance to confuse 1 turn");
+    }
+
+    @Override
+    public void turn(Character target) {
+        System.out.println("\n-- Enemy Turn --");
+        screech(target);
+    }
 }

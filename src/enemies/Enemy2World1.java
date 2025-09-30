@@ -18,4 +18,15 @@ public class Enemy2World1 extends Enemy {
         System.out.println("🧚 " + name + " used Trickster Strike on you for " + reduced + " damage!");
         target.takeDamage(reduced);
     }
+
+    @Override
+    public void showSkills(){
+        System.out.println("\nSkill — Trickster Strike (offensive): Damage 8–13");
+    }
+
+    @Override
+    public void turn(Character target) {
+        System.out.println("\n-- Enemy Turn --");
+        tricksterStrike(target);
+    }
 }

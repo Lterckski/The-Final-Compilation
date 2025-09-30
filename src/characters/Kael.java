@@ -2,7 +2,7 @@ package characters;
 
 import utils.RandomUtil;
 
-public class Kael extends  Character implements CharacterInfo {
+public class Kael extends  Character{
     private static final double CRIT_CHANCE = 0.15;  //passive
     private static final double CRIT_MULTIPLIER = 2.0;
 
@@ -10,14 +10,13 @@ public class Kael extends  Character implements CharacterInfo {
 
     @Override
     public void showSkills() {
-        System.out.println("Kael — Skills");
+        System.out.println("\nKael — Skills");
         System.out.println(" • Blade Rush (single-target slash)");
         System.out.println(" • Guard Breaker (ignores defense)");
         System.out.println(" • Eternal Cross Slash (3-hit finisher)");
         System.out.println(" Passive: Blade Swift (crit chance)");
     }
 
-    @Override
     public void showBackstory() {
         System.out.println("Kael Saint Laurent was born in the shadow of the Black Castle, in a family");
         System.out.println("that lived modestly within the crumbling Town of Decay. His childhood was");
@@ -95,9 +94,29 @@ public class Kael extends  Character implements CharacterInfo {
             totalDamage += reduced;
 
             System.out.println(" → Hit " + (i + 1) + ": You slashed " + target.getName() +  " for " + reduced + " damage!");
-            target.takeDamage(reduced);
         }
 
         System.out.println("Eternal Cross Slash finished! Total damage dealt: " + totalDamage + " (Energy: " + energy + "/" + maxEnergy + ")");
+        target.takeDamage(totalDamage);
+    }
+
+    @Override
+    public void turn(Character target) {
+        System.out.println("\n-- Your Turn --");
+
+        System.out.println("(1) Skill 1  - Blade Rush");
+        System.out.println("(2) Skill 2  - Guard Breaker");
+        System.out.println("(3) Ultimate - Eternal Cross Slash");
+        System.out.print("Choose your action: ");
+
+        int choice = utils.InputUtil.scan.nextInt();
+        System.out.println("---------------");
+
+        switch (choice) {
+            case 1 -> bladeRush(target);
+            case 2 -> guardBreaker(target);
+            case 3 -> eternalCrossSlash(target);
+            default -> System.out.println("❌ Invalid action! You missed your turn.");
+        }
     }
 }

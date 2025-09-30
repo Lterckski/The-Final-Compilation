@@ -28,4 +28,18 @@ public class Miniboss1World1 extends Enemy {
         //target.defense = reducedDef; // temporarily reduce DEF
         // TODO: add duration tracking (restore DEF after 2 turns)
     }
+
+    @Override
+    public void showSkills(){
+        System.out.println("\nSkill 1 — Deathly Charge: 47–56 dmg, stun 1 turn");
+        System.out.println("Skill 2 — Blackened Howl: reduces target DEF by 20% for 2 turns");
+    }
+
+    @Override
+    public void turn(Character target) {
+        System.out.println("\n-- Enemy Turn --");
+        deathlyCharge(target);
+        // TODO: Implement a conditional AI logic so that it will only use skill 2 if target(player) doesn't have a DEF debuff
+    }
+
 }
