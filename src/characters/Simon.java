@@ -55,8 +55,8 @@ public class Simon extends  Character{
 
         // Fireball
         System.out.println("🔥 You cast Fireball on " + target.getName() + " for " + reduced + " damage! (Energy: " + energy + "/" + maxEnergy + ")");
-        target.takeDamage(reduced);
         arcaneFlow();
+        target.takeDamage(reduced);
     }
 
     // Skill 2 - Ice Prison (Freeze not implemented)
@@ -72,8 +72,8 @@ public class Simon extends  Character{
         if (reduced < 0) reduced = 0;
 
         System.out.println("❄️ You cast Ice Prison on " + target.getName() + " for " + reduced + " damage! " + target.getName() + " is frozen! (Energy: " + energy + "/" + maxEnergy + ")");
-        target.takeDamage(reduced);
         arcaneFlow();
+        target.takeDamage(reduced);
         // TODO: Apply freeze for 1 turn
     }
 
@@ -90,8 +90,8 @@ public class Simon extends  Character{
         if (reduced < 0) reduced = 0;
 
         System.out.println("☄️ You call Meteor Storm on " + target.getName() + " for " + reduced + " damage! (Energy: " + energy + "/" + maxEnergy + ")");
-        target.takeDamage(reduced);
         arcaneFlow();
+        target.takeDamage(reduced);
     }
 
     @Override

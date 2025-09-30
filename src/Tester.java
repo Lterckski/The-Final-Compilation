@@ -87,18 +87,23 @@ public class Tester {
             switch (choice) {
                 case 1 -> {
                     player = new Kael();
+                    System.out.println("You selected " + player.getName() + "!");
+                    ((Kael) player).showBackstory();
                 }
                 case 2 -> {
                     player = new Karl();
+                    System.out.println("You selected " + player.getName() + "!");
+                    ((Karl) player).showBackstory();
                 }
                 case 3 -> {
                     player = new Simon();
+                    System.out.println("You selected " + player.getName() + "!");
+                    ((Simon) player).showBackstory();
                 }
                 default -> System.out.println("❌ Invalid choice! Please select a valid option.");
             }
         } while (player == null);  // repeat until valid choice
 
-        System.out.println("You selected " + player.getName() + "!");
         System.out.println("-------------------------------------");
 
         Character enemy1 = new Enemy1World1();
@@ -106,5 +111,11 @@ public class Tester {
 
         System.out.println("ENEMY ENCOUNTERED!");
         battle1.startBattle();
+
+        Character enemy2 = new Enemy1World1();
+        Battle battle2 = new Battle(player, enemy2);
+
+        System.out.println("ENEMY ENCOUNTERED!");
+        battle2.startBattle();
     }
 }
