@@ -108,9 +108,10 @@ public class Karl extends Character{
     public void turn(Character target) {
         System.out.println("\n-- Your Turn --");
 
-        System.out.println("(1) Skill 1  - Piercing Arrow");
-        System.out.println("(2) Skill 2  - Bullseye");
-        System.out.println("(3) Ultimate - Rain of A Thousand Arrows");
+        System.out.println("(1) Skill 1   -  Piercing Arrow");
+        System.out.println("(2) Skill 2   -  Bullseye");
+        System.out.println("(3) Ultimate  -  Rain of A Thousand Arrows");
+        System.out.println("(4) Skip Turn -  Restore 10% of Max Energy");
         System.out.print("Choose your action: ");
 
         int choice = utils.InputUtil.scan.nextInt();
@@ -120,6 +121,7 @@ public class Karl extends Character{
             case 1 -> piercingArrow(target);
             case 2 -> bullsEye(target);
             case 3 -> rainOfAThousandArrows(target);
+            case 4 -> skipTurn();
             default -> System.out.println("❌ Invalid action! You missed your turn.");
         }
     }

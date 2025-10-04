@@ -98,9 +98,10 @@ public class Simon extends  Character{
     public void turn(Character target) {
         System.out.println("\n-- Your Turn --");
 
-        System.out.println("(1) Skill 1  - Fireball");
-        System.out.println("(2) Skill 2  - Ice Prison");
-        System.out.println("(3) Ultimate - Meteor Storm");
+        System.out.println("(1) Skill 1   -  Fireball");
+        System.out.println("(2) Skill 2   -  Ice Prison");
+        System.out.println("(3) Ultimate  -  Meteor Storm");
+        System.out.println("(4) Skip Turn -  Restore 10% of Max Energy");
         System.out.print("Choose your action: ");
 
         int choice = utils.InputUtil.scan.nextInt();
@@ -110,6 +111,7 @@ public class Simon extends  Character{
             case 1 -> fireball(target);
             case 2 -> icePrison(target);
             case 3 -> meteorStorm(target);
+            case 4 -> skipTurn();
             default -> System.out.println("❌ Invalid action! You missed your turn.");
         }
     }

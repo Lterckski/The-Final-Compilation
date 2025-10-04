@@ -4,7 +4,6 @@ import characters.Kael;
 import characters.Karl;
 import characters.Simon;
 import enemies.Enemy1World1;
-
 import utils.InputUtil;
 
 public class Tester {
