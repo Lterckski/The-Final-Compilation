@@ -104,9 +104,10 @@ public class Kael extends  Character{
     public void turn(Character target) {
         System.out.println("\n-- Your Turn --");
 
-        System.out.println("(1) Skill 1  - Blade Rush");
-        System.out.println("(2) Skill 2  - Guard Breaker");
-        System.out.println("(3) Ultimate - Eternal Cross Slash");
+        System.out.println("(1) Skill 1   -  Blade Rush");
+        System.out.println("(2) Skill 2   -  Guard Breaker");
+        System.out.println("(3) Ultimate  -  Eternal Cross Slash");
+        System.out.println("(4) Skip Turn -  Restore 10% of Max Energy");
         System.out.print("Choose your action: ");
 
         int choice = utils.InputUtil.scan.nextInt();
@@ -116,6 +117,7 @@ public class Kael extends  Character{
             case 1 -> bladeRush(target);
             case 2 -> guardBreaker(target);
             case 3 -> eternalCrossSlash(target);
+            case 4 -> skipTurn();
             default -> System.out.println("❌ Invalid action! You missed your turn.");
         }
     }

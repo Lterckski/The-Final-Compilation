@@ -33,6 +33,7 @@ public class Battle {
 
             System.out.print("Enter choice: ");
             int choice = InputUtil.scan.nextInt();
+            InputUtil.scan.nextLine();
 
             switch (choice){
                 case 1 -> { System.out.println("⚔\uFE0F You chose to fight!"); willFight = true; }
@@ -50,13 +51,24 @@ public class Battle {
         System.out.println("\n⚔️ Battle Start! " + player.getName() + " vs " + enemy.getName());
 
         while(player.isAlive() && enemy.isAlive()){
-            player.turn(enemy);
+
+            if(player.checkEffects()){
+                player.turn(enemy);
+                player.updateModifiers();
+            }
+            player.updateDoTEffects();
             System.out.println("------------------------------");
+
             if(!enemy.isAlive()){
                 System.out.println("You defeated " + enemy.getName() + "!");
                 break;
             }
-            enemy.turn(player);
+
+            if(enemy.checkEffects()){
+                enemy.turn(player);
+                enemy.updateModifiers();
+            }
+            player.updateDoTEffects();
             System.out.println("------------------------------");
         }
 
