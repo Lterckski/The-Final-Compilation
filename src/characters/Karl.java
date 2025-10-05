@@ -45,7 +45,7 @@ public class Karl extends Character{
     // Skill 1 - Piercing Arrow
     public void piercingArrow(Character target){
         int energyCost = 10;
-        if(!consumeEnergy(energyCost)){
+        if(consumeEnergy(energyCost)){
             System.out.println("Not enough energy to use Piercing Arrow!");
             return;
         }
@@ -64,7 +64,7 @@ public class Karl extends Character{
     // Skill 2 - Bullseye
     public void bullsEye(Character target){
         int energyCost = 20;
-        if(!consumeEnergy(energyCost)){
+        if(consumeEnergy(energyCost)){
             System.out.println("Not enough energy to use Bullseye!");
             return;
         }
@@ -82,7 +82,7 @@ public class Karl extends Character{
 
     public void rainOfAThousandArrows(Character target){
         int energyCost = 35;
-        if(!consumeEnergy(energyCost)){
+        if(consumeEnergy(energyCost)){
             System.out.println("Not enough energy to Rain of a Thousand arrows!");
             return;
         }

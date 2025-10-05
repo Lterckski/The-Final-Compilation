@@ -45,7 +45,7 @@ public class Kael extends  Character{
     // Skill 1 - Blade Rush
     public void bladeRush(Character target){
         int energyCost = 10;
-        if(!consumeEnergy(energyCost)){
+        if(consumeEnergy(energyCost)){
             System.out.println("Not enough energy to use Blade Rush!");
             return;
         }
@@ -62,7 +62,7 @@ public class Kael extends  Character{
     // Skill 2 - Guard Breaker
     public void guardBreaker(Character target){
         int energyCost = 15;
-        if(!consumeEnergy(energyCost)){
+        if(consumeEnergy(energyCost)){
             System.out.println("Not enough energy to use Guard Breaker!");
             return;
         }
@@ -78,7 +78,7 @@ public class Kael extends  Character{
     //Ultimate - Eternal Cross Slash
     public void eternalCrossSlash(Character target){
         int energyCost = 30;
-        if (!consumeEnergy(energyCost)) {
+        if (consumeEnergy(energyCost)) {
             System.out.println("Not enough energy to use Eternal Cross Slash!");
             return;
         }

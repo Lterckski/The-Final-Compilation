@@ -1,8 +1,6 @@
 import battle.Battle;
+import characters.*;
 import characters.Character;
-import characters.Kael;
-import characters.Karl;
-import characters.Simon;
 import enemies.Enemy1World1;
 import utils.InputUtil;
 
@@ -74,6 +72,7 @@ public class Tester {
         System.out.println("1 - Kael Saint Laurent (Swordsman)");
         System.out.println("2 - Karl Clover Dior IV (Archer)");
         System.out.println("3 - Simon Versace (Mage)");
+        System.out.println("4 - Test Character (ambot)");
         System.out.println("-------------------------------------");
 
         int choice;
@@ -98,6 +97,10 @@ public class Tester {
                     player = new Simon();
                     System.out.println("You selected " + player.getName() + "!");
                     ((Simon) player).showBackstory();
+                }
+                case 4-> {
+                    player = new TestCharacter();
+                    System.out.println("You selected " + player.getName() + "!");
                 }
                 default -> System.out.println("❌ Invalid choice! Please select a valid option.");
             }
