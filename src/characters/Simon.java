@@ -44,7 +44,7 @@ public class Simon extends  Character{
     // Skill 1 - Fireball
     public void fireball(Character target) {
         int cost = 15;
-        if (!consumeEnergy(cost)) {
+        if (consumeEnergy(cost)) {
             System.out.println("Not enough energy to cast Fireball!");
             return;
         }
@@ -62,7 +62,7 @@ public class Simon extends  Character{
     // Skill 2 - Ice Prison (Freeze not implemented)
     public void icePrison(Character target) {
         int cost = 20;
-        if (!consumeEnergy(cost)) {
+        if (consumeEnergy(cost)) {
             System.out.println("Not enough energy to cast Ice Prison!");
             return;
         }
@@ -80,7 +80,7 @@ public class Simon extends  Character{
     // Ultimate - Meteor Storm
     public void meteorStorm(Character target) {
         int cost = 40;
-        if (!consumeEnergy(cost)) {
+        if (consumeEnergy(cost)) {
             System.out.println("Not enough energy to cast Meteor Storm!");
             return;
         }
@@ -106,6 +106,7 @@ public class Simon extends  Character{
 
         int choice = utils.InputUtil.scan.nextInt();
         System.out.println("---------------");
+        utils.InputUtil.scan.nextLine();
 
         switch (choice) {
             case 1 -> fireball(target);
@@ -115,4 +116,7 @@ public class Simon extends  Character{
             default -> System.out.println("❌ Invalid action! You missed your turn.");
         }
     }
+
 }
+
+

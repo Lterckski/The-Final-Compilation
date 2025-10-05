@@ -36,7 +36,7 @@ public class Battle {
             InputUtil.scan.nextLine();
 
             switch (choice){
-                case 1 -> { System.out.println("⚔\uFE0F You chose to fight!"); willFight = true; }
+                case 1 -> { System.out.println("⚔️ You chose to fight!"); willFight = true; }
                 //case 2 ->  openInventory TODO: implement inventory
                 case 3 -> player.showStats();
                 case 4 -> player.showSkills();
@@ -52,11 +52,13 @@ public class Battle {
 
         while(player.isAlive() && enemy.isAlive()){
 
-            if(player.checkEffects()){
+            if(player.getEffects().checkEffects()){
                 player.turn(enemy);
-                player.updateModifiers();
+                player.getEffects().updateModifiers();
+            } else{
+                InputUtil.pressEnterToContinue();
             }
-            player.updateDoTEffects();
+            player.getEffects().updateDoTEffects();
             System.out.println("------------------------------");
 
             if(!enemy.isAlive()){
@@ -64,11 +66,13 @@ public class Battle {
                 break;
             }
 
-            if(enemy.checkEffects()){
+            if(enemy.getEffects().checkEffects()){
                 enemy.turn(player);
-                enemy.updateModifiers();
+                enemy.getEffects().updateModifiers();
+            } else{
+                InputUtil.pressEnterToContinue();
             }
-            player.updateDoTEffects();
+            enemy.getEffects().updateDoTEffects();
             System.out.println("------------------------------");
         }
 
