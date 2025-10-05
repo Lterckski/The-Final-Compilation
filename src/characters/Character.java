@@ -16,11 +16,15 @@ public abstract class Character {
     private boolean isFrozen = false;
     private boolean isStunned = false;
     private boolean isImmobilized = false;
-    private boolean isConfused = false;
     private boolean isFeared  = false;
+
+    // 1 turn Battle Effects
+    private boolean isConfused = false;
     private boolean isNimble = false;
+
     // Multi-Turn Effects
     protected int poisonTurnsLeft = 0;
+    protected int bleedInitialTurns = 0;
     protected int bleedTurnsLeft = 0;
     protected int burnTurnsLeft = 0;
 
@@ -180,12 +184,15 @@ public abstract class Character {
             poisonTurnsLeft--;
         }
         if(bleedTurnsLeft > 0){
-            takeDamage(5);
-            System.out.println("Bleed applied! Took 5 damage");
+            int bleedDamage = 5 * (bleedInitialTurns - burnTurnsLeft + 1);
+            takeDamage(bleedDamage);
+            System.out.println("Bleed applied! Took " + bleedDamage + " damage");
+            bleedTurnsLeft--;
         }
         if(burnTurnsLeft > 0){
             takeDamage(5);
             System.out.println("Burn applied! Took 5 damage.");
+            burnTurnsLeft--;
         }
     }
 
