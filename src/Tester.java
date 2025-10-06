@@ -79,7 +79,7 @@ public class Tester {
         Character player = null;
 
         do {
-            System.out.print("Select you character: ");
+            System.out.print("Select your character: ");
             choice = InputUtil.scan.nextInt();
 
             switch (choice) {
