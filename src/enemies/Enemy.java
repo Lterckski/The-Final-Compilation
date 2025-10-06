@@ -4,8 +4,8 @@ import characters.Character;
 
 public abstract class Enemy extends Character{
     // Constructor
-    public Enemy(String name, int hp, int defense) {
-        super(name, hp, defense);
+    public Enemy(String name, int hp, int defense, int attack) {
+        super(name, hp, defense,attack);
     }
 
     // Show stats
@@ -15,6 +15,7 @@ public abstract class Enemy extends Character{
         System.out.println("Name    : " + name);
         System.out.println("HP      : " + hp + "/" + maxHp);
         System.out.println("Defense : " + defense);
+        System.out.println("Attack  : " + attack);
         System.out.println("=============================\n");
     }
 }

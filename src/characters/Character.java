@@ -11,25 +11,30 @@ public abstract class Character {
     protected int energy;
     protected int maxEnergy;       // track max energy
     protected int attack;
+    protected int baseAttack;
+    protected int baseDefense;
 
     private final Effects effects;
 
     public Character(String name, int hp, int defense, int energy, int attack) { // for players
         this.name = name;
-        this.hp = hp;
+        this.hp = hp + 10;
         this.maxHp = hp;
-        this.defense = defense;
+        this.baseDefense = defense;
+        this.defense = defense + 10;
         this.energy = energy;
         this.maxEnergy = energy;
-        this.attack = attack;
+        this.baseAttack = attack;
+        this.attack = attack + 10;
         this.effects = new Effects(this);
     }
 
-    public Character(String name, int hp, int defense) { // for enemies
+    public Character(String name, int hp, int defense, int attack) { // for enemies
         this.name = name;
         this.hp = hp;
         this.maxHp = hp;
         this.defense = defense;
+        this.attack = attack;
         this.effects = new Effects(this);
     }
 
@@ -38,12 +43,11 @@ public abstract class Character {
     public int getHp() { return hp; }
     public int getDefense() { return defense; }
     public int getAttack() { return attack; }
-    public int getMaxHp() {return maxHp; }
+    public int getMaxHp() { return maxHp; }
     // ------------------- SETTERS -------------------
     public void setAttack(int attack){ this.attack = attack; }
     public void setDefense(int defense){ this.defense = defense; }
     public void setHp(int hp){ this.hp = hp; }
-
     // ------------------- GETTER for Effects class -------------------
     public Effects getEffects(){ return effects; }
 
@@ -53,8 +57,15 @@ public abstract class Character {
         System.out.println("Level   : " + level);
         System.out.println("Health  : " + hp + "/" + maxHp);
         System.out.println("Energy  : " + energy + "/" + maxEnergy);
-        System.out.println("Defense : " + defense);
-        System.out.println("Attack  : " + attack);
+
+        System.out.print("Defense : " + defense);
+        if(defense > baseDefense) System.out.print(" + " + (defense - baseDefense));
+        System.out.println();
+
+        System.out.print("Attack  : " + baseAttack);
+        if(attack > baseAttack) System.out.print(" + " + (attack - baseAttack));
+        System.out.println();
+
         System.out.println("==============================\n");
     }
 
