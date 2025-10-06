@@ -18,7 +18,7 @@ public abstract class Character {
 
     public Character(String name, int hp, int defense, int energy, int attack) { // for players
         this.name = name;
-        this.hp = hp + 10;
+        this.hp = hp;
         this.maxHp = hp;
         this.baseDefense = defense;
         this.defense = defense;
