@@ -21,11 +21,11 @@ public abstract class Character {
         this.hp = hp + 10;
         this.maxHp = hp;
         this.baseDefense = defense;
-        this.defense = defense + 10;
+        this.defense = defense;
         this.energy = energy;
         this.maxEnergy = energy;
         this.baseAttack = attack;
-        this.attack = attack + 10;
+        this.attack = attack;
         this.effects = new Effects(this);
     }
 
