@@ -17,4 +17,8 @@ public class RandomUtil {
         return min + (max - min) * chance.nextDouble();
     }
 
+    public static boolean chance(int percent){
+        return chance.nextInt(100) < percent;
+    }
+
 }

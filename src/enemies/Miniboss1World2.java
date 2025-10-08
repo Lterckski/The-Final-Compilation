@@ -1,0 +1,56 @@
+package enemies;
+
+import characters.Character;
+import utils.RandomUtil;
+import battle.Effects;
+
+public class Miniboss1World2 extends Enemy{
+    public Miniboss1World2(){
+        super("The Black Jailer", 646, 27, 30);
+    }
+
+    public void shacklingChains(Character target){
+        if(target.getEffects().checkDodge()) return;
+
+        int damage = (int)RandomUtil.range(attack * 1.00, attack * 1.33);
+        int reduced = damage - target.getDefense();
+        if(reduced < 0) reduced = 0;
+
+        System.out.println("⛓️ " + name + " used Shackling Chains!");
+        System.out.println("→ Shackling Chains hits for " + reduced + " damage!");
+        target.takeDamage(reduced);
+
+        if(RandomUtil.chance(30)){
+            target.getEffects().applyImmobilize();
+        }
+    }
+
+    public void tormentingLash(Character target){
+        if(target.getEffects().checkDodge()) return;
+
+        int damage = (int)RandomUtil.range(attack * 1.33, attack * 1.73);
+        int reduced = damage - target.getDefense();
+        if(reduced < 0) reduced = 0;
+
+
+        System.out.println("🩸 " + name + " lashes with Tormenting Lash!");
+        System.out.println("→ Tormenting Lash hits for " + reduced + " damage!");
+        target.takeDamage(reduced);
+
+        target.getEffects().applyBleed(2);
+    }
+
+
+    @Override
+    public void showSkills() {
+        System.out.println("Skill 1 - Shackling Chains: ATK × (1.00–1.33), 30% Immobilize");
+        System.out.println("Skill 2 - Tormenting Lash: ATK × (1.33–1.73), Bleed (2 turns)");
+    }
+
+    @Override
+    public void turn(Character target) {
+        System.out.println("\n-- Mini-Boss Turn --");
+        if (RandomUtil.chance(50)) shacklingChains(target);
+        else tormentingLash(target);
+    }
+}
