@@ -32,8 +32,12 @@ public class Enemy3World2 extends Enemy{
 
     @Override
     public void showSkills() {
-        System.out.println("Skill - Corpse Explosion: Damage ATK × (1.00–1.55), 30% DEF Down (2 turns)");
+        int minDamage = (int) (attack * 1.00);
+        int maxDamage = (int) (attack * 1.55);
+
+        System.out.println("Skill - Corpse Explosion: ( " + minDamage + " - " + maxDamage + " ) damage, 30% chance to reduce DEF by 30% (2 turns)");
     }
+
 
     @Override
     public void turn(Character target) {

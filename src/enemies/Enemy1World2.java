@@ -24,9 +24,13 @@ public class Enemy1World2 extends Enemy{
     }
 
     @Override
-    public void showSkills(){
-        System.out.println("Skill - Plague Bite: Damage ATK × (1.00–1.55), Poison (1 turn)");
+    public void showSkills() {
+        int minDamage = (int) (attack * 1.00);
+        int maxDamage = (int) (attack * 1.55);
+
+        System.out.println("Skill - Plague Bite: ( " + minDamage + " - " + maxDamage + " ) damage, applies Poison (1 turn)");
     }
+
 
     @Override
     public void turn(Character target) {

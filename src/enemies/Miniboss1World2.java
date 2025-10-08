@@ -42,9 +42,15 @@ public class Miniboss1World2 extends Enemy{
 
     @Override
     public void showSkills() {
-        System.out.println("Skill 1 - Shackling Chains: ATK × (1.00–1.33), 30% Immobilize");
-        System.out.println("Skill 2 - Tormenting Lash: ATK × (1.33–1.73), Bleed (2 turns)");
+        int minDamage1 = (int) (attack * 1.00);
+        int maxDamage1 = (int) (attack * 1.33);
+        int minDamage2 = (int) (attack * 1.33);
+        int maxDamage2 = (int) (attack * 1.73);
+
+        System.out.println("Skill 1 - Shackling Chains: ( " + minDamage1 + " - " + maxDamage1 + " ) damage, 30% chance to Immobilize");
+        System.out.println("Skill 2 - Tormenting Lash: ( " + minDamage2 + " - " + maxDamage2 + " ) damage, applies Bleed (2 turns)");
     }
+
 
     @Override
     public void turn(Character target) {
