@@ -45,10 +45,18 @@ public class Miniboss2World2 extends Enemy {
 
     @Override
     public void showSkills() {
-        System.out.println("Skill 1 - Crown of Despair: Weaken (ATK -20%) 2 turns");
-        System.out.println("Skill 2 - Dark Judgment: ATK × (1.00–1.15)");
-        System.out.println("Skill 3 - King's Wrath: ATK × (0.71–0.85), 30% Stun");
+        int minDamage2 = (int) (attack * 1.00);
+        int maxDamage2 = (int) (attack * 1.15);
+
+        int minDamage3 = (int) (attack * 0.71);
+        int maxDamage3 = (int) (attack * 0.85);
+
+        System.out.println("Skill 1 - Crown of Despair: Reduces ATK by 20% (2 turns)");
+        System.out.println("Skill 2 - Dark Judgment: ( " + minDamage2 + " - " + maxDamage2 + " ) damage");
+        System.out.println("Skill 3 - King's Wrath: ( " + minDamage3 + " - " + maxDamage3 + " ) damage, 30% chance to Stun target");
     }
+
+
 
     @Override
     public void turn(Character target) {

@@ -29,8 +29,12 @@ public class Enemy4World2 extends Enemy{
 
     @Override
     public void showSkills() {
-        System.out.println("Skill - Rotten Cleave: Damage ATK × (1.00–1.30), 30% Bleed (2 turns)");
+        int minDamage = (int) (attack * 1.00);
+        int maxDamage = (int) (attack * 1.30);
+
+        System.out.println("Skill - Rotten Cleave: ( " + minDamage + " - " + maxDamage + " ) damage, 30% chance to Bleed (2 turns)");
     }
+
 
     @Override
     public void turn(Character target) {

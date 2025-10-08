@@ -30,8 +30,12 @@ public class Enemy2World2 extends Enemy{
 
     @Override
     public void showSkills() {
-        System.out.println("Skill - Shadow Bolt: Damage ATK × (1.00–1.33), 30% Weaken (2 turns)");
+        int minDamage = (int) (attack * 1.00);
+        int maxDamage = (int) (attack * 1.33);
+
+        System.out.println("Skill - Shadow Bolt: ( " + minDamage + " - " + maxDamage + " ) damage, 30% chance to Weaken (ATK -15%, 2 turns)");
     }
+
 
     @Override
     public void turn(Character target) {

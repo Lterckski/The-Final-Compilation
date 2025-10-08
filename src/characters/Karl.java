@@ -8,11 +8,10 @@ public class Karl extends Character{
 
     @Override
     public void showSkills() {
-        System.out.println("\nKarl — Skills");
-        System.out.println(" • Piercing Arrow (armor-shred single shot)");
-        System.out.println(" • Volley Storm (cone multi-shot)");
-        System.out.println(" • Rain of a Thousand Arrows (area burst)");
-        System.out.println(" Passive: Hunter’s Instinct (bonus vs low HP)");
+        System.out.println("Skill 1 - Piercing Arrow: ( " + (int)(attack * 1.10) + " - " + (int)(attack * 1.25) + " ) damage, ignores 30% DEF, 30% chance to Bleed (2 turns)");
+        System.out.println("Skill 2 - Bullseye: ( " + (int)(attack * 1.25 * 1.5) + " - " + (int)(attack * 1.50 * 1.5) + " ) critical damage, 30% chance to reduce DEF by 30% (2 turns)");
+        System.out.println("Skill 3 - Rain of a Thousand Arrows: 5 hits, each ( " + (int)(attack * 1.50) + " - " + (int)(attack * 2.50) + " ) damage, applies Nimble");
+        System.out.println("Passive - Hunter’s Instinct: +20% damage to targets below 30% HP");
     }
 
     public void showBackstory() {
