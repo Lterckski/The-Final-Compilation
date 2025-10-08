@@ -8,10 +8,29 @@ public class Karl extends Character{
 
     @Override
     public void showSkills() {
-        System.out.println("Skill 1 - Piercing Arrow: ( " + (int)(attack * 1.10) + " - " + (int)(attack * 1.25) + " ) damage, ignores 30% DEF, 30% chance to Bleed (2 turns)");
-        System.out.println("Skill 2 - Bullseye: ( " + (int)(attack * 1.25 * 1.5) + " - " + (int)(attack * 1.50 * 1.5) + " ) critical damage, 30% chance to reduce DEF by 30% (2 turns)");
-        System.out.println("Skill 3 - Rain of a Thousand Arrows: 5 hits, each ( " + (int)(attack * 1.50) + " - " + (int)(attack * 2.50) + " ) damage, applies Nimble");
-        System.out.println("Passive - Hunter’s Instinct: +20% damage to targets below 30% HP");
+        System.out.println("\n----------- KARL'S SKILLS -----------");
+        System.out.println("Passive – Hunter’s Instinct");
+        System.out.println("Deal +20% damage to enemies below 30% HP.\n");
+
+        System.out.println("Skill 1 – Piercing Arrow (10 Energy)");
+        System.out.println("Description: Fires an arrow that slices through armor and flesh alike.");
+        System.out.println("Damage: (" + (int)(attack * 1.10) + " — " + (int)(attack * 1.25) + ")");
+        System.out.println("Effects:");
+        System.out.println("- Ignores 30% of the target’s Defense");
+        System.out.println("- 30% chance to inflict Bleed (2 turns)\n");
+
+        System.out.println("Skill 2 – Bullseye (20 Energy)");
+        System.out.println("Description: Karl steadies his breath and fires a deadly precise shot.");
+        System.out.println("Damage: (" + (int)(attack * 1.25) + " — " + (int)(attack * 1.50) + ")");
+        System.out.println("Effects:");
+        System.out.println("- Guaranteed Critical Hit (×1.5 multiplier)");
+        System.out.println("- 30% chance to apply Weakness: reduce target’s DEF by 30% for 2 turns\n");
+
+        System.out.println("Ultimate – Rain of a Thousand Arrows (35 Energy)");
+        System.out.println("Description: Karl releases a rapid flurry of arrows, overwhelming his opponent with relentless strikes.");
+        System.out.println("Damage: 5 hits, each dealing (" + (int)(attack * 1.50) + " — " + (int)(attack * 2.50) + ")");
+        System.out.println("Effects:");
+        System.out.println("- Grants Nimble after attack (increased dodge chance)\n");
     }
 
     public void showBackstory() {

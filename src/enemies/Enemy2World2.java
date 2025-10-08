@@ -30,11 +30,14 @@ public class Enemy2World2 extends Enemy{
 
     @Override
     public void showSkills() {
-        int minDamage = (int) (attack * 1.00);
-        int maxDamage = (int) (attack * 1.33);
-
-        System.out.println("Skill - Shadow Bolt: ( " + minDamage + " - " + maxDamage + " ) damage, 30% chance to Weaken (ATK -15%, 2 turns)");
+        System.out.println("\n------- FORSAKEN CULTISTS SKILLS -------");
+        System.out.println("Skill – Shadow Bolt");
+        System.out.println("Description: Cultists hurl dark bolts of energy, weakening their foe.");
+        System.out.println("Damage: (" + (int)(attack * 1.00) + " — " + (int)(attack * 1.33) + ")");
+        System.out.println("Effects:");
+        System.out.println("- 30% chance to apply Weaken: reduces target’s ATK by 15% for 2 turns\n");
     }
+
 
 
     @Override

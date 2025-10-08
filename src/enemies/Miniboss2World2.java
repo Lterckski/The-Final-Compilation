@@ -45,15 +45,23 @@ public class Miniboss2World2 extends Enemy {
 
     @Override
     public void showSkills() {
-        int minDamage2 = (int) (attack * 1.00);
-        int maxDamage2 = (int) (attack * 1.15);
+        System.out.println("\n------- THE CORRUPTED KING SKILLS -------");
+        System.out.println("Skill 1 – Crown of Despair");
+        System.out.println("Description: The Corrupted King raises his crown, instilling fear and weakening his foe.");
+        System.out.println("Damage: —");
+        System.out.println("Effects:");
+        System.out.println("- Reduces hero’s ATK by 20% for 2 turns (Weaken)\n");
 
-        int minDamage3 = (int) (attack * 0.71);
-        int maxDamage3 = (int) (attack * 0.85);
+        System.out.println("Skill 2 – Dark Judgement");
+        System.out.println("Description: A shadowy strike that crushes the hero with dark energy.");
+        System.out.println("Damage: (" + (int)(attack * 1.0) + " — " + (int)(attack * 1.15) + ")");
+        System.out.println("Effects: —\n");
 
-        System.out.println("Skill 1 - Crown of Despair: Reduces ATK by 20% (2 turns)");
-        System.out.println("Skill 2 - Dark Judgment: ( " + minDamage2 + " - " + maxDamage2 + " ) damage");
-        System.out.println("Skill 3 - King's Wrath: ( " + minDamage3 + " - " + maxDamage3 + " ) damage, 30% chance to Stun target");
+        System.out.println("Skill 3 – King’s Wrath");
+        System.out.println("Description: The Corrupted King unleashes a furious strike, overwhelming his enemy.");
+        System.out.println("Damage: (" + (int)(attack * 0.71) + " — " + (int)(attack * 0.85) + ")");
+        System.out.println("Effects:");
+        System.out.println("- 30% chance to Stun the target\n");
     }
 
 

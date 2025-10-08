@@ -115,7 +115,7 @@ public class Tester {
 
         System.out.println("-------------------------------------");
 
-        Character enemy1 = new Enemy1World1();
+        Character enemy1 = new Miniboss2World2();
         Battle battle1 = new Battle(player, enemy1);
 
         System.out.println("ENEMY ENCOUNTERED!");

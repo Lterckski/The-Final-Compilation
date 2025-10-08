@@ -152,7 +152,7 @@ public class Effects {
 
     public boolean checkConfuse() {
         if (confused) {
-            if (Math.random() < 0.3) {
+            if (Math.random() < 0.50) {
                 System.out.println(owner.getName() + " missed the attack due to confusion!");
                 return true;
             }
@@ -163,7 +163,7 @@ public class Effects {
 
     public boolean checkDodge() {
         if (nimble) {
-            if (Math.random() < 0.3) {
+            if (Math.random() < .50) {
                 System.out.println(owner.getName() + " dodged the attack due to Nimble!");
                 nimble = false;
                 return true;
