@@ -17,6 +17,11 @@ public class Miniboss1World1 extends Enemy {
 
         System.out.println("🦌 " + name + " used Deathly Charge on you for " + reduced + " damage! You are stunned for 1 turn!");
         target.takeDamage(reduced);
+
+        //30% chance to stun
+        if (Math.random() < 0.30) {
+            target.getEffects().applyStun();
+        }
     }
 
     // Skill 2: Blackened Howl (reduces target DEF by 20% for 2 turns)
@@ -24,7 +29,8 @@ public class Miniboss1World1 extends Enemy {
         double reduction = target.getDefense() * 0.2;
         int reducedDef = target.getDefense() - (int) reduction;
         System.out.println(name + " used Blackened Howl! " + target.getName() + "'s DEF reduced from " + target.getDefense() + " to " + reducedDef + " for 2 turns.");
-
+        int debuffAmount = (int) (target.getDefense() * 0.20);
+        target.getEffects().applyDefenseDebuff(debuffAmount, 2); // 🛡️ Calculate 20% of the target's current DEF to use as the debuff amount
     }
 
     @Override
