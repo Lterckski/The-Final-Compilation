@@ -10,13 +10,13 @@ public class Miniboss1World2 extends Enemy{
     }
 
     public void shacklingChains(Character target){
-        if(target.getEffects().checkDodge()) return;
-
         int damage = (int)RandomUtil.range(attack * 1.00, attack * 1.33);
         int reduced = damage - target.getDefense();
         if(reduced < 0) reduced = 0;
 
         System.out.println("⛓️ " + name + " used Shackling Chains!");
+        if(target.getEffects().checkDodge()) return;
+
         System.out.println("→ Shackling Chains hits for " + reduced + " damage!");
         target.takeDamage(reduced);
 
@@ -26,14 +26,13 @@ public class Miniboss1World2 extends Enemy{
     }
 
     public void tormentingLash(Character target){
-        if(target.getEffects().checkDodge()) return;
-
         int damage = (int)RandomUtil.range(attack * 1.33, attack * 1.73);
         int reduced = damage - target.getDefense();
         if(reduced < 0) reduced = 0;
 
-
         System.out.println("🩸 " + name + " lashes with Tormenting Lash!");
+        if(target.getEffects().checkDodge()) return;
+
         System.out.println("→ Tormenting Lash hits for " + reduced + " damage!");
         target.takeDamage(reduced);
 

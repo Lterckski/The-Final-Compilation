@@ -17,24 +17,24 @@ public class Miniboss2World2 extends Enemy {
     }
 
     public void darkJudgement(Character target){
-        if(target.getEffects().checkDodge()) return;
-
         int damage = (int)RandomUtil.range(attack * 1, attack * 1.15);
         int reduced = damage - target.getDefense();
         if(reduced < 0) reduced = 0;
 
         System.out.println("⚔️ " + name + " uses Dark Judgment!");
+        if(target.getEffects().checkDodge()) return;
+
         System.out.println("→ Dark Judgment hits for " + reduced + " damage!");
     }
 
     public void kingsWrath(Character target){
-        if(target.getEffects().checkDodge()) return;
-
         int damage = (int)RandomUtil.range(attack * 0.71, attack * 0.85);
         int reduced = damage - target.getDefense();
         if(reduced < 0) reduced = 0;
 
         System.out.println("🔥 " + name + " unleashes King's Wrath!");
+        if(target.getEffects().checkDodge()) return;
+
         System.out.println("→ King's Wrath hits for " + reduced + " damage!");
         target.takeDamage(reduced);
 
@@ -53,9 +53,13 @@ public class Miniboss2World2 extends Enemy {
     @Override
     public void turn(Character target) {
         System.out.println("\n-- Boss Turn --");
-        int roll = RandomUtil.range(1, 100);
-        if (roll <= 30) crownOfDespair(target);
-        else if (roll <= 60) darkJudgement(target);
-        else kingsWrath(target);
+
+        if(target.getEffects().getAtkDebuffTurnsLeft() == 0){
+            crownOfDespair(target);
+        } else{
+            int roll = RandomUtil.range(1, 100);
+            if (RandomUtil.chance(66)) darkJudgement(target);
+            else kingsWrath(target);
+        }
     }
 }
