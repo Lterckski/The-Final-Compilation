@@ -4,7 +4,7 @@ import utils.RandomUtil;
 
 public class Karl extends Character{
 
-    public Karl() { super("Karl Clover Dior IV", 1000, 1000, 1000, 67); }
+    public Karl() { super("Karl Clover Dior IV", 80, 3, 80, 12); }
 
     @Override
     public void showSkills() {
@@ -44,6 +44,8 @@ public class Karl extends Character{
 
     // Skill 1 - Piercing Arrow
     public void piercingArrow(Character target){
+        if(target.getEffects().checkConfuse()) return;
+
         int energyCost = 10;
         if(consumeEnergy(energyCost)){
             System.out.println("Not enough energy to use Piercing Arrow!");
@@ -58,7 +60,8 @@ public class Karl extends Character{
         if (reduced < 0) reduced = 0;
 
         System.out.println("\uD83C\uDFF9 You used Piercing Arrow on " + target.getName() +  " for " + reduced + " damage (30% defense ignored). " +  "(Energy: " + energy + "/" + maxEnergy + ")");
-        target.takeDamage(reduced);
+        if(!target.getEffects().checkDodge())
+            target.takeDamage(reduced);
 
         if(RandomUtil.chance(30)){
             target.getEffects().applyBleed(2);
@@ -67,6 +70,8 @@ public class Karl extends Character{
 
     // Skill 2 - Bullseye
     public void bullsEye(Character target){
+        if(target.getEffects().checkConfuse()) return;
+
         int energyCost = 20;
         if(consumeEnergy(energyCost)){
             System.out.println("Not enough energy to use Bullseye!");
@@ -74,7 +79,7 @@ public class Karl extends Character{
         }
 
         int damage = (int) RandomUtil.range(attack*1.25, attack*1.50);
-        damage = (int) (damage * 1.1); // <-- applies 10% critical damage(always crit);
+        damage = (int) (damage * 1.5); // <-- applies 50% critical damage(always crit);
         damage = hunterInstincts(damage, target);
 
         int reduced = damage - target.getDefense();
@@ -91,6 +96,8 @@ public class Karl extends Character{
     }
 
     public void rainOfAThousandArrows(Character target){
+        if(target.getEffects().checkConfuse()) return;
+
         int energyCost = 35;
         if(consumeEnergy(energyCost)){
             System.out.println("Not enough energy to Rain of a Thousand arrows!");
@@ -108,11 +115,11 @@ public class Karl extends Character{
             if (reduced < 0) reduced = 0;
             totalDamage += reduced;
             System.out.println(" → Arrow " + (i + 1) + " pierced " + target.getName() + " for " + reduced + " damage!");
+            target.takeDamage(reduced);
         }
 
         System.out.println("Rain of a Thousand Arrows finished! Total damage dealt: " + totalDamage + " (Energy: " + energy + "/" + maxEnergy + ")");
-        target.takeDamage(totalDamage);
-
+        target.displayHp();
         this.getEffects().applyNimble();
     }
 

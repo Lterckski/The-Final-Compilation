@@ -11,13 +11,13 @@ public class Enemy2World2 extends Enemy{
     }
 
     public void shadowBolt(Character target){
-        if(target.getEffects().checkDodge()) return;
-
         int damage = (int)RandomUtil.range(attack * 1.00, attack * 1.55);
         int reduced = damage - target.getDefense();
         if(reduced < 0) reduced = 0;
 
         System.out.println("🕯️ " + name + " casts Shadow Bolt!");
+        if(target.getEffects().checkDodge()) return;
+
         System.out.println("→ Shadow Bolt hits for " + reduced + " damage!");
         target.takeDamage(reduced);
 

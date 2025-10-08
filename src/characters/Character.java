@@ -79,6 +79,10 @@ public abstract class Character {
         System.out.println("❤️ " + name + " (HP : " + hp + "/" + maxHp + ")");
     }
 
+    public void displayHp(){
+        System.out.println("❤️ " + name + " (HP : " + hp + "/" + maxHp + ")");
+    }
+
     public boolean isAlive() {
         return hp > 0;
     }

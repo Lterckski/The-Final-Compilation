@@ -37,41 +37,83 @@ public class Effects {
         this.owner = owner;
     }
 
+    // ------------------- GETTERS -------------------
+    public int getAtkBuffTurnsLeft(){ return atkBuffTurnsLeft; }
+    public int getAtkDebuffTurnsLeft(){ return atkDebuffTurnsLeft; }
+    public int getDefBuffTurnsLeft(){ return defBuffTurnsLeft; }
+    public int getDefDebuffTurnsLeft(){ return defDebuffTurnsLeft; }
+
     // ------------------- APPLY STATUS/EFFECTS -------------------
-    public void applyFreeze() { frozen = true; }
-    public void applyStun() { stunned = true; }
-    public void applyImmobilize() { immobilized = true; }
-    public void applyConfuse() { confused = true; }
-    public void applyFear() { feared = true; confused = true; } // fear also confuses
-    public void applyNimble() { nimble = true; }
+    public void applyFreeze() {
+        frozen = true;
+        System.out.println("❄️ Target is Frozen solid and skips their turn!");
+    }
+
+    public void applyStun() {
+        stunned = true;
+        System.out.println("💫 Target is Stunned and can't act!");
+    }
+
+    public void applyImmobilize() {
+        immobilized = true;
+        System.out.println("⛓️ Target is Immobilized and cannot move!");
+    }
+
+    public void applyConfuse() {
+        confused = true;
+        System.out.println("💭 Target is Confused and might miss their next attack!");
+    }
+
+    public void applyFear() {
+        feared = true;
+        confused = true; // Fear also confuses the target
+        System.out.println("😱 Target is Terrified by Fear, skips their turn, and becomes Confused!");
+    }
+
+    public void applyNimble() {
+        nimble = true;
+        System.out.println("⚡ You become Nimble and may dodge the next attack!");
+    }
 
     public void applyAttackBuff(int amount, int duration) {
         atkBuffModifier = amount;
         owner.setAttack(owner.getAttack() + amount);
         atkBuffTurnsLeft = duration;
     }
+
     public void applyAttackDebuff(int amount, int duration) {
         atkDebuffModifier = amount;
         owner.setAttack(owner.getAttack() - amount);
         atkDebuffTurnsLeft = duration;
     }
+
     public void applyDefenseBuff(int amount, int duration) {
         defBuffModifier = amount;
         owner.setDefense(owner.getDefense() + amount);
         defBuffTurnsLeft = duration;
     }
+
     public void applyDefenseDebuff(int amount, int duration) {
         defDebuffModifier = amount;
         owner.setDefense(owner.getDefense() - amount);
         defDebuffTurnsLeft = duration;
     }
 
-    public void applyPoison(int turns) { poisonTurnsLeft = turns; }
+    public void applyPoison(int turns) {
+        poisonTurnsLeft = turns;
+        System.out.println("☠️ Target is poisoned for " + turns + " turns!");
+    }
+
     public void applyBleed(int turns) {
         bleedInitialTurns = turns;
         bleedTurnsLeft = turns;
+        System.out.println("🩸 Target is bleeding for " + turns + " turns!");
     }
-    public void applyBurn(int turns) { burnTurnsLeft = turns; }
+
+    public void applyBurn(int turns) {
+        burnTurnsLeft = turns;
+        System.out.println("🔥 Target is burned for " + turns + " turns!");
+    }
 
     // ------------------- HEAL -------------------
     public void heal(int amount) {

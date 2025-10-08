@@ -11,14 +11,15 @@ public class Enemy1World2 extends Enemy{
     }
 
     public void plagueBite(Character target){
-
-        if(target.getEffects().checkDodge()) return;
-
         int damage = (int)RandomUtil.range(attack * 1.00, attack * 1.55);
         int reduced = damage - target.getDefense();
         if(reduced < 0) reduced = 0;
 
-        System.out.println("🐀 " + name + " used Plague Bite on " + target.getName() + "for " + reduced + "Damage!");
+        System.out.println("🐀 " + name + " used Plague Bite!");
+        if(target.getEffects().checkDodge()) return;
+
+        System.out.println("→ Plague Bite hits for " + reduced + " damage!");
+        target.takeDamage(reduced);
         target.getEffects().applyPoison(1);
     }
 

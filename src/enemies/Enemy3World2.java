@@ -8,17 +8,17 @@ import battle.Effects;
 public class Enemy3World2 extends Enemy{
 
     public Enemy3World2(){
-        super("Blight Hounds", 321, 17, 13);
+        super("Blight Hound", 321, 17, 13);
     }
 
     public void corpseExplosion(Character target){
-        if(target.getEffects().checkDodge()) return;
-
         int damage = (int)RandomUtil.range(attack * 1.00, attack * 1.55);
         int reduced = damage - target.getDefense();
         if(reduced < 0) reduced = 0;
 
         System.out.println("🐕 " + name + " used Corpse Explosion!");
+        if(target.getEffects().checkDodge()) return;
+
         System.out.println("→ Corpse Explosion hits for " + reduced + " damage!");
         target.takeDamage(reduced);
 
