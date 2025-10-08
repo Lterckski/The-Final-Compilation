@@ -11,12 +11,14 @@ public class Enemy2World1 extends Enemy {
 
     // Skill: Trickster Strike (8–13 damage)
     public void tricksterStrike(Character target) {
-        int damage = (int) RandomUtil.range(attack, attack*1.6);
+        int damage = (int) RandomUtil.range(attack*1.0, attack*1.625);
         int reduced = damage - target.getDefense();
         if (reduced < 0) reduced = 0;
 
         System.out.println("🧚 " + name + " used Trickster Strike on you for " + reduced + " damage!");
         target.takeDamage(reduced);
+
+        target.getEffects().applyConfuse(); //Applies confuse
     }
 
     @Override

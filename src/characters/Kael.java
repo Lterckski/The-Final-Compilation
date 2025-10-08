@@ -3,18 +3,41 @@ package characters;
 import utils.RandomUtil;
 
 public class Kael extends  Character{
-    private static final double CRIT_CHANCE = 0.15;  //passive
-    private static final double CRIT_MULTIPLIER = 2.0;
+    private static final double CRIT_CHANCE = 0.15;        // 15% crit chance
+    private static final double CRIT_MULTIPLIER = 1.5;     // 1.5x damage
+    private static final double ENERGY_GAIN_ON_CRIT = 0.05; // +5% energy
 
     public Kael() { super("Kael Saint Laurent", 100, 5, 60, 10); }
 
     @Override
     public void showSkills() {
-        System.out.println("\nKael — Skills");
-        System.out.println(" • Blade Rush (single-target slash)");
-        System.out.println(" • Guard Breaker (ignores defense)");
-        System.out.println(" • Eternal Cross Slash (3-hit finisher)");
-        System.out.println(" Passive: Blade Swift (crit chance)");
+        System.out.println("\n----------- KAEL'S SKILLS -----------");
+
+        // Passive
+        System.out.println("Passive – Blade Swift");
+        System.out.println("Description: 15% chance to deal a Critical Hit (×1.5 damage).");
+        System.out.println("Effect: When a Critical Hit occurs, Kael gains +5% Energy.\n");
+
+        // Skill 1
+        System.out.println("Skill 1 – Blade Rush (10 Energy)");
+        System.out.println("Description: A quick, fluid slash that catches the opponent off guard.");
+        System.out.println("Damage: (" + (int)(attack * 1.15) + " — " + (int)(attack * 1.35) + ")");
+        System.out.println("Effects:");
+        System.out.println("- 30% chance to apply Strengthen (+20% ATK for 2 turns)\n");
+
+        // Skill 2
+        System.out.println("Skill 2 – Guard Breaker (15 Energy)");
+        System.out.println("Description: A powerful, focused strike aimed to shatter enemy defenses.");
+        System.out.println("Damage: (" + (int)(attack * 1.35) + " — " + (int)(attack * 1.55) + ") — Ignores Defense");
+        System.out.println("Effects:");
+        System.out.println("- 30% chance to Stun (1 turn)\n");
+
+        // Ultimate
+        System.out.println("Ultimate – Eternal Cross Slash (30 Energy)");
+        System.out.println("Description: Kael unleashes a flurry of crossing strikes infused with unyielding determination.");
+        System.out.println("Damage: 3 hits, each dealing (" + (int)(attack * 0.85) + " — " + (int)(attack * 1.10) + ")");
+        System.out.println("Effects:");
+        System.out.println("- Applies Bleed (10 damage per turn for 2 turns)\n");
     }
 
     public void showBackstory() {
@@ -34,10 +57,18 @@ public class Kael extends  Character{
     }
 
     // Passive - Blade Swift
-    private int bladeSwift(int damage){
-        if(RandomUtil.get().nextDouble() < CRIT_CHANCE){
+    private int bladeSwift(int damage) {
+        if (RandomUtil.get().nextDouble() < CRIT_CHANCE) {
             System.out.println("⚡ Critical Hit! Blade Swift activated!");
-            return (int)(damage * CRIT_MULTIPLIER);
+            int critDamage = (int) (damage * CRIT_MULTIPLIER);
+
+            // Gain +5% of max energy (bonus adrenaline)
+            int energyGained = (int) (maxEnergy * ENERGY_GAIN_ON_CRIT);
+            energy = Math.min(energy + energyGained, maxEnergy); // cap at max energy
+            System.out.println("✨ Gained +" + energyGained + " energy from precision! ("
+                    + energy + "/" + maxEnergy + ")");
+
+            return critDamage;
         }
         return damage;
     }
@@ -57,6 +88,13 @@ public class Kael extends  Character{
 
         System.out.println("\uD83D\uDDE1\uFE0F You used Blade Rush on " + target.getName() + " for " + reduced + " damage! " +  "(Energy: " + energy + "/" + maxEnergy + ")");
         target.takeDamage(reduced);
+
+        // 30% chance to apply Strengthen (+20% ATK for 2 turns)
+        if (RandomUtil.get().nextDouble() < 0.30) {
+            int buffAmount = (int) (attack * 0.20); // +20% ATK
+            getEffects().applyAttackBuff(buffAmount, 2);
+            System.out.println("💥 Strengthen activated! +20% ATK for 2 turns!");
+        }
     }
 
     // Skill 2 - Guard Breaker
@@ -73,6 +111,12 @@ public class Kael extends  Character{
 
         System.out.println("\uD83D\uDCA5 You used Guard Breaker on " + target.getName() +  " for " + reduced + " pure damage! " +  "(Energy: " + energy + "/" + maxEnergy + ")");
         target.takeDamage(reduced); // defense ignored
+
+        // 30% chance to apply Stun (from the sheer impact)
+        if (RandomUtil.get().nextDouble() < 0.30) {
+            target.getEffects().applyStun(); // Stunned for 1 turn
+            System.out.println("😵 The impact stunned " + target.getName() + " for 1 turn!");
+        }
     }
 
     //Ultimate - Eternal Cross Slash
@@ -98,6 +142,15 @@ public class Kael extends  Character{
 
         System.out.println("Eternal Cross Slash finished! Total damage dealt: " + totalDamage + " (Energy: " + energy + "/" + maxEnergy + ")");
         target.takeDamage(totalDamage);
+
+        // Apply total damage to target
+        target.takeDamage(totalDamage);
+
+        // 🩸 Apply Bleed effect (progressive damage system)
+        target.getEffects().applyBleed(2);
+        System.out.println("🩸 " + target.getName() + " is now bleeding for 2 turns!");
+        System.out.println("Eternal Cross Slash finished! Total damage dealt: " + totalDamage +
+                " (Energy: " + energy + "/" + maxEnergy + ")");
     }
 
     @Override
