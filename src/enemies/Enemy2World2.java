@@ -1,0 +1,41 @@
+package enemies;
+
+
+import characters.Character;
+import utils.RandomUtil;
+import battle.Effects;
+
+public class Enemy2World2 extends Enemy{
+    public Enemy2World2(){
+        super("Forsaken Cultist", 279, 27, 15);
+    }
+
+    public void shadowBolt(Character target){
+        if(target.getEffects().checkDodge()) return;
+
+        int damage = (int)RandomUtil.range(attack * 1.00, attack * 1.55);
+        int reduced = damage - target.getDefense();
+        if(reduced < 0) reduced = 0;
+
+        System.out.println("🕯️ " + name + " casts Shadow Bolt!");
+        System.out.println("→ Shadow Bolt hits for " + reduced + " damage!");
+        target.takeDamage(reduced);
+
+        if(RandomUtil.chance(30)){
+            int debuffAmount = (int) Math.round(target.getAttack() * .15);
+            target.getEffects().applyAttackDebuff(debuffAmount, 2);
+            System.out.println("⚠️ " + target.getName() + " is weakened (ATK -15%)!");
+        }
+    }
+
+    @Override
+    public void showSkills() {
+        System.out.println("Skill - Shadow Bolt: Damage ATK × (1.00–1.33), 30% Weaken (2 turns)");
+    }
+
+    @Override
+    public void turn(Character target) {
+        System.out.println("\n-- Enemy Turn --");
+        shadowBolt(target);
+    }
+}

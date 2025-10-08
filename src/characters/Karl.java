@@ -4,7 +4,7 @@ import utils.RandomUtil;
 
 public class Karl extends Character{
 
-    public Karl() { super("Karl Clover Dior IV", 80, 3, 80, 12); }
+    public Karl() { super("Karl Clover Dior IV", 1000, 1000, 1000, 67); }
 
     @Override
     public void showSkills() {
@@ -59,6 +59,10 @@ public class Karl extends Character{
 
         System.out.println("\uD83C\uDFF9 You used Piercing Arrow on " + target.getName() +  " for " + reduced + " damage (30% defense ignored). " +  "(Energy: " + energy + "/" + maxEnergy + ")");
         target.takeDamage(reduced);
+
+        if(RandomUtil.chance(30)){
+            target.getEffects().applyBleed(2);
+        }
     }
 
     // Skill 2 - Bullseye
@@ -78,6 +82,12 @@ public class Karl extends Character{
 
         System.out.println("\uD83C\uDFAF\uD83D\uDD25 You used Bullseye on " + target.getName() + " for " + reduced + " critical damage! " + "(Energy: " + energy + "/" + maxEnergy + ")");
         target.takeDamage(reduced);
+
+        if(RandomUtil.chance(30)){
+            int defReduction = (int)(target.getDefense() * 0.30);
+            target.getEffects().applyDefenseDebuff(defReduction, 2);
+            System.out.println("⚠️ " + target.getName() + " is weakened! Defense reduced by 30% for 2 turns!");
+        }
     }
 
     public void rainOfAThousandArrows(Character target){
@@ -102,6 +112,8 @@ public class Karl extends Character{
 
         System.out.println("Rain of a Thousand Arrows finished! Total damage dealt: " + totalDamage + " (Energy: " + energy + "/" + maxEnergy + ")");
         target.takeDamage(totalDamage);
+
+        this.getEffects().applyNimble();
     }
 
     @Override
