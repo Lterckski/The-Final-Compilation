@@ -9,22 +9,28 @@ public class Enemy1World1 extends Enemy {
 
     // Skill: Savage Howl (10–15 damage)
     public void savageHowl(Character target) {
-        int damage = (int) RandomUtil.range(attack, attack*1.5);
+        System.out.println("🐺 " + name + " unleashes Savage Howl!");
+        if (target.getEffects().checkDodge()) return;
+
+        int damage = (int) RandomUtil.range(attack, attack * 1.5);
         int reduced = damage - target.getDefense();
         if (reduced < 0) reduced = 0;
 
-        System.out.println("🐺 " + name + " used Savage Howl on you for " + reduced + " damage!");
+        System.out.println("→ Savage Howl hits for " + reduced + " damage!");
         target.takeDamage(reduced);
     }
 
     @Override
     public void showSkills(){
-        System.out.println("\nSkill - Savage Howl (offensive): Damage 10–15");
+        System.out.println("\n------- ROTFANG WOLVES SKILLS -------");
+        System.out.println("Skill – Savage Howl");
+        System.out.println("Description: The wolves unleash a feral howl, striking their target with raw power.");
+        System.out.println("Damage: (" + (int)(attack * 1.00) + " — " + (int)(attack * 1.50) + ")");
+        System.out.println("Effects: —\n");
     }
 
     @Override
     public void turn(Character target) {
-        System.out.println("\n-- Enemy Turn --");
         savageHowl(target);
     }
 }

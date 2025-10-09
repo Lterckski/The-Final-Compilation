@@ -11,11 +11,14 @@ public class Enemy2World1 extends Enemy {
 
     // Skill: Trickster Strike (8–13 damage)
     public void tricksterStrike(Character target) {
-        int damage = (int) RandomUtil.range(attack*1.0, attack*1.625);
+        System.out.println("🧚 " + name + " attacks with Trickster Strike!");
+        if (target.getEffects().checkDodge()) return;
+
+        int damage = (int) RandomUtil.range(attack * 1.0, attack * 1.625);
         int reduced = damage - target.getDefense();
         if (reduced < 0) reduced = 0;
 
-        System.out.println("🧚 " + name + " used Trickster Strike on you for " + reduced + " damage!");
+        System.out.println("→ Trickster Strike hits for " + reduced + " damage!");
         target.takeDamage(reduced);
 
         target.getEffects().applyConfuse(); //Applies confuse
@@ -23,12 +26,16 @@ public class Enemy2World1 extends Enemy {
 
     @Override
     public void showSkills(){
-        System.out.println("\nSkill — Trickster Strike (offensive): Damage 8–13");
+        System.out.println("\n------- SHADE SPRITES SKILLS -------");
+        System.out.println("Skill – Trickster Strike");
+        System.out.println("Description: The Shade Sprites strike mischievously, leaving their target disoriented.");
+        System.out.println("Damage: (" + (int)(attack * 1.00) + " — " + (int)(attack * 1.625) + ")");
+        System.out.println("Effects:");
+        System.out.println("- Applies Confuse to target\n");
     }
 
     @Override
     public void turn(Character target) {
-        System.out.println("\n-- Enemy Turn --");
         tricksterStrike(target);
     }
 }

@@ -2,7 +2,6 @@ package enemies;
 
 import characters.Character;
 import utils.RandomUtil;
-import battle.Effects;
 
 public class Miniboss2World2 extends Enemy {
     public Miniboss2World2() {
@@ -11,29 +10,30 @@ public class Miniboss2World2 extends Enemy {
 
     public void crownOfDespair(Character target) {
         System.out.println("👑 " + name + " casts Crown of Despair!");
-        int debuffAmount = (int) Math.round(target.getAttack() * 0.2);
-        target.getEffects().applyAttackDebuff(debuffAmount, 2);
-        System.out.println("⚠️ " + target.getName() + " is weakened (-20% ATK)!");
+        if(target.getEffects().checkDodge()) return;
+
+        target.getEffects().applyAttackDebuff(20, 2);
     }
 
     public void darkJudgement(Character target){
-        int damage = (int)RandomUtil.range(attack * 1, attack * 1.15);
-        int reduced = damage - target.getDefense();
-        if(reduced < 0) reduced = 0;
-
         System.out.println("⚔️ " + name + " uses Dark Judgment!");
         if(target.getEffects().checkDodge()) return;
 
-        System.out.println("→ Dark Judgment hits for " + reduced + " damage!");
-    }
-
-    public void kingsWrath(Character target){
-        int damage = (int)RandomUtil.range(attack * 0.71, attack * 0.85);
+        int damage = (int)RandomUtil.range(attack * 1.0, attack * 1.15);
         int reduced = damage - target.getDefense();
         if(reduced < 0) reduced = 0;
 
+        System.out.println("→ Dark Judgment hits for " + reduced + " damage!");
+        target.takeDamage(reduced);
+    }
+
+    public void kingsWrath(Character target){
         System.out.println("🔥 " + name + " unleashes King's Wrath!");
         if(target.getEffects().checkDodge()) return;
+
+        int damage = (int)RandomUtil.range(attack * 0.71, attack * 0.85);
+        int reduced = damage - target.getDefense();
+        if(reduced < 0) reduced = 0;
 
         System.out.println("→ King's Wrath hits for " + reduced + " damage!");
         target.takeDamage(reduced);
@@ -68,12 +68,9 @@ public class Miniboss2World2 extends Enemy {
 
     @Override
     public void turn(Character target) {
-        System.out.println("\n-- Boss Turn --");
-
         if(target.getEffects().getAtkDebuffTurnsLeft() == 0){
             crownOfDespair(target);
         } else{
-            int roll = RandomUtil.range(1, 100);
             if (RandomUtil.chance(66)) darkJudgement(target);
             else kingsWrath(target);
         }

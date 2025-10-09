@@ -10,19 +10,18 @@ public class Enemy4World2 extends Enemy{
     }
 
     public void rottenCleave(Character target){
+        System.out.println("🧟 " + name + " swings Rotten Cleave!");
+        if(target.getEffects().checkDodge()) return;
+
         int damage = (int)RandomUtil.range(attack * 1.00 , attack * 1.30);
         int reduced = damage - target.getDefense();
         if(reduced < 0) reduced = 0;
-
-        System.out.println("🧟 " + name + " swings Rotten Cleave!");
-        if(target.getEffects().checkDodge()) return;
 
         System.out.println("→ Rotten Cleave hits for " + reduced + " damage!");
         target.takeDamage(reduced);
 
         if(RandomUtil.chance(30)){
             target.getEffects().applyBleed(2);
-            System.out.println("🩸 Bleeding is applied to " + target.getName() + " for " + 2 + " turns!");
         }
     }
 
@@ -41,7 +40,6 @@ public class Enemy4World2 extends Enemy{
 
     @Override
     public void turn(Character target) {
-        System.out.println("\n-- Enemy Turn --");
         rottenCleave(target);
     }
 }

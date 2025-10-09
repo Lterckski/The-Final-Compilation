@@ -12,21 +12,18 @@ public class Enemy3World2 extends Enemy{
     }
 
     public void corpseExplosion(Character target){
+        System.out.println("🐕 " + name + " used Corpse Explosion!");
+        if(target.getEffects().checkDodge()) return;
+
         int damage = (int)RandomUtil.range(attack * 1.00, attack * 1.55);
         int reduced = damage - target.getDefense();
         if(reduced < 0) reduced = 0;
-
-        System.out.println("🐕 " + name + " used Corpse Explosion!");
-        if(target.getEffects().checkDodge()) return;
 
         System.out.println("→ Corpse Explosion hits for " + reduced + " damage!");
         target.takeDamage(reduced);
 
         if(RandomUtil.chance(30)){
-            int debuffAmount = (int) Math.round(target.getDefense() * 0.3);
-            target.getEffects().applyDefenseDebuff(debuffAmount, 2);
-            System.out.println("🛡️ " + target.getName() + "'s DEF is reduced by 30%!");
-
+            target.getEffects().applyDefenseDebuff(30, 2);
         }
     }
 
@@ -44,7 +41,6 @@ public class Enemy3World2 extends Enemy{
 
     @Override
     public void turn(Character target) {
-        System.out.println("\n-- Enemy Turn --");
         corpseExplosion(target);
     }
 }

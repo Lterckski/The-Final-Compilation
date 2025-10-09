@@ -96,8 +96,6 @@ public class Simon extends  Character{
 
     @Override
     public void turn(Character target) {
-        System.out.println("\n-- Your Turn --");
-
         System.out.println("(1) Skill 1   -  Fireball");
         System.out.println("(2) Skill 2   -  Ice Prison");
         System.out.println("(3) Ultimate  -  Meteor Storm");

@@ -2,10 +2,7 @@ package characters;
 
 import utils.RandomUtil;
 
-public class Kael extends  Character{
-    private static final double CRIT_CHANCE = 0.15;        // 15% crit chance
-    private static final double CRIT_MULTIPLIER = 1.5;     // 1.5x damage
-    private static final double ENERGY_GAIN_ON_CRIT = 0.05; // +5% energy
+public class Kael extends  Character{      // 15% crit chance
 
     public Kael() { super("Kael Saint Laurent", 100, 5, 60, 10); }
 
@@ -15,7 +12,7 @@ public class Kael extends  Character{
 
         // Passive
         System.out.println("Passive – Blade Swift");
-        System.out.println("Description: 15% chance to deal a Critical Hit (×1.5 damage).");
+        System.out.println("15% chance to deal a Critical Hit (×1.5 damage).");
         System.out.println("Effect: When a Critical Hit occurs, Kael gains +5% Energy.\n");
 
         // Skill 1
@@ -38,6 +35,7 @@ public class Kael extends  Character{
         System.out.println("Damage: 3 hits, each dealing (" + (int)(attack * 0.85) + " — " + (int)(attack * 1.10) + ")");
         System.out.println("Effects:");
         System.out.println("- Applies Bleed (10 damage per turn for 2 turns)\n");
+        System.out.println("- Grants Fortified: (+20% DEF for 2 turns)\n");
     }
 
     public void showBackstory() {
@@ -58,23 +56,24 @@ public class Kael extends  Character{
 
     // Passive - Blade Swift
     private int bladeSwift(int damage) {
-        if (RandomUtil.get().nextDouble() < CRIT_CHANCE) {
+        if (RandomUtil.chance(15)) {
             System.out.println("⚡ Critical Hit! Blade Swift activated!");
-            int critDamage = (int) (damage * CRIT_MULTIPLIER);
+            damage = (int) (damage * 1.5);
 
             // Gain +5% of max energy (bonus adrenaline)
-            int energyGained = (int) (maxEnergy * ENERGY_GAIN_ON_CRIT);
-            energy = Math.min(energy + energyGained, maxEnergy); // cap at max energy
+            int energyGained = (int)(maxEnergy * 0.05);
+            energy += energyGained;
+            if (energy > maxEnergy) energy = maxEnergy;
             System.out.println("✨ Gained +" + energyGained + " energy from precision! ("
                     + energy + "/" + maxEnergy + ")");
-
-            return critDamage;
         }
         return damage;
     }
 
     // Skill 1 - Blade Rush
     public void bladeRush(Character target){
+        if(target.getEffects().checkConfuse()) return;
+
         int energyCost = 10;
         if(consumeEnergy(energyCost)){
             System.out.println("Not enough energy to use Blade Rush!");
@@ -86,19 +85,19 @@ public class Kael extends  Character{
         int reduced = damage - target.getDefense();
         if (reduced < 0) reduced = 0;
 
-        System.out.println("\uD83D\uDDE1\uFE0F You used Blade Rush on " + target.getName() + " for " + reduced + " damage! " +  "(Energy: " + energy + "/" + maxEnergy + ")");
+        System.out.println("\uD83D\uDDE1️ You used Blade Rush on " + target.getName() + " for " + reduced + " damage! " +  "(Energy: " + energy + "/" + maxEnergy + ")");
         target.takeDamage(reduced);
 
         // 30% chance to apply Strengthen (+20% ATK for 2 turns)
-        if (RandomUtil.get().nextDouble() < 0.30) {
-            int buffAmount = (int) (attack * 0.20); // +20% ATK
-            getEffects().applyAttackBuff(buffAmount, 2);
-            System.out.println("💥 Strengthen activated! +20% ATK for 2 turns!");
+        if (RandomUtil.chance(30)) {
+            getEffects().applyAttackBuff(20, 2+1); //turns +1 because turn is decremented after this attack (2 turns rajud ni technically)
         }
     }
 
     // Skill 2 - Guard Breaker
     public void guardBreaker(Character target){
+        if(target.getEffects().checkConfuse()) return;
+
         int energyCost = 15;
         if(consumeEnergy(energyCost)){
             System.out.println("Not enough energy to use Guard Breaker!");
@@ -113,9 +112,8 @@ public class Kael extends  Character{
         target.takeDamage(reduced); // defense ignored
 
         // 30% chance to apply Stun (from the sheer impact)
-        if (RandomUtil.get().nextDouble() < 0.30) {
+        if (RandomUtil.chance(30)) {
             target.getEffects().applyStun(); // Stunned for 1 turn
-            System.out.println("😵 The impact stunned " + target.getName() + " for 1 turn!");
         }
     }
 
@@ -128,13 +126,15 @@ public class Kael extends  Character{
         }
 
         int totalDamage = 0;
-        System.out.println("✝\uFE0F You unleash your ultimate technique: Eternal Cross Slash!");
+        System.out.println("✝️ You unleash your ultimate technique: Eternal Cross Slash!");
 
         for(int i = 0; i < 3; i++){
             int damage = (int) RandomUtil.range(attack * 0.85,attack * 1.10);
             damage = bladeSwift(damage);
             int reduced = damage - target.getDefense();
             if (reduced < 0) reduced = 0;
+
+            if(target.getEffects().checkConfuse()) reduced = 0;
             totalDamage += reduced;
 
             System.out.println(" → Hit " + (i + 1) + ": You slashed " + target.getName() +  " for " + reduced + " damage!");
@@ -143,20 +143,12 @@ public class Kael extends  Character{
         System.out.println("Eternal Cross Slash finished! Total damage dealt: " + totalDamage + " (Energy: " + energy + "/" + maxEnergy + ")");
         target.takeDamage(totalDamage);
 
-        // Apply total damage to target
-        target.takeDamage(totalDamage);
-
-        // 🩸 Apply Bleed effect (progressive damage system)
         target.getEffects().applyBleed(2);
-        System.out.println("🩸 " + target.getName() + " is now bleeding for 2 turns!");
-        System.out.println("Eternal Cross Slash finished! Total damage dealt: " + totalDamage +
-                " (Energy: " + energy + "/" + maxEnergy + ")");
+        this.getEffects().applyDefenseBuff(20, 2+1);
     }
 
     @Override
     public void turn(Character target) {
-        System.out.println("\n-- Your Turn --");
-
         System.out.println("(1) Skill 1   -  Blade Rush");
         System.out.println("(2) Skill 2   -  Guard Breaker");
         System.out.println("(3) Ultimate  -  Eternal Cross Slash");
@@ -165,6 +157,7 @@ public class Kael extends  Character{
 
         int choice = utils.InputUtil.scan.nextInt();
         System.out.println("---------------");
+        utils.InputUtil.scan.nextLine();
 
         switch (choice) {
             case 1 -> bladeRush(target);

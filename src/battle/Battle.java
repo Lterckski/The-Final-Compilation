@@ -48,11 +48,13 @@ public class Battle {
     }
 
     public void battleLoop(){
+        System.out.println("------------------------------");
         System.out.println("\n⚔️ Battle Start! " + player.getName() + " vs " + enemy.getName());
 
         while(player.isAlive() && enemy.isAlive()){
 
             if(player.getEffects().checkEffects()){
+                System.out.println("\n-- Your Turn --");
                 player.turn(enemy);
                 player.getEffects().updateModifiers();
             } else{
@@ -67,6 +69,7 @@ public class Battle {
             }
 
             if(enemy.getEffects().checkEffects()){
+                System.out.println("\n-- Enemy Turn --");
                 enemy.turn(player);
                 enemy.getEffects().updateModifiers();
             } else{

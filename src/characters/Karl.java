@@ -30,7 +30,8 @@ public class Karl extends Character{
         System.out.println("Description: Karl releases a rapid flurry of arrows, overwhelming his opponent with relentless strikes.");
         System.out.println("Damage: 5 hits, each dealing (" + (int)(attack * 1.50) + " — " + (int)(attack * 2.50) + ")");
         System.out.println("Effects:");
-        System.out.println("- Grants Nimble after attack (increased dodge chance)\n");
+        System.out.println("- Grants Nimble after attack (increased dodge chance)");
+        System.out.println("- Grants Strengthen (+20% ATK for 2 turns)\n");
     }
 
     public void showBackstory() {
@@ -107,15 +108,11 @@ public class Karl extends Character{
         target.takeDamage(reduced);
 
         if(RandomUtil.chance(30)){
-            int defReduction = (int)(target.getDefense() * 0.30);
-            target.getEffects().applyDefenseDebuff(defReduction, 2);
-            System.out.println("⚠️ " + target.getName() + " is weakened! Defense reduced by 30% for 2 turns!");
+            target.getEffects().applyDefenseDebuff(30, 2);
         }
     }
 
     public void rainOfAThousandArrows(Character target){
-        if(target.getEffects().checkConfuse()) return;
-
         int energyCost = 35;
         if(consumeEnergy(energyCost)){
             System.out.println("Not enough energy to Rain of a Thousand arrows!");
@@ -125,26 +122,28 @@ public class Karl extends Character{
         int totalDamage = 0;
         System.out.println("\uD83C\uDF27\uFE0F\uD83C\uDFF9 You unleash your ultimate: Rain of a Thousand Arrows!");
 
-        int reduced = 0;
+        int reduced;
         for (int i = 0; i < 5; i++) {
             int damage = (int) RandomUtil.range(attack * 1.5, attack * 2.5);
             damage = hunterInstincts(damage, target);
             reduced = damage - target.getDefense();
             if (reduced < 0) reduced = 0;
+
+            if(target.getEffects().checkConfuse()) reduced = 0;
             totalDamage += reduced;
+
             System.out.println(" → Arrow " + (i + 1) + " pierced " + target.getName() + " for " + reduced + " damage!");
-            target.takeDamage(reduced);
         }
 
         System.out.println("Rain of a Thousand Arrows finished! Total damage dealt: " + totalDamage + " (Energy: " + energy + "/" + maxEnergy + ")");
-        target.displayHp();
+        target.takeDamage(totalDamage);
+
         this.getEffects().applyNimble();
+        this.getEffects().applyAttackBuff(20, 2+1);
     }
 
     @Override
     public void turn(Character target) {
-        System.out.println("\n-- Your Turn --");
-
         System.out.println("(1) Skill 1   -  Piercing Arrow");
         System.out.println("(2) Skill 2   -  Bullseye");
         System.out.println("(3) Ultimate  -  Rain of A Thousand Arrows");
@@ -153,6 +152,7 @@ public class Karl extends Character{
 
         int choice = utils.InputUtil.scan.nextInt();
         System.out.println("---------------");
+        utils.InputUtil.scan.nextLine();
 
         switch (choice) {
             case 1 -> piercingArrow(target);

@@ -75,28 +75,36 @@ public class Effects {
         System.out.println("⚡ You become Nimble and may dodge the next attack!");
     }
 
-    public void applyAttackBuff(int amount, int duration) {
+    public void applyAttackBuff(int percent, int duration) {
+        int amount = (int) Math.round(owner.getAttack() * (percent / 100.0));
         atkBuffModifier = amount;
         owner.setAttack(owner.getAttack() + amount);
         atkBuffTurnsLeft = duration;
+        System.out.println("💪 Strengthen activated! +" + percent + "% ATK for " + duration + " turns!");
     }
 
-    public void applyAttackDebuff(int amount, int duration) {
+    public void applyAttackDebuff(int percent, int duration) {
+        int amount = (int) Math.round(owner.getAttack() * (percent / 100.0));
         atkDebuffModifier = amount;
         owner.setAttack(owner.getAttack() - amount);
         atkDebuffTurnsLeft = duration;
+        System.out.println("💢 Weaken Applied! Target's ATK is reduced by " + percent + "% for " + duration + " turns!");
     }
 
-    public void applyDefenseBuff(int amount, int duration) {
+    public void applyDefenseBuff(int percent, int duration) {
+        int amount = (int) Math.round(owner.getDefense() * (percent / 100.0));
         defBuffModifier = amount;
         owner.setDefense(owner.getDefense() + amount);
         defBuffTurnsLeft = duration;
+        System.out.println("🛡️ Fortified activated! +" + percent + "% DEF for " + duration + " turns!");
     }
 
-    public void applyDefenseDebuff(int amount, int duration) {
+    public void applyDefenseDebuff(int percent, int duration) {
+        int amount = (int) Math.round(owner.getDefense() * (percent / 100.0));
         defDebuffModifier = amount;
         owner.setDefense(owner.getDefense() - amount);
         defDebuffTurnsLeft = duration;
+        System.out.println("🔻 Fragile Applied! Target's DEF is reduced by " + percent + "% for " + duration + " turns!");
     }
 
     public void applyPoison(int turns) {

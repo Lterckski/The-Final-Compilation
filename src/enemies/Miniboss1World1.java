@@ -11,11 +11,14 @@ public class Miniboss1World1 extends Enemy {
 
     // Skill 1: Deathly Charge (47–56 damage, stun 1 turn)
     public void deathlyCharge(Character target) {
+        System.out.println("🦌 " + name + " charges with Deathly Charge!");
+        if (target.getEffects().checkDodge()) return;
+
         int damage = (int) RandomUtil.range(attack, attack*1.2);
         int reduced = damage - target.getDefense();
         if (reduced < 0) reduced = 0;
 
-        System.out.println("🦌 " + name + " used Deathly Charge on you for " + reduced + " damage! You are stunned for 1 turn!");
+        System.out.println("→ Deathly Charge hits for " + reduced + " damage!");
         target.takeDamage(reduced);
 
         //30% chance to stun
@@ -25,25 +28,38 @@ public class Miniboss1World1 extends Enemy {
     }
 
     // Skill 2: Blackened Howl (reduces target DEF by 20% for 2 turns)
-    public void blackenedHowl(Enemy target) {
-        double reduction = target.getDefense() * 0.2;
-        int reducedDef = target.getDefense() - (int) reduction;
-        System.out.println(name + " used Blackened Howl! " + target.getName() + "'s DEF reduced from " + target.getDefense() + " to " + reducedDef + " for 2 turns.");
-        int debuffAmount = (int) (target.getDefense() * 0.20);
-        target.getEffects().applyDefenseDebuff(debuffAmount, 2); // 🛡️ Calculate 20% of the target's current DEF to use as the debuff amount
+    public void blackenedHowl(Character target) {
+        System.out.println("🗣️ " + name + " unleashes Blackened Howl!");
+        if (target.getEffects().checkDodge()) return;
+
+        target.getEffects().applyDefenseDebuff(20, 2);
     }
 
     @Override
-    public void showSkills(){
-        System.out.println("\nSkill 1 — Deathly Charge: 47–56 dmg, stun 1 turn");
-        System.out.println("Skill 2 — Blackened Howl: reduces target DEF by 20% for 2 turns");
+    public void showSkills() {
+        System.out.println("\n------- THE HOLLOW STAG SKILLS -------");
+
+        System.out.println("Skill 1 – Deathly Charge");
+        System.out.println("Description: The Hollow Stag charges with deadly force, attempting to stun its foe.");
+        System.out.println("Damage: (" + (int)(attack * 1.00) + " — " + (int)(attack * 1.20) + ")");
+        System.out.println("Effects:");
+        System.out.println("- 30% chance to Stun the target\n");
+
+        System.out.println("Skill 2 – Blackened Howl");
+        System.out.println("Description: The stag lets out a blackened howl, weakening its opponent's defenses.");
+        System.out.println("Damage: —");
+        System.out.println("Effects:");
+        System.out.println("- Reduces target’s DEF by 20% for 2 turns\n");
     }
+
 
     @Override
     public void turn(Character target) {
-        System.out.println("\n-- Enemy Turn --");
-        deathlyCharge(target);
-        // TODO: Implement a conditional AI logic so that it will only use skill 2 if target(player) doesn't have a DEF debuff
+        if(target.getEffects().getDefDebuffTurnsLeft() == 0){
+            blackenedHowl(target);
+        } else{
+            deathlyCharge(target);
+        }
     }
 
 }

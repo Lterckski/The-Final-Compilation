@@ -11,12 +11,12 @@ public class Enemy1World2 extends Enemy{
     }
 
     public void plagueBite(Character target){
+        System.out.println("🐀 " + name + " used Plague Bite!");
+        if(target.getEffects().checkDodge()) return;
+
         int damage = (int)RandomUtil.range(attack * 1.00, attack * 1.55);
         int reduced = damage - target.getDefense();
         if(reduced < 0) reduced = 0;
-
-        System.out.println("🐀 " + name + " used Plague Bite!");
-        if(target.getEffects().checkDodge()) return;
 
         System.out.println("→ Plague Bite hits for " + reduced + " damage!");
         target.takeDamage(reduced);
@@ -35,7 +35,6 @@ public class Enemy1World2 extends Enemy{
 
     @Override
     public void turn(Character target) {
-        System.out.println("\n-- Enemy Turn --");
         plagueBite(target);
     }
 }
