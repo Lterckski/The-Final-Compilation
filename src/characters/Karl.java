@@ -31,7 +31,8 @@ public class Karl extends Character{
         System.out.println("Damage: 5 hits, each dealing (" + (int)(attack * 1.50) + " — " + (int)(attack * 2.50) + ")");
         System.out.println("Effects:");
         System.out.println("- Grants Nimble after attack (increased dodge chance)");
-        System.out.println("- Grants Strengthen (+20% ATK for 2 turns)\n");
+        System.out.println("- Grants Strengthen (+20% ATK for 2 turns)");
+        System.out.println("-------------------------------------");
     }
 
     public void showBackstory() {
@@ -120,7 +121,7 @@ public class Karl extends Character{
         }
 
         int totalDamage = 0;
-        System.out.println("\uD83C\uDF27\uFE0F\uD83C\uDFF9 You unleash your ultimate: Rain of a Thousand Arrows!");
+        System.out.println("\uD83C\uDF27️\uD83C\uDFF9 You unleash your ultimate: Rain of a Thousand Arrows!");
 
         int reduced;
         for (int i = 0; i < 5; i++) {
@@ -140,28 +141,62 @@ public class Karl extends Character{
 
         this.getEffects().applyNimble();
         this.getEffects().applyAttackBuff(20, 2+1);
+        ultimateCounter = 3;
     }
 
     @Override
     public void turn(Character target) {
-        System.out.println("(1) Skill 1   -  Piercing Arrow");
-        System.out.println("(2) Skill 2   -  Bullseye");
-        System.out.println("(3) Ultimate  -  Rain of A Thousand Arrows");
-        System.out.println("(4) Skip Turn -  Restore 10% of Max Energy");
-        System.out.print("Choose your action: ");
+        boolean isValid = false;
 
-        int choice = utils.InputUtil.scan.nextInt();
-        System.out.println("---------------");
-        utils.InputUtil.scan.nextLine();
+        while (!isValid) {
+            // If ultimate is on cooldown
+            if (ultimateCounter > 0) {
+                System.out.println("(1) Skill 1   -  Piercing Arrow");
+                System.out.println("(2) Skill 2   -  Bullseye");
+                System.out.println("(3) Ultimate  -  Rain of A Thousand Arrows ❌ (Available in " + ultimateCounter + " turns)");
+                System.out.println("(4) Skip Turn -  Restore 10% of Max Energy");
+                System.out.println("(5) Other Options");
+                System.out.print("Choose your action: ");
 
-        switch (choice) {
-            case 1 -> piercingArrow(target);
-            case 2 -> bullsEye(target);
-            case 3 -> rainOfAThousandArrows(target);
-            case 4 -> skipTurn();
-            default -> System.out.println("❌ Invalid action! You missed your turn.");
+                int choice = utils.InputUtil.scan.nextInt();
+                System.out.println("---------------");
+                utils.InputUtil.scan.nextLine();
+
+                switch (choice) {
+                    case 1 -> { piercingArrow(target); isValid = true; ultimateCounter--; }
+                    case 2 -> { bullsEye(target); isValid = true; ultimateCounter--; }
+                    case 3 -> System.out.println("❌ Ultimate is on cooldown! Can only be used after " + ultimateCounter + " turns.");
+                    case 4 -> { skipTurn(); isValid = true; ultimateCounter--; }
+                    case 5 -> displayOtherOptions(this, target);
+                    default -> { System.out.println("❌ Invalid action! You missed your turn."); isValid = true; ultimateCounter--; }
+                }
+
+            }
+            // If ultimate is ready
+            else {
+                System.out.println("(1) Skill 1   -  Piercing Arrow");
+                System.out.println("(2) Skill 2   -  Bullseye");
+                System.out.println("(3) Ultimate  -  Rain of A Thousand Arrows");
+                System.out.println("(4) Skip Turn -  Restore 10% of Max Energy");
+                System.out.println("(5) Other Options");
+                System.out.print("Choose your action: ");
+
+                int choice = utils.InputUtil.scan.nextInt();
+                System.out.println("---------------");
+                utils.InputUtil.scan.nextLine();
+
+                switch (choice) {
+                    case 1 -> { piercingArrow(target); isValid = true; }
+                    case 2 -> { bullsEye(target); isValid = true; }
+                    case 3 -> { rainOfAThousandArrows(target); ultimateCounter = 3; isValid = true; }
+                    case 4 -> { skipTurn(); isValid = true; }
+                    case 5 -> displayOtherOptions(this, target);
+                    default -> { System.out.println("❌ Invalid action! You missed your turn."); isValid = true; }
+                }
+            }
         }
     }
+
 }
 
 

@@ -31,7 +31,8 @@ public class Enemy2World1 extends Enemy {
         System.out.println("Description: The Shade Sprites strike mischievously, leaving their target disoriented.");
         System.out.println("Damage: (" + (int)(attack * 1.00) + " — " + (int)(attack * 1.625) + ")");
         System.out.println("Effects:");
-        System.out.println("- Applies Confuse to target\n");
+        System.out.println("- Applies Confuse to target");
+        System.out.println("------------------------------------");
     }
 
     @Override

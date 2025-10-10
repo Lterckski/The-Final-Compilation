@@ -33,7 +33,8 @@ public class Enemy2World2 extends Enemy{
         System.out.println("Description: Cultists hurl dark bolts of energy, weakening their foe.");
         System.out.println("Damage: (" + (int)(attack * 1.00) + " — " + (int)(attack * 1.33) + ")");
         System.out.println("Effects:");
-        System.out.println("- 30% chance to apply Weaken: reduces target’s ATK by 20% for 2 turns\n");
+        System.out.println("- 30% chance to apply Weaken: reduces target’s ATK by 20% for 2 turns");
+        System.out.println("----------------------------------------");
     }
 
 

@@ -72,9 +72,8 @@ public class Battle {
                 System.out.println("\n-- Enemy Turn --");
                 enemy.turn(player);
                 enemy.getEffects().updateModifiers();
-            } else{
-                InputUtil.pressEnterToContinue();
             }
+            InputUtil.pressEnterToContinue();
             enemy.getEffects().updateDoTEffects();
             System.out.println("------------------------------");
         }

@@ -33,7 +33,8 @@ public class Enemy3World1 extends Enemy {
         System.out.println("Description: The Treants lash out with entangling roots, trying to trap their foe.");
         System.out.println("Damage: (" + (int)(attack * 1.00) + " — " + (int)(attack * 1.50) + ")");
         System.out.println("Effects:");
-        System.out.println("- 30% chance to Immobilize target\n");
+        System.out.println("- 30% chance to Immobilize target");
+        System.out.println("----------------------------------------");
     }
 
     @Override

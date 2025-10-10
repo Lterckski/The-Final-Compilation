@@ -33,7 +33,8 @@ public class Enemy4World2 extends Enemy{
         System.out.println("Description: The Ghoul Footman slashes with a putrid blade, spreading disease and pain.");
         System.out.println("Damage: (" + (int)(attack * 1.00) + " — " + (int)(attack * 1.30) + ")");
         System.out.println("Effects:");
-        System.out.println("- 30% chance to inflict Bleed for 2 turns\n");
+        System.out.println("- 30% chance to inflict Bleed for 2 turns");
+        System.out.println("------------------------------------");
     }
 
 

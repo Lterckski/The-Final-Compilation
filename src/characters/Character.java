@@ -1,6 +1,7 @@
 package characters;
 
 import battle.Effects;
+import utils.InputUtil;
 
 public abstract class Character {
     protected String name;
@@ -13,6 +14,7 @@ public abstract class Character {
     protected int attack;
     protected int baseAttack;
     protected int baseDefense;
+    protected int ultimateCounter = 3;
 
     private final Effects effects;
 
@@ -70,8 +72,34 @@ public abstract class Character {
     }
 
     public abstract void showSkills();
-
     public abstract void turn (Character target);
+
+    public void displayOtherOptions(Character player, Character enemy){
+        boolean goBack = false;
+
+        while(!goBack){
+            System.out.println("(1) Open Inventory");
+            System.out.println("(2) Show Player Stats");
+            System.out.println("(3) Show Player Skills Overview");
+            System.out.println("(4) Show Enemy Stats");
+            System.out.println("(5) Show Enemy Skills Overview");
+            System.out.println("(6) Go back");
+
+            System.out.print("Enter choice: ");
+            int choice = InputUtil.scan.nextInt();
+            InputUtil.scan.nextLine();
+
+            switch (choice){
+                //case 1 ->  openInventory TODO: implement inventory
+                case 2 -> player.showStats();
+                case 3 ->  player.showSkills();
+                case 4 -> enemy.showStats();
+                case 5 -> enemy.showSkills();
+                case 6 -> goBack = true;
+                default -> System.out.println("❌ Invalid choice! Please select a valid option.");
+            }
+        }
+    }
 
     public void takeDamage(int damage) {
         hp -= damage;
