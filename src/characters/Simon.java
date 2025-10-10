@@ -2,17 +2,36 @@ package characters;
 
 import utils.RandomUtil;
 
-public class Simon extends  Character{
+public class Simon extends Character {
 
     public Simon() { super("Simon Versace", 60, 2, 150, 15); }
 
     @Override
     public void showSkills() {
-        System.out.println("\nSimon — Skills");
-        System.out.println(" • Fireball (burst single-target)");
-        System.out.println(" • Ice Prison (control + damage)");
-        System.out.println(" • Meteor Storm (AoE devastation)");
-        System.out.println(" Passive: Arcane Flow (restore energy on successful casts)");
+        System.out.println("\n----------- SIMON'S SKILLS -----------");
+        System.out.println("Passive – Arcane Flow");
+        System.out.println("Restores +5% of total Energy each turn.\n");
+
+        System.out.println("Skill 1 – Fireball (15 Energy)");
+        System.out.println("Description: Conjures a blazing orb of fire and hurls it at an enemy.");
+        System.out.println("Damage: (" + (int)(attack * 1.25) + " — " + (int)(attack * 1.55) + ")");
+        System.out.println("Effects:");
+        System.out.println("- Applies Burn for 3 turns");
+        System.out.println("- 30% chance to Weaken target (-20% ATK for 2 turns)\n");
+
+        System.out.println("Skill 2 – Ice Prison (20 Energy)");
+        System.out.println("Description: Encases the target in solid ice, restricting movement and draining warmth.");
+        System.out.println("Damage: (" + (int)(attack * 0.60) + " — " + (int)(attack * 0.90) + ")");
+        System.out.println("Effects:");
+        System.out.println("- 30% chance to Freeze (target skips 1 turn)");
+        System.out.println("- If frozen, reduces DEF by 15% for 2 turns\n");
+
+        System.out.println("Ultimate – Meteor Storm (40 Energy)");
+        System.out.println("Description: Summons a storm of blazing meteors that rain destruction upon all enemies.");
+        System.out.println("Damage: (" + (int)(attack * 2.50) + " — " + (int)(attack * 3.50) + ")");
+        System.out.println("Effects:");
+        System.out.println("- 50% chance to apply Burn for 2 turns");
+        System.out.println("- Grants +20% ATK (Arcane Empowerment) for 2 turns\n");
     }
 
     public void showBackstory() {
@@ -41,10 +60,10 @@ public class Simon extends  Character{
         System.out.println("✨ Arcane Flow restores " + restored + " energy! " + "(Energy: " + energy + "/" + maxEnergy + ")");
     }
 
-    // Skill 1 - Fireball
+    // Skill 1 – Fireball
     public void fireball(Character target) {
-        int cost = 15;
-        if (consumeEnergy(cost)) {
+        int energyCost = 15;
+        if (!consumeEnergy(energyCost)) {
             System.out.println("Not enough energy to cast Fireball!");
             return;
         }
@@ -55,14 +74,23 @@ public class Simon extends  Character{
 
         // Fireball
         System.out.println("🔥 You cast Fireball on " + target.getName() + " for " + reduced + " damage! (Energy: " + energy + "/" + maxEnergy + ")");
-        arcaneFlow();
         target.takeDamage(reduced);
+
+        // Apply Burn
+        target.getEffects().applyBurn(3);
+
+        // 30% chance to apply Weaken
+        if (RandomUtil.chance(30)) {
+            target.getEffects().applyAttackDebuff(20, 2);
+            System.out.println("🔥 The flames weaken " + target.getName() + " (-20% ATK for 2 turns)!");
+        }
+        arcaneFlow();
     }
 
-    // Skill 2 - Ice Prison (Freeze not implemented)
+    // Skill 2 – Ice Prison
     public void icePrison(Character target) {
-        int cost = 20;
-        if (consumeEnergy(cost)) {
+        int energyCost = 20;
+        if (!consumeEnergy(energyCost)) {
             System.out.println("Not enough energy to cast Ice Prison!");
             return;
         }
@@ -71,27 +99,44 @@ public class Simon extends  Character{
         int reduced = damage - target.getDefense();
         if (reduced < 0) reduced = 0;
 
-        System.out.println("❄️ You cast Ice Prison on " + target.getName() + " for " + reduced + " damage! " + target.getName() + " is frozen! (Energy: " + energy + "/" + maxEnergy + ")");
-        arcaneFlow();
+        System.out.println("❄️ You cast Ice Prison on " + target.getName() + " for " + reduced + " damage! (Energy: " + energy + "/" + maxEnergy + ")");
         target.takeDamage(reduced);
-        // TODO: Apply freeze for 1 turn
+
+        // 30% chance to Freeze
+        if (RandomUtil.chance(30)) {
+            target.getEffects().applyFreeze();
+            System.out.println("❄️ " + target.getName() + " is Frozen and cannot move!");
+            // If frozen, apply DEF reduction
+            target.getEffects().applyDefenseDebuff(15, 2);
+        }
+        arcaneFlow();
     }
 
-    // Ultimate - Meteor Storm
+    // Ultimate – Meteor Storm
     public void meteorStorm(Character target) {
-        int cost = 40;
-        if (consumeEnergy(cost)) {
+        int energyCost = 40;
+        if (!consumeEnergy(energyCost)) {
             System.out.println("Not enough energy to cast Meteor Storm!");
             return;
         }
 
-        int damage = (int) RandomUtil.range(attack * 2.50 , attack * 3.50);
+        int damage = (int) RandomUtil.range(attack * 2.50, attack * 3.50);
         int reduced = damage - target.getDefense();
         if (reduced < 0) reduced = 0;
 
-        System.out.println("☄️ You call Meteor Storm on " + target.getName() + " for " + reduced + " damage! (Energy: " + energy + "/" + maxEnergy + ")");
-        arcaneFlow();
+        System.out.println("☄️ You unleash Meteor Storm on " + target.getName() + " for " + reduced + " damage! (Energy: " + energy + "/" + maxEnergy + ")");
         target.takeDamage(reduced);
+
+        // 50% chance to Burn
+        if (RandomUtil.chance(50)) {
+            target.getEffects().applyBurn(2);
+            System.out.println("☄️ " + target.getName() + " is scorched by the meteors!");
+        }
+
+        // Apply ATK buff to Simon
+        this.getEffects().applyAttackBuff(20, 2);
+        System.out.println("✨ Arcane Empowerment surges through you! (+20% ATK for 2 turns)");
+        arcaneFlow();
     }
 
     @Override
@@ -114,7 +159,4 @@ public class Simon extends  Character{
             default -> System.out.println("❌ Invalid action! You missed your turn.");
         }
     }
-
 }
-
-
