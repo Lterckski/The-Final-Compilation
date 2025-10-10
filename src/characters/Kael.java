@@ -9,7 +9,6 @@ public class Kael extends  Character{      // 15% crit chance
     @Override
     public void showSkills() {
         System.out.println("\n----------- KAEL'S SKILLS -----------");
-
         // Passive
         System.out.println("Passive – Blade Swift");
         System.out.println("15% chance to deal a Critical Hit (×1.5 damage).");
@@ -34,8 +33,9 @@ public class Kael extends  Character{      // 15% crit chance
         System.out.println("Description: Kael unleashes a flurry of crossing strikes infused with unyielding determination.");
         System.out.println("Damage: 3 hits, each dealing (" + (int)(attack * 0.85) + " — " + (int)(attack * 1.10) + ")");
         System.out.println("Effects:");
-        System.out.println("- Applies Bleed (10 damage per turn for 2 turns)\n");
-        System.out.println("- Grants Fortified: (+20% DEF for 2 turns)\n");
+        System.out.println("- Applies Bleed (10 damage per turn for 2 turns)");
+        System.out.println("- Grants Fortified: (+20% DEF for 2 turns)");
+        System.out.println("-------------------------------------");
     }
 
     public void showBackstory() {
@@ -52,6 +52,7 @@ public class Kael extends  Character{      // 15% crit chance
         System.out.println("shielding his friends from imagined dangers. In a place where hope was rare,");
         System.out.println("Kael's presence became a quiet anchor, hinting that even in the midst of");
         System.out.println("decay, someone could rise to stand against the darkness.");
+
     }
 
     // Passive - Blade Swift
@@ -145,26 +146,60 @@ public class Kael extends  Character{      // 15% crit chance
 
         target.getEffects().applyBleed(2);
         this.getEffects().applyDefenseBuff(20, 2+1);
+        ultimateCounter = 3;
     }
 
     @Override
     public void turn(Character target) {
-        System.out.println("(1) Skill 1   -  Blade Rush");
-        System.out.println("(2) Skill 2   -  Guard Breaker");
-        System.out.println("(3) Ultimate  -  Eternal Cross Slash");
-        System.out.println("(4) Skip Turn -  Restore 10% of Max Energy");
-        System.out.print("Choose your action: ");
+        boolean isValid = false;
 
-        int choice = utils.InputUtil.scan.nextInt();
-        System.out.println("---------------");
-        utils.InputUtil.scan.nextLine();
+        while (!isValid) {
+            // If ultimate is on cooldown
+            if (ultimateCounter > 0) {
+                System.out.println("(1) Skill 1   -  Blade Rush");
+                System.out.println("(2) Skill 2   -  Guard Breaker");
+                System.out.println("(3) Ultimate  -  Eternal Cross Slash ❌ (Available in " + ultimateCounter + " turns)");
+                System.out.println("(4) Skip Turn -  Restore 10% of Max Energy");
+                System.out.println("(5) Other Options");
+                System.out.print("Choose your action: ");
 
-        switch (choice) {
-            case 1 -> bladeRush(target);
-            case 2 -> guardBreaker(target);
-            case 3 -> eternalCrossSlash(target);
-            case 4 -> skipTurn();
-            default -> System.out.println("❌ Invalid action! You missed your turn.");
+                int choice = utils.InputUtil.scan.nextInt();
+                System.out.println("---------------");
+                utils.InputUtil.scan.nextLine();
+
+                switch (choice) {
+                    case 1 -> { bladeRush(target); isValid = true; ultimateCounter--;}
+                    case 2 -> { guardBreaker(target); isValid = true; ultimateCounter--;}
+                    case 3 -> System.out.println("❌ Ultimate is on cooldown! Can only be used after " + ultimateCounter + " turns.");
+                    case 4 -> { skipTurn(); isValid = true; ultimateCounter--;}
+                    case 5 -> displayOtherOptions(this, target);
+                    default -> { System.out.println(" Invalid action! You missed your turn."); isValid = true; ultimateCounter--;}
+                }
+
+            }
+            // If ultimate is ready
+            else {
+                System.out.println("(1) Skill 1   -  Blade Rush");
+                System.out.println("(2) Skill 2   -  Guard Breaker");
+                System.out.println("(3) Ultimate  -  Eternal Cross Slash");
+                System.out.println("(4) Skip Turn -  Restore 10% of Max Energy");
+                System.out.println("(5) Other Options");
+                System.out.print("Choose your action: ");
+
+                int choice = utils.InputUtil.scan.nextInt();
+                System.out.println("---------------");
+                utils.InputUtil.scan.nextLine();
+
+                switch (choice) {
+                    case 1 -> { bladeRush(target); isValid = true; }
+                    case 2 -> { guardBreaker(target); isValid = true; }
+                    case 3 -> { eternalCrossSlash(target); ultimateCounter = 3; isValid = true; }
+                    case 4 -> { skipTurn(); isValid = true; }
+                    case 5 -> displayOtherOptions(this, target);
+                    default -> { System.out.println(" Invalid action! You missed your turn."); isValid = true; }
+                }
+            }
         }
     }
+
 }

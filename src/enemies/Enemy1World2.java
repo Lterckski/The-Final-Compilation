@@ -30,7 +30,8 @@ public class Enemy1World2 extends Enemy{
         System.out.println("Description: The Plague Vermin bites viciously, infecting its target with deadly poison.");
         System.out.println("Damage: (" + (int)(attack * 1.00) + " — " + (int)(attack * 1.55) + ")");
         System.out.println("Effects:");
-        System.out.println("- Applies Poison for 1 turn\n");
+        System.out.println("- Applies Poison for 1 turn");
+        System.out.println("------------------------------------");
     }
 
     @Override

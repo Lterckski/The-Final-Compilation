@@ -137,26 +137,61 @@ public class Simon extends Character {
         this.getEffects().applyAttackBuff(20, 2);
         System.out.println("✨ Arcane Empowerment surges through you! (+20% ATK for 2 turns)");
         arcaneFlow();
+        ultimateCounter = 3;
     }
 
     @Override
     public void turn(Character target) {
-        System.out.println("(1) Skill 1   -  Fireball");
-        System.out.println("(2) Skill 2   -  Ice Prison");
-        System.out.println("(3) Ultimate  -  Meteor Storm");
-        System.out.println("(4) Skip Turn -  Restore 10% of Max Energy");
-        System.out.print("Choose your action: ");
+        boolean isValid = false;
 
-        int choice = utils.InputUtil.scan.nextInt();
-        System.out.println("---------------");
-        utils.InputUtil.scan.nextLine();
+        while (!isValid) {
+            // If ultimate is on cooldown
+            if (ultimateCounter > 0) {
+                System.out.println("(1) Skill 1   -  Fireball");
+                System.out.println("(2) Skill 2   -  Ice Prison");
+                System.out.println("(3) Ultimate  -  Meteor Storm ❌ (Available in " + ultimateCounter + " turns)");
+                System.out.println("(4) Skip Turn -  Restore 10% of Max Energy");
+                System.out.println("(5) Other Options");
+                System.out.print("Choose your action: ");
 
-        switch (choice) {
-            case 1 -> fireball(target);
-            case 2 -> icePrison(target);
-            case 3 -> meteorStorm(target);
-            case 4 -> skipTurn();
-            default -> System.out.println("❌ Invalid action! You missed your turn.");
+                int choice = utils.InputUtil.scan.nextInt();
+                System.out.println("---------------");
+                utils.InputUtil.scan.nextLine();
+
+                switch (choice) {
+                    case 1 -> { fireball(target); isValid = true; ultimateCounter--; }
+                    case 2 -> { icePrison(target); isValid = true; ultimateCounter--; }
+                    case 3 -> System.out.println("❌ Ultimate is on cooldown! Can only be used after " + ultimateCounter + " turns.");
+                    case 4 -> { skipTurn(); isValid = true; ultimateCounter--; }
+                    case 5 -> displayOtherOptions(this, target); // doesn’t consume the turn
+                    default -> { System.out.println("❌ Invalid action! You missed your turn."); isValid = true; ultimateCounter--; }
+                }
+
+            }
+            // If ultimate is ready
+            else {
+                System.out.println("(1) Skill 1   -  Fireball");
+                System.out.println("(2) Skill 2   -  Ice Prison");
+                System.out.println("(3) Ultimate  -  Meteor Storm");
+                System.out.println("(4) Skip Turn -  Restore 10% of Max Energy");
+                System.out.println("(5) Other Options");
+                System.out.print("Choose your action: ");
+
+                int choice = utils.InputUtil.scan.nextInt();
+                System.out.println("---------------");
+                utils.InputUtil.scan.nextLine();
+
+                switch (choice) {
+                    case 1 -> { fireball(target); isValid = true; }
+                    case 2 -> { icePrison(target); isValid = true; }
+                    case 3 -> { meteorStorm(target); ultimateCounter = 3; isValid = true; }
+                    case 4 -> { skipTurn(); isValid = true; }
+                    case 5 -> displayOtherOptions(this, target); // doesn’t consume the turn
+                    default -> { System.out.println("❌ Invalid action! You missed your turn."); isValid = true; }
+                }
+            }
         }
     }
+
+
 }

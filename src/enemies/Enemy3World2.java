@@ -34,7 +34,8 @@ public class Enemy3World2 extends Enemy{
         System.out.println("Description: The Blight Hounds cause corpses to explode, damaging and weakening their target.");
         System.out.println("Damage: (" + (int)(attack * 1.00) + " — " + (int)(attack * 1.55) + ")");
         System.out.println("Effects:");
-        System.out.println("- 30% chance to reduce target’s DEF by 30% for 2 turns\n");
+        System.out.println("- 30% chance to reduce target’s DEF by 30% for 2 turns");
+        System.out.println("------------------------------------");
     }
 
 

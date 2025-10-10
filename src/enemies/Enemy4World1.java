@@ -35,7 +35,8 @@ public class Enemy4World1 extends Enemy {
         System.out.println("Description: The bats emit a piercing screech, unsettling their foe and lowering their attack.");
         System.out.println("Damage: (" + (int)(attack * 1.00) + " — " + (int)(attack * 1.33) + ")");
         System.out.println("Effects:");
-        System.out.println("- 30% chance to apply Weaken: reduces target’s ATK by 20% for 2 turns\n");
+        System.out.println("- 30% chance to apply Weaken: reduces target’s ATK by 20% for 2 turns");
+        System.out.println("-----------------------------------");
     }
 
     @Override

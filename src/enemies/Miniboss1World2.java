@@ -53,7 +53,8 @@ public class Miniboss1World2 extends Enemy{
         System.out.println("Description: The Black Jailer lashes his whip, leaving his foe bleeding.");
         System.out.println("Damage: (" + (int)(attack * 1.33) + " — " + (int)(attack * 1.73) + ")");
         System.out.println("Effects:");
-        System.out.println("- Applies Bleed for 2 turns\n");
+        System.out.println("- Applies Bleed for 2 turns");
+        System.out.println("---------------------------------------");
     }
 
 

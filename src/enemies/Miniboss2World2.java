@@ -61,7 +61,8 @@ public class Miniboss2World2 extends Enemy {
         System.out.println("Description: The Corrupted King unleashes a furious strike, overwhelming his enemy.");
         System.out.println("Damage: (" + (int)(attack * 0.71) + " — " + (int)(attack * 0.85) + ")");
         System.out.println("Effects:");
-        System.out.println("- 30% chance to Stun the target\n");
+        System.out.println("- 30% chance to Stun the target");
+        System.out.println("-----------------------------------------");
     }
 
 
