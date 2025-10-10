@@ -160,7 +160,7 @@ public class Kael extends  Character{      // 15% crit chance
                 System.out.println("(2) Skill 2   -  Guard Breaker");
                 System.out.println("(3) Ultimate  -  Eternal Cross Slash ❌ (Available in " + ultimateCounter + " turns)");
                 System.out.println("(4) Skip Turn -  Restore 10% of Max Energy");
-                System.out.println("(5) Other Options");
+                System.out.println("(5) Show Menu");
                 System.out.print("Choose your action: ");
 
                 int choice = utils.InputUtil.scan.nextInt();
@@ -172,7 +172,7 @@ public class Kael extends  Character{      // 15% crit chance
                     case 2 -> { guardBreaker(target); isValid = true; ultimateCounter--;}
                     case 3 -> System.out.println("❌ Ultimate is on cooldown! Can only be used after " + ultimateCounter + " turns.");
                     case 4 -> { skipTurn(); isValid = true; ultimateCounter--;}
-                    case 5 -> displayOtherOptions(this, target);
+                    case 5 -> showMenu(this, target);
                     default -> { System.out.println(" Invalid action! You missed your turn."); isValid = true; ultimateCounter--;}
                 }
 
@@ -183,7 +183,7 @@ public class Kael extends  Character{      // 15% crit chance
                 System.out.println("(2) Skill 2   -  Guard Breaker");
                 System.out.println("(3) Ultimate  -  Eternal Cross Slash");
                 System.out.println("(4) Skip Turn -  Restore 10% of Max Energy");
-                System.out.println("(5) Other Options");
+                System.out.println("(5) Show Menu");
                 System.out.print("Choose your action: ");
 
                 int choice = utils.InputUtil.scan.nextInt();
@@ -195,7 +195,7 @@ public class Kael extends  Character{      // 15% crit chance
                     case 2 -> { guardBreaker(target); isValid = true; }
                     case 3 -> { eternalCrossSlash(target); ultimateCounter = 3; isValid = true; }
                     case 4 -> { skipTurn(); isValid = true; }
-                    case 5 -> displayOtherOptions(this, target);
+                    case 5 -> showMenu(this, target);
                     default -> { System.out.println(" Invalid action! You missed your turn."); isValid = true; }
                 }
             }

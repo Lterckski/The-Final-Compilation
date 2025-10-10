@@ -74,7 +74,7 @@ public abstract class Character {
     public abstract void showSkills();
     public abstract void turn (Character target);
 
-    public void displayOtherOptions(Character player, Character enemy){
+    public void showMenu(Character player, Character enemy){
         boolean goBack = false;
 
         while(!goBack){

@@ -155,7 +155,7 @@ public class Karl extends Character{
                 System.out.println("(2) Skill 2   -  Bullseye");
                 System.out.println("(3) Ultimate  -  Rain of A Thousand Arrows ❌ (Available in " + ultimateCounter + " turns)");
                 System.out.println("(4) Skip Turn -  Restore 10% of Max Energy");
-                System.out.println("(5) Other Options");
+                System.out.println("(5) Show Menu");
                 System.out.print("Choose your action: ");
 
                 int choice = utils.InputUtil.scan.nextInt();
@@ -167,7 +167,7 @@ public class Karl extends Character{
                     case 2 -> { bullsEye(target); isValid = true; ultimateCounter--; }
                     case 3 -> System.out.println("❌ Ultimate is on cooldown! Can only be used after " + ultimateCounter + " turns.");
                     case 4 -> { skipTurn(); isValid = true; ultimateCounter--; }
-                    case 5 -> displayOtherOptions(this, target);
+                    case 5 -> showMenu(this, target);
                     default -> { System.out.println("❌ Invalid action! You missed your turn."); isValid = true; ultimateCounter--; }
                 }
 
@@ -178,7 +178,7 @@ public class Karl extends Character{
                 System.out.println("(2) Skill 2   -  Bullseye");
                 System.out.println("(3) Ultimate  -  Rain of A Thousand Arrows");
                 System.out.println("(4) Skip Turn -  Restore 10% of Max Energy");
-                System.out.println("(5) Other Options");
+                System.out.println("(5) Show Menu");
                 System.out.print("Choose your action: ");
 
                 int choice = utils.InputUtil.scan.nextInt();
@@ -190,7 +190,7 @@ public class Karl extends Character{
                     case 2 -> { bullsEye(target); isValid = true; }
                     case 3 -> { rainOfAThousandArrows(target); ultimateCounter = 3; isValid = true; }
                     case 4 -> { skipTurn(); isValid = true; }
-                    case 5 -> displayOtherOptions(this, target);
+                    case 5 -> showMenu(this, target);
                     default -> { System.out.println("❌ Invalid action! You missed your turn."); isValid = true; }
                 }
             }

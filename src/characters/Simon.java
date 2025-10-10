@@ -31,7 +31,8 @@ public class Simon extends Character {
         System.out.println("Damage: (" + (int)(attack * 2.50) + " — " + (int)(attack * 3.50) + ")");
         System.out.println("Effects:");
         System.out.println("- 50% chance to apply Burn for 2 turns");
-        System.out.println("- Grants +20% ATK (Arcane Empowerment) for 2 turns\n");
+        System.out.println("- Grants +20% ATK (Arcane Empowerment) for 2 turns");
+        System.out.println("--------------------------------------");
     }
 
     public void showBackstory() {
@@ -63,7 +64,7 @@ public class Simon extends Character {
     // Skill 1 – Fireball
     public void fireball(Character target) {
         int energyCost = 15;
-        if (!consumeEnergy(energyCost)) {
+        if (consumeEnergy(energyCost)) {
             System.out.println("Not enough energy to cast Fireball!");
             return;
         }
@@ -82,7 +83,6 @@ public class Simon extends Character {
         // 30% chance to apply Weaken
         if (RandomUtil.chance(30)) {
             target.getEffects().applyAttackDebuff(20, 2);
-            System.out.println("🔥 The flames weaken " + target.getName() + " (-20% ATK for 2 turns)!");
         }
         arcaneFlow();
     }
@@ -90,7 +90,7 @@ public class Simon extends Character {
     // Skill 2 – Ice Prison
     public void icePrison(Character target) {
         int energyCost = 20;
-        if (!consumeEnergy(energyCost)) {
+        if (consumeEnergy(energyCost)) {
             System.out.println("Not enough energy to cast Ice Prison!");
             return;
         }
@@ -105,7 +105,6 @@ public class Simon extends Character {
         // 30% chance to Freeze
         if (RandomUtil.chance(30)) {
             target.getEffects().applyFreeze();
-            System.out.println("❄️ " + target.getName() + " is Frozen and cannot move!");
             // If frozen, apply DEF reduction
             target.getEffects().applyDefenseDebuff(15, 2);
         }
@@ -115,7 +114,7 @@ public class Simon extends Character {
     // Ultimate – Meteor Storm
     public void meteorStorm(Character target) {
         int energyCost = 40;
-        if (!consumeEnergy(energyCost)) {
+        if (consumeEnergy(energyCost)) {
             System.out.println("Not enough energy to cast Meteor Storm!");
             return;
         }
@@ -130,12 +129,10 @@ public class Simon extends Character {
         // 50% chance to Burn
         if (RandomUtil.chance(50)) {
             target.getEffects().applyBurn(2);
-            System.out.println("☄️ " + target.getName() + " is scorched by the meteors!");
         }
 
         // Apply ATK buff to Simon
         this.getEffects().applyAttackBuff(20, 2);
-        System.out.println("✨ Arcane Empowerment surges through you! (+20% ATK for 2 turns)");
         arcaneFlow();
         ultimateCounter = 3;
     }
@@ -151,7 +148,7 @@ public class Simon extends Character {
                 System.out.println("(2) Skill 2   -  Ice Prison");
                 System.out.println("(3) Ultimate  -  Meteor Storm ❌ (Available in " + ultimateCounter + " turns)");
                 System.out.println("(4) Skip Turn -  Restore 10% of Max Energy");
-                System.out.println("(5) Other Options");
+                System.out.println("(5) Show Menu");
                 System.out.print("Choose your action: ");
 
                 int choice = utils.InputUtil.scan.nextInt();
@@ -163,7 +160,7 @@ public class Simon extends Character {
                     case 2 -> { icePrison(target); isValid = true; ultimateCounter--; }
                     case 3 -> System.out.println("❌ Ultimate is on cooldown! Can only be used after " + ultimateCounter + " turns.");
                     case 4 -> { skipTurn(); isValid = true; ultimateCounter--; }
-                    case 5 -> displayOtherOptions(this, target); // doesn’t consume the turn
+                    case 5 -> showMenu(this, target); // doesn’t consume the turn
                     default -> { System.out.println("❌ Invalid action! You missed your turn."); isValid = true; ultimateCounter--; }
                 }
 
@@ -174,7 +171,7 @@ public class Simon extends Character {
                 System.out.println("(2) Skill 2   -  Ice Prison");
                 System.out.println("(3) Ultimate  -  Meteor Storm");
                 System.out.println("(4) Skip Turn -  Restore 10% of Max Energy");
-                System.out.println("(5) Other Options");
+                System.out.println("(5) Show Menu");
                 System.out.print("Choose your action: ");
 
                 int choice = utils.InputUtil.scan.nextInt();
@@ -186,7 +183,7 @@ public class Simon extends Character {
                     case 2 -> { icePrison(target); isValid = true; }
                     case 3 -> { meteorStorm(target); ultimateCounter = 3; isValid = true; }
                     case 4 -> { skipTurn(); isValid = true; }
-                    case 5 -> displayOtherOptions(this, target); // doesn’t consume the turn
+                    case 5 -> showMenu(this, target); // doesn’t consume the turn
                     default -> { System.out.println("❌ Invalid action! You missed your turn."); isValid = true; }
                 }
             }
