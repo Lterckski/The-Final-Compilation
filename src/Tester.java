@@ -3,10 +3,15 @@ import characters.*;
 import characters.Character;
 import enemies.Enemy1World1;
 import enemies.Enemy1World2;
+import enemies.Enemy1World3;
 import enemies.Enemy2World2;
+import enemies.Enemy2World3;
 import enemies.Enemy3World2;
+import enemies.Enemy3World3;
 import enemies.Enemy4World2;
+import enemies.Enemy4World3;
 import enemies.Miniboss1World2;
+import enemies.Miniboss1World3;
 import enemies.Miniboss2World2;
 
 import utils.InputUtil;
@@ -121,7 +126,7 @@ public class Tester {
         System.out.println("ENEMY ENCOUNTERED!");
         battle1.startBattle();
 
-        Character enemy2 = new Miniboss2World2();
+        Character enemy2 = new Miniboss1World3();
         Battle battle2 = new Battle(player, enemy2);
 
         System.out.println("ENEMY ENCOUNTERED!");
