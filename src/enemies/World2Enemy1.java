@@ -3,10 +3,9 @@ package enemies;
 
 import characters.Character;
 import utils.RandomUtil;
-import battle.Effects;
 
-public class Enemy1World2 extends Enemy{
-    public Enemy1World2(){
+public class World2Enemy1 extends Enemy{
+    public World2Enemy1(){
         super("Plague Vermin", 243, 13, 14);
     }
 

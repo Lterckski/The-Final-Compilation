@@ -3,11 +3,10 @@ package enemies;
 
 import characters.Character;
 import utils.RandomUtil;
-import battle.Effects;
 
-public class Enemy3World2 extends Enemy{
+public class World2Enemy3 extends Enemy{
 
-    public Enemy3World2(){
+    public World2Enemy3(){
         super("Blight Hound", 321, 17, 13);
     }
 

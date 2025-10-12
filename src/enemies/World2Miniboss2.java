@@ -3,8 +3,8 @@ package enemies;
 import characters.Character;
 import utils.RandomUtil;
 
-public class Miniboss2World2 extends Enemy {
-    public Miniboss2World2() {
+public class World2Miniboss2 extends Enemy {
+    public World2Miniboss2() {
         super("The Corrupted King", 854, 32, 100);
     }
 

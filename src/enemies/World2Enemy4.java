@@ -2,10 +2,9 @@ package enemies;
 
 import characters.Character;
 import utils.RandomUtil;
-import battle.Effects;
 
-public class Enemy4World2 extends Enemy{
-    public Enemy4World2(){
+public class World2Enemy4 extends Enemy{
+    public World2Enemy4(){
         super("Ghoul Footmen", 369, 18, 25);
     }
 

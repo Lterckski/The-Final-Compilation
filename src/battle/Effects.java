@@ -99,6 +99,12 @@ public class Effects {
         System.out.println("🛡️ Fortified activated! +" + percent + "% DEF for " + duration + " turns!");
     }
 
+    public void applyDefenseBuff(int amount, int duration, boolean fixedAmountIsPassed) {
+        defBuffModifier = amount;
+        owner.setDefense(owner.getDefense() + amount);
+        defBuffTurnsLeft = duration;
+    }
+
     public void applyDefenseDebuff(int percent, int duration) {
         int amount = (int) Math.round(owner.getDefense() * (percent / 100.0));
         defDebuffModifier = amount;

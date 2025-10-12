@@ -3,11 +3,9 @@ package enemies;
 import characters.Character;
 import utils.RandomUtil;
 
-import java.util.Random;
-
-public class Enemy4World1 extends Enemy {
+public class World1Enemy4 extends Enemy {
     // Constructor
-    public Enemy4World1() {
+    public World1Enemy4() {
         super("Carrion Bats", 91, 8, 6);
     }
 

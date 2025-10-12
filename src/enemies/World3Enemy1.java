@@ -3,9 +3,9 @@ package enemies;
 import characters.Character;
 import utils.RandomUtil;
 
-public class Enemy1World3 extends Enemy {
+public class World3Enemy1 extends Enemy {
 
-    public Enemy1World3() { super("Flame Revenant", 982, 44, 57); }
+    public World3Enemy1() { super("Flame Revenant", 982, 44, 57); }
 
     public void emberBurst(Character target) {
         System.out.println("🔥 " + name + " unleashes Ember Burst!");
@@ -27,7 +27,7 @@ public class Enemy1World3 extends Enemy {
         System.out.println("Damage: (" + (int)(attack * 1.00) + " — " + (int)(attack * 1.35) + ")");
         System.out.println("Effects:");
         System.out.println("- Applies Burn for 2 turns");
-        System.out.println("------------------------------------");
+        System.out.println("-------------------------------------");
     }
 
     @Override

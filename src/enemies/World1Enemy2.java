@@ -3,9 +3,9 @@ package enemies;
 import characters.Character;
 import utils.RandomUtil;
 
-public class Enemy2World1 extends Enemy {
+public class World1Enemy2 extends Enemy {
     // Constructor
-    public Enemy2World1() {
+    public World1Enemy2() {
         super("Shade Sprites", 69, 6, 8); // HP = 69, DEF = 6
     }
 

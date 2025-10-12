@@ -2,10 +2,9 @@ package enemies;
 
 import characters.Character;
 import utils.RandomUtil;
-import battle.Effects;
 
-public class Miniboss1World2 extends Enemy{
-    public Miniboss1World2(){
+public class World2Miniboss1 extends Enemy{
+    public World2Miniboss1(){
         super("The Black Jailer", 646, 27, 30);
     }
 

@@ -3,9 +3,9 @@ package enemies;
 import characters.Character;
 import utils.RandomUtil;
 
-public class Enemy2World3 extends Enemy {
+public class World3Enemy2 extends Enemy {
 
-    public Enemy2World3() { super("Bone Warlock", 1129, 48, 56); }
+    public World3Enemy2() { super("Bone Warlock", 1129, 48, 56); }
 
     public void shadowBolt(Character target) {
         System.out.println("💀 " + name + " casts Shadow Bolt!");
@@ -17,8 +17,11 @@ public class Enemy2World3 extends Enemy {
 
         System.out.println("→ Shadow Bolt hits for " + reduced + " damage!");
         target.takeDamage(reduced);
-        target.getEffects().applyAttackBuff(30, 30);
-    }
+
+        if(RandomUtil.chance(30)){
+            target.getEffects().applyAttackDebuff(30, 2);
+        }
+ }
 
     @Override
     public void showSkills() {
@@ -27,7 +30,7 @@ public class Enemy2World3 extends Enemy {
         System.out.println("Damage: (" + (int)(attack * 1.00) + " — " + (int)(attack * 1.25) + ")");
         System.out.println("Effects:");
         System.out.println("- Chance to apply attack debuff for 30% reduces damage of 30%");
-        System.out.println("------------------------------------");
+        System.out.println("-----------------------------------");
     }
 
     @Override

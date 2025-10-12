@@ -35,7 +35,9 @@ public abstract class Character {
         this.name = name;
         this.hp = hp;
         this.maxHp = hp;
+        this.baseDefense = defense;
         this.defense = defense;
+        this.baseAttack = attack;
         this.attack = attack;
         this.effects = new Effects(this);
     }
@@ -60,16 +62,27 @@ public abstract class Character {
         System.out.println("Health  : " + hp + "/" + maxHp);
         System.out.println("Energy  : " + energy + "/" + maxEnergy);
 
-        System.out.print("Defense : " + defense);
-        if(defense > baseDefense) System.out.print(" + " + (defense - baseDefense));
+        // Attack
+        System.out.print("Attack  : " + baseAttack);
+        if (attack > baseAttack) {
+            System.out.print(" (+" + (attack - baseAttack) + ")");
+        } else if (attack < baseAttack) {
+            System.out.print(" (-" + (baseAttack - attack) + ")");
+        }
         System.out.println();
 
-        System.out.print("Attack  : " + baseAttack);
-        if(attack > baseAttack) System.out.print(" + " + (attack - baseAttack));
+        // Defense
+        System.out.print("Defense : " + baseDefense);
+        if (defense > baseDefense) {
+            System.out.print(" (+" + (defense - baseDefense) + ")");
+        } else if (defense < baseDefense) {
+            System.out.print(" (-" + (baseDefense - defense) + ")");
+        }
         System.out.println();
 
         System.out.println("==============================\n");
     }
+
 
     public abstract void showSkills();
     public abstract void turn (Character target);

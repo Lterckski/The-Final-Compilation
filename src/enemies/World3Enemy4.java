@@ -3,9 +3,9 @@ package enemies;
 import characters.Character;
 import utils.RandomUtil;
 
-public class Enemy4World3 extends Enemy {
+public class World3Enemy4 extends Enemy {
 
-    public Enemy4World3() { super("Soulflayer Gargoyle", 1493, 58, 46); }
+    public World3Enemy4() { super("Soulflayer Gargoyle", 1493, 58, 46); }
 
     public void soulScream(Character target) {
         System.out.println("😈 " + name + " lets out a deafening Soul Scream!");
@@ -19,7 +19,6 @@ public class Enemy4World3 extends Enemy {
         target.takeDamage(reduced);
 
         if(RandomUtil.chance(30)) {
-            System.out.println("💫 " +  target.getName() + " is confused!");
             target.getEffects().applyConfuse();
         }
     }
@@ -31,7 +30,7 @@ public class Enemy4World3 extends Enemy {
         System.out.println("Damage: (" + (int)(attack * 1.00) + " — " + (int)(attack * 1.20) + ")");
         System.out.println("Effects:");
         System.out.println("- Chance to apply Confused to target");
-        System.out.println("------------------------------------");
+        System.out.println("------------------------------------------");
     }
 
     @Override

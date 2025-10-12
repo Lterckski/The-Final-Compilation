@@ -3,9 +3,9 @@ package enemies;
 import characters.Character;
 import utils.RandomUtil;
 
-public class Enemy3World3 extends Enemy {
+public class World3Enemy3 extends Enemy {
 
-    public Enemy3World3() { super("Obsidian Crusher", 1299, 53, 73); }
+    public World3Enemy3() { super("Obsidian Crusher", 1299, 53, 73); }
 
     public void magmaSlam(Character target) {
         System.out.println("🪨 " + name + " uses Magma Slam!");
@@ -19,7 +19,6 @@ public class Enemy3World3 extends Enemy {
         target.takeDamage(reduced);
 
         if(RandomUtil.chance(30)) {
-            System.out.println("⚡ " + target.getName() + " is stunned!");
             target.getEffects().applyStun();
         }
     }
@@ -31,7 +30,7 @@ public class Enemy3World3 extends Enemy {
         System.out.println("Damage: (" + (int)(attack * 1.00) + " — " + (int)(attack * 1.20) + ")");
         System.out.println("Effects:");
         System.out.println("- Chance to apply Stun to target");
-        System.out.println("------------------------------------");
+        System.out.println("---------------------------------------");
     }
 
     @Override

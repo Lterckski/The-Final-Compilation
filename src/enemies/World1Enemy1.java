@@ -3,9 +3,9 @@ package enemies;
 import characters.Character;
 import utils.RandomUtil;
 
-public class Enemy1World1 extends Enemy {
+public class World1Enemy1 extends Enemy {
     // Constructor
-    public Enemy1World1() { super("Rotfang Wolf", 60, 5, 10); }
+    public World1Enemy1() { super("Rotfang Wolf", 60, 5, 10); }
 
     // Skill: Savage Howl (10–15 damage)
     public void savageHowl(Character target) {

@@ -3,9 +3,9 @@ package enemies;
 import characters.Character;
 import utils.RandomUtil;
 
-public class Miniboss1World1 extends Enemy {
+public class World1Miniboss1 extends Enemy {
     // Constructor
-    public Miniboss1World1() {
+    public World1Miniboss1() {
         super("The Hollow Stag", 211, 13, 47); // HP = 211, DEF = 13
     }
 

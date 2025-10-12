@@ -3,10 +3,9 @@ package enemies;
 
 import characters.Character;
 import utils.RandomUtil;
-import battle.Effects;
 
-public class Enemy2World2 extends Enemy{
-    public Enemy2World2(){
+public class World2Enemy2 extends Enemy{
+    public World2Enemy2(){
         super("Forsaken Cultist", 279, 27, 15);
     }
 

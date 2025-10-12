@@ -3,9 +3,9 @@ package enemies;
 import characters.Character;
 import utils.RandomUtil;
 
-public class Enemy3World1 extends Enemy {
+public class World1Enemy3 extends Enemy {
     // Constructor
-    public Enemy3World1() {
+    public World1Enemy3() {
         super("Dreadbark Treants", 79, 7, 6); // HP = 79, DEF = 7
     }
 
