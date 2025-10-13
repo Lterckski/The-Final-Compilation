@@ -55,8 +55,7 @@ public class Simon extends Character {
 
     private void arcaneFlow() {
         int restored = (int)(maxEnergy * 0.05);
-        energy += restored;
-        if (energy > maxEnergy) energy = maxEnergy;
+        this.restoreEnergy(restored);
 
         System.out.println("✨ Arcane Flow restores " + restored + " energy! " + "(Energy: " + energy + "/" + maxEnergy + ")");
     }

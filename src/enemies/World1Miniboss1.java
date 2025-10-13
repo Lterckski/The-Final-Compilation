@@ -22,7 +22,7 @@ public class World1Miniboss1 extends Enemy {
         target.takeDamage(reduced);
 
         //30% chance to stun
-        if (Math.random() < 0.30) {
+        if (RandomUtil.chance(30)) {
             target.getEffects().applyStun();
         }
     }
@@ -32,7 +32,11 @@ public class World1Miniboss1 extends Enemy {
         System.out.println("🗣️ " + name + " unleashes Blackened Howl!");
         if (target.getEffects().checkDodge()) return;
 
-        target.getEffects().applyDefenseDebuff(20, 2);
+        if (target.getArmor().checkDebuffImmunity()) {
+            System.out.println("Target is immune to Fragile (DEF ↓)🛡️!");
+        } else {
+            target.getEffects().applyDefenseDebuff(20, 2);
+        }
     }
 
     @Override
@@ -55,7 +59,7 @@ public class World1Miniboss1 extends Enemy {
 
     @Override
     public void turn(Character target) {
-        if(target.getEffects().getDefDebuffTurnsLeft() == 0){
+        if(!target.getEffects().hasDefDebuff()){
             blackenedHowl(target);
         } else{
             deathlyCharge(target);
