@@ -1,10 +1,17 @@
 package battle;
 
 import characters.Character;
-import utils.InputUtil;
+
+import java.util.ArrayList;
 
 public class Effects {
     private final Character owner;
+
+    // --- Buff/Debuff storage ---
+    private ArrayList<StatModifier> atkBuffs = new ArrayList<>();
+    private ArrayList<StatModifier> atkDebuffs = new ArrayList<>();
+    private ArrayList<StatModifier> defBuffs = new ArrayList<>();
+    private ArrayList<StatModifier> defDebuffs = new ArrayList<>();
 
     // --- 1-turn Pre-turn Effects ---
     private boolean frozen = false;
@@ -22,26 +29,19 @@ public class Effects {
     private int bleedTurnsLeft = 0;
     private int burnTurnsLeft = 0;
 
-    // --- ATK & DEF Modifiers ---
-    private int atkBuffModifier = 0;
-    private int atkDebuffModifier = 0;
-    private int defBuffModifier = 0;
-    private int defDebuffModifier = 0;
-
-    private int atkBuffTurnsLeft = 0;
-    private int atkDebuffTurnsLeft = 0;
-    private int defBuffTurnsLeft = 0;
-    private int defDebuffTurnsLeft = 0;
-
     public Effects(Character owner) {
         this.owner = owner;
     }
 
-    // ------------------- GETTERS -------------------
-    public int getAtkBuffTurnsLeft(){ return atkBuffTurnsLeft; }
-    public int getAtkDebuffTurnsLeft(){ return atkDebuffTurnsLeft; }
-    public int getDefBuffTurnsLeft(){ return defBuffTurnsLeft; }
-    public int getDefDebuffTurnsLeft(){ return defDebuffTurnsLeft; }
+    private static class StatModifier {
+        int amount;
+        int turnsLeft;
+
+        StatModifier(int amount, int turnsLeft) {
+            this.amount = amount;
+            this.turnsLeft = turnsLeft;
+        }
+    }
 
     // ------------------- APPLY STATUS/EFFECTS -------------------
     public void applyFreeze() {
@@ -75,66 +75,83 @@ public class Effects {
         System.out.println("⚡ You become Nimble and may dodge the next attack!");
     }
 
+    // ------------------- APPLY BUFFS/DEBUFFS -------------------
+
     public void applyAttackBuff(int percent, int duration) {
         int amount = (int) Math.round(owner.getAttack() * (percent / 100.0));
-        atkBuffModifier = amount;
+        atkBuffs.add(new StatModifier(amount, duration));
         owner.setAttack(owner.getAttack() + amount);
-        atkBuffTurnsLeft = duration;
+
         System.out.println("💪 Strengthen activated! +" + percent + "% ATK for " + duration + " turns!");
     }
 
     public void applyAttackDebuff(int percent, int duration) {
         int amount = (int) Math.round(owner.getAttack() * (percent / 100.0));
-        atkDebuffModifier = amount;
+        atkDebuffs.add(new StatModifier(amount, duration));
         owner.setAttack(owner.getAttack() - amount);
-        atkDebuffTurnsLeft = duration;
-        System.out.println("💢 Weaken Applied! Target's ATK is reduced by " + percent + "% for " + duration + " turns!");
+
+        System.out.println("💢 Weaken applied! -" + percent + "% ATK for " + duration + " turns!");
     }
 
     public void applyDefenseBuff(int percent, int duration) {
         int amount = (int) Math.round(owner.getDefense() * (percent / 100.0));
-        defBuffModifier = amount;
+        defBuffs.add(new StatModifier(amount, duration));
         owner.setDefense(owner.getDefense() + amount);
-        defBuffTurnsLeft = duration;
+
         System.out.println("🛡️ Fortified activated! +" + percent + "% DEF for " + duration + " turns!");
     }
 
+    // Fixed amount version (like a shield)
     public void applyDefenseBuff(int amount, int duration, boolean fixedAmountIsPassed) {
-        defBuffModifier = amount;
-        owner.setDefense(owner.getDefense() + amount);
-        defBuffTurnsLeft = duration;
+        defDebuffs.add(new StatModifier(amount, duration));
+        owner.setDefense(owner.getDefense() - amount);
+
+        System.out.println("🛡️ Shield activated! +" + amount + " DEF for " + duration + " turns!");
     }
 
     public void applyDefenseDebuff(int percent, int duration) {
         int amount = (int) Math.round(owner.getDefense() * (percent / 100.0));
-        defDebuffModifier = amount;
+        defDebuffs.add(new StatModifier(amount, duration));
         owner.setDefense(owner.getDefense() - amount);
-        defDebuffTurnsLeft = duration;
-        System.out.println("🔻 Fragile Applied! Target's DEF is reduced by " + percent + "% for " + duration + " turns!");
+
+        System.out.println("🔻 Fragile applied! -" + percent + "% DEF for " + duration + " turns!");
     }
 
+
     public void applyPoison(int turns) {
-        poisonTurnsLeft = turns;
+        poisonTurnsLeft += turns;
         System.out.println("☠️ Target is poisoned for " + turns + " turns!");
     }
 
     public void applyBleed(int turns) {
-        bleedInitialTurns = turns;
-        bleedTurnsLeft = turns;
+        bleedInitialTurns += turns;
+        bleedTurnsLeft += turns;
         System.out.println("🩸 Target is bleeding for " + turns + " turns!");
     }
 
     public void applyBurn(int turns) {
-        burnTurnsLeft = turns;
+        burnTurnsLeft += turns;
         System.out.println("🔥 Target is burned for " + turns + " turns!");
     }
 
-    // ------------------- HEAL -------------------
-    public void heal(int amount) {
-        int newHp = owner.getHp() + amount;
-        if (newHp > owner.getMaxHp()) newHp = owner.getMaxHp();
-        owner.setHp(newHp);
-        System.out.println(owner.getName() + " healed for " + amount + " HP. (HP: " + owner.getHp() + "/" + owner.getMaxHp() + ")");
+    // Check if character has any active ATK buff
+    public boolean hasAtkBuff() {
+        return !atkBuffs.isEmpty();
+    }
+
+    // Check if character has any active ATK debuff
+    public boolean hasAtkDebuff() {
+        return !atkDebuffs.isEmpty();
+    }
+
+    // Check if character has any active DEF buff
+    public boolean hasDefBuff() {
+        return !defBuffs.isEmpty();
+    }
+
+    // Check if character has any active DEF debuff
+    public boolean hasDefDebuff() {
+        return !defDebuffs.isEmpty();
     }
 
     // ------------------- TURN CHECKS -------------------
@@ -195,7 +212,7 @@ public class Effects {
             poisonTurnsLeft--;
         }
         if (bleedTurnsLeft > 0) {
-            int bleedDamage = 5 * (bleedInitialTurns - bleedTurnsLeft + 1);
+            int bleedDamage = Math.min(5 + 2 * (bleedInitialTurns - bleedTurnsLeft), 16);
             System.out.println(owner.getName() + " is bleeding! Took " + bleedDamage + " damage.");
             owner.takeDamage(bleedDamage);
             bleedTurnsLeft--;
@@ -207,37 +224,48 @@ public class Effects {
         }
     }
 
-    // ------------------- BUFF/DEBUFF MODIFIERS -------------------
+    // ------------------- UPDATE BUFFS/DEBUFFS -------------------
     public void updateModifiers() {
-        if (atkBuffTurnsLeft > 0) {
-            atkBuffTurnsLeft--;
-            if (atkBuffTurnsLeft == 0) {
-                owner.setAttack(owner.getAttack() - atkBuffModifier);
-                atkBuffModifier = 0;
+        // --- ATK Buffs ---
+        for (int i = atkBuffs.size() - 1; i >= 0; i--) {
+            StatModifier mod = atkBuffs.get(i);
+            mod.turnsLeft--;
+            if (mod.turnsLeft <= 0) {
+                owner.setAttack(owner.getAttack() - mod.amount);
+                atkBuffs.remove(i);
                 System.out.println(owner.getName() + "'s attack buff has worn off!");
             }
         }
-        if (atkDebuffTurnsLeft > 0) {
-            atkDebuffTurnsLeft--;
-            if (atkDebuffTurnsLeft == 0) {
-                owner.setAttack(owner.getAttack() + atkDebuffModifier);
-                atkDebuffModifier = 0;
+
+        // --- ATK Debuffs ---
+        for (int i = atkDebuffs.size() - 1; i >= 0; i--) {
+            StatModifier mod = atkDebuffs.get(i);
+            mod.turnsLeft--;
+            if (mod.turnsLeft <= 0) {
+                owner.setAttack(owner.getAttack() + mod.amount);
+                atkDebuffs.remove(i);
                 System.out.println(owner.getName() + "'s attack debuff has faded!");
             }
         }
-        if (defBuffTurnsLeft > 0) {
-            defBuffTurnsLeft--;
-            if (defBuffTurnsLeft == 0) {
-                owner.setDefense(owner.getDefense() - defBuffModifier);
-                defBuffModifier = 0;
+
+        // --- DEF Buffs ---
+        for (int i = defBuffs.size() - 1; i >= 0; i--) {
+            StatModifier buff = defBuffs.get(i);
+            buff.turnsLeft--;
+            if (buff.turnsLeft <= 0) {
+                owner.setDefense(owner.getDefense() - buff.amount);
+                defBuffs.remove(i);
                 System.out.println(owner.getName() + "'s defense buff has worn off!");
             }
         }
-        if (defDebuffTurnsLeft > 0) {
-            defDebuffTurnsLeft--;
-            if (defDebuffTurnsLeft == 0) {
-                owner.setDefense(owner.getDefense() + defDebuffModifier);
-                defDebuffModifier = 0;
+
+        // --- DEF Debuffs ---
+        for (int i = defDebuffs.size() - 1; i >= 0; i--) {
+            StatModifier mod = defDebuffs.get(i);
+            mod.turnsLeft--;
+            if (mod.turnsLeft <= 0) {
+                owner.setDefense(owner.getDefense() + mod.amount);
+                defDebuffs.remove(i);
                 System.out.println(owner.getName() + "'s defense debuff has faded!");
             }
         }

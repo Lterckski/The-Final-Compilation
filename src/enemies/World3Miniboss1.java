@@ -43,7 +43,7 @@ public class World3Miniboss1 extends Enemy {
 
     @Override
     public void turn(Character target) {
-        if(this.getEffects().getDefBuffTurnsLeft() == 0) {
+        if(!this.getEffects().hasDefBuff()) {
             boneShield();
         } else {
             graveCleaver(target);

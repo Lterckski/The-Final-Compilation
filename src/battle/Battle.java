@@ -37,7 +37,7 @@ public class Battle {
 
             switch (choice){
                 case 1 -> { System.out.println("⚔️ You chose to fight!"); willFight = true; }
-                //case 2 ->  openInventory TODO: implement inventory
+                case 2 -> player.getInventory().openInventory();
                 case 3 -> player.showStats();
                 case 4 -> player.showSkills();
                 case 5 -> enemy.showStats();

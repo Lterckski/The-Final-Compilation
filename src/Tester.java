@@ -3,6 +3,8 @@ import characters.*;
 import characters.Character;
 import enemies.*;
 
+import inventory.Armor;
+import inventory.Sword;
 import utils.InputUtil;
 
 public class Tester {
@@ -67,6 +69,7 @@ public class Tester {
         simon.showSkills();
         */
 
+
         System.out.println("Welcome to The Final Compilation");
 
         System.out.println("-------------------------------------");
@@ -107,7 +110,12 @@ public class Tester {
             }
         } while (player == null);  // repeat until valid choice
 
-        System.out.println("-------------------------------------");
+
+        Sword sword1 = new Sword("Iron Shortsword", "\uD83D\uDFE2", 5, 0, 0);
+        sword1.equip(player);
+        Armor armor1 = new Armor("Leather Guard", "\uD83D\uDFE2", 2, false, false, 0 ,0);
+        armor1.equip(player);
+        System.out.println();
 
         Character enemy1 = new World1Enemy1();
         Battle battle1 = new Battle(player, enemy1);
@@ -115,7 +123,21 @@ public class Tester {
         System.out.println("ENEMY ENCOUNTERED!");
         battle1.startBattle();
 
-        Character enemy2 = new World3Miniboss1();
+        Sword sword2 = new Sword("Celestial Edge", "\uD83D\uDFE1", 50, 35, 10);
+        Armor armor2 = new Armor("Celestial Battlegear", "\uD83D\uDFE1", 50, true, true, 20 ,15);
+
+        if(!enemy1.isAlive()){
+            player.getPotions().dropPotions();
+            player.getPotions().dropFullHealthPotions();
+            if(sword2.lootWeapon()){
+                sword2.equip(player);
+            }
+            if(armor2.lootArmor()){
+                armor2.equip(player);
+            }
+        }
+
+        Character enemy2 = new World1Miniboss1();
         Battle battle2 = new Battle(player, enemy2);
 
         System.out.println("ENEMY ENCOUNTERED!");

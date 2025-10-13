@@ -1,6 +1,10 @@
 package characters;
 
 import battle.Effects;
+import inventory.Armor;
+import inventory.Inventory;
+import inventory.Potions;
+import inventory.Weapon;
 import utils.InputUtil;
 
 public abstract class Character {
@@ -17,6 +21,8 @@ public abstract class Character {
     protected int ultimateCounter = 3;
 
     private final Effects effects;
+    private Inventory inventory;
+    private Potions potions;
 
     public Character(String name, int hp, int defense, int energy, int attack) { // for players
         this.name = name;
@@ -29,6 +35,8 @@ public abstract class Character {
         this.baseAttack = attack;
         this.attack = attack;
         this.effects = new Effects(this);
+        this.inventory = new Inventory(this);
+        this.potions = new Potions(this);
     }
 
     public Character(String name, int hp, int defense, int attack) { // for enemies
@@ -48,12 +56,24 @@ public abstract class Character {
     public int getDefense() { return defense; }
     public int getAttack() { return attack; }
     public int getMaxHp() { return maxHp; }
+    public int getMaxEnergy() { return maxEnergy; }
+    public int getEnergy() { return energy; }
     // ------------------- SETTERS -------------------
     public void setAttack(int attack){ this.attack = attack; }
     public void setDefense(int defense){ this.defense = defense; }
     public void setHp(int hp){ this.hp = hp; }
     // ------------------- GETTER for Effects class -------------------
     public Effects getEffects(){ return effects; }
+
+    public Inventory getInventory() { return inventory; }
+    public Potions getPotions() { return potions; }
+
+    public Weapon getWeapon(){
+        return this.getInventory().getEquippedWeapon();
+    }
+    public Armor getArmor(){
+        return this.getInventory().getEquippedArmor();
+    }
 
     public void showStats() {
         System.out.println("\n=========== Stats ============");
@@ -103,7 +123,7 @@ public abstract class Character {
             InputUtil.scan.nextLine();
 
             switch (choice){
-                //case 1 ->  openInventory TODO: implement inventory
+                case 1 -> player.getInventory().openInventory();
                 case 2 -> player.showStats();
                 case 3 ->  player.showSkills();
                 case 4 -> enemy.showStats();
@@ -142,5 +162,16 @@ public abstract class Character {
         if(energy > maxEnergy) energy = maxEnergy;
         System.out.println("Turn skipped! Restored a bit of energy. (Energy: " + energy + "/" + maxEnergy + ")");
     }
+
+    public void heal(int amount){
+        hp += amount;
+        if(hp > maxHp) hp = maxHp;
+    }
+
+    public void restoreEnergy(int amount){
+        energy += amount;
+        if(energy > maxEnergy) energy = maxEnergy;
+    }
+
 
 }

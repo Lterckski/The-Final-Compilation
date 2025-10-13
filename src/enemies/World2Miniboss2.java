@@ -69,7 +69,7 @@ public class World2Miniboss2 extends Enemy {
 
     @Override
     public void turn(Character target) {
-        if(target.getEffects().getAtkDebuffTurnsLeft() == 0){
+        if(!target.getEffects().hasAtkDebuff()){
             crownOfDespair(target);
         } else{
             if (RandomUtil.chance(66)) darkJudgement(target);
