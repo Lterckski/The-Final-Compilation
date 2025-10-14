@@ -1,33 +1,39 @@
 package inventory;
 
 import characters.Character;
+import utils.InputUtil;
 
 public class Inventory {
     private final Character owner;
 
     private Weapon equippedWeapon;
     private Armor equippedArmor;
+    private Potions potions;
 
     public Inventory(Character owner) {
         this.owner = owner;
+        this.potions = new Potions(owner);
     }
 
-    public Weapon getEquippedWeapon(){ return equippedWeapon; }
-    public Armor getEquippedArmor(){ return equippedArmor; }
+    // --- Getters and Setters ---
+    public Weapon getEquippedWeapon() { return equippedWeapon; }
+    public Armor getEquippedArmor() { return equippedArmor; }
+    public Potions getPotions() { return potions; }
 
-    public void setEquippedWeapon(Weapon weapon){ equippedWeapon = weapon; }
-    public void setEquippedArmor(Armor armor){ equippedArmor = armor; }
+    public void setEquippedWeapon(Weapon weapon) { equippedWeapon = weapon; }
+    public void setEquippedArmor(Armor armor) { equippedArmor = armor; }
 
+    // --- Inventory Menu ---
     public void openInventory() {
         boolean exit = false;
 
         while (!exit) {
             System.out.println("\n====================== Inventory ======================");
-            System.out.println("Equipped Weapon         : " + owner.getInventory().getEquippedWeapon().getName());
-            System.out.println("Equipped Armor          : " + owner.getInventory().getEquippedArmor().getName());
-            System.out.println("Normal Healing Potion   : " + owner.getPotions().getNormalHealingPotions());
-            System.out.println("Full Healing Potion     : " + owner.getPotions().getFullHealingPotions());
-            System.out.println("Energy Potion           : " + owner.getPotions().getEnergyPotions());
+            System.out.println("Equipped Weapon         : " + (equippedWeapon != null ? equippedWeapon.getName() : "None"));
+            System.out.println("Equipped Armor          : " + (equippedArmor != null ? equippedArmor.getName() : "None"));
+            System.out.println("Normal Healing Potion   : " + potions.getNormalHealingPotions());
+            System.out.println("Full Healing Potion     : " + potions.getFullHealingPotions());
+            System.out.println("Energy Potion           : " + potions.getEnergyPotions());
             System.out.println("=======================================================");
             System.out.println("(1) Show Weapon Info");
             System.out.println("(2) Show Armor Info");
@@ -37,38 +43,32 @@ public class Inventory {
             System.out.println("(6) Back");
             System.out.print("Choose an option: ");
 
-            int choice = utils.InputUtil.scan.nextInt();
-            utils.InputUtil.scan.nextLine();
+            int choice = InputUtil.scan.nextInt();
+            InputUtil.scan.nextLine();
 
             switch (choice) {
                 case 1 -> {
-                    if(equippedWeapon != null) equippedWeapon.displayInfo();
+                    if (equippedWeapon != null) equippedWeapon.displayInfo();
                     else System.out.println("No weapon equipped.");
                 }
                 case 2 -> {
-                    if(equippedArmor != null) equippedArmor.displayInfo();
+                    if (equippedArmor != null) equippedArmor.displayInfo();
                     else System.out.println("No armor equipped.");
                 }
                 case 3 -> {
-                    if (owner.getPotions().getNormalHealingPotions() > 0) {
-                        if (areYouSure()) owner.getPotions().useNormalHealingPotion();
-                    } else {
-                        System.out.println("❌ No normal healing potions left!");
-                    }
+                    if (potions.getNormalHealingPotions() > 0) {
+                        if (areYouSure()) potions.useNormalHealingPotion();
+                    } else System.out.println("❌ No normal healing potions left!");
                 }
                 case 4 -> {
-                    if (owner.getPotions().getFullHealingPotions() > 0) {
-                        if (areYouSure()) owner.getPotions().useFullHealingPotion();
-                    } else {
-                        System.out.println("❌ No full healing potions left!");
-                    }
+                    if (potions.getFullHealingPotions() > 0) {
+                        if (areYouSure()) potions.useFullHealingPotion();
+                    } else System.out.println("❌ No full healing potions left!");
                 }
                 case 5 -> {
-                    if (owner.getPotions().getEnergyPotions() > 0) {
-                        if (areYouSure()) owner.getPotions().useEnergyPotion();
-                    } else {
-                        System.out.println("❌ No energy potions left!");
-                    }
+                    if (potions.getEnergyPotions() > 0) {
+                        if (areYouSure()) potions.useEnergyPotion();
+                    } else System.out.println("❌ No energy potions left!");
                 }
                 case 6 -> exit = true;
                 default -> System.out.println("❌ Invalid input! Try again.");
@@ -76,14 +76,14 @@ public class Inventory {
         }
     }
 
-
-    private boolean areYouSure(){
+    // --- Confirmation prompt ---
+    private boolean areYouSure() {
         int confirm;
 
         do {
             System.out.println("Are you sure you want to use a potion? (1 = Yes, 0 = No)");
-            confirm = utils.InputUtil.scan.nextInt();
-            utils.InputUtil.scan.nextLine();
+            confirm = InputUtil.scan.nextInt();
+            InputUtil.scan.nextLine();
 
             if (confirm == 1) {
                 break;
@@ -92,7 +92,7 @@ public class Inventory {
             } else {
                 System.out.println("❌ Invalid input! Try again.");
             }
-        } while(confirm != 0);
+        } while (confirm != 0);
 
         return confirm == 1;
     }

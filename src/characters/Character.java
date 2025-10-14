@@ -22,7 +22,6 @@ public abstract class Character {
 
     private final Effects effects;
     private Inventory inventory;
-    private Potions potions;
 
     public Character(String name, int hp, int defense, int energy, int attack) { // for players
         this.name = name;
@@ -36,7 +35,6 @@ public abstract class Character {
         this.attack = attack;
         this.effects = new Effects(this);
         this.inventory = new Inventory(this);
-        this.potions = new Potions(this);
     }
 
     public Character(String name, int hp, int defense, int attack) { // for enemies
@@ -66,13 +64,15 @@ public abstract class Character {
     public Effects getEffects(){ return effects; }
 
     public Inventory getInventory() { return inventory; }
-    public Potions getPotions() { return potions; }
 
     public Weapon getWeapon(){
         return this.getInventory().getEquippedWeapon();
     }
     public Armor getArmor(){
         return this.getInventory().getEquippedArmor();
+    }
+    public Potions getPotions(){
+        return this.getInventory().getPotions();
     }
 
     public void showStats() {
@@ -172,6 +172,5 @@ public abstract class Character {
         energy += amount;
         if(energy > maxEnergy) energy = maxEnergy;
     }
-
 
 }
