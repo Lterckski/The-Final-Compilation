@@ -15,6 +15,9 @@ public class Armor {
     private final int reflectChance;
     private final int reflectPercent;
 
+    public static final Armor LEATHER_GUARD = new Armor("Leather Guard", "\uD83D\uDFE2", 2, false, false, 0 ,0);
+    public static final Armor CELESTIAL_BATTLEGEAR = new Armor("Celestial Battlegear", "\uD83D\uDFE1", 50, true, true, 20 ,15);
+
     public Armor(String name, String rarity, int defBuff, boolean immuneDebuff, boolean immuneEffects, int reflectChance, int reflectPercent){
         this.name = name;
         this.rarity = rarity;

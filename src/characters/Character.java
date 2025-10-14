@@ -173,4 +173,7 @@ public abstract class Character {
         if(energy > maxEnergy) energy = maxEnergy;
     }
 
+    public void levelUp(int levels){
+        
+    }
 }

@@ -4,14 +4,12 @@ import characters.Character;
 import utils.InputUtil;
 
 public class Inventory {
-    private final Character owner;
 
     private Weapon equippedWeapon;
     private Armor equippedArmor;
-    private Potions potions;
+    private final Potions potions;
 
     public Inventory(Character owner) {
-        this.owner = owner;
         this.potions = new Potions(owner);
     }
 

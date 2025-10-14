@@ -111,10 +111,11 @@ public class Tester {
         } while (player == null);  // repeat until valid choice
 
 
-        Sword sword1 = new Sword("Iron Shortsword", "\uD83D\uDFE2", 5, 0, 0);
+        Sword sword1 = Sword.IRON_SHORTSWORD;
         sword1.equip(player);
-        Armor armor1 = new Armor("Leather Guard", "\uD83D\uDFE2", 2, false, false, 0 ,0);
+        Armor armor1 = Armor.LEATHER_GUARD;
         armor1.equip(player);
+
         System.out.println();
 
         Character enemy1 = new World1Enemy1();
@@ -123,8 +124,8 @@ public class Tester {
         System.out.println("ENEMY ENCOUNTERED!");
         battle1.startBattle();
 
-        Sword sword2 = new Sword("Celestial Edge", "\uD83D\uDFE1", 50, 35, 10);
-        Armor armor2 = new Armor("Celestial Battlegear", "\uD83D\uDFE1", 50, true, true, 20 ,15);
+        Sword sword2 = Sword.CELESTIAL_EDGE;
+        Armor armor2 = Armor.CELESTIAL_BATTLEGEAR;
 
         if(!enemy1.isAlive()){
             player.getPotions().dropPotions();
@@ -137,7 +138,7 @@ public class Tester {
             }
         }
 
-        Character enemy2 = new World1Miniboss1();
+        Character enemy2 = new World2Miniboss1();
         Battle battle2 = new Battle(player, enemy2);
 
         System.out.println("ENEMY ENCOUNTERED!");
