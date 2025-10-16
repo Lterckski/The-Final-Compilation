@@ -79,6 +79,10 @@ public class Simon extends Character {
         // Apply Burn
         target.getEffects().applyBurn(3);
 
+        if (getInventory().getEquippedWeapon() != null) {
+            getInventory().getEquippedWeapon().applyEffects(target, reduced);
+        }
+
         // 30% chance to apply Weaken
         if (RandomUtil.chance(30)) {
             target.getEffects().applyAttackDebuff(20, 2);
@@ -100,6 +104,10 @@ public class Simon extends Character {
 
         System.out.println("❄️ You cast Ice Prison on " + target.getName() + " for " + reduced + " damage! (Energy: " + energy + "/" + maxEnergy + ")");
         target.takeDamage(reduced);
+
+        if (getInventory().getEquippedWeapon() != null) {
+            getInventory().getEquippedWeapon().applyEffects(target, reduced);
+        }
 
         // 30% chance to Freeze
         if (RandomUtil.chance(30)) {
@@ -124,6 +132,10 @@ public class Simon extends Character {
 
         System.out.println("☄️ You unleash Meteor Storm on " + target.getName() + " for " + reduced + " damage! (Energy: " + energy + "/" + maxEnergy + ")");
         target.takeDamage(reduced);
+
+        if (getInventory().getEquippedWeapon() != null) {
+            getInventory().getEquippedWeapon().applyEffects(target, reduced);
+        }
 
         // 50% chance to Burn
         if (RandomUtil.chance(50)) {

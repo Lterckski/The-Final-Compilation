@@ -5,6 +5,7 @@ import enemies.*;
 
 import inventory.Armor;
 import inventory.Sword;
+import inventory.Staff;
 import utils.InputUtil;
 
 public class Tester {
@@ -115,6 +116,9 @@ public class Tester {
         sword1.equip(player);
         Armor armor1 = Armor.LEATHER_GUARD;
         armor1.equip(player);
+
+        Staff staff1 = Staff.APPRENTICE_STAFF;
+        staff1.equip(player);
 
         System.out.println();
 
