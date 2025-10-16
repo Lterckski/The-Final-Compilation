@@ -3,6 +3,7 @@ package enemies;
 
 import characters.Character;
 import utils.RandomUtil;
+import inventory.*;
 
 public class World2Enemy1 extends Enemy{
     public World2Enemy1(){
@@ -19,7 +20,24 @@ public class World2Enemy1 extends Enemy{
 
         System.out.println("→ Plague Bite hits for " + reduced + " damage!");
         target.takeDamage(reduced);
-        target.getEffects().applyPoison(1);
+
+
+        // Armor reflect check
+        Armor equippedArmor = target.getInventory().getEquippedArmor();
+        if (equippedArmor != null) {
+            int reflectDamage = equippedArmor.checkReflectDamage(reduced);
+            if (reflectDamage > 0) {
+                System.out.println("🪞 " + equippedArmor.getName() + " reflected " + reflectDamage + " damage back to " + name + "!");
+                this.takeDamage(reflectDamage);
+            }
+        }
+
+        // Poison effect with immunity check
+        if (equippedArmor != null && equippedArmor.checkEffectsImmunity()) {
+            System.out.println("✨ " + target.getName() + " resisted Poison ☠️ due to " + equippedArmor.getName() + "!");
+        } else {
+            target.getEffects().applyPoison(1);
+        }
     }
 
     @Override

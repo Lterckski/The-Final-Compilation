@@ -2,6 +2,7 @@ package enemies;
 
 import characters.Character;
 import utils.RandomUtil;
+import inventory.*;
 
 public class World2Miniboss2 extends Enemy {
     public World2Miniboss2() {
@@ -12,6 +13,12 @@ public class World2Miniboss2 extends Enemy {
         System.out.println("👑 " + name + " casts Crown of Despair!");
         if(target.getEffects().checkDodge()) return;
 
+        // Check immunity to debuff
+        Armor equippedArmor = target.getInventory().getEquippedArmor();
+        if (equippedArmor != null && equippedArmor.checkEffectsImmunity()) {
+            System.out.println("✨ " + target.getName() + " resisted Weaken 👑 due to " + equippedArmor.getName() + "!");
+            return;
+        }
         target.getEffects().applyAttackDebuff(20, 2);
     }
 
@@ -25,6 +32,16 @@ public class World2Miniboss2 extends Enemy {
 
         System.out.println("→ Dark Judgment hits for " + reduced + " damage!");
         target.takeDamage(reduced);
+
+        //Reflect damage check
+        Armor equippedArmor = target.getInventory().getEquippedArmor();
+        if (equippedArmor != null) {
+            int reflectDamage = equippedArmor.checkReflectDamage(reduced);
+            if (reflectDamage > 0) {
+                System.out.println("🪞 " + equippedArmor.getName() + " reflected " + reflectDamage + " damage back to " + name + "!");
+                this.takeDamage(reflectDamage);
+            }
+        }
     }
 
     public void kingsWrath(Character target){
@@ -38,8 +55,24 @@ public class World2Miniboss2 extends Enemy {
         System.out.println("→ King's Wrath hits for " + reduced + " damage!");
         target.takeDamage(reduced);
 
-        if(RandomUtil.chance(30)){
-            target.getEffects().applyStun();
+        Armor equippedArmor = target.getInventory().getEquippedArmor();
+
+        // Reflect damage check
+        if (equippedArmor != null) {
+            int reflectDamage = equippedArmor.checkReflectDamage(reduced);
+            if (reflectDamage > 0) {
+                System.out.println("🪞 " + equippedArmor.getName() + " reflected " + reflectDamage + " damage back to " + name + "!");
+                this.takeDamage(reflectDamage);
+            }
+        }
+
+        // chance to Stun — check immunity
+        if (RandomUtil.chance(30)) {
+            if (equippedArmor != null && equippedArmor.checkEffectsImmunity()) {
+                System.out.println("✨ " + target.getName() + " resisted Stun 🔥 due to " + equippedArmor.getName() + "!");
+            } else {
+                target.getEffects().applyStun();
+            }
         }
     }
 

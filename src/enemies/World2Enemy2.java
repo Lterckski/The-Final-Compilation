@@ -3,6 +3,7 @@ package enemies;
 
 import characters.Character;
 import utils.RandomUtil;
+import inventory.*;
 
 public class World2Enemy2 extends Enemy{
     public World2Enemy2(){
@@ -20,8 +21,23 @@ public class World2Enemy2 extends Enemy{
         System.out.println("→ Shadow Bolt hits for " + reduced + " damage!");
         target.takeDamage(reduced);
 
-        if(RandomUtil.chance(30)){
-            target.getEffects().applyAttackDebuff(20, 2);
+        //Reflect check
+        Armor equippedArmor = target.getInventory().getEquippedArmor();
+        if (equippedArmor != null) {
+            int reflectDamage = equippedArmor.checkReflectDamage(reduced);
+            if (reflectDamage > 0) {
+                System.out.println("🪞 " + equippedArmor.getName() + " reflected " + reflectDamage + " damage back to " + name + "!");
+                this.takeDamage(reflectDamage);
+            }
+        }
+
+        // 30% chance to apply ATK debuff (check immunity first)
+        if (RandomUtil.chance(30)) {
+            if (equippedArmor != null && equippedArmor.checkEffectsImmunity()) {
+                System.out.println("✨ " + target.getName() + " resisted Weaken 🪫 due to " + equippedArmor.getName() + "!");
+            } else {
+                target.getEffects().applyAttackDebuff(20, 2);
+            }
         }
     }
 

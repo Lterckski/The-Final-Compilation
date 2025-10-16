@@ -19,7 +19,7 @@ public abstract class Character {
     protected int baseAttack;
     protected int baseDefense;
     protected int ultimateCounter = 3;
-
+    protected Weapon weapon;
     private final Effects effects;
     private Inventory inventory;
 

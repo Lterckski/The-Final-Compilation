@@ -7,6 +7,13 @@ public class Bow extends Weapon{
     private final int attackTwiceChance;
     private final int lifestealPercent;
 
+
+    public static final Bow OAK_LONGBOW = new Bow("Oak Longbow","🟢", 5 , 0, 0);
+    public static final Bow TWINSHOT_BOW = new Bow("Twinshot Bow","\uD83D\uDD35", 15, 10,0);
+    public static final Bow LIFEBLOOM_BOW = new Bow("Lifebloom Bow", "\uD83D\uDD35", 15, 0, 3);
+    public static final Bow AETHERSTRIKE_BOW = new Bow("Aetherstrike Bow", "\uD83D\uDFE3", 30, 25, 5);
+    public static final Bow GOLDEN_TALON = new Bow("Golden Talon", "\uD83D\uDFE1", 50, 35, 10);
+
     public Bow(String name, String rarity, int atkBuff, int twiceAttackChance, int lifestealPercent){
         super(name,rarity,atkBuff);
         this.attackTwiceChance = twiceAttackChance;
@@ -20,7 +27,7 @@ public class Bow extends Weapon{
         System.out.println("+ " + getAtkBuff() + " ATK");
 
         if (attackTwiceChance > 0) {
-            System.out.println("🏹 " + getName() + " [" + getRarity() + "]");
+            System.out.println("🎯 " + attackTwiceChance + "% chance to attack twice");
         }
 
         if (lifestealPercent > 0) {
@@ -32,18 +39,20 @@ public class Bow extends Weapon{
 
     @Override
     public boolean applyEffects(Character target, int damage) {
-        // Double attack
-        if (RandomUtil.chance(attackTwiceChance)) {
-            System.out.println("⚡ " + getName() + " triggers a second attack!");
-            return true;
-        }
-
         // Lifesteal
         if (lifestealPercent > 0) {
             int heal = (int)(damage * lifestealPercent / 100.0);
             System.out.println("💖 " + getName() + " restores " + heal + " HP!");
             target.heal(heal);
         }
+
+        // Double attack
+        if (RandomUtil.chance(attackTwiceChance)) {
+            System.out.println("⚡ " + getName() + " triggers a second attack!");
+            return true;
+        }
+
+
 
         return false; // no second attack is triggered
     }

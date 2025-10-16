@@ -5,6 +5,7 @@ import enemies.*;
 
 import inventory.Armor;
 import inventory.Sword;
+import inventory.Bow;
 import utils.InputUtil;
 
 public class Tester {
@@ -110,9 +111,12 @@ public class Tester {
             }
         } while (player == null);  // repeat until valid choice
 
-
+    /*
         Sword sword1 = Sword.IRON_SHORTSWORD;
         sword1.equip(player);
+        */
+
+        Bow bow1 = Bow.GOLDEN_TALON;
         Armor armor1 = Armor.LEATHER_GUARD;
         armor1.equip(player);
 
@@ -123,15 +127,19 @@ public class Tester {
 
         System.out.println("ENEMY ENCOUNTERED!");
         battle1.startBattle();
-
+        /*
         Sword sword2 = Sword.CELESTIAL_EDGE;
+        */
+        Bow bow2 = Bow.TWINSHOT_BOW;
         Armor armor2 = Armor.CELESTIAL_BATTLEGEAR;
+
+
 
         if(!enemy1.isAlive()){
             player.getPotions().dropPotions();
             player.getPotions().dropFullHealthPotions();
-            if(sword2.lootWeapon()){
-                sword2.equip(player);
+            if(bow1.lootWeapon()){
+                bow1.equip(player);
             }
             if(armor2.lootArmor()){
                 armor2.equip(player);
