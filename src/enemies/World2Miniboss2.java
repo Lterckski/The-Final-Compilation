@@ -1,7 +1,6 @@
 package enemies;
 
 import characters.Character;
-import utils.InputUtil;
 import utils.RandomUtil;
 import inventory.*;
 
@@ -110,8 +109,8 @@ public class World2Miniboss2 extends Enemy {
 
     @Override
     public void dropLoot(Character player){
-        player.getPotions().dropPotions();
-        player.getPotions().dropFullHealthPotions();
+        player.getPotions().lootPotions();
+        player.getPotions().lootFullHealthPotions();
 
         // TODO: implement weapon drop
     }

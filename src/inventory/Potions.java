@@ -49,7 +49,7 @@ public class Potions {
         System.out.println("⚡✨ Used an Energy Potion! Restored " + energyRestored + " Energy (Energy: " + owner.getEnergy() + "/" + owner.getMaxEnergy() + ")");
     }
 
-    public void dropPotions(){
+    public void lootPotions(){
         int totalDrops = RandomUtil.range(1, 3);
         int normalHealingPotionsCount = 0;
         int energyPotionsCount = 0;
@@ -73,7 +73,7 @@ public class Potions {
         }
     }
 
-    public void dropFullHealthPotions(){
+    public void lootFullHealthPotions(){
         int dropped = RandomUtil.range(1,2);
         fullHealingPotions += dropped;
         System.out.println("💖⚡ " + dropped + " Full Healing Potion" + (dropped > 1 ? "s" : ""));

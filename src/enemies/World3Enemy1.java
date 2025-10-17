@@ -35,6 +35,6 @@ public class World3Enemy1 extends Enemy {
 
     @Override
     public void dropLoot(Character player){
-        player.getPotions().dropPotions();
+        player.getPotions().lootPotions();
     }
 }

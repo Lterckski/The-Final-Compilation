@@ -3,7 +3,6 @@ package enemies;
 import characters.Character;
 import inventory.Armor;
 import inventory.Bow;
-import inventory.Staff;
 import inventory.Sword;
 import utils.RandomUtil;
 
@@ -72,8 +71,8 @@ public class World1Miniboss1 extends Enemy {
 
     @Override
     public void dropLoot(Character player){
-        player.getPotions().dropPotions();
-        player.getPotions().dropFullHealthPotions();
+        player.getPotions().lootPotions();
+        player.getPotions().lootFullHealthPotions();
 
         if(player.getClassType().equals("Swordsman")){
             Sword ironShortsword = Sword.IRON_SHORTSWORD;

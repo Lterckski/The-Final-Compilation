@@ -93,8 +93,8 @@ public class World2Miniboss1 extends Enemy{
 
     @Override
     public void dropLoot(Character player){
-        player.getPotions().dropPotions();
-        player.getPotions().dropFullHealthPotions();
+        player.getPotions().lootPotions();
+        player.getPotions().lootFullHealthPotions();
 
         Armor aegisMail = Armor.AEGIS_MAIL;         // +25 DEF, immune to debuff ↓
         Armor vanguardRobe = Armor.VANGUARD_ROBE;   // +25 DEF, immune to status effects
