@@ -55,4 +55,10 @@ public class World2Enemy1 extends Enemy{
     public void turn(Character target) {
         plagueBite(target);
     }
+
+    @Override
+    public void dropLoot(Character player){
+        player.getPotions().dropPotions();
+    }
+
 }

@@ -1,6 +1,7 @@
 package enemies;
 
 import characters.Character;
+import utils.InputUtil;
 import utils.RandomUtil;
 import inventory.*;
 
@@ -17,9 +18,9 @@ public class World2Miniboss2 extends Enemy {
         Armor equippedArmor = target.getInventory().getEquippedArmor();
         if (equippedArmor != null && equippedArmor.checkEffectsImmunity()) {
             System.out.println("✨ " + target.getName() + " resisted Weaken 👑 due to " + equippedArmor.getName() + "!");
-            return;
+        } else{
+            target.getEffects().applyAttackDebuff(20, 2);
         }
-        target.getEffects().applyAttackDebuff(20, 2);
     }
 
     public void darkJudgement(Character target){
@@ -66,14 +67,11 @@ public class World2Miniboss2 extends Enemy {
             }
         }
 
-        // chance to Stun — check immunity
+        // chance to Stun
         if (RandomUtil.chance(30)) {
-            if (equippedArmor != null && equippedArmor.checkEffectsImmunity()) {
-                System.out.println("✨ " + target.getName() + " resisted Stun 🔥 due to " + equippedArmor.getName() + "!");
-            } else {
-                target.getEffects().applyStun();
-            }
+            target.getEffects().applyStun();
         }
+
     }
 
     @Override
@@ -108,5 +106,13 @@ public class World2Miniboss2 extends Enemy {
             if (RandomUtil.chance(66)) darkJudgement(target);
             else kingsWrath(target);
         }
+    }
+
+    @Override
+    public void dropLoot(Character player){
+        player.getPotions().dropPotions();
+        player.getPotions().dropFullHealthPotions();
+
+        // TODO: implement weapon drop
     }
 }

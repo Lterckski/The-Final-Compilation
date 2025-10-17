@@ -4,7 +4,7 @@ import utils.RandomUtil;
 
 public class Simon extends Character {
 
-    public Simon() { super("Simon Versace", 60, 2, 150, 15); }
+    public Simon() { super("Simon Versace", "Mage", 60, 2, 150, 15); }
 
     @Override
     public void showSkills() {
@@ -76,6 +76,8 @@ public class Simon extends Character {
         System.out.println("🔥 You cast Fireball on " + target.getName() + " for " + reduced + " damage! (Energy: " + energy + "/" + maxEnergy + ")");
         target.takeDamage(reduced);
 
+        getInventory().getEquippedWeapon().applyEffects(target, reduced);
+
         // Apply Burn
         target.getEffects().applyBurn(3);
 
@@ -84,6 +86,7 @@ public class Simon extends Character {
             target.getEffects().applyAttackDebuff(20, 2);
         }
         arcaneFlow();
+
     }
 
     // Skill 2 – Ice Prison
@@ -101,6 +104,8 @@ public class Simon extends Character {
         System.out.println("❄️ You cast Ice Prison on " + target.getName() + " for " + reduced + " damage! (Energy: " + energy + "/" + maxEnergy + ")");
         target.takeDamage(reduced);
 
+        getInventory().getEquippedWeapon().applyEffects(target, reduced);
+
         // 30% chance to Freeze
         if (RandomUtil.chance(30)) {
             target.getEffects().applyFreeze();
@@ -108,6 +113,7 @@ public class Simon extends Character {
             target.getEffects().applyDefenseDebuff(15, 2);
         }
         arcaneFlow();
+
     }
 
     // Ultimate – Meteor Storm
@@ -124,6 +130,8 @@ public class Simon extends Character {
 
         System.out.println("☄️ You unleash Meteor Storm on " + target.getName() + " for " + reduced + " damage! (Energy: " + energy + "/" + maxEnergy + ")");
         target.takeDamage(reduced);
+
+        getInventory().getEquippedWeapon().applyEffects(target, reduced);
 
         // 50% chance to Burn
         if (RandomUtil.chance(50)) {
@@ -151,8 +159,8 @@ public class Simon extends Character {
                 System.out.print("Choose your action: ");
 
                 int choice = utils.InputUtil.scan.nextInt();
-                System.out.println("---------------");
                 utils.InputUtil.scan.nextLine();
+                System.out.println("---------------");
 
                 switch (choice) {
                     case 1 -> { fireball(target); isValid = true; ultimateCounter--; }
@@ -174,8 +182,8 @@ public class Simon extends Character {
                 System.out.print("Choose your action: ");
 
                 int choice = utils.InputUtil.scan.nextInt();
-                System.out.println("---------------");
                 utils.InputUtil.scan.nextLine();
+                System.out.println("---------------");
 
                 switch (choice) {
                     case 1 -> { fireball(target); isValid = true; }

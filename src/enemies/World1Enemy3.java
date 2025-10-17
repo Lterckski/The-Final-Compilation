@@ -41,4 +41,10 @@ public class World1Enemy3 extends Enemy {
     public void turn(Character target) {
         rootSnare(target);
     }
+
+    @Override
+    public void dropLoot(Character player){
+        player.getPotions().dropPotions();
+    }
+
 }

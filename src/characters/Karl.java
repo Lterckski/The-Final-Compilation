@@ -4,7 +4,7 @@ import utils.RandomUtil;
 import inventory.*;
 public class Karl extends Character{
 
-    public Karl() { super("Karl Clover Dior IV", 80, 3, 10000000, 12); this.getWeapon();
+    public Karl() { super("Karl Clover Dior IV", "Archer", 80, 3, 80, 12); this.getWeapon();
     this.getInventory().setEquippedWeapon(Bow.OAK_LONGBOW);}
 
     @Override
@@ -55,11 +55,10 @@ public class Karl extends Character{
 
 
     // Helper method to trigger weapon effects
-    private void triggerWeaponEffect(Character target, int baseDamage) {
-        if (this.getWeapon() != null && this.getWeapon().applyEffects(target, baseDamage)) {
+    private void triggerWeaponEffect(Character target, int damage) {
+        if (this.getWeapon() != null && this.getWeapon().applyEffects(target, damage)) {
             System.out.println("⚡ Weapon effect activated! Extra hit triggered.");
-            int extraDamage = (int) RandomUtil.range(attack * 1.15, attack * 1.35);
-            int reducedExtra = extraDamage - target.getDefense();
+            int reducedExtra = damage - target.getDefense();
             if (reducedExtra < 0) reducedExtra = 0;
             System.out.println("🗡️ Extra hit from weapon for " + reducedExtra + " damage!");
             target.takeDamage(reducedExtra);
@@ -94,22 +93,15 @@ public class Karl extends Character{
         if (reduced < 0) reduced = 0;
 
         System.out.println("🏹 You used Piercing Arrow on " + target.getName() + " for " + reduced + " damage (30% DEF ignored). (Energy: " + energy + "/" + maxEnergy + ")");
+        target.takeDamage(reduced);
 
-        // ✅ Proper dodge check
-        if (!target.getEffects().checkDodge()) {
-            target.takeDamage(reduced);
-
-            // Bleed effect
-            if (RandomUtil.chance(30)) {
-                target.getEffects().applyBleed(2);
-            }
-
-            // Weapon effect
-            triggerWeaponEffect(target, reduced);
-
-        } else {
-            System.out.println("💨 " + target.getName() + " dodged the attack!");
+        // Bleed effect
+        if (RandomUtil.chance(30)) {
+            target.getEffects().applyBleed(2);
         }
+
+        // Weapon effect
+        triggerWeaponEffect(target, reduced);
     }
 
     // Skill 2 - Bullseye
@@ -129,16 +121,13 @@ public class Karl extends Character{
         if (reduced < 0) reduced = 0;
 
         System.out.println("🎯🔥 You used Bullseye on " + target.getName() + " for " + reduced + " critical damage! (Energy: " + energy + "/" + maxEnergy + ")");
+        target.takeDamage(reduced);
 
-        if (target.getEffects().checkDodge()) {
-            target.takeDamage(reduced);
-            if (RandomUtil.chance(30)) {
-                target.getEffects().applyDefenseDebuff(30, 2);
-            }
-            triggerWeaponEffect(target, reduced);
-        } else {
-            System.out.println("💨 " + target.getName() + " dodged the attack!");
+        if (RandomUtil.chance(30)) {
+            target.getEffects().applyDefenseDebuff(30, 2);
         }
+
+        triggerWeaponEffect(target, reduced);
     }
 
     // Ultimate - Rain of a Thousand Arrows
@@ -159,18 +148,15 @@ public class Karl extends Character{
 
             System.out.println(" → Arrow " + (i + 1) + " fired!");
 
-            if (!target.getEffects().checkDodge()) {
-                target.takeDamage(reduced);
-                System.out.println("   💥 Hit for " + reduced + " damage!");
+            target.takeDamage(reduced);
+            System.out.println("   💥 Hit for " + reduced + " damage!");
 
-                triggerWeaponEffect(target, reduced);
-            } else {
-                System.out.println("   💨 " + target.getName() + " dodged the arrow!");
-            }
+            triggerWeaponEffect(target, reduced);
+
         }
 
         this.getEffects().applyNimble();
-        this.getEffects().applyAttackBuff(20, 2 + 1);
+        this.getEffects().applyAttackBuff(20, 2);
         ultimateCounter = 3;
     }
 
@@ -188,8 +174,8 @@ public class Karl extends Character{
                 System.out.print("Choose your action: ");
 
                 int choice = utils.InputUtil.scan.nextInt();
-                System.out.println("---------------");
                 utils.InputUtil.scan.nextLine();
+                System.out.println("---------------");
 
                 switch (choice) {
                     case 1 -> { piercingArrow(target); isValid = true; ultimateCounter--; }
@@ -209,8 +195,8 @@ public class Karl extends Character{
                 System.out.print("Choose your action: ");
 
                 int choice = utils.InputUtil.scan.nextInt();
-                System.out.println("---------------");
                 utils.InputUtil.scan.nextLine();
+                System.out.println("---------------");
 
                 switch (choice) {
                     case 1 -> { piercingArrow(target); isValid = true; }

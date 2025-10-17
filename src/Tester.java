@@ -4,6 +4,7 @@ import characters.Character;
 import enemies.*;
 
 import inventory.Armor;
+import inventory.Staff;
 import inventory.Sword;
 import inventory.Bow;
 import utils.InputUtil;
@@ -77,7 +78,6 @@ public class Tester {
         System.out.println("1 - Kael Saint Laurent (Swordsman)");
         System.out.println("2 - Karl Clover Dior IV (Archer)");
         System.out.println("3 - Simon Versace (Mage)");
-        System.out.println("4 - Test Character (ambot)");
         System.out.println("-------------------------------------");
 
         int choice;
@@ -92,37 +92,37 @@ public class Tester {
                     player = new Kael();
                     System.out.println("You selected " + player.getName() + "!");
                     ((Kael) player).showBackstory();
+                    player.getInventory().setEquippedWeapon(Sword.OLD_BROADSWORD);
                 }
                 case 2 -> {
                     player = new Karl();
                     System.out.println("You selected " + player.getName() + "!");
                     ((Karl) player).showBackstory();
+                    player.getInventory().setEquippedWeapon(Bow.WOODEN_BOW);
                 }
                 case 3 -> {
                     player = new Simon();
                     System.out.println("You selected " + player.getName() + "!");
                     ((Simon) player).showBackstory();
-                }
-                case 4-> {
-                    player = new TestCharacter();
-                    System.out.println("You selected " + player.getName() + "!");
+                    player.getInventory().setEquippedWeapon(Staff.WOODEN_STAFF);
                 }
                 default -> System.out.println("❌ Invalid choice! Please select a valid option.");
             }
         } while (player == null);  // repeat until valid choice
+        player.getInventory().setEquippedArmor(Armor.LEATHER_GUARD);
 
-    /*
+        /*
         Sword sword1 = Sword.IRON_SHORTSWORD;
         sword1.equip(player);
         */
-
+        /*
         Bow bow1 = Bow.GOLDEN_TALON;
         Armor armor1 = Armor.LEATHER_GUARD;
         armor1.equip(player);
-
+        */
         System.out.println();
 
-        Character enemy1 = new World1Enemy1();
+        Enemy enemy1 = new World1Enemy1();
         Battle battle1 = new Battle(player, enemy1);
 
         System.out.println("ENEMY ENCOUNTERED!");
@@ -130,26 +130,19 @@ public class Tester {
         /*
         Sword sword2 = Sword.CELESTIAL_EDGE;
         */
-        Bow bow2 = Bow.TWINSHOT_BOW;
-        Armor armor2 = Armor.CELESTIAL_BATTLEGEAR;
-
-
 
         if(!enemy1.isAlive()){
-            player.getPotions().dropPotions();
-            player.getPotions().dropFullHealthPotions();
-            if(bow1.lootWeapon()){
-                bow1.equip(player);
-            }
-            if(armor2.lootArmor()){
-                armor2.equip(player);
-            }
+            enemy1.dropLoot(player);
         }
 
-        Character enemy2 = new World2Miniboss1();
+        Enemy enemy2 = new World1Miniboss1();
         Battle battle2 = new Battle(player, enemy2);
 
         System.out.println("ENEMY ENCOUNTERED!");
         battle2.startBattle();
+
+        if(!enemy2.isAlive()){
+            enemy2.dropLoot(player);
+        }
     }
 }

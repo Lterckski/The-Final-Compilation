@@ -1,6 +1,10 @@
 package enemies;
 
 import characters.Character;
+import inventory.Armor;
+import inventory.Bow;
+import inventory.Staff;
+import inventory.Sword;
 import utils.RandomUtil;
 
 public class World1Miniboss1 extends Enemy {
@@ -63,6 +67,31 @@ public class World1Miniboss1 extends Enemy {
             blackenedHowl(target);
         } else{
             deathlyCharge(target);
+        }
+    }
+
+    @Override
+    public void dropLoot(Character player){
+        player.getPotions().dropPotions();
+        player.getPotions().dropFullHealthPotions();
+
+        if(player.getClassType().equals("Swordsman")){
+            Sword ironShortsword = Sword.IRON_SHORTSWORD;
+            if(ironShortsword.lootWeapon()){
+                ironShortsword.equip(player);
+            }
+        } else if(player.getClassType().equals("Bow")){
+            Bow oakLongbow = Bow.OAK_LONGBOW;
+            if(oakLongbow.lootWeapon()){
+                oakLongbow.equip(player);
+            }
+        } else if(player.getClassType().equals("Mage")){
+            // TODO : add weapon loot for staff
+        }
+
+        Armor ironVanguard = Armor.IRON_VANGUARD;
+        if(ironVanguard.lootArmor()){
+            ironVanguard.equip(player);
         }
     }
 

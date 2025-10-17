@@ -7,6 +7,7 @@ public class Sword extends Weapon{
     private final int attackTwiceChance;
     private final int lifestealPercent;
 
+    public static final Sword OLD_BROADSWORD = new Sword("Old Broadsword", "\uD83D\uDD18", 0, 0, 0);
     public static final Sword IRON_SHORTSWORD = new Sword("Iron Shortsword", "\uD83D\uDFE2", 5, 0, 0);
     public static final Sword CELESTIAL_EDGE = new Sword("Celestial Edge", "\uD83D\uDFE1", 50, 35, 10);
 

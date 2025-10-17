@@ -35,4 +35,7 @@ public abstract class Enemy extends Character{
 
         System.out.println("=============================\n");
     }
+
+    public abstract void dropLoot(Character player);
+
 }

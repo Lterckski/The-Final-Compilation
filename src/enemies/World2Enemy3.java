@@ -53,10 +53,13 @@ public class World2Enemy3 extends Enemy{
         System.out.println("------------------------------------");
     }
 
-
-
     @Override
     public void turn(Character target) {
         corpseExplosion(target);
+    }
+
+    @Override
+    public void dropLoot(Character player){
+        player.getPotions().dropPotions();
     }
 }

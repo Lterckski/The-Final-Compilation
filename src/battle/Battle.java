@@ -47,40 +47,53 @@ public class Battle {
         }
     }
 
-    public void battleLoop(){
+    public void battleLoop() {
         System.out.println("------------------------------");
         System.out.println("\n⚔️ Battle Start! " + player.getName() + " vs " + enemy.getName());
 
-        while(player.isAlive() && enemy.isAlive()){
+        while (player.isAlive() && enemy.isAlive()) {
 
-            if(player.getEffects().checkEffects()){
+            // -------- PLAYER TURN --------
+            // Update buffs/debuffs before the player acts
+            player.getEffects().updateAttackModifiers();
+            player.getEffects().updateDefenseModifiers();
+
+            if (player.getEffects().checkEffects()) {
                 System.out.println("\n-- Your Turn --");
                 player.turn(enemy);
-                player.getEffects().updateModifiers();
-            } else{
+            } else {
                 InputUtil.pressEnterToContinue();
             }
+
+            // Apply poison/burn etc. after action
             player.getEffects().updateDoTEffects();
             System.out.println("------------------------------");
 
-            if(!enemy.isAlive()){
-                System.out.println("You defeated " + enemy.getName() + "!");
+            if (!enemy.isAlive()) {
+                System.out.println("🔥 You defeated " + enemy.getName() + "!");
                 break;
             }
 
-            if(enemy.getEffects().checkEffects()){
+            // -------- ENEMY TURN --------
+            // Update buffs/debuffs before enemy acts
+            enemy.getEffects().updateAttackModifiers();
+            enemy.getEffects().updateDefenseModifiers();
+
+            if (enemy.getEffects().checkEffects()) {
                 System.out.println("\n-- Enemy Turn --");
                 enemy.turn(player);
-                enemy.getEffects().updateModifiers();
             }
-            InputUtil.pressEnterToContinue();
+
+            // Apply DoT after enemy acts
             enemy.getEffects().updateDoTEffects();
+            InputUtil.pressEnterToContinue();
             System.out.println("------------------------------");
         }
 
-        if(!player.isAlive()){
+        if (!player.isAlive()) {
             System.out.println("You have been defeated... GAME OVER!");
         }
     }
+
 
 }

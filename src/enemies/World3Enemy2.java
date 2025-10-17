@@ -35,4 +35,9 @@ public class World3Enemy2 extends Enemy {
 
     @Override
     public void turn(Character target) { shadowBolt(target); }
+
+    @Override
+    public void dropLoot(Character player){
+        player.getPotions().dropPotions();
+    }
 }

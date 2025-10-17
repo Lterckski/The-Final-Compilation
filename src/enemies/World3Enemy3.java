@@ -35,4 +35,9 @@ public class World3Enemy3 extends Enemy {
 
     @Override
     public void turn(Character target) { magmaSlam(target); }
+
+    @Override
+    public void dropLoot(Character player){
+        player.getPotions().dropPotions();
+    }
 }

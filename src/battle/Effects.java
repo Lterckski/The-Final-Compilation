@@ -79,7 +79,7 @@ public class Effects {
 
     public void applyAttackBuff(int percent, int duration) {
         int amount = (int) Math.round(owner.getAttack() * (percent / 100.0));
-        atkBuffs.add(new StatModifier(amount, duration));
+        atkBuffs.add(new StatModifier(amount, duration+1));
         owner.setAttack(owner.getAttack() + amount);
 
         System.out.println("💪 Strengthen activated! +" + percent + "% ATK for " + duration + " turns!");
@@ -87,7 +87,7 @@ public class Effects {
 
     public void applyAttackDebuff(int percent, int duration) {
         int amount = (int) Math.round(owner.getAttack() * (percent / 100.0));
-        atkDebuffs.add(new StatModifier(amount, duration));
+        atkDebuffs.add(new StatModifier(amount, duration+1));
         owner.setAttack(owner.getAttack() - amount);
 
         System.out.println("💢 Weaken applied! -" + percent + "% ATK for " + duration + " turns!");
@@ -95,7 +95,7 @@ public class Effects {
 
     public void applyDefenseBuff(int percent, int duration) {
         int amount = (int) Math.round(owner.getDefense() * (percent / 100.0));
-        defBuffs.add(new StatModifier(amount, duration));
+        defBuffs.add(new StatModifier(amount, duration+1));
         owner.setDefense(owner.getDefense() + amount);
 
         System.out.println("🛡️ Fortified activated! +" + percent + "% DEF for " + duration + " turns!");
@@ -111,7 +111,7 @@ public class Effects {
 
     public void applyDefenseDebuff(int percent, int duration) {
         int amount = (int) Math.round(owner.getDefense() * (percent / 100.0));
-        defDebuffs.add(new StatModifier(amount, duration));
+        defDebuffs.add(new StatModifier(amount, duration+1));
         owner.setDefense(owner.getDefense() - amount);
 
         System.out.println("🔻 Fragile applied! -" + percent + "% DEF for " + duration + " turns!");
@@ -224,8 +224,8 @@ public class Effects {
         }
     }
 
-    // ------------------- UPDATE BUFFS/DEBUFFS -------------------
-    public void updateModifiers() {
+    // ------------------- UPDATE ATK BUFFS/DEBUFFS -------------------
+    public void updateAttackModifiers() {
         // --- ATK Buffs ---
         for (int i = atkBuffs.size() - 1; i >= 0; i--) {
             StatModifier mod = atkBuffs.get(i);
@@ -247,7 +247,10 @@ public class Effects {
                 System.out.println(owner.getName() + "'s attack debuff has faded!");
             }
         }
+    }
 
+    // ------------------- UPDATE DEF BUFFS/DEBUFFS -------------------
+    public void updateDefenseModifiers() {
         // --- DEF Buffs ---
         for (int i = defBuffs.size() - 1; i >= 0; i--) {
             StatModifier buff = defBuffs.get(i);
@@ -270,5 +273,6 @@ public class Effects {
             }
         }
     }
+
 
 }

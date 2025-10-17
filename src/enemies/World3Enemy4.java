@@ -35,4 +35,9 @@ public class World3Enemy4 extends Enemy {
 
     @Override
     public void turn(Character target) { soulScream(target); }
+
+    @Override
+    public void dropLoot(Character player){
+        player.getPotions().dropPotions();
+    }
 }

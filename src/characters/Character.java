@@ -9,6 +9,7 @@ import utils.InputUtil;
 
 public abstract class Character {
     protected String name;
+    protected String classType;
     protected int level = 1;
     protected int hp;
     protected int maxHp;           // track max HP for healing
@@ -20,11 +21,12 @@ public abstract class Character {
     protected int baseDefense;
     protected int ultimateCounter = 3;
     protected Weapon weapon;
-    private final Effects effects;
+    private Effects effects;
     private Inventory inventory;
 
-    public Character(String name, int hp, int defense, int energy, int attack) { // for players
+    public Character(String name, String classType, int hp, int defense, int energy, int attack) { // for players
         this.name = name;
+        this.classType = classType;
         this.hp = hp;
         this.maxHp = hp;
         this.baseDefense = defense;
@@ -46,10 +48,12 @@ public abstract class Character {
         this.baseAttack = attack;
         this.attack = attack;
         this.effects = new Effects(this);
+        this.inventory = new Inventory(this);
     }
 
     // ------------------- GETTERS for player stats -------------------
     public String getName() { return name; }
+    public String getClassType(){ return classType; }
     public int getHp() { return hp; }
     public int getDefense() { return defense; }
     public int getAttack() { return attack; }
@@ -78,6 +82,7 @@ public abstract class Character {
     public void showStats() {
         System.out.println("\n=========== Stats ============");
         System.out.println("Name    : " + name);
+        System.out.println("Class   : " + classType);
         System.out.println("Level   : " + level);
         System.out.println("Health  : " + hp + "/" + maxHp);
         System.out.println("Energy  : " + energy + "/" + maxEnergy);

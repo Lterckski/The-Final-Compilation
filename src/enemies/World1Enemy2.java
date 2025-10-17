@@ -39,4 +39,9 @@ public class World1Enemy2 extends Enemy {
     public void turn(Character target) {
         tricksterStrike(target);
     }
+
+    @Override
+    public void dropLoot(Character player){
+        player.getPotions().dropPotions();
+    }
 }

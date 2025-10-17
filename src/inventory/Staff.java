@@ -7,6 +7,13 @@ public class Staff extends Weapon{
     private final int confuseChance;
     private final int lifestealPercent;
 
+    public static final Staff WOODEN_STAFF = new Staff("Wooden Staff", "\uD83D\uDD18", 0, 0, 0);
+    public static final Staff APPRENTICE_STAFF = new Staff("Apprentice's Staff", "\uD83D\uDFE2", 5, 0, 0);
+    public static final Staff MYSTIC_MIND_STAFF = new Staff("Mystic Mind Staff", "\uD83D\uDD35", 15, 30, 0);
+    public static final Staff FLAMEHEART_STAFF = new Staff("Flameheart Staff", "\uD83D\uDD35", 15, 0, 3);
+    public static final Staff AETHERIC_STAFF = new Staff("Aetheric Staff", "\uD83D\uDFE3", 30, 25, 10);
+    public static final Staff CHRONOMANCER_STAFF = new Staff("Chronomancer Staff", "\uD83D\uDFE1", 50, 35, 10);
+
     public Staff(String name, String rarity, int atkBuff, int confuseChance, int lifestealPercent){
         super(name,rarity,atkBuff);
         this.confuseChance = confuseChance;

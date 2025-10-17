@@ -32,4 +32,9 @@ public class World3Enemy1 extends Enemy {
 
     @Override
     public void turn(Character target) { emberBurst(target); }
+
+    @Override
+    public void dropLoot(Character player){
+        player.getPotions().dropPotions();
+    }
 }

@@ -34,4 +34,9 @@ public class World1Enemy1 extends Enemy {
     public void turn(Character target) {
         savageHowl(target);
     }
+
+    @Override
+    public void dropLoot(Character player){
+        player.getPotions().dropPotions();
+    }
 }

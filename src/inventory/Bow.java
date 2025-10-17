@@ -7,8 +7,8 @@ public class Bow extends Weapon{
     private final int attackTwiceChance;
     private final int lifestealPercent;
 
-
-    public static final Bow OAK_LONGBOW = new Bow("Oak Longbow","🟢", 5 , 0, 0);
+    public static final Bow WOODEN_BOW = new Bow("Wooden Bow","\uD83D\uDD18", 0 , 0, 0);
+    public static final Bow OAK_LONGBOW = new Bow("Oak Longbow","\uD83D\uDFE2", 5 , 0, 0);
     public static final Bow TWINSHOT_BOW = new Bow("Twinshot Bow","\uD83D\uDD35", 15, 10,0);
     public static final Bow LIFEBLOOM_BOW = new Bow("Lifebloom Bow", "\uD83D\uDD35", 15, 0, 3);
     public static final Bow AETHERSTRIKE_BOW = new Bow("Aetherstrike Bow", "\uD83D\uDFE3", 30, 25, 5);
@@ -51,8 +51,6 @@ public class Bow extends Weapon{
             System.out.println("⚡ " + getName() + " triggers a second attack!");
             return true;
         }
-
-
 
         return false; // no second attack is triggered
     }

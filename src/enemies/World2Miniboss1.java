@@ -1,6 +1,7 @@
 package enemies;
 
 import characters.Character;
+import utils.InputUtil;
 import utils.RandomUtil;
 import inventory.*;
 
@@ -30,14 +31,11 @@ public class World2Miniboss1 extends Enemy{
             }
         }
 
-        // 30% chance to apply Immobilize — check immunity
+        // 30% chance to apply Immobilize
         if (RandomUtil.chance(30)) {
-            if (equippedArmor != null && equippedArmor.checkEffectsImmunity()) {
-                System.out.println("✨ " + target.getName() + " resisted Immobilize ⛓️ due to " + equippedArmor.getName() + "!");
-            } else {
-                target.getEffects().applyImmobilize();
-            }
+            target.getEffects().applyImmobilize();
         }
+
     }
 
     public void tormentingLash(Character target){
@@ -87,11 +85,36 @@ public class World2Miniboss1 extends Enemy{
         System.out.println("---------------------------------------");
     }
 
-
-
     @Override
     public void turn(Character target) {
         if (RandomUtil.chance(50)) shacklingChains(target);
         else tormentingLash(target);
+    }
+
+    @Override
+    public void dropLoot(Character player){
+        player.getPotions().dropPotions();
+        player.getPotions().dropFullHealthPotions();
+
+        Armor aegisMail = Armor.AEGIS_MAIL;         // +25 DEF, immune to debuff ↓
+        Armor vanguardRobe = Armor.VANGUARD_ROBE;   // +25 DEF, immune to status effects
+
+        System.out.println("\n🎁 You obtained 2 Rare Armors!");
+        System.out.println("1️⃣ " + aegisMail.getName() + " → +25 DEF, immune to ATK↓ & DEF↓");
+        System.out.println("2️⃣ " + vanguardRobe.getName() + " → +25 DEF, immune to Poison, Burn, Bleed");
+        System.out.print("\nChoose one to equip (1 or 2): ");
+
+        int choice = InputUtil.scan.nextInt();
+        utils.InputUtil.scan.nextLine();
+
+        if (choice == 1) {
+            aegisMail.equip(player);
+            System.out.println("\nYou equipped " + aegisMail.getName() + "! The other armor fades away...");
+        } else if (choice == 2) {
+            vanguardRobe.equip(player);
+            System.out.println("\nYou equipped " + vanguardRobe.getName() + "! The other armor fades away...");
+        } else {
+            System.out.println("\nInvalid choice. Both armors vanish into the mist...");
+        }
     }
 }

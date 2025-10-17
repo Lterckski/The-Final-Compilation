@@ -1,10 +1,13 @@
 package characters;
 
+import inventory.Bow;
 import utils.RandomUtil;
 
 public class Kael extends  Character{      // 15% crit chance
 
-    public Kael() { super("Kael Saint Laurent", 100, 5, 60, 10); }
+    public Kael() {
+        super("Kael Saint Laurent", "Swordsman" ,100, 5, 60, 10);
+    }
 
     @Override
     public void showSkills() {
@@ -91,7 +94,7 @@ public class Kael extends  Character{      // 15% crit chance
 
         // 30% chance to apply Strengthen (+20% ATK for 2 turns)
         if (RandomUtil.chance(30)) {
-            getEffects().applyAttackBuff(20, 2+1); //turns +1 because turn is decremented after this attack (2 turns rajud ni technically)
+            getEffects().applyAttackBuff(20, 2);
         }
 
         // Apply weapon effects
@@ -159,7 +162,7 @@ public class Kael extends  Character{      // 15% crit chance
         target.takeDamage(totalDamage);
 
         target.getEffects().applyBleed(2);
-        this.getEffects().applyDefenseBuff(20, 2+1);
+        this.getEffects().applyDefenseBuff(20, 2);
         ultimateCounter = 3;
     }
 
@@ -178,8 +181,8 @@ public class Kael extends  Character{      // 15% crit chance
                 System.out.print("Choose your action: ");
 
                 int choice = utils.InputUtil.scan.nextInt();
-                System.out.println("---------------");
                 utils.InputUtil.scan.nextLine();
+                System.out.println("---------------");
 
                 switch (choice) {
                     case 1 -> { bladeRush(target); isValid = true; ultimateCounter--;}
@@ -201,8 +204,8 @@ public class Kael extends  Character{      // 15% crit chance
                 System.out.print("Choose your action: ");
 
                 int choice = utils.InputUtil.scan.nextInt();
-                System.out.println("---------------");
                 utils.InputUtil.scan.nextLine();
+                System.out.println("---------------");
 
                 switch (choice) {
                     case 1 -> { bladeRush(target); isValid = true; }

@@ -1,6 +1,8 @@
 package enemies;
 
 import characters.Character;
+import inventory.Armor;
+import utils.InputUtil;
 import utils.RandomUtil;
 
 public class World3Miniboss1 extends Enemy {
@@ -48,5 +50,13 @@ public class World3Miniboss1 extends Enemy {
         } else {
             graveCleaver(target);
         }
+    }
+
+    @Override
+    public void dropLoot(Character player){
+        player.getPotions().dropPotions();
+        player.getPotions().dropFullHealthPotions();
+
+        // TODO: implement item drop
     }
 }

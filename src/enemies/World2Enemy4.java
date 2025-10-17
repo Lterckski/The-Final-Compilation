@@ -51,10 +51,13 @@ public class World2Enemy4 extends Enemy{
         System.out.println("------------------------------------");
     }
 
-
-
     @Override
     public void turn(Character target) {
         rottenCleave(target);
+    }
+
+    @Override
+    public void dropLoot(Character player){
+        player.getPotions().dropPotions();
     }
 }
