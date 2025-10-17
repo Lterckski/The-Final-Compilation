@@ -74,6 +74,20 @@ public class Kael extends  Character{      // 15% crit chance
         return damage;
     }
 
+    // Helper method to trigger weapon effects
+    private void triggerWeaponEffect(Character target, int baseDamage) {
+        if (this.getWeapon() != null && this.getWeapon().applyEffects(target, baseDamage)) {
+            System.out.println("⚡ Weapon effect activated! Extra hit triggered.");
+
+            int extraDamage = (int) RandomUtil.range(attack * 1.15, attack * 1.35);
+            int reducedExtra = extraDamage - target.getDefense();
+            if (reducedExtra < 0) reducedExtra = 0;
+
+            System.out.println("🗡 Extra hit from weapon for " + reducedExtra + " damage!");
+            target.takeDamage(reducedExtra);
+        }
+    }
+
     // Skill 1 - Blade Rush
     public void bladeRush(Character target){
         if(target.getEffects().checkConfuse()) return;
@@ -97,18 +111,8 @@ public class Kael extends  Character{      // 15% crit chance
             getEffects().applyAttackBuff(20, 2);
         }
 
-        // Apply weapon effects
-        if(this.getWeapon().applyEffects(target, reduced)){
-            System.out.println("⚡ Weapon effect activated! Extra hit triggered.");
-
-            // Perform the extra hit directly
-            int extraDamage = (int) RandomUtil.range(attack * 1.15,attack * 1.35);
-            int reducedExtra = extraDamage - target.getDefense();
-            if(reducedExtra < 0) reducedExtra = 0;
-
-            System.out.println("\uD83D\uDDE1️ Extra hit from weapon for " + reducedExtra + " damage!");
-            target.takeDamage(reducedExtra);
-        }
+        // Apply weapon effects via helper
+        triggerWeaponEffect(target, reduced);
 
     }
 
@@ -133,6 +137,9 @@ public class Kael extends  Character{      // 15% crit chance
         if (RandomUtil.chance(30)) {
             target.getEffects().applyStun(); // Stunned for 1 turn
         }
+
+        // Apply weapon effects via helper
+        triggerWeaponEffect(target, reduced);
     }
 
     //Ultimate - Eternal Cross Slash
@@ -156,6 +163,9 @@ public class Kael extends  Character{      // 15% crit chance
             totalDamage += reduced;
 
             System.out.println(" → Hit " + (i + 1) + ": You slashed " + target.getName() +  " for " + reduced + " damage!");
+
+            // Apply weapon effects via helper
+            triggerWeaponEffect(target, reduced);
         }
 
         System.out.println("Eternal Cross Slash finished! Total damage dealt: " + totalDamage + " (Energy: " + energy + "/" + maxEnergy + ")");

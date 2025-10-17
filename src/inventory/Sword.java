@@ -9,6 +9,9 @@ public class Sword extends Weapon{
 
     public static final Sword OLD_BROADSWORD = new Sword("Old Broadsword", "\uD83D\uDD18", 0, 0, 0);
     public static final Sword IRON_SHORTSWORD = new Sword("Iron Shortsword", "\uD83D\uDFE2", 5, 0, 0);
+    public static final Sword TWINSTRIKE_BLADE =  new Sword("Twinstrike Blade", "\uD83D\uDD35", 15, 10, 0);
+    public static final Sword LIFEBOND_BLADE =  new Sword("Lifebond Blade", "\uD83D\uDD35", 15, 0, 3);
+    public static final Sword ECLIPSE_GREATSWORD =  new Sword("Eclipse Greatsword", "\uD83D\uDFE3", 30, 25, 5);
     public static final Sword CELESTIAL_EDGE = new Sword("Celestial Edge", "\uD83D\uDFE1", 50, 35, 10);
 
     public Sword(String name, String rarity, int atkBuff, int twiceAttackChance, int lifestealPercent){
