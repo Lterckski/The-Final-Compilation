@@ -9,6 +9,7 @@ public class World1Miniboss1 extends Enemy {
         super("The Hollow Stag", 211, 13, 47); // HP = 211, DEF = 13
     }
 
+
     // Skill 1: Deathly Charge (47–56 damage, stun 1 turn)
     public void deathlyCharge(Character target) {
         System.out.println("🦌 " + name + " charges with Deathly Charge!");
