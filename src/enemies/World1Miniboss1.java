@@ -9,25 +9,38 @@ import utils.RandomUtil;
 public class World1Miniboss1 extends Enemy {
     // Constructor
     public World1Miniboss1() {
-        super("The Hollow Stag", 211, 13, 47); // HP = 211, DEF = 13
+        super("The Hollow Stag", 211, 13, 47); // HP = 211, DEF = 13, ATK = 47
     }
 
-
-    // Skill 1: Deathly Charge (47–56 damage, stun 1 turn)
+    // Skill 1: Deathly Charge (ATK × 1.00–1.20), 30% chance to Stun
     public void deathlyCharge(Character target) {
         System.out.println("🦌 " + name + " charges with Deathly Charge!");
         if (target.getEffects().checkDodge()) return;
 
-        int damage = (int) RandomUtil.range(attack, attack*1.2);
+        int damage = (int) RandomUtil.range(attack * 1.00, attack * 1.20);
         int reduced = damage - target.getDefense();
         if (reduced < 0) reduced = 0;
 
         System.out.println("→ Deathly Charge hits for " + reduced + " damage!");
         target.takeDamage(reduced);
 
-        //30% chance to stun
+        // Armor reflect check
+        Armor equippedArmor = target.getInventory().getEquippedArmor();
+        if (equippedArmor != null) {
+            int reflectDamage = equippedArmor.checkReflectDamage(reduced);
+            if (reflectDamage > 0) {
+                System.out.println("🪞 " + equippedArmor.getName() + " reflected " + reflectDamage + " damage back to " + name + "!");
+                this.takeDamage(reflectDamage);
+            }
+        }
+
+        // 30% chance to stun
         if (RandomUtil.chance(30)) {
-            target.getEffects().applyStun();
+            if (equippedArmor != null && equippedArmor.checkDebuffImmunity()) {
+                System.out.println("✨ " + target.getName() + " resisted Stun 💫 due to " + equippedArmor.getName() + "!");
+            } else {
+                target.getEffects().applyStun();
+            }
         }
     }
 
@@ -36,8 +49,9 @@ public class World1Miniboss1 extends Enemy {
         System.out.println("🗣️ " + name + " unleashes Blackened Howl!");
         if (target.getEffects().checkDodge()) return;
 
-        if (target.getArmor().checkDebuffImmunity()) {
-            System.out.println("Target is immune to Fragile (DEF ↓)🛡️!");
+        Armor equippedArmor = target.getInventory().getEquippedArmor();
+        if (equippedArmor != null && equippedArmor.checkDebuffImmunity()) {
+            System.out.println("✨ " + target.getName() + " resisted Fragile 🛡️↓ due to " + equippedArmor.getName() + "!");
         } else {
             target.getEffects().applyDefenseDebuff(20, 2);
         }
@@ -60,39 +74,38 @@ public class World1Miniboss1 extends Enemy {
         System.out.println("--------------------------------------");
     }
 
-
     @Override
     public void turn(Character target) {
-        if(!target.getEffects().hasDefDebuff()){
+        // Prioritize debuff if not active, else use main attack
+        if (!target.getEffects().hasDefDebuff()) {
             blackenedHowl(target);
-        } else{
+        } else {
             deathlyCharge(target);
         }
     }
 
     @Override
-    public void dropLoot(Character player){
+    public void dropLoot(Character player) {
         player.getPotions().lootPotions();
         player.getPotions().lootFullHealthPotions();
 
-        if(player.getClassType().equals("Swordsman")){
+        if (player.getClassType().equals("Swordsman")) {
             Sword ironShortsword = Sword.IRON_SHORTSWORD;
-            if(ironShortsword.lootWeapon()){
+            if (ironShortsword.lootWeapon()) {
                 ironShortsword.equip(player);
             }
-        } else if(player.getClassType().equals("Bow")){
+        } else if (player.getClassType().equals("Bow")) {
             Bow oakLongbow = Bow.OAK_LONGBOW;
-            if(oakLongbow.lootWeapon()){
+            if (oakLongbow.lootWeapon()) {
                 oakLongbow.equip(player);
             }
-        } else if(player.getClassType().equals("Mage")){
-            // TODO : add weapon loot for staff
+        } else if (player.getClassType().equals("Mage")) {
+            // TODO: add weapon loot for staff
         }
 
         Armor ironVanguard = Armor.IRON_VANGUARD;
-        if(ironVanguard.lootArmor()){
+        if (ironVanguard.lootArmor()) {
             ironVanguard.equip(player);
         }
     }
-
 }

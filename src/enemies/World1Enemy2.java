@@ -1,6 +1,7 @@
 package enemies;
 
 import characters.Character;
+import inventory.Armor;
 import utils.RandomUtil;
 
 public class World1Enemy2 extends Enemy {
@@ -21,7 +22,22 @@ public class World1Enemy2 extends Enemy {
         System.out.println("→ Trickster Strike hits for " + reduced + " damage!");
         target.takeDamage(reduced);
 
-        target.getEffects().applyConfuse(); //Applies confuse
+        // Armor reflect check
+        Armor equippedArmor = target.getInventory().getEquippedArmor();
+        if (equippedArmor != null) {
+            int reflectDamage = equippedArmor.checkReflectDamage(reduced);
+            if (reflectDamage > 0) {
+                System.out.println("🪞 " + equippedArmor.getName() + " reflected " + reflectDamage + " damage back to " + name + "!");
+                this.takeDamage(reflectDamage);
+            }
+        }
+
+        // Confuse effect with immunity check
+        if (equippedArmor != null && equippedArmor.checkEffectsImmunity()) {
+            System.out.println("✨ " + target.getName() + " resisted Confuse 💭 due to " + equippedArmor.getName() + "!");
+        } else {
+            target.getEffects().applyConfuse();
+        }
     }
 
     @Override
