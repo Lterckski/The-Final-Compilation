@@ -2,6 +2,7 @@ package enemies;
 
 import characters.Character;
 import utils.RandomUtil;
+import inventory.*;
 
 public class World2Miniboss1 extends Enemy{
     public World2Miniboss1(){
@@ -19,8 +20,23 @@ public class World2Miniboss1 extends Enemy{
         System.out.println("→ Shackling Chains hits for " + reduced + " damage!");
         target.takeDamage(reduced);
 
-        if(RandomUtil.chance(30)){
-            target.getEffects().applyImmobilize();
+        // Reflect damage check
+        Armor equippedArmor = target.getInventory().getEquippedArmor();
+        if (equippedArmor != null) {
+            int reflectDamage = equippedArmor.checkReflectDamage(reduced);
+            if (reflectDamage > 0) {
+                System.out.println("🪞 " + equippedArmor.getName() + " reflected " + reflectDamage + " damage back to " + name + "!");
+                this.takeDamage(reflectDamage);
+            }
+        }
+
+        // 30% chance to apply Immobilize — check immunity
+        if (RandomUtil.chance(30)) {
+            if (equippedArmor != null && equippedArmor.checkEffectsImmunity()) {
+                System.out.println("✨ " + target.getName() + " resisted Immobilize ⛓️ due to " + equippedArmor.getName() + "!");
+            } else {
+                target.getEffects().applyImmobilize();
+            }
         }
     }
 
@@ -35,7 +51,22 @@ public class World2Miniboss1 extends Enemy{
         System.out.println("→ Tormenting Lash hits for " + reduced + " damage!");
         target.takeDamage(reduced);
 
-        target.getEffects().applyBleed(2);
+        // Reflect damage check
+        Armor equippedArmor = target.getInventory().getEquippedArmor();
+        if (equippedArmor != null) {
+            int reflectDamage = equippedArmor.checkReflectDamage(reduced);
+            if (reflectDamage > 0) {
+                System.out.println("🪞 " + equippedArmor.getName() + " reflected " + reflectDamage + " damage back to " + name + "!");
+                this.takeDamage(reflectDamage);
+            }
+        }
+
+        // Bleed — check immunity
+        if (equippedArmor != null && equippedArmor.checkEffectsImmunity()) {
+            System.out.println("✨ " + target.getName() + " resisted Bleed 🩸 due to " + equippedArmor.getName() + "!");
+        } else {
+            target.getEffects().applyBleed(2);
+        }
     }
 
 

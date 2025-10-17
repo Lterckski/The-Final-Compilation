@@ -16,8 +16,10 @@ public class Armor {
     private final int reflectPercent;
 
     public static final Armor LEATHER_GUARD = new Armor("Leather Guard", "\uD83D\uDFE2", 2, false, false, 0 ,0);
+    public static final Armor AEGIS_MAIL = new Armor("Aegis Mail", "\uD83D\uDD35", 25,true, false,0, 0);
+    public static final Armor VANGUARD_ROBE = new Armor("Vanguard Robe", "\uD83D\uDD35", 25, false, true, 0,0);
+    public static final Armor SKYFORGE_PLATE = new Armor("Skyforge Plate", "\uD83D\uDFE3", 40, true, true , 20, 15);
     public static final Armor CELESTIAL_BATTLEGEAR = new Armor("Celestial Battlegear", "\uD83D\uDFE1", 50, true, true, 20 ,15);
-
     public Armor(String name, String rarity, int defBuff, boolean immuneDebuff, boolean immuneEffects, int reflectChance, int reflectPercent){
         this.name = name;
         this.rarity = rarity;
