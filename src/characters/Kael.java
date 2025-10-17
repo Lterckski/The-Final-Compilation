@@ -75,12 +75,11 @@ public class Kael extends  Character{      // 15% crit chance
     }
 
     // Helper method to trigger weapon effects
-    private void triggerWeaponEffect(Character target, int baseDamage) {
-        if (this.getWeapon() != null && this.getWeapon().applyEffects(target, baseDamage)) {
+    private void triggerWeaponEffect(Character target, int damage) {
+        if (this.getWeapon() != null && this.getWeapon().applyEffects(target, damage)) {
             System.out.println("⚡ Weapon effect activated! Extra hit triggered.");
 
-            int extraDamage = (int) RandomUtil.range(attack * 1.15, attack * 1.35);
-            int reducedExtra = extraDamage - target.getDefense();
+            int reducedExtra = damage - target.getDefense();
             if (reducedExtra < 0) reducedExtra = 0;
 
             System.out.println("🗡 Extra hit from weapon for " + reducedExtra + " damage!");

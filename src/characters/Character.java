@@ -20,9 +20,10 @@ public abstract class Character {
     protected int baseAttack;
     protected int baseDefense;
     protected int ultimateCounter = 3;
+
     protected Weapon weapon;
-    private Effects effects;
-    private Inventory inventory;
+    private final Effects effects;
+    private final Inventory inventory;
 
     public Character(String name, String classType, int hp, int defense, int energy, int attack) { // for players
         this.name = name;

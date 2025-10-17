@@ -32,12 +32,8 @@ public class World1Enemy2 extends Enemy {
             }
         }
 
-        // Confuse effect with immunity check
-        if (equippedArmor != null && equippedArmor.checkEffectsImmunity()) {
-            System.out.println("✨ " + target.getName() + " resisted Confuse 💭 due to " + equippedArmor.getName() + "!");
-        } else {
-            target.getEffects().applyConfuse();
-        }
+        target.getEffects().applyConfuse();
+
     }
 
     @Override

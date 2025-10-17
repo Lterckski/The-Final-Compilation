@@ -1,6 +1,10 @@
 package enemies;
 
 import characters.Character;
+import inventory.Armor;
+import inventory.Bow;
+import inventory.Staff;
+import inventory.Sword;
 import utils.RandomUtil;
 
 public class World3Miniboss1 extends Enemy {
@@ -55,6 +59,28 @@ public class World3Miniboss1 extends Enemy {
         player.getPotions().lootPotions();
         player.getPotions().lootFullHealthPotions();
 
-        // TODO: implement item drop
+        System.out.println("\n🎁 You obtained an Epic Weapon!");
+        if (player.getClassType().equals("Swordsman")) {
+            Sword eclipseGreatsword = Sword.ECLIPSE_GREATSWORD;
+            if (eclipseGreatsword.lootWeapon()) {
+                eclipseGreatsword.equip(player);
+            }
+        } else if (player.getClassType().equals("Bow")) {
+            Bow aetherstrikeBow = Bow.AETHERSTRIKE_BOW;
+            if (aetherstrikeBow.lootWeapon()) {
+                aetherstrikeBow.equip(player);
+            }
+        } else if (player.getClassType().equals("Mage")) {
+            Staff aethericStaff = Staff.AETHERIC_STAFF;
+            if (aethericStaff.lootWeapon()) {
+                aethericStaff.equip(player);
+            }
+        }
+
+        System.out.println("\n🎁 You obtained an Epic Armor!");
+        Armor skyforgePlate = Armor.SKYFORGE_PLATE;
+        if (skyforgePlate.lootArmor()) {
+            skyforgePlate.equip(player);
+        }
     }
 }

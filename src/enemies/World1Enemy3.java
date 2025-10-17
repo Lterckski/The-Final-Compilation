@@ -32,14 +32,11 @@ public class World1Enemy3 extends Enemy {
             }
         }
 
-        // 30% chance to Immobilize (check immunity first)
+        // 30% chance to Immobilize
         if (RandomUtil.chance(30)) {
-            if (equippedArmor != null && equippedArmor.checkEffectsImmunity()) {
-                System.out.println("✨ " + target.getName() + " resisted Immobilize ⛓️ due to " + equippedArmor.getName() + "!");
-            } else {
-                target.getEffects().applyImmobilize();
-            }
+            target.getEffects().applyImmobilize();
         }
+
     }
 
     @Override

@@ -100,8 +100,8 @@ public class World2Miniboss1 extends Enemy{
         Armor vanguardRobe = Armor.VANGUARD_ROBE;   // +25 DEF, immune to status effects
 
         System.out.println("\n🎁 You obtained 2 Rare Armors!");
-        System.out.println("1️⃣ " + aegisMail.getName() + " → +25 DEF, immune to ATK↓ & DEF↓");
-        System.out.println("2️⃣ " + vanguardRobe.getName() + " → +25 DEF, immune to Poison, Burn, Bleed");
+        System.out.println("1️⃣ " + aegisMail.getName() + " → +25 DEF 🛡️, immune to ATK⬇️ & DEF⬇️");
+        System.out.println("2️⃣ " + vanguardRobe.getName() + " → +25 DEF 🛡️, immune to Poison ☠️, Burn 🔥, Bleed 🩸");
         System.out.print("\nChoose one to equip (1 or 2): ");
 
         int choice = InputUtil.scan.nextInt();

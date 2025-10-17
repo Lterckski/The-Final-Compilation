@@ -1,6 +1,7 @@
 package enemies;
 
 import characters.Character;
+import utils.InputUtil;
 import utils.RandomUtil;
 import inventory.*;
 
@@ -112,6 +113,71 @@ public class World2Miniboss2 extends Enemy {
         player.getPotions().lootPotions();
         player.getPotions().lootFullHealthPotions();
 
-        // TODO: implement weapon drop
+        System.out.println("\n🎁 You obtained 2 Rare Weapons!");
+
+        // Check the class type
+        if (player.getClassType().equals("Swordsman")) {
+            Sword twinstrikeBlade = Sword.TWINSTRIKE_BLADE;   // +15 ATK, 10% chance for 2nd attack
+            Sword lifebondBlade = Sword.LIFEBOND_BLADE;    // +15 ATK, restores 3% HP of damage dealt
+
+            System.out.println("1️⃣ " + twinstrikeBlade.getName() + " → +15 ATK, 10% chance for a second attack ⚡");
+            System.out.println("2️⃣ " + lifebondBlade.getName() + " → +15 ATK, restores 3% HP of damage dealt 💖");
+            System.out.print("\nChoose one to equip (1 or 2): ");
+
+            int choice = InputUtil.scan.nextInt();
+            InputUtil.scan.nextLine();
+
+            if (choice == 1) {
+                twinstrikeBlade.equip(player);
+                System.out.println("\nYou equipped " + twinstrikeBlade.getName() + "! The other weapon vanishes...");
+            } else if (choice == 2) {
+                lifebondBlade.equip(player);
+                System.out.println("\nYou equipped " + lifebondBlade.getName() + "! The other weapon vanishes...");
+            } else {
+                System.out.println("\nInvalid choice. Both weapons disappear...");
+            }
+
+        } else if (player.getClassType().equals("Archer")) {
+            Bow twinshotBow = Bow.TWINSHOT_BOW;    // +15 ATK, 10% chance to attack twice
+            Bow lifebloomBow = Bow.LIFEBLOOM_BOW;   // +15 ATK, restores 3% HP of damage dealt
+
+            System.out.println("1️⃣ " + twinshotBow.getName() + " → +15 ATK, +10% chance to attack twice 🎯");
+            System.out.println("2️⃣ " + lifebloomBow.getName() + " → +15 ATK, restores 3% HP of damage dealt 💖");
+            System.out.print("\nChoose one to equip (1 or 2): ");
+
+            int choice = InputUtil.scan.nextInt();
+            InputUtil.scan.nextLine();
+
+            if (choice == 1) {
+                twinshotBow.equip(player);
+                System.out.println("\nYou equipped " + twinshotBow.getName() + "! The other weapon vanishes...");
+            } else if (choice == 2) {
+                lifebloomBow.equip(player);
+                System.out.println("\nYou equipped " + lifebloomBow.getName() + "! The other weapon vanishes...");
+            } else {
+                System.out.println("\nInvalid choice. Both weapons disappear...");
+            }
+
+        } else if (player.getClassType().equals("Mage")) {
+            Staff mysticMindStaff = Staff.MYSTIC_MIND_STAFF; // +15 ATK, 30% chance to confuse
+            Staff flameheartStaff = Staff.FLAMEHEART_STAFF;  // +15 ATK, restores 3% HP of damage dealt
+
+            System.out.println("1️⃣ " + mysticMindStaff.getName() + " → +15 ATK, 30% chance to confuse enemy 🌀");
+            System.out.println("2️⃣ " + flameheartStaff.getName() + " → +15 ATK, restores 3% HP of damage dealt 💖");
+            System.out.print("\nChoose one to equip (1 or 2): ");
+
+            int choice = InputUtil.scan.nextInt();
+            InputUtil.scan.nextLine();
+
+            if (choice == 1) {
+                mysticMindStaff.equip(player);
+                System.out.println("\nYou equipped " + mysticMindStaff.getName() + "! The other weapon vanishes...");
+            } else if (choice == 2) {
+                flameheartStaff.equip(player);
+                System.out.println("\nYou equipped " + flameheartStaff.getName() + "! The other weapon vanishes...");
+            } else {
+                System.out.println("\nInvalid choice. Both weapons disappear...");
+            }
+        }
     }
 }

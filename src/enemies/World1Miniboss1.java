@@ -3,6 +3,7 @@ package enemies;
 import characters.Character;
 import inventory.Armor;
 import inventory.Bow;
+import inventory.Staff;
 import inventory.Sword;
 import utils.RandomUtil;
 
@@ -36,12 +37,9 @@ public class World1Miniboss1 extends Enemy {
 
         // 30% chance to stun
         if (RandomUtil.chance(30)) {
-            if (equippedArmor != null && equippedArmor.checkDebuffImmunity()) {
-                System.out.println("✨ " + target.getName() + " resisted Stun 💫 due to " + equippedArmor.getName() + "!");
-            } else {
-                target.getEffects().applyStun();
-            }
+            target.getEffects().applyStun();
         }
+
     }
 
     // Skill 2: Blackened Howl (reduces target DEF by 20% for 2 turns)
@@ -89,6 +87,7 @@ public class World1Miniboss1 extends Enemy {
         player.getPotions().lootPotions();
         player.getPotions().lootFullHealthPotions();
 
+        System.out.println("\n🎁 You obtained a Common Weapon!");
         if (player.getClassType().equals("Swordsman")) {
             Sword ironShortsword = Sword.IRON_SHORTSWORD;
             if (ironShortsword.lootWeapon()) {
@@ -100,9 +99,13 @@ public class World1Miniboss1 extends Enemy {
                 oakLongbow.equip(player);
             }
         } else if (player.getClassType().equals("Mage")) {
-            // TODO: add weapon loot for staff
+            Staff apprenticeStaff = Staff.APPRENTICE_STAFF;
+            if (apprenticeStaff.lootWeapon()) {
+                apprenticeStaff.equip(player);
+            }
         }
 
+        System.out.println("\n🎁 You obtained a Common Armor!");
         Armor ironVanguard = Armor.IRON_VANGUARD;
         if (ironVanguard.lootArmor()) {
             ironVanguard.equip(player);
