@@ -33,6 +33,7 @@ public class Armor {
     }
 
     public String getName() { return name; }
+    public int getDefBuff(){ return defBuff; }
 
     public boolean lootArmor() {
         System.out.println("Target has dropped an armor!");

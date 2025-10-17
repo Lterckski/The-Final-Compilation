@@ -8,26 +8,40 @@ import inventory.Weapon;
 import utils.InputUtil;
 
 public abstract class Character {
+
     protected String name;
     protected String classType;
-    protected int level = 1;
+
+    protected int level;
+    protected int exp;
+    protected int nextLevelExp;
+
+
     protected int hp;
     protected int maxHp;           // track max HP for healing
     protected int defense;
     protected int energy;
     protected int maxEnergy;       // track max energy
     protected int attack;
+
     protected int baseAttack;
     protected int baseDefense;
+
     protected int ultimateCounter = 3;
 
-    protected Weapon weapon;
     private final Effects effects;
     private final Inventory inventory;
+
+    private static final int[] XP_TABLE = {
+            0, 100, 115, 130, 150, 175, 200, 230, 265, 305, 355,
+            405, 465, 535, 615, 720, 875, 1040, 1350, 1650, 2200,
+            2500, 2900, 3350, 3800, 4400, 5000, 5800, 6600, 7400
+    };
 
     public Character(String name, String classType, int hp, int defense, int energy, int attack) { // for players
         this.name = name;
         this.classType = classType;
+        this.level = 1;
         this.hp = hp;
         this.maxHp = hp;
         this.baseDefense = defense;
@@ -38,6 +52,8 @@ public abstract class Character {
         this.attack = attack;
         this.effects = new Effects(this);
         this.inventory = new Inventory(this);
+        this.exp = 0;
+        this.nextLevelExp = XP_TABLE[1];
     }
 
     public Character(String name, int hp, int defense, int attack) { // for enemies
@@ -85,6 +101,7 @@ public abstract class Character {
         System.out.println("Name    : " + name);
         System.out.println("Class   : " + classType);
         System.out.println("Level   : " + level);
+        System.out.println("EXP     : " + exp + "/" + nextLevelExp);
         System.out.println("Health  : " + hp + "/" + maxHp);
         System.out.println("Energy  : " + energy + "/" + maxEnergy);
 
@@ -179,7 +196,54 @@ public abstract class Character {
         if(energy > maxEnergy) energy = maxEnergy;
     }
 
-    public void levelUp(int levels){
-        
+    public void gainExp(int amount){
+        exp += amount;
+        System.out.println("Gained" + amount + "XP!");
+
+        while(level < XP_TABLE.length && exp >= nextLevelExp){
+            levelUp();
+        }
     }
+
+    public void levelUp() {
+        level++;
+        System.out.println("\n✨ LEVEL UP! You are now Level " + level + "! ✨");
+
+        // Store old values before increasing
+        int oldHp = maxHp;
+        int oldAtk = baseAttack;
+        int oldDef = baseDefense;
+        int oldEnergy = maxEnergy;
+
+        // Increase stats
+        maxHp = (int) Math.round(maxHp * 1.13);
+        baseAttack = (int) Math.round(baseAttack * 1.13);
+        baseDefense = (int) Math.round(baseDefense * 1.13);
+        maxEnergy += 10;
+
+        // Restore HP and Energy
+        hp = maxHp;
+        energy = maxEnergy;
+
+        // Subtract XP before setting next requirement
+        exp -= nextLevelExp;
+        if (level < XP_TABLE.length) {
+            nextLevelExp = XP_TABLE[level];
+        }
+
+        recalculateBuffs();
+
+        // Show detailed stat gains
+        System.out.println("💖 HP     : +" + (maxHp - oldHp) + " → " + maxHp);
+        System.out.println("⚔️ ATK    : +" + (baseAttack - oldAtk) + " → " + attack);
+        System.out.println("🛡️ DEF    : +" + (baseDefense - oldDef) + " → " + defense);
+        System.out.println("🔋 Energy : +" + (maxEnergy - oldEnergy) + " → " + maxEnergy);
+        System.out.println("─────────────────────────────");
+    }
+
+    public void recalculateBuffs(){
+        attack = baseAttack + getWeapon().getAtkBuff();
+        defense = baseDefense + getArmor().getDefBuff();
+    }
+
 }

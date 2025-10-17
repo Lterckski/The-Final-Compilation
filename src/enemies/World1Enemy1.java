@@ -50,4 +50,9 @@ public class World1Enemy1 extends Enemy {
     public void dropLoot(Character player){
         player.getPotions().lootPotions();
     }
+
+    @Override
+    public int getExp(){
+        return RandomUtil.range(34,36);
+    }
 }
