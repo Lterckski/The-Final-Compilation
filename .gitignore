@@ -1,7 +1,3 @@
-# ================================
-# RPG Project: Complete .gitignore
-# ================================
-
 # Project-specific ignored files
 /shelf/
 /workspace.xml
@@ -22,12 +18,4 @@
 # Compiled output
 /out/
 /target/
-*.class
 
-# Logs
-*.log
-
-# Temporary files
-*.tmp
-*.swp
-*~
