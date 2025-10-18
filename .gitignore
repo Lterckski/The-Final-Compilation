@@ -1,5 +1,33 @@
-# Default ignored files
+# ================================
+# RPG Project: Complete .gitignore
+# ================================
+
+# Project-specific ignored files
 /shelf/
 /workspace.xml
-# Environment-dependent path to Maven home directory
 /mavenHomeManager.xml
+
+# IntelliJ IDEA files
+/.idea/
+*.iml
+*.iws
+*.ipr
+/.idea/workspace.xml
+/.idea/material_theme_project_new.xml
+/.idea/vcs.xml
+
+# VS Code files
+.vscode/
+
+# Compiled output
+/out/
+/target/
+*.class
+
+# Logs
+*.log
+
+# Temporary files
+*.tmp
+*.swp
+*~
