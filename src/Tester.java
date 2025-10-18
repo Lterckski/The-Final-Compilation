@@ -122,7 +122,7 @@ public class Tester {
         */
         System.out.println();
 
-        Enemy enemy1 = new World1Enemy1();
+        Enemy enemy1 = new World3Miniboss1();
         Battle battle1 = new Battle(player, enemy1);
 
         System.out.println("ENEMY ENCOUNTERED!");

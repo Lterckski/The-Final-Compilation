@@ -117,4 +117,9 @@ public class World2Miniboss1 extends Enemy{
             System.out.println("\nInvalid choice. Both armors vanish into the mist...");
         }
     }
+
+    @Override
+    public int getExp(){
+        return 1833;
+    }
 }

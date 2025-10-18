@@ -180,4 +180,9 @@ public class World2Miniboss2 extends Enemy {
             }
         }
     }
+
+    @Override
+    public int getExp(){
+        return 5692;
+    }
 }

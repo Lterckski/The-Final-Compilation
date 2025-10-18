@@ -198,7 +198,7 @@ public abstract class Character {
 
     public void gainExp(int amount){
         exp += amount;
-        System.out.println("Gained" + amount + "XP!");
+        System.out.println("Gained" + amount + " XP!");
 
         while(level < XP_TABLE.length && exp >= nextLevelExp){
             levelUp();
