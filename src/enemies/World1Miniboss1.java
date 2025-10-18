@@ -111,4 +111,6 @@ public class World1Miniboss1 extends Enemy {
             ironVanguard.equip(player);
         }
     }
+    @Override
+    public int getExp(){return 616;}
 }

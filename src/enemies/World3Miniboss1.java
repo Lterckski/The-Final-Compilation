@@ -83,4 +83,7 @@ public class World3Miniboss1 extends Enemy {
             skyforgePlate.equip(player);
         }
     }
+
+    @Override
+    public int getExp(){return 10066;}
 }
