@@ -1,6 +1,7 @@
 package enemies;
 
 import characters.Character;
+import inventory.Armor;
 import utils.RandomUtil;
 
 public class World3Enemy2 extends Enemy {
@@ -9,19 +10,34 @@ public class World3Enemy2 extends Enemy {
 
     public void shadowBolt(Character target) {
         System.out.println("💀 " + name + " casts Shadow Bolt!");
-        if(target.getEffects().checkDodge()) return;
+        if (target.getEffects().checkDodge()) return;
 
-        int damage = (int)RandomUtil.range(attack * 1.00, attack * 1.25);
+        int damage = (int) RandomUtil.range(attack * 1.00, attack * 1.25);
         int reduced = damage - target.getDefense();
-        if(reduced < 0) reduced = 0;
+        if (reduced < 0) reduced = 0;
 
         System.out.println("→ Shadow Bolt hits for " + reduced + " damage!");
         target.takeDamage(reduced);
 
-        if(RandomUtil.chance(30)){
-            target.getEffects().applyAttackDebuff(30, 2);
+        // Armor reflect check
+        Armor equippedArmor = target.getInventory().getEquippedArmor();
+        if (equippedArmor != null) {
+            int reflectDamage = equippedArmor.checkReflectDamage(reduced);
+            if (reflectDamage > 0) {
+                System.out.println("🪞 " + equippedArmor.getName() + " reflected " + reflectDamage + " damage back to " + name + "!");
+                this.takeDamage(reflectDamage);
+            }
         }
- }
+
+        // 30% chance to apply Weaken (ATK debuff 30% for 2 turns) — check debuff immunity first
+        if (RandomUtil.chance(30)) {
+            if (equippedArmor != null && equippedArmor.checkEffectsImmunity()) {
+                System.out.println("✨ " + target.getName() + " resisted Weaken 💢  due to " + equippedArmor.getName() + "!");
+            } else {
+                target.getEffects().applyAttackDebuff(30, 2);
+            }
+        }
+    }
 
     @Override
     public void displaySkills() {

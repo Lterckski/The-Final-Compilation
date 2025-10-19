@@ -1,6 +1,7 @@
 package enemies;
 
 import characters.Character;
+import inventory.Armor;
 import utils.RandomUtil;
 
 public class World3Enemy3 extends Enemy {
@@ -17,6 +18,16 @@ public class World3Enemy3 extends Enemy {
 
         System.out.println("→ Magma Slam hits for " +  reduced + " damage!");
         target.takeDamage(reduced);
+
+        // Armor reflect check
+        Armor equippedArmor = target.getInventory().getEquippedArmor();
+        if (equippedArmor != null) {
+            int reflectDamage = equippedArmor.checkReflectDamage(reduced);
+            if (reflectDamage > 0) {
+                System.out.println("🪞 " + equippedArmor.getName() + " reflected " + reflectDamage + " damage back to " + name + "!");
+                this.takeDamage(reflectDamage);
+            }
+        }
 
         if(RandomUtil.chance(30)) {
             target.getEffects().applyStun();
