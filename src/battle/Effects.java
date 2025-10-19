@@ -82,7 +82,7 @@ public class Effects {
         atkBuffs.add(new StatModifier(amount, duration+1));
         owner.setAttack(owner.getAttack() + amount);
 
-        System.out.println("💪 Strengthen activated! +" + percent + "% ATK for " + duration + " turns!");
+        System.out.println("💪 Strengthen activated! +" + percent + "% ATK for " + duration + " turn/s!");
     }
 
     public void applyAttackDebuff(int percent, int duration) {
@@ -90,7 +90,7 @@ public class Effects {
         atkDebuffs.add(new StatModifier(amount, duration+1));
         owner.setAttack(owner.getAttack() - amount);
 
-        System.out.println("💢 Weaken applied! -" + percent + "% ATK for " + duration + " turns!");
+        System.out.println("💢 Weaken applied! -" + percent + "% ATK for " + duration + " turn/s!");
     }
 
     public void applyDefenseBuff(int percent, int duration) {
@@ -98,7 +98,7 @@ public class Effects {
         defBuffs.add(new StatModifier(amount, duration+1));
         owner.setDefense(owner.getDefense() + amount);
 
-        System.out.println("🛡️ Fortified activated! +" + percent + "% DEF for " + duration + " turns!");
+        System.out.println("🛡️ Fortified activated! +" + percent + "% DEF for " + duration + " turn/s!");
     }
 
     // Fixed amount version (like a shield)
@@ -106,7 +106,7 @@ public class Effects {
         defDebuffs.add(new StatModifier(amount, duration));
         owner.setDefense(owner.getDefense() - amount);
 
-        System.out.println("🛡️ Shield activated! +" + amount + " DEF for " + duration + " turns!");
+        System.out.println("🛡️ Shield activated! +" + amount + " DEF for " + duration + " turn/s!");
     }
 
     public void applyDefenseDebuff(int percent, int duration) {
@@ -114,24 +114,24 @@ public class Effects {
         defDebuffs.add(new StatModifier(amount, duration+1));
         owner.setDefense(owner.getDefense() - amount);
 
-        System.out.println("🔻 Fragile applied! -" + percent + "% DEF for " + duration + " turns!");
+        System.out.println("🔻 Fragile applied! -" + percent + "% DEF for " + duration + " turn/s!");
     }
 
 
     public void applyPoison(int turns) {
         poisonTurnsLeft += turns;
-        System.out.println("☠️ Target is poisoned for " + turns + " turns!");
+        System.out.println("☠️ Target is poisoned for " + turns + " turn/s!");
     }
 
     public void applyBleed(int turns) {
         bleedInitialTurns += turns;
         bleedTurnsLeft += turns;
-        System.out.println("🩸 Target is bleeding for " + turns + " turns!");
+        System.out.println("🩸 Target is bleeding for " + turns + " turn/s!");
     }
 
     public void applyBurn(int turns) {
         burnTurnsLeft += turns;
-        System.out.println("🔥 Target is burned for " + turns + " turns!");
+        System.out.println("🔥 Target is burned for " + turns + " turn/s!");
     }
 
     // Check if character has any active ATK buff

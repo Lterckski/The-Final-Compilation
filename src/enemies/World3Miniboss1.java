@@ -29,7 +29,7 @@ public class World3Miniboss1 extends Enemy {
     }
 
     @Override
-    public void showSkills() {
+    public void displaySkills() {
         System.out.println("\n------- THE TOWER WARDEN SKILLS -------");
         System.out.println("Skill 1 – Grave Cleaver");
         System.out.println("Description: The Tower Warden performs a deathly slash. Inflicting pure damage to it's victims.");

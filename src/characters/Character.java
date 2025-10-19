@@ -5,6 +5,7 @@ import inventory.Armor;
 import inventory.Inventory;
 import inventory.Potions;
 import inventory.Weapon;
+import story.ScenePrinter;
 import utils.InputUtil;
 
 public abstract class Character {
@@ -96,7 +97,7 @@ public abstract class Character {
         return this.getInventory().getPotions();
     }
 
-    public void showStats() {
+    public void displayStats() {
         System.out.println("\n=========== Stats ============");
         System.out.println("Name    : " + name);
         System.out.println("Class   : " + classType);
@@ -127,10 +128,10 @@ public abstract class Character {
     }
 
 
-    public abstract void showSkills();
+    public abstract void displaySkills();
     public abstract void turn (Character target);
 
-    public void showMenu(Character player, Character enemy){
+    public void displayMenu(Character player, Character enemy){
         boolean goBack = false;
 
         while(!goBack){
@@ -139,19 +140,20 @@ public abstract class Character {
             System.out.println("(3) Show Player Skills Overview");
             System.out.println("(4) Show Enemy Stats");
             System.out.println("(5) Show Enemy Skills Overview");
-            System.out.println("(6) Go back");
+            System.out.println("(0) Go back");
 
             System.out.print("Enter choice: ");
             int choice = InputUtil.scan.nextInt();
             InputUtil.scan.nextLine();
+            ScenePrinter.line();
 
             switch (choice){
                 case 1 -> player.getInventory().openInventory();
-                case 2 -> player.showStats();
-                case 3 ->  player.showSkills();
-                case 4 -> enemy.showStats();
-                case 5 -> enemy.showSkills();
-                case 6 -> goBack = true;
+                case 2 -> player.displayStats();
+                case 3 ->  player.displaySkills();
+                case 4 -> enemy.displayStats();
+                case 5 -> enemy.displaySkills();
+                case 0 -> goBack = true;
                 default -> System.out.println("❌ Invalid choice! Please select a valid option.");
             }
         }
@@ -183,7 +185,7 @@ public abstract class Character {
     public void skipTurn(){
         energy += (int) (maxEnergy * 0.10);
         if(energy > maxEnergy) energy = maxEnergy;
-        System.out.println("Turn skipped! Restored a bit of energy. (Energy: " + energy + "/" + maxEnergy + ")");
+        System.out.println("✨Turn skipped! Restored a bit of energy. (Energy: " + energy + "/" + maxEnergy + ")");
     }
 
     public void heal(int amount){
@@ -198,8 +200,9 @@ public abstract class Character {
 
     public void gainExp(int amount){
         exp += amount;
-        System.out.println("Gained" + amount + " XP!");
-
+        ScenePrinter.shortLine();
+        System.out.println("✨Gained " + amount + " XP!");
+        ScenePrinter.shortLine();
         while(level < XP_TABLE.length && exp >= nextLevelExp){
             levelUp();
         }
@@ -207,7 +210,10 @@ public abstract class Character {
 
     public void levelUp() {
         level++;
-        System.out.println("\n✨ LEVEL UP! You are now Level " + level + "! ✨");
+
+        System.out.println();
+        ScenePrinter.hr();
+        System.out.println("✨ LEVEL UP! You are now Level " + level + "! ✨");
 
         // Store old values before increasing
         int oldHp = maxHp;
@@ -216,9 +222,9 @@ public abstract class Character {
         int oldEnergy = maxEnergy;
 
         // Increase stats
-        maxHp = (int) Math.round(maxHp * 1.13);
-        baseAttack = (int) Math.round(baseAttack * 1.13);
-        baseDefense = (int) Math.round(baseDefense * 1.13);
+        maxHp = (int) Math.ceil(maxHp * 1.13);
+        baseAttack = (int) Math.ceil(baseAttack * 1.13);
+        baseDefense = (int) Math.ceil(baseDefense * 1.13);
         maxEnergy += 10;
 
         // Restore HP and Energy
@@ -238,7 +244,8 @@ public abstract class Character {
         System.out.println("⚔️ ATK    : +" + (baseAttack - oldAtk) + " → " + attack);
         System.out.println("🛡️ DEF    : +" + (baseDefense - oldDef) + " → " + defense);
         System.out.println("🔋 Energy : +" + (maxEnergy - oldEnergy) + " → " + maxEnergy);
-        System.out.println("─────────────────────────────");
+        ScenePrinter.hr();
+        System.out.println();
     }
 
     public void recalculateBuffs(){

@@ -120,6 +120,7 @@ public class Tester {
         Armor armor1 = Armor.LEATHER_GUARD;
         armor1.equip(player);
         */
+
         System.out.println();
 
         Enemy enemy1 = new World3Miniboss1();

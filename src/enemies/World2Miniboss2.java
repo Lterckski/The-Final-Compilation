@@ -75,7 +75,7 @@ public class World2Miniboss2 extends Enemy {
     }
 
     @Override
-    public void showSkills() {
+    public void displaySkills() {
         System.out.println("\n------- THE CORRUPTED KING SKILLS -------");
         System.out.println("Skill 1 – Crown of Despair");
         System.out.println("Description: The Corrupted King raises his crown, instilling fear and weakening his foe.");

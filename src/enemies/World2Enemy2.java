@@ -42,7 +42,7 @@ public class World2Enemy2 extends Enemy{
     }
 
     @Override
-    public void showSkills() {
+    public void displaySkills() {
         System.out.println("\n------- FORSAKEN CULTISTS SKILLS -------");
         System.out.println("Skill – Shadow Bolt");
         System.out.println("Description: Cultists hurl dark bolts of energy, weakening their foe.");

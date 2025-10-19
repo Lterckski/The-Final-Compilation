@@ -8,7 +8,7 @@ public class Karl extends Character{
     this.getInventory().setEquippedWeapon(Bow.OAK_LONGBOW);}
 
     @Override
-    public void showSkills() {
+    public void displaySkills() {
         System.out.println("\n----------- KARL'S SKILLS -----------");
         System.out.println("Passive – Hunter’s Instinct");
         System.out.println("Deal +20% damage to enemies below 30% HP.\n");
@@ -182,7 +182,7 @@ public class Karl extends Character{
                     case 2 -> { bullsEye(target); isValid = true; ultimateCounter--; }
                     case 3 -> System.out.println("❌ Ultimate is on cooldown!");
                     case 4 -> { skipTurn(); isValid = true; ultimateCounter--; }
-                    case 5 -> showMenu(this, target);
+                    case 5 -> displayMenu(this, target);
                     default -> { System.out.println("❌ Invalid action! You missed your turn."); isValid = true; ultimateCounter--; }
                 }
 
@@ -203,7 +203,7 @@ public class Karl extends Character{
                     case 2 -> { bullsEye(target); isValid = true; }
                     case 3 -> { rainOfAThousandArrows(target); ultimateCounter = 3; isValid = true; }
                     case 4 -> { skipTurn(); isValid = true; }
-                    case 5 -> showMenu(this, target);
+                    case 5 -> displayMenu(this, target);
                     default -> { System.out.println("❌ Invalid action! You missed your turn."); isValid = true; }
                 }
             }

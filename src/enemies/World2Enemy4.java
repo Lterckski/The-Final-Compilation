@@ -41,7 +41,7 @@ public class World2Enemy4 extends Enemy{
 
 
     @Override
-    public void showSkills() {
+    public void displaySkills() {
         System.out.println("\n------- GHOUL FOOTMEN SKILLS -------");
         System.out.println("Skill – Rotten Cleave");
         System.out.println("Description: The Ghoul Footman slashes with a putrid blade, spreading disease and pain.");

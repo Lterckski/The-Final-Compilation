@@ -1,6 +1,7 @@
 package inventory;
 
 import characters.Character;
+import story.ScenePrinter;
 import utils.InputUtil;
 
 public class Inventory {
@@ -38,11 +39,12 @@ public class Inventory {
             System.out.println("(3) Use Normal Healing Potion");
             System.out.println("(4) Use Full Healing Potion");
             System.out.println("(5) Use Energy Potion");
-            System.out.println("(6) Back");
+            System.out.println("(0) Back");
             System.out.print("Choose an option: ");
 
             int choice = InputUtil.scan.nextInt();
             InputUtil.scan.nextLine();
+            ScenePrinter.line();
 
             switch (choice) {
                 case 1 -> {
@@ -68,7 +70,7 @@ public class Inventory {
                         if (areYouSure()) potions.useEnergyPotion();
                     } else System.out.println("❌ No energy potions left!");
                 }
-                case 6 -> exit = true;
+                case 0 -> exit = true;
                 default -> System.out.println("❌ Invalid input! Try again.");
             }
         }

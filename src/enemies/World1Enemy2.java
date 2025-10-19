@@ -37,7 +37,7 @@ public class World1Enemy2 extends Enemy {
     }
 
     @Override
-    public void showSkills(){
+    public void displaySkills(){
         System.out.println("\n------- SHADE SPRITES SKILLS -------");
         System.out.println("Skill – Trickster Strike");
         System.out.println("Description: The Shade Sprites strike mischievously, leaving their target disoriented.");

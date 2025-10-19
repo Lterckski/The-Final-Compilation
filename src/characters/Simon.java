@@ -1,5 +1,6 @@
 package characters;
 
+import story.ScenePrinter;
 import utils.RandomUtil;
 
 public class Simon extends Character {
@@ -7,7 +8,7 @@ public class Simon extends Character {
     public Simon() { super("Simon Versace", "Mage", 60, 2, 150, 15); }
 
     @Override
-    public void showSkills() {
+    public void displaySkills() {
         System.out.println("\n----------- SIMON'S SKILLS -----------");
         System.out.println("Passive – Arcane Flow");
         System.out.println("Restores +5% of total Energy each turn.\n");
@@ -16,7 +17,7 @@ public class Simon extends Character {
         System.out.println("Description: Conjures a blazing orb of fire and hurls it at an enemy.");
         System.out.println("Damage: (" + (int)(attack * 1.25) + " — " + (int)(attack * 1.55) + ")");
         System.out.println("Effects:");
-        System.out.println("- Applies Burn for 3 turns");
+        System.out.println("- Applies Burn for 1 turn");
         System.out.println("- 30% chance to Weaken target (-20% ATK for 2 turns)\n");
 
         System.out.println("Skill 2 – Ice Prison (20 Energy)");
@@ -79,7 +80,7 @@ public class Simon extends Character {
         getInventory().getEquippedWeapon().applyEffects(target, reduced);
 
         // Apply Burn
-        target.getEffects().applyBurn(3);
+        target.getEffects().applyBurn(1);
 
         // 30% chance to apply Weaken
         if (RandomUtil.chance(30)) {
@@ -155,7 +156,7 @@ public class Simon extends Character {
                 System.out.println("(2) Skill 2   -  Ice Prison");
                 System.out.println("(3) Ultimate  -  Meteor Storm ❌ (Available in " + ultimateCounter + " turns)");
                 System.out.println("(4) Skip Turn -  Restore 10% of Max Energy");
-                System.out.println("(5) Show Menu");
+                System.out.println("(0) Show Menu");
                 System.out.print("Choose your action: ");
 
                 int choice = utils.InputUtil.scan.nextInt();
@@ -167,13 +168,14 @@ public class Simon extends Character {
                     case 2 -> { icePrison(target); isValid = true; ultimateCounter--; }
                     case 3 -> System.out.println("❌ Ultimate is on cooldown! Can only be used after " + ultimateCounter + " turns.");
                     case 4 -> { skipTurn(); isValid = true; ultimateCounter--; }
-                    case 5 -> showMenu(this, target); // doesn’t consume the turn
+                    case 5 -> displayMenu(this, target); // doesn’t consume the turn
                     default -> { System.out.println("❌ Invalid action! You missed your turn."); isValid = true; ultimateCounter--; }
                 }
 
             }
             // If ultimate is ready
             else {
+                ScenePrinter.shortLine();
                 System.out.println("(1) Skill 1   -  Fireball");
                 System.out.println("(2) Skill 2   -  Ice Prison");
                 System.out.println("(3) Ultimate  -  Meteor Storm");
@@ -183,14 +185,14 @@ public class Simon extends Character {
 
                 int choice = utils.InputUtil.scan.nextInt();
                 utils.InputUtil.scan.nextLine();
-                System.out.println("---------------");
+                ScenePrinter.shortLine();
 
                 switch (choice) {
                     case 1 -> { fireball(target); isValid = true; }
                     case 2 -> { icePrison(target); isValid = true; }
                     case 3 -> { meteorStorm(target); ultimateCounter = 3; isValid = true; }
                     case 4 -> { skipTurn(); isValid = true; }
-                    case 5 -> showMenu(this, target); // doesn’t consume the turn
+                    case 5 -> displayMenu(this, target); // doesn’t consume the turn
                     default -> { System.out.println("❌ Invalid action! You missed your turn."); isValid = true; }
                 }
             }

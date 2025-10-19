@@ -40,7 +40,7 @@ public class World1Enemy3 extends Enemy {
     }
 
     @Override
-    public void showSkills(){
+    public void displaySkills(){
         System.out.println("\n------- DREADBARK TREANTS SKILLS -------");
         System.out.println("Skill – Root Snare");
         System.out.println("Description: The Treants lash out with entangling roots, trying to trap their foe.");

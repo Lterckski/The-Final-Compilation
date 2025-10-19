@@ -56,7 +56,7 @@ public class World1Miniboss1 extends Enemy {
     }
 
     @Override
-    public void showSkills() {
+    public void displaySkills() {
         System.out.println("\n------- THE HOLLOW STAG SKILLS -------");
         System.out.println("Skill 1 – Deathly Charge");
         System.out.println("Description: The Hollow Stag charges with deadly force, attempting to stun its foe.");

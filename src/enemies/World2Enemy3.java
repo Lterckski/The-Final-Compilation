@@ -43,7 +43,7 @@ public class World2Enemy3 extends Enemy{
     }
 
     @Override
-    public void showSkills() {
+    public void displaySkills() {
         System.out.println("\n------- BLIGHT HOUNDS SKILLS -------");
         System.out.println("Skill – Corpse Explosion");
         System.out.println("Description: The Blight Hounds cause corpses to explode, damaging and weakening their target.");

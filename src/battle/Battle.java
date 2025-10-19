@@ -2,6 +2,7 @@ package battle;
 
 import characters.Character;
 
+import story.ScenePrinter;
 import utils.InputUtil;
 
 public class Battle {
@@ -22,7 +23,7 @@ public class Battle {
         boolean willFight = false;
 
         while(!willFight){
-            System.out.println("-------------------------------------");
+            ScenePrinter.line();
             System.out.println("What will you do?");
             System.out.println("1. Fight enemy");
             System.out.println("2. Open Inventory");
@@ -34,22 +35,25 @@ public class Battle {
             System.out.print("Enter choice: ");
             int choice = InputUtil.scan.nextInt();
             InputUtil.scan.nextLine();
+            ScenePrinter.line();
 
             switch (choice){
                 case 1 -> { System.out.println("⚔️ You chose to fight!"); willFight = true; }
                 case 2 -> player.getInventory().openInventory();
-                case 3 -> player.showStats();
-                case 4 -> player.showSkills();
-                case 5 -> enemy.showStats();
-                case 6 -> enemy.showSkills();
+                case 3 -> player.displayStats();
+                case 4 -> player.displaySkills();
+                case 5 -> enemy.displayStats();
+                case 6 -> enemy.displaySkills();
                 default -> System.out.println("❌ Invalid choice! Please select a valid option.");
             }
         }
     }
 
     public void battleLoop() {
-        System.out.println("------------------------------");
-        System.out.println("\n⚔️ Battle Start! " + player.getName() + " vs " + enemy.getName());
+        ScenePrinter.line();
+        ScenePrinter.hr();
+        System.out.println("⚔️ Battle Start! " + player.getName() + " vs " + enemy.getName());
+        ScenePrinter.hr();
 
         while (player.isAlive() && enemy.isAlive()) {
 
@@ -67,10 +71,10 @@ public class Battle {
 
             // Apply poison/burn etc. after action
             player.getEffects().updateDoTEffects();
-            System.out.println("------------------------------");
+            ScenePrinter.line();
 
             if (!enemy.isAlive()) {
-                System.out.println("🔥 You defeated " + enemy.getName() + "!");
+                //System.out.println("🔥 You defeated " + enemy.getName() + "!");
                 break;
             }
 
@@ -87,7 +91,7 @@ public class Battle {
             // Apply DoT after enemy acts
             enemy.getEffects().updateDoTEffects();
             InputUtil.pressEnterToContinue();
-            System.out.println("------------------------------");
+            ScenePrinter.line();
         }
 
         if (!player.isAlive()) {

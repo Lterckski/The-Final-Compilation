@@ -69,7 +69,7 @@ public class World2Miniboss1 extends Enemy{
 
 
     @Override
-    public void showSkills() {
+    public void displaySkills() {
         System.out.println("\n------- THE BLACK JAILER SKILLS -------");
         System.out.println("Skill 1 – Shackling Chains");
         System.out.println("Description: The Black Jailer swings his chains to bind and cripple his opponent.");

@@ -32,7 +32,7 @@ public class World1Enemy1 extends Enemy {
     }
 
     @Override
-    public void showSkills(){
+    public void displaySkills(){
         System.out.println("\n------- ROTFANG WOLVES SKILLS -------");
         System.out.println("Skill – Savage Howl");
         System.out.println("Description: The wolves unleash a feral howl, striking their target with raw power.");

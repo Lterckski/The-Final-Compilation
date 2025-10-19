@@ -43,7 +43,7 @@ public class World1Enemy4 extends Enemy {
     }
 
     @Override
-    public void showSkills(){
+    public void displaySkills(){
         System.out.println("\n------- CARRION BATS SKILLS -------");
         System.out.println("Skill – Screech");
         System.out.println("Description: The bats emit a piercing screech, unsettling their foe and lowering their attack.");

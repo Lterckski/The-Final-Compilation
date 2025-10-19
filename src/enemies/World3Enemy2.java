@@ -24,7 +24,7 @@ public class World3Enemy2 extends Enemy {
  }
 
     @Override
-    public void showSkills() {
+    public void displaySkills() {
         System.out.println("\n------- BONE WARLOCK SKILLS -------");
         System.out.println("Description: Bone Warlock will cast Shadow Bolt, reducing attack damage of the victim.");
         System.out.println("Damage: (" + (int)(attack * 1.00) + " — " + (int)(attack * 1.25) + ")");

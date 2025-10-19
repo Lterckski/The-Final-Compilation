@@ -1,6 +1,7 @@
 package inventory;
 
 import characters.Character;
+import story.ScenePrinter;
 import utils.RandomUtil;
 
 public class Potions {
@@ -64,6 +65,7 @@ public class Potions {
             }
         }
 
+        ScenePrinter.line();
         System.out.println("🎁 You received:");
         if(normalHealingPotionsCount > 0){
             System.out.println("❤️🧪 " + normalHealingPotionsCount + " Normal Healing Potion" + (normalHealingPotionsCount > 1 ? "s" : ""));
@@ -71,6 +73,7 @@ public class Potions {
         if(energyPotionsCount > 0){
             System.out.println("⚡🧪 " + energyPotionsCount + " Energy Potion" + (energyPotionsCount > 1 ? "s" : ""));
         }
+        ScenePrinter.line();
     }
 
     public void lootFullHealthPotions(){

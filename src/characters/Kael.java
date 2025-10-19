@@ -1,6 +1,5 @@
 package characters;
 
-import inventory.Bow;
 import utils.RandomUtil;
 
 public class Kael extends  Character{      // 15% crit chance
@@ -10,7 +9,7 @@ public class Kael extends  Character{      // 15% crit chance
     }
 
     @Override
-    public void showSkills() {
+    public void displaySkills() {
         System.out.println("\n----------- KAEL'S SKILLS -----------");
         // Passive
         System.out.println("Passive – Blade Swift");
@@ -198,7 +197,7 @@ public class Kael extends  Character{      // 15% crit chance
                     case 2 -> { guardBreaker(target); isValid = true; ultimateCounter--;}
                     case 3 -> System.out.println("❌ Ultimate is on cooldown! Can only be used after " + ultimateCounter + " turns.");
                     case 4 -> { skipTurn(); isValid = true; ultimateCounter--;}
-                    case 5 -> showMenu(this, target);
+                    case 5 -> displayMenu(this, target);
                     default -> { System.out.println(" Invalid action! You missed your turn."); isValid = true; ultimateCounter--;}
                 }
 
@@ -221,7 +220,7 @@ public class Kael extends  Character{      // 15% crit chance
                     case 2 -> { guardBreaker(target); isValid = true; }
                     case 3 -> { eternalCrossSlash(target); ultimateCounter = 3; isValid = true; }
                     case 4 -> { skipTurn(); isValid = true; }
-                    case 5 -> showMenu(this, target);
+                    case 5 -> displayMenu(this, target);
                     default -> { System.out.println(" Invalid action! You missed your turn."); isValid = true; }
                 }
             }
