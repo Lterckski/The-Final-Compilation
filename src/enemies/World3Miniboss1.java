@@ -17,18 +17,8 @@ public class World3Miniboss1 extends Enemy {
 
         int damage = (int)RandomUtil.range(attack * 1.00, attack * 1.15);
 
-        System.out.println("→ Grave Cleaver hits for " + damage + " damage!");
+        System.out.println("→ Grave Cleaver hits for " + damage + " Pure Damage!");
         target.takeDamage(damage);
-
-        // Armor reflect check
-        Armor equippedArmor = target.getInventory().getEquippedArmor();
-        if (equippedArmor != null) {
-            int reflectDamage = equippedArmor.checkReflectDamage(damage);
-            if (reflectDamage > 0) {
-                System.out.println("🪞 " + equippedArmor.getName() + " reflected " + reflectDamage + " damage back to " + name + "!");
-                this.takeDamage(reflectDamage);
-            }
-        }
     }
 
     public void boneShield() {
