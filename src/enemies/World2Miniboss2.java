@@ -7,7 +7,7 @@ import inventory.*;
 
 public class World2Miniboss2 extends Enemy {
     public World2Miniboss2() {
-        super("The Corrupted King", 854, 32, 100);
+        super("Luther Von", 854, 32, 100);
     }
 
     public void crownOfDespair(Character target) {
@@ -110,6 +110,7 @@ public class World2Miniboss2 extends Enemy {
 
     @Override
     public void dropLoot(Character player){
+        player.gainExp(rewardExp());
         player.getPotions().lootPotions();
         player.getPotions().lootFullHealthPotions();
 
@@ -182,7 +183,7 @@ public class World2Miniboss2 extends Enemy {
     }
 
     @Override
-    public int getExp(){
+    public int rewardExp(){
         return 5692;
     }
 }

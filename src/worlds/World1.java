@@ -1,7 +1,6 @@
 package worlds;
 
 import enemies.*;
-import inventory.Potions;
 import battle.Battle;
 import characters.Character;
 import story.ScenePrinter;
@@ -41,7 +40,6 @@ public class World1 {
             if (!enemy1.isAlive()) {
                 System.out.println("✅ You have defeated Wolf " + i + "!");
                 ScenePrinter.line();
-                player.gainExp(enemy1.getExp());
                 enemy1.dropLoot(player);
 
                 if (i < 3) { // reset for another wolf

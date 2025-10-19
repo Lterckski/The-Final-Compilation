@@ -30,7 +30,7 @@ public class Karl extends Character{
 
         System.out.println("Ultimate – Rain of a Thousand Arrows (35 Energy)");
         System.out.println("Description: Karl releases a rapid flurry of arrows, overwhelming his opponent with relentless strikes.");
-        System.out.println("Damage: 5 hits, each dealing (" + (int)(attack * 1.50) + " — " + (int)(attack * 2.50) + ")");
+        System.out.println("Damage: 5 hits, each dealing (" + (int)(attack * 1.00) + " — " + (int)(attack * 1.60) + ")");
         System.out.println("Effects:");
         System.out.println("- Grants Nimble after attack (increased dodge chance)");
         System.out.println("- Grants Strengthen (+20% ATK for 2 turns)");
@@ -38,6 +38,7 @@ public class Karl extends Character{
     }
 
     public void showBackstory() {
+        ScenePrinter.line();
         System.out.println("Karl Clover Dior IV was born and raised in the Forest of Silence, a place");
         System.out.println("where the air is thick with mist and danger lurks in every shadow.");
         System.out.println("His father, once a skilled archer, taught him the bow not as a weapon of");
@@ -52,6 +53,7 @@ public class Karl extends Character{
         System.out.println("Now, with his father's teachings in his heart and the weight of his homeland");
         System.out.println("on his shoulders, Karl hunts not just for survival but to restore the balance");
         System.out.println("of the place he calls home.");
+        ScenePrinter.line();
     }
 
 
@@ -79,10 +81,12 @@ public class Karl extends Character{
 
     // Skill 1 - Piercing Arrow
     public void piercingArrow(Character target) {
+        int energyCost = 10;
+        System.out.println("🏹 You used Piercing Arrow on " + target.getName() + " (⚡-" + energyCost + " Energy)");
+
         if (target.getEffects().checkConfuse()) return;
 
-        int energyCost = 10;
-        if (consumeEnergy(energyCost)) {
+        if (!consumeEnergy(energyCost)) {
             System.out.println("❌ Not enough energy to use Piercing Arrow!");
             return;
         }
@@ -93,7 +97,7 @@ public class Karl extends Character{
         int reduced = damage - reducedDefense;
         if (reduced < 0) reduced = 0;
 
-        System.out.println("🏹 You used Piercing Arrow on " + target.getName() + " for " + reduced + " damage (30% DEF ignored). (Energy: " + energy + "/" + maxEnergy + ")");
+        System.out.println("💔 Target is hit for " + reduced + " Damage (30% DEF ignored)!");
         target.takeDamage(reduced);
 
         // Bleed effect
@@ -107,10 +111,12 @@ public class Karl extends Character{
 
     // Skill 2 - Bullseye
     public void bullsEye(Character target) {
+        int energyCost = 20;
+        System.out.println("🎯🔥 You used Bullseye on " + target.getName() + " (⚡-" + energyCost + " Energy)");
+
         if (target.getEffects().checkConfuse()) return;
 
-        int energyCost = 20;
-        if (consumeEnergy(energyCost)) {
+        if (!consumeEnergy(energyCost)) {
             System.out.println("❌ Not enough energy to use Bullseye!");
             return;
         }
@@ -121,7 +127,7 @@ public class Karl extends Character{
         int reduced = damage - target.getDefense();
         if (reduced < 0) reduced = 0;
 
-        System.out.println("🎯🔥 You used Bullseye on " + target.getName() + " for " + reduced + " critical damage! (Energy: " + energy + "/" + maxEnergy + ")");
+        System.out.println("💔 Target is hit for " + reduced + " Critical Damage!");
         target.takeDamage(reduced);
 
         if (RandomUtil.chance(30)) {
@@ -134,32 +140,38 @@ public class Karl extends Character{
     // Ultimate - Rain of a Thousand Arrows
     public void rainOfAThousandArrows(Character target) {
         int energyCost = 35;
-        if (consumeEnergy(energyCost)) {
+        if (!consumeEnergy(energyCost)) {
             System.out.println("❌ Not enough energy to use Rain of a Thousand Arrows!");
             return;
         }
 
-        System.out.println("🌧️🏹 You unleash your ultimate: Rain of a Thousand Arrows!");
+        System.out.println("🌧️🏹 You unleash your ultimate: Rain of a Thousand Arrows!" + " (⚡-" + energyCost + " Energy)");
 
-        for (int i = 0; i < 5; i++) {
-            int damage = (int) RandomUtil.range(attack * 1.5, attack * 2.5);
+        int totalDamage = 0;
+
+        for (int i = 1; i <= 5; i++) {
+            int damage = (int) RandomUtil.range(attack * 1.00, attack * 1.60);
             damage = hunterInstincts(damage, target);
             int reduced = damage - target.getDefense();
             if (reduced < 0) reduced = 0;
 
-            System.out.println(" → Arrow " + (i + 1) + " fired!");
+            // Check if target is confused
+            if (target.getEffects().checkConfuse()) reduced = 0;
+            totalDamage += reduced;
 
-            target.takeDamage(reduced);
-            System.out.println("   💥 Hit for " + reduced + " damage!");
+            System.out.println("→💥 Arrow " + i + " fired! 💔 Target is hit for " + reduced + " damage!");
 
             triggerWeaponEffect(target, reduced);
-
         }
+
+        System.out.println("🏹🌧️ Rain of a Thousand Arrows finished! Total damage dealt: " + totalDamage);
+        target.takeDamage(totalDamage);
 
         this.getEffects().applyNimble();
         this.getEffects().applyAttackBuff(20, 2);
         ultimateCounter = 3;
     }
+
 
     @Override
     public void turn(Character target) {
@@ -181,7 +193,7 @@ public class Karl extends Character{
                 switch (choice) {
                     case 1 -> { piercingArrow(target); isValid = true; ultimateCounter--; }
                     case 2 -> { bullsEye(target); isValid = true; ultimateCounter--; }
-                    case 3 -> System.out.println("❌ Ultimate is on cooldown!");
+                    case 3 -> { System.out.println("❌ Ultimate is on cooldown! Can only be used after " + ultimateCounter + " turns."); ScenePrinter.line();}
                     case 4 -> { skipTurn(); isValid = true; ultimateCounter--; }
                     case 5 -> displayMenu(this, target);
                     default -> { System.out.println("❌ Invalid action! You missed your turn."); isValid = true; ultimateCounter--; }
@@ -202,7 +214,7 @@ public class Karl extends Character{
                 switch (choice) {
                     case 1 -> { piercingArrow(target); isValid = true; }
                     case 2 -> { bullsEye(target); isValid = true; }
-                    case 3 -> { rainOfAThousandArrows(target); ultimateCounter = 3; isValid = true; }
+                    case 3 -> { rainOfAThousandArrows(target); isValid = true; }
                     case 4 -> { skipTurn(); isValid = true; }
                     case 5 -> displayMenu(this, target);
                     default -> { System.out.println("❌ Invalid action! You missed your turn."); isValid = true; }

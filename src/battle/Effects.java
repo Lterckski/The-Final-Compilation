@@ -207,18 +207,18 @@ public class Effects {
     // ------------------- DoT EFFECTS -------------------
     public void updateDoTEffects() {
         if (poisonTurnsLeft > 0) {
-            System.out.println(owner.getName() + " is poisoned! Took 5 damage.");
+            System.out.println(owner.getName() + " is poisoned☠! Took 5 damage💔.");
             owner.takeDamage(5);
             poisonTurnsLeft--;
         }
         if (bleedTurnsLeft > 0) {
             int bleedDamage = Math.min(5 + 2 * (bleedInitialTurns - bleedTurnsLeft), 16);
-            System.out.println(owner.getName() + " is bleeding! Took " + bleedDamage + " damage.");
+            System.out.println(owner.getName() + " is bleeding🩸! Took " + bleedDamage + " damage💔.");
             owner.takeDamage(bleedDamage);
             bleedTurnsLeft--;
         }
         if (burnTurnsLeft > 0) {
-            System.out.println(owner.getName() + " is burning! Took 5 damage.");
+            System.out.println(owner.getName() + " is burning🔥! Took 5 damage💔.");
             owner.takeDamage(5);
             burnTurnsLeft--;
         }

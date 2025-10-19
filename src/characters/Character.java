@@ -161,7 +161,6 @@ public abstract class Character {
     public void takeDamage(int damage) {
         hp -= damage;
         if (hp < 0) hp = 0;
-        System.out.println("❤️ " + name + " (HP : " + hp + "/" + maxHp + ")");
     }
 
     public void displayHp(){
@@ -174,11 +173,11 @@ public abstract class Character {
 
     public boolean consumeEnergy(int cost) {
         if (energy < cost) {
-            energy = 0;
-            return true; // not enough energy
+            return false; // not enough energy
         }
         energy -= cost;
-        return false; // successful
+        if(energy < 0) energy = 0;
+        return true; // successful
     }
 
     public void skipTurn(){
@@ -210,7 +209,6 @@ public abstract class Character {
     public void levelUp() {
         level++;
 
-        System.out.println();
         ScenePrinter.hr();
         System.out.println("✨ LEVEL UP! You are now Level " + level + "! ✨");
 
@@ -244,7 +242,6 @@ public abstract class Character {
         System.out.println("🛡️ DEF    : +" + (baseDefense - oldDef) + " → " + defense);
         System.out.println("🔋 Energy : +" + (maxEnergy - oldEnergy) + " → " + maxEnergy);
         ScenePrinter.hr();
-        System.out.println();
     }
 
     public void recalculateBuffs(){

@@ -27,17 +27,19 @@ public class Simon extends Character {
         System.out.println("- 30% chance to Freeze (target skips 1 turn)");
         System.out.println("- If frozen, reduces DEF by 15% for 2 turns\n");
 
-        System.out.println("Ultimate – Meteor Storm (40 Energy)");
-        System.out.println("Description: Summons a storm of blazing meteors that rain destruction upon all enemies.");
-        System.out.println("Damage: (" + (int)(attack * 2.50) + " — " + (int)(attack * 3.50) + ")");
+        System.out.println("☄️ Ultimate – Meteor Storm (⚡40 Energy)");
+        System.out.println("Description: Summons a storm of blazing meteors, striking the opponent multiple times with devastating force.");
+        System.out.println("Damage: 5 hits, each dealing " + (int)(attack * 1.00) + " — " + (int)(attack * 1.50));
         System.out.println("Effects:");
+        System.out.println("- Grants Strengthen: (+20% ATK for 2 turns)");
         System.out.println("- 50% chance to apply Burn for 2 turns");
-        System.out.println("- Grants +20% ATK (Arcane Empowerment) for 2 turns");
         System.out.println("--------------------------------------");
+
     }
 
     public void showBackstory() {
-        System.out.println("Simon Versace—a mage with an unshakable dream of becoming the most");
+        ScenePrinter.line();
+        System.out.println("Simon Versace — a mage with an unshakable dream of becoming the most");
         System.out.println("powerful sorcerer alive. From childhood, mana coursed naturally through");
         System.out.println("his veins, earning him the title of prodigy in the whispers of others.");
         System.out.println("Yet beneath that promise of greatness, Simon was still just a boy—");
@@ -52,6 +54,7 @@ public class Simon extends Character {
         System.out.println();
         System.out.println("If he truly wished to claim power, he would need more than learning—");
         System.out.println("he would need experience.");
+        ScenePrinter.line();
     }
 
     private void arcaneFlow() {
@@ -64,7 +67,9 @@ public class Simon extends Character {
     // Skill 1 – Fireball
     public void fireball(Character target) {
         int energyCost = 15;
-        if (consumeEnergy(energyCost)) {
+        System.out.println("🔥 You cast Fireball on " + target.getName() + " (⚡-" + energyCost + " Energy)");
+
+        if (!consumeEnergy(energyCost)) {
             System.out.println("Not enough energy to cast Fireball!");
             return;
         }
@@ -74,7 +79,7 @@ public class Simon extends Character {
         if (reduced < 0) reduced = 0;
 
         // Fireball
-        System.out.println("🔥 You cast Fireball on " + target.getName() + " for " + reduced + " damage! (Energy: " + energy + "/" + maxEnergy + ")");
+        System.out.println("💔 Target is hit for " + reduced + " damage!");
         target.takeDamage(reduced);
 
         getInventory().getEquippedWeapon().applyEffects(target, reduced);
@@ -93,7 +98,9 @@ public class Simon extends Character {
     // Skill 2 – Ice Prison
     public void icePrison(Character target) {
         int energyCost = 20;
-        if (consumeEnergy(energyCost)) {
+        System.out.println("❄️ You cast Ice Prison on " + target.getName() + " (⚡-" + energyCost + " Energy)");
+
+        if (!consumeEnergy(energyCost)) {
             System.out.println("Not enough energy to cast Ice Prison!");
             return;
         }
@@ -102,7 +109,8 @@ public class Simon extends Character {
         int reduced = damage - target.getDefense();
         if (reduced < 0) reduced = 0;
 
-        System.out.println("❄️ You cast Ice Prison on " + target.getName() + " for " + reduced + " damage! (Energy: " + energy + "/" + maxEnergy + ")");
+
+        System.out.println("💔 Target is hit for " + reduced + " damage!");
         target.takeDamage(reduced);
 
         getInventory().getEquippedWeapon().applyEffects(target, reduced);
@@ -120,19 +128,31 @@ public class Simon extends Character {
     // Ultimate – Meteor Storm
     public void meteorStorm(Character target) {
         int energyCost = 40;
-        if (consumeEnergy(energyCost)) {
+        if (!consumeEnergy(energyCost)) {
             System.out.println("Not enough energy to cast Meteor Storm!");
             return;
         }
 
-        int damage = (int) RandomUtil.range(attack * 2.50, attack * 3.50);
-        int reduced = damage - target.getDefense();
-        if (reduced < 0) reduced = 0;
+        System.out.println("☄️ You unleash your ultimate: Meteor Storm (⚡-" + energyCost + " Energy)!");
 
-        System.out.println("☄️ You unleash Meteor Storm on " + target.getName() + " for " + reduced + " damage! (Energy: " + energy + "/" + maxEnergy + ")");
-        target.takeDamage(reduced);
+        int totalDamage = 0;
 
-        getInventory().getEquippedWeapon().applyEffects(target, reduced);
+        for (int i = 1; i <= 5; i++) {
+            int damage = (int) RandomUtil.range(attack * 1.00, attack * 1.50);
+            int reduced = damage - target.getDefense();
+            if (reduced < 0) reduced = 0;
+
+            // Check if target is confused
+            if (target.getEffects().checkConfuse()) reduced = 0;
+            totalDamage += reduced;
+
+            System.out.println("→💥 Meteor " + i + " hits! 💔 Target is hit for " + reduced + " damage!");
+        }
+
+        System.out.println("☄️ Meteor Storm finished! Total damage dealt: " + totalDamage);
+        target.takeDamage(totalDamage);
+
+        getInventory().getEquippedWeapon().applyEffects(target, totalDamage);
 
         // 50% chance to Burn
         if (RandomUtil.chance(50)) {
@@ -166,7 +186,7 @@ public class Simon extends Character {
                 switch (choice) {
                     case 1 -> { fireball(target); isValid = true; ultimateCounter--; }
                     case 2 -> { icePrison(target); isValid = true; ultimateCounter--; }
-                    case 3 -> System.out.println("❌ Ultimate is on cooldown! Can only be used after " + ultimateCounter + " turns.");
+                    case 3 -> { System.out.println("❌ Ultimate is on cooldown! Can only be used after " + ultimateCounter + " turns."); ScenePrinter.line();}
                     case 4 -> { skipTurn(); isValid = true; ultimateCounter--; }
                     case 5 -> displayMenu(this, target); // doesn’t consume the turn
                     default -> { System.out.println("❌ Invalid action! You missed your turn."); isValid = true; ultimateCounter--; }
@@ -190,7 +210,7 @@ public class Simon extends Character {
                 switch (choice) {
                     case 1 -> { fireball(target); isValid = true; }
                     case 2 -> { icePrison(target); isValid = true; }
-                    case 3 -> { meteorStorm(target); ultimateCounter = 3; isValid = true; }
+                    case 3 -> { meteorStorm(target); isValid = true; }
                     case 4 -> { skipTurn(); isValid = true; }
                     case 5 -> displayMenu(this, target); // doesn’t consume the turn
                     default -> { System.out.println("❌ Invalid action! You missed your turn."); isValid = true; }

@@ -51,6 +51,7 @@ public class Battle {
 
     public void battleLoop() {
         ScenePrinter.line();
+        System.out.println();
         ScenePrinter.hr();
         System.out.println("⚔️ Battle Start! " + player.getName() + " vs " + enemy.getName());
         ScenePrinter.hr();
@@ -63,7 +64,14 @@ public class Battle {
             player.getEffects().updateDefenseModifiers();
 
             if (player.getEffects().checkEffects()) {
-                System.out.println("\n-- Your Turn --");
+                // --- PLAYER STATUS TRACKER ---
+                System.out.println();
+                ScenePrinter.line();
+                System.out.println("💚 Your HP  : " + player.getHp() + "/" + player.getMaxHp() + "   ⚡ Energy: " + player.getEnergy() + "/" + player.getMaxEnergy());
+                System.out.println("🖤 Enemy HP : " + enemy.getHp() + "/" + enemy.getMaxHp());
+                ScenePrinter.line();
+
+                System.out.println("-- Your Turn --");
                 player.turn(enemy);
             } else {
                 InputUtil.pressEnterToContinue();

@@ -34,7 +34,7 @@ public class Kael extends  Character{      // 15% crit chance
         // Ultimate
         System.out.println("Ultimate – Eternal Cross Slash (30 Energy)");
         System.out.println("Description: Kael unleashes a flurry of crossing strikes infused with unyielding determination.");
-        System.out.println("Damage: 3 hits, each dealing (" + (int)(attack * 0.85) + " — " + (int)(attack * 1.10) + ")");
+        System.out.println("Damage: 3 hits, each dealing (" + (int)(attack * 1.40) + " — " + (int)(attack * 2.20) + ")");
         System.out.println("Effects:");
         System.out.println("- Applies Bleed (10 damage per turn for 2 turns)");
         System.out.println("- Grants Fortified: (+20% DEF for 2 turns)");
@@ -42,6 +42,7 @@ public class Kael extends  Character{      // 15% crit chance
     }
 
     public void showBackstory() {
+        ScenePrinter.line();
         System.out.println("Kael Saint Laurent was born in the shadow of the Black Castle, in a family");
         System.out.println("that lived modestly within the crumbling Town of Decay. His childhood was");
         System.out.println("marked by sickness in the streets and guards demanding bribes, yet Kael never");
@@ -55,7 +56,7 @@ public class Kael extends  Character{      // 15% crit chance
         System.out.println("shielding his friends from imagined dangers. In a place where hope was rare,");
         System.out.println("Kael's presence became a quiet anchor, hinting that even in the midst of");
         System.out.println("decay, someone could rise to stand against the darkness.");
-
+        ScenePrinter.line();
     }
 
     // Passive - Blade Swift
@@ -89,10 +90,12 @@ public class Kael extends  Character{      // 15% crit chance
 
     // Skill 1 - Blade Rush
     public void bladeRush(Character target){
+        int energyCost = 10;
+        System.out.println("🗡️ You used Blade Rush on " + target.getName() + " (⚡-" + energyCost + " Energy)");
+
         if(target.getEffects().checkConfuse()) return;
 
-        int energyCost = 10;
-        if(consumeEnergy(energyCost)){
+        if(!consumeEnergy(energyCost)){
             System.out.println("Not enough energy to use Blade Rush!");
             return;
         }
@@ -102,7 +105,7 @@ public class Kael extends  Character{      // 15% crit chance
         int reduced = damage - target.getDefense();
         if (reduced < 0) reduced = 0;
 
-        System.out.println("\uD83D\uDDE1️ You used Blade Rush on " + target.getName() + " for " + reduced + " damage! " +  "(Energy: " + energy + "/" + maxEnergy + ")");
+        System.out.println("💔 Target is hit for " + reduced + " Damage!");
         target.takeDamage(reduced);
 
         // 30% chance to apply Strengthen (+20% ATK for 2 turns)
@@ -117,10 +120,12 @@ public class Kael extends  Character{      // 15% crit chance
 
     // Skill 2 - Guard Breaker
     public void guardBreaker(Character target){
+        int energyCost = 15;
+        System.out.println("💥 You used Guard Breaker on " + target.getName() + " (⚡-" + energyCost + " Energy)");
+
         if(target.getEffects().checkConfuse()) return;
 
-        int energyCost = 15;
-        if(consumeEnergy(energyCost)){
+        if(!consumeEnergy(energyCost)){
             System.out.println("Not enough energy to use Guard Breaker!");
             return;
         }
@@ -129,8 +134,8 @@ public class Kael extends  Character{      // 15% crit chance
         damage = bladeSwift(damage);
         int reduced = damage;
 
-        System.out.println("\uD83D\uDCA5 You used Guard Breaker on " + target.getName() +  " for " + reduced + " pure damage! " +  "(Energy: " + energy + "/" + maxEnergy + ")");
-        target.takeDamage(reduced); // defense ignored
+        System.out.println("💔 Target is hit for " + reduced + " Pure Damage!");
+        target.takeDamage(reduced);
 
         // 30% chance to apply Stun (from the sheer impact)
         if (RandomUtil.chance(30)) {
@@ -144,16 +149,16 @@ public class Kael extends  Character{      // 15% crit chance
     //Ultimate - Eternal Cross Slash
     public void eternalCrossSlash(Character target){
         int energyCost = 30;
-        if (consumeEnergy(energyCost)) {
+        if (!consumeEnergy(energyCost)) {
             System.out.println("Not enough energy to use Eternal Cross Slash!");
             return;
         }
 
         int totalDamage = 0;
-        System.out.println("✝️ You unleash your ultimate technique: Eternal Cross Slash!");
+        System.out.println("✝️ You unleash your ultimate technique: Eternal Cross Slash!" + " (⚡-" + energyCost + " Energy)");
 
-        for(int i = 0; i < 3; i++){
-            int damage = (int) RandomUtil.range(attack * 0.85,attack * 1.10);
+        for(int i = 1; i <= 3; i++){
+            int damage = (int) RandomUtil.range(attack * 1.40,attack * 2.20);
             damage = bladeSwift(damage);
             int reduced = damage - target.getDefense();
             if (reduced < 0) reduced = 0;
@@ -161,13 +166,13 @@ public class Kael extends  Character{      // 15% crit chance
             if(target.getEffects().checkConfuse()) reduced = 0;
             totalDamage += reduced;
 
-            System.out.println(" → Hit " + (i + 1) + ": You slashed " + target.getName() +  " for " + reduced + " damage!");
+            System.out.println(" →🔪 Hit " + i + "! 💔 You slashed the Target for " + reduced + " damage!");
 
             // Apply weapon effects via helper
             triggerWeaponEffect(target, reduced);
         }
 
-        System.out.println("Eternal Cross Slash finished! Total damage dealt: " + totalDamage + " (Energy: " + energy + "/" + maxEnergy + ")");
+        System.out.println("⚔️💥 Eternal Cross Slash finished! Total Damage dealt: " + totalDamage);
         target.takeDamage(totalDamage);
 
         target.getEffects().applyBleed(2);
@@ -196,7 +201,7 @@ public class Kael extends  Character{      // 15% crit chance
                 switch (choice) {
                     case 1 -> { bladeRush(target); isValid = true; ultimateCounter--;}
                     case 2 -> { guardBreaker(target); isValid = true; ultimateCounter--;}
-                    case 3 -> System.out.println("❌ Ultimate is on cooldown! Can only be used after " + ultimateCounter + " turns.");
+                    case 3 -> { System.out.println("❌ Ultimate is on cooldown! Can only be used after " + ultimateCounter + " turns."); ScenePrinter.line();}
                     case 4 -> { skipTurn(); isValid = true; ultimateCounter--;}
                     case 5 -> displayMenu(this, target);
                     default -> { System.out.println(" Invalid action! You missed your turn."); isValid = true; ultimateCounter--;}
@@ -219,7 +224,7 @@ public class Kael extends  Character{      // 15% crit chance
                 switch (choice) {
                     case 1 -> { bladeRush(target); isValid = true; }
                     case 2 -> { guardBreaker(target); isValid = true; }
-                    case 3 -> { eternalCrossSlash(target); ultimateCounter = 3; isValid = true; }
+                    case 3 -> { eternalCrossSlash(target); isValid = true; }
                     case 4 -> { skipTurn(); isValid = true; }
                     case 5 -> displayMenu(this, target);
                     default -> { System.out.println(" Invalid action! You missed your turn."); isValid = true; }

@@ -29,7 +29,7 @@ public class StoryEngine {
     private void intro() {
         System.out.println();
         ScenePrinter.hr();
-        System.out.println("Backstory — The Exam That Never Began\n");
+        System.out.println("Backstory — The Exam That Never Began");
         ScenePrinter.hr();
 
         ScenePrinter.type(
@@ -43,9 +43,11 @@ public class StoryEngine {
         );
         InputUtil.pressEnterToContinue();
 
+        System.out.println();
         ScenePrinter.hr();
-        System.out.println("Welcome to The Final Compilation");
+        System.out.println("WELCOME TO THE FINAL COMPILATION...");
         ScenePrinter.hr();
+        System.out.println();
     }
 
     private Character chooseCharacter() {

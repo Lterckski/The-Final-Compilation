@@ -119,7 +119,7 @@ public class World2Miniboss1 extends Enemy{
     }
 
     @Override
-    public int getExp(){
+    public int rewardExp(){
         return 1833;
     }
 }

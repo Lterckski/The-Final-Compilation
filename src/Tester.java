@@ -133,7 +133,7 @@ public class Tester {
         */
 
         if(!enemy1.isAlive()){
-            player.gainExp(enemy1.getExp());
+            player.gainExp(enemy1.rewardExp());
             enemy1.dropLoot(player);
         }
 
