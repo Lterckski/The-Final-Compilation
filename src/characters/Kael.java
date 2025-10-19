@@ -1,5 +1,6 @@
 package characters;
 
+import story.ScenePrinter;
 import utils.RandomUtil;
 
 public class Kael extends  Character{      // 15% crit chance
@@ -190,7 +191,7 @@ public class Kael extends  Character{      // 15% crit chance
 
                 int choice = utils.InputUtil.scan.nextInt();
                 utils.InputUtil.scan.nextLine();
-                System.out.println("---------------");
+                ScenePrinter.shortLine();
 
                 switch (choice) {
                     case 1 -> { bladeRush(target); isValid = true; ultimateCounter--;}
@@ -213,7 +214,7 @@ public class Kael extends  Character{      // 15% crit chance
 
                 int choice = utils.InputUtil.scan.nextInt();
                 utils.InputUtil.scan.nextLine();
-                System.out.println("---------------");
+                ScenePrinter.shortLine();
 
                 switch (choice) {
                     case 1 -> { bladeRush(target); isValid = true; }

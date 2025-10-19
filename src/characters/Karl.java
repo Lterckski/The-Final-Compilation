@@ -1,5 +1,6 @@
 package characters;
 
+import story.ScenePrinter;
 import utils.RandomUtil;
 import inventory.*;
 public class Karl extends Character{
@@ -175,7 +176,7 @@ public class Karl extends Character{
 
                 int choice = utils.InputUtil.scan.nextInt();
                 utils.InputUtil.scan.nextLine();
-                System.out.println("---------------");
+                ScenePrinter.shortLine();
 
                 switch (choice) {
                     case 1 -> { piercingArrow(target); isValid = true; ultimateCounter--; }
@@ -196,7 +197,7 @@ public class Karl extends Character{
 
                 int choice = utils.InputUtil.scan.nextInt();
                 utils.InputUtil.scan.nextLine();
-                System.out.println("---------------");
+                ScenePrinter.shortLine();
 
                 switch (choice) {
                     case 1 -> { piercingArrow(target); isValid = true; }

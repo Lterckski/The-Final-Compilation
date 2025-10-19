@@ -99,8 +99,7 @@ public abstract class Character {
 
     public void displayStats() {
         System.out.println("\n=========== Stats ============");
-        System.out.println("Name    : " + name);
-        System.out.println("Class   : " + classType);
+        System.out.println("Name    : " + name + " (" + classType + ")");
         System.out.println("Level   : " + level);
         System.out.println("EXP     : " + exp + "/" + nextLevelExp);
         System.out.println("Health  : " + hp + "/" + maxHp);

@@ -30,6 +30,8 @@ public class StoryEngine {
         System.out.println();
         ScenePrinter.hr();
         System.out.println("Backstory — The Exam That Never Began\n");
+        ScenePrinter.hr();
+
         ScenePrinter.type(
                 """
                         The lab hums with fluorescent light. You sit before the CodeChum login screen, nerves heavy but focus sharp.

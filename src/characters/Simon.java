@@ -156,12 +156,12 @@ public class Simon extends Character {
                 System.out.println("(2) Skill 2   -  Ice Prison");
                 System.out.println("(3) Ultimate  -  Meteor Storm ❌ (Available in " + ultimateCounter + " turns)");
                 System.out.println("(4) Skip Turn -  Restore 10% of Max Energy");
-                System.out.println("(0) Show Menu");
+                System.out.println("(5) Show Menu");
                 System.out.print("Choose your action: ");
 
                 int choice = utils.InputUtil.scan.nextInt();
                 utils.InputUtil.scan.nextLine();
-                System.out.println("---------------");
+                ScenePrinter.shortLine();
 
                 switch (choice) {
                     case 1 -> { fireball(target); isValid = true; ultimateCounter--; }

@@ -76,7 +76,7 @@ public class World1 {
         System.out.println("Energy restored.\n");
         InputUtil.pressEnterToContinue();
 
-        //TODO : ENEMY 5 : MIN-BOSS ENCOUNTERED (THE HOLLOW STAG)
+        //TODO : ENEMY 5 : MINI-BOSS ENCOUNTERED (THE HOLLOW STAG)
 
         ScenePrinter.event("You claim the First Stone from a tree black with rot. Light bursts outward; the forest exhales.");
         InputUtil.pressEnterToContinue();
