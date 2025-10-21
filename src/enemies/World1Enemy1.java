@@ -17,7 +17,7 @@ public class World1Enemy1 extends Enemy {
         int reduced = damage - target.getDefense();
         if (reduced < 0) reduced = 0;
 
-        System.out.println("→ Savage Howl hits for " + reduced + " damage!");
+        System.out.println("→💔 Savage Howl hits for " + reduced + " damage!");
         target.takeDamage(reduced);
 
         // Armor reflect check

@@ -56,7 +56,6 @@ public class Kael extends  Character{      // 15% crit chance
         System.out.println("shielding his friends from imagined dangers. In a place where hope was rare,");
         System.out.println("Kael's presence became a quiet anchor, hinting that even in the midst of");
         System.out.println("decay, someone could rise to stand against the darkness.");
-        ScenePrinter.line();
     }
 
     // Passive - Blade Swift
@@ -187,9 +186,9 @@ public class Kael extends  Character{      // 15% crit chance
         while (!isValid) {
             // If ultimate is on cooldown
             if (ultimateCounter > 0) {
-                System.out.println("(1) Skill 1   -  Blade Rush");
-                System.out.println("(2) Skill 2   -  Guard Breaker");
-                System.out.println("(3) Ultimate  -  Eternal Cross Slash ❌ (Available in " + ultimateCounter + " turns)");
+                System.out.println("(1) Skill 1   -  Blade Rush (⚡ 10 energy)");
+                System.out.println("(2) Skill 2   -  Guard Breaker (⚡ 15 energy)");
+                System.out.println("(3) Ultimate  -  Eternal Cross Slash (⚡ 30 energy) ❌ (Available in " + ultimateCounter + " turns)");
                 System.out.println("(4) Skip Turn -  Restore 10% of Max Energy");
                 System.out.println("(5) Show Menu");
                 System.out.print("Choose your action: ");
@@ -210,9 +209,9 @@ public class Kael extends  Character{      // 15% crit chance
             }
             // If ultimate is ready
             else {
-                System.out.println("(1) Skill 1   -  Blade Rush");
-                System.out.println("(2) Skill 2   -  Guard Breaker");
-                System.out.println("(3) Ultimate  -  Eternal Cross Slash");
+                System.out.println("(1) Skill 1   -  Blade Rush (⚡ 10 energy)");
+                System.out.println("(2) Skill 2   -  Guard Breaker (⚡ 15 energy)");
+                System.out.println("(3) Ultimate  -  Eternal Cross Slash (⚡ 30 energy)");
                 System.out.println("(4) Skip Turn -  Restore 10% of Max Energy");
                 System.out.println("(5) Show Menu");
                 System.out.print("Choose your action: ");

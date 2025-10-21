@@ -211,6 +211,7 @@ public abstract class Character {
 
         ScenePrinter.hr();
         System.out.println("✨ LEVEL UP! You are now Level " + level + "! ✨");
+        System.out.println("💖 HP & 🔋 Energy Restored!");
 
         // Store old values before increasing
         int oldHp = maxHp;
@@ -237,7 +238,7 @@ public abstract class Character {
         recalculateBuffs();
 
         // Show detailed stat gains
-        System.out.println("💖 HP     : +" + (maxHp - oldHp) + " → " + maxHp);
+        System.out.println("❤️ HP     : +" + (maxHp - oldHp) + " → " + maxHp);
         System.out.println("⚔️ ATK    : +" + (baseAttack - oldAtk) + " → " + attack);
         System.out.println("🛡️ DEF    : +" + (baseDefense - oldDef) + " → " + defense);
         System.out.println("🔋 Energy : +" + (maxEnergy - oldEnergy) + " → " + maxEnergy);

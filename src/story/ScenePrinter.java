@@ -3,7 +3,7 @@ package story;
 public class ScenePrinter {
 
     public static void hr() {
-        System.out.println("=================================");
+        System.out.println("=====================================");
     }
 
     public static void line() {

@@ -19,7 +19,7 @@ public class World2Enemy3 extends Enemy{
         int reduced = damage - target.getDefense();
         if(reduced < 0) reduced = 0;
 
-        System.out.println("→ Corpse Explosion hits for " + reduced + " damage!");
+        System.out.println("→💔 Corpse Explosion hits for " + reduced + " damage!");
         target.takeDamage(reduced);
 
         //  Reflect check

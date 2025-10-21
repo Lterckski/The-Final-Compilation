@@ -53,7 +53,6 @@ public class Karl extends Character{
         System.out.println("Now, with his father's teachings in his heart and the weight of his homeland");
         System.out.println("on his shoulders, Karl hunts not just for survival but to restore the balance");
         System.out.println("of the place he calls home.");
-        ScenePrinter.line();
     }
 
 
@@ -179,9 +178,9 @@ public class Karl extends Character{
 
         while (!isValid) {
             if (ultimateCounter > 0) {
-                System.out.println("(1) Skill 1   -  Piercing Arrow");
-                System.out.println("(2) Skill 2   -  Bullseye");
-                System.out.println("(3) Ultimate  -  Rain of A Thousand Arrows ❌ (Available in " + ultimateCounter + " turns)");
+                System.out.println("(1) Skill 1   -  Piercing Arrow (⚡ 10 energy)");
+                System.out.println("(2) Skill 2   -  Bullseye (⚡ 20 energy)");
+                System.out.println("(3) Ultimate  -  Rain of A Thousand Arrows (⚡ 35 energy) ❌ (Available in " + ultimateCounter + " turns)");
                 System.out.println("(4) Skip Turn -  Restore 10% of Max Energy");
                 System.out.println("(5) Show Menu");
                 System.out.print("Choose your action: ");
@@ -200,9 +199,9 @@ public class Karl extends Character{
                 }
 
             } else {
-                System.out.println("(1) Skill 1   -  Piercing Arrow");
-                System.out.println("(2) Skill 2   -  Bullseye");
-                System.out.println("(3) Ultimate  -  Rain of A Thousand Arrows");
+                System.out.println("(1) Skill 1   -  Piercing Arrow (⚡ 10 energy)");
+                System.out.println("(2) Skill 2   -  Bullseye (⚡ 20 energy)");
+                System.out.println("(3) Ultimate  -  Rain of A Thousand Arrows (⚡ 35 energy)");
                 System.out.println("(4) Skip Turn -  Restore 10% of Max Energy");
                 System.out.println("(5) Show Menu");
                 System.out.print("Choose your action: ");

@@ -34,7 +34,10 @@ public class World1 {
         ScenePrinter.line();
 
         for (int i = 1; i <= 3; i++) {
+            ScenePrinter.hr();
             System.out.println("🐺 Wolf " + i + " lunges at you!");
+            ScenePrinter.hr();
+
             battle1.startBattle();
 
             if (!enemy1.isAlive()) {

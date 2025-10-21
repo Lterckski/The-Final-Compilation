@@ -22,7 +22,7 @@ public class World1Miniboss1 extends Enemy {
         int reduced = damage - target.getDefense();
         if (reduced < 0) reduced = 0;
 
-        System.out.println("→ Deathly Charge hits for " + reduced + " damage!");
+        System.out.println("→💔 Deathly Charge hits for " + reduced + " damage!");
         target.takeDamage(reduced);
 
         // Armor reflect check

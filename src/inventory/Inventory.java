@@ -28,12 +28,14 @@ public class Inventory {
 
         while (!exit) {
             System.out.println("\n====================== Inventory ======================");
-            System.out.println("Equipped Weapon         : " + (equippedWeapon != null ? equippedWeapon.getName() : "None"));
-            System.out.println("Equipped Armor          : " + (equippedArmor != null ? equippedArmor.getName() : "None"));
+            System.out.println("Equipped Weapon         : " + (equippedWeapon != null ? equippedWeapon.getName() : "No Weapon Equipped"));
+            System.out.println("Equipped Armor          : " + (equippedArmor != null ? equippedArmor.getName() : "No Armor Equipped"));
             System.out.println("Normal Healing Potion   : " + potions.getNormalHealingPotions());
             System.out.println("Full Healing Potion     : " + potions.getFullHealingPotions());
             System.out.println("Energy Potion           : " + potions.getEnergyPotions());
             System.out.println("=======================================================");
+
+            ScenePrinter.line();
             System.out.println("(1) Show Weapon Info");
             System.out.println("(2) Show Armor Info");
             System.out.println("(3) Use Normal Healing Potion");
@@ -47,14 +49,8 @@ public class Inventory {
             ScenePrinter.line();
 
             switch (choice) {
-                case 1 -> {
-                    if (equippedWeapon != null) equippedWeapon.displayInfo();
-                    else System.out.println("No weapon equipped.");
-                }
-                case 2 -> {
-                    if (equippedArmor != null) equippedArmor.displayInfo();
-                    else System.out.println("No armor equipped.");
-                }
+                case 1 -> equippedWeapon.displayInfo();
+                case 2 -> equippedArmor.displayInfo();
                 case 3 -> {
                     if (potions.getNormalHealingPotions() > 0) {
                         if (areYouSure()) potions.useNormalHealingPotion();

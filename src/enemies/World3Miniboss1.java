@@ -17,14 +17,14 @@ public class World3Miniboss1 extends Enemy {
 
         int damage = (int)RandomUtil.range(attack * 1.00, attack * 1.15);
 
-        System.out.println("→ Grave Cleaver hits for " + damage + " Pure Damage!");
+        System.out.println("→💔 Grave Cleaver hits for " + damage + " Pure Damage!");
         target.takeDamage(damage);
     }
 
     public void boneShield() {
-        System.out.println("🛡️ " + name + " used Bone Shield!");
+        System.out.println("🦴 " + name + " used Bone Shield!");
 
-        System.out.println("→ Bone Shield increases defense of " + name + " by +50 for 2 turns!");
+        System.out.println("→🛡️ Bone Shield increases defense of " + name + " by +50 for 2 turns!");
         this.getEffects().applyDefenseBuff(50, 2, true);
     }
 

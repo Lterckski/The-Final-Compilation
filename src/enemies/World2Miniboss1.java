@@ -18,7 +18,7 @@ public class World2Miniboss1 extends Enemy{
         int reduced = damage - target.getDefense();
         if(reduced < 0) reduced = 0;
 
-        System.out.println("→ Shackling Chains hits for " + reduced + " damage!");
+        System.out.println("→💔 Shackling Chains hits for " + reduced + " damage!");
         target.takeDamage(reduced);
 
         // Reflect damage check
@@ -46,7 +46,7 @@ public class World2Miniboss1 extends Enemy{
         int reduced = damage - target.getDefense();
         if(reduced < 0) reduced = 0;
 
-        System.out.println("→ Tormenting Lash hits for " + reduced + " damage!");
+        System.out.println("→💔 Tormenting Lash hits for " + reduced + " damage!");
         target.takeDamage(reduced);
 
         // Reflect damage check
@@ -81,7 +81,7 @@ public class World2Miniboss1 extends Enemy{
         System.out.println("Description: The Black Jailer lashes his whip, leaving his foe bleeding.");
         System.out.println("Damage: (" + (int)(attack * 1.33) + " — " + (int)(attack * 1.73) + ")");
         System.out.println("Effects:");
-        System.out.println("- Applies Bleed for 2 turns");
+        System.out.println("- 30% chance to inflict Bleed for 2 turns");
         System.out.println("---------------------------------------");
     }
 

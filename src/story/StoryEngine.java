@@ -55,9 +55,9 @@ public class StoryEngine {
 
         do {
             ScenePrinter.line();
-            System.out.println("1 - Kael Saint Laurent (Swordsman)");
-            System.out.println("2 - Karl Clover Dior IV (Archer)");
-            System.out.println("3 - Simon Versace (Mage)");
+            System.out.println("(1) Kael Saint Laurent (Swordsman)");
+            System.out.println("(2) Karl Clover Dior IV (Archer)");
+            System.out.println("(3) Simon Versace (Mage)");
             ScenePrinter.line();
 
             System.out.print("Select your character: ");
@@ -70,9 +70,16 @@ public class StoryEngine {
                     if (characterMenu(kael)) {
                         player = kael;
                         ScenePrinter.line();
-                        System.out.println("You selected " + player.getName() + " ⚔️!");
+                        System.out.println("⚔️ You have chosen " + player.getName() + ", the valiant Swordsman!");
                         ((Kael) player).showBackstory();
+                        ScenePrinter.line();
+                        System.out.println("✨ The gods bestow upon you your starting gear...");
                         player.getInventory().setEquippedWeapon(Sword.OLD_BROADSWORD);
+                        player.getInventory().setEquippedArmor(Armor.LEATHER_GUARD);
+                        System.out.println("🗡️ *The --" + player.getInventory().getEquippedWeapon().getName() + "-- rests firmly in your grasp, its blade marked by the scars of past battles.*");
+                        System.out.println("🛡️ *The --" + player.getInventory().getEquippedArmor().getName() + "-- fits perfectly, worn yet dependable — a true warrior’s first defense.*");
+                        System.out.println("⚡ Strength surges through your veins as your journey begins...");
+                        ScenePrinter.line();
                     }
                 }
                 case 2 -> {
@@ -80,9 +87,16 @@ public class StoryEngine {
                     if (characterMenu(karl)) {
                         player = karl;
                         ScenePrinter.line();
-                        System.out.println("You selected " + player.getName() + " 🏹!");
+                        System.out.println("🏹 You have chosen " + player.getName() + ", the sharp-eyed Archer!");
                         ((Karl) player).showBackstory();
+                        ScenePrinter.line();
+                        System.out.println("🌬️ The winds whisper and bless you with your starting equipment...");
                         player.getInventory().setEquippedWeapon(Bow.WOODEN_BOW);
+                        player.getInventory().setEquippedArmor(Armor.LEATHER_GUARD);
+                        System.out.println("🏹 *The --" + player.getInventory().getEquippedWeapon().getName() + "-- hums softly as you draw the string — eager to strike true.*");
+                        System.out.println("🛡️ *The --" + player.getInventory().getEquippedArmor().getName() + "-- wraps around you lightly, offering freedom and silent agility.*");
+                        System.out.println("🌿 The forest seems to watch over you as your path unfolds...");
+                        ScenePrinter.line();
                     }
                 }
                 case 3 -> {
@@ -90,21 +104,26 @@ public class StoryEngine {
                     if (characterMenu(simon)) {
                         player = simon;
                         ScenePrinter.line();
-                        System.out.println("You selected " + player.getName() + " 🔮!");
+                        System.out.println("🧙‍♂️ You have chosen " + player.getName() + ", the wise Mage!");
                         ((Simon) player).showBackstory();
+                        ScenePrinter.line();
+                        System.out.println("✨ The arcane forces converge to gift you ancient relics of power...");
                         player.getInventory().setEquippedWeapon(Staff.WOODEN_STAFF);
+                        player.getInventory().setEquippedArmor(Armor.LEATHER_GUARD);
+                        System.out.println("🔮 *The --" + player.getInventory().getEquippedWeapon().getName() + "-- pulses faintly, whispering secrets of forgotten spells.*");
+                        System.out.println("🛡️ *The --" + player.getInventory().getEquippedArmor().getName() + "-- shimmers with faint runes — fragile, yet brimming with arcane energy.*");
+                        System.out.println("💫 Magic stirs in the air around you as your journey begins...");
+                        ScenePrinter.line();
                     }
                 }
                 default -> System.out.println("❌ Invalid choice! Please select a valid option.");
             }
         } while (player == null);
 
-        // Equip default armor
-        player.getInventory().setEquippedArmor(Armor.LEATHER_GUARD);
         InputUtil.pressEnterToContinue();
-
-        return player; // return the selected player
+        return player;
     }
+
 
 
     private boolean characterMenu(Character character) {

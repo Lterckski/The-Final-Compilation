@@ -7,12 +7,12 @@ public class Bow extends Weapon{
     private final int attackTwiceChance;
     private final int lifestealPercent;
 
-    public static final Bow WOODEN_BOW = new Bow("Wooden Bow","\uD83D\uDD18", 0 , 0, 0);
-    public static final Bow OAK_LONGBOW = new Bow("Oak Longbow","\uD83D\uDFE2", 5 , 0, 0);
-    public static final Bow TWINSHOT_BOW = new Bow("Twinshot Bow","\uD83D\uDD35", 15, 10,0);
-    public static final Bow LIFEBLOOM_BOW = new Bow("Lifebloom Bow", "\uD83D\uDD35", 15, 0, 3);
-    public static final Bow AETHERSTRIKE_BOW = new Bow("Aetherstrike Bow", "\uD83D\uDFE3", 30, 25, 5);
-    public static final Bow GOLDEN_TALON = new Bow("Golden Talon", "\uD83D\uDFE1", 50, 35, 10);
+    public static final Bow WOODEN_BOW = new Bow("Wooden Bow","⚪", 0 , 0, 0);
+    public static final Bow OAK_LONGBOW = new Bow("Oak Longbow","🟢", 5 , 0, 0);
+    public static final Bow TWINSHOT_BOW = new Bow("Twinshot Bow","🔵", 15, 10,0);
+    public static final Bow LIFEBLOOM_BOW = new Bow("Lifebloom Bow", "🔵", 15, 0, 3);
+    public static final Bow AETHERSTRIKE_BOW = new Bow("Aetherstrike Bow", "🟣", 30, 25, 5);
+    public static final Bow GOLDEN_TALON = new Bow("Golden Talon", "🟡", 50, 35, 10);
 
     public Bow(String name, String rarity, int atkBuff, int twiceAttackChance, int lifestealPercent){
         super(name,rarity,atkBuff);
@@ -31,7 +31,7 @@ public class Bow extends Weapon{
         }
 
         if (lifestealPercent > 0) {
-            System.out.println("💖 Restores " + lifestealPercent + "% HP of damage dealt");
+            System.out.println("💝 Restores " + lifestealPercent + "% HP of damage dealt");
         }
 
         System.out.println("-----------------------------");

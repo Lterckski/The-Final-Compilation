@@ -13,31 +13,33 @@ public class FinalBoss extends Enemy {
 
     // 🩸 Skill 1: Soul Drain
     public void soulDrain(Character target) {
-        System.out.println("💀 " + this.name + " casts Soul Drain!");
-        if (!target.getEffects().checkDodge()) {
-            int damage = (int) RandomUtil.range(this.attack * 1.0, this.attack * 1.0);
-            int reduced = damage - target.getDefense();
-            if (reduced < 0) reduced = 0;
+        System.out.println("💀 " + name + " casts Soul Drain!");
+        if(target.getEffects().checkDodge()) return;
 
-            System.out.println("→ Soul Drain hits for " + reduced + " damage!");
-            target.takeDamage(reduced);
-            this.setHp(Math.min(this.getHp() + 100, this.getMaxHp()));
-            System.out.println("💚 " + this.name + " absorbs life and heals 100 HP!");
+        int damage = attack;
+        int reduced = damage - target.getDefense();
+        if (reduced < 0) reduced = 0;
 
-            Armor equippedArmor = target.getInventory().getEquippedArmor();
-            if (equippedArmor != null) {
-                int reflectDamage = equippedArmor.checkReflectDamage(reduced);
-                if (reflectDamage > 0) {
-                    System.out.println("🛡️ " + equippedArmor.getName() + " reflected " + reflectDamage + " damage back to " + this.name + "!");
-                    this.takeDamage(reflectDamage);
-                }
+        System.out.println("→💔 Soul Drain hits for " + reduced + " damage!");
+        target.takeDamage(reduced);
+        hp += 100;
+        if(hp > maxHp) hp = maxHp;
+        System.out.println("💝 " + name + " absorbs life and heals 100 HP!");
+
+        Armor equippedArmor = target.getInventory().getEquippedArmor();
+        if (equippedArmor != null) {
+            int reflectDamage = equippedArmor.checkReflectDamage(reduced);
+            if (reflectDamage > 0) {
+                System.out.println("🛡️ " + equippedArmor.getName() + " reflected " + reflectDamage + " damage back to " + name + "!");
+                this.takeDamage(reflectDamage);
             }
         }
+
     }
 
     // 🛡️ Skill 2: Encapsulation
     public void encapsulation() {
-        System.out.println("🧿 " + this.name + " uses Encapsulation!");
+        System.out.println("🧿 " + name + " uses Encapsulation!");
         if (!this.encapsulated) {
             this.getEffects().applyDefenseBuff(100, 1, true);
             this.encapsulated = true;
@@ -76,12 +78,12 @@ public class FinalBoss extends Enemy {
         }
     }
 
-    // 📜 Display all boss skills
-    public void showSkills() {
+    @Override
+    public void displaySkills() {
         System.out.println("\n------- FINAL BOSS: KHAI THE NECROMANCER SKILLS -------");
         System.out.println("Skill 1 – Soul Drain");
         System.out.println("Description: Drains the target’s life essence to heal himself.");
-        System.out.println("Damage: (" + (int) (this.attack * 1.0) + ")");
+        System.out.println("Damage: (" + (int)(attack * 1.0) + ")");
         System.out.println("Effects:");
         System.out.println("- Heals self for 100 HP\n");
 
@@ -89,13 +91,13 @@ public class FinalBoss extends Enemy {
         System.out.println("Description: Forms a dark barrier, boosting defense temporarily.");
         System.out.println("Damage: —");
         System.out.println("Effects:");
-        System.out.println("- Increases DEF by +100 for 1 turn\n");
+        System.out.println("- Increases DEF and absorbs 100 of Damage for the next turn\n");
 
         System.out.println("Skill 3 – Dark Ascension (AoE)");
-        System.out.println("Description: Releases immense dark power to strike all foes.");
-        System.out.println("Damage: (" + (int) (this.attack * 1.6) + " — " + (int) (this.attack * 2.0) + ")");
+        System.out.println("Description: Releases immense dark power upon the target.");
+        System.out.println("Damage: (" + (int)(attack * 1.6) + " — " + (int)(attack * 2.0) + ")");
         System.out.println("Effects:");
-        System.out.println("- 50% chance to apply Fear to all targets");
+        System.out.println("- 50% chance to apply Fear to target");
         System.out.println("---------------------------------------------------------");
     }
 
@@ -131,8 +133,4 @@ public class FinalBoss extends Enemy {
         return 10000; // EXP gained for defeating the Final Boss
     }
 
-    @Override
-    public void displaySkills() {
-        showSkills(); // required abstract method from Character
-    }
 }

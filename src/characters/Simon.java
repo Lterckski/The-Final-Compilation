@@ -54,7 +54,6 @@ public class Simon extends Character {
         System.out.println();
         System.out.println("If he truly wished to claim power, he would need more than learning—");
         System.out.println("he would need experience.");
-        ScenePrinter.line();
     }
 
     private void arcaneFlow() {
@@ -172,9 +171,9 @@ public class Simon extends Character {
         while (!isValid) {
             // If ultimate is on cooldown
             if (ultimateCounter > 0) {
-                System.out.println("(1) Skill 1   -  Fireball");
-                System.out.println("(2) Skill 2   -  Ice Prison");
-                System.out.println("(3) Ultimate  -  Meteor Storm ❌ (Available in " + ultimateCounter + " turns)");
+                System.out.println("(1) Skill 1   -  Fireball (⚡ 15 energy)");
+                System.out.println("(2) Skill 2   -  Ice Prison (⚡ 20 energy)");
+                System.out.println("(3) Ultimate  -  Meteor Storm (⚡ 40 energy) ❌ (Available in " + ultimateCounter + " turns)");
                 System.out.println("(4) Skip Turn -  Restore 10% of Max Energy");
                 System.out.println("(5) Show Menu");
                 System.out.print("Choose your action: ");
@@ -196,9 +195,9 @@ public class Simon extends Character {
             // If ultimate is ready
             else {
                 ScenePrinter.shortLine();
-                System.out.println("(1) Skill 1   -  Fireball");
-                System.out.println("(2) Skill 2   -  Ice Prison");
-                System.out.println("(3) Ultimate  -  Meteor Storm");
+                System.out.println("(1) Skill 1   -  Fireball (⚡ 15 energy)");
+                System.out.println("(2) Skill 2   -  Ice Prison (⚡ 20 energy)");
+                System.out.println("(3) Ultimate  -  Meteor Storm (⚡ 40 energy)");
                 System.out.println("(4) Skip Turn -  Restore 10% of Max Energy");
                 System.out.println("(5) Show Menu");
                 System.out.print("Choose your action: ");

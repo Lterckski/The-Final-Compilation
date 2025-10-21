@@ -16,7 +16,7 @@ public class World3Enemy4 extends Enemy {
         int reduced = damage - target.getDefense();
         if(reduced < 0) reduced = 0;
 
-        System.out.println("→ Soul Scream hits for " + reduced + " damage!");
+        System.out.println("→💔 Soul Scream hits for " + reduced + " damage!");
         target.takeDamage(reduced);
 
         // Armor reflect check
@@ -29,9 +29,7 @@ public class World3Enemy4 extends Enemy {
             }
         }
 
-        if(RandomUtil.chance(30)) {
-            target.getEffects().applyConfuse();
-        }
+        target.getEffects().applyConfuse();
     }
 
     @Override
@@ -40,7 +38,7 @@ public class World3Enemy4 extends Enemy {
         System.out.println("Description: Soulflayer Gargoyle unleashes a soul crushing scream, confusing it's victim.");
         System.out.println("Damage: (" + (int)(attack * 1.00) + " — " + (int)(attack * 1.20) + ")");
         System.out.println("Effects:");
-        System.out.println("- Chance to apply Confused to target");
+        System.out.println("- Confuses the target");
         System.out.println("------------------------------------------");
     }
 

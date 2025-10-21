@@ -53,7 +53,8 @@ public class Battle {
         ScenePrinter.line();
         System.out.println();
         ScenePrinter.hr();
-        System.out.println("⚔️ Battle Start! " + player.getName() + " vs " + enemy.getName());
+        String firstName = player.getName().split(" ")[0];
+        System.out.println("⚔️ Battle Start! " + firstName + " vs " + enemy.getName());
         ScenePrinter.hr();
 
         while (player.isAlive() && enemy.isAlive()) {
@@ -67,7 +68,7 @@ public class Battle {
                 // --- PLAYER STATUS TRACKER ---
                 System.out.println();
                 ScenePrinter.line();
-                System.out.println("💚 Your HP  : " + player.getHp() + "/" + player.getMaxHp() + "   ⚡ Energy: " + player.getEnergy() + "/" + player.getMaxEnergy());
+                System.out.println("💚 Your HP  : " + player.getHp() + "/" + player.getMaxHp() + "   🔋 Energy: " + player.getEnergy() + "/" + player.getMaxEnergy());
                 System.out.println("🖤 Enemy HP : " + enemy.getHp() + "/" + enemy.getMaxHp());
                 ScenePrinter.line();
 
