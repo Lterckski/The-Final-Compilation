@@ -2,17 +2,11 @@ package story;
 
 public class ScenePrinter {
 
+
     public static void hr() {
-        System.out.println("=====================================");
+        System.out.println("\n==============================\n");
     }
 
-    public static void line() {
-        System.out.println("-------------------------------------");
-    }
-
-    public static void shortLine() {
-        System.out.println("------------------");
-    }
 
     public static void title(String t) {
         hr();
@@ -20,16 +14,23 @@ public class ScenePrinter {
         System.out.println();
     }
 
+
+    public static void say(String who, String line) {
+        System.out.println(who + ": " + line);
+    }
+
+
     public static void event(String text) {
         System.out.println("» " + text + "\n");
     }
 
-    public static void loot(String text) {
-        System.out.println("💎 " + text);
+
+    public static void effect(String text) {
+        System.out.println("* " + text + "\n");
     }
 
-    public static void type(String block) {
 
+    public static void type(String block) {
         System.out.println(block);
     }
 }
