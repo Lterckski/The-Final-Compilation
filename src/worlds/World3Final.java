@@ -21,7 +21,7 @@ public class World3Final {
         ScenePrinter.effect("The tower shakes as your final battle begins.");
         InputUtil.pressEnterToContinue();
 
-        encounter(player, new FinalBoss());
+        //TODO : FINAL BOSS : SIR KHAI
     }
 
 }
