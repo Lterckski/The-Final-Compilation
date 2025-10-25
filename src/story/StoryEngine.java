@@ -9,11 +9,7 @@ import inventory.Bow;
 import inventory.Staff;
 import inventory.Sword;
 import utils.InputUtil;
-import worlds.World1;
-import worlds.World2;
-import worlds.World3;
-import worlds.World3Final;
-import worlds.Epilogue;
+import worlds.*;
 
 public class StoryEngine {
 
@@ -26,11 +22,11 @@ public class StoryEngine {
         World1 w1 = new World1();
         w1.run(player);
 
-        transitionToWorld2()
+        transitionToWorld2();
         World2 w2 = new World2();
         w2.run(player);
 
-        transitionToWorld3()
+        transitionToWorld3();
         World3 w3 = new World3();
         w3.run(player);
 
@@ -66,8 +62,8 @@ public class StoryEngine {
         System.out.println();
     }
 
-    private Character chooseCharacter() {
-        Character player = null;
+    private characters.Character chooseCharacter() {
+        characters.Character player = null;
 
         do {
             ScenePrinter.line();
@@ -175,15 +171,16 @@ public class StoryEngine {
         );
         System.out.println("[Checkpoint reached]\n");
     }
-}
+
 
     private void transitionToWorld3() {
-         ScenePrinter.title("Transition — Toward World 3");
-          ScenePrinter.type(
-                 "Sir Khai’s staff flares once more. The Second Stone trembles in your hand.\n" +
-                    "Far off, lightning pierces a storm-swallowed horizon.\n" +
-                    "He turns to you. \"The final trial awaits—where light cannot reach.\"\n"
-    );
-    System.out.println("[Checkpoint reached]\n");
-}
+        ScenePrinter.title("Transition — Toward World 3");
+        ScenePrinter.type(
+                "Sir Khai’s staff flares once more. The Second Stone trembles in your hand.\n" +
+                        "Far off, lightning pierces a storm-swallowed horizon.\n" +
+                        "He turns to you. \"The final trial awaits—where light cannot reach.\"\n"
+        );
+        System.out.println("[Checkpoint reached]\n");
+    }
 
+}

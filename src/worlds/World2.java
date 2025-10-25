@@ -47,7 +47,7 @@ public class World2 {
                 "In the throne room, the King sits slumped—his crown fused to his skull.\n" +
                         "You battle him; each blow shakes the hall until, finally, he falls.\n"
         );
-        //TODO : MINI BOSS 2 : LUTHER VON
+        //TODO : MINI BOSS 2 : LUTHER VON, THE CORRUPTED KING
 
 
         ScenePrinter.effect("The King's breath rattles. His eyes regain a hint of clarity.");

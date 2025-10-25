@@ -17,7 +17,7 @@ public class World3 {
                 "The land turns barren. Ash falls like snow. Rivers of molten fire carve through the black rock.\n" +
                         "At the center, rising higher than mountains, stands the Necromancer’s Tower.\n"
         );
-        //TODO : ENEMY 1 : FLAME REVENANT
+        //TODO : ENEMY 1 : 3 FLAME REVENANT ENCOUNTERED
         ScenePrinter.event("You steel yourself and begin the ascent.");
         ScenePrinter.effect("The air thickens with magic. Each step hums with a pulse from the Stones you carry.\n");
         InputUtil.pressEnterToContinue();
@@ -25,14 +25,17 @@ public class World3 {
 
         ScenePrinter.event("From the darkness crawl soldiers of bone and beasts stitched from shadow.");
         InputUtil.pressEnterToContinue();
-        //TODO : ENEMY 2 : BONE WARLOCK
-        //TODO : ENEMY 3 : BONE CRUSHER
+        //TODO : ENEMY 2 : 3 BONE WARLOCK ENCOUNTERED
+        //TODO : ENEMY 3 : 2 OBSIDIAN CRUSHER ENCOUNTERED
         ScenePrinter.event("Halfway up, you find a mural etched into obsidian.");
         ScenePrinter.type(
                 "It shows a hooded figure holding three glowing stones, beneath a phrase in your own language:\n" +
                         "  'To teach is to control.'\n"
         );
-        // TO DO: MINIBOSS: Zyrryl
+
+        //TODO : ENEMY 4 : 4 SOULFLAYER GARGOYLES ENCOUNTERED
+
+        // TODO: MINIBOSS: ZYRRYL, THE TOWER WARDEN
         InputUtil.pressEnterToContinue();
 
         // --- Boss: the revelation ---
@@ -43,7 +46,7 @@ public class World3 {
         ScenePrinter.say("Sir Khai", "\"You’ve served well, student. Who better to collect the relics than one who trusts their teacher?\"");
         ScenePrinter.say("Sir Khai", "\"I guided you not to save this land—but to claim its power. The Necromancer you sought... is me.\"\n");
 
-
+        // TODO: FINAL BOSS : KHAI THE NECROMANCER
 
 
         ScenePrinter.hr();
