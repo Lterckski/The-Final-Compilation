@@ -38,6 +38,7 @@ public class World3 {
         // TODO: MINIBOSS: ZYRRYL, THE TOWER WARDEN
         InputUtil.pressEnterToContinue();
 
+        // TODO : PRE-FINAL RANDOM ENCOUNTER (ka luther ni)
         // --- Boss: the revelation ---
         ScenePrinter.title("BOSS — Sir Khai, the Necromancer");
         ScenePrinter.event("At the summit, the Third Stone pulses with violet light.");
@@ -46,7 +47,6 @@ public class World3 {
         ScenePrinter.say("Sir Khai", "\"You’ve served well, student. Who better to collect the relics than one who trusts their teacher?\"");
         ScenePrinter.say("Sir Khai", "\"I guided you not to save this land—but to claim its power. The Necromancer you sought... is me.\"\n");
 
-        // TODO: FINAL BOSS : KHAI THE NECROMANCER
 
 
         ScenePrinter.hr();
