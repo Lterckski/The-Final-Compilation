@@ -123,6 +123,20 @@ public class Tester {
 
         System.out.println();
 
+        Enemy test = new World3Miniboss1();
+
+        player.gainExp(60000);
+        test.dropLoot(player);
+
+
+        Enemy khai = new FinalBoss();
+        Battle finalBattle = new Battle(player,khai);
+
+        System.out.println("FINAL BOSS BATTLE");
+        finalBattle.startBattle();
+
+
+
         Enemy enemy1 = new World3Miniboss1();
         Battle battle1 = new Battle(player, enemy1);
 

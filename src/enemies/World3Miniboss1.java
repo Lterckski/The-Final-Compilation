@@ -14,6 +14,7 @@ public class World3Miniboss1 extends Enemy {
     public void graveCleaver(Character target) {
         System.out.println("🤺 " + name + " used Grave Cleaver!");
         if(target.getEffects().checkDodge()) return;
+        if (this.getEffects().checkConfuse()) return;
 
         int damage = (int)RandomUtil.range(attack * 1.00, attack * 1.15);
 
@@ -65,7 +66,7 @@ public class World3Miniboss1 extends Enemy {
             if (eclipseGreatsword.lootWeapon()) {
                 eclipseGreatsword.equip(player);
             }
-        } else if (player.getClassType().equals("Bow")) {
+        } else if (player.getClassType().equals("Archer")) {
             Bow aetherstrikeBow = Bow.AETHERSTRIKE_BOW;
             if (aetherstrikeBow.lootWeapon()) {
                 aetherstrikeBow.equip(player);

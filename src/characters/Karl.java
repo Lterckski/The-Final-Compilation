@@ -5,8 +5,9 @@ import utils.RandomUtil;
 import inventory.*;
 public class Karl extends Character{
 
-    public Karl() { super("Karl Clover Dior IV", "Archer", 80, 3, 80, 12); this.getWeapon();
-    this.getInventory().setEquippedWeapon(Bow.OAK_LONGBOW);}
+    public Karl() {
+        super("Karl Clover Dior IV", "Archer", 80, 3, 80, 12);
+    }
 
     @Override
     public void displaySkills() {
@@ -58,12 +59,13 @@ public class Karl extends Character{
 
     // Helper method to trigger weapon effects
     private void triggerWeaponEffect(Character target, int damage) {
-        if (this.getWeapon() != null && this.getWeapon().applyEffects(target, damage)) {
+        if (this.getWeapon() != null && this.getWeapon().applyEffects(this, damage)) {
             System.out.println("⚡ Weapon effect activated! Extra hit triggered.");
-            int reducedExtra = damage - target.getDefense();
-            if (reducedExtra < 0) reducedExtra = 0;
-            System.out.println("🗡️ Extra hit from weapon for " + reducedExtra + " damage!");
-            target.takeDamage(reducedExtra);
+
+            int extraDamage = (int) RandomUtil.range(damage * 0.20, damage * 0.40);
+
+            System.out.println("🗡 Extra hit from weapon for " + extraDamage + " damage!");
+            target.takeDamage(extraDamage);
         }
     }
 
@@ -81,22 +83,19 @@ public class Karl extends Character{
     // Skill 1 - Piercing Arrow
     public void piercingArrow(Character target) {
         int energyCost = 10;
-        System.out.println("🏹 You used Piercing Arrow on " + target.getName() + " (⚡-" + energyCost + " Energy)");
-
-        if (target.getEffects().checkConfuse()) return;
-
         if (!consumeEnergy(energyCost)) {
             System.out.println("❌ Not enough energy to use Piercing Arrow!");
             return;
         }
 
-        int damage = (int) RandomUtil.range(attack * 1.10, attack * 1.25);
-        damage = hunterInstincts(damage, target);
-        int reducedDefense = (int) (target.getDefense() * 0.7);
-        int reduced = damage - reducedDefense;
-        if (reduced < 0) reduced = 0;
+        System.out.println("🏹 You used Piercing Arrow on " + target.getName() + " (⚡-" + energyCost + " Energy)");
 
-        System.out.println("💔 Target is hit for " + reduced + " Damage (30% DEF ignored)!");
+        if (this.getEffects().checkConfuse()) return;
+
+        int damage = (int) RandomUtil.range(attack * 1.10, attack * 1.25);
+        int reduced = hunterInstincts(damage, target);
+
+        System.out.println("💔 Target is hit for " + reduced + " Pure Damage!");
         target.takeDamage(reduced);
 
         // Bleed effect
@@ -111,20 +110,19 @@ public class Karl extends Character{
     // Skill 2 - Bullseye
     public void bullsEye(Character target) {
         int energyCost = 20;
-        System.out.println("🎯🔥 You used Bullseye on " + target.getName() + " (⚡-" + energyCost + " Energy)");
-
-        if (target.getEffects().checkConfuse()) return;
-
         if (!consumeEnergy(energyCost)) {
             System.out.println("❌ Not enough energy to use Bullseye!");
             return;
         }
 
+        System.out.println("🎯🔥 You used Bullseye on " + target.getName() + " (⚡-" + energyCost + " Energy)");
+
+        if (this.getEffects().checkConfuse()) return;
+
         int damage = (int) RandomUtil.range(attack * 1.25, attack * 1.50);
         damage = (int) (damage * 1.5); // guaranteed crit
         damage = hunterInstincts(damage, target);
-        int reduced = damage - target.getDefense();
-        if (reduced < 0) reduced = 0;
+        int reduced = calculateDamage(target, damage);
 
         System.out.println("💔 Target is hit for " + reduced + " Critical Damage!");
         target.takeDamage(reduced);
@@ -151,16 +149,15 @@ public class Karl extends Character{
         for (int i = 1; i <= 5; i++) {
             int damage = (int) RandomUtil.range(attack * 1.00, attack * 1.60);
             damage = hunterInstincts(damage, target);
-            int reduced = damage - target.getDefense();
-            if (reduced < 0) reduced = 0;
+            int reduced = calculateDamage(target, damage);
 
-            // Check if target is confused
-            if (target.getEffects().checkConfuse()) reduced = 0;
+            if (this.getEffects().checkConfuse()) reduced = 0;
             totalDamage += reduced;
 
             System.out.println("→💥 Arrow " + i + " fired! 💔 Target is hit for " + reduced + " damage!");
 
-            triggerWeaponEffect(target, reduced);
+            if(reduced > 0)
+                triggerWeaponEffect(target, reduced);
         }
 
         System.out.println("🏹🌧️ Rain of a Thousand Arrows finished! Total damage dealt: " + totalDamage);

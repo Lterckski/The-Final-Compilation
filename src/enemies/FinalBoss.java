@@ -5,114 +5,158 @@ import inventory.Armor;
 import utils.RandomUtil;
 
 public class FinalBoss extends Enemy {
+    private int nullEnergy = 0;
+    private int voidEnergy = 0;
     private boolean encapsulated = false;
+    private boolean shieldBroken = false;
+    private int shield = 0; // 🛡️ Shield value (temporary, lasts 1 turn)
 
     public FinalBoss() {
-        super("Khai the Necromancer", 3455, 100, 185);
+        super("Khai the Necromancer", 3455, 50, 185);
     }
 
+    public int getShield(){ return shield; }
     // 🩸 Skill 1: Soul Drain
     public void soulDrain(Character target) {
         System.out.println("💀 " + name + " casts Soul Drain!");
-        if(target.getEffects().checkDodge()) return;
+        if (target.getEffects().checkDodge()) return;
+        if (this.getEffects().checkConfuse()) return;
 
         int damage = attack;
-        int reduced = damage - target.getDefense();
-        if (reduced < 0) reduced = 0;
+        int reduced = calculateDamage(target, damage);
 
         System.out.println("→💔 Soul Drain hits for " + reduced + " damage!");
         target.takeDamage(reduced);
-        hp += 100;
-        if(hp > maxHp) hp = maxHp;
-        System.out.println("💝 " + name + " absorbs life and heals 100 HP!");
+
+        int heal = reduced;
+        hp = Math.min(maxHp, hp + heal);
+        System.out.println("💝 " + name + " absorbs life and heals " + heal + " HP!");
 
         Armor equippedArmor = target.getInventory().getEquippedArmor();
         if (equippedArmor != null) {
             int reflectDamage = equippedArmor.checkReflectDamage(reduced);
             if (reflectDamage > 0) {
-                System.out.println("🛡️ " + equippedArmor.getName() + " reflected " + reflectDamage + " damage back to " + name + "!");
+                System.out.println("🛡️ " + equippedArmor.getName() +
+                        " reflected " + reflectDamage + " damage back to " + name + "!");
+                this.takeDamage(reflectDamage);
+            }
+        }
+    }
+
+    // 🛡️ Skill 2: Encapsulation (creates a 1-turn shield)
+    public void encapsulation() {
+        System.out.println("🧿 " + name + " uses Encapsulation!");
+        if (!encapsulated) {
+            shield = 50; // Shield lasts one turn
+            encapsulated = true;
+            shieldBroken = false;
+            System.out.println("🌑 A dark barrier forms, shielding Khai from harm! (+50 Shield for 1 turn)");
+        }
+    }
+
+    // 🌑 Skill 3: Dark Ascension
+    public void darkAscension(Character target) {
+        System.out.println("🌘 " + name + " unleashes Dark Ascension!");
+        if (target.getEffects().checkDodge()) return;
+        if (this.getEffects().checkConfuse()) return;
+
+        int damage = (int) RandomUtil.range(attack * 1.6, attack * 2.0);
+        int reduced = calculateDamage(target, damage);
+
+        System.out.println("→💔 Dark Ascension hits for " + reduced + " damage!");
+        target.takeDamage(reduced);
+
+        Armor equippedArmor = target.getInventory().getEquippedArmor();
+        if (equippedArmor != null) {
+            int reflectDamage = equippedArmor.checkReflectDamage(reduced);
+            if (reflectDamage > 0) {
+                System.out.println("🛡️ " + equippedArmor.getName() +
+                        " reflected " + reflectDamage + " damage back to " + name + "!");
                 this.takeDamage(reflectDamage);
             }
         }
 
+        if (RandomUtil.chance(50)) target.getEffects().applyFear();
     }
 
-    // 🛡️ Skill 2: Encapsulation
-    public void encapsulation() {
-        System.out.println("🧿 " + name + " uses Encapsulation!");
-        if (!this.encapsulated) {
-            this.getEffects().applyDefenseBuff(100, 1, true);
-            this.encapsulated = true;
-        } else {
-            System.out.println("⚠️ Encapsulation is still active!");
+    public void reduceShield(int amount) {
+        if (amount <= 0) return; // do nothing if no damage
+        shield -= amount;
+
+        if (shield <= 0) {
+            shield = 0;
+            shieldBroken = true;
+            checkBrokenShield();
         }
     }
 
-    // 🌑 Skill 3: Dark Ascension (AoE)
-    public void darkAscension(Character[] targets) {
-        System.out.println("🌘 " + this.name + " unleashes Dark Ascension!");
-
-        for (Character target : targets) {
-            if (target != null && target.getHp() > 0 && !target.getEffects().checkDodge()) {
-                double multiplier = RandomUtil.range(1.6, 2.0);
-                int damage = (int) (this.attack * multiplier);
-                int reduced = damage - target.getDefense();
-                if (reduced < 0) reduced = 0;
-
-                System.out.println("→ " + target.getName() + " takes " + reduced + " AoE damage!");
-                target.takeDamage(reduced);
-
-                if (RandomUtil.chance(50)) {
-                    target.getEffects().applyFear();
-                }
-
-                Armor equippedArmor = target.getInventory().getEquippedArmor();
-                if (equippedArmor != null) {
-                    int reflectDamage = equippedArmor.checkReflectDamage(reduced);
-                    if (reflectDamage > 0) {
-                        System.out.println("🛡️ " + equippedArmor.getName() + " reflected " + reflectDamage + " damage back to " + this.name + "!");
-                        this.takeDamage(reflectDamage);
-                    }
-                }
+    public void checkBrokenShield() {
+        if (encapsulated) {
+            if (shieldBroken) {
+                voidEnergy++;
+                baseDefense = (int) (baseDefense * 1.05);
+                defense = baseDefense;
+                System.out.println("-");
+                System.out.println("💥 The barrier shatters! Khai gains 1 stack of Void Energy! (+5% DEF)");
+                System.out.println("🛡️ Current DEF: " + baseDefense + " | 🕳 Void Energy Stacks: " + voidEnergy);
+                System.out.println("-");
             }
         }
     }
 
-    @Override
-    public void displaySkills() {
-        System.out.println("\n------- FINAL BOSS: KHAI THE NECROMANCER SKILLS -------");
-        System.out.println("Skill 1 – Soul Drain");
-        System.out.println("Description: Drains the target’s life essence to heal himself.");
-        System.out.println("Damage: (" + (int)(attack * 1.0) + ")");
-        System.out.println("Effects:");
-        System.out.println("- Heals self for 100 HP\n");
+    public void checkUnbrokenShield(){
+        if (encapsulated) {
+            if (!shieldBroken) {
+                nullEnergy++;
+                baseAttack = (int) (baseAttack * 1.05);
+                attack = baseAttack;
+                System.out.println("-");
+                System.out.println("🌑 The barrier remains unbroken... Khai gains 1 stack of Null Energy! (+5% ATK)");
+                System.out.println("⚔️ Current ATK: " + baseAttack + " | 🔮 Null Energy Stacks: " + nullEnergy);
+                System.out.println("-");
+            }
+        }
 
-        System.out.println("Skill 2 – Encapsulation");
-        System.out.println("Description: Forms a dark barrier, boosting defense temporarily.");
-        System.out.println("Damage: —");
-        System.out.println("Effects:");
-        System.out.println("- Increases DEF and absorbs 100 of Damage for the next turn\n");
+        encapsulated = false;
+        shieldBroken = false;
+        shield = 0; // Shield expires after one turn
+    }
 
-        System.out.println("Skill 3 – Dark Ascension (AoE)");
-        System.out.println("Description: Releases immense dark power upon the target.");
-        System.out.println("Damage: (" + (int)(attack * 1.6) + " — " + (int)(attack * 2.0) + ")");
-        System.out.println("Effects:");
-        System.out.println("- 50% chance to apply Fear to target");
-        System.out.println("---------------------------------------------------------");
+    public void applyStun() {
+        // Immediately remove shield if active
+        if (encapsulated && shield > 0) {
+            shield = 0;
+            shieldBroken = true;
+            encapsulated = false;
+        }
     }
 
     // 🧠 Boss AI
     @Override
     public void turn(Character target) {
-        if (!this.encapsulated && RandomUtil.chance(25)) {
-            this.encapsulation();
-        } else if (RandomUtil.chance(40)) {
-            this.soulDrain(target);
-        } else {
-            this.darkAscension(new Character[]{target});
-        }
+        checkUnbrokenShield();
+        double hpPercent = ((double) this.hp / this.maxHp) * 100;
 
-        this.encapsulated = false;
+        if(hpPercent > 80){
+            if(RandomUtil.chance(80))
+                encapsulation();
+            else
+                soulDrain(target);
+
+        } else if(hpPercent > 30){
+            int roll = RandomUtil.range(1,100);
+
+            if(roll <= 20) soulDrain(target);
+            else if(roll <= 30) encapsulation();
+            else darkAscension(target);
+
+        } else{
+            int roll = RandomUtil.range(1,100);
+
+            if(roll <= 10) encapsulation();
+            else if(roll <= 30) darkAscension(target);
+            else soulDrain(target);
+        }
     }
 
     // 🎁 Drops after defeat + Game end
@@ -131,6 +175,59 @@ public class FinalBoss extends Enemy {
     @Override
     public int rewardExp() {
         return 10000; // EXP gained for defeating the Final Boss
+    }
+
+    @Override
+    public void displayStats() {
+        System.out.println("\n======== Enemy Stats ========");
+        System.out.println("Name    : " + name);
+        System.out.println("HP      : " + hp + "/" + maxHp);
+
+        // ⚔️ Attack
+        System.out.print("Attack  : " + baseAttack);
+        if (attack > baseAttack) System.out.print(" (+" + (attack - baseAttack) + ")");
+        else if (attack < baseAttack) System.out.print(" (-" + (baseAttack - attack) + ")");
+        System.out.println();
+
+        // 🛡️ Defense
+        System.out.print("Defense : " + baseDefense);
+        if (defense > baseDefense) System.out.print(" (+" + (defense - baseDefense) + ")");
+        else if (defense < baseDefense) System.out.print(" (-" + (baseDefense - defense) + ")");
+        System.out.println();
+
+        // 🩸 Shield
+        if (shield > 0) System.out.println("🛡️ Active Shield : " + shield + " (1 Turn)");
+
+        // 📈 Stack Info
+        System.out.println("🔮 Null Energy Stacks : " + nullEnergy);
+        System.out.println("🌑 Void Energy Stacks : " + voidEnergy);
+        System.out.println("=============================\n");
+    }
+
+    @Override
+    public void displaySkills() {
+        System.out.println("\n------- FINAL BOSS: KHAI THE NECROMANCER SKILLS -------");
+
+        System.out.println("Skill 1 – Soul Drain");
+        System.out.println("Description: Drains the target’s life essence to heal himself.");
+        System.out.println("Damage: (" + (int)(attack * 1.0) + ")");
+        System.out.println("Effects:");
+        System.out.println("- Heals self for 100 HP\n");
+
+        System.out.println("Skill 2 – Encapsulation");
+        System.out.println("Description: Forms a dark barrier that absorbs 50 damage for 1 turn.");
+        System.out.println("Damage: —");
+        System.out.println("Effects:");
+        System.out.println("- Grants a 50-damage shield for 1 turn");
+        System.out.println("- If the shield remains intact → Gain 🔮 Null Energy (+5% ATK permanently)");
+        System.out.println("- If the shield breaks → Gain 🌑 Void Energy (+5% DEF permanently)\n");
+
+        System.out.println("Skill 3 – Dark Ascension");
+        System.out.println("Description: Releases immense dark power upon the target.");
+        System.out.println("Damage: (" + (int)(attack * 1.6) + " — " + (int)(attack * 2.0) + ")");
+        System.out.println("Effects:");
+        System.out.println("- 50% chance to apply Fear to target");
+        System.out.println("---------------------------------------------------------");
     }
 
 }

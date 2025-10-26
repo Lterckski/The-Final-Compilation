@@ -23,11 +23,11 @@ public class Sword extends Weapon{
     @Override
     public void displayInfo() {
         System.out.println("-----------------------------");
-        System.out.println("🗡️ " + getName() + " [" + getRarity() + "]");
-        System.out.println("+ " + getAtkBuff() + " ATK");
+        System.out.println("🗡️ " + this.getName() + " [" + this.getRarity() + "]");
+        System.out.println("+ " + this.getAtkBuff() + " ATK");
 
         if (attackTwiceChance > 0) {
-            System.out.println("⚡ " + attackTwiceChance + "% chance to attack twice");
+            System.out.println("⚡ " + attackTwiceChance + "% chance to deal extra damage");
         }
 
         if (lifestealPercent > 0) {
@@ -38,21 +38,26 @@ public class Sword extends Weapon{
     }
 
     @Override
-    public boolean applyEffects(Character target, int damage) {
-        // Double attack
+    public boolean applyEffects(Character player, int damage) {
+        // Lifesteal
+        if (lifestealPercent > 0) {
+            int healAmount = (int) (damage * lifestealPercent / 100.0);
+            healAmount = Math.min(healAmount, player.getMaxHp() - player.getHp()); // Prevent overheal
+
+            if (healAmount > 0) {
+                System.out.println("💖 " + this.getName() + " restores " + healAmount + " HP!");
+                player.heal(healAmount);
+            }
+        }
+
+        // Double attack chance
         if (RandomUtil.chance(attackTwiceChance)) {
-            System.out.println("⚡ " + getName() + " triggers a second attack!");
+            System.out.println("⚡ " + this.getName() + " triggers a second attack!");
             return true;
         }
 
-        // Lifesteal
-        if (lifestealPercent > 0) {
-            int heal = (int)(damage * lifestealPercent / 100.0);
-            System.out.println("💖 " + getName() + " restores " + heal + " HP!");
-            target.heal(heal);
-        }
-
-        return false; // no second attack is triggered
+        return false; // No second attack triggered
     }
+
 
 }

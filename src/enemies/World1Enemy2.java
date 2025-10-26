@@ -14,10 +14,10 @@ public class World1Enemy2 extends Enemy {
     public void tricksterStrike(Character target) {
         System.out.println("🧚 " + name + " attacks with Trickster Strike!");
         if (target.getEffects().checkDodge()) return;
+        if (this.getEffects().checkConfuse()) return;
 
         int damage = (int) RandomUtil.range(attack * 1.0, attack * 1.625);
-        int reduced = damage - target.getDefense();
-        if (reduced < 0) reduced = 0;
+        int reduced = calculateDamage(target, damage);
 
         System.out.println("→💔 Trickster Strike hits for " + reduced + " damage!");
         target.takeDamage(reduced);

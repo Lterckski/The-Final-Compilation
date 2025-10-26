@@ -11,10 +11,10 @@ public class World3Enemy2 extends Enemy {
     public void shadowBolt(Character target) {
         System.out.println("💀 " + name + " casts Shadow Bolt!");
         if (target.getEffects().checkDodge()) return;
+        if (this.getEffects().checkConfuse()) return;
 
         int damage = (int) RandomUtil.range(attack * 1.00, attack * 1.25);
-        int reduced = damage - target.getDefense();
-        if (reduced < 0) reduced = 0;
+        int reduced = calculateDamage(target, damage);
 
         System.out.println("→💔 Shadow Bolt hits for " + reduced + " damage!");
         target.takeDamage(reduced);

@@ -12,10 +12,10 @@ public class World1Enemy1 extends Enemy {
     public void savageHowl(Character target) {
         System.out.println("🐺 " + name + " unleashes Savage Howl!");
         if (target.getEffects().checkDodge()) return;
+        if (this.getEffects().checkConfuse()) return;
 
         int damage = (int) RandomUtil.range(attack, attack * 1.5);
-        int reduced = damage - target.getDefense();
-        if (reduced < 0) reduced = 0;
+        int reduced = calculateDamage(target, damage);
 
         System.out.println("→💔 Savage Howl hits for " + reduced + " damage!");
         target.takeDamage(reduced);

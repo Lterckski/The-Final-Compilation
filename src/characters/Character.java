@@ -1,6 +1,7 @@
 package characters;
 
 import battle.Effects;
+import enemies.FinalBoss;
 import inventory.Armor;
 import inventory.Inventory;
 import inventory.Potions;
@@ -102,7 +103,7 @@ public abstract class Character {
         System.out.println("Name    : " + name + " (" + classType + ")");
         System.out.println("Level   : " + level);
         System.out.println("EXP     : " + exp + "/" + nextLevelExp);
-        System.out.println("Health  : " + hp + "/" + maxHp);
+        System.out.println("HP      : " + hp + "/" + maxHp);
         System.out.println("Energy  : " + energy + "/" + maxEnergy);
 
         // Attack
@@ -158,6 +159,30 @@ public abstract class Character {
         }
     }
 
+    public int calculateDamage(Character target, int damage) {
+        int reduced = damage;
+
+        // If target is FinalBoss with a shield
+        if (target instanceof FinalBoss fb && fb.getShield() > 0) {
+            // Only break shield if damage >= shield
+            if (reduced >= fb.getShield()) {
+                int absorbed = fb.getShield();
+                fb.reduceShield(absorbed); // will trigger shieldBroken
+                reduced -= absorbed;
+            } else {
+                fb.reduceShield(reduced); // just reduce shield, won't break
+                reduced = 0; // all damage absorbed
+            }
+        }
+
+        // Apply target's defense
+        reduced -= target.getDefense();
+        if (reduced < 0) reduced = 0;
+
+        return reduced;
+    }
+
+
     public void takeDamage(int damage) {
         hp -= damage;
         if (hp < 0) hp = 0;
@@ -208,36 +233,42 @@ public abstract class Character {
 
     public void levelUp() {
         level++;
-
         ScenePrinter.hr();
         System.out.println("✨ LEVEL UP! You are now Level " + level + "! ✨");
         System.out.println("💖 HP & 🔋 Energy Restored!");
 
-        // Store old values before increasing
-        int oldHp = maxHp;
-        int oldAtk = baseAttack;
-        int oldDef = baseDefense;
-        int oldEnergy = maxEnergy;
+        int oldHp = maxHp, oldAtk = baseAttack, oldDef = baseDefense, oldEnergy = maxEnergy;
 
-        // Increase stats
-        maxHp = (int) Math.ceil(maxHp * 1.13);
-        baseAttack = (int) Math.ceil(baseAttack * 1.13);
-        baseDefense = (int) Math.ceil(baseDefense * 1.13);
-        maxEnergy += 10;
+        // Class-based growth
+        switch (classType) {
+            case "Swordsman" -> {
+                maxHp += 110 + (int)(maxHp * 0.02);
+                baseAttack += 2;
+                baseDefense += 2;
+                maxEnergy += 5;
+            }
+            case "Archer" -> {
+                maxHp += 90 + (int)(maxHp * 0.02);
+                baseAttack += 4;
+                baseDefense += 1;
+                maxEnergy += 5;
+            }
+            case "Mage" -> {
+                maxHp += 70 + (int)(maxHp * 0.015);
+                baseAttack += 5;
+                baseDefense += 1;
+                maxEnergy += 10;
+            }
+        }
 
-        // Restore HP and Energy
         hp = maxHp;
         energy = maxEnergy;
 
-        // Subtract XP before setting next requirement
         exp -= nextLevelExp;
-        if (level < XP_TABLE.length) {
-            nextLevelExp = XP_TABLE[level];
-        }
+        if (level < XP_TABLE.length) nextLevelExp = XP_TABLE[level];
 
         recalculateBuffs();
 
-        // Show detailed stat gains
         System.out.println("❤️ HP     : +" + (maxHp - oldHp) + " → " + maxHp);
         System.out.println("⚔️ ATK    : +" + (baseAttack - oldAtk) + " → " + attack);
         System.out.println("🛡️ DEF    : +" + (baseDefense - oldDef) + " → " + defense);
@@ -245,9 +276,11 @@ public abstract class Character {
         ScenePrinter.hr();
     }
 
+
     public void recalculateBuffs(){
         attack = baseAttack + getWeapon().getAtkBuff();
         defense = baseDefense + getArmor().getDefBuff();
     }
+
 
 }

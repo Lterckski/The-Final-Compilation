@@ -13,6 +13,7 @@ public class World2Miniboss2 extends Enemy {
     public void crownOfDespair(Character target) {
         System.out.println("👑 " + name + " casts Crown of Despair!");
         if(target.getEffects().checkDodge()) return;
+        if (this.getEffects().checkConfuse()) return;
 
         // Check immunity to debuff
         Armor equippedArmor = target.getInventory().getEquippedArmor();
@@ -26,10 +27,10 @@ public class World2Miniboss2 extends Enemy {
     public void darkJudgement(Character target){
         System.out.println("⚔️ " + name + " uses Dark Judgment!");
         if(target.getEffects().checkDodge()) return;
+        if (this.getEffects().checkConfuse()) return;
 
         int damage = (int)RandomUtil.range(attack * 1.0, attack * 1.15);
-        int reduced = damage - target.getDefense();
-        if(reduced < 0) reduced = 0;
+        int reduced = calculateDamage(target, damage);
 
         System.out.println("→💔 Dark Judgment hits for " + reduced + " damage!");
         target.takeDamage(reduced);
@@ -48,10 +49,10 @@ public class World2Miniboss2 extends Enemy {
     public void kingsWrath(Character target){
         System.out.println("🔥 " + name + " unleashes King's Wrath!");
         if(target.getEffects().checkDodge()) return;
+        if (this.getEffects().checkConfuse()) return;
 
         int damage = (int)RandomUtil.range(attack * 0.71, attack * 0.85);
-        int reduced = damage - target.getDefense();
-        if(reduced < 0) reduced = 0;
+        int reduced = calculateDamage(target, damage);
 
         System.out.println("→💔 King's Wrath hits for " + reduced + " damage!");
         target.takeDamage(reduced);

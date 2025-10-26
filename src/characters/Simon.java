@@ -68,20 +68,22 @@ public class Simon extends Character {
         int energyCost = 15;
         System.out.println("🔥 You cast Fireball on " + target.getName() + " (⚡-" + energyCost + " Energy)");
 
+        if (this.getEffects().checkConfuse()) return;
+
         if (!consumeEnergy(energyCost)) {
             System.out.println("Not enough energy to cast Fireball!");
             return;
         }
 
         int damage = (int) RandomUtil.range(attack * 1.25, attack * 1.55);
-        int reduced = damage - target.getDefense();
-        if (reduced < 0) reduced = 0;
+        int reduced = calculateDamage(target, damage);
 
         // Fireball
         System.out.println("💔 Target is hit for " + reduced + " damage!");
         target.takeDamage(reduced);
 
-        getInventory().getEquippedWeapon().applyEffects(target, reduced);
+        if(getInventory().getEquippedWeapon().applyEffects(this, reduced))
+            target.getEffects().applyConfuse();
 
         // Apply Burn
         target.getEffects().applyBurn(1);
@@ -99,20 +101,22 @@ public class Simon extends Character {
         int energyCost = 20;
         System.out.println("❄️ You cast Ice Prison on " + target.getName() + " (⚡-" + energyCost + " Energy)");
 
+        if (this.getEffects().checkConfuse()) return;
+
         if (!consumeEnergy(energyCost)) {
             System.out.println("Not enough energy to cast Ice Prison!");
             return;
         }
 
         int damage = (int) RandomUtil.range(attack * 0.60, attack * 0.90);
-        int reduced = damage - target.getDefense();
-        if (reduced < 0) reduced = 0;
+        int reduced = calculateDamage(target, damage);
 
 
         System.out.println("💔 Target is hit for " + reduced + " damage!");
         target.takeDamage(reduced);
 
-        getInventory().getEquippedWeapon().applyEffects(target, reduced);
+        if(getInventory().getEquippedWeapon().applyEffects(this, reduced))
+            target.getEffects().applyConfuse();
 
         // 30% chance to Freeze
         if (RandomUtil.chance(30)) {
@@ -138,11 +142,10 @@ public class Simon extends Character {
 
         for (int i = 1; i <= 5; i++) {
             int damage = (int) RandomUtil.range(attack * 1.00, attack * 1.50);
-            int reduced = damage - target.getDefense();
-            if (reduced < 0) reduced = 0;
+            int reduced = calculateDamage(target, damage);
 
             // Check if target is confused
-            if (target.getEffects().checkConfuse()) reduced = 0;
+            if (this.getEffects().checkConfuse()) reduced = 0;
             totalDamage += reduced;
 
             System.out.println("→💥 Meteor " + i + " hits! 💔 Target is hit for " + reduced + " damage!");
@@ -151,7 +154,8 @@ public class Simon extends Character {
         System.out.println("☄️ Meteor Storm finished! Total damage dealt: " + totalDamage);
         target.takeDamage(totalDamage);
 
-        getInventory().getEquippedWeapon().applyEffects(target, totalDamage);
+        if(getInventory().getEquippedWeapon().applyEffects(this, totalDamage))
+            target.getEffects().applyConfuse();
 
         // 50% chance to Burn
         if (RandomUtil.chance(50)) {

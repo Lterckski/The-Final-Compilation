@@ -11,10 +11,10 @@ public class World3Enemy3 extends Enemy {
     public void magmaSlam(Character target) {
         System.out.println("🪨 " + name + " uses Magma Slam!");
         if(target.getEffects().checkDodge()) return;
+        if (this.getEffects().checkConfuse()) return;
 
         int damage = (int)RandomUtil.range(attack * 1.00, attack * 1.20);
-        int reduced = damage - target.getDefense();
-        if(reduced < 0) reduced = 0;
+        int reduced = calculateDamage(target, damage);
 
         System.out.println("→💔 Magma Slam hits for " +  reduced + " damage!");
         target.takeDamage(reduced);

@@ -14,10 +14,10 @@ public class World1Enemy3 extends Enemy {
     public void rootSnare(Character target) {
         System.out.println("🌳 " + name + " strikes with Root Snare!");
         if (target.getEffects().checkDodge()) return;
+        if (this.getEffects().checkConfuse()) return;
 
         int damage = (int) RandomUtil.range(attack * 1.0, attack * 1.5);
-        int reduced = damage - target.getDefense();
-        if (reduced < 0) reduced = 0;
+        int reduced = calculateDamage(target, damage);
 
         System.out.println("→💔 Root Snare hits for " + reduced + " damage!");
         target.takeDamage(reduced);

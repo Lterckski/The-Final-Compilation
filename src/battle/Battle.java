@@ -2,6 +2,7 @@ package battle;
 
 import characters.Character;
 
+import enemies.FinalBoss;
 import story.ScenePrinter;
 import utils.InputUtil;
 
@@ -69,7 +70,9 @@ public class Battle {
                 System.out.println();
                 ScenePrinter.line();
                 System.out.println("💚 Your HP  : " + player.getHp() + "/" + player.getMaxHp() + "   🔋 Energy: " + player.getEnergy() + "/" + player.getMaxEnergy());
-                System.out.println("🖤 Enemy HP : " + enemy.getHp() + "/" + enemy.getMaxHp());
+                System.out.println("🖤 Enemy HP : " + enemy.getHp() + "/" + enemy.getMaxHp()
+                        + ((enemy instanceof FinalBoss fb && fb.getShield() > 0) ? "   🛡️ Shield Active" : ""));
+
                 ScenePrinter.line();
 
                 System.out.println("-- Your Turn --");

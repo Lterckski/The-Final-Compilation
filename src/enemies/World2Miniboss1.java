@@ -13,10 +13,10 @@ public class World2Miniboss1 extends Enemy{
     public void shacklingChains(Character target){
         System.out.println("⛓️ " + name + " used Shackling Chains!");
         if(target.getEffects().checkDodge()) return;
+        if (this.getEffects().checkConfuse()) return;
 
         int damage = (int)RandomUtil.range(attack * 1.00, attack * 1.33);
-        int reduced = damage - target.getDefense();
-        if(reduced < 0) reduced = 0;
+        int reduced = calculateDamage(target, damage);
 
         System.out.println("→💔 Shackling Chains hits for " + reduced + " damage!");
         target.takeDamage(reduced);
@@ -41,10 +41,10 @@ public class World2Miniboss1 extends Enemy{
     public void tormentingLash(Character target){
         System.out.println("🩸 " + name + " lashes with Tormenting Lash!");
         if(target.getEffects().checkDodge()) return;
+        if (this.getEffects().checkConfuse()) return;
 
         int damage = (int)RandomUtil.range(attack * 1.33, attack * 1.73);
-        int reduced = damage - target.getDefense();
-        if(reduced < 0) reduced = 0;
+        int reduced = calculateDamage(target, damage);
 
         System.out.println("→💔 Tormenting Lash hits for " + reduced + " damage!");
         target.takeDamage(reduced);

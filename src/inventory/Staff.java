@@ -38,20 +38,20 @@ public class Staff extends Weapon{
     }
 
     @Override
-    public boolean applyEffects(Character target, int damage) {
+    public boolean applyEffects(Character player, int damage) {
         // Confuse target
         if(RandomUtil.chance(confuseChance)){
-            target.getEffects().applyConfuse();
+            return true;
         }
 
         // Lifesteal
         if (lifestealPercent > 0) {
-            int heal = (int)(damage * lifestealPercent / 100.0);
-            System.out.println("💖 " + getName() + " restores " + heal + " HP!");
-            target.heal(heal);
+            int healAmount = (int)(damage * lifestealPercent / 100.0);
+            System.out.println("💖 " + getName() + " restores " + healAmount + " HP!");
+            player.heal(healAmount);
         }
 
-        return true; // not really used for anything (boolean just for consistency)
+        return false;
     }
 
 }

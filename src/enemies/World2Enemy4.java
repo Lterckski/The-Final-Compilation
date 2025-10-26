@@ -12,10 +12,10 @@ public class World2Enemy4 extends Enemy{
     public void rottenCleave(Character target){
         System.out.println("🧟 " + name + " swings Rotten Cleave!");
         if(target.getEffects().checkDodge()) return;
+        if (this.getEffects().checkConfuse()) return;
 
         int damage = (int)RandomUtil.range(attack * 1.00 , attack * 1.30);
-        int reduced = damage - target.getDefense();
-        if(reduced < 0) reduced = 0;
+        int reduced = calculateDamage(target, damage);
 
         System.out.println("→💔 Rotten Cleave hits for " + reduced + " damage!");
         target.takeDamage(reduced);

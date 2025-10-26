@@ -27,7 +27,7 @@ public class Bow extends Weapon{
         System.out.println("+ " + getAtkBuff() + " ATK");
 
         if (attackTwiceChance > 0) {
-            System.out.println("🎯 " + attackTwiceChance + "% chance to attack twice");
+            System.out.println("🎯 " + attackTwiceChance + "% chance to deal extra damage");
         }
 
         if (lifestealPercent > 0) {
@@ -38,12 +38,16 @@ public class Bow extends Weapon{
     }
 
     @Override
-    public boolean applyEffects(Character target, int damage) {
+    public boolean applyEffects(Character player, int damage) {
         // Lifesteal
         if (lifestealPercent > 0) {
-            int heal = (int)(damage * lifestealPercent / 100.0);
-            System.out.println("💖 " + getName() + " restores " + heal + " HP!");
-            target.heal(heal);
+            int healAmount = (int) (damage * lifestealPercent / 100.0);
+            healAmount = Math.min(healAmount, player.getMaxHp() - player.getHp()); // Prevent overheal
+
+            if (healAmount > 0) {
+                System.out.println("💖 " + getName() + " restores " + healAmount + " HP!");
+                player.heal(healAmount);
+            }
         }
 
         // Double attack

@@ -17,10 +17,10 @@ public class World1Miniboss1 extends Enemy {
     public void deathlyCharge(Character target) {
         System.out.println("🦌 " + name + " charges with Deathly Charge!");
         if (target.getEffects().checkDodge()) return;
+        if (this.getEffects().checkConfuse()) return;
 
         int damage = (int) RandomUtil.range(attack * 1.00, attack * 1.20);
-        int reduced = damage - target.getDefense();
-        if (reduced < 0) reduced = 0;
+        int reduced = calculateDamage(target, damage);
 
         System.out.println("→💔 Deathly Charge hits for " + reduced + " damage!");
         target.takeDamage(reduced);
@@ -46,6 +46,7 @@ public class World1Miniboss1 extends Enemy {
     public void blackenedHowl(Character target) {
         System.out.println("🗣️ " + name + " unleashes Blackened Howl!");
         if (target.getEffects().checkDodge()) return;
+        if (this.getEffects().checkConfuse()) return;
 
         Armor equippedArmor = target.getInventory().getEquippedArmor();
         if (equippedArmor != null && equippedArmor.checkDebuffImmunity()) {
