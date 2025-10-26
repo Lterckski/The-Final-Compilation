@@ -13,7 +13,7 @@ public abstract class Enemy extends Character{
     public void displayStats() {
         System.out.println("\n======== Enemy Stats ========");
         System.out.println("Name    : " + name);
-        System.out.println("HP      : " + hp + "/" + maxHp);
+        System.out.println("HP      : " + hp + "/" + maxHP);
 
         // Attack
         System.out.print("Attack  : " + baseAttack);

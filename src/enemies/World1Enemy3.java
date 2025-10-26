@@ -7,7 +7,7 @@ import utils.RandomUtil;
 public class World1Enemy3 extends Enemy {
     // Constructor
     public World1Enemy3() {
-        super("Dreadbark Treants", 79, 7, 6); // HP = 79, DEF = 7
+        super("Dreadbark Treants", 76, 7, 25);
     }
 
     // Skill: Root Snare (6–9 damage, immobilize 1 turn)
@@ -57,6 +57,7 @@ public class World1Enemy3 extends Enemy {
 
     @Override
     public void dropLoot(Character player){
+        player.gainExp(rewardExp());
         player.getPotions().lootPotions();
     }
 

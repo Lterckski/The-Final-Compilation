@@ -7,7 +7,7 @@ import utils.RandomUtil;
 public class World1Enemy4 extends Enemy {
     // Constructor
     public World1Enemy4() {
-        super("Carrion Bats", 91, 8, 6);
+        super("Carrion Bats", 81, 6, 25);
     }
 
     // Skill: Screech (6–8 damage, chance to confuse 1 turn)
@@ -60,6 +60,7 @@ public class World1Enemy4 extends Enemy {
 
     @Override
     public void dropLoot(Character player){
+        player.gainExp(rewardExp());
         player.getPotions().lootPotions();
     }
 

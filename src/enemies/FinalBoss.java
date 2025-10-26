@@ -29,7 +29,7 @@ public class FinalBoss extends Enemy {
         target.takeDamage(reduced);
 
         int heal = reduced;
-        hp = Math.min(maxHp, hp + heal);
+        hp = Math.min(maxHP, hp + heal);
         System.out.println("💝 " + name + " absorbs life and heals " + heal + " HP!");
 
         Armor equippedArmor = target.getInventory().getEquippedArmor();
@@ -98,7 +98,7 @@ public class FinalBoss extends Enemy {
                 defense = baseDefense;
                 System.out.println("-");
                 System.out.println("💥 The barrier shatters! Khai gains 1 stack of Void Energy! (+5% DEF)");
-                System.out.println("🛡️ Current DEF: " + baseDefense + " | 🕳 Void Energy Stacks: " + voidEnergy);
+                System.out.println("🛡️ Khai's Current DEF: " + baseDefense + " | 🕳 Void Energy Stacks: " + voidEnergy);
                 System.out.println("-");
             }
         }
@@ -112,7 +112,7 @@ public class FinalBoss extends Enemy {
                 attack = baseAttack;
                 System.out.println("-");
                 System.out.println("🌑 The barrier remains unbroken... Khai gains 1 stack of Null Energy! (+5% ATK)");
-                System.out.println("⚔️ Current ATK: " + baseAttack + " | 🔮 Null Energy Stacks: " + nullEnergy);
+                System.out.println("⚔️ Khai's Current ATK: " + baseAttack + " | 🔮 Null Energy Stacks: " + nullEnergy);
                 System.out.println("-");
             }
         }
@@ -135,7 +135,7 @@ public class FinalBoss extends Enemy {
     @Override
     public void turn(Character target) {
         checkUnbrokenShield();
-        double hpPercent = ((double) this.hp / this.maxHp) * 100;
+        double hpPercent = ((double) this.hp / this.maxHP) * 100;
 
         if(hpPercent > 80){
             if(RandomUtil.chance(80))
@@ -181,7 +181,7 @@ public class FinalBoss extends Enemy {
     public void displayStats() {
         System.out.println("\n======== Enemy Stats ========");
         System.out.println("Name    : " + name);
-        System.out.println("HP      : " + hp + "/" + maxHp);
+        System.out.println("HP      : " + hp + "/" + maxHP);
 
         // ⚔️ Attack
         System.out.print("Attack  : " + baseAttack);

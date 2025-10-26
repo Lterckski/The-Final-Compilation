@@ -64,7 +64,7 @@ public class World1 {
         }
 
 
-        // ENEMY 2 : 2 SHADE SPRITES ENCOUNTERED
+        // ENEMY 2 : 3 SHADE SPRITES ENCOUNTERED
         Enemy enemy2 = new World1Enemy2();
         Battle battle2 = new Battle(player, enemy2);
 
@@ -78,7 +78,7 @@ public class World1 {
         InputUtil.pressEnterToContinue();
         ScenePrinter.line();
 
-        for (int i = 1; i <= 2; i++) {
+        for (int i = 1; i <= 3; i++) {
             ScenePrinter.hr();
             System.out.println("👻 Shade Sprite " + i + " phases through the air toward you!");
             ScenePrinter.hr();
@@ -90,7 +90,7 @@ public class World1 {
                 ScenePrinter.line();
                 enemy2.dropLoot(player);
 
-                if (i < 2) { // reset for another shade
+                if (i < 3) { // reset for another shade
                     enemy2 = new World1Enemy2();
                     battle2 = new Battle(player, enemy2);
                 }
@@ -198,11 +198,11 @@ public class World1 {
             ScenePrinter.line();
         }
 
-
-        ScenePrinter.event("An old tablet lies half-buried. Runes flicker like code. You feel energy stir.");
-        player.restoreEnergy(30);
-        System.out.println("Energy restored.\n");
-        InputUtil.pressEnterToContinue();
+        //(walay gamit ang restore energy diri kay gikan ra galevel up ang player - restored na daan ang energy)
+        //ScenePrinter.event("An old tablet lies half-buried. Runes flicker like code. You feel energy stir.");
+        //player.restoreEnergy(30);
+        //System.out.println("Energy restored.\n");
+        //InputUtil.pressEnterToContinue();
 
 
         // ENEMY 5 : MINI-BOSS — THE HOLLOW STAG

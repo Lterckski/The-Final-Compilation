@@ -2,11 +2,11 @@ package characters;
 
 import story.ScenePrinter;
 import utils.RandomUtil;
-import inventory.*;
+
 public class Karl extends Character{
 
     public Karl() {
-        super("Karl Clover Dior IV", "Archer", 80, 3, 80, 12);
+        super("Karl Clover Dior IV", "Archer", 80, 3, 120, 12);
     }
 
     @Override
@@ -71,18 +71,18 @@ public class Karl extends Character{
 
     // Passive - Hunter's Instinct
     private int hunterInstincts(int damage, Character target){
-       double hpPercent = (double) target.getHp() / target.maxHp;
+       double hpPercent = (double) target.getHp() / target.maxHP;
 
        if(hpPercent < 0.3){
            damage = (int) (damage * 1.2);
-           System.out.println("\uD83C\uDFAF Hunter's Instinct activated! Extra damage dealt.");
+           System.out.println("\uD83C\uDFAF Hunter's Instinct is active! Deals extra damage.");
        }
        return damage;
     }
 
     // Skill 1 - Piercing Arrow
     public void piercingArrow(Character target) {
-        int energyCost = 10;
+        int energyCost = 5;
         if (!consumeEnergy(energyCost)) {
             System.out.println("❌ Not enough energy to use Piercing Arrow!");
             return;
@@ -109,7 +109,7 @@ public class Karl extends Character{
 
     // Skill 2 - Bullseye
     public void bullsEye(Character target) {
-        int energyCost = 20;
+        int energyCost = 15;
         if (!consumeEnergy(energyCost)) {
             System.out.println("❌ Not enough energy to use Bullseye!");
             return;
@@ -136,7 +136,7 @@ public class Karl extends Character{
 
     // Ultimate - Rain of a Thousand Arrows
     public void rainOfAThousandArrows(Character target) {
-        int energyCost = 35;
+        int energyCost = 25;
         if (!consumeEnergy(energyCost)) {
             System.out.println("❌ Not enough energy to use Rain of a Thousand Arrows!");
             return;
@@ -175,10 +175,10 @@ public class Karl extends Character{
 
         while (!isValid) {
             if (ultimateCounter > 0) {
-                System.out.println("(1) Skill 1   -  Piercing Arrow (⚡ 10 energy)");
-                System.out.println("(2) Skill 2   -  Bullseye (⚡ 20 energy)");
-                System.out.println("(3) Ultimate  -  Rain of A Thousand Arrows (⚡ 35 energy) ❌ (Available in " + ultimateCounter + " turns)");
-                System.out.println("(4) Skip Turn -  Restore 10% of Max Energy");
+                System.out.println("(1) Skill 1   -  Piercing Arrow (⚡ 5 energy)");
+                System.out.println("(2) Skill 2   -  Bullseye (⚡ 15 energy)");
+                System.out.println("(3) Ultimate  -  Rain of A Thousand Arrows (⚡ 25 energy) ❌ (Available in " + ultimateCounter + " turns)");
+                System.out.println("(4) Skip Turn -  Restore 10% of Max HP and 30 Energy");
                 System.out.println("(5) Show Menu");
                 System.out.print("Choose your action: ");
 
@@ -196,10 +196,10 @@ public class Karl extends Character{
                 }
 
             } else {
-                System.out.println("(1) Skill 1   -  Piercing Arrow (⚡ 10 energy)");
-                System.out.println("(2) Skill 2   -  Bullseye (⚡ 20 energy)");
-                System.out.println("(3) Ultimate  -  Rain of A Thousand Arrows (⚡ 35 energy)");
-                System.out.println("(4) Skip Turn -  Restore 10% of Max Energy");
+                System.out.println("(1) Skill 1   -  Piercing Arrow (⚡ 5 energy)");
+                System.out.println("(2) Skill 2   -  Bullseye (⚡ 15 energy)");
+                System.out.println("(3) Ultimate  -  Rain of A Thousand Arrows (⚡ 25 energy)");
+                System.out.println("(4) Skip Turn -  Restore 10% of Max HP and 30 Energy");
                 System.out.println("(5) Show Menu");
                 System.out.print("Choose your action: ");
 

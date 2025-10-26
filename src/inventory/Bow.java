@@ -42,7 +42,7 @@ public class Bow extends Weapon{
         // Lifesteal
         if (lifestealPercent > 0) {
             int healAmount = (int) (damage * lifestealPercent / 100.0);
-            healAmount = Math.min(healAmount, player.getMaxHp() - player.getHp()); // Prevent overheal
+            healAmount = Math.min(healAmount, player.getMaxHP() - player.getHp()); // Prevent overheal
 
             if (healAmount > 0) {
                 System.out.println("💖 " + getName() + " restores " + healAmount + " HP!");

@@ -24,9 +24,9 @@ public class Potions {
             return;
         }
         normalHealingPotions--;
-        int healAmount = (int) (owner.getMaxHp() * 0.20);
+        int healAmount = (int) (owner.getMaxHP() * 0.20);
         owner.heal(healAmount);
-        System.out.println("💖✨ Used a Normal Healing Potion! Restored " + healAmount +  " (HP : " + owner.getHp() + "/" + owner.getMaxHp() + ")");
+        System.out.println("💖✨ Used a Normal Healing Potion! Restored " + healAmount +  " (HP : " + owner.getHp() + "/" + owner.getMaxHP() + ")");
     }
 
     public void useFullHealingPotion(){
@@ -35,8 +35,8 @@ public class Potions {
             return;
         }
         fullHealingPotions--;
-        owner.heal(owner.getMaxHp());
-        System.out.println("💖✨ Used a Full Healing Potion! Restored to max HP!" + " (HP : " + owner.getHp() + "/" + owner.getMaxHp() + ")");
+        owner.heal(owner.getMaxHP());
+        System.out.println("💖✨ Used a Full Healing Potion! Restored to max HP!" + " (HP : " + owner.getHp() + "/" + owner.getMaxHP() + ")");
     }
 
     public void useEnergyPotion() {

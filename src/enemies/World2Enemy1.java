@@ -58,6 +58,7 @@ public class World2Enemy1 extends Enemy{
 
     @Override
     public void dropLoot(Character player){
+        player.gainExp(rewardExp());
         player.getPotions().lootPotions();
     }
 

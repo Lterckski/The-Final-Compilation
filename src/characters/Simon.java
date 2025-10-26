@@ -98,7 +98,7 @@ public class Simon extends Character {
 
     // Skill 2 – Ice Prison
     public void icePrison(Character target) {
-        int energyCost = 20;
+        int energyCost = 25;
         System.out.println("❄️ You cast Ice Prison on " + target.getName() + " (⚡-" + energyCost + " Energy)");
 
         if (this.getEffects().checkConfuse()) return;
@@ -108,7 +108,7 @@ public class Simon extends Character {
             return;
         }
 
-        int damage = (int) RandomUtil.range(attack * 0.60, attack * 0.90);
+        int damage = (int) RandomUtil.range(attack * 0.80, attack * 1.20);
         int reduced = calculateDamage(target, damage);
 
 
@@ -119,7 +119,7 @@ public class Simon extends Character {
             target.getEffects().applyConfuse();
 
         // 30% chance to Freeze
-        if (RandomUtil.chance(30)) {
+        if (RandomUtil.chance(50)) {
             target.getEffects().applyFreeze();
             // If frozen, apply DEF reduction
             target.getEffects().applyDefenseDebuff(15, 2);
@@ -176,9 +176,9 @@ public class Simon extends Character {
             // If ultimate is on cooldown
             if (ultimateCounter > 0) {
                 System.out.println("(1) Skill 1   -  Fireball (⚡ 15 energy)");
-                System.out.println("(2) Skill 2   -  Ice Prison (⚡ 20 energy)");
+                System.out.println("(2) Skill 2   -  Ice Prison (⚡ 25 energy)");
                 System.out.println("(3) Ultimate  -  Meteor Storm (⚡ 40 energy) ❌ (Available in " + ultimateCounter + " turns)");
-                System.out.println("(4) Skip Turn -  Restore 10% of Max Energy");
+                System.out.println("(4) Skip Turn -  Restore 10% of Max HP and 30 Energy");
                 System.out.println("(5) Show Menu");
                 System.out.print("Choose your action: ");
 
@@ -200,9 +200,9 @@ public class Simon extends Character {
             else {
                 ScenePrinter.shortLine();
                 System.out.println("(1) Skill 1   -  Fireball (⚡ 15 energy)");
-                System.out.println("(2) Skill 2   -  Ice Prison (⚡ 20 energy)");
+                System.out.println("(2) Skill 2   -  Ice Prison (⚡ 25 energy)");
                 System.out.println("(3) Ultimate  -  Meteor Storm (⚡ 40 energy)");
-                System.out.println("(4) Skip Turn -  Restore 10% of Max Energy");
+                System.out.println("(4) Skip Turn -  Restore 10% of Max HP and 30 Energy");
                 System.out.println("(5) Show Menu");
                 System.out.print("Choose your action: ");
 

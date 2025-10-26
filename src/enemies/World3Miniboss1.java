@@ -57,6 +57,7 @@ public class World3Miniboss1 extends Enemy {
 
     @Override
     public void dropLoot(Character player){
+        player.gainExp(rewardExp());
         player.getPotions().lootPotions();
         player.getPotions().lootFullHealthPotions();
 
