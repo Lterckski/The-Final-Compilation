@@ -182,7 +182,6 @@ public abstract class Character {
         return reduced;
     }
 
-
     public void takeDamage(int damage) {
         hp -= damage;
         if (hp < 0) hp = 0;

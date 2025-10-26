@@ -32,7 +32,8 @@ public class World1Enemy2 extends Enemy {
             }
         }
 
-        target.getEffects().applyConfuse();
+        if(RandomUtil.chance(30))
+            target.getEffects().applyConfuse();
 
     }
 
@@ -43,7 +44,7 @@ public class World1Enemy2 extends Enemy {
         System.out.println("Description: The Shade Sprites strike mischievously, leaving their target disoriented.");
         System.out.println("Damage: (" + (int)(attack * 1.00) + " — " + (int)(attack * 1.625) + ")");
         System.out.println("Effects:");
-        System.out.println("- Applies Confuse to target");
+        System.out.println("- 30% chance to Confuse target");
         System.out.println("------------------------------------");
     }
 
