@@ -9,7 +9,7 @@ import utils.RandomUtil;
 
 public class World3Miniboss1 extends Enemy {
 
-    public World3Miniboss1() { super("Zyrryl", 3455, 88, 173); }
+    public World3Miniboss1() { super("Zyrryl", 3455, 88, 170); }
 
     public void graveCleaver(Character target) {
         System.out.println("🤺 " + name + " used Grave Cleaver!");

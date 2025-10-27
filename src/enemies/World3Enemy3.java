@@ -6,7 +6,7 @@ import utils.RandomUtil;
 
 public class World3Enemy3 extends Enemy {
 
-    public World3Enemy3() { super("Obsidian Crusher", 1299, 53, 73); }
+    public World3Enemy3() { super("Obsidian Crusher", 1299, 53, 90); }
 
     public void magmaSlam(Character target) {
         System.out.println("🪨 " + name + " uses Magma Slam!");

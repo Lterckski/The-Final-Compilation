@@ -210,7 +210,6 @@ public class World2 {
             ScenePrinter.line();
         }
 
-        //TODO : MINIBOSS 1 : THE BLACK JAILER
         ScenePrinter.title("MINI-BOSS — The Black Jailer");
         ScenePrinter.type("""
                 In the dungeons below, chains rattle.

@@ -6,7 +6,7 @@ import utils.RandomUtil;
 
 public class World3Enemy1 extends Enemy {
 
-    public World3Enemy1() { super("Flame Revenant", 982, 44, 57); }
+    public World3Enemy1() { super("Flame Revenant", 982, 44, 80); }
 
     public void emberBurst(Character target) {
         System.out.println("🔥 " + name + " unleashes Ember Burst!");

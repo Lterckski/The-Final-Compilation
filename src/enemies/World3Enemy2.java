@@ -6,7 +6,7 @@ import utils.RandomUtil;
 
 public class World3Enemy2 extends Enemy {
 
-    public World3Enemy2() { super("Bone Warlock", 1129, 48, 56); }
+    public World3Enemy2() { super("Bone Warlock", 1129, 48, 85); }
 
     public void shadowBolt(Character target) {
         System.out.println("💀 " + name + " casts Shadow Bolt!");

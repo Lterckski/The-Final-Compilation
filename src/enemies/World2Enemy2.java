@@ -7,7 +7,7 @@ import inventory.*;
 
 public class World2Enemy2 extends Enemy{
     public World2Enemy2(){
-        super("Forsaken Cultist", 279, 27, 15);
+        super("Forsaken Cultist", 279, 27, 50);
     }
 
     public void shadowBolt(Character target){

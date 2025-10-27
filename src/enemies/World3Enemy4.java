@@ -6,7 +6,7 @@ import utils.RandomUtil;
 
 public class World3Enemy4 extends Enemy {
 
-    public World3Enemy4() { super("Soulflayer Gargoyle", 1493, 58, 46); }
+    public World3Enemy4() { super("Soulflayer Gargoyle", 1493, 58, 95); }
 
     public void soulScream(Character target) {
         System.out.println("😈 " + name + " lets out a deafening Soul Scream!");
