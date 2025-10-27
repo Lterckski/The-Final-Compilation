@@ -29,26 +29,19 @@ public class World3Final {
         InputUtil.pressEnterToContinue();
         ScenePrinter.line();
 
-        Enemy finalBoss = new FinalBoss(); // Make sure FinalBoss class is properly defined
+        Enemy finalBoss = new FinalBoss();
         Battle finalBattle = new Battle(player, finalBoss);
 
         finalBattle.startBattle();
 
-        if (player.isAlive()) {
-            ScenePrinter.line();
-            ScenePrinter.type("""
-                    🏆 Victory! Khai staggers, his form unraveling into smoke and stars.
-                    The tower falls silent. The Stones hover gently before dissipating.
-                    You have triumphed over the ultimate darkness.
-                    """);
-            InputUtil.pressEnterToContinue();
-            ScenePrinter.line();
-        } else {
-            ScenePrinter.line();
-            ScenePrinter.type("💀 Defeat... The world trembles as Khai's power engulfs you.");
-            ScenePrinter.event("You have fallen. The Stones remain in darkness.");
-            InputUtil.pressEnterToContinue();
-        }
+        ScenePrinter.line();
+        ScenePrinter.type("""
+                🏆 Victory! Khai staggers, his form unraveling into smoke and stars.
+                The tower falls silent. The Stones hover gently before dissipating.
+                You have triumphed over the ultimate darkness.
+                """);
+        InputUtil.pressEnterToContinue();
+        ScenePrinter.line();
     }
 
 
