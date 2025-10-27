@@ -23,6 +23,7 @@ public abstract class Character {
     protected int maxHP;           // track max HP for healing
     protected int defense;
     protected int energy;
+    protected int energyName;
     protected int maxEnergy;       // track max energy
     protected int attack;
 
@@ -79,6 +80,24 @@ public abstract class Character {
     public int getMaxHP() { return maxHP; }
     public int getMaxEnergy() { return maxEnergy; }
     public int getEnergy() { return energy; }
+
+    public String getEnergyName() {
+        return switch (classType) {
+            case "Swordsman" -> "Stamina";
+            case "Archer" -> "Arrows";
+            case "Mage" -> "Mana";
+            default -> "Energy";
+        };
+    }
+
+    public String getEnergyEmoji() {
+        return switch (classType) {
+            case "Swordsman" -> "🔋";
+            case "Archer" -> "➶";
+            case "Mage" -> "💧";
+            default -> "⚡";
+        };
+    }
     // ------------------- SETTERS -------------------
     public void setAttack(int attack){ this.attack = attack; }
     public void setDefense(int defense){ this.defense = defense; }
@@ -100,32 +119,33 @@ public abstract class Character {
 
     public void displayStats() {
         System.out.println("\n=========== Stats ============");
-        System.out.println("Name    : " + name + " (" + classType + ")");
-        System.out.println("Level   : " + level);
-        System.out.println("EXP     : " + exp + "/" + nextLevelExp);
-        System.out.println("HP      : " + hp + "/" + maxHP);
-        System.out.println("Energy  : " + energy + "/" + maxEnergy);
+        System.out.printf("%-8s: %s (%s)%n", "Name", name, classType);
 
-        // Attack
-        System.out.print("Attack  : " + baseAttack);
-        if (attack > baseAttack) {
-            System.out.print(" (+" + (attack - baseAttack) + ")");
-        } else if (attack < baseAttack) {
-            System.out.print(" (-" + (baseAttack - attack) + ")");
+        if (level == 30) {
+            System.out.printf("%-8s: MAX%n", "Level");
+            System.out.printf("%-8s: MAX%n", "EXP");
+        } else {
+            System.out.printf("%-8s: %d%n", "Level", level);
+            System.out.printf("%-8s: %d/%d%n", "EXP", exp, nextLevelExp);
         }
-        System.out.println();
 
-        // Defense
-        System.out.print("Defense : " + baseDefense);
-        if (defense > baseDefense) {
-            System.out.print(" (+" + (defense - baseDefense) + ")");
-        } else if (defense < baseDefense) {
-            System.out.print(" (-" + (baseDefense - defense) + ")");
-        }
-        System.out.println();
+        System.out.printf("%-8s: %d/%d%n", "HP", hp, maxHP);
+        System.out.printf("%-8s: %d/%d%n", getEnergyName(), energy, maxEnergy);
+
+        String attackStr = baseAttack + ((attack != baseAttack) ?
+                (attack > baseAttack ? " (+" + (attack - baseAttack) + ")" : " (-" + (baseAttack - attack) + ")")
+                : "");
+        System.out.printf("%-8s: %s%n", "Attack", attackStr);
+
+        String defenseStr = baseDefense + ((defense != baseDefense) ?
+                (defense > baseDefense ? " (+" + (defense - baseDefense) + ")" : " (-" + (baseDefense - defense) + ")")
+                : "");
+        System.out.printf("%-8s: %s%n", "Defense", defenseStr);
 
         System.out.println("==============================\n");
     }
+
+
 
 
     public abstract void displaySkills();
@@ -205,15 +225,30 @@ public abstract class Character {
     }
 
     public void skipTurn() {
-        // Restore energy
-        energy += 30;
+        int restoreAmount;
+
+        // Restore based on class
+        switch (classType) {
+            case "Archer" -> restoreAmount = 6;
+            case "Swordsman" -> restoreAmount = 20;
+            case "Mage" -> restoreAmount = 30;
+            default -> restoreAmount = 0;
+        }
+
+        int oldHp = hp;
+        int oldEnergy = energy;
+
+        energy += restoreAmount;
         if (energy > maxEnergy) energy = maxEnergy;
 
         hp += (int)(maxHP * 0.1);
         if (hp > maxHP) hp = maxHP;
 
-        System.out.println("✨Turn skipped! Restored a bit of energy and healed a bit. (💖 HP: " + hp + "/" + maxHP + ", ⚡ Energy: " + energy + "/" + maxEnergy + ")");
+        System.out.println("✨ Turn skipped! Restored a bit of HP and " + getEnergyName() + ".");
+        System.out.println("💖 HP: " + oldHp + " → " + hp + " | " + getEnergyEmoji() + " " + getEnergyName() + ": " + oldEnergy + " → " + energy);
+
     }
+
 
 
     public void heal(int amount){
@@ -237,49 +272,56 @@ public abstract class Character {
     }
 
     public void levelUp() {
-        level++;
-        ScenePrinter.hr();
-        System.out.println("✨ LEVEL UP! You are now Level " + level + "! ✨");
-        System.out.println("💖 HP & 🔋 Energy Restored!");
+        if(level < 30){
+            level++;
+            ScenePrinter.hr();
+            System.out.println("✨ LEVEL UP! You are now Level " + level + "! ✨");
+            System.out.println("💖 HP & " + getEnergyEmoji() + " " + getEnergyName() + " Restored!");
 
-        int oldHp = maxHP, oldAtk = baseAttack, oldDef = baseDefense, oldEnergy = maxEnergy;
+            int oldHp = maxHP;
+            int oldAtk = baseAttack;
+            int oldDef = baseDefense;
+            int oldEnergy = maxEnergy;
 
-        // Class-based growth
-        switch (classType) {
-            case "Swordsman" -> {
-                maxHP += 110 + (int)(maxHP * 0.02);
-                baseAttack += 2;
-                baseDefense += 2;
-                maxEnergy += 5;
+            switch (classType) {
+                case "Swordsman" -> {
+                    maxHP += 110 + (int)(maxHP * 0.02);
+                    baseAttack += 2;
+                    baseDefense += 2;
+                    maxEnergy += 5;
+                }
+                case "Archer" -> {
+                    maxHP += 80 + (int)(maxHP * 0.02);
+                    baseAttack += 4;
+                    baseDefense += 1;
+                    if (level % 10 == 0) {
+                        maxEnergy += 8;
+                    }
+                }
+                case "Mage" -> {
+                    maxHP += 70 + (int)(maxHP * 0.015);
+                    baseAttack += 5;
+                    baseDefense += 1;
+                    maxEnergy += 10;
+                }
             }
-            case "Archer" -> {
-                maxHP += 90 + (int)(maxHP * 0.02);
-                baseAttack += 4;
-                baseDefense += 1;
-                maxEnergy += 5;
-            }
-            case "Mage" -> {
-                maxHP += 70 + (int)(maxHP * 0.015);
-                baseAttack += 5;
-                baseDefense += 1;
-                maxEnergy += 10;
-            }
+
+            hp = maxHP;
+            energy = maxEnergy;
+
+            exp -= nextLevelExp;
+            if (level < XP_TABLE.length) nextLevelExp = XP_TABLE[level];
+
+            recalculateBuffs();
+
+            System.out.println("❤️ HP     : +" + (maxHP - oldHp) + " → " + maxHP);
+            System.out.println("⚔️ ATK    : +" + (baseAttack - oldAtk) + " → " + attack);
+            System.out.println("🛡️ DEF    : +" + (baseDefense - oldDef) + " → " + defense);
+            System.out.println(getEnergyEmoji() + " " + getEnergyName() + " : +" + (maxEnergy - oldEnergy) + " → " + maxEnergy);
+            ScenePrinter.hr();
         }
-
-        hp = maxHP;
-        energy = maxEnergy;
-
-        exp -= nextLevelExp;
-        if (level < XP_TABLE.length) nextLevelExp = XP_TABLE[level];
-
-        recalculateBuffs();
-
-        System.out.println("❤️ HP     : +" + (maxHP - oldHp) + " → " + maxHP);
-        System.out.println("⚔️ ATK    : +" + (baseAttack - oldAtk) + " → " + attack);
-        System.out.println("🛡️ DEF    : +" + (baseDefense - oldDef) + " → " + defense);
-        System.out.println("🔋 Energy : +" + (maxEnergy - oldEnergy) + " → " + maxEnergy);
-        ScenePrinter.hr();
     }
+
 
 
     public void recalculateBuffs(){

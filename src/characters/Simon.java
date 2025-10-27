@@ -11,23 +11,23 @@ public class Simon extends Character {
     public void displaySkills() {
         System.out.println("\n----------- SIMON'S SKILLS -----------");
         System.out.println("Passive – Arcane Flow");
-        System.out.println("Restores +5% of total Energy each turn.\n");
+        System.out.println("Restores +5% of total Mana each turn.\n");
 
-        System.out.println("Skill 1 – Fireball (15 Energy)");
+        System.out.println("Skill 1 – Fireball (15 Mana)");
         System.out.println("Description: Conjures a blazing orb of fire and hurls it at an enemy.");
         System.out.println("Damage: (" + (int)(attack * 1.25) + " — " + (int)(attack * 1.55) + ")");
         System.out.println("Effects:");
         System.out.println("- Applies Burn for 1 turn");
         System.out.println("- 30% chance to Weaken target (-20% ATK for 2 turns)\n");
 
-        System.out.println("Skill 2 – Ice Prison (20 Energy)");
+        System.out.println("Skill 2 – Ice Prison (25 Mana)");
         System.out.println("Description: Encases the target in solid ice, restricting movement and draining warmth.");
         System.out.println("Damage: (" + (int)(attack * 0.60) + " — " + (int)(attack * 0.90) + ")");
         System.out.println("Effects:");
         System.out.println("- 30% chance to Freeze (target skips 1 turn)");
         System.out.println("- If frozen, reduces DEF by 15% for 2 turns\n");
 
-        System.out.println("☄️ Ultimate – Meteor Storm (⚡40 Energy)");
+        System.out.println("☄️ Ultimate – Meteor Storm (⚡40 EnergyMana)");
         System.out.println("Description: Summons a storm of blazing meteors, striking the opponent multiple times with devastating force.");
         System.out.println("Damage: 5 hits, each dealing " + (int)(attack * 1.00) + " — " + (int)(attack * 1.50));
         System.out.println("Effects:");
@@ -66,14 +66,14 @@ public class Simon extends Character {
     // Skill 1 – Fireball
     public void fireball(Character target) {
         int energyCost = 15;
+        if (!consumeEnergy(energyCost)) {
+            System.out.println("❌ Not enough Mana to cast Fireball!");
+            return;
+        }
+
         System.out.println("🔥 You cast Fireball on " + target.getName() + " (⚡-" + energyCost + " Energy)");
 
         if (this.getEffects().checkConfuse()) return;
-
-        if (!consumeEnergy(energyCost)) {
-            System.out.println("Not enough energy to cast Fireball!");
-            return;
-        }
 
         int damage = (int) RandomUtil.range(attack * 1.25, attack * 1.55);
         int reduced = calculateDamage(target, damage);
@@ -99,14 +99,14 @@ public class Simon extends Character {
     // Skill 2 – Ice Prison
     public void icePrison(Character target) {
         int energyCost = 25;
+        if (!consumeEnergy(energyCost)) {
+            System.out.println("❌ Not enough Mana to cast Ice Prison!");
+            return;
+        }
+
         System.out.println("❄️ You cast Ice Prison on " + target.getName() + " (⚡-" + energyCost + " Energy)");
 
         if (this.getEffects().checkConfuse()) return;
-
-        if (!consumeEnergy(energyCost)) {
-            System.out.println("Not enough energy to cast Ice Prison!");
-            return;
-        }
 
         int damage = (int) RandomUtil.range(attack * 0.80, attack * 1.20);
         int reduced = calculateDamage(target, damage);
@@ -132,7 +132,7 @@ public class Simon extends Character {
     public void meteorStorm(Character target) {
         int energyCost = 40;
         if (!consumeEnergy(energyCost)) {
-            System.out.println("Not enough energy to cast Meteor Storm!");
+            System.out.println("❌ Not enough Mana to cast Meteor Storm!");
             return;
         }
 
@@ -175,10 +175,10 @@ public class Simon extends Character {
         while (!isValid) {
             // If ultimate is on cooldown
             if (ultimateCounter > 0) {
-                System.out.println("(1) Skill 1   -  Fireball (⚡ 15 energy)");
-                System.out.println("(2) Skill 2   -  Ice Prison (⚡ 25 energy)");
-                System.out.println("(3) Ultimate  -  Meteor Storm (⚡ 40 energy) ❌ (Available in " + ultimateCounter + " turns)");
-                System.out.println("(4) Skip Turn -  Restore 10% of Max HP and 30 Energy");
+                System.out.println("(1) Skill 1   -  Fireball (⚡ 15 Mana)");
+                System.out.println("(2) Skill 2   -  Ice Prison (⚡ 25 Mana)");
+                System.out.println("(3) Ultimate  -  Meteor Storm (⚡ 40 Mana) ❌ (Available in " + ultimateCounter + " turns)");
+                System.out.println("(4) Skip Turn -  Restore 10% of Max HP and 30 Mana");
                 System.out.println("(5) Show Menu");
                 System.out.print("Choose your action: ");
 
@@ -199,10 +199,10 @@ public class Simon extends Character {
             // If ultimate is ready
             else {
                 ScenePrinter.shortLine();
-                System.out.println("(1) Skill 1   -  Fireball (⚡ 15 energy)");
-                System.out.println("(2) Skill 2   -  Ice Prison (⚡ 25 energy)");
-                System.out.println("(3) Ultimate  -  Meteor Storm (⚡ 40 energy)");
-                System.out.println("(4) Skip Turn -  Restore 10% of Max HP and 30 Energy");
+                System.out.println("(1) Skill 1   -  Fireball (⚡ 15 Mana)");
+                System.out.println("(2) Skill 2   -  Ice Prison (⚡ 25 Mana)");
+                System.out.println("(3) Ultimate  -  Meteor Storm (⚡ 40 Mana)");
+                System.out.println("(4) Skip Turn -  Restore 10% of Max HP and 30 Mana");
                 System.out.println("(5) Show Menu");
                 System.out.print("Choose your action: ");
 

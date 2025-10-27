@@ -6,7 +6,7 @@ import utils.RandomUtil;
 public class Karl extends Character{
 
     public Karl() {
-        super("Karl Clover Dior IV", "Archer", 80, 3, 120, 12);
+        super("Karl Clover Dior IV", "Archer", 80, 3, 24, 12);
     }
 
     @Override
@@ -15,21 +15,21 @@ public class Karl extends Character{
         System.out.println("Passive – Hunter’s Instinct");
         System.out.println("Deal +20% damage to enemies below 30% HP.\n");
 
-        System.out.println("Skill 1 – Piercing Arrow (10 Energy)");
+        System.out.println("Skill 1 – Piercing Arrow (1 Arrow)");
         System.out.println("Description: Fires an arrow that slices through armor and flesh alike.");
         System.out.println("Damage: (" + (int)(attack * 1.10) + " — " + (int)(attack * 1.25) + ")");
         System.out.println("Effects:");
         System.out.println("- Ignores 30% of the target’s Defense");
         System.out.println("- 30% chance to inflict Bleed (2 turns)\n");
 
-        System.out.println("Skill 2 – Bullseye (20 Energy)");
+        System.out.println("Skill 2 – Bullseye (1 Heavy Arrow (3 Arrows)");
         System.out.println("Description: Karl steadies his breath and fires a deadly precise shot.");
         System.out.println("Damage: (" + (int)(attack * 1.25) + " — " + (int)(attack * 1.50) + ")");
         System.out.println("Effects:");
         System.out.println("- Guaranteed Critical Hit (×1.5 multiplier)");
         System.out.println("- 30% chance to apply Weakness: reduce target’s DEF by 30% for 2 turns\n");
 
-        System.out.println("Ultimate – Rain of a Thousand Arrows (35 Energy)");
+        System.out.println("Ultimate – Rain of a Thousand Arrows (5 Arrows)");
         System.out.println("Description: Karl releases a rapid flurry of arrows, overwhelming his opponent with relentless strikes.");
         System.out.println("Damage: 5 hits, each dealing (" + (int)(attack * 1.00) + " — " + (int)(attack * 1.60) + ")");
         System.out.println("Effects:");
@@ -82,9 +82,9 @@ public class Karl extends Character{
 
     // Skill 1 - Piercing Arrow
     public void piercingArrow(Character target) {
-        int energyCost = 5;
+        int energyCost = 1;
         if (!consumeEnergy(energyCost)) {
-            System.out.println("❌ Not enough energy to use Piercing Arrow!");
+            System.out.println("❌ Not enough Arrows to use Piercing Arrow!");
             return;
         }
 
@@ -109,9 +109,9 @@ public class Karl extends Character{
 
     // Skill 2 - Bullseye
     public void bullsEye(Character target) {
-        int energyCost = 15;
+        int energyCost = 3;
         if (!consumeEnergy(energyCost)) {
-            System.out.println("❌ Not enough energy to use Bullseye!");
+            System.out.println("❌ Not enough Arrows to use Bullseye!");
             return;
         }
 
@@ -136,9 +136,9 @@ public class Karl extends Character{
 
     // Ultimate - Rain of a Thousand Arrows
     public void rainOfAThousandArrows(Character target) {
-        int energyCost = 25;
+        int energyCost = 5;
         if (!consumeEnergy(energyCost)) {
-            System.out.println("❌ Not enough energy to use Rain of a Thousand Arrows!");
+            System.out.println("❌ Not enough Arrows to use Rain of a Thousand Arrows!");
             return;
         }
 
@@ -175,10 +175,10 @@ public class Karl extends Character{
 
         while (!isValid) {
             if (ultimateCounter > 0) {
-                System.out.println("(1) Skill 1   -  Piercing Arrow (⚡ 5 energy)");
-                System.out.println("(2) Skill 2   -  Bullseye (⚡ 15 energy)");
-                System.out.println("(3) Ultimate  -  Rain of A Thousand Arrows (⚡ 25 energy) ❌ (Available in " + ultimateCounter + " turns)");
-                System.out.println("(4) Skip Turn -  Restore 10% of Max HP and 30 Energy");
+                System.out.println("(1) Skill 1   -  Piercing Arrow (➶ 1 Arrow)");
+                System.out.println("(2) Skill 2   -  Bullseye (➶ 1 Heavy Arrow (3 Arrows)");
+                System.out.println("(3) Ultimate  -  Rain of A Thousand Arrows (➶ 5 Arrows) ❌ (Available in " + ultimateCounter + " turns)");
+                System.out.println("(4) Skip Turn -  Restore 10% of Max HP and Replenish 6 Arrows");
                 System.out.println("(5) Show Menu");
                 System.out.print("Choose your action: ");
 
@@ -196,10 +196,10 @@ public class Karl extends Character{
                 }
 
             } else {
-                System.out.println("(1) Skill 1   -  Piercing Arrow (⚡ 5 energy)");
-                System.out.println("(2) Skill 2   -  Bullseye (⚡ 15 energy)");
-                System.out.println("(3) Ultimate  -  Rain of A Thousand Arrows (⚡ 25 energy)");
-                System.out.println("(4) Skip Turn -  Restore 10% of Max HP and 30 Energy");
+                System.out.println("(1) Skill 1   -  Piercing Arrow (➶ 1 Arrow)");
+                System.out.println("(2) Skill 2   -  Bullseye (➶ 1 Heavy Arrow (3 Arrows)");
+                System.out.println("(3) Ultimate  -  Rain of A Thousand Arrows (➶ 5 Arrows)");
+                System.out.println("(4) Skip Turn -  Restore 10% of Max HP and Replenish 6 Arrows");
                 System.out.println("(5) Show Menu");
                 System.out.print("Choose your action: ");
 

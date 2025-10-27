@@ -69,9 +69,11 @@ public class Battle {
                 // --- PLAYER STATUS TRACKER ---
                 System.out.println();
                 ScenePrinter.line();
-                System.out.println("💚 Your HP  : " + player.getHp() + "/" + player.getMaxHP() + "   🔋 Energy: " + player.getEnergy() + "/" + player.getMaxEnergy());
-                System.out.println("🖤 Enemy HP : " + enemy.getHp() + "/" + enemy.getMaxHP()
-                        + ((enemy instanceof FinalBoss fb && fb.getShield() > 0) ? "   🛡️ Shield Active" : ""));
+                System.out.println("💚 Your HP  : " + player.getHp() + "/" + player.getMaxHP() +
+                        "   " + player.getEnergyEmoji() + " " + player.getEnergyName() + ": " + player.getEnergy() + "/" + player.getMaxEnergy());
+                System.out.println("🖤 Enemy HP : " + enemy.getHp() + "/" + enemy.getMaxHP() +
+                        ((enemy instanceof FinalBoss fb && fb.getShield() > 0) ? "   🛡️ Shield Active" : ""));
+
 
                 ScenePrinter.line();
 

@@ -107,6 +107,7 @@ public class StoryEngine {
                         player.getInventory().setEquippedArmor(Armor.LEATHER_GUARD);
                         System.out.println("🏹 *The --" + player.getInventory().getEquippedWeapon().getName() + "-- hums softly as you draw the string — eager to strike true.*");
                         System.out.println("🛡️ *The --" + player.getInventory().getEquippedArmor().getName() + "-- wraps around you lightly, offering freedom and silent agility.*");
+                        System.out.println("✨ *You are granted a --Magic Quiver--, filled with arrows that regenerate through ancient magic.*");
                         System.out.println("🌿 The forest seems to watch over you as your path unfolds...");
                         ScenePrinter.line();
                     }
