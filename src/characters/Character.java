@@ -229,8 +229,8 @@ public abstract class Character {
 
         // Restore based on class
         switch (classType) {
-            case "Archer" -> restoreAmount = 6;
             case "Swordsman" -> restoreAmount = 20;
+            case "Archer" -> restoreAmount = 6;
             case "Mage" -> restoreAmount = 30;
             default -> restoreAmount = 0;
         }

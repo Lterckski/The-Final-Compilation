@@ -88,7 +88,7 @@ public class Karl extends Character{
             return;
         }
 
-        System.out.println("🏹 You used Piercing Arrow on " + target.getName() + " (⚡-" + energyCost + " Energy)");
+        System.out.println("🏹 You used Piercing Arrow on " + target.getName() + " (➶-" + energyCost + " Arrow)");
 
         if (this.getEffects().checkConfuse()) return;
 
@@ -115,7 +115,7 @@ public class Karl extends Character{
             return;
         }
 
-        System.out.println("🎯🔥 You used Bullseye on " + target.getName() + " (⚡-" + energyCost + " Energy)");
+        System.out.println("🎯🔥 You used Bullseye on " + target.getName() + " (➶-" + energyCost + " Arrows)");
 
         if (this.getEffects().checkConfuse()) return;
 
@@ -142,7 +142,7 @@ public class Karl extends Character{
             return;
         }
 
-        System.out.println("🌧️🏹 You unleash your ultimate: Rain of a Thousand Arrows!" + " (⚡-" + energyCost + " Energy)");
+        System.out.println("🌧️🏹 You unleash your ultimate: Rain of a Thousand Arrows!" + " (➶-" + energyCost + " Arrows)");
 
         int totalDamage = 0;
 

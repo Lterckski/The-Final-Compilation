@@ -95,7 +95,7 @@ public class Kael extends  Character{      // 15% crit chance
             return;
         }
 
-        System.out.println("🗡️ You used Blade Rush on " + target.getName() + " (⚡-" + energyCost + " Energy)");
+        System.out.println("🗡️ You used Blade Rush on " + target.getName() + " (🔋-" + energyCost + " Stamina)");
 
         if(this.getEffects().checkConfuse()) return;
 
@@ -123,7 +123,7 @@ public class Kael extends  Character{      // 15% crit chance
             return;
         }
 
-        System.out.println("💥 You used Piercing Slash on " + target.getName() + " (⚡-" + energyCost + " Energy)");
+        System.out.println("💥 You used Piercing Slash on " + target.getName() + " (🔋-" + energyCost + " Stamina)");
 
         if(this.getEffects().checkConfuse()) return;
 
@@ -152,7 +152,7 @@ public class Kael extends  Character{      // 15% crit chance
         }
 
         int totalDamage = 0;
-        System.out.println("✝️ You unleash your ultimate technique: Eternal Cross Slash!" + " (⚡-" + energyCost + " Energy)");
+        System.out.println("✝️ You unleash your ultimate technique: Eternal Cross Slash!" + " (🔋-" + energyCost + " Stamina)");
 
         for(int i = 1; i <= 3; i++){
             int damage = (int) RandomUtil.range(attack * 1.40,attack * 2.20);
@@ -184,9 +184,9 @@ public class Kael extends  Character{      // 15% crit chance
         while (!isValid) {
             // If ultimate is on cooldown
             if (ultimateCounter > 0) {
-                System.out.println("(1) Skill 1   -  Blade Rush (⚡ 5 Stamina)");
-                System.out.println("(2) Skill 2   -  Piercing Slash (⚡ 10 Stamina)");
-                System.out.println("(3) Ultimate  -  Eternal Cross Slash (⚡ 20 Stamina) ❌ (Available in " + ultimateCounter + " turns)");
+                System.out.println("(1) Skill 1   -  Blade Rush (🔋 5 Stamina)");
+                System.out.println("(2) Skill 2   -  Piercing Slash (🔋 10 Stamina)");
+                System.out.println("(3) Ultimate  -  Eternal Cross Slash (🔋 20 Stamina) ❌ (Available in " + ultimateCounter + " turns)");
                 System.out.println("(4) Skip Turn -  Restore 10% of Max HP and 20 Stamina");
                 System.out.println("(5) Show Menu");
                 System.out.print("Choose your action: ");
@@ -207,9 +207,9 @@ public class Kael extends  Character{      // 15% crit chance
             }
             // If ultimate is ready
             else {
-                System.out.println("(1) Skill 1   -  Blade Rush (⚡ 5 Stamina)");
-                System.out.println("(2) Skill 2   -  Piercing Slash (⚡ 10 Stamina)");
-                System.out.println("(3) Ultimate  -  Eternal Cross Slash (⚡ 20 Stamina)");
+                System.out.println("(1) Skill 1   -  Blade Rush (🔋 5 Stamina)");
+                System.out.println("(2) Skill 2   -  Piercing Slash (🔋 10 Stamina)");
+                System.out.println("(3) Ultimate  -  Eternal Cross Slash (🔋 20 Stamina)");
                 System.out.println("(4) Skip Turn -  Restore 10% of Max HP and 20 Stamina");
                 System.out.println("(5) Show Menu");
                 System.out.print("Choose your action: ");

@@ -71,7 +71,7 @@ public class Simon extends Character {
             return;
         }
 
-        System.out.println("🔥 You cast Fireball on " + target.getName() + " (⚡-" + energyCost + " Energy)");
+        System.out.println("🔥 You cast Fireball on " + target.getName() + " (💧-" + energyCost + " Mana)");
 
         if (this.getEffects().checkConfuse()) return;
 
@@ -104,7 +104,7 @@ public class Simon extends Character {
             return;
         }
 
-        System.out.println("❄️ You cast Ice Prison on " + target.getName() + " (⚡-" + energyCost + " Energy)");
+        System.out.println("❄️ You cast Ice Prison on " + target.getName() + " (💧-" + energyCost + " Mana)");
 
         if (this.getEffects().checkConfuse()) return;
 
@@ -136,7 +136,7 @@ public class Simon extends Character {
             return;
         }
 
-        System.out.println("☄️ You unleash your ultimate: Meteor Storm (⚡-" + energyCost + " Energy)!");
+        System.out.println("☄️ You unleash your ultimate: Meteor Storm (💧-" + energyCost + " Mana)!");
 
         int totalDamage = 0;
 
@@ -175,9 +175,9 @@ public class Simon extends Character {
         while (!isValid) {
             // If ultimate is on cooldown
             if (ultimateCounter > 0) {
-                System.out.println("(1) Skill 1   -  Fireball (⚡ 15 Mana)");
-                System.out.println("(2) Skill 2   -  Ice Prison (⚡ 25 Mana)");
-                System.out.println("(3) Ultimate  -  Meteor Storm (⚡ 40 Mana) ❌ (Available in " + ultimateCounter + " turns)");
+                System.out.println("(1) Skill 1   -  Fireball (💧 15 Mana)");
+                System.out.println("(2) Skill 2   -  Ice Prison (💧 25 Mana)");
+                System.out.println("(3) Ultimate  -  Meteor Storm (💧 40 Mana) ❌ (Available in " + ultimateCounter + " turns)");
                 System.out.println("(4) Skip Turn -  Restore 10% of Max HP and 30 Mana");
                 System.out.println("(5) Show Menu");
                 System.out.print("Choose your action: ");
@@ -199,9 +199,9 @@ public class Simon extends Character {
             // If ultimate is ready
             else {
                 ScenePrinter.shortLine();
-                System.out.println("(1) Skill 1   -  Fireball (⚡ 15 Mana)");
-                System.out.println("(2) Skill 2   -  Ice Prison (⚡ 25 Mana)");
-                System.out.println("(3) Ultimate  -  Meteor Storm (⚡ 40 Mana)");
+                System.out.println("(1) Skill 1   -  Fireball (💧 15 Mana)");
+                System.out.println("(2) Skill 2   -  Ice Prison (💧 25 Mana)");
+                System.out.println("(3) Ultimate  -  Meteor Storm (💧 40 Mana)");
                 System.out.println("(4) Skip Turn -  Restore 10% of Max HP and 30 Mana");
                 System.out.println("(5) Show Menu");
                 System.out.print("Choose your action: ");
