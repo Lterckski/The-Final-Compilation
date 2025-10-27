@@ -109,8 +109,21 @@ public class Battle {
         }
 
         if (!player.isAlive()) {
-            System.out.println("You have been defeated... GAME OVER!");
+            gameOver();
         }
+    }
+
+    public void gameOver() {
+        ScenePrinter.line();
+        System.out.println("⚔️ You have been defeated in battle...");
+        ScenePrinter.type("""
+            💀 Darkness overwhelms you...
+            The battlefield falls silent, your vision fades,
+            and the echoes of your struggles vanish into the void.
+            """);
+        InputUtil.pressEnterToContinue();
+        System.out.println("☠️ GAME OVER — Your story ends in shadow.");
+        System.exit(0);
     }
 
 

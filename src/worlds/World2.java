@@ -4,9 +4,8 @@ import enemies.*;
 import battle.Battle;
 import characters.Character;
 import story.ScenePrinter;
+import story.StoryEngine;
 import utils.InputUtil;
-
-import java.lang.reflect.Method;
 
 public class World2 {
 
@@ -19,12 +18,11 @@ public class World2 {
                         "Every face tells the same story: something has poisoned this world.\n"
         );
 
-        ScenePrinter.say("Sir Khai", "\"The Stones,\" he murmurs. \"They are both curse and cure.\"\n");
+        ScenePrinter.say("Khai the Grey", "\"The Stones,\" he murmurs. \"They are both curse and cure.\"\n");
         InputUtil.pressEnterToContinue();
+        ScenePrinter.line();
 
-        Enemy enemy1 = new World2Enemy1();
-        Battle battle1 = new Battle(player, enemy1);
-
+        // -------------------- Plague Vermins --------------------
         ScenePrinter.line();
         ScenePrinter.type("""
         🐀 The stench of rot fills the air.
@@ -36,6 +34,9 @@ public class World2 {
         InputUtil.pressEnterToContinue();
         ScenePrinter.line();
 
+        Enemy enemy1 = new World2Enemy1();
+        Battle battle1 = new Battle(player, enemy1);
+
         for(int i = 1; i <= 3; i++){
             ScenePrinter.hr();
             System.out.println("🐀 Vermin " + i + " lunges at you!");
@@ -43,30 +44,26 @@ public class World2 {
 
             battle1.startBattle();
 
-            if (!enemy1.isAlive()) {
-                System.out.println("✅ You have defeated Vermin " + i + "!");
-                ScenePrinter.line();
-                enemy1.dropLoot(player);
+            System.out.println("✅ You have defeated Vermin " + i + "!");
+            ScenePrinter.line();
+            enemy1.dropLoot(player);
 
-                if (i < 3) { // reset for next vermin
-                    enemy1 = new World2Enemy1();
-                    battle1 = new Battle(player, enemy1);
-                }
+            if (i < 3) { // reset for next vermin
+                enemy1 = new World2Enemy1();
+                battle1 = new Battle(player, enemy1);
             }
         }
 
-        if (player.isAlive()) {
-            ScenePrinter.line();
-            ScenePrinter.type("""
+        ScenePrinter.line();
+        ScenePrinter.type("""
             🎉 Victory! The last of the Plague Vermins collapses into the sludge.
             The foul air clears just enough for you to breathe again.
             """);
-            ScenePrinter.loot("You gain experience and loot from your hard-fought battle.\n");
-            InputUtil.pressEnterToContinue();
-            ScenePrinter.line();
-        }
+        ScenePrinter.loot("You gain experience and loot from your hard-fought battle.\n");
+        InputUtil.pressEnterToContinue();
+        ScenePrinter.line();
 
-
+        // -------------------- Forsaken Cultists --------------------
         ScenePrinter.event("You wander through the town's crumbling streets.");
         ScenePrinter.effect("Townsfolk whisper rumors between coughs.");
         ScenePrinter.type(
@@ -96,31 +93,26 @@ public class World2 {
 
             battle2.startBattle();
 
-            if (!enemy2.isAlive()) {
-                System.out.println("✅ You have defeated Cultist " + i + "!");
-                ScenePrinter.line();
-                enemy2.dropLoot(player);
+            System.out.println("✅ You have defeated Cultist " + i + "!");
+            ScenePrinter.line();
+            enemy2.dropLoot(player);
 
-                if (i < 2) {
-                    enemy2 = new World2Enemy2();
-                    battle2 = new Battle(player, enemy2);
-                }
+            if (i < 2) {
+                enemy2 = new World2Enemy2();
+                battle2 = new Battle(player, enemy2);
             }
         }
 
-        if (player.isAlive()) {
-            ScenePrinter.line();
-            ScenePrinter.type("""
-                    🎉 Victory! The cultists’ ch ants fade into silence.
-                    The air still hums with dark energy, but you stand victorious.
-                    """);
-            ScenePrinter.loot("You gain experience and loot from your grim battle.\n");
-            InputUtil.pressEnterToContinue();
-            ScenePrinter.line();
-        }
+        ScenePrinter.line();
+        ScenePrinter.type("""
+                🎉 Victory! The cultists’ chants fade into silence.
+                The air still hums with dark energy, but you stand victorious.
+                """);
+        ScenePrinter.loot("You gain experience and loot from your grim battle.\n");
+        InputUtil.pressEnterToContinue();
+        ScenePrinter.line();
 
-
-
+        // -------------------- Ghoul Footmen --------------------
         ScenePrinter.title("THE BLACK CASTLE");
         ScenePrinter.event("Thunder cracks as you push open the gates.");
         ScenePrinter.effect("Knights with cracked armor and bleeding eyes lurch from the darkness.");
@@ -144,30 +136,26 @@ public class World2 {
 
             battle3.startBattle();
 
-            if (!enemy3.isAlive()) {
-                System.out.println("✅ You have defeated Ghoul Footman " + i + "!");
-                ScenePrinter.line();
-                enemy3.dropLoot(player);
+            System.out.println("✅ You have defeated Ghoul Footman " + i + "!");
+            ScenePrinter.line();
+            enemy3.dropLoot(player);
 
-                if (i < 2) {
-                    enemy3 = new World2Enemy3();
-                    battle3 = new Battle(player, enemy3);
-                }
+            if (i < 2) {
+                enemy3 = new World2Enemy3();
+                battle3 = new Battle(player, enemy3);
             }
         }
 
-        if (player.isAlive()) {
-            ScenePrinter.line();
-            ScenePrinter.type("""
-                    🎉 Victory! The last ghoul crumbles into dust.
-                    You tighten your grip on your weapon, ready for whatever lies ahead.
-                    """);
-            ScenePrinter.loot("You gain experience and loot from your hard-fought battle.\n");
-            InputUtil.pressEnterToContinue();
-            ScenePrinter.line();
-        }
-
+        ScenePrinter.line();
+        ScenePrinter.type("""
+                🎉 Victory! The last ghoul crumbles into dust.
+                You tighten your grip on your weapon, ready for whatever lies ahead.
+                """);
+        ScenePrinter.loot("You gain experience and loot from your hard-fought battle.\n");
         InputUtil.pressEnterToContinue();
+        ScenePrinter.line();
+
+        // -------------------- Blight Hounds --------------------
         ScenePrinter.effect("A low growl echoes from the halls ahead...");
         ScenePrinter.type("""
                 From the black mist, two Blight Hounds leap forth,
@@ -187,29 +175,26 @@ public class World2 {
 
             battle4.startBattle();
 
-            if (!enemy4.isAlive()) {
-                System.out.println("✅ You have defeated Blight Hound " + i + "!");
-                ScenePrinter.line();
-                enemy4.dropLoot(player);
+            System.out.println("✅ You have defeated Blight Hound " + i + "!");
+            ScenePrinter.line();
+            enemy4.dropLoot(player);
 
-                if (i < 3) {
-                    enemy4 = new World2Enemy4();
-                    battle4 = new Battle(player, enemy4);
-                }
+            if (i < 3) {
+                enemy4 = new World2Enemy4();
+                battle4 = new Battle(player, enemy4);
             }
         }
 
-        if (player.isAlive()) {
-            ScenePrinter.line();
-            ScenePrinter.type("""
-                    🎉 Victory! The cultists’ chants fade into silence.
-                    The air still hums with dark energy, but you stand victorious.
-                    """);
-            ScenePrinter.loot("You gain experience and loot from your grim battle.\n");
-            InputUtil.pressEnterToContinue();
-            ScenePrinter.line();
-        }
+        ScenePrinter.line();
+        ScenePrinter.type("""
+                🎉 Victory! The Blight Hounds are no more.
+                The air still hums with dark energy, but you stand victorious.
+                """);
+        ScenePrinter.loot("You gain experience and loot from your grim battle.\n");
+        InputUtil.pressEnterToContinue();
+        ScenePrinter.line();
 
+        // -------------------- Mini-Boss: The Black Jailer --------------------
         ScenePrinter.title("MINI-BOSS — The Black Jailer");
         ScenePrinter.type("""
                 In the dungeons below, chains rattle.
@@ -223,20 +208,17 @@ public class World2 {
         Battle miniBattle = new Battle(player, miniBoss);
         miniBattle.startBattle();
 
-        if (player.isAlive()) {
-            ScenePrinter.line();
-            ScenePrinter.type("""
-                    🏆 Mini-Boss Defeated!
-                    The Black Jailer drops to his knees, his chains falling silent.
-                    You have triumphed over his tyranny.
-                    """);
-            ScenePrinter.loot("You gain rare loot and a surge of experience!\n");
-            InputUtil.pressEnterToContinue();
-            ScenePrinter.line();
-        }
+        ScenePrinter.line();
+        ScenePrinter.type("""
+                🏆 Mini-Boss Defeated!
+                The Black Jailer drops to his knees, his chains falling silent.
+                You have triumphed over his tyranny.
+                """);
+        ScenePrinter.loot("You gain rare loot and a surge of experience!\n");
+        InputUtil.pressEnterToContinue();
+        ScenePrinter.line();
 
-
-
+        // -------------------- Boss: The Corrupted King --------------------
         ScenePrinter.title("BOSS — The Corrupted King");
         ScenePrinter.type(
                 "In the throne room, the King sits slumped—his crown fused to his skull.\n" +
@@ -251,23 +233,20 @@ public class World2 {
         Battle bossBattle = new Battle(player, boss);
         bossBattle.startBattle();
 
-        if (player.isAlive()) {
-            ScenePrinter.line();
-            ScenePrinter.type("""
-                    👑 Final Victory!
-                    The Corrupted King’s crown falls to the floor, echoing through the halls.
-                    Darkness fades, and you stand as the savior of this cursed land.
-                    """);
-            ScenePrinter.loot("You gain immense experience and legendary loot!\n");
-            InputUtil.pressEnterToContinue();
-            ScenePrinter.line();
-        }
+        ScenePrinter.line();
+        ScenePrinter.type("""
+                👑 Final Victory!
+                The Corrupted King’s crown falls to the floor, echoing through the halls.
+                Darkness fades, and you stand as the savior of this cursed land.
+                """);
+        ScenePrinter.loot("You gain immense experience and legendary loot!\n");
+        InputUtil.pressEnterToContinue();
+        ScenePrinter.line();
 
         ScenePrinter.effect("The King's breath rattles. His eyes regain a hint of clarity.");
         ScenePrinter.say("Corrupted King", "\"The Necromancer… is not what he seems...\"");
         ScenePrinter.event("His body turns to dust.");
         InputUtil.pressEnterToContinue();
-
 
         ScenePrinter.event("You seize the Second Stone.");
         ScenePrinter.effect("A dark wind howls through the castle, extinguishing every torch.");

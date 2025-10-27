@@ -137,8 +137,6 @@ public class StoryEngine {
         return player;
     }
 
-
-
     private boolean characterMenu(Character character) {
         while (true) {
             ScenePrinter.line();
@@ -162,7 +160,6 @@ public class StoryEngine {
             }
         }
     }
-
 
     private void transitionToWorld2() {
         ScenePrinter.title("Transition — Toward World 2");
