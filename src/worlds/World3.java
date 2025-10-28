@@ -17,11 +17,10 @@ public class World3 {
                 "The land turns barren. Ash falls like snow. Rivers of molten fire carve through the black rock.\n" +
                         "At the center, rising higher than mountains, stands the Necromancer’s Tower.\n"
         );
+        InputUtil.pressEnterToContinue();
+        ScenePrinter.line();
 
-        //TODO : ENEMY 1 : 3 FLAME REVENANT ENCOUNTERED
-        Enemy enemy1 = new World3Enemy1();
-        Battle battle1 = new Battle(player, enemy1);
-
+        // -------------------- Flame Revenants --------------------
         ScenePrinter.line();
         ScenePrinter.type("""
                 🔥 From the molten cracks below, Flame Revenants rise,
@@ -32,6 +31,9 @@ public class World3 {
         InputUtil.pressEnterToContinue();
         ScenePrinter.line();
 
+        Enemy enemy1 = new World3Enemy1();
+        Battle battle1 = new Battle(player, enemy1);
+
         for (int i = 1; i <= 3; i++) {
             ScenePrinter.hr();
             System.out.println("🔥 Flame Revenant " + i + " emerges from the lava!");
@@ -39,28 +41,25 @@ public class World3 {
 
             battle1.startBattle();
 
-            if (!enemy1.isAlive()) {
-                System.out.println("✅ You have defeated Flame Revenant " + i + "!");
-                ScenePrinter.line();
-                enemy1.dropLoot(player);
+            System.out.println("✅ You have defeated Flame Revenant " + i + "!");
+            ScenePrinter.line();
+            enemy1.dropLoot(player);
 
-                if (i < 3) {
-                    enemy1 = new World3Enemy1();
-                    battle1 = new Battle(player, enemy1);
-                }
+            if (i < 3) {
+                enemy1 = new World3Enemy1();
+                battle1 = new Battle(player, enemy1);
             }
+
         }
 
-        if (player.isAlive()) {
-            ScenePrinter.line();
-            ScenePrinter.type("""
+        ScenePrinter.line();
+        ScenePrinter.type("""
                     🎉 Victory! The last revenant collapses into molten shards.
                     The lava around you cools slightly — a brief moment of calm.
                     """);
-            ScenePrinter.loot("You gain experience and loot from the battle.\n");
-            InputUtil.pressEnterToContinue();
-            ScenePrinter.line();
-        }
+        ScenePrinter.loot("You gain experience and loot from the battle.\n");
+        InputUtil.pressEnterToContinue();
+        ScenePrinter.line();
 
         ScenePrinter.event("You steel yourself and begin the ascent.");
         ScenePrinter.effect("The air thickens with magic. Each step hums with a pulse from the Stones you carry.\n");
@@ -69,7 +68,7 @@ public class World3 {
         ScenePrinter.event("From the darkness crawl soldiers of bone and beasts stitched from shadow.");
         InputUtil.pressEnterToContinue();
 
-        //TODO : ENEMY 2 : 3 BONE WARLOCK ENCOUNTERED
+        // -------------------- Bone Warlocks --------------------
         ScenePrinter.effect("The ground trembles as sinister energy gathers.");
         ScenePrinter.type("""
                 From the shadows, Bone Warlocks appear, chanting forbidden incantations.
@@ -89,31 +88,27 @@ public class World3 {
 
             battle2.startBattle();
 
-            if (!enemy2.isAlive()) {
-                System.out.println("✅ You have defeated Bone Warlock " + i + "!");
-                ScenePrinter.line();
-                enemy2.dropLoot(player);
+            System.out.println("✅ You have defeated Bone Warlock " + i + "!");
+            ScenePrinter.line();
+            enemy2.dropLoot(player);
 
-                if (i < 2) {
-                    enemy2 = new World3Enemy2();
-                    battle2 = new Battle(player, enemy2);
-                }
+            if (i < 2) {
+                enemy2 = new World3Enemy2();
+                battle2 = new Battle(player, enemy2);
             }
         }
 
-        if (player.isAlive()) {
-            ScenePrinter.line();
-            ScenePrinter.type("""
+        ScenePrinter.line();
+        ScenePrinter.type("""
                     🎉 Victory! The Bone Warlocks crumble, their souls screaming into the void.
                     The heat intensifies — something greater stirs within the peaks.
                     """);
-            ScenePrinter.loot("You gain experience and loot from your fiery victory.\n");
-            InputUtil.pressEnterToContinue();
-            ScenePrinter.line();
-        }
+        ScenePrinter.loot("You gain experience and loot from your fiery victory.\n");
+        InputUtil.pressEnterToContinue();
+        ScenePrinter.line();
 
 
-        //TODO : ENEMY 3 : 2 OBSIDIAN CRUSHER ENCOUNTERED
+        // -------------------- Obsidian Crushers --------------------
         ScenePrinter.event("A deep rumble echoes through the caverns.");
         ScenePrinter.effect("Lava bursts upward, and massive shadows rise behind the flames.");
 
@@ -135,36 +130,34 @@ public class World3 {
 
             battle3.startBattle();
 
-            if (!enemy3.isAlive()) {
-                System.out.println("✅ You have defeated Obsidian Crusher " + i + "!");
-                ScenePrinter.line();
-                enemy3.dropLoot(player);
+            System.out.println("✅ You have defeated Obsidian Crusher " + i + "!");
+            ScenePrinter.line();
+            enemy3.dropLoot(player);
 
-                if (i < 2) {
-                    enemy3 = new World3Enemy3();
-                    battle3 = new Battle(player, enemy3);
-                }
+            if (i < 2) {
+                enemy3 = new World3Enemy3();
+                battle3 = new Battle(player, enemy3);
             }
         }
 
-        if (player.isAlive()) {
-            ScenePrinter.line();
-            ScenePrinter.type("""
+        ScenePrinter.line();
+        ScenePrinter.type("""
                     🎉 Victory! The Crushers shatter, falling into the lava below.
                     The tremors subside — the way forward opens.
                     """);
-            ScenePrinter.loot("You gain experience and loot from your battle.\n");
-            InputUtil.pressEnterToContinue();
-            ScenePrinter.line();
-        }
+        ScenePrinter.loot("You gain experience and loot from your battle.\n");
+        InputUtil.pressEnterToContinue();
+        ScenePrinter.line();
 
         ScenePrinter.event("Halfway up, you find a mural etched into obsidian.");
         ScenePrinter.type(
                 "It shows a hooded figure holding three glowing stones, beneath a phrase in your own language:\n" +
                         "  'To teach is to control.'\n"
         );
+        InputUtil.pressEnterToContinue();
+        ScenePrinter.line();
 
-        //TODO : ENEMY 4 : 4 SOULFLAYER GARGOYLES ENCOUNTERED
+        // -------------------- Soulflayer Gargoyles --------------------
         InputUtil.pressEnterToContinue();
         ScenePrinter.effect("A chilling wind cuts through the heat.");
         ScenePrinter.type("""
@@ -186,31 +179,27 @@ public class World3 {
 
             battle4.startBattle();
 
-            if (!enemy4.isAlive()) {
-                System.out.println("✅ You have defeated Soulflayer Gargoyle " + i + "!");
-                ScenePrinter.line();
-                enemy4.dropLoot(player);
+            System.out.println("✅ You have defeated Soulflayer Gargoyle " + i + "!");
+            ScenePrinter.line();
+            enemy4.dropLoot(player);
 
-                if (i < 3) {
-                    enemy4 = new World3Enemy4();
-                    battle4 = new Battle(player, enemy4);
-                }
+            if (i < 3) {
+                enemy4 = new World3Enemy4();
+                battle4 = new Battle(player, enemy4);
             }
         }
 
-        if (player.isAlive()) {
-            ScenePrinter.line();
-            ScenePrinter.type("""
+        ScenePrinter.line();
+        ScenePrinter.type("""
                     🎉 Victory! The last Gargoyle falls, shattering to dust midair.
                     Silence returns — save for the slow, rising heartbeat of the volcano.
                     """);
-            ScenePrinter.loot("You gain experience and loot from your hard-fought battle.\n");
-            InputUtil.pressEnterToContinue();
-            ScenePrinter.line();
-        }
+        ScenePrinter.loot("You gain experience and loot from your hard-fought battle.\n");
+        InputUtil.pressEnterToContinue();
+        ScenePrinter.line();
 
 
-        // TODO: MINIBOSS: ZYRRYL, THE TOWER WARDEN
+        // -------------------- MINIBOSS: ZYRRYL, THE TOWER WARDEN --------------------
         ScenePrinter.title("MINI-BOSS — Zyrryl, The Tower Warden");
         ScenePrinter.type("""
                 As you reach the summit, molten light reveals a towering figure.
@@ -224,19 +213,15 @@ public class World3 {
         Battle minibattle = new Battle(player, miniboss);
         minibattle.startBattle();
 
-        if (player.isAlive()) {
-            ScenePrinter.line();
-            ScenePrinter.type("""
+        ScenePrinter.line();
+        ScenePrinter.type("""
                     🏆 Mini-Boss Defeated!
                     Zyrryl falls to one knee, his molten armor cracking apart.
                     You have shattered the guardian of flame.
                     """);
-            ScenePrinter.loot("You gain rare loot and powerful rewards!\n");
-            InputUtil.pressEnterToContinue();
-            ScenePrinter.line();
-
-        }
+        ScenePrinter.loot("You gain rare loot and powerful rewards!\n");
         InputUtil.pressEnterToContinue();
+        ScenePrinter.line();
 
         // TODO : PRE-FINAL RANDOM ENCOUNTER (ka luther ni)
         // --- Boss: the revelation ---
