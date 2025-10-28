@@ -8,6 +8,7 @@ import inventory.Staff;
 import inventory.Sword;
 import inventory.Bow;
 import utils.InputUtil;
+import utils.PrintUtil;
 
 public class Tester {
     public static void main(String[] args) {
@@ -73,6 +74,7 @@ public class Tester {
 
 
         System.out.println("Welcome to The Final Compilation");
+        PrintUtil.delay(1000);
 
         System.out.println("-------------------------------------");
         System.out.println("1 - Kael Saint Laurent (Swordsman)");
