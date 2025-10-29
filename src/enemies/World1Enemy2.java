@@ -2,6 +2,7 @@ package enemies;
 
 import characters.Character;
 import inventory.Armor;
+import utils.PrintUtil;
 import utils.RandomUtil;
 
 public class World1Enemy2 extends Enemy {
@@ -13,6 +14,7 @@ public class World1Enemy2 extends Enemy {
     // Skill: Trickster Strike (8–13 damage)
     public void tricksterStrike(Character target) {
         System.out.println("🧚 " + name + " attacks with Trickster Strike!");
+        PrintUtil.pause(800);
         if (target.getEffects().checkDodge()) return;
         if (this.getEffects().checkConfuse()) return;
 
@@ -20,6 +22,7 @@ public class World1Enemy2 extends Enemy {
         int reduced = calculateDamage(target, damage);
 
         System.out.println("→💔 Trickster Strike hits for " + reduced + " damage!");
+        PrintUtil.pause(800);
         target.takeDamage(reduced);
 
         // Armor reflect check
@@ -28,6 +31,7 @@ public class World1Enemy2 extends Enemy {
             int reflectDamage = equippedArmor.checkReflectDamage(reduced);
             if (reflectDamage > 0) {
                 System.out.println("🪞 " + equippedArmor.getName() + " reflected " + reflectDamage + " damage back to " + name + "!");
+                PrintUtil.pause(800);
                 this.takeDamage(reflectDamage);
             }
         }

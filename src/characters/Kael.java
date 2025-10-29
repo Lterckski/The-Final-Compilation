@@ -2,6 +2,7 @@ package characters;
 
 import enemies.FinalBoss;
 import story.ScenePrinter;
+import utils.PrintUtil;
 import utils.RandomUtil;
 
 public class Kael extends  Character{      // 15% crit chance
@@ -19,21 +20,21 @@ public class Kael extends  Character{      // 15% crit chance
         System.out.println("Effect: When a Critical Hit occurs, Kael gains +5% Stamina.\n");
 
         // Skill 1
-        System.out.println("Skill 1 – Blade Rush (10 Energy)");
+        System.out.println("Skill 1 – Blade Rush (5 Stamina)");
         System.out.println("Description: A quick, fluid slash that catches the opponent off guard.");
         System.out.println("Damage: (" + (int)(attack * 1.15) + " — " + (int)(attack * 1.35) + ")");
         System.out.println("Effects:");
         System.out.println("- 30% chance to apply Strengthen (+20% ATK for 2 turns)\n");
 
         // Skill 2
-        System.out.println("Skill 2 – Piercing Slash (15 Energy)");
+        System.out.println("Skill 2 – Piercing Slash (10 Stamina)");
         System.out.println("Description: A powerful, focused strike aimed to shatter enemy defenses.");
         System.out.println("Damage: (" + (int)(attack * 1.35) + " — " + (int)(attack * 1.55) + ") — Ignores Defense");
         System.out.println("Effects:");
         System.out.println("- 30% chance to Stun (1 turn)\n");
 
         // Ultimate
-        System.out.println("Ultimate – Eternal Cross Slash (30 Energy)");
+        System.out.println("Ultimate – Eternal Cross Slash (20 Stamina)");
         System.out.println("Description: Kael unleashes a flurry of crossing strikes infused with unyielding determination.");
         System.out.println("Damage: 3 hits, each dealing (" + (int)(attack * 1.40) + " — " + (int)(attack * 2.20) + ")");
         System.out.println("Effects:");
@@ -63,6 +64,7 @@ public class Kael extends  Character{      // 15% crit chance
     private int bladeSwift(int damage) {
         if (RandomUtil.chance(15)) {
             System.out.println("⚡ Critical Hit! Blade Swift activated!");
+            PrintUtil.pause(800);
             damage = (int) (damage * 1.5);
 
             // Gain +5% of max energy (bonus adrenaline)
@@ -71,6 +73,7 @@ public class Kael extends  Character{      // 15% crit chance
             if (energy > maxEnergy) energy = maxEnergy;
             System.out.println("✨ Gained +" + energyGained + " energy from precision! ("
                     + energy + "/" + maxEnergy + ")");
+            PrintUtil.pause(800);
         }
         return damage;
     }
@@ -79,10 +82,12 @@ public class Kael extends  Character{      // 15% crit chance
     private void triggerWeaponEffect(Character target, int damage) {
         if (this.getWeapon() != null && this.getWeapon().applyEffects(this, damage)) {
             System.out.println("⚡ Weapon effect activated! Extra hit triggered.");
+            PrintUtil.pause(800);
 
             int extraDamage = (int) RandomUtil.range(damage * 0.20, damage * 0.40);
 
             System.out.println("🗡 Extra hit from weapon for " + extraDamage + " damage!");
+            PrintUtil.pause(800);
             target.takeDamage(extraDamage);
         }
     }
@@ -92,10 +97,12 @@ public class Kael extends  Character{      // 15% crit chance
         int energyCost = 5;
         if(!consumeEnergy(energyCost)){
             System.out.println("❌ Not enough Stamina to use Blade Rush!");
+            PrintUtil.pause(800);
             return;
         }
 
         System.out.println("🗡️ You used Blade Rush on " + target.getName() + " (🔋-" + energyCost + " Stamina)");
+        PrintUtil.pause(800);
 
         if(this.getEffects().checkConfuse()) return;
 
@@ -104,6 +111,7 @@ public class Kael extends  Character{      // 15% crit chance
         int reduced = calculateDamage(target, damage);
 
         System.out.println("💔 Target is hit for " + reduced + " Damage!");
+        PrintUtil.pause(800);
         target.takeDamage(reduced);
 
         // 30% chance to apply Strengthen (+20% ATK for 2 turns)
@@ -120,10 +128,12 @@ public class Kael extends  Character{      // 15% crit chance
         int energyCost = 10;
         if(!consumeEnergy(energyCost)){
             System.out.println("❌ Not enough Stamina to use Piercing Slash!");
+            PrintUtil.pause(800);
             return;
         }
 
         System.out.println("💥 You used Piercing Slash on " + target.getName() + " (🔋-" + energyCost + " Stamina)");
+        PrintUtil.pause(800);
 
         if(this.getEffects().checkConfuse()) return;
 
@@ -131,6 +141,7 @@ public class Kael extends  Character{      // 15% crit chance
         int reduced = bladeSwift(damage);
 
         System.out.println("💔 Target is hit for " + reduced + " Pure Damage!");
+        PrintUtil.pause(800);
         target.takeDamage(reduced);
 
         // 30% chance to apply Stun (from the sheer impact)
@@ -148,11 +159,13 @@ public class Kael extends  Character{      // 15% crit chance
         int energyCost = 20;
         if (!consumeEnergy(energyCost)) {
             System.out.println("❌ Not enough Stamina to use Eternal Cross Slash!");
+            PrintUtil.pause(800);
             return;
         }
 
         int totalDamage = 0;
         System.out.println("✝️ You unleash your ultimate technique: Eternal Cross Slash!" + " (🔋-" + energyCost + " Stamina)");
+        PrintUtil.pause(800);
 
         for(int i = 1; i <= 3; i++){
             int damage = (int) RandomUtil.range(attack * 1.40,attack * 2.20);
@@ -163,6 +176,7 @@ public class Kael extends  Character{      // 15% crit chance
             totalDamage += reduced;
 
             System.out.println(" →🔪 Hit " + i + "! 💔 You slashed the Target for " + reduced + " damage!");
+            PrintUtil.pause(800);
 
             // Apply weapon effects via helper
             if(reduced > 0)
@@ -170,6 +184,7 @@ public class Kael extends  Character{      // 15% crit chance
         }
 
         System.out.println("⚔️💥 Eternal Cross Slash finished! Total Damage dealt: " + totalDamage);
+        PrintUtil.pause(800);
         target.takeDamage(totalDamage);
 
         target.getEffects().applyBleed(2);
@@ -191,7 +206,7 @@ public class Kael extends  Character{      // 15% crit chance
                 System.out.println("(5) Show Menu");
                 System.out.print("Choose your action: ");
 
-                int choice = utils.InputUtil.scan.nextInt();
+                int choice = utils.InputUtil.scanInput();
                 utils.InputUtil.scan.nextLine();
                 ScenePrinter.shortLine();
 
@@ -201,7 +216,7 @@ public class Kael extends  Character{      // 15% crit chance
                     case 3 -> { System.out.println("❌ Ultimate is on cooldown! Can only be used after " + ultimateCounter + " turns."); ScenePrinter.line();}
                     case 4 -> { skipTurn(); isValid = true; ultimateCounter--;}
                     case 5 -> displayMenu(this, target);
-                    default -> { System.out.println(" Invalid action! You missed your turn."); isValid = true; ultimateCounter--;}
+                    default -> { System.out.println("❌ Invalid action! You missed your turn."); PrintUtil.pause(800); isValid = true; ultimateCounter--; }
                 }
 
             }
@@ -214,7 +229,7 @@ public class Kael extends  Character{      // 15% crit chance
                 System.out.println("(5) Show Menu");
                 System.out.print("Choose your action: ");
 
-                int choice = utils.InputUtil.scan.nextInt();
+                int choice = utils.InputUtil.scanInput();
                 utils.InputUtil.scan.nextLine();
                 ScenePrinter.shortLine();
 
@@ -224,7 +239,7 @@ public class Kael extends  Character{      // 15% crit chance
                     case 3 -> { eternalCrossSlash(target); isValid = true; }
                     case 4 -> { skipTurn(); isValid = true; }
                     case 5 -> displayMenu(this, target);
-                    default -> { System.out.println(" Invalid action! You missed your turn."); isValid = true; }
+                    default -> { System.out.println("❌ Invalid action! You missed your turn."); PrintUtil.pause(800); isValid = true; }
                 }
             }
         }

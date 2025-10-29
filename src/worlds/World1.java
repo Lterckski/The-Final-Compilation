@@ -60,6 +60,7 @@ public class World1 {
         ScenePrinter.loot("You gain experience and loot from your hard-fought battle.\n");
         InputUtil.pressEnterToContinue();
         ScenePrinter.line();
+        player.getEffects().resetAllEffects();
 
         // -------------------- Shade Sprites --------------------
         ScenePrinter.line();
@@ -100,6 +101,7 @@ public class World1 {
         ScenePrinter.loot("You gain ethereal dust and experience from the fallen spirits.\n");
         InputUtil.pressEnterToContinue();
         ScenePrinter.line();
+        player.getEffects().resetAllEffects();
 
         // -------------------- Dreadbark Treants --------------------
         ScenePrinter.line();
@@ -140,6 +142,7 @@ public class World1 {
         ScenePrinter.loot("You gain wooden fragments and experience.\n");
         InputUtil.pressEnterToContinue();
         ScenePrinter.line();
+        player.getEffects().resetAllEffects();
 
         // -------------------- Carrion Bats --------------------
         ScenePrinter.line();
@@ -180,6 +183,7 @@ public class World1 {
         ScenePrinter.loot("You gain torn wings and experience.\n");
         InputUtil.pressEnterToContinue();
         ScenePrinter.line();
+        player.getEffects().resetAllEffects();
 
         // -------------------- MINI-BOSS — THE HOLLOW STAG --------------------
         ScenePrinter.line();
@@ -219,6 +223,7 @@ public class World1 {
         miniboss.dropLoot(player);
         InputUtil.pressEnterToContinue();
         ScenePrinter.line();
+        player.getEffects().resetAllEffects();
 
         ScenePrinter.event("You claim the First Stone from a tree black with rot. Light bursts outward; the forest exhales.");
         InputUtil.pressEnterToContinue();

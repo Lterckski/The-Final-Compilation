@@ -32,7 +32,7 @@ public abstract class Weapon {
         do {
             validChoice = true;
             System.out.println("Do you want to pick it up? (1 = Yes, 0 = No)");
-            int choice = InputUtil.scan.nextInt();
+            int choice = InputUtil.scanInput();
             InputUtil.scan.nextLine();
 
             if (choice == 1) {
@@ -42,7 +42,7 @@ public abstract class Weapon {
                 boolean validConfirm = true;
                 do {
                     System.out.println("Are you sure you want to ignore the weapon? (1 = Yes, 0 = No)");
-                    int confirm = InputUtil.scan.nextInt();
+                    int confirm = InputUtil.scanInput();
                     InputUtil.scan.nextLine();
 
                     if (confirm == 1) {

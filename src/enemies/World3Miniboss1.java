@@ -5,6 +5,7 @@ import inventory.Armor;
 import inventory.Bow;
 import inventory.Staff;
 import inventory.Sword;
+import utils.PrintUtil;
 import utils.RandomUtil;
 
 public class World3Miniboss1 extends Enemy {
@@ -13,19 +14,23 @@ public class World3Miniboss1 extends Enemy {
 
     public void graveCleaver(Character target) {
         System.out.println("🤺 " + name + " used Grave Cleaver!");
+        PrintUtil.pause(800);
         if(target.getEffects().checkDodge()) return;
         if (this.getEffects().checkConfuse()) return;
 
         int damage = (int)RandomUtil.range(attack * 1.00, attack * 1.15);
 
         System.out.println("→💔 Grave Cleaver hits for " + damage + " Pure Damage!");
+        PrintUtil.pause(800);
         target.takeDamage(damage);
     }
 
     public void boneShield() {
         System.out.println("🦴 " + name + " used Bone Shield!");
+        PrintUtil.pause(800);
 
         System.out.println("→🛡️ Bone Shield increases defense of " + name + " by +50 for 2 turns!");
+        PrintUtil.pause(800);
         this.getEffects().applyDefenseBuff(50, 2, true);
     }
 
@@ -62,6 +67,8 @@ public class World3Miniboss1 extends Enemy {
         player.getPotions().lootFullHealthPotions();
 
         System.out.println("\n🎁 You obtained an Epic Weapon!");
+        PrintUtil.pause(800);
+
         if (player.getClassType().equals("Swordsman")) {
             Sword eclipseGreatsword = Sword.ECLIPSE_GREATSWORD;
             if (eclipseGreatsword.lootWeapon()) {
@@ -80,6 +87,8 @@ public class World3Miniboss1 extends Enemy {
         }
 
         System.out.println("\n🎁 You obtained an Epic Armor!");
+        PrintUtil.pause(800);
+
         Armor skyforgePlate = Armor.SKYFORGE_PLATE;
         if (skyforgePlate.lootArmor()) {
             skyforgePlate.equip(player);

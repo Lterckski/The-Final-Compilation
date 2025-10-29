@@ -45,7 +45,7 @@ public class Armor {
         do {
             validChoice = true;
             System.out.println("Do you want to pick it up? (1 = Yes, 0 = No)");
-            int choice = utils.InputUtil.scan.nextInt();
+            int choice = utils.InputUtil.scanInput();
             utils.InputUtil.scan.nextLine();
 
             if (choice == 1) {
@@ -55,7 +55,7 @@ public class Armor {
                 boolean validConfirm  = true;
                 do {
                     System.out.println("Are you sure you want to ignore the armor? (1 = Yes, 0 = No)");
-                    int confirm = utils.InputUtil.scan.nextInt();
+                    int confirm = utils.InputUtil.scanInput();
                     utils.InputUtil.scan.nextLine();
 
                     if (confirm == 1) {
@@ -78,35 +78,35 @@ public class Armor {
         return pickUp;
     }
 
-    public void equip(Character character) {
-        Armor currentlyEquipped = character.getInventory().getEquippedArmor();
+    public void equip(Character player) {
+        Armor currentlyEquipped = player.getInventory().getEquippedArmor();
 
         System.out.println("-----------------------------");
 
         if (currentlyEquipped == null) {
-            character.setDefense(character.getDefense() + defBuff);
+            player.setDefense(player.getDefense() + defBuff);
             isEquipped = true;
-            character.getInventory().setEquippedArmor(this);
+            player.getInventory().setEquippedArmor(this);
             System.out.println(name + " Equipped! Defense increased by " + defBuff +
-                    ". Current DEF: " + character.getDefense());
+                    ". Current DEF: " + player.getDefense());
         } else {
-            currentlyEquipped.unequip(character);
+            currentlyEquipped.unequip(player);
 
-            character.setDefense(character.getDefense() + defBuff);
+            player.setDefense(player.getDefense() + defBuff);
             isEquipped = true;
-            character.getInventory().setEquippedArmor(this);
+            player.getInventory().setEquippedArmor(this);
 
             System.out.println("You upgraded your armor!");
             System.out.println(name + " Equipped! Defense increased by " +
                     (this.defBuff - currentlyEquipped.defBuff) +
-                    ". Current DEF: " + character.getDefense());
+                    ". Current DEF: " + player.getDefense());
         }
         System.out.println("-----------------------------");
     }
 
 
-    public void unequip(Character character) {
-        character.setDefense(character.getDefense() - defBuff);
+    public void unequip(Character player) {
+        player.setDefense(player.getDefense() - defBuff);
         isEquipped = false;
     }
 

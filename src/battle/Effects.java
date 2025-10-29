@@ -1,6 +1,7 @@
 package battle;
 
 import characters.Character;
+import utils.PrintUtil;
 
 import java.util.ArrayList;
 
@@ -47,32 +48,38 @@ public class Effects {
     public void applyFreeze() {
         frozen = true;
         System.out.println("❄️ Target is Frozen solid and skips their turn!");
+        PrintUtil.pause(800);
     }
 
     public void applyStun() {
         stunned = true;
         System.out.println("💫 Target is Stunned and can't act!");
+        PrintUtil.pause(800);
     }
 
     public void applyImmobilize() {
         immobilized = true;
         System.out.println("⛓️ Target is Immobilized and cannot move!");
+        PrintUtil.pause(800);
     }
 
     public void applyConfuse() {
         confused = true;
         System.out.println("💭 Target is Confused and might miss their next attack!");
+        PrintUtil.pause(800);
     }
 
     public void applyFear() {
         feared = true;
         confused = true; // Fear also confuses the target
         System.out.println("😱 Target is Terrified by Fear, skips their turn, and becomes Confused!");
+        PrintUtil.pause(800);
     }
 
     public void applyNimble() {
         nimble = true;
         System.out.println("⚡ You become Nimble and may dodge the next attack!");
+        PrintUtil.pause(800);
     }
 
     // ------------------- APPLY BUFFS/DEBUFFS -------------------
@@ -83,6 +90,7 @@ public class Effects {
         owner.setAttack(owner.getAttack() + amount);
 
         System.out.println("💪 Strengthen activated! +" + percent + "% ATK for " + duration + " turn/s!");
+        PrintUtil.pause(800);
     }
 
     public void applyAttackDebuff(int percent, int duration) {
@@ -91,6 +99,7 @@ public class Effects {
         owner.setAttack(owner.getAttack() - amount);
 
         System.out.println("💢 Weaken applied! -" + percent + "% ATK for " + duration + " turn/s!");
+        PrintUtil.pause(800);
     }
 
     public void applyDefenseBuff(int percent, int duration) {
@@ -99,6 +108,7 @@ public class Effects {
         owner.setDefense(owner.getDefense() + amount);
 
         System.out.println("🛡️ Fortified activated! +" + percent + "% DEF for " + duration + " turn/s!");
+        PrintUtil.pause(800);
     }
 
     // Fixed amount version (like a shield)
@@ -107,6 +117,7 @@ public class Effects {
         owner.setDefense(owner.getDefense() - amount);
 
         System.out.println("🛡️ Shield activated! +" + amount + " DEF for " + duration + " turn/s!");
+        PrintUtil.pause(800);
     }
 
     public void applyDefenseDebuff(int percent, int duration) {
@@ -115,23 +126,27 @@ public class Effects {
         owner.setDefense(owner.getDefense() - amount);
 
         System.out.println("🔻 Fragile applied! -" + percent + "% DEF for " + duration + " turn/s!");
+        PrintUtil.pause(800);
     }
 
 
     public void applyPoison(int turns) {
         poisonTurnsLeft += turns;
         System.out.println("☠️ Target is poisoned for " + turns + " turn/s!");
+        PrintUtil.pause(800);
     }
 
     public void applyBleed(int turns) {
         bleedInitialTurns += turns;
         bleedTurnsLeft += turns;
         System.out.println("🩸 Target is bleeding for " + turns + " turn/s!");
+        PrintUtil.pause(800);
     }
 
     public void applyBurn(int turns) {
         burnTurnsLeft += turns;
         System.out.println("🔥 Target is burned for " + turns + " turn/s!");
+        PrintUtil.pause(800);
     }
 
     // Check if character has any active ATK buff
@@ -158,22 +173,26 @@ public class Effects {
     public boolean checkEffects() {
         if (frozen) {
             System.out.println(owner.getName() + " is Frozen. TURN SKIPPED!");
+            PrintUtil.pause(800);
             frozen = false;
             return false;
         }
         if (stunned) {
             System.out.println(owner.getName() + " is Stunned. TURN SKIPPED!");
+            PrintUtil.pause(800);
             stunned = false;
             return false;
         }
         if (immobilized) {
             System.out.println(owner.getName() + " is Immobilized. Can only regain energy. TURN SKIPPED!");
+            PrintUtil.pause(800);
             owner.skipTurn();
             immobilized = false;
             return false;
         }
         if (feared) {
             System.out.println(owner.getName() + " is Feared. Can only regain energy. TURN SKIPPED!");
+            PrintUtil.pause(800);
             owner.skipTurn();
             feared = false;
             return false;
@@ -185,6 +204,7 @@ public class Effects {
         if (confused) {
             if (Math.random() < 0.50) {
                 System.out.println(owner.getName() + " missed the attack due to confusion!");
+                PrintUtil.pause(800);
                 return true;
             }
             confused = false;
@@ -196,6 +216,7 @@ public class Effects {
         if (nimble) {
             if (Math.random() < .50) {
                 System.out.println(owner.getName() + " dodged the attack due to Nimble!");
+                PrintUtil.pause(800);
                 nimble = false;
                 return true;
             }
@@ -208,17 +229,20 @@ public class Effects {
     public void updateDoTEffects() {
         if (poisonTurnsLeft > 0) {
             System.out.println("☠ " + owner.getName() + " is poisoned! 💔 Took 5 damage.");
+            PrintUtil.pause(800);
             owner.takeDamage(5);
             poisonTurnsLeft--;
         }
         if (bleedTurnsLeft > 0) {
             int bleedDamage = Math.min(5 + 2 * (bleedInitialTurns - bleedTurnsLeft), 16);
             System.out.println("🩸 " + owner.getName() + " is bleeding! 💔 Took " + bleedDamage + " damage.");
+            PrintUtil.pause(800);
             owner.takeDamage(bleedDamage);
             bleedTurnsLeft--;
         }
         if (burnTurnsLeft > 0) {
             System.out.println("🔥 " + owner.getName() + " is burning! 💔 Took 5 damage.");
+            PrintUtil.pause(800);
             owner.takeDamage(5);
             burnTurnsLeft--;
         }
@@ -234,6 +258,7 @@ public class Effects {
                 owner.setAttack(owner.getAttack() - mod.amount);
                 atkBuffs.remove(i);
                 System.out.println(owner.getName() + "'s attack buff has worn off!");
+                PrintUtil.pause(800);
             }
         }
 
@@ -245,6 +270,7 @@ public class Effects {
                 owner.setAttack(owner.getAttack() + mod.amount);
                 atkDebuffs.remove(i);
                 System.out.println(owner.getName() + "'s attack debuff has faded!");
+                PrintUtil.pause(800);
             }
         }
     }
@@ -259,6 +285,7 @@ public class Effects {
                 owner.setDefense(owner.getDefense() - buff.amount);
                 defBuffs.remove(i);
                 System.out.println(owner.getName() + "'s defense buff has worn off!");
+                PrintUtil.pause(800);
             }
         }
 
@@ -270,9 +297,33 @@ public class Effects {
                 owner.setDefense(owner.getDefense() + mod.amount);
                 defDebuffs.remove(i);
                 System.out.println(owner.getName() + "'s defense debuff has faded!");
+                PrintUtil.pause(800);
             }
         }
     }
 
+    // ------------------- RESET ALL EFFECTS -------------------
+    public void resetAllEffects() {
+        // Clear all buffs and debuffs
+        atkBuffs.clear();
+        atkDebuffs.clear();
+        defBuffs.clear();
+        defDebuffs.clear();
+
+        // Reset temporary statuses
+        frozen = false;
+        stunned = false;
+        immobilized = false;
+        feared = false;
+        confused = false;
+        nimble = false;
+
+        // Reset DoT effects
+        poisonTurnsLeft = 0;
+        bleedInitialTurns = 0;
+        bleedTurnsLeft = 0;
+        burnTurnsLeft = 0;
+
+    }
 
 }

@@ -2,6 +2,7 @@ package enemies;
 
 import characters.Character;
 import utils.InputUtil;
+import utils.PrintUtil;
 import utils.RandomUtil;
 import inventory.*;
 
@@ -12,6 +13,7 @@ public class World2Miniboss2 extends Enemy {
 
     public void crownOfDespair(Character target) {
         System.out.println("👑 " + name + " casts Crown of Despair!");
+        PrintUtil.pause(800);
         if(target.getEffects().checkDodge()) return;
         if (this.getEffects().checkConfuse()) return;
 
@@ -19,6 +21,7 @@ public class World2Miniboss2 extends Enemy {
         Armor equippedArmor = target.getInventory().getEquippedArmor();
         if (equippedArmor != null && equippedArmor.checkEffectsImmunity()) {
             System.out.println("✨ " + target.getName() + " resisted Weaken 👑 due to " + equippedArmor.getName() + "!");
+            PrintUtil.pause(800);
         } else{
             target.getEffects().applyAttackDebuff(20, 2);
         }
@@ -26,6 +29,7 @@ public class World2Miniboss2 extends Enemy {
 
     public void darkJudgement(Character target){
         System.out.println("⚔️ " + name + " uses Dark Judgment!");
+        PrintUtil.pause(800);
         if(target.getEffects().checkDodge()) return;
         if (this.getEffects().checkConfuse()) return;
 
@@ -33,6 +37,7 @@ public class World2Miniboss2 extends Enemy {
         int reduced = calculateDamage(target, damage);
 
         System.out.println("→💔 Dark Judgment hits for " + reduced + " damage!");
+        PrintUtil.pause(800);
         target.takeDamage(reduced);
 
         //Reflect damage check
@@ -41,6 +46,7 @@ public class World2Miniboss2 extends Enemy {
             int reflectDamage = equippedArmor.checkReflectDamage(reduced);
             if (reflectDamage > 0) {
                 System.out.println("🪞 " + equippedArmor.getName() + " reflected " + reflectDamage + " damage back to " + name + "!");
+                PrintUtil.pause(800);
                 this.takeDamage(reflectDamage);
             }
         }
@@ -48,6 +54,7 @@ public class World2Miniboss2 extends Enemy {
 
     public void kingsWrath(Character target){
         System.out.println("🔥 " + name + " unleashes King's Wrath!");
+        PrintUtil.pause(800);
         if(target.getEffects().checkDodge()) return;
         if (this.getEffects().checkConfuse()) return;
 
@@ -55,6 +62,7 @@ public class World2Miniboss2 extends Enemy {
         int reduced = calculateDamage(target, damage);
 
         System.out.println("→💔 King's Wrath hits for " + reduced + " damage!");
+        PrintUtil.pause(800);
         target.takeDamage(reduced);
 
         Armor equippedArmor = target.getInventory().getEquippedArmor();
@@ -64,6 +72,7 @@ public class World2Miniboss2 extends Enemy {
             int reflectDamage = equippedArmor.checkReflectDamage(reduced);
             if (reflectDamage > 0) {
                 System.out.println("🪞 " + equippedArmor.getName() + " reflected " + reflectDamage + " damage back to " + name + "!");
+                PrintUtil.pause(800);
                 this.takeDamage(reflectDamage);
             }
         }
@@ -116,6 +125,7 @@ public class World2Miniboss2 extends Enemy {
         player.getPotions().lootFullHealthPotions();
 
         System.out.println("\n🎁 You obtained 2 Rare Weapons!");
+        PrintUtil.pause(800);
 
         // Check the class type
         if (player.getClassType().equals("Swordsman")) {
@@ -123,20 +133,25 @@ public class World2Miniboss2 extends Enemy {
             Sword lifebondBlade = Sword.LIFEBOND_BLADE;    // +15 ATK, restores 3% HP of damage dealt
 
             System.out.println("1️⃣ " + twinstrikeBlade.getName() + " → +15 ATK, 10% chance for a second attack ⚡");
+            PrintUtil.pause(800);
             System.out.println("2️⃣ " + lifebondBlade.getName() + " → +15 ATK, restores 3% HP of damage dealt 💖");
+            PrintUtil.pause(800);
             System.out.print("\nChoose one to equip (1 or 2): ");
 
-            int choice = InputUtil.scan.nextInt();
+            int choice = InputUtil.scanInput();
             InputUtil.scan.nextLine();
 
             if (choice == 1) {
                 twinstrikeBlade.equip(player);
                 System.out.println("\nYou equipped " + twinstrikeBlade.getName() + "! The other weapon vanishes...");
+                PrintUtil.pause(800);
             } else if (choice == 2) {
                 lifebondBlade.equip(player);
                 System.out.println("\nYou equipped " + lifebondBlade.getName() + "! The other weapon vanishes...");
+                PrintUtil.pause(800);
             } else {
                 System.out.println("\nInvalid choice. Both weapons disappear...");
+                PrintUtil.pause(800);
             }
 
         } else if (player.getClassType().equals("Archer")) {
@@ -144,20 +159,25 @@ public class World2Miniboss2 extends Enemy {
             Bow lifebloomBow = Bow.LIFEBLOOM_BOW;   // +15 ATK, restores 3% HP of damage dealt
 
             System.out.println("1️⃣ " + twinshotBow.getName() + " → +15 ATK, +10% chance to attack twice 🎯");
+            PrintUtil.pause(800);
             System.out.println("2️⃣ " + lifebloomBow.getName() + " → +15 ATK, restores 3% HP of damage dealt 💖");
+            PrintUtil.pause(800);
             System.out.print("\nChoose one to equip (1 or 2): ");
 
-            int choice = InputUtil.scan.nextInt();
+            int choice = InputUtil.scanInput();
             InputUtil.scan.nextLine();
 
             if (choice == 1) {
                 twinshotBow.equip(player);
                 System.out.println("\nYou equipped " + twinshotBow.getName() + "! The other weapon vanishes...");
+                PrintUtil.pause(800);
             } else if (choice == 2) {
                 lifebloomBow.equip(player);
                 System.out.println("\nYou equipped " + lifebloomBow.getName() + "! The other weapon vanishes...");
+                PrintUtil.pause(800);
             } else {
                 System.out.println("\nInvalid choice. Both weapons disappear...");
+                PrintUtil.pause(800);
             }
 
         } else if (player.getClassType().equals("Mage")) {
@@ -165,20 +185,25 @@ public class World2Miniboss2 extends Enemy {
             Staff flameheartStaff = Staff.FLAMEHEART_STAFF;  // +15 ATK, restores 3% HP of damage dealt
 
             System.out.println("1️⃣ " + mysticMindStaff.getName() + " → +15 ATK, 30% chance to confuse enemy 🌀");
+            PrintUtil.pause(800);
             System.out.println("2️⃣ " + flameheartStaff.getName() + " → +15 ATK, restores 3% HP of damage dealt 💖");
+            PrintUtil.pause(800);
             System.out.print("\nChoose one to equip (1 or 2): ");
 
-            int choice = InputUtil.scan.nextInt();
+            int choice = InputUtil.scanInput();
             InputUtil.scan.nextLine();
 
             if (choice == 1) {
                 mysticMindStaff.equip(player);
                 System.out.println("\nYou equipped " + mysticMindStaff.getName() + "! The other weapon vanishes...");
+                PrintUtil.pause(800);
             } else if (choice == 2) {
                 flameheartStaff.equip(player);
                 System.out.println("\nYou equipped " + flameheartStaff.getName() + "! The other weapon vanishes...");
+                PrintUtil.pause(800);
             } else {
                 System.out.println("\nInvalid choice. Both weapons disappear...");
+                PrintUtil.pause(800);
             }
         }
     }

@@ -1,6 +1,7 @@
 package enemies;
 
 import characters.Character;
+import utils.PrintUtil;
 import utils.RandomUtil;
 import inventory.*;
 
@@ -11,6 +12,7 @@ public class World2Enemy4 extends Enemy{
 
     public void rottenCleave(Character target){
         System.out.println("🧟 " + name + " swings Rotten Cleave!");
+        PrintUtil.pause(800);
         if(target.getEffects().checkDodge()) return;
         if (this.getEffects().checkConfuse()) return;
 
@@ -18,6 +20,7 @@ public class World2Enemy4 extends Enemy{
         int reduced = calculateDamage(target, damage);
 
         System.out.println("→💔 Rotten Cleave hits for " + reduced + " damage!");
+        PrintUtil.pause(800);
         target.takeDamage(reduced);
 
         // Reflect check
@@ -26,6 +29,7 @@ public class World2Enemy4 extends Enemy{
             int reflectDamage = equippedArmor.checkReflectDamage(reduced);
             if (reflectDamage > 0) {
                 System.out.println("🪞 " + equippedArmor.getName() + " reflected " + reflectDamage + " damage back to " + name + "!");
+                PrintUtil.pause(800);
                 this.takeDamage(reflectDamage);
             }
         }
@@ -33,6 +37,7 @@ public class World2Enemy4 extends Enemy{
         if (RandomUtil.chance(30)) {
             if (equippedArmor != null && equippedArmor.checkEffectsImmunity()) {
                 System.out.println("✨ " + target.getName() + " resisted Bleed 🩸 due to " + equippedArmor.getName() + "!");
+                PrintUtil.pause(800);
             } else {
                 target.getEffects().applyBleed(2);
             }

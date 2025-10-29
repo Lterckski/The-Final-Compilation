@@ -1,6 +1,7 @@
 package characters;
 
 import story.ScenePrinter;
+import utils.PrintUtil;
 import utils.RandomUtil;
 
 public class Simon extends Character {
@@ -61,6 +62,7 @@ public class Simon extends Character {
         this.restoreEnergy(restored);
 
         System.out.println("✨ Arcane Flow restores " + restored + " energy! " + "(Energy: " + energy + "/" + maxEnergy + ")");
+        PrintUtil.pause(800);
     }
 
     // Skill 1 – Fireball
@@ -68,10 +70,12 @@ public class Simon extends Character {
         int energyCost = 15;
         if (!consumeEnergy(energyCost)) {
             System.out.println("❌ Not enough Mana to cast Fireball!");
+            PrintUtil.pause(800);
             return;
         }
 
         System.out.println("🔥 You cast Fireball on " + target.getName() + " (💧-" + energyCost + " Mana)");
+        PrintUtil.pause(800);
 
         if (this.getEffects().checkConfuse()) return;
 
@@ -80,6 +84,7 @@ public class Simon extends Character {
 
         // Fireball
         System.out.println("💔 Target is hit for " + reduced + " damage!");
+        PrintUtil.pause(800);
         target.takeDamage(reduced);
 
         if(getInventory().getEquippedWeapon().applyEffects(this, reduced))
@@ -101,10 +106,12 @@ public class Simon extends Character {
         int energyCost = 25;
         if (!consumeEnergy(energyCost)) {
             System.out.println("❌ Not enough Mana to cast Ice Prison!");
+            PrintUtil.pause(800);
             return;
         }
 
         System.out.println("❄️ You cast Ice Prison on " + target.getName() + " (💧-" + energyCost + " Mana)");
+        PrintUtil.pause(800);
 
         if (this.getEffects().checkConfuse()) return;
 
@@ -113,6 +120,7 @@ public class Simon extends Character {
 
 
         System.out.println("💔 Target is hit for " + reduced + " damage!");
+        PrintUtil.pause(800);
         target.takeDamage(reduced);
 
         if(getInventory().getEquippedWeapon().applyEffects(this, reduced))
@@ -133,10 +141,12 @@ public class Simon extends Character {
         int energyCost = 40;
         if (!consumeEnergy(energyCost)) {
             System.out.println("❌ Not enough Mana to cast Meteor Storm!");
+            PrintUtil.pause(800);
             return;
         }
 
         System.out.println("☄️ You unleash your ultimate: Meteor Storm (💧-" + energyCost + " Mana)!");
+        PrintUtil.pause(800);
 
         int totalDamage = 0;
 
@@ -149,9 +159,11 @@ public class Simon extends Character {
             totalDamage += reduced;
 
             System.out.println("→💥 Meteor " + i + " hits! 💔 Target is hit for " + reduced + " damage!");
+            PrintUtil.pause(800);
         }
 
         System.out.println("☄️ Meteor Storm finished! Total damage dealt: " + totalDamage);
+        PrintUtil.pause(800);
         target.takeDamage(totalDamage);
 
         if(getInventory().getEquippedWeapon().applyEffects(this, totalDamage))
@@ -182,7 +194,7 @@ public class Simon extends Character {
                 System.out.println("(5) Show Menu");
                 System.out.print("Choose your action: ");
 
-                int choice = utils.InputUtil.scan.nextInt();
+                int choice = utils.InputUtil.scanInput();
                 utils.InputUtil.scan.nextLine();
                 ScenePrinter.shortLine();
 
@@ -192,7 +204,7 @@ public class Simon extends Character {
                     case 3 -> { System.out.println("❌ Ultimate is on cooldown! Can only be used after " + ultimateCounter + " turns."); ScenePrinter.line();}
                     case 4 -> { skipTurn(); isValid = true; ultimateCounter--; }
                     case 5 -> displayMenu(this, target); // doesn’t consume the turn
-                    default -> { System.out.println("❌ Invalid action! You missed your turn."); isValid = true; ultimateCounter--; }
+                    default -> { System.out.println("❌ Invalid action! You missed your turn."); PrintUtil.pause(800); isValid = true; ultimateCounter--; }
                 }
 
             }
@@ -206,7 +218,7 @@ public class Simon extends Character {
                 System.out.println("(5) Show Menu");
                 System.out.print("Choose your action: ");
 
-                int choice = utils.InputUtil.scan.nextInt();
+                int choice = utils.InputUtil.scanInput();
                 utils.InputUtil.scan.nextLine();
                 ScenePrinter.shortLine();
 
@@ -216,11 +228,10 @@ public class Simon extends Character {
                     case 3 -> { meteorStorm(target); isValid = true; }
                     case 4 -> { skipTurn(); isValid = true; }
                     case 5 -> displayMenu(this, target); // doesn’t consume the turn
-                    default -> { System.out.println("❌ Invalid action! You missed your turn."); isValid = true; }
+                    default -> { System.out.println("❌ Invalid action! You missed your turn."); PrintUtil.pause(800); isValid = true; }
                 }
             }
         }
     }
-
 
 }

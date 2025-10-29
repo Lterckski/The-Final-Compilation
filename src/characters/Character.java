@@ -8,6 +8,7 @@ import inventory.Potions;
 import inventory.Weapon;
 import story.ScenePrinter;
 import utils.InputUtil;
+import utils.PrintUtil;
 
 public abstract class Character {
 
@@ -163,7 +164,7 @@ public abstract class Character {
             System.out.println("(0) Go back");
 
             System.out.print("Enter choice: ");
-            int choice = InputUtil.scan.nextInt();
+            int choice = InputUtil.scanInput();
             InputUtil.scan.nextLine();
             ScenePrinter.line();
 
@@ -245,7 +246,9 @@ public abstract class Character {
         if (hp > maxHP) hp = maxHP;
 
         System.out.println("✨ Turn skipped! Restored a bit of HP and " + getEnergyName() + ".");
+        PrintUtil.pause(800);
         System.out.println("💖 HP: " + oldHp + " → " + hp + " | " + getEnergyEmoji() + " " + getEnergyName() + ": " + oldEnergy + " → " + energy);
+        PrintUtil.pause(800);
 
     }
 
@@ -266,6 +269,7 @@ public abstract class Character {
         ScenePrinter.shortLine();
         System.out.println("✨Gained " + amount + " XP!");
         ScenePrinter.shortLine();
+        PrintUtil.pause(800);
         while(level < XP_TABLE.length && exp >= nextLevelExp){
             levelUp();
         }
@@ -276,7 +280,9 @@ public abstract class Character {
             level++;
             ScenePrinter.hr();
             System.out.println("✨ LEVEL UP! You are now Level " + level + "! ✨");
+            PrintUtil.pause(800);
             System.out.println("💖 HP & " + getEnergyEmoji() + " " + getEnergyName() + " Restored!");
+            PrintUtil.pause(800);
 
             int oldHp = maxHP;
             int oldAtk = baseAttack;
@@ -319,9 +325,9 @@ public abstract class Character {
             System.out.println("🛡️ DEF    : +" + (baseDefense - oldDef) + " → " + defense);
             System.out.println(getEnergyEmoji() + " " + getEnergyName() + " : +" + (maxEnergy - oldEnergy) + " → " + maxEnergy);
             ScenePrinter.hr();
+            PrintUtil.pause(800);
         }
     }
-
 
 
     public void recalculateBuffs(){

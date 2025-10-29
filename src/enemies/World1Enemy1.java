@@ -2,6 +2,7 @@ package enemies;
 
 import characters.Character;
 import inventory.Armor;
+import utils.PrintUtil;
 import utils.RandomUtil;
 
 public class World1Enemy1 extends Enemy {
@@ -11,6 +12,7 @@ public class World1Enemy1 extends Enemy {
     // Skill: Savage Howl (10–15 damage)
     public void savageHowl(Character target) {
         System.out.println("🐺 " + name + " unleashes Savage Howl!");
+        PrintUtil.pause(800);
         if (target.getEffects().checkDodge()) return;
         if (this.getEffects().checkConfuse()) return;
 
@@ -18,6 +20,7 @@ public class World1Enemy1 extends Enemy {
         int reduced = calculateDamage(target, damage);
 
         System.out.println("→💔 Savage Howl hits for " + reduced + " damage!");
+        PrintUtil.pause(800);
         target.takeDamage(reduced);
 
         // Armor reflect check
@@ -26,6 +29,7 @@ public class World1Enemy1 extends Enemy {
             int reflectDamage = equippedArmor.checkReflectDamage(reduced);
             if (reflectDamage > 0) {
                 System.out.println("🪞 " + equippedArmor.getName() + " reflected " + reflectDamage + " damage back to " + name + "!");
+                PrintUtil.pause(800);
                 this.takeDamage(reflectDamage);
             }
         }

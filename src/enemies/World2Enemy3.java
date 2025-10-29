@@ -2,6 +2,7 @@ package enemies;
 
 
 import characters.Character;
+import utils.PrintUtil;
 import utils.RandomUtil;
 import inventory.*;
 
@@ -13,6 +14,7 @@ public class World2Enemy3 extends Enemy{
 
     public void corpseExplosion(Character target){
         System.out.println("🐕 " + name + " used Corpse Explosion!");
+        PrintUtil.pause(800);
         if(target.getEffects().checkDodge()) return;
         if (this.getEffects().checkConfuse()) return;
 
@@ -20,6 +22,7 @@ public class World2Enemy3 extends Enemy{
         int reduced = calculateDamage(target, damage);
 
         System.out.println("→💔 Corpse Explosion hits for " + reduced + " damage!");
+        PrintUtil.pause(800);
         target.takeDamage(reduced);
 
         //  Reflect check
@@ -28,6 +31,7 @@ public class World2Enemy3 extends Enemy{
             int reflectDamage = equippedArmor.checkReflectDamage(reduced);
             if (reflectDamage > 0) {
                 System.out.println("🪞 " + equippedArmor.getName() + " reflected " + reflectDamage + " damage back to " + name + "!");
+                PrintUtil.pause(800);
                 this.takeDamage(reflectDamage);
             }
         }
@@ -36,6 +40,7 @@ public class World2Enemy3 extends Enemy{
         if (RandomUtil.chance(30)) {
             if (equippedArmor != null && equippedArmor.checkDebuffImmunity()) {
                 System.out.println("✨ " + target.getName() + " resisted Defense Down 🛡️↓ due to " + equippedArmor.getName() + "!");
+                PrintUtil.pause(800);
             } else {
                 target.getEffects().applyDefenseDebuff(30, 2);
             }

@@ -73,7 +73,7 @@ public class StoryEngine {
             ScenePrinter.line();
 
             System.out.print("Select your character: ");
-            int choice = InputUtil.scan.nextInt();
+            int choice = InputUtil.scanInput();
             InputUtil.scan.nextLine();
 
             switch (choice) {
@@ -83,7 +83,7 @@ public class StoryEngine {
                         player = kael;
                         ScenePrinter.line();
                         System.out.println("⚔️ You have chosen " + player.getName() + ", the valiant Swordsman!");
-                        ((Kael) player).showBackstory();
+                        kael.showBackstory();
                         ScenePrinter.line();
                         System.out.println("✨ The gods bestow upon you your starting gear...");
                         player.getInventory().setEquippedWeapon(Sword.OLD_BROADSWORD);
@@ -100,7 +100,7 @@ public class StoryEngine {
                         player = karl;
                         ScenePrinter.line();
                         System.out.println("🏹 You have chosen " + player.getName() + ", the sharp-eyed Archer!");
-                        ((Karl) player).showBackstory();
+                        karl.showBackstory();
                         ScenePrinter.line();
                         System.out.println("🌬️ The winds whisper and bless you with your starting equipment...");
                         player.getInventory().setEquippedWeapon(Bow.WOODEN_BOW);
@@ -118,7 +118,7 @@ public class StoryEngine {
                         player = simon;
                         ScenePrinter.line();
                         System.out.println("🧙‍♂️ You have chosen " + player.getName() + ", the wise Mage!");
-                        ((Simon) player).showBackstory();
+                        simon.showBackstory();
                         ScenePrinter.line();
                         System.out.println("✨ The arcane forces converge to gift you ancient relics of power...");
                         player.getInventory().setEquippedWeapon(Staff.WOODEN_STAFF);
@@ -147,7 +147,7 @@ public class StoryEngine {
             System.out.println("0 - Back");
 
             System.out.print("Enter choice: ");
-            int choice = InputUtil.scan.nextInt();
+            int choice = InputUtil.scanInput();
             InputUtil.scan.nextLine();
             ScenePrinter.line();
 

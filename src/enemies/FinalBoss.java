@@ -2,6 +2,7 @@ package enemies;
 
 import characters.Character;
 import inventory.Armor;
+import utils.PrintUtil;
 import utils.RandomUtil;
 
 public class FinalBoss extends Enemy {
@@ -19,6 +20,7 @@ public class FinalBoss extends Enemy {
     // 🩸 Skill 1: Soul Drain
     public void soulDrain(Character target) {
         System.out.println("💀 " + name + " casts Soul Drain!");
+        PrintUtil.pause(800);
         if (target.getEffects().checkDodge()) return;
         if (this.getEffects().checkConfuse()) return;
 
@@ -26,18 +28,20 @@ public class FinalBoss extends Enemy {
         int reduced = calculateDamage(target, damage);
 
         System.out.println("→💔 Soul Drain hits for " + reduced + " damage!");
+        PrintUtil.pause(800);
         target.takeDamage(reduced);
 
         int heal = reduced;
         hp = Math.min(maxHP, hp + heal);
         System.out.println("💝 " + name + " absorbs life and heals " + heal + " HP!");
+        PrintUtil.pause(800);
 
         Armor equippedArmor = target.getInventory().getEquippedArmor();
         if (equippedArmor != null) {
             int reflectDamage = equippedArmor.checkReflectDamage(reduced);
             if (reflectDamage > 0) {
-                System.out.println("🛡️ " + equippedArmor.getName() +
-                        " reflected " + reflectDamage + " damage back to " + name + "!");
+                System.out.println("🛡️ " + equippedArmor.getName() + " reflected " + reflectDamage + " damage back to " + name + "!");
+                PrintUtil.pause(800);
                 this.takeDamage(reflectDamage);
             }
         }
@@ -46,17 +50,20 @@ public class FinalBoss extends Enemy {
     // 🛡️ Skill 2: Encapsulation (creates a 1-turn shield)
     public void encapsulation() {
         System.out.println("🧿 " + name + " uses Encapsulation!");
+        PrintUtil.pause(800);
         if (!encapsulated) {
             shield = 50; // Shield lasts one turn
             encapsulated = true;
             shieldBroken = false;
             System.out.println("🌑 A dark barrier forms, shielding Khai from harm! (+50 Shield for 1 turn)");
+            PrintUtil.pause(800);
         }
     }
 
     // 🌑 Skill 3: Dark Ascension
     public void darkAscension(Character target) {
         System.out.println("🌘 " + name + " unleashes Dark Ascension!");
+        PrintUtil.pause(800);
         if (target.getEffects().checkDodge()) return;
         if (this.getEffects().checkConfuse()) return;
 
@@ -64,6 +71,7 @@ public class FinalBoss extends Enemy {
         int reduced = calculateDamage(target, damage);
 
         System.out.println("→💔 Dark Ascension hits for " + reduced + " damage!");
+        PrintUtil.pause(800);
         target.takeDamage(reduced);
 
         Armor equippedArmor = target.getInventory().getEquippedArmor();
@@ -72,6 +80,7 @@ public class FinalBoss extends Enemy {
             if (reflectDamage > 0) {
                 System.out.println("🛡️ " + equippedArmor.getName() +
                         " reflected " + reflectDamage + " damage back to " + name + "!");
+                PrintUtil.pause(800);
                 this.takeDamage(reflectDamage);
             }
         }
@@ -98,8 +107,10 @@ public class FinalBoss extends Enemy {
                 defense = baseDefense;
                 System.out.println("-");
                 System.out.println("💥 The barrier shatters! Khai gains 1 stack of Void Energy! (+5% DEF)");
+                PrintUtil.pause(800);
                 System.out.println("🛡️ Khai's Current DEF: " + baseDefense + " | 🕳 Void Energy Stacks: " + voidEnergy);
                 System.out.println("-");
+                PrintUtil.pause(800);
             }
         }
     }
@@ -112,8 +123,10 @@ public class FinalBoss extends Enemy {
                 attack = baseAttack;
                 System.out.println("-");
                 System.out.println("🌑 The barrier remains unbroken... Khai gains 1 stack of Null Energy! (+5% ATK)");
+                PrintUtil.pause(800);
                 System.out.println("⚔️ Khai's Current ATK: " + baseAttack + " | 🔮 Null Energy Stacks: " + nullEnergy);
                 System.out.println("-");
+                PrintUtil.pause(800);
             }
         }
 
@@ -162,19 +175,13 @@ public class FinalBoss extends Enemy {
     // 🎁 Drops after defeat + Game end
     @Override
     public void dropLoot(Character player) {
-        System.out.println("\n💎 " + this.name + " has fallen!");
-        player.getPotions().lootPotions();
-        player.getPotions().lootFullHealthPotions();
-        System.out.println("🎁 You obtained rare potions and dark relics!");
-        System.out.println("\n🏆 Congratulations! You have defeated the Final Boss!");
-        System.out.println("🎮 The game has ended. Thank you for playing The Final Compilation!");
-        System.exit(0);
+        return;
     }
 
     // 🧩 Required by abstract class Enemy
     @Override
     public int rewardExp() {
-        return 10000; // EXP gained for defeating the Final Boss
+        return 100000; // EXP gained for defeating the Final Boss
     }
 
     @Override

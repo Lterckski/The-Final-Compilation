@@ -5,6 +5,7 @@ import inventory.Armor;
 import inventory.Bow;
 import inventory.Staff;
 import inventory.Sword;
+import utils.PrintUtil;
 import utils.RandomUtil;
 
 public class World1Miniboss1 extends Enemy {
@@ -16,6 +17,7 @@ public class World1Miniboss1 extends Enemy {
     // Skill 1: Deathly Charge (ATK × 1.00–1.20), 30% chance to Stun
     public void deathlyCharge(Character target) {
         System.out.println("🦌 " + name + " charges with Deathly Charge!");
+        PrintUtil.pause(800);
         if (target.getEffects().checkDodge()) return;
         if (this.getEffects().checkConfuse()) return;
 
@@ -23,6 +25,7 @@ public class World1Miniboss1 extends Enemy {
         int reduced = calculateDamage(target, damage);
 
         System.out.println("→💔 Deathly Charge hits for " + reduced + " damage!");
+        PrintUtil.pause(800);
         target.takeDamage(reduced);
 
         // Armor reflect check
@@ -31,6 +34,7 @@ public class World1Miniboss1 extends Enemy {
             int reflectDamage = equippedArmor.checkReflectDamage(reduced);
             if (reflectDamage > 0) {
                 System.out.println("🪞 " + equippedArmor.getName() + " reflected " + reflectDamage + " damage back to " + name + "!");
+                PrintUtil.pause(800);
                 this.takeDamage(reflectDamage);
             }
         }
@@ -45,12 +49,14 @@ public class World1Miniboss1 extends Enemy {
     // Skill 2: Blackened Howl (reduces target DEF by 20% for 2 turns)
     public void blackenedHowl(Character target) {
         System.out.println("🗣️ " + name + " unleashes Blackened Howl!");
+        PrintUtil.pause(800);
         if (target.getEffects().checkDodge()) return;
         if (this.getEffects().checkConfuse()) return;
 
         Armor equippedArmor = target.getInventory().getEquippedArmor();
         if (equippedArmor != null && equippedArmor.checkDebuffImmunity()) {
             System.out.println("✨ " + target.getName() + " resisted Fragile 🛡️↓ due to " + equippedArmor.getName() + "!");
+            PrintUtil.pause(800);
         } else {
             target.getEffects().applyDefenseDebuff(20, 2);
         }
@@ -90,6 +96,8 @@ public class World1Miniboss1 extends Enemy {
         player.getPotions().lootFullHealthPotions();
 
         System.out.println("\n🎁 You obtained a Common Weapon!");
+        PrintUtil.pause(800);
+
         if (player.getClassType().equals("Swordsman")) {
             Sword ironShortsword = Sword.IRON_SHORTSWORD;
             if (ironShortsword.lootWeapon()) {
@@ -108,6 +116,8 @@ public class World1Miniboss1 extends Enemy {
         }
 
         System.out.println("\n🎁 You obtained a Common Armor!");
+        PrintUtil.pause(800);
+
         Armor ironVanguard = Armor.IRON_VANGUARD;
         if (ironVanguard.lootArmor()) {
             ironVanguard.equip(player);

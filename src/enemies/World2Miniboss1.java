@@ -2,6 +2,7 @@ package enemies;
 
 import characters.Character;
 import utils.InputUtil;
+import utils.PrintUtil;
 import utils.RandomUtil;
 import inventory.*;
 
@@ -12,6 +13,7 @@ public class World2Miniboss1 extends Enemy{
 
     public void shacklingChains(Character target){
         System.out.println("⛓️ " + name + " used Shackling Chains!");
+        PrintUtil.pause(800);
         if(target.getEffects().checkDodge()) return;
         if (this.getEffects().checkConfuse()) return;
 
@@ -19,6 +21,7 @@ public class World2Miniboss1 extends Enemy{
         int reduced = calculateDamage(target, damage);
 
         System.out.println("→💔 Shackling Chains hits for " + reduced + " damage!");
+        PrintUtil.pause(800);
         target.takeDamage(reduced);
 
         // Reflect damage check
@@ -27,6 +30,7 @@ public class World2Miniboss1 extends Enemy{
             int reflectDamage = equippedArmor.checkReflectDamage(reduced);
             if (reflectDamage > 0) {
                 System.out.println("🪞 " + equippedArmor.getName() + " reflected " + reflectDamage + " damage back to " + name + "!");
+                PrintUtil.pause(800);
                 this.takeDamage(reflectDamage);
             }
         }
@@ -40,6 +44,7 @@ public class World2Miniboss1 extends Enemy{
 
     public void tormentingLash(Character target){
         System.out.println("🩸 " + name + " lashes with Tormenting Lash!");
+        PrintUtil.pause(800);
         if(target.getEffects().checkDodge()) return;
         if (this.getEffects().checkConfuse()) return;
 
@@ -47,6 +52,7 @@ public class World2Miniboss1 extends Enemy{
         int reduced = calculateDamage(target, damage);
 
         System.out.println("→💔 Tormenting Lash hits for " + reduced + " damage!");
+        PrintUtil.pause(800);
         target.takeDamage(reduced);
 
         // Reflect damage check
@@ -55,6 +61,7 @@ public class World2Miniboss1 extends Enemy{
             int reflectDamage = equippedArmor.checkReflectDamage(reduced);
             if (reflectDamage > 0) {
                 System.out.println("🪞 " + equippedArmor.getName() + " reflected " + reflectDamage + " damage back to " + name + "!");
+                PrintUtil.pause(800);
                 this.takeDamage(reflectDamage);
             }
         }
@@ -62,6 +69,7 @@ public class World2Miniboss1 extends Enemy{
         // Bleed — check immunity
         if (equippedArmor != null && equippedArmor.checkEffectsImmunity()) {
             System.out.println("✨ " + target.getName() + " resisted Bleed 🩸 due to " + equippedArmor.getName() + "!");
+            PrintUtil.pause(800);
         } else {
             target.getEffects().applyBleed(2);
         }
@@ -101,21 +109,28 @@ public class World2Miniboss1 extends Enemy{
         Armor vanguardRobe = Armor.VANGUARD_ROBE;   // +25 DEF, immune to status effects
 
         System.out.println("\n🎁 You obtained 2 Rare Armors!");
+        PrintUtil.pause(800);
+
         System.out.println("1️⃣ " + aegisMail.getName() + " → +25 DEF 🛡️, immune to ATK⬇️ & DEF⬇️");
+        PrintUtil.pause(800);
         System.out.println("2️⃣ " + vanguardRobe.getName() + " → +25 DEF 🛡️, immune to Poison ☠️, Burn 🔥, Bleed 🩸");
+        PrintUtil.pause(800);
         System.out.print("\nChoose one to equip (1 or 2): ");
 
-        int choice = InputUtil.scan.nextInt();
+        int choice = InputUtil.scanInput();
         utils.InputUtil.scan.nextLine();
 
         if (choice == 1) {
             aegisMail.equip(player);
             System.out.println("\nYou equipped " + aegisMail.getName() + "! The other armor fades away...");
+            PrintUtil.pause(800);
         } else if (choice == 2) {
             vanguardRobe.equip(player);
             System.out.println("\nYou equipped " + vanguardRobe.getName() + "! The other armor fades away...");
+            PrintUtil.pause(800);
         } else {
             System.out.println("\nInvalid choice. Both armors vanish into the mist...");
+            PrintUtil.pause(800);
         }
     }
 

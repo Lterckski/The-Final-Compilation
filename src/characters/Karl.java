@@ -1,6 +1,7 @@
 package characters;
 
 import story.ScenePrinter;
+import utils.PrintUtil;
 import utils.RandomUtil;
 
 public class Karl extends Character{
@@ -61,10 +62,12 @@ public class Karl extends Character{
     private void triggerWeaponEffect(Character target, int damage) {
         if (this.getWeapon() != null && this.getWeapon().applyEffects(this, damage)) {
             System.out.println("⚡ Weapon effect activated! Extra hit triggered.");
+            PrintUtil.pause(800);
 
             int extraDamage = (int) RandomUtil.range(damage * 0.20, damage * 0.40);
 
             System.out.println("🗡 Extra hit from weapon for " + extraDamage + " damage!");
+            PrintUtil.pause(800);
             target.takeDamage(extraDamage);
         }
     }
@@ -76,6 +79,7 @@ public class Karl extends Character{
        if(hpPercent < 0.3){
            damage = (int) (damage * 1.2);
            System.out.println("\uD83C\uDFAF Hunter's Instinct is active! Deals extra damage.");
+           PrintUtil.pause(800);
        }
        return damage;
     }
@@ -85,10 +89,12 @@ public class Karl extends Character{
         int energyCost = 1;
         if (!consumeEnergy(energyCost)) {
             System.out.println("❌ Not enough Arrows to use Piercing Arrow!");
+            PrintUtil.pause(800);
             return;
         }
 
         System.out.println("🏹 You used Piercing Arrow on " + target.getName() + " (➶-" + energyCost + " Arrow)");
+        PrintUtil.pause(800);
 
         if (this.getEffects().checkConfuse()) return;
 
@@ -96,6 +102,7 @@ public class Karl extends Character{
         int reduced = hunterInstincts(damage, target);
 
         System.out.println("💔 Target is hit for " + reduced + " Pure Damage!");
+        PrintUtil.pause(800);
         target.takeDamage(reduced);
 
         // Bleed effect
@@ -112,10 +119,12 @@ public class Karl extends Character{
         int energyCost = 3;
         if (!consumeEnergy(energyCost)) {
             System.out.println("❌ Not enough Arrows to use Bullseye!");
+            PrintUtil.pause(800);
             return;
         }
 
         System.out.println("🎯🔥 You used Bullseye on " + target.getName() + " (➶-" + energyCost + " Arrows)");
+        PrintUtil.pause(800);
 
         if (this.getEffects().checkConfuse()) return;
 
@@ -125,6 +134,7 @@ public class Karl extends Character{
         int reduced = calculateDamage(target, damage);
 
         System.out.println("💔 Target is hit for " + reduced + " Critical Damage!");
+        PrintUtil.pause(800);
         target.takeDamage(reduced);
 
         if (RandomUtil.chance(30)) {
@@ -139,10 +149,12 @@ public class Karl extends Character{
         int energyCost = 5;
         if (!consumeEnergy(energyCost)) {
             System.out.println("❌ Not enough Arrows to use Rain of a Thousand Arrows!");
+            PrintUtil.pause(800);
             return;
         }
 
         System.out.println("🌧️🏹 You unleash your ultimate: Rain of a Thousand Arrows!" + " (➶-" + energyCost + " Arrows)");
+        PrintUtil.pause(800);
 
         int totalDamage = 0;
 
@@ -155,12 +167,14 @@ public class Karl extends Character{
             totalDamage += reduced;
 
             System.out.println("→💥 Arrow " + i + " fired! 💔 Target is hit for " + reduced + " damage!");
+            PrintUtil.pause(800);
 
             if(reduced > 0)
                 triggerWeaponEffect(target, reduced);
         }
 
         System.out.println("🏹🌧️ Rain of a Thousand Arrows finished! Total damage dealt: " + totalDamage);
+        PrintUtil.pause(800);
         target.takeDamage(totalDamage);
 
         this.getEffects().applyNimble();
@@ -182,7 +196,7 @@ public class Karl extends Character{
                 System.out.println("(5) Show Menu");
                 System.out.print("Choose your action: ");
 
-                int choice = utils.InputUtil.scan.nextInt();
+                int choice = utils.InputUtil.scanInput();
                 utils.InputUtil.scan.nextLine();
                 ScenePrinter.shortLine();
 
@@ -192,7 +206,7 @@ public class Karl extends Character{
                     case 3 -> { System.out.println("❌ Ultimate is on cooldown! Can only be used after " + ultimateCounter + " turns."); ScenePrinter.line();}
                     case 4 -> { skipTurn(); isValid = true; ultimateCounter--; }
                     case 5 -> displayMenu(this, target);
-                    default -> { System.out.println("❌ Invalid action! You missed your turn."); isValid = true; ultimateCounter--; }
+                    default -> { System.out.println("❌ Invalid action! You missed your turn."); PrintUtil.pause(800); isValid = true; ultimateCounter--; }
                 }
 
             } else {
@@ -203,7 +217,7 @@ public class Karl extends Character{
                 System.out.println("(5) Show Menu");
                 System.out.print("Choose your action: ");
 
-                int choice = utils.InputUtil.scan.nextInt();
+                int choice = utils.InputUtil.scanInput();
                 utils.InputUtil.scan.nextLine();
                 ScenePrinter.shortLine();
 
@@ -213,7 +227,7 @@ public class Karl extends Character{
                     case 3 -> { rainOfAThousandArrows(target); isValid = true; }
                     case 4 -> { skipTurn(); isValid = true; }
                     case 5 -> displayMenu(this, target);
-                    default -> { System.out.println("❌ Invalid action! You missed your turn."); isValid = true; }
+                    default -> { System.out.println("❌ Invalid action! You missed your turn."); PrintUtil.pause(800); isValid = true; }
                 }
             }
         }

@@ -62,6 +62,7 @@ public class World2 {
         ScenePrinter.loot("You gain experience and loot from your hard-fought battle.\n");
         InputUtil.pressEnterToContinue();
         ScenePrinter.line();
+        player.getEffects().resetAllEffects();
 
         // -------------------- Forsaken Cultists --------------------
         ScenePrinter.event("You wander through the town's crumbling streets.");
@@ -111,6 +112,7 @@ public class World2 {
         ScenePrinter.loot("You gain experience and loot from your grim battle.\n");
         InputUtil.pressEnterToContinue();
         ScenePrinter.line();
+        player.getEffects().resetAllEffects();
 
         // -------------------- Ghoul Footmen --------------------
         ScenePrinter.title("THE BLACK CASTLE");
@@ -154,6 +156,7 @@ public class World2 {
         ScenePrinter.loot("You gain experience and loot from your hard-fought battle.\n");
         InputUtil.pressEnterToContinue();
         ScenePrinter.line();
+        player.getEffects().resetAllEffects();
 
         // -------------------- Blight Hounds --------------------
         ScenePrinter.effect("A low growl echoes from the halls ahead...");
@@ -193,6 +196,7 @@ public class World2 {
         ScenePrinter.loot("You gain experience and loot from your grim battle.\n");
         InputUtil.pressEnterToContinue();
         ScenePrinter.line();
+        player.getEffects().resetAllEffects();
 
         // -------------------- Mini-Boss: The Black Jailer --------------------
         ScenePrinter.title("MINI-BOSS — The Black Jailer");
@@ -217,6 +221,7 @@ public class World2 {
         ScenePrinter.loot("You gain rare loot and a surge of experience!\n");
         InputUtil.pressEnterToContinue();
         ScenePrinter.line();
+        player.getEffects().resetAllEffects();
 
         // -------------------- Boss: The Corrupted King --------------------
         ScenePrinter.title("BOSS — The Corrupted King");
@@ -242,6 +247,7 @@ public class World2 {
         ScenePrinter.loot("You gain immense experience and legendary loot!\n");
         InputUtil.pressEnterToContinue();
         ScenePrinter.line();
+        player.getEffects().resetAllEffects();
 
         ScenePrinter.effect("The King's breath rattles. His eyes regain a hint of clarity.");
         ScenePrinter.say("Corrupted King", "\"The Necromancer… is not what he seems...\"");

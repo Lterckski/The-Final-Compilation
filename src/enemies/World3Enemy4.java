@@ -2,6 +2,7 @@ package enemies;
 
 import characters.Character;
 import inventory.Armor;
+import utils.PrintUtil;
 import utils.RandomUtil;
 
 public class World3Enemy4 extends Enemy {
@@ -10,6 +11,7 @@ public class World3Enemy4 extends Enemy {
 
     public void soulScream(Character target) {
         System.out.println("😈 " + name + " lets out a deafening Soul Scream!");
+        PrintUtil.pause(800);
         if(target.getEffects().checkDodge()) return;
         if (this.getEffects().checkConfuse()) return;
 
@@ -17,6 +19,7 @@ public class World3Enemy4 extends Enemy {
         int reduced = calculateDamage(target, damage);
 
         System.out.println("→💔 Soul Scream hits for " + reduced + " damage!");
+        PrintUtil.pause(800);
         target.takeDamage(reduced);
 
         // Armor reflect check
@@ -25,6 +28,7 @@ public class World3Enemy4 extends Enemy {
             int reflectDamage = equippedArmor.checkReflectDamage(reduced);
             if (reflectDamage > 0) {
                 System.out.println("🪞 " + equippedArmor.getName() + " reflected " + reflectDamage + " damage back to " + name + "!");
+                PrintUtil.pause(800);
                 this.takeDamage(reflectDamage);
             }
         }

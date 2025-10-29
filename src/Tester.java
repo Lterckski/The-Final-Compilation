@@ -85,7 +85,7 @@ public class Tester {
 
         do {
             System.out.print("Select your character: ");
-            choice = InputUtil.scan.nextInt();
+            choice = InputUtil.scanInput();
 
             switch (choice) {
                 case 1 -> {

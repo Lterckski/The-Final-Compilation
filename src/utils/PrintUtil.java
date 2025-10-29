@@ -1,7 +1,6 @@
-package story;
+package utils;
 
-public class ScenePrinter {
-
+public class PrintUtil {
 
     public static void hr() {
         System.out.println("=====================================");
@@ -39,7 +38,16 @@ public class ScenePrinter {
         System.out.println("* " + text + "\n");
     }
 
+
     public static void type(String block) {
         System.out.println(block);
+    }
+
+    public static void pause(int milliseconds) {
+        try {
+            Thread.sleep(milliseconds);
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+        }
     }
 }

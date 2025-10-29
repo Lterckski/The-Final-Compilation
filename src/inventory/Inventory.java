@@ -44,7 +44,7 @@ public class Inventory {
             System.out.println("(0) Back");
             System.out.print("Choose an option: ");
 
-            int choice = InputUtil.scan.nextInt();
+            int choice = InputUtil.scanInput();
             InputUtil.scan.nextLine();
             ScenePrinter.line();
 
@@ -78,7 +78,7 @@ public class Inventory {
 
         do {
             System.out.println("Are you sure you want to use a potion? (1 = Yes, 0 = No)");
-            confirm = InputUtil.scan.nextInt();
+            confirm = InputUtil.scanInput();
             InputUtil.scan.nextLine();
 
             if (confirm == 1) {

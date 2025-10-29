@@ -2,6 +2,7 @@ package enemies;
 
 import characters.Character;
 import inventory.Armor;
+import utils.PrintUtil;
 import utils.RandomUtil;
 
 public class World3Enemy2 extends Enemy {
@@ -10,6 +11,7 @@ public class World3Enemy2 extends Enemy {
 
     public void shadowBolt(Character target) {
         System.out.println("💀 " + name + " casts Shadow Bolt!");
+        PrintUtil.pause(800);
         if (target.getEffects().checkDodge()) return;
         if (this.getEffects().checkConfuse()) return;
 
@@ -17,6 +19,7 @@ public class World3Enemy2 extends Enemy {
         int reduced = calculateDamage(target, damage);
 
         System.out.println("→💔 Shadow Bolt hits for " + reduced + " damage!");
+        PrintUtil.pause(800);
         target.takeDamage(reduced);
 
         // Armor reflect check
@@ -25,6 +28,7 @@ public class World3Enemy2 extends Enemy {
             int reflectDamage = equippedArmor.checkReflectDamage(reduced);
             if (reflectDamage > 0) {
                 System.out.println("🪞 " + equippedArmor.getName() + " reflected " + reflectDamage + " damage back to " + name + "!");
+                PrintUtil.pause(800);
                 this.takeDamage(reflectDamage);
             }
         }
@@ -33,6 +37,7 @@ public class World3Enemy2 extends Enemy {
         if (RandomUtil.chance(30)) {
             if (equippedArmor != null && equippedArmor.checkEffectsImmunity()) {
                 System.out.println("✨ " + target.getName() + " resisted Weaken 💢  due to " + equippedArmor.getName() + "!");
+                PrintUtil.pause(800);
             } else {
                 target.getEffects().applyAttackDebuff(30, 2);
             }

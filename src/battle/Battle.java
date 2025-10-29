@@ -34,7 +34,7 @@ public class Battle {
             System.out.println("6. Show Enemy Skills Overview");
 
             System.out.print("Enter choice: ");
-            int choice = InputUtil.scan.nextInt();
+            int choice = InputUtil.scanInput();
             InputUtil.scan.nextLine();
             ScenePrinter.line();
 
