@@ -1,8 +1,8 @@
 package inventory;
 
 import characters.Character;
-import story.ScenePrinter;
 import utils.InputUtil;
+import utils.PrintUtil;
 
 public class Inventory {
 
@@ -35,7 +35,7 @@ public class Inventory {
             System.out.println("Energy Potion           : " + potions.getEnergyPotions());
             System.out.println("=======================================================");
 
-            ScenePrinter.line();
+            PrintUtil.line();
             System.out.println("(1) Show Weapon Info");
             System.out.println("(2) Show Armor Info");
             System.out.println("(3) Use Normal Healing Potion");
@@ -46,7 +46,7 @@ public class Inventory {
 
             int choice = InputUtil.scanInput();
             InputUtil.scan.nextLine();
-            ScenePrinter.line();
+            PrintUtil.line();
 
             switch (choice) {
                 case 1 -> equippedWeapon.displayInfo();
@@ -85,6 +85,7 @@ public class Inventory {
                 break;
             } else if (confirm == 0) {
                 System.out.println("Potion not used.");
+                PrintUtil.pause(800);
             } else {
                 System.out.println("❌ Invalid input! Try again.");
             }

@@ -1,7 +1,7 @@
 package inventory;
 
 import characters.Character;
-import story.ScenePrinter;
+import utils.PrintUtil;
 import utils.RandomUtil;
 
 public class Potions {
@@ -21,33 +21,39 @@ public class Potions {
     public void useNormalHealingPotion(){
         if(normalHealingPotions <= 0){
             System.out.println("❌ No Normal Healing Potions left!");
+            PrintUtil.pause(800);
             return;
         }
         normalHealingPotions--;
         int healAmount = (int) (owner.getMaxHP() * 0.20);
         owner.heal(healAmount);
         System.out.println("💖✨ Used a Normal Healing Potion! Restored " + healAmount +  " (HP : " + owner.getHp() + "/" + owner.getMaxHP() + ")");
+        PrintUtil.pause(800);
     }
 
     public void useFullHealingPotion(){
         if(fullHealingPotions <= 0){
             System.out.println("❌ No Full Healing Potions left!");
+            PrintUtil.pause(800);
             return;
         }
         fullHealingPotions--;
         owner.heal(owner.getMaxHP());
         System.out.println("💖✨ Used a Full Healing Potion! Restored to max HP!" + " (HP : " + owner.getHp() + "/" + owner.getMaxHP() + ")");
+        PrintUtil.pause(800);
     }
 
     public void useEnergyPotion() {
         if(energyPotions <= 0) {
             System.out.println("❌ No Energy Potions left!");
+            PrintUtil.pause(800);
             return;
         }
         energyPotions--;
         int energyRestored = 30;  // amount restored
         owner.restoreEnergy(energyRestored);
         System.out.println("⚡✨ Used an Energy Potion! Restored " + energyRestored + " Energy (Energy: " + owner.getEnergy() + "/" + owner.getMaxEnergy() + ")");
+        PrintUtil.pause(800);
     }
 
     public void lootPotions(){
@@ -65,21 +71,26 @@ public class Potions {
             }
         }
 
-        ScenePrinter.line();
+        PrintUtil.line();
         System.out.println("🎁 You received:");
+        PrintUtil.pause(800);
+
         if(normalHealingPotionsCount > 0){
             System.out.println("❤️🧪 " + normalHealingPotionsCount + " Normal Healing Potion" + (normalHealingPotionsCount > 1 ? "s" : ""));
+            PrintUtil.pause(800);
         }
         if(energyPotionsCount > 0){
             System.out.println("⚡🧪 " + energyPotionsCount + " Energy Potion" + (energyPotionsCount > 1 ? "s" : ""));
+            PrintUtil.pause(800);
         }
-        ScenePrinter.line();
+        PrintUtil.line();
     }
 
     public void lootFullHealthPotions(){
         int dropped = RandomUtil.range(1,2);
         fullHealingPotions += dropped;
         System.out.println("💖⚡ " + dropped + " Full Healing Potion" + (dropped > 1 ? "s" : ""));
+        PrintUtil.pause(800);
     }
 
 }

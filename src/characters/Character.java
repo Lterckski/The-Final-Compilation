@@ -6,7 +6,6 @@ import inventory.Armor;
 import inventory.Inventory;
 import inventory.Potions;
 import inventory.Weapon;
-import story.ScenePrinter;
 import utils.InputUtil;
 import utils.PrintUtil;
 
@@ -133,21 +132,23 @@ public abstract class Character {
         System.out.printf("%-8s: %d/%d%n", "HP", hp, maxHP);
         System.out.printf("%-8s: %d/%d%n", getEnergyName(), energy, maxEnergy);
 
-        String attackStr = baseAttack + ((attack != baseAttack) ?
-                (attack > baseAttack ? " (+" + (attack - baseAttack) + ")" : " (-" + (baseAttack - attack) + ")")
-                : "");
-        System.out.printf("%-8s: %s%n", "Attack", attackStr);
+        int weaponAtkBonus = (getWeapon() != null) ? getWeapon().getAtkBuff() : 0;
+        int armorDefBonus = (getArmor() != null) ? getArmor().getDefBuff() : 0;
 
-        String defenseStr = baseDefense + ((defense != baseDefense) ?
-                (defense > baseDefense ? " (+" + (defense - baseDefense) + ")" : " (-" + (baseDefense - defense) + ")")
-                : "");
-        System.out.printf("%-8s: %s%n", "Defense", defenseStr);
+        int effectAtkMod = attack - (baseAttack + weaponAtkBonus);
+        int effectDefMod = defense - (baseDefense + armorDefBonus);
+
+        String atkLabel = (effectAtkMod >= 0) ? "Buff" : "Debuff";
+        String defLabel = (effectDefMod >= 0) ? "Buff" : "Debuff";
+
+        System.out.printf("%-8s: %d  (Base %d | Weapon %+d | %s %+d)%n",
+                "Attack", attack, baseAttack, weaponAtkBonus, atkLabel, effectAtkMod);
+
+        System.out.printf("%-8s: %d  (Base %d | Armor %+d | %s %+d)%n",
+                "Defense", defense, baseDefense, armorDefBonus, defLabel, effectDefMod);
 
         System.out.println("==============================\n");
     }
-
-
-
 
     public abstract void displaySkills();
     public abstract void turn (Character target);
@@ -166,7 +167,7 @@ public abstract class Character {
             System.out.print("Enter choice: ");
             int choice = InputUtil.scanInput();
             InputUtil.scan.nextLine();
-            ScenePrinter.line();
+            PrintUtil.line();
 
             switch (choice){
                 case 1 -> player.getInventory().openInventory();
@@ -266,9 +267,9 @@ public abstract class Character {
 
     public void gainExp(int amount){
         exp += amount;
-        ScenePrinter.shortLine();
+        PrintUtil.shortLine();
         System.out.println("✨Gained " + amount + " XP!");
-        ScenePrinter.shortLine();
+        PrintUtil.shortLine();
         PrintUtil.pause(800);
         while(level < XP_TABLE.length && exp >= nextLevelExp){
             levelUp();
@@ -278,7 +279,7 @@ public abstract class Character {
     public void levelUp() {
         if(level < 30){
             level++;
-            ScenePrinter.hr();
+            PrintUtil.hr();
             System.out.println("✨ LEVEL UP! You are now Level " + level + "! ✨");
             PrintUtil.pause(800);
             System.out.println("💖 HP & " + getEnergyEmoji() + " " + getEnergyName() + " Restored!");
@@ -324,7 +325,7 @@ public abstract class Character {
             System.out.println("⚔️ ATK    : +" + (baseAttack - oldAtk) + " → " + attack);
             System.out.println("🛡️ DEF    : +" + (baseDefense - oldDef) + " → " + defense);
             System.out.println(getEnergyEmoji() + " " + getEnergyName() + " : +" + (maxEnergy - oldEnergy) + " → " + maxEnergy);
-            ScenePrinter.hr();
+            PrintUtil.hr();
             PrintUtil.pause(800);
         }
     }

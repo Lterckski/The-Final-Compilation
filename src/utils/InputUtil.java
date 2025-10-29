@@ -8,6 +8,7 @@ public class InputUtil {
     public static final Scanner scan = new Scanner(System.in);
 
     public static void pressEnterToContinue() {
+        PrintUtil.pause(800);
         System.out.print("[Press ENTER to continue]");
         scan.nextLine();  // waits for user to press ENTER
     }

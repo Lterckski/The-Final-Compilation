@@ -1,7 +1,6 @@
 package characters;
 
 import enemies.FinalBoss;
-import story.ScenePrinter;
 import utils.PrintUtil;
 import utils.RandomUtil;
 
@@ -28,7 +27,7 @@ public class Kael extends  Character{      // 15% crit chance
 
         // Skill 2
         System.out.println("Skill 2 – Piercing Slash (10 Stamina)");
-        System.out.println("Description: A powerful, focused strike aimed to shatter enemy defenses.");
+        System.out.println("Description: A powerful, focused strike aimed to pierce enemy's armor.");
         System.out.println("Damage: (" + (int)(attack * 1.35) + " — " + (int)(attack * 1.55) + ") — Ignores Defense");
         System.out.println("Effects:");
         System.out.println("- 30% chance to Stun (1 turn)\n");
@@ -44,7 +43,7 @@ public class Kael extends  Character{      // 15% crit chance
     }
 
     public void showBackstory() {
-        ScenePrinter.line();
+        PrintUtil.line();
         System.out.println("Kael Saint Laurent was born in the shadow of the Black Castle, in a family");
         System.out.println("that lived modestly within the crumbling Town of Decay. His childhood was");
         System.out.println("marked by sickness in the streets and guards demanding bribes, yet Kael never");
@@ -208,12 +207,12 @@ public class Kael extends  Character{      // 15% crit chance
 
                 int choice = utils.InputUtil.scanInput();
                 utils.InputUtil.scan.nextLine();
-                ScenePrinter.shortLine();
+                PrintUtil.shortLine();
 
                 switch (choice) {
                     case 1 -> { bladeRush(target); isValid = true; ultimateCounter--;}
                     case 2 -> { piercingSlash(target); isValid = true; ultimateCounter--;}
-                    case 3 -> { System.out.println("❌ Ultimate is on cooldown! Can only be used after " + ultimateCounter + " turns."); ScenePrinter.line();}
+                    case 3 -> { System.out.println("❌ Ultimate is on cooldown! Can only be used after " + ultimateCounter + " turns."); PrintUtil.line();}
                     case 4 -> { skipTurn(); isValid = true; ultimateCounter--;}
                     case 5 -> displayMenu(this, target);
                     default -> { System.out.println("❌ Invalid action! You missed your turn."); PrintUtil.pause(800); isValid = true; ultimateCounter--; }
@@ -231,7 +230,7 @@ public class Kael extends  Character{      // 15% crit chance
 
                 int choice = utils.InputUtil.scanInput();
                 utils.InputUtil.scan.nextLine();
-                ScenePrinter.shortLine();
+                PrintUtil.shortLine();
 
                 switch (choice) {
                     case 1 -> { bladeRush(target); isValid = true; }

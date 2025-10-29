@@ -1,6 +1,5 @@
 package characters;
 
-import story.ScenePrinter;
 import utils.PrintUtil;
 import utils.RandomUtil;
 
@@ -39,7 +38,7 @@ public class Simon extends Character {
     }
 
     public void showBackstory() {
-        ScenePrinter.line();
+        PrintUtil.line();
         System.out.println("Simon Versace — a mage with an unshakable dream of becoming the most");
         System.out.println("powerful sorcerer alive. From childhood, mana coursed naturally through");
         System.out.println("his veins, earning him the title of prodigy in the whispers of others.");
@@ -196,12 +195,12 @@ public class Simon extends Character {
 
                 int choice = utils.InputUtil.scanInput();
                 utils.InputUtil.scan.nextLine();
-                ScenePrinter.shortLine();
+                PrintUtil.shortLine();
 
                 switch (choice) {
                     case 1 -> { fireball(target); isValid = true; ultimateCounter--; }
                     case 2 -> { icePrison(target); isValid = true; ultimateCounter--; }
-                    case 3 -> { System.out.println("❌ Ultimate is on cooldown! Can only be used after " + ultimateCounter + " turns."); ScenePrinter.line();}
+                    case 3 -> { System.out.println("❌ Ultimate is on cooldown! Can only be used after " + ultimateCounter + " turns."); PrintUtil.line();}
                     case 4 -> { skipTurn(); isValid = true; ultimateCounter--; }
                     case 5 -> displayMenu(this, target); // doesn’t consume the turn
                     default -> { System.out.println("❌ Invalid action! You missed your turn."); PrintUtil.pause(800); isValid = true; ultimateCounter--; }
@@ -210,7 +209,7 @@ public class Simon extends Character {
             }
             // If ultimate is ready
             else {
-                ScenePrinter.shortLine();
+                PrintUtil.shortLine();
                 System.out.println("(1) Skill 1   -  Fireball (💧 15 Mana)");
                 System.out.println("(2) Skill 2   -  Ice Prison (💧 25 Mana)");
                 System.out.println("(3) Ultimate  -  Meteor Storm (💧 40 Mana)");
@@ -220,7 +219,7 @@ public class Simon extends Character {
 
                 int choice = utils.InputUtil.scanInput();
                 utils.InputUtil.scan.nextLine();
-                ScenePrinter.shortLine();
+                PrintUtil.shortLine();
 
                 switch (choice) {
                     case 1 -> { fireball(target); isValid = true; }

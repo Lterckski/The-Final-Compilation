@@ -1,6 +1,5 @@
 package characters;
 
-import story.ScenePrinter;
 import utils.PrintUtil;
 import utils.RandomUtil;
 
@@ -40,7 +39,7 @@ public class Karl extends Character{
     }
 
     public void showBackstory() {
-        ScenePrinter.line();
+        PrintUtil.line();
         System.out.println("Karl Clover Dior IV was born and raised in the Forest of Silence, a place");
         System.out.println("where the air is thick with mist and danger lurks in every shadow.");
         System.out.println("His father, once a skilled archer, taught him the bow not as a weapon of");
@@ -198,12 +197,12 @@ public class Karl extends Character{
 
                 int choice = utils.InputUtil.scanInput();
                 utils.InputUtil.scan.nextLine();
-                ScenePrinter.shortLine();
+                PrintUtil.shortLine();
 
                 switch (choice) {
                     case 1 -> { piercingArrow(target); isValid = true; ultimateCounter--; }
                     case 2 -> { bullsEye(target); isValid = true; ultimateCounter--; }
-                    case 3 -> { System.out.println("❌ Ultimate is on cooldown! Can only be used after " + ultimateCounter + " turns."); ScenePrinter.line();}
+                    case 3 -> { System.out.println("❌ Ultimate is on cooldown! Can only be used after " + ultimateCounter + " turns."); PrintUtil.line();}
                     case 4 -> { skipTurn(); isValid = true; ultimateCounter--; }
                     case 5 -> displayMenu(this, target);
                     default -> { System.out.println("❌ Invalid action! You missed your turn."); PrintUtil.pause(800); isValid = true; ultimateCounter--; }
@@ -219,7 +218,7 @@ public class Karl extends Character{
 
                 int choice = utils.InputUtil.scanInput();
                 utils.InputUtil.scan.nextLine();
-                ScenePrinter.shortLine();
+                PrintUtil.shortLine();
 
                 switch (choice) {
                     case 1 -> { piercingArrow(target); isValid = true; }

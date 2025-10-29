@@ -1,5 +1,3 @@
-package story;
-
 import characters.Character;
 import characters.Kael;
 import characters.Karl;
@@ -9,6 +7,7 @@ import inventory.Bow;
 import inventory.Staff;
 import inventory.Sword;
 import utils.InputUtil;
+import utils.PrintUtil;
 import worlds.*;
 
 public class StoryEngine {
@@ -40,11 +39,11 @@ public class StoryEngine {
     // ---------- Scenes ----------
     private void intro() {
         System.out.println();
-        ScenePrinter.hr();
+        PrintUtil.hr();
         System.out.println("Backstory — The Exam That Never Began");
-        ScenePrinter.hr();
+        PrintUtil.hr();
 
-        ScenePrinter.type(
+        PrintUtil.type(
                 """
                         The lab hums with fluorescent light. You sit before the CodeChum login screen, nerves heavy but focus sharp.
                         Then the fans go silent, your classmates vanish, and the room feels hollow.
@@ -56,9 +55,9 @@ public class StoryEngine {
         InputUtil.pressEnterToContinue();
 
         System.out.println();
-        ScenePrinter.hr();
+        PrintUtil.hr();
         System.out.println("WELCOME TO THE FINAL COMPILATION...");
-        ScenePrinter.hr();
+        PrintUtil.hr();
         System.out.println();
     }
 
@@ -66,11 +65,11 @@ public class StoryEngine {
         characters.Character player = null;
 
         do {
-            ScenePrinter.line();
+            PrintUtil.line();
             System.out.println("(1) Kael Saint Laurent (Swordsman)");
             System.out.println("(2) Karl Clover Dior IV (Archer)");
             System.out.println("(3) Simon Versace (Mage)");
-            ScenePrinter.line();
+            PrintUtil.line();
 
             System.out.print("Select your character: ");
             int choice = InputUtil.scanInput();
@@ -81,27 +80,27 @@ public class StoryEngine {
                     Kael kael = new Kael();
                     if (characterMenu(kael)) {
                         player = kael;
-                        ScenePrinter.line();
+                        PrintUtil.line();
                         System.out.println("⚔️ You have chosen " + player.getName() + ", the valiant Swordsman!");
                         kael.showBackstory();
-                        ScenePrinter.line();
+                        PrintUtil.line();
                         System.out.println("✨ The gods bestow upon you your starting gear...");
                         player.getInventory().setEquippedWeapon(Sword.OLD_BROADSWORD);
                         player.getInventory().setEquippedArmor(Armor.LEATHER_GUARD);
                         System.out.println("🗡️ *The --" + player.getInventory().getEquippedWeapon().getName() + "-- rests firmly in your grasp, its blade marked by the scars of past battles.*");
                         System.out.println("🛡️ *The --" + player.getInventory().getEquippedArmor().getName() + "-- fits perfectly, worn yet dependable — a true warrior’s first defense.*");
                         System.out.println("⚡ Strength surges through your veins as your journey begins...");
-                        ScenePrinter.line();
+                        PrintUtil.line();
                     }
                 }
                 case 2 -> {
                     Karl karl = new Karl();
                     if (characterMenu(karl)) {
                         player = karl;
-                        ScenePrinter.line();
+                        PrintUtil.line();
                         System.out.println("🏹 You have chosen " + player.getName() + ", the sharp-eyed Archer!");
                         karl.showBackstory();
-                        ScenePrinter.line();
+                        PrintUtil.line();
                         System.out.println("🌬️ The winds whisper and bless you with your starting equipment...");
                         player.getInventory().setEquippedWeapon(Bow.WOODEN_BOW);
                         player.getInventory().setEquippedArmor(Armor.LEATHER_GUARD);
@@ -109,24 +108,24 @@ public class StoryEngine {
                         System.out.println("🛡️ *The --" + player.getInventory().getEquippedArmor().getName() + "-- wraps around you lightly, offering freedom and silent agility.*");
                         System.out.println("✨ *You are granted a --Magic Quiver--, filled with arrows that regenerate through ancient magic.*");
                         System.out.println("🌿 The forest seems to watch over you as your path unfolds...");
-                        ScenePrinter.line();
+                        PrintUtil.line();
                     }
                 }
                 case 3 -> {
                     Simon simon = new Simon();
                     if (characterMenu(simon)) {
                         player = simon;
-                        ScenePrinter.line();
+                        PrintUtil.line();
                         System.out.println("🧙‍♂️ You have chosen " + player.getName() + ", the wise Mage!");
                         simon.showBackstory();
-                        ScenePrinter.line();
+                        PrintUtil.line();
                         System.out.println("✨ The arcane forces converge to gift you ancient relics of power...");
                         player.getInventory().setEquippedWeapon(Staff.WOODEN_STAFF);
                         player.getInventory().setEquippedArmor(Armor.LEATHER_GUARD);
                         System.out.println("🔮 *The --" + player.getInventory().getEquippedWeapon().getName() + "-- pulses faintly, whispering secrets of forgotten spells.*");
                         System.out.println("🛡️ *The --" + player.getInventory().getEquippedArmor().getName() + "-- shimmers with faint runes — fragile, yet brimming with arcane energy.*");
                         System.out.println("💫 Magic stirs in the air around you as your journey begins...");
-                        ScenePrinter.line();
+                        PrintUtil.line();
                     }
                 }
                 default -> System.out.println("❌ Invalid choice! Please select a valid option.");
@@ -139,7 +138,7 @@ public class StoryEngine {
 
     private boolean characterMenu(Character character) {
         while (true) {
-            ScenePrinter.line();
+            PrintUtil.line();
             System.out.println("What would you like to do?");
             System.out.println("1 - Show Character Stats");
             System.out.println("2 - Show Character Skills");
@@ -149,7 +148,7 @@ public class StoryEngine {
             System.out.print("Enter choice: ");
             int choice = InputUtil.scanInput();
             InputUtil.scan.nextLine();
-            ScenePrinter.line();
+            PrintUtil.line();
 
             switch (choice) {
                 case 1 -> character.displayStats();
@@ -162,8 +161,8 @@ public class StoryEngine {
     }
 
     private void transitionToWorld2() {
-        ScenePrinter.title("Transition — Toward World 2");
-        ScenePrinter.type(
+        PrintUtil.title("Transition — Toward World 2");
+        PrintUtil.type(
                 "Sir Khai's staff strikes the ground. \"Two stones remain,\" he intones.\n" +
                         "A path opens through the ash—down into fog and distant thunder.\n"
         );
@@ -172,8 +171,8 @@ public class StoryEngine {
 
 
     private void transitionToWorld3() {
-        ScenePrinter.title("Transition — Toward World 3");
-        ScenePrinter.type(
+        PrintUtil.title("Transition — Toward World 3");
+        PrintUtil.type(
                 "Sir Khai’s staff flares once more. The Second Stone trembles in your hand.\n" +
                         "Far off, lightning pierces a storm-swallowed horizon.\n" +
                         "He turns to you. \"The final trial awaits—where light cannot reach.\"\n"

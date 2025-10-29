@@ -3,8 +3,8 @@ package battle;
 import characters.Character;
 
 import enemies.FinalBoss;
-import story.ScenePrinter;
 import utils.InputUtil;
+import utils.PrintUtil;
 
 public class Battle {
     private final Character player;
@@ -24,7 +24,7 @@ public class Battle {
         boolean willFight = false;
 
         while(!willFight){
-            ScenePrinter.line();
+            PrintUtil.line();
             System.out.println("What will you do?");
             System.out.println("1. Fight enemy");
             System.out.println("2. Open Inventory");
@@ -36,7 +36,7 @@ public class Battle {
             System.out.print("Enter choice: ");
             int choice = InputUtil.scanInput();
             InputUtil.scan.nextLine();
-            ScenePrinter.line();
+            PrintUtil.line();
 
             switch (choice){
                 case 1 -> { System.out.println("⚔️ You chose to fight!"); willFight = true; }
@@ -51,12 +51,12 @@ public class Battle {
     }
 
     public void battleLoop() {
-        ScenePrinter.line();
+        PrintUtil.line();
         System.out.println();
-        ScenePrinter.hr();
+        PrintUtil.hr();
         String firstName = player.getName().split(" ")[0];
         System.out.println("⚔️ Battle Start! " + firstName + " vs " + enemy.getName());
-        ScenePrinter.hr();
+        PrintUtil.hr();
 
         while (player.isAlive() && enemy.isAlive()) {
 
@@ -68,14 +68,14 @@ public class Battle {
             if (player.getEffects().checkEffects()) {
                 // --- PLAYER STATUS TRACKER ---
                 System.out.println();
-                ScenePrinter.line();
+                PrintUtil.line();
                 System.out.println("💚 Your HP  : " + player.getHp() + "/" + player.getMaxHP() +
                         "   " + player.getEnergyEmoji() + " " + player.getEnergyName() + ": " + player.getEnergy() + "/" + player.getMaxEnergy());
                 System.out.println("🖤 Enemy HP : " + enemy.getHp() + "/" + enemy.getMaxHP() +
                         ((enemy instanceof FinalBoss fb && fb.getShield() > 0) ? "   🛡️ Shield Active" : ""));
 
 
-                ScenePrinter.line();
+                PrintUtil.line();
 
                 System.out.println("-- Your Turn --");
                 player.turn(enemy);
@@ -85,7 +85,7 @@ public class Battle {
 
             // Apply poison/burn etc. after action
             player.getEffects().updateDoTEffects();
-            ScenePrinter.line();
+            PrintUtil.line();
 
             if (!enemy.isAlive()) {
                 //System.out.println("🔥 You defeated " + enemy.getName() + "!");
@@ -99,13 +99,14 @@ public class Battle {
 
             if (enemy.getEffects().checkEffects()) {
                 System.out.println("\n-- Enemy Turn --");
+                PrintUtil.pause(800);
                 enemy.turn(player);
             }
 
             // Apply DoT after enemy acts
             enemy.getEffects().updateDoTEffects();
             InputUtil.pressEnterToContinue();
-            ScenePrinter.line();
+            PrintUtil.line();
         }
 
         if (!player.isAlive()) {
@@ -114,9 +115,9 @@ public class Battle {
     }
 
     public void gameOver() {
-        ScenePrinter.line();
+        PrintUtil.line();
         System.out.println("⚔️ You have been defeated in battle...");
-        ScenePrinter.type("""
+        PrintUtil.type("""
             💀 Darkness overwhelms you...
             The battlefield falls silent, your vision fades,
             and the echoes of your struggles vanish into the void.

@@ -1,6 +1,7 @@
 package inventory;
 
 import characters.Character;
+import utils.PrintUtil;
 import utils.RandomUtil;
 
 public class Armor {
@@ -37,6 +38,7 @@ public class Armor {
 
     public boolean lootArmor() {
         System.out.println("Target has dropped an armor!");
+        PrintUtil.pause(800);
         this.displayInfo();
 
         boolean pickUp = false;
@@ -87,8 +89,7 @@ public class Armor {
             player.setDefense(player.getDefense() + defBuff);
             isEquipped = true;
             player.getInventory().setEquippedArmor(this);
-            System.out.println(name + " Equipped! Defense increased by " + defBuff +
-                    ". Current DEF: " + player.getDefense());
+            System.out.println(name + " Equipped! Defense increased by " + defBuff + ". Current DEF: " + player.getDefense());
         } else {
             currentlyEquipped.unequip(player);
 
@@ -102,6 +103,7 @@ public class Armor {
                     ". Current DEF: " + player.getDefense());
         }
         System.out.println("-----------------------------");
+        PrintUtil.pause(800);
     }
 
 

@@ -107,7 +107,6 @@ public class FinalBoss extends Enemy {
                 defense = baseDefense;
                 System.out.println("-");
                 System.out.println("💥 The barrier shatters! Khai gains 1 stack of Void Energy! (+5% DEF)");
-                PrintUtil.pause(800);
                 System.out.println("🛡️ Khai's Current DEF: " + baseDefense + " | 🕳 Void Energy Stacks: " + voidEnergy);
                 System.out.println("-");
                 PrintUtil.pause(800);
@@ -123,7 +122,6 @@ public class FinalBoss extends Enemy {
                 attack = baseAttack;
                 System.out.println("-");
                 System.out.println("🌑 The barrier remains unbroken... Khai gains 1 stack of Null Energy! (+5% ATK)");
-                PrintUtil.pause(800);
                 System.out.println("⚔️ Khai's Current ATK: " + baseAttack + " | 🔮 Null Energy Stacks: " + nullEnergy);
                 System.out.println("-");
                 PrintUtil.pause(800);

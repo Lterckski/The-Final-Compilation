@@ -1,6 +1,7 @@
 package inventory;
 
 import characters.Character;
+import utils.PrintUtil;
 import utils.RandomUtil;
 
 public class Bow extends Weapon{
@@ -46,6 +47,7 @@ public class Bow extends Weapon{
 
             if (healAmount > 0) {
                 System.out.println("💖 " + getName() + " restores " + healAmount + " HP!");
+                PrintUtil.pause(800);
                 player.heal(healAmount);
             }
         }
@@ -53,6 +55,7 @@ public class Bow extends Weapon{
         // Double attack
         if (RandomUtil.chance(attackTwiceChance)) {
             System.out.println("⚡ " + getName() + " triggers a second attack!");
+            PrintUtil.pause(800);
             return true;
         }
 

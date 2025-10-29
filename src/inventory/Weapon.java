@@ -2,6 +2,7 @@ package inventory;
 
 import characters.Character;
 import utils.InputUtil;
+import utils.PrintUtil;
 
 public abstract class Weapon {
     private final String name;
@@ -24,6 +25,7 @@ public abstract class Weapon {
 
     public boolean lootWeapon() {
         System.out.println("Target has dropped a weapon!");
+        PrintUtil.pause(800);
         this.displayInfo();
 
         boolean pickUp = false;
@@ -84,10 +86,11 @@ public abstract class Weapon {
             character.getInventory().setEquippedWeapon(this);
 
             System.out.println("You upgraded your weapon!");
-            System.out.println(name + " Equipped! Attack increased by " + (this.getAtkBuff() - currentlyEquipped.getAtkBuff()) +
-                    ". Current ATK: " + character.getAttack());
+            PrintUtil.pause(800);
+            System.out.println(name + " Equipped! Attack increased by " + (this.getAtkBuff() - currentlyEquipped.getAtkBuff()) + ". Current ATK: " + character.getAttack());
         }
         System.out.println("-----------------------------");
+        PrintUtil.pause(800);
     }
 
     public void unequip(Character character) {

@@ -1,6 +1,7 @@
 package inventory;
 
 import characters.Character;
+import utils.PrintUtil;
 import utils.RandomUtil;
 
 public class Staff extends Weapon{
@@ -48,6 +49,7 @@ public class Staff extends Weapon{
         if (lifestealPercent > 0) {
             int healAmount = (int)(damage * lifestealPercent / 100.0);
             System.out.println("💖 " + getName() + " restores " + healAmount + " HP!");
+            PrintUtil.pause(800);
             player.heal(healAmount);
         }
 
