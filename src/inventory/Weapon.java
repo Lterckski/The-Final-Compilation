@@ -76,8 +76,7 @@ public abstract class Weapon {
             character.setAttack(character.getAttack() + atkBuff);
             isEquipped = true;
             character.getInventory().setEquippedWeapon(this);
-            System.out.println(name + " Equipped! Attack increased by " + atkBuff +
-                    ". Current ATK: " + character.getAttack());
+            System.out.println("⚙\uFE0F " + name + " Equipped! ⬆\uFE0F Attack increased by " + atkBuff + ". ⚔\uFE0F Current ATK: " + character.getAttack());
         } else{
             currentlyEquipped.unequip(character);
 
@@ -87,7 +86,7 @@ public abstract class Weapon {
 
             System.out.println("You upgraded your weapon!");
             PrintUtil.pause(800);
-            System.out.println(name + " Equipped! Attack increased by " + (this.getAtkBuff() - currentlyEquipped.getAtkBuff()) + ". Current ATK: " + character.getAttack());
+            System.out.println("⚙\uFE0F " + name + " Equipped! ⬆\uFE0F Attack increased by " + (this.getAtkBuff() - currentlyEquipped.getAtkBuff()) + ". ⚔\uFE0F Current ATK: " + character.getAttack());
         }
         System.out.println("-----------------------------");
         PrintUtil.pause(800);

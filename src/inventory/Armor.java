@@ -89,7 +89,7 @@ public class Armor {
             player.setDefense(player.getDefense() + defBuff);
             isEquipped = true;
             player.getInventory().setEquippedArmor(this);
-            System.out.println(name + " Equipped! Defense increased by " + defBuff + ". Current DEF: " + player.getDefense());
+            System.out.println("⚙\uFE0F " + name + " Equipped! ⬆\uFE0F Defense increased by " + defBuff + ". 🛡️ Current DEF: " + player.getDefense());
         } else {
             currentlyEquipped.unequip(player);
 
@@ -98,9 +98,7 @@ public class Armor {
             player.getInventory().setEquippedArmor(this);
 
             System.out.println("You upgraded your armor!");
-            System.out.println(name + " Equipped! Defense increased by " +
-                    (this.defBuff - currentlyEquipped.defBuff) +
-                    ". Current DEF: " + player.getDefense());
+            System.out.println("⚙\uFE0F " + name + " Equipped! ⬆\uFE0F Defense increased by " + (this.defBuff - currentlyEquipped.defBuff) + ". 🛡️ Current DEF: " + player.getDefense());
         }
         System.out.println("-----------------------------");
         PrintUtil.pause(800);

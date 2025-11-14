@@ -198,11 +198,11 @@ public class Kael extends  Character{      // 15% crit chance
         while (!isValid) {
             // If ultimate is on cooldown
             if (ultimateCounter > 0) {
-                System.out.println("(1) Skill 1   -  Blade Rush (🔋 5 Stamina)");
-                System.out.println("(2) Skill 2   -  Piercing Slash (🔋 10 Stamina)");
-                System.out.println("(3) Ultimate  -  Eternal Cross Slash (🔋 20 Stamina) ❌ (Available in " + ultimateCounter + " turns)");
-                System.out.println("(4) Skip Turn -  Restore 10% of Max HP and 20 Stamina");
-                System.out.println("(5) Show Menu");
+                System.out.println("[1] Skill 1   -  Blade Rush (🔋 5 Stamina)");
+                System.out.println("[2] Skill 2   -  Piercing Slash (🔋 10 Stamina)");
+                System.out.println("[3] Ultimate  -  Eternal Cross Slash (🔋 20 Stamina) ❌ (Available in " + ultimateCounter + " turns)");
+                System.out.println("[4] Skip Turn -  Restore 10% of Max HP and 20 Stamina");
+                System.out.println("[5] Show Menu");
                 System.out.print("Choose your action: ");
 
                 int choice = utils.InputUtil.scanInput();
@@ -221,11 +221,11 @@ public class Kael extends  Character{      // 15% crit chance
             }
             // If ultimate is ready
             else {
-                System.out.println("(1) Skill 1   -  Blade Rush (🔋 5 Stamina)");
-                System.out.println("(2) Skill 2   -  Piercing Slash (🔋 10 Stamina)");
-                System.out.println("(3) Ultimate  -  Eternal Cross Slash (🔋 20 Stamina)");
-                System.out.println("(4) Skip Turn -  Restore 10% of Max HP and 20 Stamina");
-                System.out.println("(5) Show Menu");
+                System.out.println("[1] Skill 1   -  Blade Rush (🔋 5 Stamina)");
+                System.out.println("[2] Skill 2   -  Piercing Slash (🔋 10 Stamina)");
+                System.out.println("[3] Ultimate  -  Eternal Cross Slash (🔋 20 Stamina)");
+                System.out.println("[4] Skip Turn -  Restore 10% of Max HP and 20 Stamina");
+                System.out.println("[5] Show Menu");
                 System.out.print("Choose your action: ");
 
                 int choice = utils.InputUtil.scanInput();

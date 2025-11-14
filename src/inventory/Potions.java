@@ -44,17 +44,33 @@ public class Potions {
     }
 
     public void useEnergyPotion() {
-        if(energyPotions <= 0) {
+        if (energyPotions <= 0) {
             System.out.println("❌ No Energy Potions left!");
             PrintUtil.pause(800);
             return;
         }
+
         energyPotions--;
-        int energyRestored = 30;  // amount restored
+
+        String energyName = owner.getEnergyName();
+        String energyEmoji = owner.getEnergyEmoji();
+        int currentEnergy = owner.getEnergy();
+        int energyRestored = 0;
+
+        switch (owner.getClassType()) {
+            case "Swordsman" -> energyRestored = 30;
+            case "Archer" -> energyRestored = 8;
+            case "Mage" -> energyRestored = 40;
+        }
+
         owner.restoreEnergy(energyRestored);
-        System.out.println("⚡✨ Used an Energy Potion! Restored " + energyRestored + " Energy (Energy: " + owner.getEnergy() + "/" + owner.getMaxEnergy() + ")");
+
+        System.out.println(energyEmoji + "✨ Used an " + energyName + " Potion! Restored "
+                + energyRestored + " " + energyName + " (" + energyName + ": "
+                + (currentEnergy + energyRestored) + ")");
         PrintUtil.pause(800);
     }
+
 
     public void lootPotions(){
         int totalDrops = RandomUtil.range(1, 3);

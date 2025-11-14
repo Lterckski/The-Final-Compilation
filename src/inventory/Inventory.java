@@ -1,16 +1,19 @@
 package inventory;
 
 import characters.Character;
+import enemies.FinalBoss;
 import utils.InputUtil;
 import utils.PrintUtil;
 
 public class Inventory {
 
+    private final Character player;
     private Weapon equippedWeapon;
     private Armor equippedArmor;
     private final Potions potions;
 
     public Inventory(Character owner) {
+        this.player = owner;
         this.potions = new Potions(owner);
     }
 
@@ -28,6 +31,9 @@ public class Inventory {
 
         while (!exit) {
             System.out.println("\n====================== Inventory ======================");
+            System.out.println("💚 Your HP  : " + player.getHp() + "/" + player.getMaxHP() +
+                    "   " + player.getEnergyEmoji() + " " + player.getEnergyName() + " : " + player.getEnergy() + "/" + player.getMaxEnergy());
+            PrintUtil.line();
             System.out.println("Equipped Weapon         : " + (equippedWeapon != null ? equippedWeapon.getName() : "No Weapon Equipped"));
             System.out.println("Equipped Armor          : " + (equippedArmor != null ? equippedArmor.getName() : "No Armor Equipped"));
             System.out.println("Normal Healing Potion   : " + potions.getNormalHealingPotions());

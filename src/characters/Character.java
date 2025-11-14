@@ -18,7 +18,6 @@ public abstract class Character {
     protected int exp;
     protected int nextLevelExp;
 
-
     protected int hp;
     protected int maxHP;           // track max HP for healing
     protected int defense;
@@ -176,7 +175,7 @@ public abstract class Character {
                 case 4 -> enemy.displayStats();
                 case 5 -> enemy.displaySkills();
                 case 0 -> goBack = true;
-                default -> System.out.println("❌ Invalid choice! Please select a valid option.");
+                default -> System.out.println("❌ Invalid input! Please select a valid option.");
             }
         }
     }

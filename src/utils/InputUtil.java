@@ -18,8 +18,7 @@ public class InputUtil {
             try {
                 return scan.nextInt();
             } catch (InputMismatchException e) {
-                System.out.print("❌ Invalid input! Please enter a number: ");
-                InputUtil.scan.nextLine(); // clear invalid input
+                return 9;
             }
         }
     }

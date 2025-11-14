@@ -1,3 +1,5 @@
+package storyEngine;
+
 import characters.Character;
 import characters.Kael;
 import characters.Karl;
@@ -13,6 +15,10 @@ import worlds.*;
 public class StoryEngine {
 
     private Character player;
+    private static StoryEngine instance;
+    private static int currWorldLevel = 1;
+
+    public static int getCurrWorldLevel(){ return currWorldLevel; }
 
     public void start() {
         intro();
@@ -66,9 +72,9 @@ public class StoryEngine {
 
         do {
             PrintUtil.line();
-            System.out.println("(1) Kael Saint Laurent (Swordsman)");
-            System.out.println("(2) Karl Clover Dior IV (Archer)");
-            System.out.println("(3) Simon Versace (Mage)");
+            System.out.println("[1] Kael Saint Laurent (Swordsman)");
+            System.out.println("[2] Karl Clover Dior IV (Archer)");
+            System.out.println("[3] Simon Versace (Mage)");
             PrintUtil.line();
 
             System.out.print("Select your character: ");
@@ -140,10 +146,10 @@ public class StoryEngine {
         while (true) {
             PrintUtil.line();
             System.out.println("What would you like to do?");
-            System.out.println("1 - Show Character Stats");
-            System.out.println("2 - Show Character Skills");
-            System.out.println("3 - Confirm Character");
-            System.out.println("0 - Back");
+            System.out.println("[1] - Show Character Stats");
+            System.out.println("[2] - Show Character Skills");
+            System.out.println("[3] - Confirm Character");
+            System.out.println("[0] - Back");
 
             System.out.print("Enter choice: ");
             int choice = InputUtil.scanInput();
@@ -155,12 +161,13 @@ public class StoryEngine {
                 case 2 -> character.displaySkills();
                 case 3 -> { return true; }
                 case 0 -> { return false; }
-                default -> System.out.println("❌ Invalid choice! Please select a valid option.");
+                default -> System.out.println("❌ Invalid Input! Please select a valid option.");
             }
         }
     }
 
     private void transitionToWorld2() {
+        currWorldLevel = 2;
         PrintUtil.title("Transition — Toward World 2");
         PrintUtil.type(
                 "Sir Khai's staff strikes the ground. \"Two stones remain,\" he intones.\n" +
@@ -171,6 +178,7 @@ public class StoryEngine {
 
 
     private void transitionToWorld3() {
+        currWorldLevel = 3;
         PrintUtil.title("Transition — Toward World 3");
         PrintUtil.type(
                 "Sir Khai’s staff flares once more. The Second Stone trembles in your hand.\n" +

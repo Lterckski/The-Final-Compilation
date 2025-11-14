@@ -108,7 +108,7 @@ public class Tester {
                     ((Simon) player).showBackstory();
                     player.getInventory().setEquippedWeapon(Staff.WOODEN_STAFF);
                 }
-                default -> System.out.println("❌ Invalid choice! Please select a valid option.");
+                default -> System.out.println("❌ Invalid input! Please select a valid option.");
             }
         } while (player == null);  // repeat until valid choice
         player.getInventory().setEquippedArmor(Armor.LEATHER_GUARD);

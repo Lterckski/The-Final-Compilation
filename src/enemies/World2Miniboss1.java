@@ -122,14 +122,14 @@ public class World2Miniboss1 extends Enemy{
 
         if (choice == 1) {
             aegisMail.equip(player);
-            System.out.println("\nYou equipped " + aegisMail.getName() + "! The other armor fades away...");
+            System.out.println("\nThe other armor fades away...");
             PrintUtil.pause(800);
         } else if (choice == 2) {
             vanguardRobe.equip(player);
-            System.out.println("\nYou equipped " + vanguardRobe.getName() + "! The other armor fades away...");
+            System.out.println("\nThe other armor fades away...");
             PrintUtil.pause(800);
         } else {
-            System.out.println("\nInvalid choice. Both armors vanish into the mist...");
+            System.out.println("\n❌ Invalid choice! Both armors vanish into the mist...");
             PrintUtil.pause(800);
         }
     }

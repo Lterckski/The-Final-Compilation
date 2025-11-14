@@ -188,11 +188,11 @@ public class Karl extends Character{
 
         while (!isValid) {
             if (ultimateCounter > 0) {
-                System.out.println("(1) Skill 1   -  Piercing Arrow (➶ 1 Arrow)");
-                System.out.println("(2) Skill 2   -  Bullseye (➶ 1 Heavy Arrow (3 Arrows)");
-                System.out.println("(3) Ultimate  -  Rain of A Thousand Arrows (➶ 5 Arrows) ❌ (Available in " + ultimateCounter + " turns)");
-                System.out.println("(4) Skip Turn -  Restore 10% of Max HP and Replenish 6 Arrows");
-                System.out.println("(5) Show Menu");
+                System.out.println("[1] Skill 1   -  Piercing Arrow (➶ 1 Arrow)");
+                System.out.println("[2] Skill 2   -  Bullseye (➶ 1 Heavy Arrow (3 Arrows)");
+                System.out.println("[3] Ultimate  -  Rain of A Thousand Arrows (➶ 5 Arrows) ❌ (Available in " + ultimateCounter + " turns)");
+                System.out.println("[4] Skip Turn -  Restore 10% of Max HP and Replenish 6 Arrows");
+                System.out.println("[5] Show Menu");
                 System.out.print("Choose your action: ");
 
                 int choice = utils.InputUtil.scanInput();
@@ -209,11 +209,11 @@ public class Karl extends Character{
                 }
 
             } else {
-                System.out.println("(1) Skill 1   -  Piercing Arrow (➶ 1 Arrow)");
-                System.out.println("(2) Skill 2   -  Bullseye (➶ 1 Heavy Arrow (3 Arrows)");
-                System.out.println("(3) Ultimate  -  Rain of A Thousand Arrows (➶ 5 Arrows)");
-                System.out.println("(4) Skip Turn -  Restore 10% of Max HP and Replenish 6 Arrows");
-                System.out.println("(5) Show Menu");
+                System.out.println("[1] Skill 1   -  Piercing Arrow (➶ 1 Arrow)");
+                System.out.println("(2] Skill 2   -  Bullseye (➶ 1 Heavy Arrow (3 Arrows)");
+                System.out.println("[3] Ultimate  -  Rain of A Thousand Arrows (➶ 5 Arrows)");
+                System.out.println("[4] Skip Turn -  Restore 10% of Max HP and Replenish 6 Arrows");
+                System.out.println("[5] Show Menu");
                 System.out.print("Choose your action: ");
 
                 int choice = utils.InputUtil.scanInput();

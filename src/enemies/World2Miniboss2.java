@@ -143,14 +143,14 @@ public class World2Miniboss2 extends Enemy {
 
             if (choice == 1) {
                 twinstrikeBlade.equip(player);
-                System.out.println("\nYou equipped " + twinstrikeBlade.getName() + "! The other weapon vanishes...");
+                System.out.println("\n⚙\uFE0F You equipped " + twinstrikeBlade.getName() + "! The other weapon vanishes...");
                 PrintUtil.pause(800);
             } else if (choice == 2) {
                 lifebondBlade.equip(player);
-                System.out.println("\nYou equipped " + lifebondBlade.getName() + "! The other weapon vanishes...");
+                System.out.println("\n⚙\uFE0F You equipped " + lifebondBlade.getName() + "! The other weapon vanishes...");
                 PrintUtil.pause(800);
             } else {
-                System.out.println("\nInvalid choice. Both weapons disappear...");
+                System.out.println("\n❌ Invalid choice! Both weapons disappear...");
                 PrintUtil.pause(800);
             }
 
@@ -169,14 +169,14 @@ public class World2Miniboss2 extends Enemy {
 
             if (choice == 1) {
                 twinshotBow.equip(player);
-                System.out.println("\nYou equipped " + twinshotBow.getName() + "! The other weapon vanishes...");
+                System.out.println("\n⚙\uFE0F You equipped " + twinshotBow.getName() + "! The other weapon vanishes...");
                 PrintUtil.pause(800);
             } else if (choice == 2) {
                 lifebloomBow.equip(player);
-                System.out.println("\nYou equipped " + lifebloomBow.getName() + "! The other weapon vanishes...");
+                System.out.println("\n⚙\uFE0F You equipped " + lifebloomBow.getName() + "! The other weapon vanishes...");
                 PrintUtil.pause(800);
             } else {
-                System.out.println("\nInvalid choice. Both weapons disappear...");
+                System.out.println("\n❌ Invalid choice! Both weapons disappear...");
                 PrintUtil.pause(800);
             }
 
@@ -195,14 +195,14 @@ public class World2Miniboss2 extends Enemy {
 
             if (choice == 1) {
                 mysticMindStaff.equip(player);
-                System.out.println("\nYou equipped " + mysticMindStaff.getName() + "! The other weapon vanishes...");
+                System.out.println("The other weapon vanishes...");
                 PrintUtil.pause(800);
             } else if (choice == 2) {
                 flameheartStaff.equip(player);
-                System.out.println("\nYou equipped " + flameheartStaff.getName() + "! The other weapon vanishes...");
+                System.out.println("The other weapon vanishes...");
                 PrintUtil.pause(800);
             } else {
-                System.out.println("\nInvalid choice. Both weapons disappear...");
+                System.out.println("\n❌ Invalid choice. Both weapons disappear...");
                 PrintUtil.pause(800);
             }
         }

@@ -12,29 +12,27 @@ public abstract class Enemy extends Character{
     @Override
     public void displayStats() {
         System.out.println("\n======== Enemy Stats ========");
-        System.out.println("Name    : " + name);
-        System.out.println("HP      : " + hp + "/" + maxHP);
 
-        // Attack
-        System.out.print("Attack  : " + baseAttack);
-        if (attack > baseAttack) {
-            System.out.print(" (+" + (attack - baseAttack) + ")");
-        } else if (attack < baseAttack) {
-            System.out.print(" (-" + (baseAttack - attack) + ")");
-        }
-        System.out.println();
+        System.out.printf("%-8s: %s%n", "Name", name);
+        System.out.printf("%-8s: %d/%d%n", "HP", hp, maxHP);
 
-        // Defense
-        System.out.print("Defense : " + baseDefense);
-        if (defense > baseDefense) {
-            System.out.print(" (+" + (defense - baseDefense) + ")");
-        } else if (defense < baseDefense) {
-            System.out.print(" (-" + (baseDefense - defense) + ")");
-        }
-        System.out.println();
+        // Attack difference
+        int atkDiff = attack - baseAttack;
+        String atkLabel = (atkDiff >= 0) ? "Buff" : "Debuff";
+
+        System.out.printf("%-8s: %d  (Base %d | %s %+d)%n",
+                "Attack", attack, baseAttack, atkLabel, atkDiff);
+
+        // Defense difference
+        int defDiff = defense - baseDefense;
+        String defLabel = (defDiff >= 0) ? "Buff" : "Debuff";
+
+        System.out.printf("%-8s: %d  (Base %d | %s %+d)%n",
+                "Defense", defense, baseDefense, defLabel, defDiff);
 
         System.out.println("=============================\n");
     }
+
 
     public abstract void dropLoot(Character player);
     public abstract int rewardExp();

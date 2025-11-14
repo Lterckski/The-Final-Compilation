@@ -5,6 +5,7 @@ import characters.Character;
 import enemies.FinalBoss;
 import utils.InputUtil;
 import utils.PrintUtil;
+import storyEngine.StoryEngine;
 
 public class Battle {
     private final Character player;
@@ -26,12 +27,12 @@ public class Battle {
         while(!willFight){
             PrintUtil.line();
             System.out.println("What will you do?");
-            System.out.println("1. Fight enemy");
-            System.out.println("2. Open Inventory");
-            System.out.println("3. Show Player Stats");
-            System.out.println("4. Show Player Skills Overview");
-            System.out.println("5. Show Enemy Stats");
-            System.out.println("6. Show Enemy Skills Overview");
+            System.out.println("[1] Fight enemy");
+            System.out.println("[2] Open Inventory");
+            System.out.println("[3] Show Player Stats");
+            System.out.println("[4] Show Player Skills Overview");
+            System.out.println("[5] Show Enemy Stats");
+            System.out.println("[6] Show Enemy Skills Overview");
 
             System.out.print("Enter choice: ");
             int choice = InputUtil.scanInput();
@@ -45,7 +46,7 @@ public class Battle {
                 case 4 -> player.displaySkills();
                 case 5 -> enemy.displayStats();
                 case 6 -> enemy.displaySkills();
-                default -> System.out.println("❌ Invalid choice! Please select a valid option.");
+                default -> System.out.println("❌ Invalid input! Please select a valid option.");
             }
         }
     }
@@ -53,7 +54,8 @@ public class Battle {
     public void battleLoop() {
         PrintUtil.line();
         System.out.println();
-        PrintUtil.hr();
+        int worldLevel = StoryEngine.getCurrWorldLevel();
+        System.out.println("============== WORLD " + worldLevel + " ==============");
         String firstName = player.getName().split(" ")[0];
         System.out.println("⚔️ Battle Start! " + firstName + " vs " + enemy.getName());
         PrintUtil.hr();
@@ -70,11 +72,9 @@ public class Battle {
                 System.out.println();
                 PrintUtil.line();
                 System.out.println("💚 Your HP  : " + player.getHp() + "/" + player.getMaxHP() +
-                        "   " + player.getEnergyEmoji() + " " + player.getEnergyName() + ": " + player.getEnergy() + "/" + player.getMaxEnergy());
+                        "   " + player.getEnergyEmoji() + " " + player.getEnergyName() + " : " + player.getEnergy() + "/" + player.getMaxEnergy());
                 System.out.println("🖤 Enemy HP : " + enemy.getHp() + "/" + enemy.getMaxHP() +
                         ((enemy instanceof FinalBoss fb && fb.getShield() > 0) ? "   🛡️ Shield Active" : ""));
-
-
                 PrintUtil.line();
 
                 System.out.println("-- Your Turn --");
@@ -126,6 +126,5 @@ public class Battle {
         System.out.println("☠️ GAME OVER — Your story ends in shadow.");
         System.exit(0);
     }
-
 
 }

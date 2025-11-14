@@ -5,7 +5,7 @@ import utils.RandomUtil;
 
 public class Simon extends Character {
 
-    public Simon() { super("Simon Versace", "Mage", 60, 2, 150, 15); }
+    public Simon() { super("Simon Versace", "Mage", 60, 2, 120, 15); }
 
     @Override
     public void displaySkills() {
@@ -60,7 +60,7 @@ public class Simon extends Character {
         int restored = (int)(maxEnergy * 0.05);
         this.restoreEnergy(restored);
 
-        System.out.println("✨ Arcane Flow restores " + restored + " energy! " + "(Energy: " + energy + "/" + maxEnergy + ")");
+        System.out.println("✨ Arcane Flow restores " + restored + " Mana! " + "(💧 Mana: " + energy + "/" + maxEnergy + ")");
         PrintUtil.pause(800);
     }
 
@@ -186,11 +186,11 @@ public class Simon extends Character {
         while (!isValid) {
             // If ultimate is on cooldown
             if (ultimateCounter > 0) {
-                System.out.println("(1) Skill 1   -  Fireball (💧 15 Mana)");
-                System.out.println("(2) Skill 2   -  Ice Prison (💧 25 Mana)");
-                System.out.println("(3) Ultimate  -  Meteor Storm (💧 40 Mana) ❌ (Available in " + ultimateCounter + " turns)");
-                System.out.println("(4) Skip Turn -  Restore 10% of Max HP and 30 Mana");
-                System.out.println("(5) Show Menu");
+                System.out.println("[1] Skill 1   -  Fireball (💧 15 Mana)");
+                System.out.println("[2] Skill 2   -  Ice Prison (💧 25 Mana)");
+                System.out.println("[3] Ultimate  -  Meteor Storm (💧 40 Mana) ❌ (Available in " + ultimateCounter + " turns)");
+                System.out.println("[4] Skip Turn -  Restore 10% of Max HP and 30 Mana");
+                System.out.println("[5] Show Menu");
                 System.out.print("Choose your action: ");
 
                 int choice = utils.InputUtil.scanInput();
@@ -210,11 +210,11 @@ public class Simon extends Character {
             // If ultimate is ready
             else {
                 PrintUtil.shortLine();
-                System.out.println("(1) Skill 1   -  Fireball (💧 15 Mana)");
-                System.out.println("(2) Skill 2   -  Ice Prison (💧 25 Mana)");
-                System.out.println("(3) Ultimate  -  Meteor Storm (💧 40 Mana)");
-                System.out.println("(4) Skip Turn -  Restore 10% of Max HP and 30 Mana");
-                System.out.println("(5) Show Menu");
+                System.out.println("[1] Skill 1   -  Fireball (💧 15 Mana)");
+                System.out.println("[2] Skill 2   -  Ice Prison (💧 25 Mana)");
+                System.out.println("[3] Ultimate  -  Meteor Storm (💧 40 Mana)");
+                System.out.println("[4] Skip Turn -  Restore 10% of Max HP and 30 Mana");
+                System.out.println("[5] Show Menu");
                 System.out.print("Choose your action: ");
 
                 int choice = utils.InputUtil.scanInput();
