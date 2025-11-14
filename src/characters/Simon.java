@@ -29,7 +29,7 @@ public class Simon extends Character {
 
         System.out.println("☄️ Ultimate – Meteor Storm (⚡40 EnergyMana)");
         System.out.println("Description: Summons a storm of blazing meteors, striking the opponent multiple times with devastating force.");
-        System.out.println("Damage: 5 hits, each dealing " + (int)(attack * 1.00) + " — " + (int)(attack * 1.50));
+        System.out.println("Damage: 5 hits, each dealing (" + (int)(attack * 1.00) + " — " + (int)(attack * 1.50) + ")");
         System.out.println("Effects:");
         System.out.println("- Grants Strengthen: (+20% ATK for 2 turns)");
         System.out.println("- 50% chance to apply Burn for 2 turns");

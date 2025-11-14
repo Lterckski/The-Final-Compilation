@@ -222,6 +222,7 @@ public class World3 {
                     You have shattered the guardian of flame.
                     """);
         PrintUtil.loot("You gain rare loot and powerful rewards!\n");
+        miniboss.dropLoot(player);
         InputUtil.pressEnterToContinue();
         PrintUtil.line();
         player.getEffects().resetAllEffects();

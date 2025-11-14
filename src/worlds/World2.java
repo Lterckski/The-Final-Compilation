@@ -218,6 +218,7 @@ public class World2 {
                 You have triumphed over his tyranny.
                 """);
         PrintUtil.loot("You gain rare loot and a surge of experience!\n");
+        miniBoss.dropLoot(player);
         InputUtil.pressEnterToContinue();
         PrintUtil.line();
         player.getEffects().resetAllEffects();
@@ -240,10 +241,11 @@ public class World2 {
         PrintUtil.line();
         PrintUtil.type("""
                 👑 Final Victory!
-                The Corrupted King’s crown falls to the floor, echoing through the halls.
+                The Crupted King’s crown falls to the floor, echoing through the halls.
                 Darkness fades, and you stand as the savior of this cursed land.
                 """);
         PrintUtil.loot("You gain immense experience and legendary loot!\n");
+        boss.dropLoot(player);
         InputUtil.pressEnterToContinue();
         PrintUtil.line();
         player.getEffects().resetAllEffects();
