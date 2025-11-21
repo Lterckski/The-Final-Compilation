@@ -25,7 +25,7 @@ public class World2 {
         PrintUtil.line();
         PrintUtil.type("""
         🐀 The stench of rot fills the air.
-        From the sewers, two Plague Vermins scuttle out—diseased, hissing, and hungry.
+        From the sewers, three Plague Vermins scuttle out—diseased, hissing, and hungry.
         Their claws drip with venomous filth.
         """);
 

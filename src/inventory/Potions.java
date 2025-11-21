@@ -67,7 +67,7 @@ public class Potions {
 
         System.out.println(energyEmoji + "✨ Used an " + energyName + " Potion! Restored "
                 + energyRestored + " " + energyName + " (" + energyName + ": "
-                + (currentEnergy + energyRestored) + ")");
+                + (owner.getEnergy()) + ")");
         PrintUtil.pause(800);
     }
 
