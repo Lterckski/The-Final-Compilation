@@ -31,7 +31,7 @@ public class Karl extends Character{
 
         System.out.println("Ultimate – Rain of a Thousand Arrows (5 Arrows)");
         System.out.println("Description: Karl releases a rapid flurry of arrows, overwhelming his opponent with relentless strikes.");
-        System.out.println("Damage: 5 hits, each dealing (" + (int)(attack * 1.00) + " — " + (int)(attack * 1.60) + ")");
+        System.out.println("Damage: 5 hits, each dealing (" + (int)(attack * 1.20) + " — " + (int)(attack * 1.80) + ")");
         System.out.println("Effects:");
         System.out.println("- Grants Nimble after attack (increased dodge chance)");
         System.out.println("- Grants Strengthen (+20% ATK for 2 turns)");
@@ -158,7 +158,7 @@ public class Karl extends Character{
         int totalDamage = 0;
 
         for (int i = 1; i <= 5; i++) {
-            int damage = (int) RandomUtil.range(attack * 1.00, attack * 1.60);
+            int damage = (int) RandomUtil.range(attack * 1.20, attack * 1.80);
             damage = hunterInstincts(damage, target);
             int reduced = calculateDamage(target, damage);
 
@@ -189,7 +189,7 @@ public class Karl extends Character{
         while (!isValid) {
             if (ultimateCounter > 0) {
                 System.out.println("[1] Skill 1   -  Piercing Arrow (➶ 1 Arrow)");
-                System.out.println("[2] Skill 2   -  Bullseye (➶ 1 Heavy Arrow (3 Arrows)");
+                System.out.println("[2] Skill 2   -  Bullseye (➶ 1 Heavy Arrow (3 Arrows))");
                 System.out.println("[3] Ultimate  -  Rain of A Thousand Arrows (➶ 5 Arrows) ❌ (Available in " + ultimateCounter + " turns)");
                 System.out.println("[4] Skip Turn -  Restore 10% of Max HP and Replenish 6 Arrows");
                 System.out.println("[5] Show Menu");
@@ -210,7 +210,7 @@ public class Karl extends Character{
 
             } else {
                 System.out.println("[1] Skill 1   -  Piercing Arrow (➶ 1 Arrow)");
-                System.out.println("(2] Skill 2   -  Bullseye (➶ 1 Heavy Arrow (3 Arrows)");
+                System.out.println("(2] Skill 2   -  Bullseye (➶ 1 Heavy Arrow (3 Arrows))");
                 System.out.println("[3] Ultimate  -  Rain of A Thousand Arrows (➶ 5 Arrows)");
                 System.out.println("[4] Skip Turn -  Restore 10% of Max HP and Replenish 6 Arrows");
                 System.out.println("[5] Show Menu");
