@@ -144,6 +144,11 @@ public class Effects {
     }
 
     public void applyBurn(int turns) {
+        if(owner.getName().equals("Flame Revenant")){
+            System.out.println("❌ Target is Immune to Burn! Effect can't be applied");
+            PrintUtil.pause(800);
+            return;
+        }
         burnTurnsLeft += turns;
         System.out.println("🔥 Target is burned for " + turns + " turn/s!");
         PrintUtil.pause(800);

@@ -35,7 +35,6 @@ public abstract class Weapon {
             validChoice = true;
             System.out.println("Do you want to pick it up? (1 = Yes, 0 = No)");
             int choice = InputUtil.scanInput();
-            InputUtil.scan.nextLine();
 
             if (choice == 1) {
                 pickUp = true;
@@ -45,7 +44,6 @@ public abstract class Weapon {
                 do {
                     System.out.println("Are you sure you want to ignore the weapon? (1 = Yes, 0 = No)");
                     int confirm = InputUtil.scanInput();
-                    InputUtil.scan.nextLine();
 
                     if (confirm == 1) {
                         System.out.println("You ignored the weapon.");

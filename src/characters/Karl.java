@@ -1,5 +1,6 @@
 package characters;
 
+import utils.InputUtil;
 import utils.PrintUtil;
 import utils.RandomUtil;
 
@@ -195,8 +196,7 @@ public class Karl extends Character{
                 System.out.println("[5] Show Menu");
                 System.out.print("Choose your action: ");
 
-                int choice = utils.InputUtil.scanInput();
-                utils.InputUtil.scan.nextLine();
+                int choice = InputUtil.scanInput();
                 PrintUtil.shortLine();
 
                 switch (choice) {
@@ -216,8 +216,7 @@ public class Karl extends Character{
                 System.out.println("[5] Show Menu");
                 System.out.print("Choose your action: ");
 
-                int choice = utils.InputUtil.scanInput();
-                utils.InputUtil.scan.nextLine();
+                int choice = InputUtil.scanInput();
                 PrintUtil.shortLine();
 
                 switch (choice) {

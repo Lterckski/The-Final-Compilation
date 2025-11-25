@@ -19,7 +19,7 @@ public class World2Miniboss2 extends Enemy {
 
         // Check immunity to debuff
         Armor equippedArmor = target.getInventory().getEquippedArmor();
-        if (equippedArmor != null && equippedArmor.checkEffectsImmunity()) {
+        if (equippedArmor != null && equippedArmor.checkDebuffImmunity()) {
             System.out.println("✨ " + target.getName() + " resisted Weaken 👑 due to " + equippedArmor.getName() + "!");
             PrintUtil.pause(800);
         } else{
@@ -111,7 +111,8 @@ public class World2Miniboss2 extends Enemy {
     @Override
     public void turn(Character target) {
         if(!target.getEffects().hasAtkDebuff()){
-            crownOfDespair(target);
+            if (RandomUtil.chance(50)) crownOfDespair(target);
+            else darkJudgement(target);
         } else{
             if (RandomUtil.chance(66)) darkJudgement(target);
             else kingsWrath(target);
@@ -139,7 +140,6 @@ public class World2Miniboss2 extends Enemy {
             System.out.print("\nChoose one to equip (1 or 2): ");
 
             int choice = InputUtil.scanInput();
-            InputUtil.scan.nextLine();
 
             if (choice == 1) {
                 twinstrikeBlade.equip(player);
@@ -165,7 +165,6 @@ public class World2Miniboss2 extends Enemy {
             System.out.print("\nChoose one to equip (1 or 2): ");
 
             int choice = InputUtil.scanInput();
-            InputUtil.scan.nextLine();
 
             if (choice == 1) {
                 twinshotBow.equip(player);
@@ -191,7 +190,6 @@ public class World2Miniboss2 extends Enemy {
             System.out.print("\nChoose one to equip (1 or 2): ");
 
             int choice = InputUtil.scanInput();
-            InputUtil.scan.nextLine();
 
             if (choice == 1) {
                 mysticMindStaff.equip(player);

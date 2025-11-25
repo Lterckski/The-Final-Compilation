@@ -1,6 +1,5 @@
 package utils;
 
-import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class InputUtil {
@@ -13,13 +12,19 @@ public class InputUtil {
         scan.nextLine();  // waits for user to press ENTER
     }
 
-    public static int scanInput(){
-        while (true) {
-            try {
-                return scan.nextInt();
-            } catch (InputMismatchException e) {
+    public static int scanInput() {
+        String input = scan.nextLine();
+        try {
+            // Split by whitespace; if more than one token, it's invalid
+            String[] tokens = input.split("\\s+");
+            if (tokens.length == 1) {
+                return Integer.parseInt(tokens[0]);
+            } else {
                 return 9;
             }
+        } catch (NumberFormatException e) {
+            return 9;
         }
     }
+
 }

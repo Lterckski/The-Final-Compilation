@@ -80,6 +80,7 @@ public class Tester {
         System.out.println("1 - Kael Saint Laurent (Swordsman)");
         System.out.println("2 - Karl Clover Dior IV (Archer)");
         System.out.println("3 - Simon Versace (Mage)");
+        System.out.println("4 - Null (Test)");
         System.out.println("-------------------------------------");
 
         int choice;
@@ -108,59 +109,26 @@ public class Tester {
                     ((Simon) player).showBackstory();
                     player.getInventory().setEquippedWeapon(Staff.WOODEN_STAFF);
                 }
+                case 4 -> {
+                    player = new Null();
+                    System.out.println("You selected " + player.getName() + "!");
+                    player.getInventory().setEquippedWeapon(Staff.WOODEN_STAFF);
+                }
                 default -> System.out.println("❌ Invalid input! Please select a valid option.");
             }
         } while (player == null);  // repeat until valid choice
         player.getInventory().setEquippedArmor(Armor.LEATHER_GUARD);
 
-        /*
-        Sword sword1 = Sword.IRON_SHORTSWORD;
-        sword1.equip(player);
-        */
-        /*
-        Bow bow1 = Bow.GOLDEN_TALON;
-        Armor armor1 = Armor.LEATHER_GUARD;
-        armor1.equip(player);
-        */
+        Enemy testEnemy1 = new World2Miniboss1();
+        Battle testBattle1 = new Battle(player, testEnemy1);
+        testBattle1.startBattle();
+        testEnemy1.dropLoot(player);
 
-        System.out.println();
-
-        Enemy test = new World3Miniboss1();
-
-        player.gainExp(60000);
-        test.dropLoot(player);
+        Enemy testEnemy2 = new World2Miniboss2();
+        Battle testBattle2 = new Battle(player, testEnemy2);
+        testBattle2.startBattle();
+        testEnemy2.dropLoot(player);
 
 
-        Enemy khai = new FinalBoss();
-        Battle finalBattle = new Battle(player,khai);
-
-        System.out.println("FINAL BOSS BATTLE");
-        finalBattle.startBattle();
-
-
-
-        Enemy enemy1 = new World3Miniboss1();
-        Battle battle1 = new Battle(player, enemy1);
-
-        System.out.println("ENEMY ENCOUNTERED!");
-        battle1.startBattle();
-        /*
-        Sword sword2 = Sword.CELESTIAL_EDGE;
-        */
-
-        if(!enemy1.isAlive()){
-            player.gainExp(enemy1.rewardExp());
-            enemy1.dropLoot(player);
-        }
-
-        Enemy enemy2 = new World1Miniboss1();
-        Battle battle2 = new Battle(player, enemy2);
-
-        System.out.println("ENEMY ENCOUNTERED!");
-        battle2.startBattle();
-
-        if(!enemy2.isAlive()){
-            enemy2.dropLoot(player);
-        }
     }
 }

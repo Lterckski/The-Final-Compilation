@@ -118,7 +118,6 @@ public class World2Miniboss1 extends Enemy{
         System.out.print("\nChoose one to equip (1 or 2): ");
 
         int choice = InputUtil.scanInput();
-        utils.InputUtil.scan.nextLine();
 
         if (choice == 1) {
             aegisMail.equip(player);

@@ -18,28 +18,38 @@ public class Potions {
     public int getFullHealingPotions(){ return fullHealingPotions; }
     public int getEnergyPotions(){ return energyPotions; }
 
-    public void useNormalHealingPotion(){
-        if(normalHealingPotions <= 0){
+    public void useNormalHealingPotion() {
+        if (normalHealingPotions <= 0) {
             System.out.println("❌ No Normal Healing Potions left!");
             PrintUtil.pause(800);
             return;
         }
         normalHealingPotions--;
+
+        int oldHP = owner.getHp();
         int healAmount = (int) (owner.getMaxHP() * 0.20);
         owner.heal(healAmount);
-        System.out.println("💖✨ Used a Normal Healing Potion! Restored " + healAmount +  " (HP : " + owner.getHp() + "/" + owner.getMaxHP() + ")");
+        int newHP = owner.getHp();
+
+        System.out.println("💖✨ Used a Normal Healing Potion! Restored "
+                + healAmount + " HP (" + oldHP + " → " + newHP + ")");
         PrintUtil.pause(800);
     }
 
-    public void useFullHealingPotion(){
-        if(fullHealingPotions <= 0){
+    public void useFullHealingPotion() {
+        if (fullHealingPotions <= 0) {
             System.out.println("❌ No Full Healing Potions left!");
             PrintUtil.pause(800);
             return;
         }
         fullHealingPotions--;
+
+        int oldHP = owner.getHp();
         owner.heal(owner.getMaxHP());
-        System.out.println("💖✨ Used a Full Healing Potion! Restored to max HP!" + " (HP : " + owner.getHp() + "/" + owner.getMaxHP() + ")");
+        int newHP = owner.getHp();
+
+        System.out.println("💖✨ Used a Full Healing Potion! Fully restored HP! "
+                + "(" + oldHP + " → " + newHP + ")");
         PrintUtil.pause(800);
     }
 
@@ -54,7 +64,7 @@ public class Potions {
 
         String energyName = owner.getEnergyName();
         String energyEmoji = owner.getEnergyEmoji();
-        int currentEnergy = owner.getEnergy();
+        int oldEnergy = owner.getEnergy();
         int energyRestored = 0;
 
         switch (owner.getClassType()) {
@@ -64,13 +74,13 @@ public class Potions {
         }
 
         owner.restoreEnergy(energyRestored);
+        int newEnergy = owner.getEnergy();
 
-        System.out.println(energyEmoji + "✨ Used an " + energyName + " Potion! Restored "
-                + energyRestored + " " + energyName + " (" + energyName + ": "
-                + (owner.getEnergy()) + ")");
+        System.out.println(energyEmoji + "✨ Used an Energy Potion! Restored "
+                + energyRestored + " " + energyName + " ("
+                + oldEnergy + " → " + newEnergy + ")");
         PrintUtil.pause(800);
     }
-
 
     public void lootPotions(){
         int totalDrops = RandomUtil.range(1, 3);

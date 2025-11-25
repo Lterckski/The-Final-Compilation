@@ -1,6 +1,7 @@
 package inventory;
 
 import characters.Character;
+import utils.InputUtil;
 import utils.PrintUtil;
 import utils.RandomUtil;
 
@@ -47,8 +48,7 @@ public class Armor {
         do {
             validChoice = true;
             System.out.println("Do you want to pick it up? (1 = Yes, 0 = No)");
-            int choice = utils.InputUtil.scanInput();
-            utils.InputUtil.scan.nextLine();
+            int choice = InputUtil.scanInput();
 
             if (choice == 1) {
                 pickUp = true;
@@ -57,8 +57,7 @@ public class Armor {
                 boolean validConfirm  = true;
                 do {
                     System.out.println("Are you sure you want to ignore the armor? (1 = Yes, 0 = No)");
-                    int confirm = utils.InputUtil.scanInput();
-                    utils.InputUtil.scan.nextLine();
+                    int confirm = InputUtil.scanInput();
 
                     if (confirm == 1) {
                         System.out.println("You ignored the armor.");
@@ -103,7 +102,6 @@ public class Armor {
         System.out.println("-----------------------------");
         PrintUtil.pause(800);
     }
-
 
     public void unequip(Character player) {
         player.setDefense(player.getDefense() - defBuff);

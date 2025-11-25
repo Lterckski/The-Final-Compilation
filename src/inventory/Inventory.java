@@ -51,26 +51,76 @@ public class Inventory {
             System.out.print("Choose an option: ");
 
             int choice = InputUtil.scanInput();
-            InputUtil.scan.nextLine();
             PrintUtil.line();
 
             switch (choice) {
                 case 1 -> equippedWeapon.displayInfo();
                 case 2 -> equippedArmor.displayInfo();
-                case 3 -> {
-                    if (potions.getNormalHealingPotions() > 0) {
-                        if (areYouSure()) potions.useNormalHealingPotion();
-                    } else System.out.println("❌ No normal healing potions left!");
+                case 3 -> { // Normal Healing Potion
+                    int available = potions.getNormalHealingPotions();
+                    if (available > 0) {
+                        int amount = 0;
+                        while (true) {
+                            System.out.println("You have " + available + " normal healing potions.");
+                            System.out.print("How many do you want to use? ");
+                            amount = InputUtil.scanInput();
+
+                            if (amount > 0 && amount <= available) break;
+                            System.out.println("❌ Invalid amount! Please enter a number between 1 and " + available);
+                        }
+
+                        if (areYouSure()) {
+                            for (int i = 0; i < amount; i++) {
+                                potions.useNormalHealingPotion();
+                            }
+                        }
+                    } else {
+                        System.out.println("❌ No normal healing potions left!");
+                    }
                 }
-                case 4 -> {
-                    if (potions.getFullHealingPotions() > 0) {
-                        if (areYouSure()) potions.useFullHealingPotion();
-                    } else System.out.println("❌ No full healing potions left!");
+                case 4 -> { // Full Healing Potion
+                    int available = potions.getFullHealingPotions();
+                    if (available > 0) {
+                        int amount = 0;
+                        while (true) {
+                            System.out.println("You have " + available + " full healing potions.");
+                            System.out.print("How many do you want to use? ");
+                            amount = InputUtil.scanInput();
+
+                            if (amount > 0 && amount <= available) break;
+                            System.out.println("❌ Invalid amount! Please enter a number between 1 and " + available);
+                        }
+
+                        if (areYouSure()) {
+                            for (int i = 0; i < amount; i++) {
+                                potions.useFullHealingPotion();
+                            }
+                        }
+                    } else {
+                        System.out.println("❌ No full healing potions left!");
+                    }
                 }
-                case 5 -> {
-                    if (potions.getEnergyPotions() > 0) {
-                        if (areYouSure()) potions.useEnergyPotion();
-                    } else System.out.println("❌ No energy potions left!");
+                case 5 -> { // Energy Potion
+                    int available = potions.getEnergyPotions();
+                    if (available > 0) {
+                        int amount = 0;
+                        while (true) {
+                            System.out.println("You have " + available + " energy potions.");
+                            System.out.print("How many do you want to use? ");
+                            amount = InputUtil.scanInput();
+
+                            if (amount > 0 && amount <= available) break;
+                            System.out.println("❌ Invalid amount! Please enter a number between 1 and " + available);
+                        }
+
+                        if (areYouSure()) {
+                            for (int i = 0; i < amount; i++) {
+                                potions.useEnergyPotion();
+                            }
+                        }
+                    } else {
+                        System.out.println("❌ No energy potions left!");
+                    }
                 }
                 case 0 -> exit = true;
                 default -> System.out.println("❌ Invalid input! Try again.");
@@ -85,7 +135,6 @@ public class Inventory {
         do {
             System.out.println("Are you sure you want to use a potion? (1 = Yes, 0 = No)");
             confirm = InputUtil.scanInput();
-            InputUtil.scan.nextLine();
 
             if (confirm == 1) {
                 break;

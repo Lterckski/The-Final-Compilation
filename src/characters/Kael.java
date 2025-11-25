@@ -1,6 +1,7 @@
 package characters;
 
 import enemies.FinalBoss;
+import utils.InputUtil;
 import utils.PrintUtil;
 import utils.RandomUtil;
 
@@ -205,8 +206,7 @@ public class Kael extends  Character{      // 15% crit chance
                 System.out.println("[5] Show Menu");
                 System.out.print("Choose your action: ");
 
-                int choice = utils.InputUtil.scanInput();
-                utils.InputUtil.scan.nextLine();
+                int choice = InputUtil.scanInput();
                 PrintUtil.shortLine();
 
                 switch (choice) {
@@ -228,8 +228,7 @@ public class Kael extends  Character{      // 15% crit chance
                 System.out.println("[5] Show Menu");
                 System.out.print("Choose your action: ");
 
-                int choice = utils.InputUtil.scanInput();
-                utils.InputUtil.scan.nextLine();
+                int choice = InputUtil.scanInput();
                 PrintUtil.shortLine();
 
                 switch (choice) {

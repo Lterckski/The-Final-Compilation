@@ -1,5 +1,6 @@
 package characters;
 
+import utils.InputUtil;
 import utils.PrintUtil;
 import utils.RandomUtil;
 
@@ -27,7 +28,7 @@ public class Simon extends Character {
         System.out.println("- 30% chance to Freeze (target skips 1 turn)");
         System.out.println("- If frozen, reduces DEF by 15% for 2 turns\n");
 
-        System.out.println("☄️ Ultimate – Meteor Storm (⚡40 EnergyMana)");
+        System.out.println("☄️ Ultimate – Meteor Storm (40 Mana)");
         System.out.println("Description: Summons a storm of blazing meteors, striking the opponent multiple times with devastating force.");
         System.out.println("Damage: 5 hits, each dealing (" + (int)(attack * 1.00) + " — " + (int)(attack * 1.50) + ")");
         System.out.println("Effects:");
@@ -58,11 +59,15 @@ public class Simon extends Character {
 
     private void arcaneFlow() {
         int restored = (int)(maxEnergy * 0.05);
+        int before = energy;
         this.restoreEnergy(restored);
+        int after = energy;
 
-        System.out.println("✨ Arcane Flow restores " + restored + " Mana! " + "(💧 Mana: " + energy + "/" + maxEnergy + ")");
+        System.out.println("✨ Arcane Flow restores " + restored + " Mana! " +
+                "(💧 " + before + " → " + after + ")");
         PrintUtil.pause(800);
     }
+
 
     // Skill 1 – Fireball
     public void fireball(Character target) {
@@ -193,8 +198,7 @@ public class Simon extends Character {
                 System.out.println("[5] Show Menu");
                 System.out.print("Choose your action: ");
 
-                int choice = utils.InputUtil.scanInput();
-                utils.InputUtil.scan.nextLine();
+                int choice = InputUtil.scanInput();
                 PrintUtil.shortLine();
 
                 switch (choice) {
@@ -217,8 +221,7 @@ public class Simon extends Character {
                 System.out.println("[5] Show Menu");
                 System.out.print("Choose your action: ");
 
-                int choice = utils.InputUtil.scanInput();
-                utils.InputUtil.scan.nextLine();
+                int choice = InputUtil.scanInput();
                 PrintUtil.shortLine();
 
                 switch (choice) {

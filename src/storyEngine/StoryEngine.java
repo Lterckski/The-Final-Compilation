@@ -1,9 +1,7 @@
 package storyEngine;
 
+import characters.*;
 import characters.Character;
-import characters.Kael;
-import characters.Karl;
-import characters.Simon;
 import inventory.Armor;
 import inventory.Bow;
 import inventory.Staff;
@@ -67,19 +65,19 @@ public class StoryEngine {
         System.out.println();
     }
 
-    private characters.Character chooseCharacter() {
-        characters.Character player = null;
+    private Character chooseCharacter() {
+        Character player = null;
 
         do {
             PrintUtil.line();
             System.out.println("[1] Kael Saint Laurent (Swordsman)");
             System.out.println("[2] Karl Clover Dior IV (Archer)");
             System.out.println("[3] Simon Versace (Mage)");
+            System.out.println("[4] Null (Test)");
             PrintUtil.line();
 
             System.out.print("Select your character: ");
             int choice = InputUtil.scanInput();
-            InputUtil.scan.nextLine();
 
             switch (choice) {
                 case 1 -> {
@@ -134,6 +132,22 @@ public class StoryEngine {
                         PrintUtil.line();
                     }
                 }
+                case 4 -> {
+                    Null test = new Null();
+                    if (characterMenu(test)) {
+                        player = test;
+                        PrintUtil.line();
+                        System.out.println("🧙‍♂️ You have chosen " + player.getName() + ", the wise Mage!");
+                        PrintUtil.line();
+                        System.out.println("✨ The arcane forces converge to gift you ancient relics of power...");
+                        player.getInventory().setEquippedWeapon(Staff.WOODEN_STAFF);
+                        player.getInventory().setEquippedArmor(Armor.LEATHER_GUARD);
+                        System.out.println("🔮 *The --" + player.getInventory().getEquippedWeapon().getName() + "-- pulses faintly, whispering secrets of forgotten spells.*");
+                        System.out.println("🛡️ *The --" + player.getInventory().getEquippedArmor().getName() + "-- shimmers with faint runes — fragile, yet brimming with arcane energy.*");
+                        System.out.println("💫 Magic stirs in the air around you as your journey begins...");
+                        PrintUtil.line();
+                    }
+                }
                 default -> System.out.println("❌ Invalid choice! Please select a valid option.");
             }
         } while (player == null);
@@ -153,7 +167,6 @@ public class StoryEngine {
 
             System.out.print("Enter choice: ");
             int choice = InputUtil.scanInput();
-            InputUtil.scan.nextLine();
             PrintUtil.line();
 
             switch (choice) {

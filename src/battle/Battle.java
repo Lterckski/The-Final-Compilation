@@ -36,7 +36,6 @@ public class Battle {
 
             System.out.print("Enter choice: ");
             int choice = InputUtil.scanInput();
-            InputUtil.scan.nextLine();
             PrintUtil.line();
 
             switch (choice){

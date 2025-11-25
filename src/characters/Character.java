@@ -165,7 +165,6 @@ public abstract class Character {
 
             System.out.print("Enter choice: ");
             int choice = InputUtil.scanInput();
-            InputUtil.scan.nextLine();
             PrintUtil.line();
 
             switch (choice){
@@ -280,9 +279,7 @@ public abstract class Character {
             level++;
             PrintUtil.hr();
             System.out.println("✨ LEVEL UP! You are now Level " + level + "! ✨");
-            PrintUtil.pause(800);
             System.out.println("💖 HP & " + getEnergyEmoji() + " " + getEnergyName() + " Restored!");
-            PrintUtil.pause(800);
 
             int oldHp = maxHP;
             int oldAtk = baseAttack;
@@ -291,13 +288,13 @@ public abstract class Character {
 
             switch (classType) {
                 case "Swordsman" -> {
-                    maxHP += 110 + (int)(maxHP * 0.02);
+                    maxHP += 100 + (int)(maxHP * 0.02);
                     baseAttack += 2;
                     baseDefense += 2;
                     maxEnergy += 5;
                 }
                 case "Archer" -> {
-                    maxHP += 80 + (int)(maxHP * 0.02);
+                    maxHP += 70 + (int)(maxHP * 0.02);
                     baseAttack += 4;
                     baseDefense += 1;
                     if (level % 10 == 0) {
@@ -305,7 +302,7 @@ public abstract class Character {
                     }
                 }
                 case "Mage" -> {
-                    maxHP += 70 + (int)(maxHP * 0.015);
+                    maxHP += 50 + (int)(maxHP * 0.015);
                     baseAttack += 5;
                     baseDefense += 1;
                     maxEnergy += 10;

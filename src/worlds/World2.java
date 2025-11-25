@@ -88,7 +88,7 @@ public class World2 {
 
         for (int i = 1; i <= 2; i++) {
             PrintUtil.hr();
-            System.out.println("☠️ Cultist " + i + " raises a cursed dagger!");
+            System.out.println("☠️ Forsaken Cultist " + i + " raises a cursed dagger!");
             PrintUtil.hr();
 
             battle2.startBattle();
