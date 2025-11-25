@@ -57,6 +57,11 @@ public class Inventory {
                 case 1 -> equippedWeapon.displayInfo();
                 case 2 -> equippedArmor.displayInfo();
                 case 3 -> { // Normal Healing Potion
+                    if (player.getHp() >= player.getMaxHP()) {
+                        System.out.println("💡 Your HP is already full! No need to use a potion.");
+                        break;
+                    }
+
                     int available = potions.getNormalHealingPotions();
                     if (available > 0) {
                         int amount = 0;
@@ -71,7 +76,12 @@ public class Inventory {
 
                         if (areYouSure()) {
                             for (int i = 0; i < amount; i++) {
-                                potions.useNormalHealingPotion();
+                                if (player.getHp() < player.getMaxHP()) {
+                                    potions.useNormalHealingPotion();
+                                } else {
+                                    System.out.println("💡 HP is full. Remaining potions not used.");
+                                    break;
+                                }
                             }
                         }
                     } else {
@@ -79,6 +89,11 @@ public class Inventory {
                     }
                 }
                 case 4 -> { // Full Healing Potion
+                    if (player.getHp() >= player.getMaxHP()) {
+                        System.out.println("💡 Your HP is already full! No need to use a potion.");
+                        break;
+                    }
+
                     int available = potions.getFullHealingPotions();
                     if (available > 0) {
                         int amount = 0;
@@ -93,7 +108,12 @@ public class Inventory {
 
                         if (areYouSure()) {
                             for (int i = 0; i < amount; i++) {
-                                potions.useFullHealingPotion();
+                                if (player.getHp() < player.getMaxHP()) {
+                                    potions.useFullHealingPotion();
+                                } else {
+                                    System.out.println("💡 HP is full. Remaining potions not used.");
+                                    break;
+                                }
                             }
                         }
                     } else {
@@ -101,6 +121,11 @@ public class Inventory {
                     }
                 }
                 case 5 -> { // Energy Potion
+                    if (player.getEnergy() >= player.getMaxEnergy()) {
+                        System.out.println("💡 Your Energy is already full! No need to use a potion.");
+                        break;
+                    }
+
                     int available = potions.getEnergyPotions();
                     if (available > 0) {
                         int amount = 0;
@@ -115,7 +140,12 @@ public class Inventory {
 
                         if (areYouSure()) {
                             for (int i = 0; i < amount; i++) {
-                                potions.useEnergyPotion();
+                                if (player.getEnergy() < player.getMaxEnergy()) {
+                                    potions.useEnergyPotion();
+                                } else {
+                                    System.out.println("💡 Energy is full. Remaining potions not used.");
+                                    break;
+                                }
                             }
                         }
                     } else {
@@ -127,6 +157,7 @@ public class Inventory {
             }
         }
     }
+
 
     // --- Confirmation prompt ---
     private boolean areYouSure() {

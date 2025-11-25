@@ -113,6 +113,46 @@ public class World2 {
         PrintUtil.line();
         player.getEffects().resetAllEffects();
 
+        // -------------------- Blight Hounds --------------------
+        PrintUtil.effect("A low growl echoes from the halls ahead...");
+        PrintUtil.type("""
+                From the black mist, two Blight Hounds leap forth,
+                their fangs glinting and bodies wrapped in poisonous clouds.
+                """);
+
+        PrintUtil.type("🎯 Objective: Defeat 3 Blight Hounds!\n");
+        InputUtil.pressEnterToContinue();
+        PrintUtil.line();
+
+        Enemy enemy3 = new World2Enemy3();
+        Battle battle3 = new Battle(player, enemy3);
+        for (int i = 1; i <= 3; i++) {
+            PrintUtil.hr();
+            System.out.println("🐕 Blight Hound " + i + " snarls and lunges!");
+            PrintUtil.hr();
+
+            battle3.startBattle();
+
+            System.out.println("✅ You have defeated Blight Hound " + i + "!");
+            PrintUtil.line();
+            enemy3.dropLoot(player);
+
+            if (i < 3) {
+                enemy3 = new World2Enemy3();
+                battle3 = new Battle(player, enemy3);
+            }
+        }
+
+        PrintUtil.line();
+        PrintUtil.type("""
+                🎉 Victory! The Blight Hounds are no more.
+                The air still hums with dark energy, but you stand victorious.
+                """);
+        PrintUtil.loot("You gain experience and loot from your grim battle.\n");
+        InputUtil.pressEnterToContinue();
+        PrintUtil.line();
+        player.getEffects().resetAllEffects();
+
         // -------------------- Ghoul Footmen --------------------
         PrintUtil.title("THE BLACK CASTLE");
         PrintUtil.event("Thunder cracks as you push open the gates.");
@@ -127,23 +167,23 @@ public class World2 {
         InputUtil.pressEnterToContinue();
         PrintUtil.line();
 
-        Enemy enemy3 = new World2Enemy3();
-        Battle battle3 = new Battle(player, enemy3);
+        Enemy enemy4 = new World2Enemy4();
+        Battle battle4 = new Battle(player, enemy4);
 
         for(int i = 1; i <= 2; i++){
             PrintUtil.hr();
             System.out.println("🪓 Ghoul Footman " + i + " staggers toward you!");
             PrintUtil.hr();
 
-            battle3.startBattle();
+            battle4.startBattle();
 
             System.out.println("✅ You have defeated Ghoul Footman " + i + "!");
             PrintUtil.line();
-            enemy3.dropLoot(player);
+            enemy4.dropLoot(player);
 
             if (i < 2) {
-                enemy3 = new World2Enemy3();
-                battle3 = new Battle(player, enemy3);
+                enemy4 = new World2Enemy4();
+                battle4 = new Battle(player, enemy4);
             }
         }
 
@@ -153,46 +193,6 @@ public class World2 {
                 You tighten your grip on your weapon, ready for whatever lies ahead.
                 """);
         PrintUtil.loot("You gain experience and loot from your hard-fought battle.\n");
-        InputUtil.pressEnterToContinue();
-        PrintUtil.line();
-        player.getEffects().resetAllEffects();
-
-        // -------------------- Blight Hounds --------------------
-        PrintUtil.effect("A low growl echoes from the halls ahead...");
-        PrintUtil.type("""
-                From the black mist, two Blight Hounds leap forth,
-                their fangs glinting and bodies wrapped in poisonous clouds.
-                """);
-
-        PrintUtil.type("🎯 Objective: Defeat 3 Blight Hounds!\n");
-        InputUtil.pressEnterToContinue();
-        PrintUtil.line();
-
-        Enemy enemy4 = new World2Enemy3();
-        Battle battle4 = new Battle(player, enemy4);
-        for (int i = 1; i <= 3; i++) {
-            PrintUtil.hr();
-            System.out.println("🐕 Blight Hound " + i + " snarls and lunges!");
-            PrintUtil.hr();
-
-            battle4.startBattle();
-
-            System.out.println("✅ You have defeated Blight Hound " + i + "!");
-            PrintUtil.line();
-            enemy4.dropLoot(player);
-
-            if (i < 3) {
-                enemy4 = new World2Enemy4();
-                battle4 = new Battle(player, enemy4);
-            }
-        }
-
-        PrintUtil.line();
-        PrintUtil.type("""
-                🎉 Victory! The Blight Hounds are no more.
-                The air still hums with dark energy, but you stand victorious.
-                """);
-        PrintUtil.loot("You gain experience and loot from your grim battle.\n");
         InputUtil.pressEnterToContinue();
         PrintUtil.line();
         player.getEffects().resetAllEffects();

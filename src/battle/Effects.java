@@ -113,7 +113,7 @@ public class Effects {
 
     // Fixed amount version (like a shield)
     public void applyDefenseBuff(int amount, int duration, boolean fixedAmountIsPassed) {
-        defDebuffs.add(new StatModifier(amount, duration));
+        defBuffs.add(new StatModifier(amount, duration));
         owner.setDefense(owner.getDefense() - amount);
 
         System.out.println("🛡️ Shield activated! +" + amount + " DEF for " + duration + " turn/s!");
