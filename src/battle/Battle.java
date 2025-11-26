@@ -70,12 +70,12 @@ public class Battle {
         System.out.println("┌─────────────────────────────────────────────────────────────────────────────────┐");
 
         // HP line
-        System.out.printf(" 💚 Your HP      : [%s] %d/%d     🖤 Enemy HP     : [%s] %d/%d%n",
+        System.out.printf("  💚 Your HP      : [%s] %d/%d     🖤 Enemy HP     : [%s] %d/%d%n",
                 playerHpBar, player.getHp(), player.getMaxHP(),
                 enemyHpBar, enemy.getHp(), enemy.getMaxHP());
 
         // Energy / Stamina line
-        System.out.printf(" 🔋 Stamina      : [%s] %d/%d%n",
+        System.out.printf("  🔋 Stamina      : [%s] %d/%d%n",
                 playerStaminaBar, player.getEnergy(), player.getMaxEnergy());
 
         // If enemy has shield
@@ -86,8 +86,6 @@ public class Battle {
         // Bottom border
         System.out.println("└─────────────────────────────────────────────────────────────────────────────────┘");
     }
-
-
 
     // ---------- BATTLE LOOP ----------
     public void battleLoop() {
@@ -102,32 +100,52 @@ public class Battle {
         while (player.isAlive() && enemy.isAlive()) {
 
             // -------- PLAYER TURN --------
+            // Update buffs/debuffs before the player acts
             player.getEffects().updateAttackModifiers();
             player.getEffects().updateDefenseModifiers();
 
-            displayBattleStats();
-            System.out.println("-- Your Turn --");
-            player.turn(enemy);
+            if (player.getEffects().checkEffects()) {
+                // --- PLAYER STATUS TRACKER ---
+                System.out.println();
+                displayBattleStats();
 
+                System.out.println("-- Your Turn --");
+                player.turn(enemy);
+            } else {
+                InputUtil.pressEnterToContinue();
+            }
+
+            // Apply poison/burn etc. after action
             player.getEffects().updateDoTEffects();
             PrintUtil.line();
 
-            if (!enemy.isAlive()) break;
+            if (!enemy.isAlive()) {
+                //System.out.println("🔥 You defeated " + enemy.getName() + "!");
+                break;
+            }
 
             // -------- ENEMY TURN --------
+            // Update buffs/debuffs before enemy acts
             enemy.getEffects().updateAttackModifiers();
             enemy.getEffects().updateDefenseModifiers();
 
-            System.out.println("\n-- Enemy Turn --");
-            PrintUtil.pause(800);
-            enemy.turn(player);
+            if (enemy.getEffects().checkEffects()) {
+                System.out.println("\n-- Enemy Turn --");
+                PrintUtil.pause(800);
+                enemy.turn(player);
+            }
+
+            // Apply DoT after enemy acts
             enemy.getEffects().updateDoTEffects();
             InputUtil.pressEnterToContinue();
             PrintUtil.line();
         }
 
-        if (!player.isAlive()) gameOver();
+        if (!player.isAlive()) {
+            gameOver();
+        }
     }
+
 
     public void gameOver() {
         PrintUtil.line();
