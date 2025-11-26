@@ -64,20 +64,22 @@ public class World1Miniboss1 extends Enemy {
 
     @Override
     public void displaySkills() {
-        System.out.println("\n------- THE HOLLOW STAG SKILLS -------");
-        System.out.println("Skill 1 – Deathly Charge");
-        System.out.println("Description: The Hollow Stag charges with deadly force, attempting to stun its foe.");
-        System.out.println("Damage: (" + (int)(attack * 1.00) + " — " + (int)(attack * 1.20) + ")");
-        System.out.println("Effects:");
-        System.out.println("- 30% chance to Stun the target\n");
+        System.out.println("\n🦌------- THE HOLLOW STAG SKILLS -------🦌");
 
-        System.out.println("Skill 2 – Blackened Howl");
-        System.out.println("Description: The stag lets out a blackened howl, weakening its opponent's defenses.");
-        System.out.println("Damage: —");
-        System.out.println("Effects:");
-        System.out.println("- Reduces target’s DEF by 20% for 2 turns");
+        System.out.println("⚡ Skill 1 – Deathly Charge");
+        System.out.println("📝 Description: The Hollow Stag charges with deadly force, attempting to stun its foe.");
+        System.out.println("⚔️ Damage: (" + (int)(attack * 1.00) + " — " + (int)(attack * 1.20) + ")");
+        System.out.println("✨ Effects:");
+        System.out.println("- 30% chance to 😵 Stun the target\n");
+
+        System.out.println("🌑 Skill 2 – Blackened Howl");
+        System.out.println("📝 Description: The stag lets out a blackened howl, weakening its opponent's defenses.");
+        System.out.println("⚔️ Damage: —");
+        System.out.println("✨ Effects:");
+        System.out.println("- Reduces target’s 🛡️ DEF by 20% for 2 turns");
         System.out.println("--------------------------------------");
     }
+
 
     @Override
     public void turn(Character target) {

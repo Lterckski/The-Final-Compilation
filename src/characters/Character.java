@@ -117,19 +117,32 @@ public abstract class Character {
     }
 
     public void displayStats() {
+        String energyLabel;
+
         System.out.println("\n=========== Stats ============");
-        System.out.printf("%-8s: %s (%s)%n", "Name", name, classType);
+        System.out.printf("%-8s: %s (%s)%n", "\uD83E\uDDD1\u200D\uD83D\uDCBB Name", name, classType);
 
         if (level == 30) {
-            System.out.printf("%-8s: MAX%n", "Level");
-            System.out.printf("%-8s: MAX%n", "EXP");
+            System.out.printf("%-8s: MAX%n", "\uD83C\uDFC6 Level");
+            System.out.printf("%-8s: MAX%n", "✨ EXP");
         } else {
-            System.out.printf("%-8s: %d%n", "Level", level);
-            System.out.printf("%-8s: %d/%d%n", "EXP", exp, nextLevelExp);
+            System.out.printf("%-8s: %d%n", "\uD83C\uDFC6 Level", level);
+            System.out.printf("%-8s: %d/%d%n", "✨ EXP", exp, nextLevelExp);
         }
 
-        System.out.printf("%-8s: %d/%d%n", "HP", hp, maxHP);
-        System.out.printf("%-8s: %d/%d%n", getEnergyName(), energy, maxEnergy);
+        System.out.printf("%-8s: %d/%d%n", "\uD83D\uDC9A HP", hp, maxHP);
+
+        //Classifies if the character uses what type of stamina/energy/mana
+
+        if (classType.equalsIgnoreCase("Mage")) {
+            energyLabel = "💧 Mana";
+        } else if (classType.equalsIgnoreCase("Archer")) {
+            energyLabel = "➶ Arrows";
+        } else {
+            energyLabel = "🔋 Stamina";
+        }
+
+        System.out.printf("%-8s: %d/%d%n", energyLabel, energy, maxEnergy);
 
         int weaponAtkBonus = (getWeapon() != null) ? getWeapon().getAtkBuff() : 0;
         int armorDefBonus = (getArmor() != null) ? getArmor().getDefBuff() : 0;
@@ -141,10 +154,10 @@ public abstract class Character {
         String defLabel = (effectDefMod >= 0) ? "Buff" : "Debuff";
 
         System.out.printf("%-8s: %d  (Base %d | Weapon %+d | %s %+d)%n",
-                "Attack", attack, baseAttack, weaponAtkBonus, atkLabel, effectAtkMod);
+                "⚔\uFE0F Attack", attack, baseAttack, weaponAtkBonus, atkLabel, effectAtkMod);
 
         System.out.printf("%-8s: %d  (Base %d | Armor %+d | %s %+d)%n",
-                "Defense", defense, baseDefense, armorDefBonus, defLabel, effectDefMod);
+                "\uD83D\uDEE1\uFE0F Defense", defense, baseDefense, armorDefBonus, defLabel, effectDefMod);
 
         System.out.println("==============================\n");
     }
@@ -156,12 +169,12 @@ public abstract class Character {
         boolean goBack = false;
 
         while(!goBack){
-            System.out.println("(1) Open Inventory");
-            System.out.println("(2) Show Player Stats");
-            System.out.println("(3) Show Player Skills Overview");
-            System.out.println("(4) Show Enemy Stats");
-            System.out.println("(5) Show Enemy Skills Overview");
-            System.out.println("(0) Go back");
+            System.out.println("[1] \uD83C\uDF92 Open Inventory");
+            System.out.println("[2] \uD83E\uDDD1\u200D\uD83D\uDCBB Show Player Stats");
+            System.out.println("[3] \uD83D\uDCD6 Show Player Skills Overview");
+            System.out.println("[4] \uD83D\uDC79 Show Enemy Stats");
+            System.out.println("[5] \uD83D\uDCDD Show Enemy Skills Overview");
+            System.out.println("[0] \uD83D\uDD19 Go back");
 
             System.out.print("Enter choice: ");
             int choice = InputUtil.scanInput();

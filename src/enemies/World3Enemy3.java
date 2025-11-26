@@ -40,13 +40,14 @@ public class World3Enemy3 extends Enemy {
 
     @Override
     public void displaySkills() {
-        System.out.println("\n------- OBSIDIAN CRUSHER SKILLS -------");
-        System.out.println("Description: Obsidian Crusher slams the ground with blazing magma, stunning its victims.");
-        System.out.println("Damage: (" + (int)(attack * 1.00) + " — " + (int)(attack * 1.20) + ")");
-        System.out.println("Effects:");
-        System.out.println("- Chance to apply Stun to target");
+        System.out.println("\n🪨🔥------- OBSIDIAN CRUSHER SKILLS -------🔥🪨");
+        System.out.println("📝 Description: Obsidian Crusher slams the ground with blazing magma, stunning its victims.");
+        System.out.println("💥 Damage: (" + (int)(attack * 1.00) + " — " + (int)(attack * 1.20) + ")");
+        System.out.println("✨ Effects:");
+        System.out.println("- ⚡ Chance to apply Stun to target");
         System.out.println("---------------------------------------");
     }
+
 
     @Override
     public void turn(Character target) { magmaSlam(target); }

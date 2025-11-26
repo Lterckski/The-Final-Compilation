@@ -49,14 +49,16 @@ public class World2Enemy3 extends Enemy{
 
     @Override
     public void displaySkills() {
-        System.out.println("\n------- BLIGHT HOUNDS SKILLS -------");
-        System.out.println("Skill – Corpse Explosion");
-        System.out.println("Description: The Blight Hounds cause corpses to explode, damaging and weakening their target.");
-        System.out.println("Damage: (" + (int)(attack * 1.00) + " — " + (int)(attack * 1.55) + ")");
-        System.out.println("Effects:");
-        System.out.println("- 30% chance to reduce target’s DEF by 30% for 2 turns");
+        System.out.println("\n🐕‍🦺------- BLIGHT HOUNDS SKILLS -------🐕‍🦺");
+
+        System.out.println("💥 Skill – Corpse Explosion");
+        System.out.println("📝 Description: The Blight Hounds cause corpses to explode, damaging and weakening their target.");
+        System.out.println("⚔️ Damage: (" + (int)(attack * 1.00) + " — " + (int)(attack * 1.55) + ")");
+        System.out.println("✨ Effects:");
+        System.out.println("- 🛡️ 30% chance to reduce target’s DEF by 30% for 2 turns");
         System.out.println("------------------------------------");
     }
+
 
     @Override
     public void turn(Character target) {

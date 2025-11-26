@@ -86,25 +86,27 @@ public class World2Miniboss2 extends Enemy {
 
     @Override
     public void displaySkills() {
-        System.out.println("\n------- THE CORRUPTED KING SKILLS -------");
-        System.out.println("Skill 1 – Crown of Despair");
-        System.out.println("Description: The Corrupted King raises his crown, instilling fear and weakening his foe.");
-        System.out.println("Damage: —");
-        System.out.println("Effects:");
-        System.out.println("- Reduces hero’s ATK by 20% for 2 turns (Weaken)\n");
+        System.out.println("\n👑------- THE CORRUPTED KING SKILLS -------👑");
 
-        System.out.println("Skill 2 – Dark Judgement");
-        System.out.println("Description: A shadowy strike that crushes the hero with dark energy.");
-        System.out.println("Damage: (" + (int)(attack * 1.0) + " — " + (int)(attack * 1.15) + ")");
-        System.out.println("Effects: —\n");
+        System.out.println("💀 Skill 1 – Crown of Despair");
+        System.out.println("📝 Description: The Corrupted King raises his crown, instilling fear and weakening his foe.");
+        System.out.println("💥 Damage: —");
+        System.out.println("✨ Effects:");
+        System.out.println("- ⚔️ Reduces hero’s ATK by 20% for 2 turns (Weaken)\n");
 
-        System.out.println("Skill 3 – King’s Wrath");
-        System.out.println("Description: The Corrupted King unleashes a furious strike, overwhelming his enemy.");
-        System.out.println("Damage: (" + (int)(attack * 0.71) + " — " + (int)(attack * 0.85) + ")");
-        System.out.println("Effects:");
-        System.out.println("- 30% chance to Stun the target");
+        System.out.println("🌑 Skill 2 – Dark Judgement");
+        System.out.println("📝 Description: A shadowy strike that crushes the hero with dark energy.");
+        System.out.println("💥 Damage: (" + (int)(attack * 1.0) + " — " + (int)(attack * 1.15) + ")");
+        System.out.println("✨ Effects: —\n");
+
+        System.out.println("🔥 Skill 3 – King’s Wrath");
+        System.out.println("📝 Description: The Corrupted King unleashes a furious strike, overwhelming his enemy.");
+        System.out.println("💥 Damage: (" + (int)(attack * 0.71) + " — " + (int)(attack * 0.85) + ")");
+        System.out.println("✨ Effects:");
+        System.out.println("- ⚡ 30% chance to Stun the target");
         System.out.println("-----------------------------------------");
     }
+
 
 
 
