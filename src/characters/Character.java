@@ -25,7 +25,7 @@ public abstract class Character {
     protected int energyName;
     protected int maxEnergy;       // track max energy
     protected int attack;
-
+    protected boolean reviveUsed = false;
     protected int baseAttack;
     protected int baseDefense;
 
@@ -105,6 +105,12 @@ public abstract class Character {
         if (energy < 0) energy = 0;
         if (energy > maxEnergy) energy = maxEnergy;
         this.energy = energy;
+    }
+    public boolean hasUsedReviveTrial() {
+        return reviveUsed;
+    }
+    public void setReviveUsed(boolean reviveUsed) {
+        this.reviveUsed = reviveUsed;
     }
     // ------------------- GETTER for Effects class -------------------
     public Effects getEffects(){ return effects; }

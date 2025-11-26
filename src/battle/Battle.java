@@ -126,6 +126,13 @@ public class Battle {
 
             // ---------- REVIVE ---------
             if (!player.isAlive()) {
+
+                if (player.hasUsedReviveTrial()) {
+                    System.out.println("💀 You fall once more... there are no more second chances.");
+                    gameOver();
+                    return;
+                }
+
                 System.out.println("💀 You collapse, your vision fading...");
 
                 boolean survived = JavaTrial.run(player);
@@ -137,8 +144,11 @@ public class Battle {
                     player.setHp(revivedHp);
                     player.setEnergy(revivedEnergy);
 
+
+                    player.setReviveUsed(true);
+
                     System.out.println("✨ Knowledge revives you!");
-                    System.out.println("You are restored with 50% HP and 50% Stamina.");
+                    System.out.println("You are restored with 50% HP and 50% " + player.getEnergyName() + ".");
                     PrintUtil.line();
 
                     continue;
@@ -146,7 +156,8 @@ public class Battle {
 
                 System.out.println("❌ You failed Khai's Java Trial.");
                 System.out.println("Your journey ends here...");
-                System.exit(0);
+                gameOver();
+                return;
             }
             enemy.getEffects().updateDoTEffects();
             InputUtil.pressEnterToContinue();
