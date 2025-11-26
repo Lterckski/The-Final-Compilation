@@ -1,11 +1,12 @@
 package battle;
 
 import characters.Character;
-
 import enemies.FinalBoss;
 import utils.InputUtil;
 import utils.PrintUtil;
 import storyEngine.StoryEngine;
+import utils.JavaTrial;
+
 
 public class Battle {
     private final Character player;
@@ -27,12 +28,12 @@ public class Battle {
         while(!willFight){
             PrintUtil.line();
             System.out.println("What will you do?");
-            System.out.println("[1] Fight enemy");
-            System.out.println("[2] Open Inventory");
-            System.out.println("[3] Show Player Stats");
-            System.out.println("[4] Show Player Skills Overview");
-            System.out.println("[5] Show Enemy Stats");
-            System.out.println("[6] Show Enemy Skills Overview");
+            System.out.println("[1] ⚔\uFE0F Fight enemy");
+            System.out.println("[2] \uD83C\uDF92  Open Inventory");
+            System.out.println("[3] \uD83E\uDDD1 Show Player Stats");
+            System.out.println("[4] \uD83D\uDCD6 Show Player Skills Overview");
+            System.out.println("[5] \uD83D\uDC79 Show Enemy Stats");
+            System.out.println("[6] \uD83D\uDCDD Show Enemy Skills Overview");
 
             System.out.print("Enter choice: ");
             int choice = InputUtil.scanInput();
@@ -50,6 +51,45 @@ public class Battle {
         }
     }
 
+    // ---------- HEALTH BAR UTIL ----------
+    private String generateBar(int current, int max, int length, String colorCode) {
+        int filled = (int) Math.round((double) current / max * length);
+        int empty = length - filled;
+        StringBuilder bar = new StringBuilder();
+        bar.append(colorCode);
+        for (int i = 0; i < filled; i++) bar.append("█");
+        bar.append("\u001B[0m"); // reset color
+        for (int i = 0; i < empty; i++) bar.append(" ");
+        return bar.toString();
+    }
+
+    private void displayBattleStats() {
+        String playerHpBar = generateBar(player.getHp(), player.getMaxHP(), 10, "\u001B[32m"); // Green
+        String playerStaminaBar = generateBar(player.getEnergy(), player.getMaxEnergy(), 10, "\u001B[37m"); // Gray
+        String enemyHpBar = generateBar(enemy.getHp(), enemy.getMaxHP(), 10, "\u001B[31m"); // Red
+
+        // Top border
+        System.out.println("┌─────────────────────────────────────────────────────────────────────────────────┐");
+
+        // HP line
+        System.out.printf("  💚 Your HP     : [%s] %d/%d     ❤\uFE0F Enemy HP     : [%s] %d/%d%n",
+                playerHpBar, player.getHp(), player.getMaxHP(),
+                enemyHpBar, enemy.getHp(), enemy.getMaxHP());
+
+        // Energy / Stamina line
+        System.out.printf("  🔋 Stamina      : [%s] %d/%d%n",
+                playerStaminaBar, player.getEnergy(), player.getMaxEnergy());
+
+        // If enemy has shield
+        if (enemy instanceof FinalBoss fb && fb.getShield() > 0) {
+            System.out.printf("🛡️ Enemy Shield Active: %d%n", fb.getShield());
+        }
+
+        // Bottom border
+        System.out.println("└─────────────────────────────────────────────────────────────────────────────────┘");
+    }
+
+    // ---------- BATTLE LOOP ----------
     public void battleLoop() {
         PrintUtil.line();
         System.out.println();
@@ -69,12 +109,7 @@ public class Battle {
             if (player.getEffects().checkEffects()) {
                 // --- PLAYER STATUS TRACKER ---
                 System.out.println();
-                PrintUtil.line();
-                System.out.println("💚 Your HP  : " + player.getHp() + "/" + player.getMaxHP() +
-                        "   " + player.getEnergyEmoji() + " " + player.getEnergyName() + " : " + player.getEnergy() + "/" + player.getMaxEnergy());
-                System.out.println("🖤 Enemy HP : " + enemy.getHp() + "/" + enemy.getMaxHP() +
-                        ((enemy instanceof FinalBoss fb && fb.getShield() > 0) ? "   🛡️ Shield Active" : ""));
-                PrintUtil.line();
+                displayBattleStats();
 
                 System.out.println("-- Your Turn --");
                 player.turn(enemy);
@@ -109,7 +144,32 @@ public class Battle {
         }
 
         if (!player.isAlive()) {
-            gameOver();
+            if (player.hasUsedReviveTrial()) {
+                System.out.println("💀 You fall once more... there are no more second chances.");
+                gameOver();
+                return;
+            }
+
+            System.out.println("💀 You collapse, your vision fading...");
+            boolean survived = JavaTrial.run(player);
+
+            if (survived) {
+                int revivedHp = player.getMaxHP() / 2;
+                int revivedEnergy = player.getMaxEnergy() / 2;
+
+                player.setHp(revivedHp);
+                player.setEnergy(revivedEnergy);
+
+                player.setReviveUsed(true);
+
+                System.out.println("✨ Knowledge revives you!");
+                System.out.println("You are restored with 50% HP and 50% " + player.getEnergyName() + ".");
+                PrintUtil.line();
+            } else{
+                System.out.println("❌ You failed Khai's Java Trial.");
+                System.out.println("Your journey ends here...");
+                gameOver();
+            }
         }
     }
 
@@ -117,13 +177,14 @@ public class Battle {
         PrintUtil.line();
         System.out.println("⚔️ You have been defeated in battle...");
         PrintUtil.type("""
-            💀 Darkness overwhelms you...
-            The battlefield falls silent, your vision fades,
-            and the echoes of your struggles vanish into the void.
-            """);
+        💀 Darkness overwhelms you...
+        The battlefield falls silent, your vision fades,
+        and the echoes of your struggles vanish into the void.
+        """);
         InputUtil.pressEnterToContinue();
         System.out.println("☠️ GAME OVER — Your story ends in shadow.");
         System.exit(0);
     }
+
 
 }

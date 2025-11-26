@@ -112,6 +112,16 @@ public class Potions {
         PrintUtil.line();
     }
 
+    public void addNormalHealingPotions(int amount) {
+        if (amount <= 0) return;
+
+        normalHealingPotions += amount;
+        PrintUtil.line();
+        System.out.println("🎁 Bonus reward: ❤️🧪 " + amount
+                + " Healing Potion" + (amount > 1 ? "s" : "") + " added to your inventory!");
+        PrintUtil.pause(800);
+    }
+
     public void lootFullHealthPotions(){
         int dropped = RandomUtil.range(1,2);
         fullHealingPotions += dropped;

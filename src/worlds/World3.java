@@ -6,6 +6,7 @@ import characters.Character;
 import utils.InputUtil;
 import utils.PrintUtil;
 
+
 public class World3 {
 
     public void run(Character player) {
@@ -272,7 +273,6 @@ public class World3 {
         PrintUtil.line();
         player.getEffects().resetAllEffects();
 
-        // TODO : PRE-FINAL RANDOM ENCOUNTER (ka luther ni)
         // --- Boss: the revelation ---
         PrintUtil.title("BOSS — Sir Khai, the Necromancer");
         PrintUtil.event("At the summit, the Third Stone pulses with violet light.");
@@ -280,8 +280,6 @@ public class World3 {
         PrintUtil.event("Then Khai steps forward, staff blazing.\n");
         PrintUtil.say("Sir Khai", "\"You’ve served well, student. Who better to collect the relics than one who trusts their teacher?\"");
         PrintUtil.say("Sir Khai", "\"I guided you not to save this land—but to claim its power. The Necromancer you sought... is me.\"\n");
-
-
 
         PrintUtil.hr();
     }

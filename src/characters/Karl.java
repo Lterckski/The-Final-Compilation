@@ -12,32 +12,33 @@ public class Karl extends Character{
 
     @Override
     public void displaySkills() {
-        System.out.println("\n----------- KARL'S SKILLS -----------");
-        System.out.println("Passive – Hunter’s Instinct");
+        System.out.println("\n🏹 ----------- KARL'S SKILLS -----------");
+        System.out.println("✨ Passive – Hunter’s Instinct");
         System.out.println("Deal +20% damage to enemies below 30% HP.\n");
 
-        System.out.println("Skill 1 – Piercing Arrow (1 Arrow)");
-        System.out.println("Description: Fires an arrow that slices through armor and flesh alike.");
-        System.out.println("Damage: (" + (int)(attack * 1.10) + " — " + (int)(attack * 1.25) + ")");
-        System.out.println("Effects:");
+        System.out.println("🏹 Skill 1 – Piercing Arrow (➶ 1 Arrow)");
+        System.out.println("📜 Description: Fires an arrow that slices through armor and flesh alike.");
+        System.out.println("💥 Damage: (" + (int)(attack * 1.10) + " — " + (int)(attack * 1.25) + ")");
+        System.out.println("⚡ Effects:");
         System.out.println("- Ignores 30% of the target’s Defense");
-        System.out.println("- 30% chance to inflict Bleed (2 turns)\n");
+        System.out.println("- 30% chance to inflict 🩸 Bleed (2 turns)\n");
 
-        System.out.println("Skill 2 – Bullseye (1 Heavy Arrow (3 Arrows)");
-        System.out.println("Description: Karl steadies his breath and fires a deadly precise shot.");
-        System.out.println("Damage: (" + (int)(attack * 1.25) + " — " + (int)(attack * 1.50) + ")");
-        System.out.println("Effects:");
+        System.out.println("🎯 Skill 2 – Bullseye (➶ 1 Heavy Arrow (3 Arrows))");
+        System.out.println("📜 Description: Karl steadies his breath and fires a deadly precise shot.");
+        System.out.println("💥 Damage: (" + (int)(attack * 1.25) + " — " + (int)(attack * 1.50) + ")");
+        System.out.println("⚡ Effects:");
         System.out.println("- Guaranteed Critical Hit (×1.5 multiplier)");
-        System.out.println("- 30% chance to apply Weakness: reduce target’s DEF by 30% for 2 turns\n");
+        System.out.println("- 30% chance to apply 🛡️ Weakness: reduce target’s DEF by 30% for 2 turns\n");
 
-        System.out.println("Ultimate – Rain of a Thousand Arrows (5 Arrows)");
-        System.out.println("Description: Karl releases a rapid flurry of arrows, overwhelming his opponent with relentless strikes.");
-        System.out.println("Damage: 5 hits, each dealing (" + (int)(attack * 1.20) + " — " + (int)(attack * 1.80) + ")");
-        System.out.println("Effects:");
-        System.out.println("- Grants Nimble after attack (increased dodge chance)");
-        System.out.println("- Grants Strengthen (+20% ATK for 2 turns)");
+        System.out.println("🌩️ Ultimate – Rain of a Thousand Arrows (➶ 5 Arrows)");
+        System.out.println("📜 Description: Karl releases a rapid flurry of arrows, overwhelming his opponent with relentless strikes.");
+        System.out.println("💥 Damage: 5 hits, each dealing (" + (int)(attack * 1.20) + " — " + (int)(attack * 1.80) + ")");
+        System.out.println("⚡ Effects:");
+        System.out.println("- Grants 🏃 Nimble after attack (increased dodge chance)");
+        System.out.println("- Grants 💪 Strengthen (+20% ATK for 2 turns)");
         System.out.println("-------------------------------------");
     }
+
 
     public void showBackstory() {
         PrintUtil.line();
@@ -189,11 +190,11 @@ public class Karl extends Character{
 
         while (!isValid) {
             if (ultimateCounter > 0) {
-                System.out.println("[1] Skill 1   -  Piercing Arrow (➶ 1 Arrow)");
-                System.out.println("[2] Skill 2   -  Bullseye (➶ 1 Heavy Arrow (3 Arrows))");
-                System.out.println("[3] Ultimate  -  Rain of A Thousand Arrows (➶ 5 Arrows) ❌ (Available in " + ultimateCounter + " turns)");
-                System.out.println("[4] Skip Turn -  Restore 10% of Max HP and Replenish 6 Arrows");
-                System.out.println("[5] Show Menu");
+                System.out.println("[1] \uD83C\uDFF9 Skill 1   -  Piercing Arrow (➶ 1 Arrow)");
+                System.out.println("[2] \uD83C\uDFAF Skill 2   -  Bullseye (➶ 1 Heavy Arrow (3 Arrows))");
+                System.out.println("[3] \uD83C\uDF29\uFE0F Ultimate  -  Rain of A Thousand Arrows (➶ 5 Arrows) ❌ (Available in " + ultimateCounter + " turns)");
+                System.out.println("[4] \uD83D\uDEE1\uFE0F Skip Turn -  Restore 10% of Max HP and Replenish 6 Arrows");
+                System.out.println("[5] \uD83D\uDCDC Show Menu");
                 System.out.print("Choose your action: ");
 
                 int choice = InputUtil.scanInput();
@@ -209,11 +210,11 @@ public class Karl extends Character{
                 }
 
             } else {
-                System.out.println("[1] Skill 1   -  Piercing Arrow (➶ 1 Arrow)");
-                System.out.println("(2] Skill 2   -  Bullseye (➶ 1 Heavy Arrow (3 Arrows))");
-                System.out.println("[3] Ultimate  -  Rain of A Thousand Arrows (➶ 5 Arrows)");
-                System.out.println("[4] Skip Turn -  Restore 10% of Max HP and Replenish 6 Arrows");
-                System.out.println("[5] Show Menu");
+                System.out.println("[1] \uD83C\uDFF9 Skill 1   -  Piercing Arrow (➶ 1 Arrow)");
+                System.out.println("(2] \uD83C\uDFAF Skill 2   -  Bullseye (➶ 1 Heavy Arrow (3 Arrows))");
+                System.out.println("[3] \uD83C\uDF29\uFE0F Ultimate  -  Rain of A Thousand Arrows (➶ 5 Arrows)");
+                System.out.println("[4] \uD83D\uDEE1\uFE0F Skip Turn -  Restore 10% of Max HP and Replenish 6 Arrows");
+                System.out.println("[5] \uD83D\uDCDC Show Menu");
                 System.out.print("Choose your action: ");
 
                 int choice = InputUtil.scanInput();

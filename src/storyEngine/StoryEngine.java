@@ -134,10 +134,10 @@ public class StoryEngine {
 
         do {
             PrintUtil.line();
-            System.out.println("[1] Kael Saint Laurent (Swordsman)");
-            System.out.println("[2] Karl Clover Dior IV (Archer)");
-            System.out.println("[3] Simon Versace (Mage)");
-            System.out.println("[4] Null (Test)");
+            System.out.println("[1] ⚔\uFE0F Kael Saint Laurent (Swordsman)");
+            System.out.println("[2] \uD83C\uDFF9 Karl Clover Dior IV (Archer)");
+            System.out.println("[3] \uD83C\uDF1F Simon Versace (Mage)");
+            System.out.println("[4] \uD83D\uDC68\u200D\uD83D\uDCBB Null (Test)");
             PrintUtil.line();
 
             System.out.print("Select your character: ");
@@ -224,10 +224,10 @@ public class StoryEngine {
         while (true) {
             PrintUtil.line();
             System.out.println("What would you like to do?");
-            System.out.println("[1] - Show Character Stats");
-            System.out.println("[2] - Show Character Skills");
-            System.out.println("[3] - Confirm Character");
-            System.out.println("[0] - Back");
+            System.out.println("[1] \uD83E\uDDD1 Show Character Stats");
+            System.out.println("[2] \uD83D\uDCD6 Show Character Skills");
+            System.out.println("[3] ✅ Confirm Character");
+            System.out.println("[0] \uD83D\uDD19 Back");
 
             System.out.print("Enter choice: ");
             int choice = InputUtil.scanInput();

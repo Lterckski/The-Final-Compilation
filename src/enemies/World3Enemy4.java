@@ -38,13 +38,15 @@ public class World3Enemy4 extends Enemy {
 
     @Override
     public void displaySkills() {
-        System.out.println("\n------- SOULFLAYER GARGOYLE SKILLS -------");
-        System.out.println("Description: Soulflayer Gargoyle unleashes a soul crushing scream, confusing it's victim.");
-        System.out.println("Damage: (" + (int)(attack * 1.00) + " — " + (int)(attack * 1.20) + ")");
-        System.out.println("Effects:");
-        System.out.println("- Confuses the target");
-        System.out.println("------------------------------------------");
+        System.out.println("┌───────────────────────────── 🦇 SOULFLAYER GARGOYLE SKILLS 🦇 ────────────────────────────┐");
+        System.out.println(" 📝 Description : Soulflayer Gargoyle unleashes a soul-crushing scream, confusing its victim.");
+        System.out.println(" 💥 Damage      : (" + (int)(attack * 1.00) + " — " + (int)(attack * 1.20) + ")");
+        System.out.println(" ✨ Effects     :");
+        System.out.println(" - 😵 Confuses the target");
+        System.out.println("└────────────────────────────────────────────────────────────────────────────────────────────┘");
     }
+
+
 
     @Override
     public void turn(Character target) { soulScream(target); }
