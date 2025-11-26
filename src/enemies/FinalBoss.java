@@ -211,8 +211,7 @@ public class FinalBoss extends Enemy {
 
     @Override
     public void displaySkills() {
-        System.out.println("┌────────────🕷️ FINAL BOSS: KHAI THE NECROMANCER SKILLS 🕷️────────────┐");
-
+        System.out.println("┌───────────── 🕷️ FINAL BOSS: KHAI THE NECROMANCER SKILLS 🕷️ ──────────────┐");
         System.out.println(" 💀 Skill 1 – Soul Drain");
         System.out.println(" 📝 Description : Drains the target’s life essence to heal himself.");
         System.out.println(" ⚔️ Damage      : (" + (int)(attack * 1.0) + ")");
@@ -232,8 +231,7 @@ public class FinalBoss extends Enemy {
         System.out.println(" ⚔️ Damage      : (" + (int)(attack * 1.6) + " — " + (int)(attack * 2.0) + ")");
         System.out.println(" ✨ Effects     :");
         System.out.println(" - 😱 50% chance to apply Fear to target");
-
-        System.out.println("└─────────────────────────────────────────────────────────────────────┘");
+        System.out.println("└──────────────────────────────────────────────────────────────────────────┘");
     }
 
 
