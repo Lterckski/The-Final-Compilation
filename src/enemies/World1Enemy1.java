@@ -37,14 +37,15 @@ public class World1Enemy1 extends Enemy {
 
     @Override
     public void displaySkills() {
-        System.out.println("\n🐺------- ROTFANG WOLVES SKILLS -------🐺");
-
-        System.out.println("🗡️ Skill – Savage Howl");
-        System.out.println("📝 Description: The wolves unleash a feral howl, striking their target with raw power.");
-        System.out.println("⚔️ Damage: (" + (int)(attack * 1.00) + " — " + (int)(attack * 1.50) + ")");
-        System.out.println("✨ Effects: —");
-        System.out.println("-------------------------------------");
+        System.out.println("┌─────────────────────────── 🐺 ROTFANG WOLVES SKILLS 🐺 ──────────────────────────────┐");
+        System.out.println(" 🗡️ Skill     : Savage Howl");
+        System.out.println(" 📝 Description: The wolves unleash a feral howl, striking their target with raw power.");
+        System.out.println(" ⚔️ Damage    : (" + (int)(attack * 1.00) + " — " + (int)(attack * 1.50) + ")");
+        System.out.println(" ✨ Effects   : —");
+        System.out.println("└──────────────────────────────────────────────────────────────────────────────────────┘");
     }
+
+
 
 
     @Override
