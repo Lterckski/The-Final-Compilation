@@ -160,7 +160,7 @@ public class StoryEngine {
         while (true) {
             PrintUtil.line();
             System.out.println("What would you like to do?");
-            System.out.println("[1] \uD83E\uDDD1\u200D\uD83D\uDCBB Show Character Stats");
+            System.out.println("[1] \uD83E\uDDD1 Show Character Stats");
             System.out.println("[2] \uD83D\uDCD6 Show Character Skills");
             System.out.println("[3] ✅ Confirm Character");
             System.out.println("[0] \uD83D\uDD19 Back");

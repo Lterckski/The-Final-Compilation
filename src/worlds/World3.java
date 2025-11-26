@@ -228,6 +228,31 @@ public class World3 {
         PrintUtil.line();
         player.getEffects().resetAllEffects();
 
+        // -------------------- RANDOM ENCOUNTER --------------------
+        PrintUtil.title("RANDOM ENCOUNTER — Echo of the Necromancer");
+        PrintUtil.type("""
+                    As you advance toward the heart of the tower,
+                    a ripple of darkness peels away from the wall.
+                    It shapes itself into a twisted reflection of Sir Khai —
+                    an echo of his power, born from the Stones themselves.
+                    """);
+        InputUtil.pressEnterToContinue();
+        PrintUtil.line();
+
+        Enemy echo = new PreFinalBoss();
+        Battle echoBattle = new Battle(player, echo);
+        echoBattle.startBattle();
+
+        PrintUtil.line();
+        PrintUtil.type("""
+                    🏆 You have defeated the Echo of the Necromancer!
+                    Its form shatters into fragments of code and drifting symbols.
+                    Yet before it fades, a voice lingers in your mind...
+                    """);
+        InputUtil.pressEnterToContinue();
+        PrintUtil.line();
+
+        runJavaTrial(player);
 
         // --- Boss: the revelation ---
         PrintUtil.title("BOSS — Sir Khai, the Necromancer");
@@ -237,10 +262,9 @@ public class World3 {
         PrintUtil.say("Sir Khai", "\"You’ve served well, student. Who better to collect the relics than one who trusts their teacher?\"");
         PrintUtil.say("Sir Khai", "\"I guided you not to save this land—but to claim its power. The Necromancer you sought... is me.\"\n");
 
-
-
         PrintUtil.hr();
     }
+
     private void runJavaTrial(Character player) {
         PrintUtil.title("Khai's Java Trial");
         PrintUtil.type("""

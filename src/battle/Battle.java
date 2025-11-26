@@ -72,12 +72,12 @@ public class Battle {
         System.out.println("┌─────────────────────────────────────────────────────────────────────────────────┐");
 
         // HP line
-        System.out.printf(" 💚 Your HP      : [%s] %d/%d     🖤 Enemy HP     : [%s] %d/%d%n",
+        System.out.printf("  💚 Your HP      : [%s] %d/%d     🖤 Enemy HP     : [%s] %d/%d%n",
                 playerHpBar, player.getHp(), player.getMaxHP(),
                 enemyHpBar, enemy.getHp(), enemy.getMaxHP());
 
         // Energy / Stamina line
-        System.out.printf(" 🔋 Stamina      : [%s] %d/%d%n",
+        System.out.printf("  🔋 Stamina      : [%s] %d/%d%n",
                 playerStaminaBar, player.getEnergy(), player.getMaxEnergy());
 
         // If enemy has shield
@@ -88,8 +88,6 @@ public class Battle {
         // Bottom border
         System.out.println("└─────────────────────────────────────────────────────────────────────────────────┘");
     }
-
-
 
     // ---------- BATTLE LOOP ----------
     public void battleLoop() {
@@ -104,68 +102,52 @@ public class Battle {
         while (player.isAlive() && enemy.isAlive()) {
 
             // -------- PLAYER TURN --------
+            // Update buffs/debuffs before the player acts
             player.getEffects().updateAttackModifiers();
             player.getEffects().updateDefenseModifiers();
 
-            displayBattleStats();
-            System.out.println("-- Your Turn --");
-            player.turn(enemy);
+            if (player.getEffects().checkEffects()) {
+                // --- PLAYER STATUS TRACKER ---
+                System.out.println();
+                displayBattleStats();
 
+                System.out.println("-- Your Turn --");
+                player.turn(enemy);
+            } else {
+                InputUtil.pressEnterToContinue();
+            }
+
+            // Apply poison/burn etc. after action
             player.getEffects().updateDoTEffects();
             PrintUtil.line();
 
-            if (!enemy.isAlive()) break;
+            if (!enemy.isAlive()) {
+                //System.out.println("🔥 You defeated " + enemy.getName() + "!");
+                break;
+            }
 
             // -------- ENEMY TURN --------
+            // Update buffs/debuffs before enemy acts
             enemy.getEffects().updateAttackModifiers();
             enemy.getEffects().updateDefenseModifiers();
 
-            System.out.println("\n-- Enemy Turn --");
-            PrintUtil.pause(800);
-            enemy.turn(player);
-
-            // ---------- REVIVE ---------
-            if (!player.isAlive()) {
-
-                if (player.hasUsedReviveTrial()) {
-                    System.out.println("💀 You fall once more... there are no more second chances.");
-                    gameOver();
-                    return;
-                }
-
-                System.out.println("💀 You collapse, your vision fading...");
-
-                boolean survived = JavaTrial.run(player);
-
-                if (survived) {
-                    int revivedHp = player.getMaxHP() / 2;
-                    int revivedEnergy = player.getMaxEnergy() / 2;
-
-                    player.setHp(revivedHp);
-                    player.setEnergy(revivedEnergy);
-
-
-                    player.setReviveUsed(true);
-
-                    System.out.println("✨ Knowledge revives you!");
-                    System.out.println("You are restored with 50% HP and 50% " + player.getEnergyName() + ".");
-                    PrintUtil.line();
-
-                    continue;
-                }
-
-                System.out.println("❌ You failed Khai's Java Trial.");
-                System.out.println("Your journey ends here...");
-                gameOver();
-                return;
+            if (enemy.getEffects().checkEffects()) {
+                System.out.println("\n-- Enemy Turn --");
+                PrintUtil.pause(800);
+                enemy.turn(player);
             }
+
+            // Apply DoT after enemy acts
             enemy.getEffects().updateDoTEffects();
             InputUtil.pressEnterToContinue();
             PrintUtil.line();
         }
 
-        if (!player.isAlive()) gameOver();
+        if (!player.isAlive()) {
+            gameOver();
+        }
     }
+
 
     public void gameOver() {
         PrintUtil.line();
