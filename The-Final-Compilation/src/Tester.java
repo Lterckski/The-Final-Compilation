@@ -9,7 +9,6 @@ import inventory.Sword;
 import inventory.Bow;
 import utils.InputUtil;
 import utils.PrintUtil;
-import worlds.*;
 
 public class Tester {
     public static void main(String[] args) {
@@ -120,10 +119,7 @@ public class Tester {
         } while (player == null);  // repeat until valid choice
         player.getInventory().setEquippedArmor(Armor.LEATHER_GUARD);
 
-        World1 world1 = new World1();
-        world1.run(player);
-
-        Enemy testEnemy1 = new World1Miniboss1();
+        Enemy testEnemy1 = new World3Miniboss1();
         Battle testBattle1 = new Battle(player, testEnemy1);
         testBattle1.startBattle();
         testEnemy1.dropLoot(player);
