@@ -5,6 +5,8 @@ import enemies.FinalBoss;
 import utils.InputUtil;
 import utils.PrintUtil;
 import storyEngine.StoryEngine;
+import utils.JavaTrial;
+
 
 public class Battle {
     private final Character player;
@@ -121,6 +123,31 @@ public class Battle {
             System.out.println("\n-- Enemy Turn --");
             PrintUtil.pause(800);
             enemy.turn(player);
+
+            // ---------- REVIVE ---------
+            if (!player.isAlive()) {
+                System.out.println("💀 You collapse, your vision fading...");
+
+                boolean survived = JavaTrial.run(player);
+
+                if (survived) {
+                    int revivedHp = player.getMaxHP() / 2;
+                    int revivedEnergy = player.getMaxEnergy() / 2;
+
+                    player.setHp(revivedHp);
+                    player.setEnergy(revivedEnergy);
+
+                    System.out.println("✨ Knowledge revives you!");
+                    System.out.println("You are restored with 50% HP and 50% Stamina.");
+                    PrintUtil.line();
+
+                    continue;
+                }
+
+                System.out.println("❌ You failed Khai's Java Trial.");
+                System.out.println("Your journey ends here...");
+                System.exit(0);
+            }
             enemy.getEffects().updateDoTEffects();
             InputUtil.pressEnterToContinue();
             PrintUtil.line();

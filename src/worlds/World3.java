@@ -228,36 +228,7 @@ public class World3 {
         PrintUtil.line();
         player.getEffects().resetAllEffects();
 
-        if (RandomUtil.chance(100)) {
-            PrintUtil.title("RANDOM ENCOUNTER — Echo of the Necromancer");
-            PrintUtil.type("""
-                    As you advance toward the heart of the tower,
-                    a ripple of darkness peels away from the wall.
-                    It shapes itself into a twisted reflection of Sir Khai —
-                    an echo of his power, born from the Stones themselves.
-                    """);
-            InputUtil.pressEnterToContinue();
-            PrintUtil.line();
 
-            Enemy echo = new PreFinalBoss();
-            Battle echoBattle = new Battle(player, echo);
-            echoBattle.startBattle();
-
-            PrintUtil.line();
-            PrintUtil.type("""
-                    🏆 You have defeated the Echo of the Necromancer!
-                    Its form shatters into fragments of code and drifting symbols.
-                    Yet before it fades, a voice lingers in your mind...
-                    """);
-            InputUtil.pressEnterToContinue();
-            PrintUtil.line();
-
-            runJavaTrial(player);
-        } else {
-            PrintUtil.event("You feel a cold presence brush past your mind—but it slips away into the dark.");
-            InputUtil.pressEnterToContinue();
-            PrintUtil.line();
-        }
         // --- Boss: the revelation ---
         PrintUtil.title("BOSS — Sir Khai, the Necromancer");
         PrintUtil.event("At the summit, the Third Stone pulses with violet light.");
@@ -326,5 +297,4 @@ public class World3 {
         InputUtil.pressEnterToContinue();
         PrintUtil.line();
     }
-
 }
