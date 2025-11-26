@@ -45,15 +45,15 @@ public class World1Enemy3 extends Enemy {
 
     @Override
     public void displaySkills() {
-        System.out.println("\n🌳------- DREADBARK TREANTS SKILLS -------🌳");
-
-        System.out.println("🪓 Skill – Root Snare");
-        System.out.println("📝 Description: The Treants lash out with entangling roots, trying to trap their foe.");
-        System.out.println("⚔️ Damage: (" + (int)(attack * 1.00) + " — " + (int)(attack * 1.50) + ")");
-        System.out.println("✨ Effects:");
-        System.out.println("- 30% chance to 🌿 Immobilize target");
-        System.out.println("----------------------------------------");
+        System.out.println("┌─────────────────────────── 🌳 DREADBARK TREANTS SKILLS 🌳 ──────────────────────────────┐");
+        System.out.println(" 🪓 Skill     : Root Snare");
+        System.out.println(" 📝 Description: The Treants lash out with entangling roots, trying to trap their foe.");
+        System.out.println(" ⚔️ Damage    : (" + (int)(attack * 1.00) + " — " + (int)(attack * 1.50) + ")");
+        System.out.println(" ✨ Effects   :");
+        System.out.println(" - 30% chance to 🌿 Immobilize target");
+        System.out.println("└────────────────────────────────────────────────────────────────────────────────────────┘");
     }
+
 
 
     @Override
