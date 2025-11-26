@@ -211,28 +211,29 @@ public class FinalBoss extends Enemy {
 
     @Override
     public void displaySkills() {
-        System.out.println("\n------- FINAL BOSS: KHAI THE NECROMANCER SKILLS -------");
+        System.out.println("\n🕷️------- FINAL BOSS: KHAI THE NECROMANCER SKILLS -------🕷️");
 
-        System.out.println("Skill 1 – Soul Drain");
-        System.out.println("Description: Drains the target’s life essence to heal himself.");
-        System.out.println("Damage: (" + (int)(attack * 1.0) + ")");
-        System.out.println("Effects:");
-        System.out.println("- Heals self for 100 HP\n");
+        System.out.println("💀 Skill 1 – Soul Drain");
+        System.out.println("📝 Description: Drains the target’s life essence to heal himself.");
+        System.out.println("⚔️ Damage: (" + (int)(attack * 1.0) + ")");
+        System.out.println("✨ Effects:");
+        System.out.println("- ❤️ Heals self for 100 HP\n");
 
-        System.out.println("Skill 2 – Encapsulation");
-        System.out.println("Description: Forms a dark barrier that absorbs 50 damage for 1 turn.");
-        System.out.println("Damage: —");
-        System.out.println("Effects:");
-        System.out.println("- Grants a 50-damage shield for 1 turn");
-        System.out.println("- If the shield remains intact → Gain 🔮 Null Energy (+5% ATK permanently)");
-        System.out.println("- If the shield breaks → Gain 🌑 Void Energy (+5% DEF permanently)\n");
+        System.out.println("🛡️ Skill 2 – Encapsulation");
+        System.out.println("📝 Description: Forms a dark barrier that absorbs 50 damage for 1 turn.");
+        System.out.println("⚔️ Damage: —");
+        System.out.println("✨ Effects:");
+        System.out.println("- 🛡️ Grants a 50-damage shield for 1 turn");
+        System.out.println("- 🔮 If shield remains intact → Gain Null Energy (+5% ATK permanently)");
+        System.out.println("- 🌑 If shield breaks → Gain Void Energy (+5% DEF permanently)\n");
 
-        System.out.println("Skill 3 – Dark Ascension");
-        System.out.println("Description: Releases immense dark power upon the target.");
-        System.out.println("Damage: (" + (int)(attack * 1.6) + " — " + (int)(attack * 2.0) + ")");
-        System.out.println("Effects:");
-        System.out.println("- 50% chance to apply Fear to target");
+        System.out.println("🌌 Skill 3 – Dark Ascension");
+        System.out.println("📝 Description: Releases immense dark power upon the target.");
+        System.out.println("⚔️ Damage: (" + (int)(attack * 1.6) + " — " + (int)(attack * 2.0) + ")");
+        System.out.println("✨ Effects:");
+        System.out.println("- 😱 50% chance to apply Fear to target");
         System.out.println("---------------------------------------------------------");
     }
+
 
 }

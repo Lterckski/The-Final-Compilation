@@ -48,14 +48,16 @@ public class World2Enemy2 extends Enemy{
 
     @Override
     public void displaySkills() {
-        System.out.println("\n------- FORSAKEN CULTISTS SKILLS -------");
-        System.out.println("Skill – Shadow Bolt");
-        System.out.println("Description: Cultists hurl dark bolts of energy, weakening their foe.");
-        System.out.println("Damage: (" + (int)(attack * 1.00) + " — " + (int)(attack * 1.33) + ")");
-        System.out.println("Effects:");
-        System.out.println("- 30% chance to apply Weaken: reduces target’s ATK by 20% for 2 turns");
+        System.out.println("\n🔮------- FORSAKEN CULTISTS SKILLS -------🔮");
+
+        System.out.println("⚡ Skill – Shadow Bolt");
+        System.out.println("📝 Description: Cultists hurl dark bolts of energy, weakening their foe.");
+        System.out.println("⚔️ Damage: (" + (int)(attack * 1.00) + " — " + (int)(attack * 1.33) + ")");
+        System.out.println("✨ Effects:");
+        System.out.println("- 💀 30% chance to apply Weaken: reduces target’s ATK by 20% for 2 turns");
         System.out.println("----------------------------------------");
     }
+
 
     @Override
     public void turn(Character target) {

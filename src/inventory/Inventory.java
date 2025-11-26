@@ -40,7 +40,7 @@ public class Inventory {
                 "]";
 
         if (isHp) {
-            return "\u001B[31m" + bar + "\u001B[0m"; // red color for HP
+            return "\u001B[32m" + bar + "\u001B[0m"; // red color for HP
         } else {
             return bar;
         }
@@ -94,12 +94,12 @@ public class Inventory {
 
             // MENU
             PrintUtil.line();
-            System.out.println("(1) Show Weapon Info");
-            System.out.println("(2) Show Armor Info");
-            System.out.println("(3) Use Normal Healing Potion");
-            System.out.println("(4) Use Full Healing Potion");
-            System.out.println("(5) Use Energy Potion");
-            System.out.println("(0) Back");
+            System.out.println("[1] ⚔️ Show Weapon Info");
+            System.out.println("[2] 🛡️ Show Armor Info");
+            System.out.println("[3] 🍃 Use Normal Healing Potion");
+            System.out.println("[4] 💞 Use Full Healing Potion");
+            System.out.println("[5] ⚡ Use Energy Potion");
+            System.out.println("[0] 🔙 Back");
             System.out.print("Choose an option: ");
 
             int choice = InputUtil.scanInput();
@@ -148,9 +148,7 @@ public class Inventory {
                 max = player.getMaxEnergy();
                 available = potions.getEnergyPotions();
             }
-            default -> {
-                return;
-            }
+            default -> { return; }
         }
 
         if (current >= max) {
@@ -163,30 +161,48 @@ public class Inventory {
             return;
         }
 
-        System.out.println("You have " + available + " potions.");
-        System.out.print("How many do you want to use? ");
+        int amount = 0;
+        while (true) {
+            System.out.println("You have " + available + " potion(s).");
+            System.out.print("How many do you want to use? ");
+            amount = InputUtil.scanInput();
+            if (amount > 0 && amount <= available) break;
+            System.out.println("❌ Invalid amount! Please enter between 1 and " + available);
+        }
 
-        int amount = InputUtil.scanInput();
-        if (amount <= 0 || amount > available) {
-            System.out.println("❌ Invalid amount!");
+        if (!areYouSure()) {
+            System.out.println("Potion not used.");
             return;
         }
 
-        if (!areYouSure()) return;
-
         for (int i = 0; i < amount; i++) {
             switch (type) {
-                case "normal" -> potions.useNormalHealingPotion();
-                case "full" -> potions.useFullHealingPotion();
-                case "energy" -> potions.useEnergyPotion();
+                case "normal" -> {
+                    if (player.getHp() < player.getMaxHP()) potions.useNormalHealingPotion();
+                    else { System.out.println("💡 HP is full. Remaining potions not used."); break; }
+                }
+                case "full" -> {
+                    if (player.getHp() < player.getMaxHP()) potions.useFullHealingPotion();
+                    else { System.out.println("💡 HP is full. Remaining potions not used."); break; }
+                }
+                case "energy" -> {
+                    if (player.getEnergy() < player.getMaxEnergy()) potions.useEnergyPotion();
+                    else { System.out.println("💡 Energy is full. Remaining potions not used."); break; }
+                }
             }
         }
     }
 
     // --- Confirmation prompt ---
     private boolean areYouSure() {
-        System.out.println("Are you sure you want to use the potion? (1 = Yes, 0 = No)");
-        int confirm = InputUtil.scanInput();
+        int confirm;
+        do {
+            System.out.println("Are you sure you want to use a potion? (1 = Yes, 0 = No)");
+            confirm = InputUtil.scanInput();
+            if (confirm == 1) break;
+            else if (confirm == 0) break;
+            else System.out.println("❌ Invalid input! Try again.");
+        } while (true);
         return confirm == 1;
     }
 

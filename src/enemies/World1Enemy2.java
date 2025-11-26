@@ -42,15 +42,17 @@ public class World1Enemy2 extends Enemy {
     }
 
     @Override
-    public void displaySkills(){
-        System.out.println("\n------- SHADE SPRITES SKILLS -------");
-        System.out.println("Skill – Trickster Strike");
-        System.out.println("Description: The Shade Sprites strike mischievously, leaving their target disoriented.");
-        System.out.println("Damage: (" + (int)(attack * 1.00) + " — " + (int)(attack * 1.625) + ")");
-        System.out.println("Effects:");
-        System.out.println("- 30% chance to Confuse target");
+    public void displaySkills() {
+        System.out.println("\n👻------- SHADE SPRITES SKILLS -------👻");
+
+        System.out.println("🗡️ Skill – Trickster Strike");
+        System.out.println("📝 Description: The Shade Sprites strike mischievously, leaving their target disoriented.");
+        System.out.println("⚔️ Damage: (" + (int)(attack * 1.00) + " — " + (int)(attack * 1.625) + ")");
+        System.out.println("✨ Effects:");
+        System.out.println("- 30% chance to 😵 Confuse target");
         System.out.println("------------------------------------");
     }
+
 
     @Override
     public void turn(Character target) {
