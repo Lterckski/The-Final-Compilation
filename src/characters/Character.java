@@ -170,7 +170,7 @@ public abstract class Character {
 
         while(!goBack){
             System.out.println("[1] \uD83C\uDF92 Open Inventory");
-            System.out.println("[2] \uD83E\uDDD1\u200D\uD83D\uDCBB Show Player Stats");
+            System.out.println("[2] \uD83E\uDDD1 Show Player Stats");
             System.out.println("[3] \uD83D\uDCD6 Show Player Skills Overview");
             System.out.println("[4] \uD83D\uDC79 Show Enemy Stats");
             System.out.println("[5] \uD83D\uDCDD Show Enemy Skills Overview");

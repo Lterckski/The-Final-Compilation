@@ -11,15 +11,15 @@ public class PrintUtil {
     }
 
     public static void hr() {
-        System.out.println("=====================================");
+        System.out.println("═════════════════════════════════════");
     }
 
     public static void line() {
-        System.out.println("-------------------------------------");
+        System.out.println("─────────────────────────────────────");
     }
 
     public static void shortLine() {
-        System.out.println("------------------");
+        System.out.println("──────────────────");
     }
 
     public static void title(String t) {
