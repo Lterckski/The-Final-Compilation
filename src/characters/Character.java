@@ -25,11 +25,12 @@ public abstract class Character {
     protected int energyName;
     protected int maxEnergy;       // track max energy
     protected int attack;
-    protected boolean reviveUsed = false;
     protected int baseAttack;
     protected int baseDefense;
 
     protected int ultimateCounter = 3;
+
+    protected boolean reviveUsed = false;
 
     private final Effects effects;
     private final Inventory inventory;

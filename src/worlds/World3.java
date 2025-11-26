@@ -228,32 +228,6 @@ public class World3 {
         PrintUtil.line();
         player.getEffects().resetAllEffects();
 
-        // -------------------- RANDOM ENCOUNTER --------------------
-        PrintUtil.title("RANDOM ENCOUNTER — Echo of the Necromancer");
-        PrintUtil.type("""
-                    As you advance toward the heart of the tower,
-                    a ripple of darkness peels away from the wall.
-                    It shapes itself into a twisted reflection of Sir Khai —
-                    an echo of his power, born from the Stones themselves.
-                    """);
-        InputUtil.pressEnterToContinue();
-        PrintUtil.line();
-
-        Enemy echo = new PreFinalBoss();
-        Battle echoBattle = new Battle(player, echo);
-        echoBattle.startBattle();
-
-        PrintUtil.line();
-        PrintUtil.type("""
-                    🏆 You have defeated the Echo of the Necromancer!
-                    Its form shatters into fragments of code and drifting symbols.
-                    Yet before it fades, a voice lingers in your mind...
-                    """);
-        InputUtil.pressEnterToContinue();
-        PrintUtil.line();
-
-        runJavaTrial(player);
-
         // --- Boss: the revelation ---
         PrintUtil.title("BOSS — Sir Khai, the Necromancer");
         PrintUtil.event("At the summit, the Third Stone pulses with violet light.");
@@ -265,60 +239,4 @@ public class World3 {
         PrintUtil.hr();
     }
 
-    private void runJavaTrial(Character player) {
-        PrintUtil.title("Khai's Java Trial");
-        PrintUtil.type("""
-                As the echo dissolves, a distorted voice whispers:
-                "Before you face my true self... answer this, programmer."
-                """);
-        PrintUtil.line();
-        System.out.println("⏱ You have 10 seconds to answer!");
-        PrintUtil.line();
-
-        System.out.println("What is the output of the following Java code?\n");
-        System.out.println("int x = 5;");
-        System.out.println("System.out.println(x++ + ++x);");
-        System.out.println();
-        System.out.println("[1] 10");
-        System.out.println("[2] 11");
-        System.out.println("[3] 12");
-        System.out.println("[4] 13");
-        PrintUtil.line();
-        System.out.print("Your answer (1-4): ");
-
-        long start = System.currentTimeMillis();
-        int answer = InputUtil.scanInput();
-        long elapsed = System.currentTimeMillis() - start;
-
-        boolean correct = (answer == 3);      // 5 + 7 = 12
-        boolean withinTime = elapsed <= 10_000;
-
-        if (correct && withinTime) {
-            PrintUtil.line();
-            PrintUtil.type("""
-                    ✅ Correct!
-                    The echo chuckles, impressed by your understanding of pre- and post-increment.
-                    """);
-            PrintUtil.loot("Khai leaves behind a bundle of potions.\n");
-
-            player.getPotions().addNormalHealingPotions(10);
-        } else if (!withinTime) {
-            PrintUtil.line();
-            PrintUtil.type("""
-                    ⏱ Too slow.
-                    The fading voice mutters:
-                    "In both battle and code, hesitation is defeat."
-                    """);
-        } else {
-            PrintUtil.line();
-            PrintUtil.type("""
-                    ❌ Incorrect.
-                    The echo scoffs:
-                    "Study your operators, student..." and fades into nothing.
-                    """);
-        }
-
-        InputUtil.pressEnterToContinue();
-        PrintUtil.line();
-    }
 }
