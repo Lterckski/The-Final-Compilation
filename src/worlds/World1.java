@@ -268,5 +268,4 @@ public class World1 {
         PrintUtil.event("You claim the First Stone from a tree black with rot. Light bursts outward; the forest exhales.");
         InputUtil.pressEnterToContinue();
     }
-
 }

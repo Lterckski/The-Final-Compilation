@@ -283,5 +283,4 @@ public class World3 {
 
         PrintUtil.hr();
     }
-
 }
