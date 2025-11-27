@@ -93,12 +93,12 @@ public class World1Miniboss1 extends Enemy {
 
     @Override
     public void dropLoot(Character player) {
-        player.gainExp(rewardExp());
-        player.getPotions().lootPotions();
-        player.getPotions().lootFullHealthPotions();
-
-        System.out.println("\n🎁 You obtained a Common Weapon!");
+        System.out.println("╦════════════════════════════════════╦");
+        System.out.println("  🎁 You received:");
         PrintUtil.pause(800);
+        player.lootSoulShards(10);
+        player.getPotions().lootPotions(true);
+        player.gainExp(rewardExp());
 
         if (player.getClassType().equals("Swordsman")) {
             Sword ironShortsword = Sword.IRON_SHORTSWORD;
@@ -116,8 +116,6 @@ public class World1Miniboss1 extends Enemy {
                 apprenticeStaff.equip(player);
             }
         }
-
-        System.out.println("\n🎁 You obtained a Common Armor!");
         PrintUtil.pause(800);
 
         Armor ironVanguard = Armor.IRON_VANGUARD;

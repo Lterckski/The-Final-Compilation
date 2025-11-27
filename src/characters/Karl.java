@@ -28,7 +28,7 @@ public class Karl extends Character{
         System.out.println("💥 Damage: (" + (int)(attack * 1.25) + " — " + (int)(attack * 1.50) + ")");
         System.out.println("⚡ Effects:");
         System.out.println("- Guaranteed Critical Hit (×1.5 multiplier)");
-        System.out.println("- 30% chance to apply 🛡️ Weakness: reduce target’s DEF by 30% for 2 turns\n");
+        System.out.println("- 30% chance to apply 🛡️ Weakness (-30% DEF) for 2 turns\n");
 
         System.out.println("🌩️ Ultimate – Rain of a Thousand Arrows (➶ 5 Arrows)");
         System.out.println("📜 Description: Karl releases a rapid flurry of arrows, overwhelming his opponent with relentless strikes.");
@@ -191,7 +191,7 @@ public class Karl extends Character{
         while (!isValid) {
             if (ultimateCounter > 0) {
                 System.out.println("[1] \uD83C\uDFF9 Skill 1   -  Piercing Arrow (➶ 1 Arrow)");
-                System.out.println("[2] \uD83C\uDFAF Skill 2   -  Bullseye (➶ 1 Heavy Arrow (3 Arrows))");
+                System.out.println("[2] \uD83C\uDFAF Skill 2   -  Bullseye (➶ 1 Heavy Arrow ═ 3 Arrows)");
                 System.out.println("[3] \uD83C\uDF29\uFE0F Ultimate  -  Rain of A Thousand Arrows (➶ 5 Arrows) ❌ (Available in " + ultimateCounter + " turns)");
                 System.out.println("[4] \uD83D\uDEE1\uFE0F Skip Turn -  Restore 10% of Max HP and Replenish 6 Arrows");
                 System.out.println("[5] \uD83D\uDCDC Show Menu");
@@ -211,7 +211,7 @@ public class Karl extends Character{
 
             } else {
                 System.out.println("[1] \uD83C\uDFF9 Skill 1   -  Piercing Arrow (➶ 1 Arrow)");
-                System.out.println("(2] \uD83C\uDFAF Skill 2   -  Bullseye (➶ 1 Heavy Arrow (3 Arrows))");
+                System.out.println("(2] \uD83C\uDFAF Skill 2   -  Bullseye (➶ 1 Heavy Arrow ═ 3 Arrows)");
                 System.out.println("[3] \uD83C\uDF29\uFE0F Ultimate  -  Rain of A Thousand Arrows (➶ 5 Arrows)");
                 System.out.println("[4] \uD83D\uDEE1\uFE0F Skip Turn -  Restore 10% of Max HP and Replenish 6 Arrows");
                 System.out.println("[5] \uD83D\uDCDC Show Menu");

@@ -120,13 +120,15 @@ public class Tester {
         } while (player == null);  // repeat until valid choice
         player.getInventory().setEquippedArmor(Armor.LEATHER_GUARD);
 
-        World1 world1 = new World1();
-        world1.run(player);
-
         Enemy testEnemy1 = new World1Miniboss1();
         Battle testBattle1 = new Battle(player, testEnemy1);
         testBattle1.startBattle();
         testEnemy1.dropLoot(player);
+
+        World1 world1 = new World1();
+        world1.run(player);
+
+
 
         Enemy testEnemy2 = new World2Miniboss2();
         Battle testBattle2 = new Battle(player, testEnemy2);

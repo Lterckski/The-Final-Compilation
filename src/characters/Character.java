@@ -31,6 +31,7 @@ public abstract class Character {
     protected int ultimateCounter = 3;
 
     protected boolean reviveUsed = false;
+    protected int soulShards;
 
     private final Effects effects;
     private final Inventory inventory;
@@ -57,6 +58,7 @@ public abstract class Character {
         this.inventory = new Inventory(this);
         this.exp = 0;
         this.nextLevelExp = XP_TABLE[1];
+        soulShards = 0;
     }
 
     public Character(String name, int hp, int defense, int attack) { // for enemies
@@ -80,6 +82,7 @@ public abstract class Character {
     public int getMaxHP() { return maxHP; }
     public int getMaxEnergy() { return maxEnergy; }
     public int getEnergy() { return energy; }
+    public int getSoulShards() { return soulShards; }
 
     public String getEnergyName() {
         return switch (classType) {
@@ -290,9 +293,8 @@ public abstract class Character {
 
     public void gainExp(int amount){
         exp += amount;
-        PrintUtil.shortLine();
-        System.out.println("✨Gained " + amount + " XP!");
-        PrintUtil.shortLine();
+        System.out.println("  ✨ Gained " + amount + " XP!");
+        System.out.println("┴───────────────────────────────────┴");
         PrintUtil.pause(800);
         while(level < XP_TABLE.length && exp >= nextLevelExp){
             levelUp();
@@ -342,20 +344,24 @@ public abstract class Character {
 
             recalculateBuffs();
 
-            System.out.println("❤️ HP     : +" + (maxHP - oldHp) + " → " + maxHP);
-            System.out.println("⚔️ ATK    : +" + (baseAttack - oldAtk) + " → " + attack);
-            System.out.println("🛡️ DEF    : +" + (baseDefense - oldDef) + " → " + defense);
-            System.out.println(getEnergyEmoji() + " " + getEnergyName() + " : +" + (maxEnergy - oldEnergy) + " → " + maxEnergy);
+            System.out.printf("%-8s : +%d → %d%n", "❤️ HP", (maxHP - oldHp), maxHP);
+            System.out.printf("%-8s : +%d → %d%n", "⚔️ ATK", (baseAttack - oldAtk), attack);
+            System.out.printf("%-8s : +%d → %d%n", "🛡️ DEF", (baseDefense - oldDef), defense);
+            System.out.printf("%-8s : +%d → %d%n", getEnergyEmoji() + " " + getEnergyName(),
+                    (maxEnergy - oldEnergy), maxEnergy);
             PrintUtil.hr();
             PrintUtil.pause(800);
         }
     }
-
 
     public void recalculateBuffs(){
         attack = baseAttack + getWeapon().getAtkBuff();
         defense = baseDefense + getArmor().getDefBuff();
     }
 
+    public void lootSoulShards(int dropped) {
+        System.out.println("  💠 " + dropped + " Soul Shard" + (dropped > 1 ? "s" : ""));
+        soulShards += dropped;
+    }
 
 }

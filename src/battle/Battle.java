@@ -29,7 +29,7 @@ public class Battle {
             PrintUtil.line();
             System.out.println("What will you do?");
             System.out.println("[1] ⚔\uFE0F Fight enemy");
-            System.out.println("[2] \uD83C\uDF92  Open Inventory");
+            System.out.println("[2] \uD83C\uDF92 Open Inventory");
             System.out.println("[3] \uD83E\uDDD1 Show Player Stats");
             System.out.println("[4] \uD83D\uDCD6 Show Player Skills Overview");
             System.out.println("[5] \uD83D\uDC79 Show Enemy Stats");
@@ -72,12 +72,12 @@ public class Battle {
         System.out.println("┌─────────────────────────────────────────────────────────────────────────────────┐");
 
         // HP line
-        System.out.printf("  💚 %-11s : [%s] %d/%d     ❤\uFE0F Enemy HP    : [%s] %d/%d%n",
+        System.out.printf("  💚 %-8s : [%s] %d/%d     ❤\uFE0F Enemy HP  : [%s] %d/%d%n",
                 "Your HP", playerHpBar, player.getHp(), player.getMaxHP(),
                 enemyHpBar, enemy.getHp(), enemy.getMaxHP());
 
         // Energy / Stamina line
-        System.out.printf("  %s %-11s : [%s] %d/%d%n",
+        System.out.printf("  %s %-8s : [%s] %d/%d%n",
                 player.getEnergyEmoji(), player.getEnergyName(), playerStaminaBar, player.getEnergy(), player.getMaxEnergy());
 
         // If enemy has shield

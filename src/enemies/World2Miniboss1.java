@@ -103,15 +103,15 @@ public class World2Miniboss1 extends Enemy{
 
     @Override
     public void dropLoot(Character player){
+        System.out.println("╦════════════════════════════════════╦");
+        System.out.println("  🎁 You received:");
+        PrintUtil.pause(800);
+        player.lootSoulShards(12);
+        player.getPotions().lootPotions(true);
         player.gainExp(rewardExp());
-        player.getPotions().lootPotions();
-        player.getPotions().lootFullHealthPotions();
 
         Armor aegisMail = Armor.AEGIS_MAIL;         // +25 DEF, immune to debuff ↓
         Armor vanguardRobe = Armor.VANGUARD_ROBE;   // +25 DEF, immune to status effects
-
-        System.out.println("\n🎁 You obtained 2 Rare Armors!");
-        PrintUtil.pause(800);
 
         System.out.println("1️⃣ " + aegisMail.getName() + " → +25 DEF 🛡️, immune to ATK⬇️ & DEF⬇️");
         PrintUtil.pause(800);

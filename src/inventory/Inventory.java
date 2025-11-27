@@ -88,7 +88,8 @@ public class Inventory {
             // POTIONS
             printRow("🍃 Normal Healing Potion : " + potions.getNormalHealingPotions());
             printRow("💞 Full Healing Potion   : " + potions.getFullHealingPotions());
-            printRow("⚡ Energy Potion         : " + potions.getEnergyPotions());
+            printRow(" ⚡ Energy Potion         : " + potions.getEnergyPotions());
+            printRow("💠 Soul Shards           : " + player.getSoulShards());
 
             System.out.println("╚══════════════════════════════════════════════════════════╝");
 

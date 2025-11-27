@@ -23,19 +23,19 @@ public class Staff extends Weapon{
 
     @Override
     public void displayInfo() {
-        System.out.println("-----------------------------");
-        System.out.println("🔮 " + getName() + " [" + getRarity() + "]");
-        System.out.println("+ " + getAtkBuff() + " ATK");
+        System.out.println("╠═══════════════════════════════╣");
+        System.out.println(" 🔮 " + getName() + " [" + getRarity() + "]");
+        System.out.println("  + " + getAtkBuff() + " ATK");
 
         if (confuseChance > 0) {
-            System.out.println("🌀 " + confuseChance + "% chance to confuse enemy");
+            System.out.println(" 🌀 " + confuseChance + "% chance to confuse enemy");
         }
 
         if (lifestealPercent > 0) {
-            System.out.println("💝 Restores " + lifestealPercent + "% HP of damage dealt");
+            System.out.println(" 💝 Restores " + lifestealPercent + "% HP of damage dealt");
         }
 
-        System.out.println("-----------------------------");
+        System.out.println("╩═══════════════════════════════╩");
     }
 
     @Override

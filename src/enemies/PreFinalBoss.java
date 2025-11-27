@@ -47,7 +47,7 @@ public class PreFinalBoss extends Enemy {
     @Override
     public void dropLoot(Character player) {
         player.gainExp(rewardExp());
-        player.getPotions().lootPotions();
+        player.getPotions().lootPotions(true);
     }
 
     @Override

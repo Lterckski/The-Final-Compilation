@@ -123,12 +123,12 @@ public class World2Miniboss2 extends Enemy {
 
     @Override
     public void dropLoot(Character player){
-        player.gainExp(rewardExp());
-        player.getPotions().lootPotions();
-        player.getPotions().lootFullHealthPotions();
-
-        System.out.println("\n🎁 You obtained 2 Rare Weapons!");
+        System.out.println("╦════════════════════════════════════╦");
+        System.out.println("  🎁 You received:");
         PrintUtil.pause(800);
+        player.lootSoulShards(10);
+        player.getPotions().lootPotions(true);
+        player.gainExp(rewardExp());
 
         // Check the class type
         if (player.getClassType().equals("Swordsman")) {

@@ -179,7 +179,7 @@ public class FinalBoss extends Enemy {
     // 🧩 Required by abstract class Enemy
     @Override
     public int rewardExp() {
-        return 100000; // EXP gained for defeating the Final Boss
+        return 999999; // EXP gained for defeating the Final Boss
     }
 
     @Override

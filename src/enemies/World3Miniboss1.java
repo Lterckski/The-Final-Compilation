@@ -64,12 +64,12 @@ public class World3Miniboss1 extends Enemy {
 
     @Override
     public void dropLoot(Character player){
-        player.gainExp(rewardExp());
-        player.getPotions().lootPotions();
-        player.getPotions().lootFullHealthPotions();
-
-        System.out.println("\n🎁 You obtained an Epic Weapon!");
+        System.out.println("╦════════════════════════════════════╦");
+        System.out.println("  🎁 You received:");
         PrintUtil.pause(800);
+        player.lootSoulShards(10);
+        player.getPotions().lootPotions(true);
+        player.gainExp(rewardExp());
 
         if (player.getClassType().equals("Swordsman")) {
             Sword eclipseGreatsword = Sword.ECLIPSE_GREATSWORD;
@@ -88,7 +88,6 @@ public class World3Miniboss1 extends Enemy {
             }
         }
 
-        System.out.println("\n🎁 You obtained an Epic Armor!");
         PrintUtil.pause(800);
 
         Armor skyforgePlate = Armor.SKYFORGE_PLATE;
