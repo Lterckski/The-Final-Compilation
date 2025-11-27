@@ -72,13 +72,13 @@ public class Battle {
         System.out.println("┌─────────────────────────────────────────────────────────────────────────────────┐");
 
         // HP line
-        System.out.printf("  💚 Your HP      : [%s] %d/%d     ❤\uFE0F Enemy HP     : [%s] %d/%d%n",
-                playerHpBar, player.getHp(), player.getMaxHP(),
+        System.out.printf("  💚 %-11s : [%s] %d/%d     ❤\uFE0F Enemy HP    : [%s] %d/%d%n",
+                "Your HP", playerHpBar, player.getHp(), player.getMaxHP(),
                 enemyHpBar, enemy.getHp(), enemy.getMaxHP());
 
         // Energy / Stamina line
-        System.out.printf("  🔋 Stamina      : [%s] %d/%d%n",
-                playerStaminaBar, player.getEnergy(), player.getMaxEnergy());
+        System.out.printf("  %s %-11s : [%s] %d/%d%n",
+                player.getEnergyEmoji(), player.getEnergyName(), playerStaminaBar, player.getEnergy(), player.getMaxEnergy());
 
         // If enemy has shield
         if (enemy instanceof FinalBoss fb && fb.getShield() > 0) {
