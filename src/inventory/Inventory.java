@@ -70,7 +70,7 @@ public class Inventory {
                     generateBar(player.getHp(), player.getMaxHP(), true) + " " +
                     player.getHp() + "/" + player.getMaxHP());
 
-            printRow("🔋 " + player.getEnergyName() + "  : " +
+            printRow("🔋 " + player.getEnergyName() + "   : " +
                     generateBar(player.getEnergy(), player.getMaxEnergy(), false) + " " +
                     player.getEnergy() + "/" + player.getMaxEnergy());
 

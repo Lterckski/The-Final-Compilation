@@ -184,18 +184,18 @@ public class FinalBoss extends Enemy {
 
     @Override
     public void displayStats() {
-        System.out.println("\n======== Enemy Stats ========");
-        System.out.println("Name    : " + name);
-        System.out.println("HP      : " + hp + "/" + maxHP);
+        System.out.println("\n┌───────────── \uD83D\uDC79 ENEMY STATS \uD83D\uDC79 ─────────────┐");
+        System.out.println(" 👤 Name    : " + name);
+        System.out.println(" ❤️ HP      : " + hp + "/" + maxHP);
 
         // ⚔️ Attack
-        System.out.print("Attack  : " + baseAttack);
+        System.out.print(" ⚔\uFE0F Attack  : " + baseAttack);
         if (attack > baseAttack) System.out.print(" (+" + (attack - baseAttack) + ")");
         else if (attack < baseAttack) System.out.print(" (-" + (baseAttack - attack) + ")");
         System.out.println();
 
         // 🛡️ Defense
-        System.out.print("Defense : " + baseDefense);
+        System.out.print(" \uD83D\uDEE1\uFE0F Defense : " + baseDefense);
         if (defense > baseDefense) System.out.print(" (+" + (defense - baseDefense) + ")");
         else if (defense < baseDefense) System.out.print(" (-" + (baseDefense - defense) + ")");
         System.out.println();
@@ -204,9 +204,10 @@ public class FinalBoss extends Enemy {
         if (shield > 0) System.out.println("🛡️ Active Shield : " + shield + " (1 Turn)");
 
         // 📈 Stack Info
-        System.out.println("🔮 Null Energy Stacks : " + nullEnergy);
-        System.out.println("🌑 Void Energy Stacks : " + voidEnergy);
-        System.out.println("=============================\n");
+        System.out.println(" 🔮 Null Energy Stacks : " + nullEnergy);
+        System.out.println(" 🌑 Void Energy Stacks : " + voidEnergy);
+        System.out.println("└──────────────────────────────────────────────┘");
+
     }
 
     @Override
