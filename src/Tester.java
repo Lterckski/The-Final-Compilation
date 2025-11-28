@@ -3,6 +3,7 @@ import characters.*;
 import characters.Character;
 import enemies.*;
 
+import events.MagicShop;
 import inventory.Armor;
 import inventory.Staff;
 import inventory.Sword;
@@ -119,6 +120,9 @@ public class Tester {
             }
         } while (player == null);  // repeat until valid choice
         player.getInventory().setEquippedArmor(Armor.LEATHER_GUARD);
+
+        MagicShop shop = new MagicShop(player);
+        shop.openShop();
 
         Enemy testEnemy1 = new World1Miniboss1();
         Battle testBattle1 = new Battle(player, testEnemy1);

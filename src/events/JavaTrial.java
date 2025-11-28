@@ -1,6 +1,8 @@
-package utils;
+package events;
 
 import characters.Character;
+import utils.InputUtil;
+import utils.PrintUtil;
 
 public class JavaTrial {
 

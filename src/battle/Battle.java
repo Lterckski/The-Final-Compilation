@@ -5,7 +5,7 @@ import enemies.FinalBoss;
 import utils.InputUtil;
 import utils.PrintUtil;
 import storyEngine.StoryEngine;
-import utils.JavaTrial;
+import events.JavaTrial;
 
 
 public class Battle {
