@@ -134,33 +134,8 @@ public abstract class Character {
     public void displayStats() {
         String energyLabel;
 
-        System.out.println("\n=========== Stats ============");
-        System.out.printf("%-8s: %s (%s)%n", "\uD83E\uDDD1\u200D\uD83D\uDCBB Name", name, classType);
-
-        if (level == 30) {
-            System.out.printf("%-8s: MAX%n", "\uD83C\uDFC6 Level");
-            System.out.printf("%-8s: MAX%n", "✨ EXP");
-        } else {
-            System.out.printf("%-8s: %d%n", "\uD83C\uDFC6 Level", level);
-            System.out.printf("%-8s: %d/%d%n", "✨ EXP", exp, nextLevelExp);
-        }
-
-        System.out.printf("%-8s: %d/%d%n", "\uD83D\uDC9A HP", hp, maxHP);
-
-        //Classifies if the character uses what type of stamina/energy/mana
-
-        if (classType.equalsIgnoreCase("Mage")) {
-            energyLabel = "💧 Mana";
-        } else if (classType.equalsIgnoreCase("Archer")) {
-            energyLabel = "➶ Arrows";
-        } else {
-            energyLabel = "🔋 Stamina";
-        }
-
-        System.out.printf("%-8s: %d/%d%n", energyLabel, energy, maxEnergy);
-
         int weaponAtkBonus = (getWeapon() != null) ? getWeapon().getAtkBuff() : 0;
-        int armorDefBonus = (getArmor() != null) ? getArmor().getDefBuff() : 0;
+        int armorDefBonus  = (getArmor() != null) ? getArmor().getDefBuff() : 0;
 
         int effectAtkMod = attack - (baseAttack + weaponAtkBonus);
         int effectDefMod = defense - (baseDefense + armorDefBonus);
@@ -168,14 +143,69 @@ public abstract class Character {
         String atkLabel = (effectAtkMod >= 0) ? "Buff" : "Debuff";
         String defLabel = (effectDefMod >= 0) ? "Buff" : "Debuff";
 
-        System.out.printf("%-8s: %d  (Base %d | Weapon %+d | %s %+d)%n",
-                "⚔\uFE0F Attack", attack, baseAttack, weaponAtkBonus, atkLabel, effectAtkMod);
+        // Choose header emoji based on class
+        String classEmoji;
+        if (classType.equalsIgnoreCase("Mage")) {
+            classEmoji = "🔮"; // Staff / magic emoji
+        } else if (classType.equalsIgnoreCase("Archer")) {
+            classEmoji = "🏹"; // Bow / archer emoji
+        } else {
+            classEmoji = "🛡️"; // Default warrior/shield
+        }
 
-        System.out.printf("%-8s: %d  (Base %d | Armor %+d | %s %+d)%n",
-                "\uD83D\uDEE1\uFE0F Defense", defense, baseDefense, armorDefBonus, defLabel, effectDefMod);
+// Print the header
+        System.out.println("\n┌─────────────────── " + classEmoji + " " + "PLAYER STATS " + classEmoji +" ───────────────────┐");
 
-        System.out.println("==============================\n");
+
+
+        // Determine energy type
+        if (classType.equalsIgnoreCase("Mage")) {
+            energyLabel = " 💧 Mana    ";
+        } else if (classType.equalsIgnoreCase("Archer")) {
+            energyLabel = " 🏹 Arrows  ";
+        } else {
+            energyLabel = " 🔋 Stamina ";
+        }
+
+        if (level == 30) {
+            System.out.println("🏆 Level      : MAX");
+            System.out.println("✨ EXP        : MAX");
+        } else {
+
+        }
+
+        System.out.println(" 👤 Name/Class : " + name + " (" + classType + ")");
+
+
+        System.out.println(" 🏆 Level      : " + level);
+        System.out.println(" ✨ EXP        : " + exp + " / " + nextLevelExp);
+
+        System.out.println(" ❤️ HP         : " + hp + " / " + maxHP);
+        System.out.println(energyLabel + "   : " + energy + " / " + maxEnergy);
+
+
+
+        System.out.println(" ⚔️ Attack     : " + attack +
+                " (Base " + baseAttack +
+                " | Weapon " + String.format("%+d", weaponAtkBonus) +
+                " | " + atkLabel + " " + String.format("%+d", effectAtkMod) + ")");
+
+        System.out.println(" 🛡️ Defense    : " + defense +
+                "  (Base " + baseDefense +
+                " | Armor " + String.format("%+d", armorDefBonus) +
+                " | " + defLabel + " " + String.format("%+d", effectDefMod) + ")");
+
+
+
+
+
+            System.out.println("└───────────────────────────────────────────────────────────┘");
+
+
+
     }
+
+
 
     public abstract void displaySkills();
     public abstract void turn (Character target);

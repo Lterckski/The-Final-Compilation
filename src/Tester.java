@@ -12,14 +12,43 @@ import utils.InputUtil;
 import utils.PrintUtil;
 import worlds.*;
 
+import java.sql.SQLOutput;
+
 public class Tester {
     public static void main(String[] args) {
-        /*
+
         Kael kael = new Kael();
         Karl karl = new Karl();
         Simon simon = new Simon();
-        testEnemy enemy = new testEnemy();
+        World1Enemy1 w1 = new World1Enemy1();
+        World1Enemy2 w2 = new World1Enemy2();
+
+        World1Miniboss1 enemy = new World1Miniboss1();
+        Null op = new Null();
+
+        w1.displayStats();
+        w2.displayStats();
+
+
+
+       /*
+       simon.displayStats();
+       kael.displayStats();
+       karl.displayStats();
+       op.displayStats();
         */
+
+
+
+
+
+        Inventory inven = new Inventory(kael);
+        FinalBoss fb = new FinalBoss();
+
+
+
+
+
         /*
          kael.showStats();
         kael.bladeRush(enemy);
@@ -75,7 +104,7 @@ public class Tester {
         */
 
 
-        System.out.println("Welcome to The Final Compilation");
+        /*System.out.println("Welcome to The Final Compilation");
         PrintUtil.pause(1000);
 
         System.out.println("-------------------------------------");
@@ -141,6 +170,8 @@ public class Tester {
         Battle testBattle2 = new Battle(player, testEnemy2);
         testBattle2.startBattle();
         testEnemy2.dropLoot(player);
+        */
+
 
 
     }
