@@ -24,7 +24,8 @@ public abstract class Weapon {
     public abstract boolean applyEffects(Character target, int damage);
 
     public boolean lootWeapon() {
-        System.out.println("Target has dropped a weapon!");
+        System.out.println("╦═══════════════════════════════╦");
+        System.out.println(" 🎁 Enemy has dropped a weapon!");
         PrintUtil.pause(800);
         this.displayInfo();
 
@@ -68,7 +69,7 @@ public abstract class Weapon {
     public void equip(Character character) {
         Weapon currentlyEquipped = character.getInventory().getEquippedWeapon();
 
-        System.out.println("-----------------------------");
+        PrintUtil.line();
 
         if(currentlyEquipped == null){
             character.setAttack(character.getAttack() + atkBuff);
@@ -86,7 +87,7 @@ public abstract class Weapon {
             PrintUtil.pause(800);
             System.out.println("⚙\uFE0F " + name + " Equipped! ⬆\uFE0F Attack increased by " + (this.getAtkBuff() - currentlyEquipped.getAtkBuff()) + ". ⚔\uFE0F Current ATK: " + character.getAttack());
         }
-        System.out.println("-----------------------------");
+        PrintUtil.line();
         PrintUtil.pause(800);
     }
 

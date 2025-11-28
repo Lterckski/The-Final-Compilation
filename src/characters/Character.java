@@ -25,11 +25,13 @@ public abstract class Character {
     protected int energyName;
     protected int maxEnergy;       // track max energy
     protected int attack;
-
     protected int baseAttack;
     protected int baseDefense;
 
     protected int ultimateCounter = 3;
+
+    protected boolean reviveUsed = false;
+    protected int soulShards;
 
     private final Effects effects;
     private final Inventory inventory;
@@ -56,6 +58,7 @@ public abstract class Character {
         this.inventory = new Inventory(this);
         this.exp = 0;
         this.nextLevelExp = XP_TABLE[1];
+        soulShards = 0;
     }
 
     public Character(String name, int hp, int defense, int attack) { // for enemies
@@ -79,6 +82,7 @@ public abstract class Character {
     public int getMaxHP() { return maxHP; }
     public int getMaxEnergy() { return maxEnergy; }
     public int getEnergy() { return energy; }
+    public int getSoulShards() { return soulShards; }
 
     public String getEnergyName() {
         return switch (classType) {
@@ -101,6 +105,17 @@ public abstract class Character {
     public void setAttack(int attack){ this.attack = attack; }
     public void setDefense(int defense){ this.defense = defense; }
     public void setHp(int hp){ this.hp = hp; }
+    public void setEnergy(int energy) {
+        if (energy < 0) energy = 0;
+        if (energy > maxEnergy) energy = maxEnergy;
+        this.energy = energy;
+    }
+    public boolean hasUsedReviveTrial() {
+        return reviveUsed;
+    }
+    public void setReviveUsed(boolean reviveUsed) {
+        this.reviveUsed = reviveUsed;
+    }
     // ------------------- GETTER for Effects class -------------------
     public Effects getEffects(){ return effects; }
 
@@ -200,7 +215,7 @@ public abstract class Character {
 
         while(!goBack){
             System.out.println("[1] \uD83C\uDF92 Open Inventory");
-            System.out.println("[2] \uD83E\uDDD1\u200D\uD83D\uDCBB Show Player Stats");
+            System.out.println("[2] \uD83E\uDDD1 Show Player Stats");
             System.out.println("[3] \uD83D\uDCD6 Show Player Skills Overview");
             System.out.println("[4] \uD83D\uDC79 Show Enemy Stats");
             System.out.println("[5] \uD83D\uDCDD Show Enemy Skills Overview");
@@ -308,9 +323,8 @@ public abstract class Character {
 
     public void gainExp(int amount){
         exp += amount;
-        PrintUtil.shortLine();
-        System.out.println("✨Gained " + amount + " XP!");
-        PrintUtil.shortLine();
+        System.out.println("  ✨ Gained " + amount + " XP!");
+        System.out.println("┴───────────────────────────────────┴");
         PrintUtil.pause(800);
         while(level < XP_TABLE.length && exp >= nextLevelExp){
             levelUp();
@@ -360,20 +374,24 @@ public abstract class Character {
 
             recalculateBuffs();
 
-            System.out.println("❤️ HP     : +" + (maxHP - oldHp) + " → " + maxHP);
-            System.out.println("⚔️ ATK    : +" + (baseAttack - oldAtk) + " → " + attack);
-            System.out.println("🛡️ DEF    : +" + (baseDefense - oldDef) + " → " + defense);
-            System.out.println(getEnergyEmoji() + " " + getEnergyName() + " : +" + (maxEnergy - oldEnergy) + " → " + maxEnergy);
+            System.out.printf("%-8s : +%d → %d%n", "❤️ HP", (maxHP - oldHp), maxHP);
+            System.out.printf("%-8s : +%d → %d%n", "⚔️ ATK", (baseAttack - oldAtk), attack);
+            System.out.printf("%-8s : +%d → %d%n", "🛡️ DEF", (baseDefense - oldDef), defense);
+            System.out.printf("%-8s : +%d → %d%n", getEnergyEmoji() + " " + getEnergyName(),
+                    (maxEnergy - oldEnergy), maxEnergy);
             PrintUtil.hr();
             PrintUtil.pause(800);
         }
     }
-
 
     public void recalculateBuffs(){
         attack = baseAttack + getWeapon().getAtkBuff();
         defense = baseDefense + getArmor().getDefBuff();
     }
 
+    public void lootSoulShards(int dropped) {
+        System.out.println("  💠 " + dropped + " Soul Shard" + (dropped > 1 ? "s" : ""));
+        soulShards += dropped;
+    }
 
 }

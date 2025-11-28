@@ -78,21 +78,21 @@ public class World2Miniboss1 extends Enemy{
 
     @Override
     public void displaySkills() {
-        System.out.println("\n⛓️------- THE BLACK JAILER SKILLS -------⛓️");
+        System.out.println("┌──────────────────────────── ⛓️ THE BLACK JAILER SKILLS ⛓️ ─────────────────────────────┐");
+        System.out.println(" 🔗 Skill 1    : Shackling Chains");
+        System.out.println(" 📝 Description: The Black Jailer swings his chains to bind and cripple his opponent.");
+        System.out.println(" 💥 Damage    : (" + (int)(attack * 1.00) + " — " + (int)(attack * 1.33) + ")");
+        System.out.println(" ✨ Effects   :");
+        System.out.println(" - 🛑 30% chance to Immobilize the target\n");
 
-        System.out.println("🔗 Skill 1 – Shackling Chains");
-        System.out.println("📝 Description: The Black Jailer swings his chains to bind and cripple his opponent.");
-        System.out.println("💥 Damage: (" + (int)(attack * 1.00) + " — " + (int)(attack * 1.33) + ")");
-        System.out.println("✨ Effects:");
-        System.out.println("- 🛑 30% chance to Immobilize the target\n");
-
-        System.out.println("⚡ Skill 2 – Tormenting Lash");
-        System.out.println("📝 Description: The Black Jailer lashes his whip, leaving his foe bleeding.");
-        System.out.println("💥 Damage: (" + (int)(attack * 1.33) + " — " + (int)(attack * 1.73) + ")");
-        System.out.println("✨ Effects:");
-        System.out.println("- 🩸 30% chance to inflict Bleed for 2 turns");
-        System.out.println("---------------------------------------");
+        System.out.println(" ⚡ Skill 2    : Tormenting Lash");
+        System.out.println(" 📝 Description: The Black Jailer lashes his whip, leaving his foe bleeding.");
+        System.out.println(" 💥 Damage    : (" + (int)(attack * 1.33) + " — " + (int)(attack * 1.73) + ")");
+        System.out.println(" ✨ Effects   :");
+        System.out.println(" - 🩸 30% chance to inflict Bleed for 2 turns");
+        System.out.println("└───────────────────────────────────────────────────────────────────────────────────────┘");
     }
+
 
 
     @Override
@@ -103,15 +103,15 @@ public class World2Miniboss1 extends Enemy{
 
     @Override
     public void dropLoot(Character player){
+        System.out.println("╦════════════════════════════════════╦");
+        System.out.println("  🎁 You received:");
+        PrintUtil.pause(800);
+        player.lootSoulShards(12);
+        player.getPotions().lootPotions(true);
         player.gainExp(rewardExp());
-        player.getPotions().lootPotions();
-        player.getPotions().lootFullHealthPotions();
 
         Armor aegisMail = Armor.AEGIS_MAIL;         // +25 DEF, immune to debuff ↓
         Armor vanguardRobe = Armor.VANGUARD_ROBE;   // +25 DEF, immune to status effects
-
-        System.out.println("\n🎁 You obtained 2 Rare Armors!");
-        PrintUtil.pause(800);
 
         System.out.println("1️⃣ " + aegisMail.getName() + " → +25 DEF 🛡️, immune to ATK⬇️ & DEF⬇️");
         PrintUtil.pause(800);

@@ -22,7 +22,7 @@ public class Armor {
     public static final Armor AEGIS_MAIL = new Armor("Aegis Mail", "🔵", 25,true, false,0, 0);
     public static final Armor VANGUARD_ROBE = new Armor("Vanguard Robe", "🟣", 25, false, true, 0,0);
     public static final Armor SKYFORGE_PLATE = new Armor("Skyforge Plate", "🟣", 40, true, true , 20, 15);
-    public static final Armor CELESTIAL_BATTLEGEAR = new Armor("Celestial Battlegear", "🟡", 50, true, true, 20 ,15);
+    public static final Armor CELESTIAL_BATTLEGEAR = new Armor("Celestial Battlegear", "🟡", 50, true, true, 30 ,20);
 
     public Armor(String name, String rarity, int defBuff, boolean immuneDebuff, boolean immuneEffects, int reflectChance, int reflectPercent){
         this.name = name;
@@ -38,7 +38,7 @@ public class Armor {
     public int getDefBuff(){ return defBuff; }
 
     public boolean lootArmor() {
-        System.out.println("Target has dropped an armor!");
+        System.out.println("\n🎁 Target has dropped an armor!");
         PrintUtil.pause(800);
         this.displayInfo();
 
@@ -82,7 +82,7 @@ public class Armor {
     public void equip(Character player) {
         Armor currentlyEquipped = player.getInventory().getEquippedArmor();
 
-        System.out.println("-----------------------------");
+        PrintUtil.line();
 
         if (currentlyEquipped == null) {
             player.setDefense(player.getDefense() + defBuff);
@@ -99,7 +99,7 @@ public class Armor {
             System.out.println("You upgraded your armor!");
             System.out.println("⚙\uFE0F " + name + " Equipped! ⬆\uFE0F Defense increased by " + (this.defBuff - currentlyEquipped.defBuff) + ". 🛡️ Current DEF: " + player.getDefense());
         }
-        System.out.println("-----------------------------");
+        PrintUtil.line();
         PrintUtil.pause(800);
     }
 
@@ -109,23 +109,23 @@ public class Armor {
     }
 
     public void displayInfo() {
-        System.out.println("-----------------------------");
-        System.out.println("🛡️ " + name + " [" + rarity + "]");
-        System.out.println("+ " + defBuff + " DEF");
+        System.out.println("╠═══════════════════════════════╣");
+        System.out.println(" 🛡️ " + name + " [" + rarity + "]");
+        System.out.println("  + " + defBuff + " DEF");
 
         // Immunities
         if(immuneDebuff) {
-            System.out.println("✨ Immune to: (ATK ↓)⚔️ & (DEF ↓)🛡️ Debuffs");
+            System.out.println(" ✨ Immune to: (ATK ↓)⚔️ & (DEF ↓)🛡️ Debuffs");
         }
         if (immuneEffects) {
-            System.out.println("✨ Immune to: Poison☠️, Burn🔥, and Bleed🩸");
+            System.out.println(" ✨ Immune to: Poison☠️, Burn🔥, and Bleed🩸");
         }
 
         if (reflectChance > 0) {
-            System.out.println("🛡️ " + reflectChance + "% chance to reflect " + reflectPercent + "% damage back to attacker");
+            System.out.println(" 🛡️ " + reflectChance + "% chance to reflect " + reflectPercent + "% damage back to attacker");
         }
 
-        System.out.println("-----------------------------");
+        System.out.println("╩═══════════════════════════════╩");
     }
 
     public boolean checkDebuffImmunity(){

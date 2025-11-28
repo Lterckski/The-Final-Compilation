@@ -23,19 +23,19 @@ public class Bow extends Weapon{
 
     @Override
     public void displayInfo() {
-        System.out.println("-----------------------------");
-        System.out.println("🏹 " + getName() + " [" + getRarity() + "]");
-        System.out.println("+ " + getAtkBuff() + " ATK");
+        System.out.println("╠═══════════════════════════════╣");
+        System.out.println(" 🏹 " + getName() + " [" + getRarity() + "]");
+        System.out.println("  + " + getAtkBuff() + " ATK");
 
         if (attackTwiceChance > 0) {
-            System.out.println("🎯 " + attackTwiceChance + "% chance to deal extra damage");
+            System.out.println(" 🎯 " + attackTwiceChance + "% chance to deal extra damage");
         }
 
         if (lifestealPercent > 0) {
-            System.out.println("💝 Restores " + lifestealPercent + "% HP of damage dealt");
+            System.out.println(" 💝 Restores " + lifestealPercent + "% HP of damage dealt");
         }
 
-        System.out.println("-----------------------------");
+        System.out.println("╩═══════════════════════════════╩");
     }
 
     @Override

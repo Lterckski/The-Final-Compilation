@@ -38,13 +38,14 @@ public class World3Enemy4 extends Enemy {
 
     @Override
     public void displaySkills() {
-        System.out.println("\n💀🗿------- SOULFLAYER GARGOYLE SKILLS -------🗿💀");
-        System.out.println("📝 Description: Soulflayer Gargoyle unleashes a soul-crushing scream, confusing its victim.");
-        System.out.println("💥 Damage: (" + (int)(attack * 1.00) + " — " + (int)(attack * 1.20) + ")");
-        System.out.println("✨ Effects:");
-        System.out.println("- 😵 Confuses the target");
-        System.out.println("------------------------------------------");
+        System.out.println("┌───────────────────────────── 🦇 SOULFLAYER GARGOYLE SKILLS 🦇 ────────────────────────────┐");
+        System.out.println(" 📝 Description : Soulflayer Gargoyle unleashes a soul-crushing scream, confusing its victim.");
+        System.out.println(" 💥 Damage      : (" + (int)(attack * 1.00) + " — " + (int)(attack * 1.20) + ")");
+        System.out.println(" ✨ Effects     :");
+        System.out.println(" - 😵 Confuses the target");
+        System.out.println("└────────────────────────────────────────────────────────────────────────────────────────────┘");
     }
+
 
 
     @Override
@@ -52,8 +53,12 @@ public class World3Enemy4 extends Enemy {
 
     @Override
     public void dropLoot(Character player){
+        System.out.println("┬───────────────────────────────────┬");
+        System.out.println("  🎁 You received:");
+        PrintUtil.pause(800);
+        player.lootSoulShards(RandomUtil.range(2,4));
+        player.getPotions().lootPotions(false);
         player.gainExp(rewardExp());
-        player.getPotions().lootPotions();
     }
 
     @Override

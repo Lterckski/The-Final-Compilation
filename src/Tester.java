@@ -3,9 +3,14 @@ import characters.*;
 import characters.Character;
 import enemies.*;
 
-import inventory.*;
+import events.MagicShop;
+import inventory.Armor;
+import inventory.Staff;
+import inventory.Sword;
+import inventory.Bow;
 import utils.InputUtil;
 import utils.PrintUtil;
+import worlds.*;
 
 import java.sql.SQLOutput;
 
@@ -145,10 +150,21 @@ public class Tester {
         } while (player == null);  // repeat until valid choice
         player.getInventory().setEquippedArmor(Armor.LEATHER_GUARD);
 
-        Enemy testEnemy1 = new World3Miniboss1();
+        MagicShop shop = new MagicShop(player);
+        shop.openShop();
+
+        World1 world1 = new World1();
+        world1.run(player);
+
+
+
+        Enemy testEnemy1 = new World1Miniboss1();
         Battle testBattle1 = new Battle(player, testEnemy1);
         testBattle1.startBattle();
         testEnemy1.dropLoot(player);
+
+
+
 
         Enemy testEnemy2 = new World2Miniboss2();
         Battle testBattle2 = new Battle(player, testEnemy2);

@@ -47,15 +47,15 @@ public class World2Enemy1 extends Enemy{
 
     @Override
     public void displaySkills() {
-        System.out.println("\n🐀------- PLAGUE VERMIN SKILLS -------🐀");
-
-        System.out.println("🦷 Skill – Plague Bite");
-        System.out.println("📝 Description: The Plague Vermin bites viciously, infecting its target with deadly poison.");
-        System.out.println("⚔️ Damage: (" + (int)(attack * 1.00) + " — " + (int)(attack * 1.55) + ")");
-        System.out.println("✨ Effects:");
-        System.out.println("- ☣️ Applies Poison for 1 turn");
-        System.out.println("------------------------------------");
+        System.out.println("┌──────────────────────────────── 🐀 PLAGUE VERMIN SKILLS 🐀 ────────────────────────────────┐");
+        System.out.println(" 🦷 Skill       : Plague Bite");
+        System.out.println(" 📝 Description : The Plague Vermin bites viciously, infecting its target with deadly poison.");
+        System.out.println(" ⚔️ Damage     : (" + (int)(attack * 1.00) + " — " + (int)(attack * 1.55) + ")");
+        System.out.println(" ✨ Effects    :");
+        System.out.println(" - ☣️ Applies Poison for 1 turn");
+        System.out.println("└────────────────────────────────────────────────────────────────────────────────────────────┘");
     }
+
 
 
     @Override
@@ -65,8 +65,12 @@ public class World2Enemy1 extends Enemy{
 
     @Override
     public void dropLoot(Character player){
+        System.out.println("┬───────────────────────────────────┬");
+        System.out.println("  🎁 You received:");
+        PrintUtil.pause(800);
+        player.lootSoulShards(RandomUtil.range(2,3));
+        player.getPotions().lootPotions(false);
         player.gainExp(rewardExp());
-        player.getPotions().lootPotions();
     }
 
     @Override
