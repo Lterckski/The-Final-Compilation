@@ -99,7 +99,7 @@ public class Inventory {
             System.out.println("[2] 🛡️ Show Armor Info");
             System.out.println("[3] 🍃 Use Normal Healing Potion");
             System.out.println("[4] 💞 Use Full Healing Potion");
-            System.out.println("[5] ⚡ Use Energy Potion");
+            System.out.println("[5] ⚡  Use Energy Potion");
             System.out.println("[0] 🔙 Back");
             System.out.print("Choose an option: ");
 
