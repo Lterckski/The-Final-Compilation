@@ -141,32 +141,15 @@ public abstract class Character {
 // Print the header
         System.out.println("\n┌─────────────────── " + classEmoji + " " + "PLAYER STATS " + classEmoji +" ───────────────────┐");
 
-        System.out.println(" 👤 Name/Class : " + name + " (" + classType + ")");
+
 
         // Determine energy type
         if (classType.equalsIgnoreCase("Mage")) {
-            energyLabel = " 💧 Mana";
-            System.out.println(" 🏆 Level      : " + level);
-            System.out.println(" ✨ EXP        : " + exp + " / " + nextLevelExp);
-
-            System.out.println(" ❤️ HP         : " + hp + " / " + maxHP);
-            System.out.println(energyLabel + "       : " + energy + " / " + maxEnergy);
+            energyLabel = " 💧 Mana    ";
         } else if (classType.equalsIgnoreCase("Archer")) {
-            energyLabel = " 🏹 Arrows";
-
-            System.out.println(" 🏆 Level      : " + level);
-            System.out.println(" ✨ EXP        : " + exp + " / " + nextLevelExp);
-
-            System.out.println(" ❤️ HP         : " + hp + " / " + maxHP);
-            System.out.println(energyLabel + "     : " + energy + " / " + maxEnergy);
+            energyLabel = " 🏹 Arrows  ";
         } else {
-            energyLabel = " 🔋 Stamina";
-            System.out.println(" 🏆 Level      : " + level);
-            System.out.println(" ✨ EXP        : " + exp + " / " + nextLevelExp);
-
-            System.out.println(" ❤️ HP         : " + hp + " / " + maxHP);
-            System.out.println(energyLabel + "    : " + energy + " / " + maxEnergy);
-
+            energyLabel = " 🔋 Stamina ";
         }
 
         if (level == 30) {
@@ -175,6 +158,15 @@ public abstract class Character {
         } else {
 
         }
+
+        System.out.println(" 👤 Name/Class : " + name + " (" + classType + ")");
+
+
+        System.out.println(" 🏆 Level      : " + level);
+        System.out.println(" ✨ EXP        : " + exp + " / " + nextLevelExp);
+
+        System.out.println(" ❤️ HP         : " + hp + " / " + maxHP);
+        System.out.println(energyLabel + "   : " + energy + " / " + maxEnergy);
 
 
 

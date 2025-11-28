@@ -15,13 +15,23 @@ public class Tester {
         Kael kael = new Kael();
         Karl karl = new Karl();
         Simon simon = new Simon();
+        World1Enemy1 w1 = new World1Enemy1();
+        World1Enemy2 w2 = new World1Enemy2();
+
         World1Miniboss1 enemy = new World1Miniboss1();
+        Null op = new Null();
+
+        w1.displayStats();
+        w2.displayStats();
 
 
 
-
-
+       /*
+       simon.displayStats();
+       kael.displayStats();
        karl.displayStats();
+       op.displayStats();
+        */
 
 
 
