@@ -4,10 +4,7 @@ import characters.Character;
 import enemies.*;
 
 import events.MagicShop;
-import inventory.Armor;
-import inventory.Staff;
-import inventory.Sword;
-import inventory.Bow;
+import inventory.*;
 import utils.InputUtil;
 import utils.PrintUtil;
 import worlds.*;
@@ -17,94 +14,94 @@ import java.sql.SQLOutput;
 public class Tester {
     public static void main(String[] args) {
 
-        Kael kael = new Kael();
-        Karl karl = new Karl();
-        Simon simon = new Simon();
-        World1Enemy1 w1 = new World1Enemy1();
-        World1Enemy2 w2 = new World1Enemy2();
+//        Kael kael = new Kael();
+//        Karl karl = new Karl();
+//        Simon simon = new Simon();
+//        World1Enemy1 w1 = new World1Enemy1();
+//        World1Enemy2 w2 = new World1Enemy2();
+//
+//        World1Miniboss1 enemy = new World1Miniboss1();
+//        Null op = new Null();
+//
+//        w1.displayStats();
+//        w2.displayStats();
+//
+//
+//
+//       /*
+//       simon.displayStats();
+//       kael.displayStats();
+//       karl.displayStats();
+//       op.displayStats();
+//        */
+//
+//
+//
+//
+//
+//        Inventory inven = new Inventory(kael);
+//        FinalBoss fb = new FinalBoss();
+//
+//
+//
+//
+//
+//        /*
+//         kael.showStats();
+//        kael.bladeRush(enemy);
+//        System.out.println();
+//        kael.guardBreaker(enemy);
+//        System.out.println();
+//        kael.eternalCrossSlash(enemy);
+//        System.out.println();
+//        kael.showStats();
+//        enemy.showStats();
+//         */
+//        /*
+//        karl.showStats();
+//        karl.piercingArrow(enemy);
+//        System.out.println();
+//        karl.bullsEye(enemy);
+//        System.out.println();
+//        karl.rainOfAThousandArrows(enemy);
+//        System.out.println();
+//        karl.showStats();
+//        enemy.showStats();
+//         */
+//        /*
+//        simon.showStats();
+//        simon.fireball(enemy);
+//        System.out.println();
+//        simon.icePrison(enemy);
+//        System.out.println();
+//        simon.meteorStorm(enemy);
+//        simon.showStats();
+//        enemy.showStats();
+//        */
+//        /*
+//        Enemy1World1 mob = new Enemy1World1();
+//        mob.showStats();
+//        kael.showStats();
+//        kael.bladeRush(mob);
+//        System.out.println();
+//        mob.savageHowl(kael);
+//         */
+//        /*
+//        kael.showBackstory();
+//        System.out.println();
+//        kael.showSkills();
+//        System.out.println();
+//        karl.showBackstory();
+//        System.out.println();
+//        karl.showSkills();
+//        System.out.println();
+//        simon.showBackstory();
+//        System.out.println();
+//        simon.showSkills();
+//        */
 
-        World1Miniboss1 enemy = new World1Miniboss1();
-        Null op = new Null();
 
-        w1.displayStats();
-        w2.displayStats();
-
-
-
-       /*
-       simon.displayStats();
-       kael.displayStats();
-       karl.displayStats();
-       op.displayStats();
-        */
-
-
-
-
-
-        Inventory inven = new Inventory(kael);
-        FinalBoss fb = new FinalBoss();
-
-
-
-
-
-        /*
-         kael.showStats();
-        kael.bladeRush(enemy);
-        System.out.println();
-        kael.guardBreaker(enemy);
-        System.out.println();
-        kael.eternalCrossSlash(enemy);
-        System.out.println();
-        kael.showStats();
-        enemy.showStats();
-         */
-        /*
-        karl.showStats();
-        karl.piercingArrow(enemy);
-        System.out.println();
-        karl.bullsEye(enemy);
-        System.out.println();
-        karl.rainOfAThousandArrows(enemy);
-        System.out.println();
-        karl.showStats();
-        enemy.showStats();
-         */
-        /*
-        simon.showStats();
-        simon.fireball(enemy);
-        System.out.println();
-        simon.icePrison(enemy);
-        System.out.println();
-        simon.meteorStorm(enemy);
-        simon.showStats();
-        enemy.showStats();
-        */
-        /*
-        Enemy1World1 mob = new Enemy1World1();
-        mob.showStats();
-        kael.showStats();
-        kael.bladeRush(mob);
-        System.out.println();
-        mob.savageHowl(kael);
-         */
-        /*
-        kael.showBackstory();
-        System.out.println();
-        kael.showSkills();
-        System.out.println();
-        karl.showBackstory();
-        System.out.println();
-        karl.showSkills();
-        System.out.println();
-        simon.showBackstory();
-        System.out.println();
-        simon.showSkills();
-        */
-
-
-        /*System.out.println("Welcome to The Final Compilation");
+        System.out.println("Welcome to The Final Compilation");
         PrintUtil.pause(1000);
 
         System.out.println("-------------------------------------");
@@ -150,6 +147,7 @@ public class Tester {
         } while (player == null);  // repeat until valid choice
         player.getInventory().setEquippedArmor(Armor.LEATHER_GUARD);
 
+        player.lootSoulShards(20);
         MagicShop shop = new MagicShop(player);
         shop.openShop();
 
@@ -170,7 +168,7 @@ public class Tester {
         Battle testBattle2 = new Battle(player, testEnemy2);
         testBattle2.startBattle();
         testEnemy2.dropLoot(player);
-        */
+
 
 
 

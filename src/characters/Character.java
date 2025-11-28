@@ -78,7 +78,9 @@ public abstract class Character {
     public String getClassType(){ return classType; }
     public int getHp() { return hp; }
     public int getDefense() { return defense; }
+    public int getBaseDefense() { return baseDefense; }
     public int getAttack() { return attack; }
+    public int getBaseAttack() { return baseAttack; }
     public int getMaxHP() { return maxHP; }
     public int getMaxEnergy() { return maxEnergy; }
     public int getEnergy() { return energy; }
@@ -103,13 +105,17 @@ public abstract class Character {
     }
     // ------------------- SETTERS -------------------
     public void setAttack(int attack){ this.attack = attack; }
+    public void setBaseAttack(int baseAttack){ this.baseAttack = baseAttack; }
     public void setDefense(int defense){ this.defense = defense; }
+    public void setBaseDefense(int baseDefense){ this.baseDefense = baseDefense; }
     public void setHp(int hp){ this.hp = hp; }
+    public void setMaxHP(int maxHP){ this.maxHP = maxHP; }
     public void setEnergy(int energy) {
         if (energy < 0) energy = 0;
         if (energy > maxEnergy) energy = maxEnergy;
         this.energy = energy;
     }
+    public void setMaxEnergy(int maxEnergy){ this.maxEnergy = maxEnergy; }
     public boolean hasUsedReviveTrial() {
         return reviveUsed;
     }
@@ -231,6 +237,29 @@ public abstract class Character {
                 case 3 ->  player.displaySkills();
                 case 4 -> enemy.displayStats();
                 case 5 -> enemy.displaySkills();
+                case 0 -> goBack = true;
+                default -> System.out.println("❌ Invalid input! Please select a valid option.");
+            }
+        }
+    }
+
+    public void displayMenu(Character player){
+        boolean goBack = false;
+
+        while(!goBack){
+            System.out.println("[1] \uD83C\uDF92 Open Inventory");
+            System.out.println("[2] \uD83E\uDDD1 Show Player Stats");
+            System.out.println("[3] \uD83D\uDCD6 Show Player Skills Overview");
+            System.out.println("[0] \uD83D\uDD19 Go back");
+
+            System.out.print("Enter choice: ");
+            int choice = InputUtil.scanInput();
+            PrintUtil.line();
+
+            switch (choice){
+                case 1 -> player.getInventory().openInventory();
+                case 2 -> player.displayStats();
+                case 3 ->  player.displaySkills();
                 case 0 -> goBack = true;
                 default -> System.out.println("❌ Invalid input! Please select a valid option.");
             }
@@ -374,7 +403,7 @@ public abstract class Character {
 
             recalculateBuffs();
 
-            System.out.printf("%-8s : +%d → %d%n", "❤️ HP", (maxHP - oldHp), maxHP);
+            System.out.printf("%-8s : +%d → %d%n", "💚 HP", (maxHP - oldHp), maxHP);
             System.out.printf("%-8s : +%d → %d%n", "⚔️ ATK", (baseAttack - oldAtk), attack);
             System.out.printf("%-8s : +%d → %d%n", "🛡️ DEF", (baseDefense - oldDef), defense);
             System.out.printf("%-8s : +%d → %d%n", getEnergyEmoji() + " " + getEnergyName(),
@@ -392,6 +421,12 @@ public abstract class Character {
     public void lootSoulShards(int dropped) {
         System.out.println("  💠 " + dropped + " Soul Shard" + (dropped > 1 ? "s" : ""));
         soulShards += dropped;
+    }
+
+    public void subtractSoulShards(int amount) {
+        if (amount <= 0) return; // nothing to subtract
+        if (soulShards < amount) soulShards = 0; // prevent negative
+        else soulShards -= amount;
     }
 
 }

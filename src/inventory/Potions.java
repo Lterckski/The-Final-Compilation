@@ -117,4 +117,13 @@ public class Potions {
 
     }
 
+    public void acquireNormalHealingPotion(int amount){
+        normalHealingPotions += amount;
+    }
+    public void acquireFullHealingPotion(int amount){
+        fullHealingPotions += amount;
+    }
+    public void acquireEnergyPotion(int amount){
+        energyPotions += amount;
+    }
 }

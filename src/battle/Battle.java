@@ -143,6 +143,16 @@ public class Battle {
             PrintUtil.line();
 
             if (!player.isAlive()) {
+                if (player.getInventory().hasPhoenixSoulstone()) {
+                    player.getInventory().usePhoenixSoulstone();
+                    player.setHp(player.getMaxHP() / 2);
+                    player.setEnergy(player.getMaxEnergy() / 2);
+
+                    System.out.println("🕊️ The Phoenix Soulstone revives you!");
+                    System.out.println("✨ You return with restored strength!");
+                    System.out.println("💚 HP : " + player.getHp() + " | " + player.getEnergyEmoji() + " " + player.getEnergyName() + " : " + player.getEnergy());
+                }
+
                 if (player.hasUsedReviveTrial()) {
                     System.out.println("💀 You fall once more... there are no more second chances.");
                     gameOver();

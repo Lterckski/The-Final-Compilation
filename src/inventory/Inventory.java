@@ -10,10 +10,29 @@ public class Inventory {
     private Weapon equippedWeapon;
     private Armor equippedArmor;
     private final Potions potions;
+    private boolean hasPhoenixSoulstone = false;
 
     public Inventory(Character owner) {
         this.player = owner;
         this.potions = new Potions(owner);
+    }
+
+    // --- Getters and Setters ---
+    public Weapon getEquippedWeapon() { return equippedWeapon; }
+    public Armor getEquippedArmor() { return equippedArmor; }
+    public Potions getPotions() { return potions; }
+
+    public void setEquippedWeapon(Weapon weapon) { equippedWeapon = weapon; }
+    public void setEquippedArmor(Armor armor) { equippedArmor = armor; }
+
+    public boolean hasPhoenixSoulstone() {
+        return hasPhoenixSoulstone;
+    }
+    public void acquirePhoenixSoulstone() {
+        hasPhoenixSoulstone = true;
+    }
+    public void usePhoenixSoulstone() {
+        hasPhoenixSoulstone = false;
     }
 
     // --- Helpers for UI formatting ---
@@ -45,14 +64,6 @@ public class Inventory {
             return bar;
         }
     }
-
-    // --- Getters and Setters ---
-    public Weapon getEquippedWeapon() { return equippedWeapon; }
-    public Armor getEquippedArmor() { return equippedArmor; }
-    public Potions getPotions() { return potions; }
-
-    public void setEquippedWeapon(Weapon weapon) { equippedWeapon = weapon; }
-    public void setEquippedArmor(Armor armor) { equippedArmor = armor; }
 
     // --- Inventory Menu ---
     public void openInventory() {
