@@ -110,6 +110,10 @@ public class World2 {
         Enemy enemy1 = new World2Enemy1();
         Battle battle1 = new Battle(player, enemy1);
 
+        System.out.println();
+        enemy1.displaySkills();
+        System.out.println();
+
         for(int i = 1; i <= 3; i++){
             PrintUtil.hr();
             System.out.println("🐀 Vermin " + i + " lunges at you!");
@@ -185,6 +189,10 @@ public class World2 {
         Enemy enemy2 = new World2Enemy2();
         Battle battle2 = new Battle(player, enemy2);
 
+        System.out.println();
+        enemy2.displaySkills();
+        System.out.println();
+
         for (int i = 1; i <= 2; i++) {
             PrintUtil.hr();
             System.out.println("☠️ Forsaken Cultist " + i + " raises a cursed dagger!");
@@ -257,6 +265,11 @@ public class World2 {
 
         Enemy enemy3 = new World2Enemy3();
         Battle battle3 = new Battle(player, enemy3);
+
+        System.out.println();
+        enemy3.displaySkills();
+        System.out.println();
+
         for (int i = 1; i <= 3; i++) {
             PrintUtil.hr();
             System.out.println("🐕 Blight Hound " + i + " snarls and lunges!");
@@ -332,6 +345,10 @@ public class World2 {
 
         Enemy enemy4 = new World2Enemy4();
         Battle battle4 = new Battle(player, enemy4);
+
+        System.out.println();
+        enemy4.displaySkills();
+        System.out.println();
 
         for(int i = 1; i <= 2; i++){
             PrintUtil.hr();
@@ -422,6 +439,11 @@ public class World2 {
 
         Enemy miniBoss = new World2Miniboss1();
         Battle miniBattle = new Battle(player, miniBoss);
+
+        System.out.println();
+        miniBoss.displaySkills();
+        System.out.println();
+
         miniBattle.startBattle();
 
         PrintUtil.line();
@@ -502,6 +524,11 @@ public class World2 {
 
         Enemy boss = new World2Miniboss2();
         Battle bossBattle = new Battle(player, boss);
+
+        System.out.println();
+        boss.displaySkills();
+        System.out.println();
+
         bossBattle.startBattle();
 
         PrintUtil.line();

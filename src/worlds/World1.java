@@ -84,6 +84,10 @@ public class World1 {
         Enemy enemy1 = new World1Enemy1();
         Battle battle1 = new Battle(player, enemy1);
 
+        System.out.println();
+        enemy1.displaySkills();
+        System.out.println();
+
         for (int i = 1; i <= 3; i++) {
             PrintUtil.hr();
             System.out.println("🐺 Rotfang Wolf " + i + " lunges at you!");
@@ -147,6 +151,10 @@ public class World1 {
 
         Enemy enemy2 = new World1Enemy2();
         Battle battle2 = new Battle(player, enemy2);
+
+        System.out.println();
+        enemy2.displaySkills();
+        System.out.println();
 
         for (int i = 1; i <= 2; i++) {
             PrintUtil.hr();
@@ -220,6 +228,10 @@ public class World1 {
         Enemy enemy3 = new World1Enemy3();
         Battle battle3 = new Battle(player, enemy3);
 
+        System.out.println();
+        enemy3.displaySkills();
+        System.out.println();
+
         for (int i = 1; i <= 2; i++) {
             PrintUtil.hr();
             System.out.println("🌳 Dreadbark Treant " + i + " slams its massive arm down at you!");
@@ -284,6 +296,10 @@ public class World1 {
 
         Enemy enemy4 = new World1Enemy4();
         Battle battle4 = new Battle(player, enemy4);
+
+        System.out.println();
+        enemy4.displaySkills();
+        System.out.println();
 
         for (int i = 1; i <= 4; i++) {
             PrintUtil.hr();
@@ -386,9 +402,9 @@ public class World1 {
         Enemy miniboss = new World1Miniboss1();
         Battle minibossBattle = new Battle(player, miniboss);
 
+        System.out.println();
         miniboss.displaySkills();
-        InputUtil.pressEnterToContinue();
-        PrintUtil.line();
+        System.out.println();
 
         minibossBattle.startBattle();
 

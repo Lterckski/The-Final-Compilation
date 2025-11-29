@@ -127,7 +127,7 @@ public class StoryEngine {
                 When you open your eyes, you're no longer in the lab. 👁️
                 """
         );
-
+        InputUtil.pressEnterToContinue();
         System.out.println("=======================================================================================================================");
 
         PrintUtil.pause(1000);

@@ -90,6 +90,10 @@ public class World3 {
         Enemy enemy1 = new World3Enemy1();
         Battle battle1 = new Battle(player, enemy1);
 
+        System.out.println();
+        enemy1.displaySkills();
+        System.out.println();
+
         for (int i = 1; i <= 3; i++) {
             PrintUtil.hr();
             System.out.println("🔥 Flame Revenant " + i + " emerges from the lava!");
@@ -168,6 +172,10 @@ public class World3 {
         Enemy enemy2 = new World3Enemy2();
         Battle battle2 = new Battle(player, enemy2);
 
+        System.out.println();
+        enemy2.displaySkills();
+        System.out.println();
+
         for (int i = 1; i <= 2; i++) {
             PrintUtil.hr();
             System.out.println("💀 Bone Warlock " + i + " raises its staff, channeling dark fire!");
@@ -229,6 +237,10 @@ public class World3 {
 
         Enemy enemy3 = new World3Enemy3();
         Battle battle3 = new Battle(player, enemy3);
+
+        System.out.println();
+        enemy3.displaySkills();
+        System.out.println();
 
         for (int i = 1; i <= 2; i++) {
             PrintUtil.hr();
@@ -301,6 +313,10 @@ public class World3 {
 
         Enemy enemy4 = new World3Enemy4();
         Battle battle4 = new Battle(player, enemy4);
+
+        System.out.println();
+        enemy4.displaySkills();
+        System.out.println();
 
         for (int i = 1; i <= 3; i++) {
             PrintUtil.hr();
@@ -390,6 +406,11 @@ public class World3 {
 
         Enemy miniboss = new World3Miniboss1();
         Battle minibattle = new Battle(player, miniboss);
+
+        System.out.println();
+        miniboss.displaySkills();
+        System.out.println();
+
         minibattle.startBattle();
 
         PrintUtil.line();
