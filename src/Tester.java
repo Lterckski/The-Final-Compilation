@@ -157,8 +157,8 @@ public class Tester {
         MagicShop shop = new MagicShop(player);
         shop.openShop();
 
-        World1 world1 = new World1();
-        world1.run(player);
+        World3 world3 = new World3();
+        world3.run(player);
 
 
 
