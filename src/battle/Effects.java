@@ -208,6 +208,7 @@ public class Effects {
     public boolean checkConfuse() {
         if (confused) {
             if (Math.random() < 0.50) {
+                PrintUtil.pause(1700);
                 System.out.println(owner.getName() + " missed the attack due to confusion!");
                 PrintUtil.pause(800);
                 return true;
