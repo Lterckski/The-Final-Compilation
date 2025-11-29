@@ -114,7 +114,7 @@ public class Effects {
     // Fixed amount version (like a shield)
     public void applyDefenseBuff(int amount, int duration, boolean fixedAmountIsPassed) {
         defBuffs.add(new StatModifier(amount, duration));
-        owner.setDefense(owner.getDefense() - amount);
+        owner.setDefense(owner.getDefense() + amount);
 
         System.out.println("🛡️ Shield activated! +" + amount + " DEF for " + duration + " turn/s!");
         PrintUtil.pause(800);
@@ -285,10 +285,10 @@ public class Effects {
     public void updateDefenseModifiers() {
         // --- DEF Buffs ---
         for (int i = defBuffs.size() - 1; i >= 0; i--) {
-            StatModifier buff = defBuffs.get(i);
-            buff.turnsLeft--;
-            if (buff.turnsLeft <= 0) {
-                owner.setDefense(owner.getDefense() - buff.amount);
+            StatModifier mod = defBuffs.get(i);
+            mod.turnsLeft--;
+            if (mod.turnsLeft <= 0) {
+                owner.setDefense(owner.getDefense() - mod.amount);
                 defBuffs.remove(i);
                 System.out.println(owner.getName() + "'s defense buff has worn off!");
                 PrintUtil.pause(800);

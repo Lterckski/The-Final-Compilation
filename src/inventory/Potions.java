@@ -97,22 +97,17 @@ public class Potions {
             }
         }
 
-        PrintUtil.pause(800);
-
         if(normalHealingPotionsCount > 0){
             System.out.println("  🍃 " + normalHealingPotionsCount + " Normal Healing Potion" + (normalHealingPotionsCount > 1 ? "s" : ""));
-            PrintUtil.pause(800);
         }
         if(energyPotionsCount > 0){
             System.out.println("   ⚡ " + energyPotionsCount + " Energy Potion" + (energyPotionsCount > 1 ? "s" : ""));
-            PrintUtil.pause(800);
         }
 
         if(willDropFullHealingPotions){
             int dropped = RandomUtil.range(1,2);
             fullHealingPotions += dropped;
             System.out.println("  💞 " + dropped + " Full Healing Potion" + (dropped > 1 ? "s" : ""));
-            PrintUtil.pause(800);
         }
 
     }

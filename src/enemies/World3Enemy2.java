@@ -61,9 +61,9 @@ public class World3Enemy2 extends Enemy {
 
     @Override
     public void dropLoot(Character player){
+        PrintUtil.pause(800);
         System.out.println("┬───────────────────────────────────┬");
         System.out.println("  🎁 You received:");
-        PrintUtil.pause(800);
         player.lootSoulShards(RandomUtil.range(2,4));
         player.getPotions().lootPotions(false);
         player.gainExp(rewardExp());

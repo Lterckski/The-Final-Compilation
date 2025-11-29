@@ -6,8 +6,11 @@ import inventory.Armor;
 import inventory.Inventory;
 import inventory.Potions;
 import inventory.Weapon;
+import storyEngine.StoryEngine;
 import utils.InputUtil;
 import utils.PrintUtil;
+
+import java.sql.SQLOutput;
 
 public abstract class Character {
 
@@ -200,15 +203,7 @@ public abstract class Character {
                 "  (Base " + baseDefense +
                 " | Armor " + String.format("%+d", armorDefBonus) +
                 " | " + defLabel + " " + String.format("%+d", effectDefMod) + ")");
-
-
-
-
-
             System.out.println("└───────────────────────────────────────────────────────────┘");
-
-
-
     }
 
 
@@ -225,6 +220,7 @@ public abstract class Character {
             System.out.println("[3] \uD83D\uDCD6 Show Player Skills Overview");
             System.out.println("[4] \uD83D\uDC79 Show Enemy Stats");
             System.out.println("[5] \uD83D\uDCDD Show Enemy Skills Overview");
+            System.out.println("[6] ❌ Quit Game");
             System.out.println("[0] \uD83D\uDD19 Go back");
 
             System.out.print("Enter choice: ");
@@ -237,6 +233,7 @@ public abstract class Character {
                 case 3 ->  player.displaySkills();
                 case 4 -> enemy.displayStats();
                 case 5 -> enemy.displaySkills();
+                case 6 -> StoryEngine.quitGame();
                 case 0 -> goBack = true;
                 default -> System.out.println("❌ Invalid input! Please select a valid option.");
             }
@@ -354,7 +351,7 @@ public abstract class Character {
         exp += amount;
         System.out.println("  ✨ Gained " + amount + " XP!");
         System.out.println("┴───────────────────────────────────┴");
-        PrintUtil.pause(800);
+        InputUtil.pressEnterToContinue();
         while(level < XP_TABLE.length && exp >= nextLevelExp){
             levelUp();
         }
@@ -428,5 +425,6 @@ public abstract class Character {
         if (soulShards < amount) soulShards = 0; // prevent negative
         else soulShards -= amount;
     }
+
 
 }

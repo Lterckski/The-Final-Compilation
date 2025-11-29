@@ -3,6 +3,7 @@ package worlds;
 import enemies.*;
 import battle.Battle;
 import characters.Character;
+import events.MagicShop;
 import utils.InputUtil;
 import utils.PrintUtil;
 
@@ -84,12 +85,47 @@ public class World2 {
         Their claws drip with venomous filth.
         """);
 
-        PrintUtil.type("🎯 Objective: Defeat 3 Plague Vermin's!\n");
+        PrintUtil.pause(1500);
+        System.out.println();
+        System.out.println("                  .                                       ");
+        System.out.println("                --.                                       ");
+        System.out.println("              .-++       ..                               ");
+        System.out.println("             -=:.     :==*#*+=-:      *%%*:               ");
+        System.out.println("             -*++.   :+%%%%%%#+-.    .*  .=*=             ");
+        System.out.println("              .+-  .= .+%%%%%%%*=.    *     -=.           ");
+        System.out.println("               .=.    -#%%%%%%@@%-  .+-      -.           ");
+        System.out.println("               .+%-.=+#@@@%@@@@@%*##%#=      .            ");
+        System.out.println("  .             .+. %%@@##@@@@@@@@@==:   ..               ");
+        System.out.println("  =-     =--..::..+ *@@*:+%@@%@%%@%-+..  :=:              ");
+        System.out.println("  .:=#-.*#%%+##+-.+ :#=.-#@%@%@%++++:.#.-#:::.  :*-:      ");
+        System.out.println("   .--=-.+%%@@@#-.-+ :..*@@@@%@@*:==::*=*@@@@%*:-*.:.     ");
+        System.out.println("   .-=:==. =@@%#- .+- .+@@@@@@@@*:=*-:+%@@@@%#%%#-*-+:    ");
+        System.out.println("   .=+.    .#@*:*-++*.+%@@@@@@@@#+-.-%@@@@@@%%@@%+.:-:    ");
+        System.out.println("           +%%#:=*%@#=*@@@@@@@@@@#:-+@@@@@@@@@@@@#+:.*=   ");
+        System.out.println("          -@@@%**:==.+=@@@@@@@@@@%=+:#@@@@@@@@@@@@-       ");
+        System.out.println("         :%=%#++.    =-*%**%@@@@@@+..%@@@@@@@@@@%-#       ");
+        System.out.println("     ..  :%:=::*+.....==#--:=.==##*:.#@@@@@@@@@@=.-..     ");
+        System.out.println("     :-:: -+=##+*--#%###+#%@=#%+*=#+*+@@%*#%%%@@ -:-.     ");
+        System.out.println("    .:=--.-#-=*%#%##%%@@%@@@@@@@@@%@#%@+*@@#-*%=+=+=..    ");
+        System.out.println("   ..-=+#@@@@@@@%@@@@@@@@@@@@@@@@@@@@@@@@@@@@%@@**=+-.    ");
+        System.out.println("      :=-+#%*@%%@@@@@@@@@@@@@@@@@@@@@@%@@@@@%%#-*--...    ");
+        System.out.println("      ..-.::+##**%%*++*#%%%%@##*#@@@%%%%%%*=+-:*::-.      ");
+        System.out.println("         --::=-:=++=**#*#+-=+%#*===+=:--+=-:--+:.--       ");
+        System.out.println("               . :-+=-:-===.+:  :==-=+=   :-:             ");
+        System.out.println("                   .          .:.                          ");
+        System.out.println();
+
+
+        PrintUtil.type("🎯 Objective: Defeat 3 Plague Vermins!\n");
         InputUtil.pressEnterToContinue();
         PrintUtil.line();
 
         Enemy enemy1 = new World2Enemy1();
         Battle battle1 = new Battle(player, enemy1);
+
+        System.out.println();
+        enemy1.displaySkills();
+        System.out.println();
 
         for(int i = 1; i <= 3; i++){
             PrintUtil.hr();
@@ -134,12 +170,41 @@ public class World2 {
                 their eyes glowing with fanatic light as they chant forbidden rites.
                 """);
 
+        PrintUtil.pause(1500);
+        System.out.println();
+        System.out.println("        . -                                                ");
+        System.out.println("       ==+#*   +@@*..                  :-.                 ");
+        System.out.println("       .+%++  -@@@@@@@@*.        .-+%@@@@@:                ");
+        System.out.println("         -#    *@@@@@@@@#       :%@@@@@@@@-                ");
+        System.out.println("         :*.   :=%@@@@@@@*.    :%@@@@@@@@*                 ");
+        System.out.println("         :.*     @@%@@@@@%#.  :%@@@@@@@:=.                 ");
+        System.out.println("         : *   .*@..=@@@@*#+  %*#@@@%*%:.                  ");
+        System.out.println("           #@%%#%+ :#@@@@%#+ .%#%@@@%#@*                   ");
+        System.out.println("            =.  - .#@@@@@@@=. *@@@@@@#-#-                  ");
+        System.out.println("            .*   :#%@@@@@@@%- #@@@@@@@*=@:                 ");
+        System.out.println("             -.  .+@@@@@@@@-  =@@@@@@@#:#@=                ");
+        System.out.println("             -=   %@@@@@@@@=  +@@@@@@@@-  -%*.             ");
+        System.out.println("             .-. -@@@@@@@@@=  +@@@@@@@@%     *%=.          ");
+        System.out.println("              =- -@@@@@@@@@+  *@@@@@@@@%                   ");
+        System.out.println("              .-..@@@@@@@@@*  *@@@@@@@@#                   ");
+        System.out.println("               +:.@@@@@@@@@#. %@@@@@@@@#                   ");
+        System.out.println("               .=.%@@@@@@@@#..#@@@@@@@@=                   ");
+        System.out.println("                *=@@@@@@@@@@=+@@@@@@@@@#                   ");
+        System.out.println("          :+*%@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%*=.            ");
+        System.out.println("                   :--=--==+++==-----:    ..               ");
+        System.out.println();
+
+
         PrintUtil.type("🎯 Objective: Defeat 2 Forsaken Cultists!\n");
         InputUtil.pressEnterToContinue();
         PrintUtil.line();
 
         Enemy enemy2 = new World2Enemy2();
         Battle battle2 = new Battle(player, enemy2);
+
+        System.out.println();
+        enemy2.displaySkills();
+        System.out.println();
 
         for (int i = 1; i <= 2; i++) {
             PrintUtil.hr();
@@ -175,12 +240,49 @@ public class World2 {
                 their fangs glinting and bodies wrapped in poisonous clouds.
                 """);
 
+        PrintUtil.pause(1500);
+        System.out.println();
+        System.out.println("                  -             .-=+-. ::      .:         ");
+        System.out.println("            .- ....=               :-*%%%@+..+%-.         ");
+        System.out.println("            :-*%@%@@%*             .::+%*#@@%@@%*=.       ");
+        System.out.println("     --    .*%@@@@@@@%#-::.           . -%@@@@@@@%%+.     ");
+        System.out.println("    =#:   +@@@%@@@@@@%@#-:-    ::=. :+@@@@@@@@@@@%@@=     ");
+        System.out.println("   ::   :%@@@%@%%@@@@%%@@#:   .+. .+#@@%%%*@@@@% :#*#.    ");
+        System.out.println("  .=  .**.@%:*@#%@#%--@@%-     .::..#@:.%%:=%-+#%-        ");
+        System.out.println("   :*+: =#= -%=:*@-@= .++:        +-  :*    ++.  =+       ");
+        System.out.println("        %:   =+. -@-%-.          ==    =*:   =*.          ");
+        System.out.println("        --     .  -*-:.                       .:.         ");
+        System.out.println("                                                          ");
+        System.out.println("                                      :.                  ");
+        System.out.println("                                 ..:+=#*-                 ");
+        System.out.println("                                 =+=+=+%=-=.              ");
+        System.out.println("                                 :+#%@@@@%*+-             ");
+        System.out.println("                        .--:   :.-*%@@@@@@@#- .           ");
+        System.out.println("                           +..#@%#@@@@@@@%@@*=%=.#%:      ");
+        System.out.println("                          :-:%%=%%%%@%%@%@@@@#*%%+#%-     ");
+        System.out.println("                         .+.*%=%@%%@%%%@%%@@@%#+.=*%#:    ");
+        System.out.println("                          =%@#+=@%#%%#@@%%@@@%%*=+@#*=    ");
+        System.out.println("                           :% @%%- *@%+. :**#*%.  +%#+    ");
+        System.out.println("                            #++:#- .%%:     +@-   .%%=    ");
+        System.out.println("                            =@: ++  :%%%-   =*.   .%*.    ");
+        System.out.println("                            :=: .+-  .##.         =*      ");
+        System.out.println("                                  -:   :*:       :=       ");
+        System.out.println("                                         .:.               ");
+        System.out.println("                                                          ");
+        System.out.println();
+
+
         PrintUtil.type("🎯 Objective: Defeat 3 Blight Hounds!\n");
         InputUtil.pressEnterToContinue();
         PrintUtil.line();
 
         Enemy enemy3 = new World2Enemy3();
         Battle battle3 = new Battle(player, enemy3);
+
+        System.out.println();
+        enemy3.displaySkills();
+        System.out.println();
+
         for (int i = 1; i <= 3; i++) {
             PrintUtil.hr();
             System.out.println("🐕 Blight Hound " + i + " snarls and lunges!");
@@ -218,12 +320,48 @@ public class World2 {
                 Their movements are jerky, puppets of a cruel master.
                 """);
 
+        PrintUtil.pause(1500);
+        System.out.println();
+        System.out.println("                  .+.                                     ");
+        System.out.println("                   .*-+#-                                 ");
+        System.out.println("                .#%%@%*=                                  ");
+        System.out.println("    ..           :%@@+-#-                                 ");
+        System.out.println("    :=.           .#@%-.**.          -*-                  ");
+        System.out.println("  .=.=-              :-  -*:     .:.-@@#+: ::             ");
+        System.out.println("  :%@@@@*                  *%*  .=#@@@@@@%%%+:            ");
+        System.out.println("   +@%*#-                  +@@:.*@@@@@@@@@%*+#=-.         ");
+        System.out.println("   .+#:*=        =%*  .:   :@@*%@@@@@@%#@@@@@@#.          ");
+        System.out.println("     -=:#      .-%@@%**+-  .#@@@@@@@@@@%%@@@@@@-          ");
+        System.out.println("      . ==     .*@@@@@%###: :*@%#+#@@@@@@@@@@@@*          ");
+        System.out.println("       ..*.    :#@@@@@@@@@*.  -=. .*@@@@@@@%#@@%:         ");
+        System.out.println("         .*    .#@@@@@@@@%@#.  .  .#@@@%@%%@@@@@%:        ");
+        System.out.println("          ==   :#@%@@@@@@@%@%=   .*@@@@@@@@@@@@%#*:       ");
+        System.out.println("          =@%#%@@+:-@@@@@%%@@#-  -%@@@@@@@@@@@@%+:-       ");
+        System.out.println("           :+ :++..#@@@@@@@@@++..*@@@@@@@@@@@@@@=::.      ");
+        System.out.println("            -- .: +@@@@@@@@@%*-.:#@@@@@@@@@@@@@@@: .      ");
+        System.out.println("            .=.  -@@@@@@@@@@@*:.=@@@@@@@@@@@@@@@**+       ");
+        System.out.println("             -= .#@@@@@@@@@@@#+:%@@@@@@@@@@@@@@@*:..      ");
+        System.out.println("             .=:+@@@@@@@@@@@#+:.=@@%%@@@@@%@@%%+*+        ");
+        System.out.println("              -- *@@#@@@#%@@%+. :%@%-*#+@##@@@==  -       ");
+        System.out.println("               =::@% -**=:#@= . :%%: ..=-:.-%@: .  .      ");
+        System.out.println("               .=.%#   .. .%+   =@#:    .   +@+  :        ");
+        System.out.println("             .:.=+@@. .:+=:#@.:#@@%=+=--::. +@@-=.        ");
+        System.out.println("         ..-+#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%#=.     ");
+        System.out.println("             ..:-====+****##%%%%###*##**++-:::::.         ");
+        System.out.println("                                                          ");
+        System.out.println();
+
+
         PrintUtil.type("🎯 Objective: Defeat 2 Ghoul Footmen!\n");
         InputUtil.pressEnterToContinue();
         PrintUtil.line();
 
         Enemy enemy4 = new World2Enemy4();
         Battle battle4 = new Battle(player, enemy4);
+
+        System.out.println();
+        enemy4.displaySkills();
+        System.out.println();
 
         for(int i = 1; i <= 2; i++){
             PrintUtil.hr();
@@ -277,6 +415,37 @@ public class World2 {
         System.out.println("========================================================================");
         System.out.println();
 
+        PrintUtil.pause(1500);
+        System.out.println();
+        System.out.println("                                        :+#-              ");
+        System.out.println("                         .=. .+        .++=*-             ");
+        System.out.println("                         =#@%%#:        --.-.             ");
+        System.out.println("                          *%@#=         :*=-              ");
+        System.out.println("                     .+*=#%%#%%*+*:     .%#:              ");
+        System.out.println("                    %@@@%%%#%#%%%@@#.   .*+               ");
+        System.out.println("                   *@@@@%#@%%#%#%@@@+    +-               ");
+        System.out.println("                   #%#%#%%%@@%%%%#%%*   .+-               ");
+        System.out.println("                  =@%%@@@@@%@@%@@@%%%+:.=#=.              ");
+        System.out.println("                 *#@%%%@@@%@@@@%@@@@%@@%#%#:              ");
+        System.out.println("                :#%%%%@%##%%%%%##@@@%#*==#.               ");
+        System.out.println("                =%@@@@@%%%*#%#*#%%@@@@- .#.               ");
+        System.out.println("        *-+:   .*%#=@%%@#%%%@@#%*@@@@@@#-#                ");
+        System.out.println("     .+%@%@%*  :*%#%@%@%#%#%@@#%#%@@@@@@@%:               ");
+        System.out.println("     .+@@%@@#**+---@@@@%##%#@@@%#%@@@@@@@@@%*:           ");
+        System.out.println("       *@@%@@=    :@@%@%%%%%@@@%%@@@@@@@@@@@@@@#-        ");
+        System.out.println("       =%@@@@%=   =@@%%%@@@%@@@@@%#@@@@@@%#%%%#@@@+.      ");
+        System.out.println("       +@%%#@%+   -@@%@@@%%@@@%%@@%@@@@@@@#-...- .*%-     ");
+        System.out.println("       .=###+:    :@#%@@@%@@@%@%@@@@@@@@@@@@*.     .-:    ");
+        System.out.println("                   +@%%%#@@@@@@%%%%%@@@@@@@@@@*           ");
+        System.out.println("                    %%@@@@@@@@@%@@@@@##%@#  .-*=          ");
+        System.out.println("                     %@@@@*=###%%@@@@@@-#.    ..          ");
+        System.out.println("                    .@@#-*%-.#. :%@+ .-=%:                ");
+        System.out.println("                    +%%+   =-   :#%%-  .%                  ");
+        System.out.println("                  .%@@#-        .*#%@%::#                  ");
+        System.out.println("                   ::.             .::.                    ");
+        System.out.println();
+
+
         PrintUtil.type("🎯 Objective: Defeat The Black Jailer!\n");
         InputUtil.pressEnterToContinue();
         PrintUtil.line();
@@ -284,9 +453,9 @@ public class World2 {
         Enemy miniBoss = new World2Miniboss1();
         Battle miniBattle = new Battle(player, miniBoss);
 
+        System.out.println();
         miniBoss.displaySkills();
-        InputUtil.pressEnterToContinue();
-        PrintUtil.line();
+        System.out.println();
 
         miniBattle.startBattle();
 
@@ -327,18 +496,58 @@ public class World2 {
         System.out.println("===========================================================================");
         System.out.println();
 
+        PrintUtil.pause(1500);
+        System.out.println();
+        System.out.println("@@@@@@@@@#+-:                               .-*#@@@@@@@@@@");
+        System.out.println("@@@@@@##@+                                      +%#%@@@@@@");
+        System.out.println("@@@@@##%%%.                  :                  %%###@@@@@");
+        System.out.println("@@@%+#%##%*                :.=-.               #@####+%@@@");
+        System.out.println("@@@@#%@##%@.               +%%*-              .%%##@%#@@@@");
+        System.out.println("@@%*:#@@%%@-               *#@#:              #@%#@@#-*%@@");
+        System.out.println("@@#- -%@%%@#           ..  -%@+    .          =@%#@@= -#@@");
+        System.out.println("@@%= .*@@#@.          .--: :#@= :=::           ##@@#. -#@@");
+        System.out.println("@@*.  =@@%#           .+%@%%%%%%@@*.           *#@@+   *@@");
+        System.out.println("@@+.  =@@%#           :%@@@%%@%%@@@=           +%@@+   +%@");
+        System.out.println("@@+. =@@@@@=.         .+####@@%#*+*- :        -%@@@@+  +@@");
+        System.out.println("@@+.  =@@@*.           -==*%#@##+:+-   -       *%@@+  .+@@");
+        System.out.println("@@+.  :%@%=         ..-#-:*=#@=*= +%=.-:       -%@@-  .+@@");
+        System.out.println("@@+.  .%@%-        ...**. :.#@-.. -#%-         :%@%:  .+@@");
+        System.out.println("@@+.  .%@%-      .-  .*- +@%%@#@%+:=*:.  .     :%@%:  .+@@");
+        System.out.println("@@+:  .%@%-       :::=*::+%@@@@@%*: *- :++:    :%@%:  -*@@");
+        System.out.println("@@+-  .%@#-          *+.+@@@@@@#%*.:##+:       :#@%: .-+%@");
+        System.out.println("@%+-  :%@#-          #:-#@@@@@@@%%*#%*         :#@@- .-+@@");
+        System.out.println("@@+-: :%@#-          ==-%@@@@@##%@@%:          :*@@=..-*@@");
+        System.out.println("@@+-. :%@%-           :*@@@@#%#@%%*-*:         :#@@+:.-*@@");
+        System.out.println("@@*=. :%@%= .:.      ..=*#%%%%#*#%*:           :%@%+-:-*@@");
+        System.out.println("@@*=-.-%@%= :-.        =%%@#@@@%+@=.           :%@@+---+@@");
+        System.out.println("@@*==-=@@%= .-.     .#@@%*#@@@%++@%:       .: .-%@#=-=+*@@");
+        System.out.println("@@#**-=#%%+ .:.   +@@@+*%#-+@*#--%%=       ::.:-##%+-*##@@");
+        System.out.println("@@#++-=###+:.::+@@@*- .*%+:-*=: :#%=       .: :-%@%*+###@@");
+        System.out.println("@@##*-+%@#+--*@@%=.   .*#:  =.   =@-    ..:--:-+%%#***%%@@");
+        System.out.println("@@%#%*#%%#+*@%*:      .*+   .    :#=    :..+=--+######*#@@");
+        System.out.println("@@@@###%#+#*=-----:   -%+        .#*..::----++*#%%@@%%@@@@");
+        System.out.println("@@@%@@%#%%@@%%#%#**==+%@*.     ..-#@#==+*%#%%%%%####@%%@@@");
+        System.out.println("@@@@@@@@@@@%@@@%%@@@@@@@@@@@%%@@@@@@@@@@@%@@@%@%@@@@@@*#@@");
+        System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+        System.out.println();
+
         PrintUtil.type("🎯 Objective: Defeat The Corrupted King!\n");
         InputUtil.pressEnterToContinue();
         PrintUtil.line();
 
         Enemy boss = new World2Miniboss2();
         Battle bossBattle = new Battle(player, boss);
+
+        System.out.println();
+        boss.displaySkills();
+        System.out.println();
+
         bossBattle.startBattle();
 
         PrintUtil.line();
         PrintUtil.type("""
                 👑 Final Victory!
-                The Crupted King’s crown falls to the floor, echoing through the halls.
+                The Corrupted King’s crown falls to the floor, echoing through the halls.
                 Darkness fades, and you stand as the savior of this cursed land.
                 """);
         PrintUtil.loot("You gain immense experience and legendary loot!\n");
@@ -347,13 +556,65 @@ public class World2 {
         PrintUtil.line();
         player.getEffects().resetAllEffects();
 
-        PrintUtil.effect("The King's breath rattles. His eyes regain a hint of clarity.");
-        PrintUtil.say("Corrupted King", "\"The Necromancer… is not what he seems...\"");
-        PrintUtil.event("His body turns to dust.");
+        //-------------------------------------------------
+        PrintUtil.effect("The King's breath rattles. A faint glimmer of humanity returns to his eyes.");
+        PrintUtil.say("Corrupted King", "\"The Necromancer… is not what he seems… choose wisely…\"");
+        PrintUtil.event("With a final sigh, his body crumbles into dust, leaving only echoes of his warning.");
         InputUtil.pressEnterToContinue();
 
-        PrintUtil.event("You seize the Second Stone.");
-        PrintUtil.effect("A dark wind howls through the castle, extinguishing every torch.");
+        PrintUtil.event("You lift the Second Stone, feeling its dark energy pulse in your hands.");
+        PrintUtil.effect("A cold wind sweeps through the empty halls, extinguishing every torch and whispering secrets of the past.");
         InputUtil.pressEnterToContinue();
+        PrintUtil.line();
+
+        // ---------------------- MAGIC SHOP ------------------------
+        PrintUtil.type("""
+        As you take a step forward, a strange pull brushes against your soul.
+        The world itself feels like it is shifting around you.
+        """);
+
+        //type slow
+        PrintUtil.type("""
+        ✨ Something… or someone… is calling to you.
+        """);
+        InputUtil.pressEnterToContinue();
+        PrintUtil.line();
+
+        PrintUtil.type("""
+        🔮 A brilliant flash lights up the room!
+        From the shattered shadows, a glowing arcane doorway forms before you.
+        
+        A calm, ancient voice echoes:
+        "Hero of this land… you are granted *one chance* to reshape your fate."
+        
+        🏺 The **One-Time Magic Shop** has appeared.
+        ❗ Once you close it… it will disappear forever.
+        """);
+        InputUtil.pressEnterToContinue();
+        PrintUtil.line();
+
+        MagicShop shop = new MagicShop(player);
+        shop.openShop();
+
+        PrintUtil.line();
+        PrintUtil.effect("🌟 The glow of the Magic Shop fades, leaving only silence behind.");
+        PrintUtil.type("""
+        The doorway vanishes as suddenly as it appeared,
+        leaving you alone in the quiet halls of the castle.
+        
+        🌟 Whatever choices you made within… will echo in the battles to come.
+        Your journey continues, hero. The fate of this land rests in your hands.
+        """);
+        InputUtil.pressEnterToContinue();
+        PrintUtil.line();
+
+        PrintUtil.type("""
+        The castle seems to hold its breath.
+        The choices you've made, the treasures you've claimed…
+        all will shape the path ahead.
+        """);
+        InputUtil.pressEnterToContinue();
+        PrintUtil.line();
+
     }
 }

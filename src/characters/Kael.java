@@ -13,35 +13,35 @@ public class Kael extends  Character{      // 15% crit chance
 
     @Override
     public void displaySkills() {
-        System.out.println("\n⚔️ ----------- KAEL'S SKILLS -----------");
+        System.out.println("┌────────────────────────────────────── ⚔️ KAEL'S SKILLS ⚔️ ───────────────────────────────────────┐");
 
         // Passive
-        System.out.println("✨ Passive – Blade Swift");
-        System.out.println("15% chance to deal a Critical Hit (×1.5 damage).");
-        System.out.println("Effect: When a Critical Hit occurs, 🔋 Kael gains +5% Stamina.\n");
+        System.out.println("  ✨ Passive – Blade Swift");
+        System.out.println("  15% chance to deal a Critical Hit (×1.5 damage).");
+        System.out.println("  Effect: When a Critical Hit occurs, 🔋 Kael gains +5% Stamina.\n");
 
         // Skill 1
-        System.out.println("🏹 Skill 1 – Blade Rush (🔋 5 Stamina)");
-        System.out.println("📜 Description: A quick, fluid slash that catches the opponent off guard.");
-        System.out.println("💥 Damage: (" + (int)(attack * 1.15) + " — " + (int)(attack * 1.35) + ")");
-        System.out.println("⚡ Effects:");
-        System.out.println("- 💪 30% chance to apply Strengthen (+20% ATK for 2 turns)\n");
+        System.out.println("  🗡️ Skill 1 – Blade Rush (🔋 5 Stamina)");
+        System.out.println("  📜 Description: A quick, fluid slash that catches the opponent off guard.");
+        System.out.println("  💥 Damage: (" + (int)(attack * 1.15) + " — " + (int)(attack * 1.35) + ")");
+        System.out.println("  ⚡ Effects:");
+        System.out.println("    - 💪 30% chance to apply Strengthen (+20% ATK for 2 turns)\n");
 
         // Skill 2
-        System.out.println("🗡️ Skill 2 – Piercing Slash (🔋 10 Stamina)");
-        System.out.println("📜 Description: A powerful, focused strike aimed to pierce enemy's armor.");
-        System.out.println("💥 Damage: (" + (int)(attack * 1.35) + " — " + (int)(attack * 1.55) + ") — Ignores Defense");
-        System.out.println("⚡ Effects:");
-        System.out.println("- ⚡ 30% chance to Stun (1 turn)\n");
+        System.out.println("  ⚔\uFE0F Skill 2 – Piercing Slash (🔋 10 Stamina)");
+        System.out.println("  📜 Description: A powerful, focused strike aimed to pierce enemy's armor.");
+        System.out.println("  💥 Damage: (" + (int)(attack * 1.35) + " — " + (int)(attack * 1.55) + ") — Ignores Defense");
+        System.out.println("   ⚡ Effects:");
+        System.out.println("     - 💫 30% chance to Stun (1 turn)\n");
 
         // Ultimate
-        System.out.println("☠️ Ultimate – Eternal Cross Slash (🔋 20 Stamina)");
-        System.out.println("📜 Description: Kael unleashes a flurry of crossing strikes infused with unyielding determination.");
-        System.out.println("💥 Damage: 3 hits, each dealing (" + (int)(attack * 1.40) + " — " + (int)(attack * 2.20) + ")");
-        System.out.println("⚡ Effects:");
-        System.out.println("- 🩸 Applies Bleed (10 damage per turn for 2 turns)");
-        System.out.println("- 🛡️ Grants Fortified (+20% DEF for 2 turns)");
-        System.out.println("-------------------------------------");
+        System.out.println("  ✝️ Ultimate – Eternal Cross Slash (🔋 20 Stamina)");
+        System.out.println("  📜 Description: Kael unleashes a flurry of crossing strikes infused with unyielding determination.");
+        System.out.println("  💥 Damage: 3 hits, each dealing (" + (int)(attack * 1.40) + " — " + (int)(attack * 2.20) + ")");
+        System.out.println("  ⚡ Effects:");
+        System.out.println("   - 🩸 Applies Bleed (10 damage per turn for 2 turns)");
+        System.out.println("   - 🛡️ Grants Fortified (+20% DEF for 2 turns)");
+        System.out.println("└───────────────────────────────────────────────────────────────────────────────────────────────────┘");
     }
 
 
@@ -134,7 +134,7 @@ public class Kael extends  Character{      // 15% crit chance
             return;
         }
 
-        System.out.println("💥 You used Piercing Slash on " + target.getName() + " (🔋-" + energyCost + " Stamina)");
+        System.out.println("⚔\uFE0F You used Piercing Slash on " + target.getName() + " (🔋-" + energyCost + " Stamina)");
         PrintUtil.pause(800);
 
         if(this.getEffects().checkConfuse()) return;

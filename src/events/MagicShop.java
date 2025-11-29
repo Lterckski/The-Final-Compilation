@@ -18,15 +18,16 @@ public class MagicShop {
             // Header
             System.out.println();
             System.out.println("╔═══════════════════════════════════════════════════════════════════════════════════════════════╗");
-            System.out.println("                                   ╔╦╗╔═╗╔═╗╦╔═╗  ╔═╗╦ ╦╔═╗╔═╗");
-            System.out.println("                                   ║║║╠═╣║ ╦║║    ╚═╗╠═╣║ ║╠═╝");
-            System.out.println("                                   ╩ ╩╩ ╩╚═╝╩╚═╝  ╚═╝╩ ╩╚═╝╩   ");
-
+            System.out.println("                                 ╔╦╗ ╔═╗ ╔═╗ ╦ ╔═╗   ╔═╗ ╦ ╦ ╔═╗ ╔═╗");
+            System.out.println("                                 ║║║ ╠═╣ ║ ╦ ║ ║     ╚═╗ ╠═╣ ║ ║ ╠═╝");
+            System.out.println("                                 ╩ ╩ ╩ ╩ ╚═╝ ╩ ╚═╝   ╚═╝ ╩ ╩ ╚═╝ ╩   ");
+            System.out.println("╚═══════════════════════════════════════════════════════════════════════════════════════════════╝");
+            System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> 💠 SOUL SHARDS : " + player.getSoulShards() +" <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<\n");
 // Permanent Stat Upgrades
             System.out.println("╠══════════════════════════════════ 💎 PERMANENT STAT UPGRADES 💎 ══════════════════════════════╣");
-            System.out.printf(" %5s%-3s %-30s %-45s 💠 %d%n", "[1]", " 💖", "Vitality Blessing", "+100 Max HP", 10);
-            System.out.printf(" %5s%-3s %-30s %-45s 💠 %d%n", "[2]", " ⚔️", "Attack Infusion", "+8 ATK", 12);
-            System.out.printf(" %5s%-3s %-30s %-45s 💠 %d%n", "[3]", " 🛡️", "Fortified Spirit", "+2 DEF", 10);
+            System.out.printf(" %5s%-3s %-33s %-42s 💠 %d%n", "[1]", " 💖", "Vitality Blessing", "+100 Max HP", 10);
+            System.out.printf(" %5s%-3s %-33s %-42s 💠 %d%n", "[2]", " ⚔️", "Attack Infusion", "+8 ATK", 12);
+            System.out.printf(" %5s%-3s %-33s %-42s 💠 %d%n", "[3]", " 🛡️", "Fortified Spirit", "+2 DEF", 10);
 
 // Dynamic Soul Battery based on class
             String energyLabel;
@@ -47,7 +48,7 @@ public class MagicShop {
                 }
             }
 
-            System.out.printf(" %5s%-3s %-30s %-45s 💠 %d%n",
+            System.out.printf(" %5s%-3s %-33s %-42s 💠 %d%n",
                     "[4]", " ⚡ ", "Soul Battery",
                     energyValue > 0 ? "+" + energyValue + energyLabel : " ❌",
                     8);
@@ -65,9 +66,9 @@ public class MagicShop {
 
 // Potions
             System.out.println("╠══════════════════════════════════════════ 🧪 POTIONS 🧪 ══════════════════════════════════════╣");
-            System.out.printf(" %5s%-3s %-30s %-45s 💠 %d%n", "[11]", " 🍃", "Normal Healing Potion", "1x", 6);
-            System.out.printf(" %5s%-3s %-30s %-45s 💠 %d%n", "[12]", " 💞", "Full Healing Potion", "1x", 18);
-            System.out.printf(" %5s%-3s %-30s %-45s 💠 %d%n", "[13]", " ⚡ ", "Energy Potion", "1x", 8);
+            System.out.printf(" %5s%-3s %-38s %-37s 💠 %d%n", "[11]", " 🍃", "Normal Healing Potion", "1x", 6);
+            System.out.printf(" %5s%-3s %-38s %-37s 💠 %d%n", "[12]", " 💞", "Full Healing Potion", "1x", 18);
+            System.out.printf(" %5s%-3s %-38s %-37s 💠 %d%n", "[13]", " ⚡ ", "Energy Potion", "1x", 8);
 
 // Special Item
             System.out.println("╠═══════════════════════════════════════ 🔮 SPECIAL ITEM 🔮 ════════════════════════════════════╣");
@@ -79,7 +80,6 @@ public class MagicShop {
             System.out.println("   [0] ➜] Exit Shop");
             System.out.println("╚═══════════════════════════════════════════════════════════════════════════════════════════════╝");
 
-            System.out.println("💠 Soul Shards : " + player.getSoulShards());
             System.out.print("Enter item to purchase: ");
             int choice = InputUtil.scanInput();
             PrintUtil.line();
