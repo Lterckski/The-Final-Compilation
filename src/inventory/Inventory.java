@@ -169,7 +169,7 @@ public class Inventory {
         }
 
         if (available <= 0) {
-            System.out.println("❌ No potions of this type left!");
+            System.out.println("❌ No potions of this type left!\n");
             return;
         }
 
@@ -209,11 +209,11 @@ public class Inventory {
     private boolean areYouSure() {
         int confirm;
         do {
-            System.out.println("Are you sure you want to use a potion? (1 = Yes, 0 = No)");
+            System.out.print("Are you sure you want to use a potion? (1 = Yes, 0 = No): ");
             confirm = InputUtil.scanInput();
             if (confirm == 1) break;
             else if (confirm == 0) break;
-            else System.out.println("❌ Invalid input! Try again.");
+            else System.out.println("❌ Invalid input! Try again.\n");
         } while (true);
         return confirm == 1;
     }

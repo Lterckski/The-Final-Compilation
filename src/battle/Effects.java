@@ -47,32 +47,32 @@ public class Effects {
     // ------------------- APPLY STATUS/EFFECTS -------------------
     public void applyFreeze() {
         frozen = true;
-        System.out.println("❄️ Target is Frozen solid and skips their turn!");
+        System.out.println(owner.getName() + " is Frozen solid and skips their turn! ❄️");
         PrintUtil.pause(800);
     }
 
     public void applyStun() {
         stunned = true;
-        System.out.println("💫 Target is Stunned and can't act!");
+        System.out.println(owner.getName() + " is Stunned and can't act! 💫");
         PrintUtil.pause(800);
     }
 
     public void applyImmobilize() {
         immobilized = true;
-        System.out.println("⛓️ Target is Immobilized and cannot move!");
+        System.out.println(owner.getName() + " is Immobilized and cannot move! ⛓️");
         PrintUtil.pause(800);
     }
 
     public void applyConfuse() {
         confused = true;
-        System.out.println("💭 Target is Confused and might miss their next attack!");
+        System.out.println(owner.getName() + "💭 is Confused and might miss their next attack!");
         PrintUtil.pause(800);
     }
 
     public void applyFear() {
         feared = true;
         confused = true; // Fear also confuses the target
-        System.out.println("😱 Target is Terrified by Fear, skips their turn, and becomes Confused!");
+        System.out.println(owner.getName() + "😱 is Terrified by Fear, skips their turn, and becomes Confused!");
         PrintUtil.pause(800);
     }
 
@@ -132,14 +132,14 @@ public class Effects {
 
     public void applyPoison(int turns) {
         poisonTurnsLeft += turns;
-        System.out.println("☠️ Target is poisoned for " + turns + " turn/s!");
+        System.out.println(owner.getName() + "☠️ is poisoned for " + turns + " turn/s!");
         PrintUtil.pause(800);
     }
 
     public void applyBleed(int turns) {
         bleedInitialTurns += turns;
         bleedTurnsLeft += turns;
-        System.out.println("🩸 Target is bleeding for " + turns + " turn/s!");
+        System.out.println(owner.getName() + "🩸 is bleeding for " + turns + " turn/s!");
         PrintUtil.pause(800);
     }
 
@@ -208,6 +208,7 @@ public class Effects {
     public boolean checkConfuse() {
         if (confused) {
             if (Math.random() < 0.50) {
+                PrintUtil.pause(1700);
                 System.out.println(owner.getName() + " missed the attack due to confusion!");
                 PrintUtil.pause(800);
                 return true;
