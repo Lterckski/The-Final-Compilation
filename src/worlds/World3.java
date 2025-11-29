@@ -267,7 +267,6 @@ public class World3 {
         PrintUtil.line();
 
         // -------------------- Soulflayer Gargoyles --------------------
-        InputUtil.pressEnterToContinue();
         PrintUtil.effect("A chilling wind cuts through the heat.");
         PrintUtil.type("""
                 From the shadows of molten stone, Soulflayer Gargoyles take flight.
