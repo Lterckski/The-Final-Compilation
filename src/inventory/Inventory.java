@@ -35,19 +35,6 @@ public class Inventory {
         hasPhoenixSoulstone = false;
     }
 
-    // --- Helpers for UI formatting ---
-    private void printRow(String content) {
-        int totalWidth = 57;  // total width inside the box
-        int visibleLength = getVisibleLength(content);
-        int padding = totalWidth - visibleLength;
-        System.out.println("║ " + content + " ".repeat(Math.max(0, padding)) + "║");
-    }
-
-    // --- Counts visible characters ignoring ANSI codes ---
-    private int getVisibleLength(String text) {
-        return text.replaceAll("\u001B\\[[;\\d]*m", "").length();
-    }
-
     // --- Generates a bar (red for HP, default for others) ---
     private String generateBar(int current, int max, boolean isHp) {
         int totalBars = 10;
@@ -71,38 +58,32 @@ public class Inventory {
 
         while (!exit) {
 
-            // BOX HEADER
-            System.out.println("╔══════════════════════════════════════════════════════════╗");
-            printRow("🧰 INVENTORY");
-            System.out.println("╠══════════════════════════════════════════════════════════╣");
+            // INVENTORY HEADER
+            System.out.println("┌───────────────🧰 INVENTORY───────────────┐");
 
-            // HP + Energy Bars
-            printRow("💚 HP       : " +
+            System.out.println(" 💚 HP          : " +
                     generateBar(player.getHp(), player.getMaxHP(), true) + " " +
                     player.getHp() + "/" + player.getMaxHP());
 
-            printRow("🔋 " + player.getEnergyName() + "   : " +
+            System.out.println(" 🔋 " + player.getEnergyName() + "     : " +
                     generateBar(player.getEnergy(), player.getMaxEnergy(), false) + " " +
                     player.getEnergy() + "/" + player.getMaxEnergy());
 
-            System.out.println("╠══════════════════════════════════════════════════════════╣");
-
             // EQUIPPED ITEMS
-            printRow("🗡️  Equipped Weapon : " +
+            System.out.println(" 🗡️ Equipped Weapon : " +
                     (equippedWeapon != null ? equippedWeapon.getName() : "No Weapon Equipped"));
 
-            printRow("🛡️  Equipped Armor  : " +
+            System.out.println(" 🛡️ Equipped Armor  : " +
                     (equippedArmor != null ? equippedArmor.getName() : "No Armor Equipped"));
 
-            System.out.println("╠══════════════════════════════════════════════════════════╣");
-
             // POTIONS
-            printRow("🍃 Normal Healing Potion : " + potions.getNormalHealingPotions());
-            printRow("💞 Full Healing Potion   : " + potions.getFullHealingPotions());
-            printRow(" ⚡ Energy Potion         : " + potions.getEnergyPotions());
-            printRow("💠 Soul Shards           : " + player.getSoulShards());
+            System.out.println(" 🍃 Normal Healing Potion : " + potions.getNormalHealingPotions());
+            System.out.println(" 💞 Full Healing Potion   : " + potions.getFullHealingPotions());
+            System.out.println(" ⚡ Energy Potion          : " + potions.getEnergyPotions());
+            System.out.println(" 💠 Soul Shards           : " + player.getSoulShards());
 
-            System.out.println("╚══════════════════════════════════════════════════════════╝");
+            System.out.println("└───────────────────────────────────────────┘");
+
 
             // MENU
             PrintUtil.line();

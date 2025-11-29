@@ -12,31 +12,37 @@ public class Karl extends Character{
 
     @Override
     public void displaySkills() {
-        System.out.println("\n🏹 ----------- KARL'S SKILLS -----------");
-        System.out.println("✨ Passive – Hunter’s Instinct");
-        System.out.println("Deal +20% damage to enemies below 30% HP.\n");
+        System.out.println("┌───────────────────────────────────────🏹 KARL'S SKILLS 🏹────────────────────────────────────────┐");
 
-        System.out.println("🏹 Skill 1 – Piercing Arrow (➶ 1 Arrow)");
-        System.out.println("📜 Description: Fires an arrow that slices through armor and flesh alike.");
-        System.out.println("💥 Damage: (" + (int)(attack * 1.10) + " — " + (int)(attack * 1.25) + ")");
-        System.out.println("⚡ Effects:");
-        System.out.println("- Ignores 30% of the target’s Defense");
-        System.out.println("- 30% chance to inflict 🩸 Bleed (2 turns)\n");
+        // Passive
+        System.out.println(" ✨ Passive – Hunter’s Instinct");
+        System.out.println(" Deal +20% damage to enemies below 30% HP.\n");
 
-        System.out.println("🎯 Skill 2 – Bullseye (➶ 1 Heavy Arrow (3 Arrows))");
-        System.out.println("📜 Description: Karl steadies his breath and fires a deadly precise shot.");
-        System.out.println("💥 Damage: (" + (int)(attack * 1.25) + " — " + (int)(attack * 1.50) + ")");
-        System.out.println("⚡ Effects:");
-        System.out.println("- Guaranteed Critical Hit (×1.5 multiplier)");
-        System.out.println("- 30% chance to apply 🛡️ Weakness (-30% DEF) for 2 turns\n");
+        // Skill 1 – Piercing Arrow
+        System.out.println(" 🏹 Skill 1 – Piercing Arrow (➶ 1 Arrow)");
+        System.out.println(" 📜 Description: Fires an arrow that slices through armor and flesh alike.");
+        System.out.println(" 💥 Damage: (" + (int)(attack * 1.10) + " — " + (int)(attack * 1.25) + ")");
+        System.out.println(" ⚡ Effects:");
+        System.out.println(" - 🛡️ Ignores 30% of the target’s Defense");
+        System.out.println(" - 🩸 30% chance to inflict Bleed (2 turns)\n");
 
-        System.out.println("🌩️ Ultimate – Rain of a Thousand Arrows (➶ 5 Arrows)");
-        System.out.println("📜 Description: Karl releases a rapid flurry of arrows, overwhelming his opponent with relentless strikes.");
-        System.out.println("💥 Damage: 5 hits, each dealing (" + (int)(attack * 1.20) + " — " + (int)(attack * 1.80) + ")");
-        System.out.println("⚡ Effects:");
-        System.out.println("- Grants 🏃 Nimble after attack (increased dodge chance)");
-        System.out.println("- Grants 💪 Strengthen (+20% ATK for 2 turns)");
-        System.out.println("-------------------------------------");
+        // Skill 2 – Bullseye
+        System.out.println(" 🎯 Skill 2 – Bullseye (➶ 1 Heavy Arrow (3 Arrows))");
+        System.out.println(" 📜 Description: Karl steadies his breath and fires a deadly precise shot.");
+        System.out.println(" 💥 Damage: (" + (int)(attack * 1.25) + " — " + (int)(attack * 1.50) + ")");
+        System.out.println(" ⚡ Effects:");
+        System.out.println(" - 🎯 Guaranteed Critical Hit (×1.5 multiplier)");
+        System.out.println(" - 🛡️ 30% chance to apply Weakness (-30% DEF, 2 turns)\n");
+
+        // Ultimate – Rain of a Thousand Arrows
+        System.out.println(" 🌩️ Ultimate – Rain of a Thousand Arrows (➶ 5 Arrows)");
+        System.out.println(" 📜 Description: Karl releases a rapid flurry of arrows, overwhelming his opponent.");
+        System.out.println(" 💥 Damage: 5 hits, each dealing (" + (int)(attack * 1.20) + " — " + (int)(attack * 1.80) + ")");
+        System.out.println(" ⚡ Effects:");
+        System.out.println(" - 🏃 Grants Nimble (increased dodge chance)");
+        System.out.println(" - 💪 Grants Strengthen (+20% ATK for 2 turns)");
+        System.out.println("└───────────────────────────────────────────────────────────────────────────────────────────────────┘");
+
     }
 
 

@@ -63,6 +63,32 @@ public class World3 {
                 their forms flickering with ember and hatred.
                 """);
 
+        try {
+            // Delay 1.5 seconds
+            Thread.sleep(1500);
+
+            System.out.println("                                                          ");
+            System.out.println("                             :                            ");
+            System.out.println("                            :+*                           ");
+            System.out.println("             .:.          -:%#+--          .:.            ");
+            System.out.println("            :*+==-       -*+%@#+#-       -+=+*:           ");
+            System.out.println("           #@%###+       -#%%%%@#=       =##*%@#          ");
+            System.out.println("           -#%@@@@+.     +#%@@@%##=.   .+@@@@%#-          ");
+            System.out.println("            :%@@@*+%#: :**.:%@%- -%+ :*%++@@%%:           ");
+            System.out.println("           :%+-%@*:.%:.+#--*@@@#. :*::%.:*@%-+%-          ");
+            System.out.println("          .#**@@@@=:*=:*=:*@@#@@%::*==#:=@@@@*=%-         ");
+            System.out.println("        ::-+%@#--%@#:.==:*@%- .*@%-:: :#@%--#@%=..:-===-  ");
+            System.out.println("  =+=+-.  :@*. . .#@*= .*%+.    -#*. :=@#:   .+@:   :++*- ");
+            System.out.println(" :*++.     ##.-*===:#@-=@+.      =@*=@%.     .##          ");
+            System.out.println("           -*.--==.  :%@=         -%%:        *=          ");
+            System.out.println("         .**+:==:    .#%-         -%#.        +**:        ");
+            System.out.println("                     :              .:                    ");
+            System.out.println();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+
         PrintUtil.type("🎯 Objective: Defeat 3 Flame Revenants!\n");
         InputUtil.pressEnterToContinue();
         PrintUtil.line();
@@ -112,6 +138,41 @@ public class World3 {
                 From the shadows, Bone Warlocks appear, chanting forbidden incantations.
                 """);
 
+        try {
+            // Delay 1.5 seconds
+            Thread.sleep(1500);
+
+            System.out.println("                                                          ");
+            System.out.println("   :..            .                                        ");
+            System.out.println("  .-+-.      .=: .:+                                       ");
+            System.out.println("  -*%*:      .*%%%%*                                       ");
+            System.out.println("   .*#:    -: .+%%= ..-                                    ");
+            System.out.println("    -*-    --#%@@@@%*-:                                    ");
+            System.out.println("     +=   =*@@@@@@@@@@+:                                  ");
+            System.out.println("      =:  .#@@@@@@@@@@+.                                  ");
+            System.out.println("     .#@::=%@@@@@@@@@%-         .-=::..@@*     :..        ");
+            System.out.println("      .**%@@%%@@@@@@@@@*.      .=+#%%@@@@@*:   =..:-:     ");
+            System.out.println("       -::++#@@@@@@@@#@%-      .+@@@@@@@@@#=. ...%=.::    ");
+            System.out.println("        + :=@@@@@@@@@**%=     -:#@@@@@@@@@@*:  ::..:      ");
+            System.out.println("        --:%@@@@@@@@@*-*+    =@@+.+%@@@@##%*:..:#=+:      ");
+            System.out.println("         #*=%@@@@@@@@%-+=   .#@+  -#@@%=. -%@%+-:         ");
+            System.out.println("       .:=+%@@@@@@@@@@*::   .@=  -%@@@@@#-  .              ");
+            System.out.println("         -@=#@@@@@@@@%++.   -@+ :#@@@@@@@@#-               ");
+            System.out.println("        ---#@@@@@@@%@@#:    =%.:#@@@@@@@@@@@#=            ");
+            System.out.println("       .. *%@@%%@@@%@@#+       +@@@%@@@%*#+%@#.           ");
+            System.out.println("         ..+@@+=##*+#@=:.     +@@***%%%* -+@%:            ");
+            System.out.println("     .. : ..#* ..+-..@-   :- -@%= :.-*=:  -#+     .       ");
+            System.out.println("       =-* -@* ::: :.@#:+@%+.@*  ::  .. . -@*.:.+=        ");
+            System.out.println("      .:%@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%%@@@@@@=.       ");
+            System.out.println("   :+#%@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%#*:    ");
+            System.out.println("          :+.:-:-#+ :=#@@@@@@@@@@@@#=. =+-::.              ");
+            System.out.println("                       .::-=+=:.                           ");
+            System.out.println();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+
         PrintUtil.type("🎯 Objective: Defeat 2 Bone Warlocks!\n");
         InputUtil.pressEnterToContinue();
         PrintUtil.line();
@@ -153,6 +214,32 @@ public class World3 {
         PrintUtil.type("""
                 Obsidian Crushers emerge — molten giants forged from stone and fury.
                 """);
+
+        try {
+            // Delay 1.5 seconds
+            Thread.sleep(1500);
+
+            System.out.println("                 :  -               .  :      .*@-        ");
+            System.out.println("              ...*#%#=  :.      .:  *+#*=..   :%@@*:      ");
+            System.out.println("             .*@@@@@@#@@@-      =@@%#@@@@%+    -@@@%+.    ");
+            System.out.println("  .--.       -%@@@@@@@@@@#.    :#@@@@@@@@@%-:=*#-#@@#-    ");
+            System.out.println(" .%@@@%+.   :+%@@@@@@@@@@*:.  .:#@@@@@@@@@@%@%:   -:      ");
+            System.out.println("  .-+*##%#*%@@@#%@@@@@%#@@@+  -@@@%@@@@@@%%@#:            ");
+            System.out.println("          -+++*+#@@@@@-:%@%-   +%@#%@@@@%. .               ");
+            System.out.println("              .*@@@@@@@%@%:     .#@@@@@@@%=                ");
+            System.out.println("             -%@@@@@@@@@@#**.  +%@@@@@@@@@@#:              ");
+            System.out.println("           .=@@@@@@@@@@@%- .   .#@@@@@@@@@@@#+.           ");
+            System.out.println("      .==:.+@@@%-+@@**@@@*=   =#@@@#=@@#.=%@@@- :=+=.     ");
+            System.out.println("     :*%#=::@@@+  -*:.:%@@@= =@@@%- .*-  .*@@#. :*%%=     ");
+            System.out.println("   .:+#@@*:*%@@=   -   -@@@+ *@@@=       .=@@##=+%@%*:    ");
+            System.out.println("   .-*%@@@@@@@#=*+.  :%=:#@@#@@*+=**.  .*#+#@@@@@@@%*+:   ");
+            System.out.println("     :+%@@@@@@@@@@*%--=@@%@@@@@@@@*--+%#@@@@@@@@@@%*-.    ");
+            System.out.println("       :+*********+++#%*+*%%*****==#+-+===+++++====:      ");
+            System.out.println();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
 
         PrintUtil.type("🎯 Objective: Defeat 2 Obsidian Crushers!\n");
         InputUtil.pressEnterToContinue();
@@ -204,6 +291,35 @@ public class World3 {
                 From the shadows of molten stone, Soulflayer Gargoyles take flight.
                 Their shrieks pierce the air, echoing through the infernal spires.
                 """);
+
+        try {
+            Thread.sleep(1500);
+
+            System.out.println("          -%@@%#*:                      .+#%@@%-          ");
+            System.out.println("           .#@@@@@@#..-            ::.*@@@@@@%:           ");
+            System.out.println("           +@@@@@@@@@@#    .  .    *@@@@@@@@@@*           ");
+            System.out.println("            -#@@@@@@@@%-  .+  =:  -%@@@@@@@@%-            ");
+            System.out.println("              =@@@@@@@@@+..*@@#. =@@@@@@@@@+               ");
+            System.out.println("              ::.-*@@@@@@@@@@@@@@@@@@@@#-.::               ");
+            System.out.println("   -+:.            -#==#%@@@@@@@@@#==*=                    ");
+            System.out.println("   .#@@#-       .      :#%%@@@@%%#-  ...                   ");
+            System.out.println("  -#@@@@@*    -*:     -#= :#@@%- =#-  .#@@#+:              ");
+            System.out.println("   .+@@@@@#=:#@+.    :#=:-%@@@@@=.+#: :%@@@@@#-:  :-.     ");
+            System.out.println("    -%@@@@@+@@*=#*.   :-+#%=*@-%%- -.  -%@@@@@%.+@%-      ");
+            System.out.println("      .=@@@@@@@@@@#:  := ++:%- =*       +%@@@@@@@%:+-     ");
+            System.out.println("       :#%%@@@@*.:..   =%%+-.  .*#=.      .*@@@@@@@@@*.   ");
+            System.out.println("     .+%+:@@@*#%#%%+                        :%@@@@%-=-    ");
+            System.out.println("     .: .%@@@+.                           .*@@@#@%@+.     ");
+            System.out.println("         *@@*@#:                     .#= :%@@@*.+@%**+**. ");
+            System.out.println("     -+-.*@#**.                    =:  =%@@%=#@=  .==     ");
+            System.out.println("    :-  :@  .:-=.                  -#%@*  . =+.           ");
+            System.out.println("      ..-@#.                           ..                  ");
+            System.out.println();
+
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
 
         PrintUtil.type("🎯 Objective: Defeat 3 Soulflayer Gargoyles!\n");
         InputUtil.pressEnterToContinue();
@@ -262,6 +378,44 @@ public class World3 {
                 """);
         System.out.println("==================================================================");
         System.out.println();
+
+        try {
+            Thread.sleep(1500);
+
+            System.out.println("                                                       ..:");
+            System.out.println("                                                    =%#+-#");
+            System.out.println("                         -.     :               .+.:+@%%@@");
+            System.out.println("                    =.  =-.:   :-=         .=: :+#@@@%+=+-");
+            System.out.println("                    %: -%-+-:+-+=*. -     -%#**#-.:. ..   ");
+            System.out.println("    .              .@+::##=%@@@+#*..#.    =#=*##=+        ");
+            System.out.println("   :+.             .%@@@@@@@@@@@@#+#%.    :*@#*%*         ");
+            System.out.println("   -#-             :#@@@@@@@@@@@@@@@=    .#%=-.      :.   ");
+            System.out.println("   =%=            :%@@@@@@@@@@@@@@@@-   .+#:        .+-   ");
+            System.out.println("  .#@#:          :-=@@@@@@%%%@%%@@%#+  .**.     .   .*-   ");
+            System.out.println("  +#@+.  .      .+#@@#=*@@@@@@@%#@%+::#%=       :   :%*.  ");
+            System.out.println("  *@@#: .:   .. .#@@%. :*@@@@@%-.+@@@@@%:       :.  =@%:  ");
+            System.out.println(" :-@@#*:.:   ..  *@@+ :*#@@@@@@*=:::+*.        .:: .*@#=- ");
+            System.out.println(" #+@@@+.::  .:.  -@@. =#@@@@@@@@%*-+=      .  ..::.:*@@%+ ");
+            System.out.println(" %@@@@#-::. .:.  .#@#=#@@@@@@@@@@@@+.     .:  .::::-#@@@#=");
+            System.out.println(":@@@@@@%-:...::.  +@*#@@@@@@@@@@@@@@*.    ::. .::--#@%@@%-");
+            System.out.println(" -%@@%@+-::::::..  -#@@@@@@@@@@@@@@@@#.  ..:...::*=@@@@@@-");
+            System.out.println("  =@@@@@@---::::.  :%@@@@#+@@@@+*@@@@@%:*.::.::::*+@@@@@@*");
+            System.out.println("  *#=*@@@:++::::...:@@@@*:-%@@% . :%@@@@+.:::::::=%@@@+.  ");
+            System.out.println("      :%%@%+::::::+@@@@+  .%@##  =@@@@@%:::::::::%@@@@=   ");
+            System.out.println("      +@@@@%-::::#@@@%:   =**=-:*#@@@-.::::::::*:@@@%%#:  ");
+            System.out.println("      :+%@@@*::::%@@%:   +-:.-  .#@@*: ::::::::##@@#      ");
+            System.out.println("          @@#:::*@@=.. :+:  .     +@@=:::::.:-=#--=.    -@");
+            System.out.println("@#==           *@@#..:=#:         :%@@@+.    .+:     .*@@-");
+            System.out.println("@@@@@@%+-:. :.-%@@=. .....    ...:-#@@@@@%+.  ..:+##%@@@@@");
+            System.out.println("@@@@@@@@@@@@@@@@@@@@@@%##*=::=**#%@@@@@@@@@@@@@@@@@@@@@@@@@");
+            System.out.println("@@@@@@@@@@@@@@@%%#*+-:..-+*#%@@@@@@%%@@@@@@@@@@@@@@@@@*#@@");
+            System.out.println("@@@@@@@@@@@@@@@@@@@@@@%#+.     .:+**#@@@@@@@@@@@@@@@@@@@@@@");
+            System.out.println();
+
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
 
         PrintUtil.type("🎯 Objective: Defeat Zyrryl, The Tower Warden!\n");
         InputUtil.pressEnterToContinue();
