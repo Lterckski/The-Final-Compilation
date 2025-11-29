@@ -93,9 +93,9 @@ public class World1Miniboss1 extends Enemy {
 
     @Override
     public void dropLoot(Character player) {
+        PrintUtil.pause(800);
         System.out.println("╦════════════════════════════════════╦");
         System.out.println("  🎁 You received:");
-        PrintUtil.pause(800);
         player.lootSoulShards(10);
         player.getPotions().lootPotions(true);
         player.gainExp(rewardExp());

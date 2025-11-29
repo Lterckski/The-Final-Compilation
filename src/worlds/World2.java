@@ -70,42 +70,36 @@ public class World2 {
         From the sewers, three Plague Vermins scuttle out—diseased, hissing, and hungry.
         Their claws drip with venomous filth.
         """);
+        PrintUtil.pause(1500);
 
-        try {
-            // Delay for 1.5 seconds
-            Thread.sleep(1500);
-
-            System.out.println();
-            System.out.println("                  .                                       ");
-            System.out.println("                --.                                       ");
-            System.out.println("              .-++       ..                               ");
-            System.out.println("             -=:.     :==*#*+=-:      *%%*:               ");
-            System.out.println("             -*++.   :+%%%%%%#+-.    .*  .=*=             ");
-            System.out.println("              .+-  .= .+%%%%%%%*=.    *     -=.           ");
-            System.out.println("               .=.    -#%%%%%%@@%-  .+-      -.           ");
-            System.out.println("               .+%-.=+#@@@%@@@@@%*##%#=      .            ");
-            System.out.println("  .             .+. %%@@##@@@@@@@@@==:   ..               ");
-            System.out.println("  =-     =--..::..+ *@@*:+%@@%@%%@%-+..  :=:              ");
-            System.out.println("  .:=#-.*#%%+##+-.+ :#=.-#@%@%@%++++:.#.-#:::.  :*-:      ");
-            System.out.println("   .--=-.+%%@@@#-.-+ :..*@@@@%@@*:==::*=*@@@@%*:-*.:.     ");
-            System.out.println("   .-=:==. =@@%#- .+- .+@@@@@@@@*:=*-:+%@@@@%#%%#-*-+:    ");
-            System.out.println("   .=+.    .#@*:*-++*.+%@@@@@@@@#+-.-%@@@@@@%%@@%+.:-:    ");
-            System.out.println("           +%%#:=*%@#=*@@@@@@@@@@#:-+@@@@@@@@@@@@#+:.*=   ");
-            System.out.println("          -@@@%**:==.+=@@@@@@@@@@%=+:#@@@@@@@@@@@@-       ");
-            System.out.println("         :%=%#++.    =-*%**%@@@@@@+..%@@@@@@@@@@%-#       ");
-            System.out.println("     ..  :%:=::*+.....==#--:=.==##*:.#@@@@@@@@@@=.-..     ");
-            System.out.println("     :-:: -+=##+*--#%###+#%@=#%+*=#+*+@@%*#%%%@@ -:-.     ");
-            System.out.println("    .:=--.-#-=*%#%##%%@@%@@@@@@@@@%@#%@+*@@#-*%=+=+=..    ");
-            System.out.println("   ..-=+#@@@@@@@%@@@@@@@@@@@@@@@@@@@@@@@@@@@@%@@**=+-.    ");
-            System.out.println("      :=-+#%*@%%@@@@@@@@@@@@@@@@@@@@@@%@@@@@%%#-*--...    ");
-            System.out.println("      ..-.::+##**%%*++*#%%%%@##*#@@@%%%%%%*=+-:*::-.      ");
-            System.out.println("         --::=-:=++=**#*#+-=+%#*===+=:--+=-:--+:.--       ");
-            System.out.println("               . :-+=-:-===.+:  :==-=+=   :-:             ");
-            System.out.println("                   .          .:.                          ");
-            System.out.println();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        System.out.println();
+        System.out.println("                  .                                       ");
+        System.out.println("                --.                                       ");
+        System.out.println("              .-++       ..                               ");
+        System.out.println("             -=:.     :==*#*+=-:      *%%*:               ");
+        System.out.println("             -*++.   :+%%%%%%#+-.    .*  .=*=             ");
+        System.out.println("              .+-  .= .+%%%%%%%*=.    *     -=.           ");
+        System.out.println("               .=.    -#%%%%%%@@%-  .+-      -.           ");
+        System.out.println("               .+%-.=+#@@@%@@@@@%*##%#=      .            ");
+        System.out.println("  .             .+. %%@@##@@@@@@@@@==:   ..               ");
+        System.out.println("  =-     =--..::..+ *@@*:+%@@%@%%@%-+..  :=:              ");
+        System.out.println("  .:=#-.*#%%+##+-.+ :#=.-#@%@%@%++++:.#.-#:::.  :*-:      ");
+        System.out.println("   .--=-.+%%@@@#-.-+ :..*@@@@%@@*:==::*=*@@@@%*:-*.:.     ");
+        System.out.println("   .-=:==. =@@%#- .+- .+@@@@@@@@*:=*-:+%@@@@%#%%#-*-+:    ");
+        System.out.println("   .=+.    .#@*:*-++*.+%@@@@@@@@#+-.-%@@@@@@%%@@%+.:-:    ");
+        System.out.println("           +%%#:=*%@#=*@@@@@@@@@@#:-+@@@@@@@@@@@@#+:.*=   ");
+        System.out.println("          -@@@%**:==.+=@@@@@@@@@@%=+:#@@@@@@@@@@@@-       ");
+        System.out.println("         :%=%#++.    =-*%**%@@@@@@+..%@@@@@@@@@@%-#       ");
+        System.out.println("     ..  :%:=::*+.....==#--:=.==##*:.#@@@@@@@@@@=.-..     ");
+        System.out.println("     :-:: -+=##+*--#%###+#%@=#%+*=#+*+@@%*#%%%@@ -:-.     ");
+        System.out.println("    .:=--.-#-=*%#%##%%@@%@@@@@@@@@%@#%@+*@@#-*%=+=+=..    ");
+        System.out.println("   ..-=+#@@@@@@@%@@@@@@@@@@@@@@@@@@@@@@@@@@@@%@@**=+-.    ");
+        System.out.println("      :=-+#%*@%%@@@@@@@@@@@@@@@@@@@@@@%@@@@@%%#-*--...    ");
+        System.out.println("      ..-.::+##**%%*++*#%%%%@##*#@@@%%%%%%*=+-:*::-.      ");
+        System.out.println("         --::=-:=++=**#*#+-=+%#*===+=:--+=-:--+:.--       ");
+        System.out.println("               . :-+=-:-===.+:  :==-=+=   :-:             ");
+        System.out.println("                   .          .:.                          ");
+        System.out.println();
 
 
         PrintUtil.type("🎯 Objective: Defeat 3 Plague Vermins!\n");
@@ -157,36 +151,30 @@ public class World2 {
                 In a ruined chapel, two Forsaken Cultists emerge,
                 their eyes glowing with fanatic light as they chant forbidden rites.
                 """);
+        PrintUtil.pause(1500);
 
-        try {
-            // Delay for 1.5 seconds
-            Thread.sleep(1500);
-
-            System.out.println();
-            System.out.println("        . -                                                ");
-            System.out.println("       ==+#*   +@@*..                  :-.                 ");
-            System.out.println("       .+%++  -@@@@@@@@*.        .-+%@@@@@:                ");
-            System.out.println("         -#    *@@@@@@@@#       :%@@@@@@@@-                ");
-            System.out.println("         :*.   :=%@@@@@@@*.    :%@@@@@@@@*                 ");
-            System.out.println("         :.*     @@%@@@@@%#.  :%@@@@@@@:=.                 ");
-            System.out.println("         : *   .*@..=@@@@*#+  %*#@@@%*%:.                  ");
-            System.out.println("           #@%%#%+ :#@@@@%#+ .%#%@@@%#@*                   ");
-            System.out.println("            =.  - .#@@@@@@@=. *@@@@@@#-#-                  ");
-            System.out.println("            .*   :#%@@@@@@@%- #@@@@@@@*=@:                 ");
-            System.out.println("             -.  .+@@@@@@@@-  =@@@@@@@#:#@=                ");
-            System.out.println("             -=   %@@@@@@@@=  +@@@@@@@@-  -%*.             ");
-            System.out.println("             .-. -@@@@@@@@@=  +@@@@@@@@%     *%=.          ");
-            System.out.println("              =- -@@@@@@@@@+  *@@@@@@@@%                   ");
-            System.out.println("              .-..@@@@@@@@@*  *@@@@@@@@#                   ");
-            System.out.println("               +:.@@@@@@@@@#. %@@@@@@@@#                   ");
-            System.out.println("               .=.%@@@@@@@@#..#@@@@@@@@=                   ");
-            System.out.println("                *=@@@@@@@@@@=+@@@@@@@@@#                   ");
-            System.out.println("          :+*%@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%*=.            ");
-            System.out.println("                   :--=--==+++==-----:    ..               ");
-            System.out.println();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        System.out.println();
+        System.out.println("        . -                                                ");
+        System.out.println("       ==+#*   +@@*..                  :-.                 ");
+        System.out.println("       .+%++  -@@@@@@@@*.        .-+%@@@@@:                ");
+        System.out.println("         -#    *@@@@@@@@#       :%@@@@@@@@-                ");
+        System.out.println("         :*.   :=%@@@@@@@*.    :%@@@@@@@@*                 ");
+        System.out.println("         :.*     @@%@@@@@%#.  :%@@@@@@@:=.                 ");
+        System.out.println("         : *   .*@..=@@@@*#+  %*#@@@%*%:.                  ");
+        System.out.println("           #@%%#%+ :#@@@@%#+ .%#%@@@%#@*                   ");
+        System.out.println("            =.  - .#@@@@@@@=. *@@@@@@#-#-                  ");
+        System.out.println("            .*   :#%@@@@@@@%- #@@@@@@@*=@:                 ");
+        System.out.println("             -.  .+@@@@@@@@-  =@@@@@@@#:#@=                ");
+        System.out.println("             -=   %@@@@@@@@=  +@@@@@@@@-  -%*.             ");
+        System.out.println("             .-. -@@@@@@@@@=  +@@@@@@@@%     *%=.          ");
+        System.out.println("              =- -@@@@@@@@@+  *@@@@@@@@%                   ");
+        System.out.println("              .-..@@@@@@@@@*  *@@@@@@@@#                   ");
+        System.out.println("               +:.@@@@@@@@@#. %@@@@@@@@#                   ");
+        System.out.println("               .=.%@@@@@@@@#..#@@@@@@@@=                   ");
+        System.out.println("                *=@@@@@@@@@@=+@@@@@@@@@#                   ");
+        System.out.println("          :+*%@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%*=.            ");
+        System.out.println("                   :--=--==+++==-----:    ..               ");
+        System.out.println();
 
 
         PrintUtil.type("🎯 Objective: Defeat 2 Forsaken Cultists!\n");
@@ -229,44 +217,37 @@ public class World2 {
                 From the black mist, two Blight Hounds leap forth,
                 their fangs glinting and bodies wrapped in poisonous clouds.
                 """);
+        PrintUtil.pause(1500);
 
-        try {
-            // Delay for 1.5 seconds
-            Thread.sleep(1500);
-
-            System.out.println();
-            System.out.println("                  -             .-=+-. ::      .:         ");
-            System.out.println("            .- ....=               :-*%%%@+..+%-.         ");
-            System.out.println("            :-*%@%@@%*             .::+%*#@@%@@%*=.       ");
-            System.out.println("     --    .*%@@@@@@@%#-::.           . -%@@@@@@@%%+.     ");
-            System.out.println("    =#:   +@@@%@@@@@@%@#-:-    ::=. :+@@@@@@@@@@@%@@=     ");
-            System.out.println("   ::   :%@@@%@%%@@@@%%@@#:   .+. .+#@@%%%*@@@@% :#*#.    ");
-            System.out.println("  .=  .**.@%:*@#%@#%--@@%-     .::..#@:.%%:=%-+#%-        ");
-            System.out.println("   :*+: =#= -%=:*@-@= .++:        +-  :*    ++.  =+       ");
-            System.out.println("        %:   =+. -@-%-.          ==    =*:   =*.          ");
-            System.out.println("        --     .  -*-:.                       .:.         ");
-            System.out.println("                                                          ");
-            System.out.println("                                      :.                  ");
-            System.out.println("                                 ..:+=#*-                 ");
-            System.out.println("                                 =+=+=+%=-=.              ");
-            System.out.println("                                 :+#%@@@@%*+-             ");
-            System.out.println("                        .--:   :.-*%@@@@@@@#- .           ");
-            System.out.println("                           +..#@%#@@@@@@@%@@*=%=.#%:      ");
-            System.out.println("                          :-:%%=%%%%@%%@%@@@@#*%%+#%-     ");
-            System.out.println("                         .+.*%=%@%%@%%%@%%@@@%#+.=*%#:    ");
-            System.out.println("                          =%@#+=@%#%%#@@%%@@@%%*=+@#*=    ");
-            System.out.println("                           :% @%%- *@%+. :**#*%.  +%#+    ");
-            System.out.println("                            #++:#- .%%:     +@-   .%%=    ");
-            System.out.println("                            =@: ++  :%%%-   =*.   .%*.    ");
-            System.out.println("                            :=: .+-  .##.         =*      ");
-            System.out.println("                                  -:   :*:       :=       ");
-            System.out.println("                                         .:.               ");
-            System.out.println("                                                          ");
-            System.out.println();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-
+        System.out.println();
+        System.out.println("                  -             .-=+-. ::      .:         ");
+        System.out.println("            .- ....=               :-*%%%@+..+%-.         ");
+        System.out.println("            :-*%@%@@%*             .::+%*#@@%@@%*=.       ");
+        System.out.println("     --    .*%@@@@@@@%#-::.           . -%@@@@@@@%%+.     ");
+        System.out.println("    =#:   +@@@%@@@@@@%@#-:-    ::=. :+@@@@@@@@@@@%@@=     ");
+        System.out.println("   ::   :%@@@%@%%@@@@%%@@#:   .+. .+#@@%%%*@@@@% :#*#.    ");
+        System.out.println("  .=  .**.@%:*@#%@#%--@@%-     .::..#@:.%%:=%-+#%-        ");
+        System.out.println("   :*+: =#= -%=:*@-@= .++:        +-  :*    ++.  =+       ");
+        System.out.println("        %:   =+. -@-%-.          ==    =*:   =*.          ");
+        System.out.println("        --     .  -*-:.                       .:.         ");
+        System.out.println("                                                          ");
+        System.out.println("                                      :.                  ");
+        System.out.println("                                 ..:+=#*-                 ");
+        System.out.println("                                 =+=+=+%=-=.              ");
+        System.out.println("                                 :+#%@@@@%*+-             ");
+        System.out.println("                        .--:   :.-*%@@@@@@@#- .           ");
+        System.out.println("                           +..#@%#@@@@@@@%@@*=%=.#%:      ");
+        System.out.println("                          :-:%%=%%%%@%%@%@@@@#*%%+#%-     ");
+        System.out.println("                         .+.*%=%@%%@%%%@%%@@@%#+.=*%#:    ");
+        System.out.println("                          =%@#+=@%#%%#@@%%@@@%%*=+@#*=    ");
+        System.out.println("                           :% @%%- *@%+. :**#*%.  +%#+    ");
+        System.out.println("                            #++:#- .%%:     +@-   .%%=    ");
+        System.out.println("                            =@: ++  :%%%-   =*.   .%*.    ");
+        System.out.println("                            :=: .+-  .##.         =*      ");
+        System.out.println("                                  -:   :*:       :=       ");
+        System.out.println("                                         .:.               ");
+        System.out.println("                                                          ");
+        System.out.println();
 
         PrintUtil.type("🎯 Objective: Defeat 3 Blight Hounds!\n");
         InputUtil.pressEnterToContinue();
@@ -310,43 +291,37 @@ public class World2 {
                 Two Ghoul Footmen emerge, dragging rusted blades.
                 Their movements are jerky, puppets of a cruel master.
                 """);
+        PrintUtil.pause(1500);
 
-        try {
-            // Delay for 1.5 seconds
-            Thread.sleep(1500);
-
-            System.out.println();
-            System.out.println("                  .+.                                     ");
-            System.out.println("                   .*-+#-                                 ");
-            System.out.println("                .#%%@%*=                                  ");
-            System.out.println("    ..           :%@@+-#-                                 ");
-            System.out.println("    :=.           .#@%-.**.          -*-                  ");
-            System.out.println("  .=.=-              :-  -*:     .:.-@@#+: ::             ");
-            System.out.println("  :%@@@@*                  *%*  .=#@@@@@@%%%+:            ");
-            System.out.println("   +@%*#-                  +@@:.*@@@@@@@@@%*+#=-.         ");
-            System.out.println("   .+#:*=        =%*  .:   :@@*%@@@@@@%#@@@@@@#.          ");
-            System.out.println("     -=:#      .-%@@%**+-  .#@@@@@@@@@@%%@@@@@@-          ");
-            System.out.println("      . ==     .*@@@@@%###: :*@%#+#@@@@@@@@@@@@*          ");
-            System.out.println("       ..*.    :#@@@@@@@@@*.  -=. .*@@@@@@@%#@@%:         ");
-            System.out.println("         .*    .#@@@@@@@@%@#.  .  .#@@@%@%%@@@@@%:        ");
-            System.out.println("          ==   :#@%@@@@@@@%@%=   .*@@@@@@@@@@@@%#*:       ");
-            System.out.println("          =@%#%@@+:-@@@@@%%@@#-  -%@@@@@@@@@@@@%+:-       ");
-            System.out.println("           :+ :++..#@@@@@@@@@++..*@@@@@@@@@@@@@@=::.      ");
-            System.out.println("            -- .: +@@@@@@@@@%*-.:#@@@@@@@@@@@@@@@: .      ");
-            System.out.println("            .=.  -@@@@@@@@@@@*:.=@@@@@@@@@@@@@@@**+       ");
-            System.out.println("             -= .#@@@@@@@@@@@#+:%@@@@@@@@@@@@@@@*:..      ");
-            System.out.println("             .=:+@@@@@@@@@@@#+:.=@@%%@@@@@%@@%%+*+        ");
-            System.out.println("              -- *@@#@@@#%@@%+. :%@%-*#+@##@@@==  -       ");
-            System.out.println("               =::@% -**=:#@= . :%%: ..=-:.-%@: .  .      ");
-            System.out.println("               .=.%#   .. .%+   =@#:    .   +@+  :        ");
-            System.out.println("             .:.=+@@. .:+=:#@.:#@@%=+=--::. +@@-=.        ");
-            System.out.println("         ..-+#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%#=.     ");
-            System.out.println("             ..:-====+****##%%%%###*##**++-:::::.         ");
-            System.out.println("                                                          ");
-            System.out.println();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        System.out.println();
+        System.out.println("                  .+.                                     ");
+        System.out.println("                   .*-+#-                                 ");
+        System.out.println("                .#%%@%*=                                  ");
+        System.out.println("    ..           :%@@+-#-                                 ");
+        System.out.println("    :=.           .#@%-.**.          -*-                  ");
+        System.out.println("  .=.=-              :-  -*:     .:.-@@#+: ::             ");
+        System.out.println("  :%@@@@*                  *%*  .=#@@@@@@%%%+:            ");
+        System.out.println("   +@%*#-                  +@@:.*@@@@@@@@@%*+#=-.         ");
+        System.out.println("   .+#:*=        =%*  .:   :@@*%@@@@@@%#@@@@@@#.          ");
+        System.out.println("     -=:#      .-%@@%**+-  .#@@@@@@@@@@%%@@@@@@-          ");
+        System.out.println("      . ==     .*@@@@@%###: :*@%#+#@@@@@@@@@@@@*          ");
+        System.out.println("       ..*.    :#@@@@@@@@@*.  -=. .*@@@@@@@%#@@%:         ");
+        System.out.println("         .*    .#@@@@@@@@%@#.  .  .#@@@%@%%@@@@@%:        ");
+        System.out.println("          ==   :#@%@@@@@@@%@%=   .*@@@@@@@@@@@@%#*:       ");
+        System.out.println("          =@%#%@@+:-@@@@@%%@@#-  -%@@@@@@@@@@@@%+:-       ");
+        System.out.println("           :+ :++..#@@@@@@@@@++..*@@@@@@@@@@@@@@=::.      ");
+        System.out.println("            -- .: +@@@@@@@@@%*-.:#@@@@@@@@@@@@@@@: .      ");
+        System.out.println("            .=.  -@@@@@@@@@@@*:.=@@@@@@@@@@@@@@@**+       ");
+        System.out.println("             -= .#@@@@@@@@@@@#+:%@@@@@@@@@@@@@@@*:..      ");
+        System.out.println("             .=:+@@@@@@@@@@@#+:.=@@%%@@@@@%@@%%+*+        ");
+        System.out.println("              -- *@@#@@@#%@@%+. :%@%-*#+@##@@@==  -       ");
+        System.out.println("               =::@% -**=:#@= . :%%: ..=-:.-%@: .  .      ");
+        System.out.println("               .=.%#   .. .%+   =@#:    .   +@+  :        ");
+        System.out.println("             .:.=+@@. .:+=:#@.:#@@%=+=--::. +@@-=.        ");
+        System.out.println("         ..-+#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%#=.     ");
+        System.out.println("             ..:-====+****##%%%%###*##**++-:::::.         ");
+        System.out.println("                                                          ");
+        System.out.println();
 
 
         PrintUtil.type("🎯 Objective: Defeat 2 Ghoul Footmen!\n");
@@ -407,42 +382,36 @@ public class World2 {
                 """);
         System.out.println("========================================================================");
         System.out.println();
+        PrintUtil.pause(1500);
 
-        try {
-            // Delay 1.5 seconds before printing
-            Thread.sleep(1500);
-
-            System.out.println();
-            System.out.println("                                        :+#-              ");
-            System.out.println("                         .=. .+        .++=*-             ");
-            System.out.println("                         =#@%%#:        --.-.             ");
-            System.out.println("                          *%@#=         :*=-              ");
-            System.out.println("                     .+*=#%%#%%*+*:     .%#:              ");
-            System.out.println("                    %@@@%%%#%#%%%@@#.   .*+               ");
-            System.out.println("                   *@@@@%#@%%#%#%@@@+    +-               ");
-            System.out.println("                   #%#%#%%%@@%%%%#%%*   .+-               ");
-            System.out.println("                  =@%%@@@@@%@@%@@@%%%+:.=#=.              ");
-            System.out.println("                 *#@%%%@@@%@@@@%@@@@%@@%#%#:              ");
-            System.out.println("                :#%%%%@%##%%%%%##@@@%#*==#.               ");
-            System.out.println("                =%@@@@@%%%*#%#*#%%@@@@- .#.               ");
-            System.out.println("        *-+:   .*%#=@%%@#%%%@@#%*@@@@@@#-#                ");
-            System.out.println("     .+%@%@%*  :*%#%@%@%#%#%@@#%#%@@@@@@@%:               ");
-            System.out.println("     .+@@%@@#**+---@@@@%##%#@@@%#%@@@@@@@@@%*:           ");
-            System.out.println("       *@@%@@=    :@@%@%%%%%@@@%%@@@@@@@@@@@@@@#-        ");
-            System.out.println("       =%@@@@%=   =@@%%%@@@%@@@@@%#@@@@@@%#%%%#@@@+.      ");
-            System.out.println("       +@%%#@%+   -@@%@@@%%@@@%%@@%@@@@@@@#-...- .*%-     ");
-            System.out.println("       .=###+:    :@#%@@@%@@@%@%@@@@@@@@@@@@*.     .-:    ");
-            System.out.println("                   +@%%%#@@@@@@%%%%%@@@@@@@@@@*           ");
-            System.out.println("                    %%@@@@@@@@@%@@@@@##%@#  .-*=          ");
-            System.out.println("                     %@@@@*=###%%@@@@@@-#.    ..          ");
-            System.out.println("                    .@@#-*%-.#. :%@+ .-=%:                ");
-            System.out.println("                    +%%+   =-   :#%%-  .%                  ");
-            System.out.println("                  .%@@#-        .*#%@%::#                  ");
-            System.out.println("                   ::.             .::.                    ");
-            System.out.println();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        System.out.println();
+        System.out.println("                                        :+#-              ");
+        System.out.println("                         .=. .+        .++=*-             ");
+        System.out.println("                         =#@%%#:        --.-.             ");
+        System.out.println("                          *%@#=         :*=-              ");
+        System.out.println("                     .+*=#%%#%%*+*:     .%#:              ");
+        System.out.println("                    %@@@%%%#%#%%%@@#.   .*+               ");
+        System.out.println("                   *@@@@%#@%%#%#%@@@+    +-               ");
+        System.out.println("                   #%#%#%%%@@%%%%#%%*   .+-               ");
+        System.out.println("                  =@%%@@@@@%@@%@@@%%%+:.=#=.              ");
+        System.out.println("                 *#@%%%@@@%@@@@%@@@@%@@%#%#:              ");
+        System.out.println("                :#%%%%@%##%%%%%##@@@%#*==#.               ");
+        System.out.println("                =%@@@@@%%%*#%#*#%%@@@@- .#.               ");
+        System.out.println("        *-+:   .*%#=@%%@#%%%@@#%*@@@@@@#-#                ");
+        System.out.println("     .+%@%@%*  :*%#%@%@%#%#%@@#%#%@@@@@@@%:               ");
+        System.out.println("     .+@@%@@#**+---@@@@%##%#@@@%#%@@@@@@@@@%*:           ");
+        System.out.println("       *@@%@@=    :@@%@%%%%%@@@%%@@@@@@@@@@@@@@#-        ");
+        System.out.println("       =%@@@@%=   =@@%%%@@@%@@@@@%#@@@@@@%#%%%#@@@+.      ");
+        System.out.println("       +@%%#@%+   -@@%@@@%%@@@%%@@%@@@@@@@#-...- .*%-     ");
+        System.out.println("       .=###+:    :@#%@@@%@@@%@%@@@@@@@@@@@@*.     .-:    ");
+        System.out.println("                   +@%%%#@@@@@@%%%%%@@@@@@@@@@*           ");
+        System.out.println("                    %%@@@@@@@@@%@@@@@##%@#  .-*=          ");
+        System.out.println("                     %@@@@*=###%%@@@@@@-#.    ..          ");
+        System.out.println("                    .@@#-*%-.#. :%@+ .-=%:                ");
+        System.out.println("                    +%%+   =-   :#%%-  .%                  ");
+        System.out.println("                  .%@@#-        .*#%@%::#                  ");
+        System.out.println("                   ::.             .::.                    ");
+        System.out.println();
 
 
         PrintUtil.type("🎯 Objective: Defeat The Black Jailer!\n");
@@ -489,46 +458,41 @@ public class World2 {
         );
         System.out.println("===========================================================================");
         System.out.println();
+        PrintUtil.pause(1500);
 
-        try {
-            // Delay 1.5 seconds
-            Thread.sleep(1500);
-            System.out.println();
-            System.out.println("@@@@@@@@@#+-:                               .-*#@@@@@@@@@@");
-            System.out.println("@@@@@@##@+                                      +%#%@@@@@@");
-            System.out.println("@@@@@##%%%.                  :                  %%###@@@@@");
-            System.out.println("@@@%+#%##%*                :.=-.               #@####+%@@@");
-            System.out.println("@@@@#%@##%@.               +%%*-              .%%##@%#@@@@");
-            System.out.println("@@%*:#@@%%@-               *#@#:              #@%#@@#-*%@@");
-            System.out.println("@@#- -%@%%@#           ..  -%@+    .          =@%#@@= -#@@");
-            System.out.println("@@%= .*@@#@.          .--: :#@= :=::           ##@@#. -#@@");
-            System.out.println("@@*.  =@@%#           .+%@%%%%%%@@*.           *#@@+   *@@");
-            System.out.println("@@+.  =@@%#           :%@@@%%@%%@@@=           +%@@+   +%@");
-            System.out.println("@@+. =@@@@@=.         .+####@@%#*+*- :        -%@@@@+  +@@");
-            System.out.println("@@+.  =@@@*.           -==*%#@##+:+-   -       *%@@+  .+@@");
-            System.out.println("@@+.  :%@%=         ..-#-:*=#@=*= +%=.-:       -%@@-  .+@@");
-            System.out.println("@@+.  .%@%-        ...**. :.#@-.. -#%-         :%@%:  .+@@");
-            System.out.println("@@+.  .%@%-      .-  .*- +@%%@#@%+:=*:.  .     :%@%:  .+@@");
-            System.out.println("@@+:  .%@%-       :::=*::+%@@@@@%*: *- :++:    :%@%:  -*@@");
-            System.out.println("@@+-  .%@#-          *+.+@@@@@@#%*.:##+:       :#@%: .-+%@");
-            System.out.println("@%+-  :%@#-          #:-#@@@@@@@%%*#%*         :#@@- .-+@@");
-            System.out.println("@@+-: :%@#-          ==-%@@@@@##%@@%:          :*@@=..-*@@");
-            System.out.println("@@+-. :%@%-           :*@@@@#%#@%%*-*:         :#@@+:.-*@@");
-            System.out.println("@@*=. :%@%= .:.      ..=*#%%%%#*#%*:           :%@%+-:-*@@");
-            System.out.println("@@*=-.-%@%= :-.        =%%@#@@@%+@=.           :%@@+---+@@");
-            System.out.println("@@*==-=@@%= .-.     .#@@%*#@@@%++@%:       .: .-%@#=-=+*@@");
-            System.out.println("@@#**-=#%%+ .:.   +@@@+*%#-+@*#--%%=       ::.:-##%+-*##@@");
-            System.out.println("@@#++-=###+:.::+@@@*- .*%+:-*=: :#%=       .: :-%@%*+###@@");
-            System.out.println("@@##*-+%@#+--*@@%=.   .*#:  =.   =@-    ..:--:-+%%#***%%@@");
-            System.out.println("@@%#%*#%%#+*@%*:      .*+   .    :#=    :..+=--+######*#@@");
-            System.out.println("@@@@###%#+#*=-----:   -%+        .#*..::----++*#%%@@%%@@@@");
-            System.out.println("@@@%@@%#%%@@%%#%#**==+%@*.     ..-#@#==+*%#%%%%%####@%%@@@");
-            System.out.println("@@@@@@@@@@@%@@@%%@@@@@@@@@@@%%@@@@@@@@@@@%@@@%@%@@@@@@*#@@");
-            System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
-            System.out.println();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        System.out.println();
+        System.out.println("@@@@@@@@@#+-:                               .-*#@@@@@@@@@@");
+        System.out.println("@@@@@@##@+                                      +%#%@@@@@@");
+        System.out.println("@@@@@##%%%.                  :                  %%###@@@@@");
+        System.out.println("@@@%+#%##%*                :.=-.               #@####+%@@@");
+        System.out.println("@@@@#%@##%@.               +%%*-              .%%##@%#@@@@");
+        System.out.println("@@%*:#@@%%@-               *#@#:              #@%#@@#-*%@@");
+        System.out.println("@@#- -%@%%@#           ..  -%@+    .          =@%#@@= -#@@");
+        System.out.println("@@%= .*@@#@.          .--: :#@= :=::           ##@@#. -#@@");
+        System.out.println("@@*.  =@@%#           .+%@%%%%%%@@*.           *#@@+   *@@");
+        System.out.println("@@+.  =@@%#           :%@@@%%@%%@@@=           +%@@+   +%@");
+        System.out.println("@@+. =@@@@@=.         .+####@@%#*+*- :        -%@@@@+  +@@");
+        System.out.println("@@+.  =@@@*.           -==*%#@##+:+-   -       *%@@+  .+@@");
+        System.out.println("@@+.  :%@%=         ..-#-:*=#@=*= +%=.-:       -%@@-  .+@@");
+        System.out.println("@@+.  .%@%-        ...**. :.#@-.. -#%-         :%@%:  .+@@");
+        System.out.println("@@+.  .%@%-      .-  .*- +@%%@#@%+:=*:.  .     :%@%:  .+@@");
+        System.out.println("@@+:  .%@%-       :::=*::+%@@@@@%*: *- :++:    :%@%:  -*@@");
+        System.out.println("@@+-  .%@#-          *+.+@@@@@@#%*.:##+:       :#@%: .-+%@");
+        System.out.println("@%+-  :%@#-          #:-#@@@@@@@%%*#%*         :#@@- .-+@@");
+        System.out.println("@@+-: :%@#-          ==-%@@@@@##%@@%:          :*@@=..-*@@");
+        System.out.println("@@+-. :%@%-           :*@@@@#%#@%%*-*:         :#@@+:.-*@@");
+        System.out.println("@@*=. :%@%= .:.      ..=*#%%%%#*#%*:           :%@%+-:-*@@");
+        System.out.println("@@*=-.-%@%= :-.        =%%@#@@@%+@=.           :%@@+---+@@");
+        System.out.println("@@*==-=@@%= .-.     .#@@%*#@@@%++@%:       .: .-%@#=-=+*@@");
+        System.out.println("@@#**-=#%%+ .:.   +@@@+*%#-+@*#--%%=       ::.:-##%+-*##@@");
+        System.out.println("@@#++-=###+:.::+@@@*- .*%+:-*=: :#%=       .: :-%@%*+###@@");
+        System.out.println("@@##*-+%@#+--*@@%=.   .*#:  =.   =@-    ..:--:-+%%#***%%@@");
+        System.out.println("@@%#%*#%%#+*@%*:      .*+   .    :#=    :..+=--+######*#@@");
+        System.out.println("@@@@###%#+#*=-----:   -%+        .#*..::----++*#%%@@%%@@@@");
+        System.out.println("@@@%@@%#%%@@%%#%#**==+%@*.     ..-#@#==+*%#%%%%%####@%%@@@");
+        System.out.println("@@@@@@@@@@@%@@@%%@@@@@@@@@@@%%@@@@@@@@@@@%@@@%@%@@@@@@*#@@");
+        System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+        System.out.println();
 
 
         PrintUtil.type("🎯 Objective: Defeat The Corrupted King!\n");

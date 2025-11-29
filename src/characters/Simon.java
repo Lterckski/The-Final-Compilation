@@ -10,35 +10,35 @@ public class Simon extends Character {
 
     @Override
     public void displaySkills() {
-        System.out.println("┌───────────────────────────────────────✨ SIMON'S SKILLS ✨────────────────────────────────────────┐");
+        System.out.println("┌────────────────────────────────────── 🔮 SIMON'S SKILLS 🔮 ───────────────────────────────────────┐");
 
         // Passive
-        System.out.println(" ✨ Passive – Arcane Flow");
-        System.out.println(" Restores +5% of total 💧 Mana each turn.\n");
+        System.out.println("  ✨ Passive – Arcane Flow");
+        System.out.println("  Restores +5% of total 💧 Mana each turn.\n");
 
         // Skill 1 – Fireball
-        System.out.println(" 🔥 Skill 1 – Fireball (💧 15 Mana)");
-        System.out.println(" 📜 Description: Conjures a blazing orb of fire and hurls it at an enemy.");
-        System.out.println(" 💥 Damage: (" + (int)(attack * 1.25) + " — " + (int)(attack * 1.55) + ")");
-        System.out.println(" ⚡ Effects:");
-        System.out.println(" - 🔥 Applies Burn (1 turn)");
-        System.out.println(" - 🛡️ 30% chance to Weaken target (-20% ATK for 2 turns)\n");
+        System.out.println("  🔥 Skill 1 – Fireball (💧 15 Mana)");
+        System.out.println("  📜 Description: Conjures a blazing orb of fire and hurls it at an enemy.");
+        System.out.println("  💥 Damage: (" + (int)(attack * 1.25) + " — " + (int)(attack * 1.55) + ")");
+        System.out.println("  ⚡ Effects:");
+        System.out.println("    - 🔥 Applies Burn (1 turn)");
+        System.out.println("    - 🛡️ 30% chance to Weaken target (-20% ATK for 2 turns)\n");
 
         // Skill 2 – Ice Prison
-        System.out.println(" ❄️ Skill 2 – Ice Prison (💧 25 Mana)");
-        System.out.println(" 📜 Description: Encases the target in solid ice, restricting movement and draining warmth.");
-        System.out.println(" 💥 Damage: (" + (int)(attack * 0.60) + " — " + (int)(attack * 0.90) + ")");
-        System.out.println(" ⚡ Effects:");
-        System.out.println(" - ❄️ 30% chance to Freeze (target skips 1 turn)");
-        System.out.println(" - 🛡️ If frozen: reduces DEF by 15% for 2 turns\n");
+        System.out.println("  ❄️ Skill 2 – Ice Prison (💧 25 Mana)");
+        System.out.println("  📜 Description: Encases the target in solid ice, restricting movement and draining warmth.");
+        System.out.println("  💥 Damage: (" + (int)(attack * 0.60) + " — " + (int)(attack * 0.90) + ")");
+        System.out.println("  ⚡ Effects:");
+        System.out.println("    - ❄️ 30% chance to Freeze (target skips 1 turn)");
+        System.out.println("    - 🛡️ If frozen: reduces DEF by 15% for 2 turns\n");
 
         // Ultimate – Meteor Storm
-        System.out.println(" ☄️ Ultimate – Meteor Storm (💧 40 Mana)");
-        System.out.println(" 📜 Description: Summons a storm of blazing meteors, striking the opponent multiple times.");
-        System.out.println(" 💥 Damage: 5 hits, each dealing (" + (int)(attack * 1.00) + " — " + (int)(attack * 1.50) + ")");
-        System.out.println(" ⚡ Effects:");
-        System.out.println(" - 💪 Grants Strengthen (+20% ATK for 2 turns)");
-        System.out.println(" - 🔥 50% chance to apply Burn (2 turns)");
+        System.out.println("  ☄️ Ultimate – Meteor Storm (💧 40 Mana)");
+        System.out.println("  📜 Description: Summons a storm of blazing meteors, striking the opponent multiple times.");
+        System.out.println("  💥 Damage: 5 hits, each dealing (" + (int)(attack * 1.00) + " — " + (int)(attack * 1.50) + ")");
+        System.out.println("  ⚡ Effects:");
+        System.out.println("    - 💪 Grants Strengthen (+20% ATK for 2 turns)");
+        System.out.println("    - 🔥 50% chance to apply Burn (2 turns)");
         System.out.println("└───────────────────────────────────────────────────────────────────────────────────────────────────┘");
 
     }

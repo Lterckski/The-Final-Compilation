@@ -354,7 +354,7 @@ public abstract class Character {
         exp += amount;
         System.out.println("  ✨ Gained " + amount + " XP!");
         System.out.println("┴───────────────────────────────────┴");
-        PrintUtil.pause(800);
+        InputUtil.pressEnterToContinue();
         while(level < XP_TABLE.length && exp >= nextLevelExp){
             levelUp();
         }
