@@ -12,6 +12,24 @@ public class World3Miniboss1 extends Enemy {
 
     public World3Miniboss1() { super("Zyrryl", 3455, 88, 170); }
 
+    @Override
+    public void displaySkills() {
+        System.out.println("┌──────────────────────────────── 🛡️🏰 THE TOWER WARDEN SKILLS 🏰🛡️ ───────────────────────────────┐");
+        System.out.println(" 🗡️ Skill 1 – Grave Cleaver");
+        System.out.println(" 📝 Description : The Tower Warden performs a deathly slash, inflicting pure damage to its victims.");
+        System.out.println(" 💥 Damage      : (" + (int)(attack * 1.00) + " — " + (int)(attack * 1.15) + ")");
+        System.out.println(" ✨ Effects     :");
+        System.out.println(" - 🔥 Inflicts pure damage, ignoring defense.\n");
+
+        System.out.println(" 🛡️ Skill 2 – Bone Shield");
+        System.out.println(" 📝 Description : The Tower Warden raises its shield, increasing its defenses.");
+        System.out.println(" 💥 Damage      : –");
+        System.out.println(" ✨ Effects     :");
+        System.out.println(" - 🛡️ Increases " + name + "'s DEF by 50 for 2 turns.");
+        System.out.println("└──────────────────────────────────────────────────────────────────────────────────────────────────┘");
+    }
+
+
     public void graveCleaver(Character target) {
         System.out.println("🤺 " + name + " used Grave Cleaver!");
         PrintUtil.pause(800);
@@ -33,24 +51,6 @@ public class World3Miniboss1 extends Enemy {
         PrintUtil.pause(800);
         this.getEffects().applyDefenseBuff(50, 2, true);
     }
-
-    @Override
-    public void displaySkills() {
-        System.out.println("┌──────────────────────────────── 🛡️🏰 THE TOWER WARDEN SKILLS 🏰🛡️ ───────────────────────────────┐");
-        System.out.println(" 🗡️ Skill 1 – Grave Cleaver");
-        System.out.println(" 📝 Description : The Tower Warden performs a deathly slash, inflicting pure damage to its victims.");
-        System.out.println(" 💥 Damage      : (" + (int)(attack * 1.00) + " — " + (int)(attack * 1.15) + ")");
-        System.out.println(" ✨ Effects     :");
-        System.out.println(" - 🔥 Inflicts pure damage, ignoring defense.\n");
-
-        System.out.println(" 🛡️ Skill 2 – Bone Shield");
-        System.out.println(" 📝 Description : The Tower Warden raises its shield, increasing its defenses.");
-        System.out.println(" 💥 Damage      : –");
-        System.out.println(" ✨ Effects     :");
-        System.out.println(" - 🛡️ Increases " + name + "'s DEF by 50 for 2 turns.");
-        System.out.println("└──────────────────────────────────────────────────────────────────────────────────────────────────┘");
-    }
-
 
 
     @Override

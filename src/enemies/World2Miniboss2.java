@@ -107,9 +107,6 @@ public class World2Miniboss2 extends Enemy {
     }
 
 
-
-
-
     @Override
     public void turn(Character target) {
         if(!target.getEffects().hasAtkDebuff()){
