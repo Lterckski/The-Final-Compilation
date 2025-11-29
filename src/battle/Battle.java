@@ -34,6 +34,7 @@ public class Battle {
             System.out.println("[4] \uD83D\uDCD6 Show Player Skills Overview");
             System.out.println("[5] \uD83D\uDC79 Show Enemy Stats");
             System.out.println("[6] \uD83D\uDCDD Show Enemy Skills Overview");
+            System.out.println("[7] ❌ Quit the Game");
 
             System.out.print("Enter choice: ");
             int choice = InputUtil.scanInput();
@@ -46,6 +47,7 @@ public class Battle {
                 case 4 -> player.displaySkills();
                 case 5 -> enemy.displayStats();
                 case 6 -> enemy.displaySkills();
+                case 7 -> player.quitGame();
                 default -> System.out.println("❌ Invalid input! Please select a valid option.");
             }
         }
@@ -63,7 +65,7 @@ public class Battle {
         return bar.toString();
     }
 
-    private void displayBattleStats() {
+    private void  displayBattleStats() {
         String playerHpBar = generateBar(player.getHp(), player.getMaxHP(), 10, "\u001B[32m"); // Green
         String playerStaminaBar = generateBar(player.getEnergy(), player.getMaxEnergy(), 10, "\u001B[37m"); // Gray
         String enemyHpBar = generateBar(enemy.getHp(), enemy.getMaxHP(), 10, "\u001B[31m"); // Red
@@ -200,6 +202,4 @@ public class Battle {
         System.out.println("☠️ GAME OVER — Your story ends in shadow.");
         System.exit(0);
     }
-
-
 }
