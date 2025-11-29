@@ -1,6 +1,7 @@
 package battle;
 
 import characters.Character;
+import enemies.Enemy;
 import enemies.FinalBoss;
 import utils.InputUtil;
 import utils.PrintUtil;

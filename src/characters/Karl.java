@@ -1,5 +1,6 @@
 package characters;
 
+import enemies.Enemy;
 import utils.InputUtil;
 import utils.PrintUtil;
 import utils.RandomUtil;
@@ -64,21 +65,6 @@ public class Karl extends Character{
         System.out.println("of the place he calls home.");
     }
 
-
-    // Helper method to trigger weapon effects
-    private void triggerWeaponEffect(Character target, int damage) {
-        if (this.getWeapon() != null && this.getWeapon().applyEffects(this, damage)) {
-            System.out.println("⚡ Weapon effect activated! Extra hit triggered.");
-            PrintUtil.pause(800);
-
-            int extraDamage = (int) RandomUtil.range(damage * 0.20, damage * 0.40);
-
-            System.out.println("🗡 Extra hit from weapon for " + extraDamage + " damage!");
-            PrintUtil.pause(800);
-            target.takeDamage(extraDamage);
-        }
-    }
-
     // Passive - Hunter's Instinct
     private int hunterInstincts(int damage, Character target){
        double hpPercent = (double) target.getHp() / target.maxHP;
@@ -117,8 +103,7 @@ public class Karl extends Character{
             target.getEffects().applyBleed(2);
         }
 
-        // Weapon effect
-        triggerWeaponEffect(target, reduced);
+        this.getWeapon().applyEffects(this,target,reduced);
     }
 
     // Skill 2 - Bullseye
@@ -148,7 +133,7 @@ public class Karl extends Character{
             target.getEffects().applyDefenseDebuff(30, 2);
         }
 
-        triggerWeaponEffect(target, reduced);
+        this.getWeapon().applyEffects(this,target,reduced);
     }
 
     // Ultimate - Rain of a Thousand Arrows
@@ -176,16 +161,16 @@ public class Karl extends Character{
             System.out.println("→💥 Arrow " + i + " fired! 💔 Target is hit for " + reduced + " damage!");
             PrintUtil.pause(800);
 
-            if(reduced > 0)
-                triggerWeaponEffect(target, reduced);
         }
 
         System.out.println("🏹🌧️ Rain of a Thousand Arrows finished! Total damage dealt: " + totalDamage);
         PrintUtil.pause(800);
         target.takeDamage(totalDamage);
 
+        this.getWeapon().applyEffects(this,target,totalDamage);
         this.getEffects().applyNimble();
         this.getEffects().applyAttackBuff(20, 2);
+
         ultimateCounter = 3;
     }
 

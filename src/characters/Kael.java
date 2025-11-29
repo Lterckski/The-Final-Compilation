@@ -1,5 +1,6 @@
 package characters;
 
+import enemies.Enemy;
 import enemies.FinalBoss;
 import utils.InputUtil;
 import utils.PrintUtil;
@@ -80,20 +81,6 @@ public class Kael extends  Character{      // 15% crit chance
         return damage;
     }
 
-    // Helper method to trigger weapon effects
-    private void triggerWeaponEffect(Character target, int damage) {
-        if (this.getWeapon() != null && this.getWeapon().applyEffects(this, damage)) {
-            System.out.println("⚡ Weapon effect activated! Extra hit triggered.");
-            PrintUtil.pause(800);
-
-            int extraDamage = (int) RandomUtil.range(damage * 0.20, damage * 0.40);
-
-            System.out.println("🗡 Extra hit from weapon for " + extraDamage + " damage!");
-            PrintUtil.pause(800);
-            target.takeDamage(extraDamage);
-        }
-    }
-
     // Skill 1 - Blade Rush
     public void bladeRush(Character target){
         int energyCost = 5;
@@ -121,8 +108,7 @@ public class Kael extends  Character{      // 15% crit chance
             getEffects().applyAttackBuff(20, 2);
         }
 
-        // Apply weapon effects via helper
-        triggerWeaponEffect(target, reduced);
+        this.getWeapon().applyEffects(this,target,reduced);
     }
 
     // Skill 2 - Piercing Slash
@@ -152,8 +138,7 @@ public class Kael extends  Character{      // 15% crit chance
             if (target instanceof FinalBoss fb) fb.applyStun(); // remove shield if turn skipped
         }
 
-        // Apply weapon effects via helper
-        triggerWeaponEffect(target, reduced);
+        this.getWeapon().applyEffects(this,target,reduced);
     }
 
     //Ultimate - Eternal Cross Slash
@@ -180,17 +165,17 @@ public class Kael extends  Character{      // 15% crit chance
             System.out.println(" →🔪 Hit " + i + "! 💔 You slashed the Target for " + reduced + " damage!");
             PrintUtil.pause(800);
 
-            // Apply weapon effects via helper
-            if(reduced > 0)
-                triggerWeaponEffect(target, reduced);
         }
 
         System.out.println("⚔️💥 Eternal Cross Slash finished! Total Damage dealt: " + totalDamage);
         PrintUtil.pause(800);
-        target.takeDamage(totalDamage);
 
+        target.takeDamage(totalDamage);
         target.getEffects().applyBleed(2);
+
+        this.getWeapon().applyEffects(this,target,totalDamage);
         this.getEffects().applyDefenseBuff(20, 2);
+
         ultimateCounter = 3;
     }
 

@@ -2,7 +2,7 @@ import battle.Battle;
 import characters.*;
 import characters.Character;
 import enemies.*;
-import inventory.Inventory;
+import inventory.*;
 
 import events.MagicShop;
 
@@ -15,10 +15,10 @@ import java.sql.SQLOutput;
 public class Tester {
     public static void main(String[] args) {
 
-      Kael kael = new Kael();
-        Karl karl = new Karl();
-       Simon simon = new Simon();
-       World1Enemy1 w1 = new World1Enemy1();
+//      Kael kael = new Kael();
+//        Karl karl = new Karl();
+//       Simon simon = new Simon();
+//       World1Enemy1 w1 = new World1Enemy1();
 //        World1Enemy2 w2 = new World1Enemy2();
 //
 //        World1Miniboss1 enemy = new World1Miniboss1();
@@ -101,7 +101,7 @@ public class Tester {
 //        simon.showSkills();
 //        */
 
-        /*
+
         System.out.println("Welcome to The Final Compilation");
         PrintUtil.pause(1000);
 
@@ -148,14 +148,15 @@ public class Tester {
         } while (player == null);  // repeat until valid choice
         player.getInventory().setEquippedArmor(Armor.LEATHER_GUARD);
 
+        player.lootSoulShards(60);
+        MagicShop shop = new MagicShop(player);
+        shop.openShop();
+
         Enemy testEnemy1 = new World3Miniboss1();
         Battle testBattle1 = new Battle(player, testEnemy1);
         testBattle1.startBattle();
         testEnemy1.dropLoot(player);
 
-        player.lootSoulShards(20);
-        MagicShop shop = new MagicShop(player);
-        shop.openShop();
 
         World3 world3 = new World3();
         world3.run(player);
@@ -169,6 +170,6 @@ public class Tester {
         testBattle2.startBattle();
         testEnemy2.dropLoot(player);
 
-         */
+
     }
 }

@@ -1,5 +1,6 @@
 package characters;
 
+import enemies.Enemy;
 import utils.InputUtil;
 import utils.PrintUtil;
 import utils.RandomUtil;
@@ -97,9 +98,6 @@ public class Simon extends Character {
         PrintUtil.pause(800);
         target.takeDamage(reduced);
 
-        if(getInventory().getEquippedWeapon().applyEffects(this, reduced))
-            target.getEffects().applyConfuse();
-
         // Apply Burn
         target.getEffects().applyBurn(1);
 
@@ -108,6 +106,8 @@ public class Simon extends Character {
             target.getEffects().applyAttackDebuff(20, 2);
         }
         arcaneFlow();
+
+        this.getWeapon().applyEffects(this,target,reduced);
 
     }
 
@@ -133,9 +133,6 @@ public class Simon extends Character {
         PrintUtil.pause(800);
         target.takeDamage(reduced);
 
-        if(getInventory().getEquippedWeapon().applyEffects(this, reduced))
-            target.getEffects().applyConfuse();
-
         // 30% chance to Freeze
         if (RandomUtil.chance(50)) {
             target.getEffects().applyFreeze();
@@ -144,6 +141,7 @@ public class Simon extends Character {
         }
         arcaneFlow();
 
+        this.getWeapon().applyEffects(this,target,reduced);
     }
 
     // Ultimate – Meteor Storm
@@ -176,17 +174,16 @@ public class Simon extends Character {
         PrintUtil.pause(800);
         target.takeDamage(totalDamage);
 
-        if(getInventory().getEquippedWeapon().applyEffects(this, totalDamage))
-            target.getEffects().applyConfuse();
-
         // 50% chance to Burn
         if (RandomUtil.chance(50)) {
             target.getEffects().applyBurn(2);
         }
 
-        // Apply ATK buff to Simon
-        this.getEffects().applyAttackBuff(20, 2);
         arcaneFlow();
+
+        this.getWeapon().applyEffects(this,target,totalDamage);
+        this.getEffects().applyAttackBuff(20, 2);
+
         ultimateCounter = 3;
     }
 

@@ -57,26 +57,27 @@ public class MagicShop {
 // Weapon/Armor Enchantments
             System.out.println("╠══════════════════════════════ 🌟 WEAPON / ARMOR ENCHANTMENTS 🌟 ══════════════════════════════╣");
 
-            System.out.printf(" %5s%-3s %-30s %-45s 💠 %d%n", "[5]", " 🔥", "Flamebrand", "+10 Fire DMG " + xMark("Mage"), 28);
-            System.out.printf(" %5s%-3s %-30s %-45s 💠 %d%n", "[6]", " ❄️", "Frost Arrow", "ATKs have 20% to Freeze " + xMark("Archer"), 28);
-            System.out.printf(" %5s%-3s %-30s %-45s 💠 %d%n", "[7]", " ⚡ ", "Arc Surge", "+3 Energy per hit " + xMark("Mage"), 26);
-            System.out.printf(" %5s%-3s %-30s %-45s 💠 %d%n", "[8]", " ☠️", "Venom Coating", "20% Poison chance" + xMark("Swordsman","Archer","Mage"), 32);
-            System.out.printf(" %5s%-3s %-30s %-45s 💠 %d%n", "[9]", " 🩸", "Razor Edge", "+10% Bleed +10 Bleed DMG " + xMark("Swordsman", "Archer"), 28);
-            System.out.printf(" %5s%-3s %-30s %-45s 💠 %d%n", "[10]", " 🛡️", "Fortified Plating", "Armor +6 DEF" + xMark("Swordsman","Archer","Mage"), 26);
+            System.out.printf(" %5s%-3s %-30s %-45s 💠 %d%n", "[5]", " 💖", "Vital Surge", "+5% Lifesteal " + xMark("Swordsman", "Archer", "Mage"), 28);
+            System.out.printf(" %5s%-3s %-30s %-45s 💠 %d%n", "[6]", " ⛓️", "Shock Bind", "20% chance to Stun " + xMark("Swordsman"), 30);
+            System.out.printf(" %5s%-3s %-30s %-45s 💠 %d%n", "[7]", " ❄️", "Frost Arrow", "ATKs have 20% to Freeze " + xMark("Archer"), 30);
+            System.out.printf(" %5s%-3s %-30s %-45s 💠 %d%n", "[8]", " ✨", "Arc Surge", "+3 Energy per ATK " + xMark("Mage"), 26);
+            System.out.printf(" %5s%-3s %-30s %-45s 💠 %d%n", "[9]", " ☠️", "Venom Infusion", "20% Poison chance" + xMark("Swordsman","Archer","Mage"), 30);
+            System.out.printf(" %5s%-3s %-30s %-45s 💠 %d%n", "[10]", " 🩸", "Razor Edge", "+20% chance" + xMark("Swordsman", "Archer"), 32);
+            System.out.printf(" %5s%-3s %-30s %-45s 💠 %d%n", "[11]", " 🛡️", "Fortified Plating", "Armor +10 DEF" + xMark("Swordsman","Archer","Mage"), 26);
 
 // Potions
             System.out.println("╠══════════════════════════════════════════ 🧪 POTIONS 🧪 ══════════════════════════════════════╣");
-            System.out.printf(" %5s%-3s %-38s %-37s 💠 %d%n", "[11]", " 🍃", "Normal Healing Potion", "1x", 6);
-            System.out.printf(" %5s%-3s %-38s %-37s 💠 %d%n", "[12]", " 💞", "Full Healing Potion", "1x", 18);
-            System.out.printf(" %5s%-3s %-38s %-37s 💠 %d%n", "[13]", " ⚡ ", "Energy Potion", "1x", 8);
+            System.out.printf(" %5s%-3s %-38s %-37s 💠 %d%n", "[12]", " 🍃", "Normal Healing Potion", "1x", 6);
+            System.out.printf(" %5s%-3s %-38s %-37s 💠 %d%n", "[13]", " 💞", "Full Healing Potion", "1x", 18);
+            System.out.printf(" %5s%-3s %-38s %-37s 💠 %d%n", "[14]", " ⚡ ", "Energy Potion", "1x", 8);
 
 // Special Item
             System.out.println("╠═══════════════════════════════════════ 🔮 SPECIAL ITEM 🔮 ════════════════════════════════════╣");
-            System.out.printf(" %5s%-3s %-30s %-45s 💠 %d%n", "[14]", " 🕊️", "Phoenix Soulstone", "Revive once with 50% HP & Energy", 40);
+            System.out.printf(" %5s%-3s %-30s %-45s 💠 %d%n", "[15]", " 🕊️", "Phoenix Soulstone", "Revive once with 50% HP & Energy", 40);
 
 // Exit
             System.out.println("╠═══════════════════════════════════════════════════════════════════════════════════════════════╣");
-            System.out.println("  [15] \uD83D\uDCDC Menu");
+            System.out.println("  [16] \uD83D\uDCDC Menu");
             System.out.println("   [0] ➜] Exit Shop");
             System.out.println("╚═══════════════════════════════════════════════════════════════════════════════════════════════╝");
 
@@ -92,21 +93,22 @@ public class MagicShop {
                 case 4 -> soulBattery("Soul Battery", 8);
 
                 // Weapon / Armor Enchantments
-//                case 5 -> attemptPurchase(28, "Flamebrand", this::applyFlamebrand);
-//                case 6 -> attemptPurchase(28, "Frost Arrow", this::applyFrostArrow);
-//                case 7 -> attemptPurchase(26, "Arc Surge", this::applyArcSurge);
-//                case 8 -> attemptPurchase(32, "Venom Coating", this::applyVenomCoating);
-//                case 9 -> attemptPurchase(28, "Razor Edge", this::applyRazorEdge);
-//                case 10 -> attemptPurchase(26, "Fortified Plating", this::applyFortifiedPlating);
-//
+                case 5 -> vitalSurge("Vital Surge", 28);
+                case 6 -> shockBind("Shock Bind", 30);
+                case 7 -> frostArrow("Frost Arrow", 30);
+                case 8 -> arcSurge("Arc Surge", 26);
+                case 9 -> venomInfusion("Venom Infusion", 30);
+                case 10 -> razorEdge("Razor Edge", 32);
+                case 11 -> fortifiedPlating("Fortified Plating", 26);
+
 //                // Potions
-                case 11 -> normalHealingPotion("Normal Healing Potion", 6);
-                case 12 -> fullHealingPotion("Full Healing Potion", 18);
-                case 13 -> energyPotion("Energy Potion", 8);
+                case 12 -> normalHealingPotion("Normal Healing Potion", 6);
+                case 13 -> fullHealingPotion("Full Healing Potion", 18);
+                case 14 -> energyPotion("Energy Potion", 8);
 //
 //                // Special Item
-                case 14 -> phoenixSoulstone("Phoenix Soulstone", 40);
-                case 15 -> player.displayMenu(player);
+                case 15 -> phoenixSoulstone("Phoenix Soulstone", 40);
+                case 16 -> player.displayMenu(player);
                 case 0 -> exit = confirmExit();
                 default -> System.out.println("❌ Invalid input! Please select a valid option.");
             }
@@ -116,7 +118,7 @@ public class MagicShop {
     private String xMark (String... allowedClasses) {
         for (String allowed : allowedClasses) {
             if (player.getClassType().equalsIgnoreCase(allowed)) {
-                return "";   // allowed → no X mark
+                return " ";   // allowed → no X mark
             }
         }
         return "❌";         // not allowed → show X
@@ -227,10 +229,173 @@ public class MagicShop {
             player.setMaxEnergy(oldMaxEnergy + energyIncrease);
 
             System.out.println("⚡ " + name + " applied! Max Energy increased by "
-                    + energyIncrease + ". " + player.getEnergyEmoji() + " " + player.getEnergyName() + " " + oldMaxEnergy + " → " + player.getMaxEnergy()
+                    + energyIncrease + ". " + player.getEnergyEmoji() + " " + player.getEnergyName() + " : " + oldMaxEnergy + " → " + player.getMaxEnergy()
                     + " (💠- " + cost + " Soul Shards)");
         }
         InputUtil.pressEnterToContinue();
+    }
+
+    private void vitalSurge(String name, int cost) {
+        if (attemptPurchase(name, cost)) {
+            player.subtractSoulShards(cost);
+
+            var weapon = player.getWeapon();
+            int oldLifesteal = weapon.getLifestealPercent();
+            weapon.setLifestealPercent(oldLifesteal + 5);
+
+            player.getWeapon().addEnchantment(
+                    "💖 Vital Surge",
+                    "(+5% Lifesteal on attacks)"
+            );
+
+            System.out.println("💖 --" + weapon.getName() + "-- is now empowered with " + name
+                    + "-- 💖 Lifesteal: " + oldLifesteal + "% → " + weapon.getLifestealPercent()
+                    + " (💠- " + cost + " Soul Shards)");
+
+            InputUtil.pressEnterToContinue();
+        }
+    }
+
+    private void shockBind(String name, int cost) {
+        // Only Swordsman can apply
+        if (!player.getClassType().equalsIgnoreCase("Swordsman")) {
+            System.out.println("❌ " + name + " can only be applied to Swords!");
+            InputUtil.pressEnterToContinue();
+            return;
+        }
+
+        if (attemptPurchase(name, cost)) {
+            player.subtractSoulShards(cost);
+
+            var weapon = player.getWeapon();
+            int oldChance = weapon.getStunChance(); // Make sure Sword class has this
+            weapon.setStunChance(oldChance + 20); // 20% chance to stun
+
+            player.getWeapon().addEnchantment(
+                    "⛓️ Shockbind",
+                    "(20% chance to stun enemies)"
+            );
+
+            System.out.println("⛓️ --" + weapon.getName() + "-- crackles with " + name + "! Stun chance: "
+                    + weapon.getStunChance() + "% (💠- " + cost + " Soul Shards)");
+
+
+            InputUtil.pressEnterToContinue();
+        }
+    }
+
+    private void frostArrow(String name, int cost) {
+        if (!player.getClassType().equalsIgnoreCase("Archer")) {
+            System.out.println("❌ " + name + " can only be applied to Archers!");
+            InputUtil.pressEnterToContinue();
+            return;
+        }
+
+        if (attemptPurchase(name, cost)) {
+            player.subtractSoulShards(cost);
+
+            var weapon = player.getWeapon();
+            int oldFreeze = weapon.getFreezeChance(); // Make sure Weapon class has this
+            weapon.setFreezeChance(oldFreeze + 20);
+
+            player.getWeapon().addEnchantment(
+                    "❄️ Frost Arrow",
+                    "(20% chance to Freeze target)"
+            );
+
+            System.out.println("❄️ --" + weapon.getName() + "-- is now enchanted with " + name + "! Freeze chance: "
+                    + weapon.getFreezeChance() + "% (💠- " + cost + " Soul Shards)");
+
+            InputUtil.pressEnterToContinue();
+        }
+    }
+
+    private void arcSurge(String name, int cost) {
+        if (!player.getClassType().equalsIgnoreCase("Mage")) {
+            System.out.println("❌ " + name + " can only be applied to Mages!");
+            InputUtil.pressEnterToContinue();
+            return;
+        }
+
+        if (attemptPurchase(name, cost)) {
+            player.subtractSoulShards(cost);
+
+            var weapon = player.getWeapon();
+            int oldEnergy = weapon.getEnergyPerAttack();
+            weapon.setEnergyPerAttack(oldEnergy + 3);
+
+            player.getWeapon().addEnchantment(
+                    "✨ Arc Surge",
+                    "(+3 Energy per attack)"
+            );
+
+            System.out.println("✨ --" + weapon.getName() + "-- is now infused with " + name
+                    + "! +3 Energy per attack (💠- " + cost + " Soul Shards)");
+
+            InputUtil.pressEnterToContinue();
+        }
+    }
+
+    private void venomInfusion(String name, int cost) {
+        if (attemptPurchase(name, cost)) {
+            player.subtractSoulShards(cost);
+
+            var weapon = player.getWeapon();
+            int oldPoison = weapon.getPoisonChance(); // Weapon class must have this
+            weapon.setPoisonChance(oldPoison + 20);
+
+            player.getWeapon().addEnchantment(
+                    "☠️ Venom Infusion",
+                    "(20% chance to Poison target)"
+            );
+
+            System.out.println("☠️ --" + weapon.getName() + "-- is now laced with " + name + "! Poison chance: "
+                    + weapon.getPoisonChance() + "% (💠- " + cost + " Soul Shards)");
+
+            InputUtil.pressEnterToContinue();
+        }
+    }
+
+    private void razorEdge(String name, int cost) {
+        if (!player.getClassType().equalsIgnoreCase("Swordsman") && !player.getClassType().equalsIgnoreCase("Archer")) {
+            System.out.println("❌ " + name + " can only be applied to Swordsmen or Archers!");
+            InputUtil.pressEnterToContinue();
+            return;
+        }
+
+        if (attemptPurchase(name, cost)) {
+            player.subtractSoulShards(cost);
+
+            var weapon = player.getWeapon();
+            int oldBleed = weapon.getBleedChance(); // Weapon class must have this
+            weapon.setBleedChance(oldBleed + 20);
+
+            player.getWeapon().addEnchantment(
+                    "🩸 Razor Edge",
+                    "(20% chance to cause bleed damage)"
+            );
+
+            System.out.println("🩸 --" + weapon.getName() + "-- is now sharpened with " + name + "! Bleed chance: "
+                    + weapon.getBleedChance() + "% (💠- " + cost + " Soul Shards)");
+
+            InputUtil.pressEnterToContinue();
+        }
+    }
+
+    private void fortifiedPlating(String name, int cost) {
+        if (attemptPurchase(name, cost)) {
+            player.subtractSoulShards(cost);
+
+            var armor = player.getArmor(); // Assume player has getArmor() returning Armor object
+            int oldDef = armor.getDefBuff();
+            armor.setDefBuff(oldDef + 10);
+            armor.setHasEnchantment(true);
+
+            System.out.println("🛡️ --" + armor.getName() + "-- is reinforced with " + name + "! Armor DEF: "
+                    + oldDef + " → " + armor.getDefBuff() + " (💠- " + cost + " Soul Shards)");
+
+            InputUtil.pressEnterToContinue();
+        }
     }
 
     private void normalHealingPotion(String name, int cost) {

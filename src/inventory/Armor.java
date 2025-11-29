@@ -10,7 +10,8 @@ public class Armor {
     private final String rarity;
     private boolean isEquipped = false;
 
-    private final int defBuff;
+    private int defBuff;
+    private boolean hasEnchantment = false;
 
     private final boolean immuneDebuff;
     private final boolean immuneEffects;
@@ -34,8 +35,17 @@ public class Armor {
         this.reflectPercent = reflectPercent;
     }
 
-    public String getName() { return name; }
+    public String getName(){ return name; }
     public int getDefBuff(){ return defBuff; }
+    public void setDefBuff(int defBuff) { this.defBuff = defBuff; }
+
+    public boolean isHasEnchantment() {
+        return hasEnchantment;
+    }
+
+    public void setHasEnchantment(boolean hasEnchantment) {
+        this.hasEnchantment = hasEnchantment;
+    }
 
     public boolean lootArmor() {
         System.out.println("\n🎁 Target has dropped an armor!");
@@ -109,7 +119,8 @@ public class Armor {
     }
 
     public void displayInfo() {
-        System.out.println("╠═══════════════════════════════╣");
+        System.out.println();
+        System.out.println("═════════════════════════════════════");
         System.out.println(" 🛡️ " + name + " [" + rarity + "]");
         System.out.println("  + " + defBuff + " DEF");
 
@@ -125,7 +136,14 @@ public class Armor {
             System.out.println(" 🛡️ " + reflectChance + "% chance to reflect " + reflectPercent + "% damage back to attacker");
         }
 
-        System.out.println("╩═══════════════════════════════╩");
+        if (hasEnchantment) {
+            System.out.println(" ✨ Enchantments:");
+                System.out.println("   - 🛡️ Fortified Plating (+10 Armor DEF)");
+        }
+
+        System.out.println("═════════════════════════════════════");
+        InputUtil.pressEnterToContinue();
+        System.out.println();
     }
 
     public boolean checkDebuffImmunity(){
@@ -145,4 +163,6 @@ public class Armor {
 
         return reflectDamage;
     }
+
+
 }

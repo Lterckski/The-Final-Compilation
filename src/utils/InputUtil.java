@@ -20,7 +20,7 @@ public class InputUtil {
             if (tokens.length == 1) {
                 return Integer.parseInt(tokens[0]);
             } else {
-                return 9;
+                return 99;
             }
         } catch (NumberFormatException e) {
             return 9;

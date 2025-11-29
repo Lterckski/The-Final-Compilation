@@ -233,26 +233,42 @@ public class Effects {
 
     // ------------------- DoT EFFECTS -------------------
     public void updateDoTEffects() {
+
+        int atk = owner.getAttack(); // get owner's attack stat
+
+        // ----- POISON -----
         if (poisonTurnsLeft > 0) {
-            System.out.println("☠ " + owner.getName() + " is poisoned! 💔 Took 5 damage.");
+            int poisonDamage = Math.max(1, (int)(atk * 0.05)); // 5% of atk
+            System.out.println("☠ " + owner.getName() + " is poisoned! 💔 Took " + poisonDamage + " damage.");
             PrintUtil.pause(800);
-            owner.takeDamage(5);
+            owner.takeDamage(poisonDamage);
             poisonTurnsLeft--;
         }
+
+        // ----- BLEED -----
         if (bleedTurnsLeft > 0) {
-            int bleedDamage = Math.min(5 + 2 * (bleedInitialTurns - bleedTurnsLeft), 16);
-            System.out.println("🩸 " + owner.getName() + " is bleeding! 💔 Took " + bleedDamage + " damage.");
+            // Scales 4%, 6%, 8%, ... up to 16%
+            int scalePercent = Math.min(4 + 2 * (bleedInitialTurns - bleedTurnsLeft), 16);
+            int bleedDamage = Math.max(1, (atk * scalePercent) / 100);
+
+            System.out.println("🩸 " + owner.getName() + " is bleeding! 💔 Took "
+                    + bleedDamage + " damage (" + scalePercent + "% of ATK).");
             PrintUtil.pause(800);
+
             owner.takeDamage(bleedDamage);
             bleedTurnsLeft--;
         }
+
+        // ----- BURN -----
         if (burnTurnsLeft > 0) {
-            System.out.println("🔥 " + owner.getName() + " is burning! 💔 Took 5 damage.");
+            int burnDamage = Math.max(1, (int)(atk * 0.06)); // 6% of atk
+            System.out.println("🔥 " + owner.getName() + " is burning! 💔 Took " + burnDamage + " damage.");
             PrintUtil.pause(800);
-            owner.takeDamage(5);
+            owner.takeDamage(burnDamage);
             burnTurnsLeft--;
         }
     }
+
 
     // ------------------- UPDATE ATK BUFFS/DEBUFFS -------------------
     public void updateAttackModifiers() {

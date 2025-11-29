@@ -1,14 +1,29 @@
 package inventory;
 
 import characters.Character;
+import enemies.Enemy;
 import utils.InputUtil;
 import utils.PrintUtil;
+
+import java.util.HashMap;
+import java.util.Map;
+
 
 public abstract class Weapon {
     private final String name;
     private final String rarity;
     private boolean isEquipped = false;
     private final int atkBuff;
+
+
+    private int lifestealPercent = 0;
+    private int poisonChance = 0;
+    private int bleedChance = 0;
+    private int stunChance = 0;
+    private int freezeChance = 0;
+    private int energyPerAttack = 0;
+
+    private final Map<String, String> enchantments = new HashMap<>();
 
     public Weapon(String name, String rarity, int atkBuff){
         this.name = name;
@@ -20,8 +35,64 @@ public abstract class Weapon {
     public String getRarity() { return rarity; }
     public int getAtkBuff() { return atkBuff; }
 
+    public int getPoisonChance() {
+        return poisonChance;
+    }
+
+    public void setPoisonChance(int poisonChance) {
+        this.poisonChance = poisonChance;
+    }
+
+    public int getBleedChance() {
+        return bleedChance;
+    }
+
+    public void setBleedChance(int bleedChance) {
+        this.bleedChance = bleedChance;
+    }
+
+    public int getStunChance() {
+        return stunChance;
+    }
+
+    public void setStunChance(int stunChance) {
+        this.stunChance = stunChance;
+    }
+
+    public int getFreezeChance() {
+        return freezeChance;
+    }
+
+    public void setFreezeChance(int freezeChance) {
+        this.freezeChance = freezeChance;
+    }
+
+    public int getEnergyPerAttack() {
+        return energyPerAttack;
+    }
+
+    public void setEnergyPerAttack(int energyPerAttack) {
+        this.energyPerAttack = energyPerAttack;
+    }
+
+    public int getLifestealPercent() {
+        return lifestealPercent;
+    }
+
+    public void setLifestealPercent(int lifestealPercent) {
+        this.lifestealPercent = lifestealPercent;
+    }
+
+    public void addEnchantment(String name, String description) {
+        enchantments.put(name, description);
+    }
+
+    public Map<String, String> getEnchantments() {
+        return enchantments;
+    }
+
+    public abstract void applyEffects(Character player, Character enemy, int damage);
     public abstract void displayInfo();
-    public abstract boolean applyEffects(Character target, int damage);
 
     public boolean lootWeapon() {
         System.out.println("╦═══════════════════════════════╦");
@@ -95,5 +166,6 @@ public abstract class Weapon {
         character.setAttack(character.getAttack() - atkBuff);
         isEquipped = false;
     }
+
 
 }

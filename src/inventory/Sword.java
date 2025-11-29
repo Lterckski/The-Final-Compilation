@@ -1,12 +1,15 @@
 package inventory;
 
 import characters.Character;
+import enemies.Enemy;
+import utils.InputUtil;
 import utils.PrintUtil;
 import utils.RandomUtil;
 
+import java.util.Map;
+
 public class Sword extends Weapon{
     private final int attackTwiceChance;
-    private final int lifestealPercent;
 
     public static final Sword OLD_BROADSWORD = new Sword("Old Broadsword", "⚪", 0, 0, 0);
     public static final Sword IRON_SHORTSWORD = new Sword("Iron Shortsword", "🟢", 5, 0, 0);
@@ -18,33 +21,42 @@ public class Sword extends Weapon{
     public Sword(String name, String rarity, int atkBuff, int twiceAttackChance, int lifestealPercent){
         super(name,rarity,atkBuff);
         this.attackTwiceChance = twiceAttackChance;
-        this.lifestealPercent = lifestealPercent;
+        this.setLifestealPercent(lifestealPercent);
     }
 
     @Override
     public void displayInfo() {
-        System.out.println("╠═══════════════════════════════╣");
+        System.out.println();
+        System.out.println("═════════════════════════════════════");
         System.out.println(" 🗡️ " + this.getName() + " [" + this.getRarity() + "]");
         System.out.println("  + " + this.getAtkBuff() + " ATK");
+
+        if (getLifestealPercent() > 0) {
+            System.out.println(" 💝 Restores " + getLifestealPercent() + "% HP of damage dealt");
+        }
 
         if (attackTwiceChance > 0) {
             System.out.println(" ⚡ " + attackTwiceChance + "% chance to deal extra damage");
         }
 
-        if (lifestealPercent > 0) {
-            System.out.println(" 💝 Restores " + lifestealPercent + "% HP of damage dealt");
+        if (!getEnchantments().isEmpty()) {
+            System.out.println(" ✨ Enchantments:");
+            for (Map.Entry<String, String> enchant : getEnchantments().entrySet()) {
+                System.out.println("   - " + enchant.getKey() + " " + enchant.getValue());
+            }
         }
 
-        System.out.println("╩═══════════════════════════════╩");
+        System.out.println("═════════════════════════════════════");
+        InputUtil.pressEnterToContinue();
+        System.out.println();
     }
 
     @Override
-    public boolean applyEffects(Character player, int damage) {
-        // Lifesteal
-        if (lifestealPercent > 0) {
-            int healAmount = (int) (damage * lifestealPercent / 100.0);
-            healAmount = Math.min(healAmount, player.getMaxHP() - player.getHp()); // Prevent overheal
-
+    public void applyEffects(Character player, Character enemy, int damage) {
+        // 💖 Lifesteal
+        if (getLifestealPercent() > 0) {
+            int healAmount = (int) (damage * getLifestealPercent() / 100.0);
+            healAmount = Math.min(healAmount, player.getMaxHP() - player.getHp());
             if (healAmount > 0) {
                 System.out.println("💖 " + this.getName() + " restores " + healAmount + " HP!");
                 PrintUtil.pause(800);
@@ -52,14 +64,31 @@ public class Sword extends Weapon{
             }
         }
 
-        // Double attack chance
-        if (RandomUtil.chance(attackTwiceChance)) {
-            System.out.println("⚡ " + this.getName() + " triggers a second attack!");
-            PrintUtil.pause(800);
-            return true;
+        // ☠️ Poison
+        if (RandomUtil.chance(getPoisonChance())) {
+            enemy.getEffects().applyPoison(2);
         }
 
-        return false; // No second attack triggered
+        // 🩸 Bleed
+        if (RandomUtil.chance(getBleedChance())) {
+            enemy.getEffects().applyBleed(2);
+        }
+
+        // ⛓️ Immobilize
+        if (RandomUtil.chance(getStunChance())) {
+            enemy.getEffects().applyImmobilize();
+        }
+
+        // ⚡ Extra hit (Double attack)
+        if (RandomUtil.chance(attackTwiceChance)) {
+            System.out.println("⚡ Weapon effect activated! Extra hit triggered!");
+            PrintUtil.pause(800);
+            int extraDamage = (int) RandomUtil.range(damage * 0.20, damage * 0.40);
+            System.out.println("🗡 Extra hit from weapon for " + extraDamage + " damage!");
+            PrintUtil.pause(800);
+            enemy.takeDamage(extraDamage);
+        }
+
     }
 
 

@@ -1,6 +1,7 @@
 package characters;
 
 import battle.Effects;
+import enemies.Enemy;
 import enemies.FinalBoss;
 import inventory.Armor;
 import inventory.Inventory;
@@ -247,6 +248,7 @@ public abstract class Character {
             System.out.println("[1] \uD83C\uDF92 Open Inventory");
             System.out.println("[2] \uD83E\uDDD1 Show Player Stats");
             System.out.println("[3] \uD83D\uDCD6 Show Player Skills Overview");
+            System.out.println("[4] ❌ Quit Game");
             System.out.println("[0] \uD83D\uDD19 Go back");
 
             System.out.print("Enter choice: ");
@@ -257,6 +259,7 @@ public abstract class Character {
                 case 1 -> player.getInventory().openInventory();
                 case 2 -> player.displayStats();
                 case 3 ->  player.displaySkills();
+                case 4 -> StoryEngine.quitGame();
                 case 0 -> goBack = true;
                 default -> System.out.println("❌ Invalid input! Please select a valid option.");
             }

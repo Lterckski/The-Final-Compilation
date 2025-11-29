@@ -1,12 +1,15 @@
 package inventory;
 
 import characters.Character;
+import enemies.Enemy;
+import utils.InputUtil;
 import utils.PrintUtil;
 import utils.RandomUtil;
 
+import java.util.Map;
+
 public class Bow extends Weapon{
     private final int attackTwiceChance;
-    private final int lifestealPercent;
 
     public static final Bow WOODEN_BOW = new Bow("Wooden Bow","⚪", 0 , 0, 0);
     public static final Bow OAK_LONGBOW = new Bow("Oak Longbow","🟢", 5 , 0, 0);
@@ -18,48 +21,74 @@ public class Bow extends Weapon{
     public Bow(String name, String rarity, int atkBuff, int twiceAttackChance, int lifestealPercent){
         super(name,rarity,atkBuff);
         this.attackTwiceChance = twiceAttackChance;
-        this.lifestealPercent = lifestealPercent;
+        this.setLifestealPercent(lifestealPercent);
     }
 
     @Override
     public void displayInfo() {
-        System.out.println("╠═══════════════════════════════╣");
+        System.out.println();
+        System.out.println("═════════════════════════════════════");
         System.out.println(" 🏹 " + getName() + " [" + getRarity() + "]");
         System.out.println("  + " + getAtkBuff() + " ATK");
+
+        if (getLifestealPercent() > 0) {
+            System.out.println(" 💝 Restores " + getLifestealPercent() + "% HP of damage dealt");
+        }
 
         if (attackTwiceChance > 0) {
             System.out.println(" 🎯 " + attackTwiceChance + "% chance to deal extra damage");
         }
 
-        if (lifestealPercent > 0) {
-            System.out.println(" 💝 Restores " + lifestealPercent + "% HP of damage dealt");
+        if (!getEnchantments().isEmpty()) {
+            System.out.println(" ✨ Enchantments:");
+            for (Map.Entry<String, String> enchant : getEnchantments().entrySet()) {
+                System.out.println("   - " + enchant.getKey() + " " + enchant.getValue());
+            }
         }
 
-        System.out.println("╩═══════════════════════════════╩");
+        System.out.println("═════════════════════════════════════");
+        InputUtil.pressEnterToContinue();
+        System.out.println();
     }
 
     @Override
-    public boolean applyEffects(Character player, int damage) {
-        // Lifesteal
-        if (lifestealPercent > 0) {
-            int healAmount = (int) (damage * lifestealPercent / 100.0);
-            healAmount = Math.min(healAmount, player.getMaxHP() - player.getHp()); // Prevent overheal
-
+    public void applyEffects(Character player, Character enemy, int damage) {
+        // 💖 Lifesteal
+        if (getLifestealPercent() > 0) {
+            int healAmount = (int) (damage * getLifestealPercent() / 100.0);
+            healAmount = Math.min(healAmount, player.getMaxHP() - player.getHp());
             if (healAmount > 0) {
-                System.out.println("💖 " + getName() + " restores " + healAmount + " HP!");
+                System.out.println("💖 " + this.getName() + " restores " + healAmount + " HP!");
                 PrintUtil.pause(800);
                 player.heal(healAmount);
             }
         }
 
-        // Double attack
-        if (RandomUtil.chance(attackTwiceChance)) {
-            System.out.println("⚡ " + getName() + " triggers a second attack!");
-            PrintUtil.pause(800);
-            return true;
+        // ☠️ Poison
+        if (RandomUtil.chance(getFreezeChance())) {
+            enemy.getEffects().applyPoison(2);
         }
 
-        return false; // no second attack is triggered
+        // 🩸 Bleed
+        if (RandomUtil.chance(getFreezeChance())) {
+            enemy.getEffects().applyBleed(2);
+        }
+
+        // ⚡ Extra hit (Double attack)
+        if (RandomUtil.chance(attackTwiceChance)) {
+            System.out.println("⚡ Weapon effect activated! Extra hit triggered!");
+            PrintUtil.pause(800);
+            int extraDamage = (int) RandomUtil.range(damage * 0.20, damage * 0.40);
+            System.out.println("➶ Extra hit from weapon for " + extraDamage + " damage!");
+            PrintUtil.pause(800);
+            enemy.takeDamage(extraDamage);
+        }
+
+        // ❄️ Freeze
+        if (RandomUtil.chance(getFreezeChance())) {
+            enemy.getEffects().applyFreeze();
+        }
+
     }
 
 }
