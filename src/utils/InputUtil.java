@@ -26,5 +26,4 @@ public class InputUtil {
             return 9;
         }
     }
-
 }

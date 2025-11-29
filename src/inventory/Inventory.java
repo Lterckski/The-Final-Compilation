@@ -61,7 +61,7 @@ public class Inventory {
             // INVENTORY HEADER
             System.out.println("┌───────────────🧰 INVENTORY───────────────┐");
 
-            System.out.println(" 💚 HP          : " +
+            System.out.println(" 💚 HP       : " +
                     generateBar(player.getHp(), player.getMaxHP(), true) + " " +
                     player.getHp() + "/" + player.getMaxHP());
 

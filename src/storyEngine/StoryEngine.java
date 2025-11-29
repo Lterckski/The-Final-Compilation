@@ -10,6 +10,8 @@ import utils.InputUtil;
 import utils.PrintUtil;
 import worlds.*;
 
+import static characters.Character.quitGame;
+
 public class StoryEngine {
 
     private Character player;
@@ -40,6 +42,33 @@ public class StoryEngine {
         end.run(player);
     }
 
+
+
+    public static void startGamePrompt() {
+        PrintUtil.hr();
+        System.out.println("Will you play the game?");
+        System.out.println("[1] Yes");
+        System.out.println("[0] No");
+        System.out.print("Enter choice: ");
+
+
+        int choice = InputUtil.scanInput();
+
+        if (choice == 1) {
+            System.out.println("\nInitializing game...\n");
+            PrintUtil.pause(800);
+            // Game continues naturally after this
+        }
+        else if (choice == 0) {
+            quitGame(); // Calls your combined quit method
+        }
+        else {
+            System.out.println("Invalid choice. Please try again.");
+            startGamePrompt(); // Loops until valid
+        }
+        PrintUtil.hr();
+    }
+
     // ---------- Scenes ----------
     private void intro() {
         PrintUtil.pause(1000);
@@ -63,8 +92,7 @@ public class StoryEngine {
                         """
         );
         System.out.println("=======================================================================================================================");
-        System.out.println();
-        InputUtil.pressEnterToContinue();
+        startGamePrompt();
 
         PrintUtil.pause(1000);
         System.out.println();
