@@ -80,6 +80,7 @@ public class World1 {
         System.out.println("             #::*%@*%**=##*@=+% *#*#: @= -+.*              ");
         System.out.println("            --  =  #  +-++=  =% *=-  *.   +.-              ");
         System.out.println("           --  .-  @ =:  +*   @-=#:   *   +:=              ");
+        System.out.println();
 
 
         PrintUtil.type("🎯 Objective: Defeat 3 Rotfang Wolves!\n");
