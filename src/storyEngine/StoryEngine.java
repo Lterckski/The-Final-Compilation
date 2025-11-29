@@ -10,8 +10,6 @@ import utils.InputUtil;
 import utils.PrintUtil;
 import worlds.*;
 
-import static characters.Character.quitGame;
-
 public class StoryEngine {
 
     private Character player;
@@ -43,30 +41,59 @@ public class StoryEngine {
     }
 
 
-
-    public static void startGamePrompt() {
+    public static void loginScreen() {
         PrintUtil.hr();
-        System.out.println("Will you play the game?");
-        System.out.println("[1] Yes");
-        System.out.println("[0] No");
-        System.out.print("Enter choice: ");
+        System.out.println("CODECHUM LOGIN");
+        System.out.print("Username: ");
+        String username = InputUtil.scan.nextLine();  // Use scanLine() for strings
 
+        System.out.print("Password: ");
+        String password = InputUtil.scan.nextLine();  // Not hiding password, but still works
 
-        int choice = InputUtil.scanInput();
+        PrintUtil.pause(700);
+        System.out.println("\nLogging in...");
+        PrintUtil.pause(1200);
 
-        if (choice == 1) {
-            System.out.println("\nInitializing game...\n");
-            PrintUtil.pause(800);
-            // Game continues naturally after this
-        }
-        else if (choice == 0) {
-            quitGame(); // Calls your combined quit method
-        }
-        else {
-            System.out.println("Invalid choice. Please try again.");
-            startGamePrompt(); // Loops until valid
-        }
+        // Add extra dramatic effect
+        System.out.println("Screen flickers...");
+        PrintUtil.pause(900);
+        System.out.println("Everything goes silent.");
+        PrintUtil.pause(800);
         PrintUtil.hr();
+
+        // After logging in, continue with the story
+    }
+
+    // ✅ Quit Game with Confirmation
+    public static void quitGame() {
+        while (true) {  // Loop until valid confirmation
+            System.out.println("\nTo confirm exit, type exactly:");
+            System.out.println("\"OBJECT ORIENTED PROGRAMMING\"");
+            System.out.println("Or type exactly \"CANCEL\" to return to the game.");
+            System.out.print("Enter input: ");
+
+            try {
+                String input = InputUtil.scan.nextLine();
+
+                if (input.equals("OBJECT ORIENTED PROGRAMMING")) {  // ✅ Exact match required
+                    System.out.println("\n=================================");
+                    System.out.println("  Thank you for playing!");
+                    System.out.println("  Your journey ends here...");
+                    System.out.println("=================================\n");
+                    System.exit(0);   // terminate program safely
+                }
+                else if (input.equals("CANCEL")) {  // ✅ Exact match required
+                    System.out.println("Returning to game...");
+                    break;  // safely return to game
+                }
+                else {
+                    System.out.println("❌ Invalid input. Please type the exact phrase or CANCEL.\n");
+                }
+
+            } catch (Exception e) {
+                System.out.println("❌ Input error detected. Exit cancelled for safety.\n");
+            }
+        }
     }
 
     // ---------- Scenes ----------
@@ -84,15 +111,24 @@ public class StoryEngine {
         System.out.println();
         PrintUtil.type(
                 """
-                        The lab hums with fluorescent light. You sit before the CodeChum login screen, nerves heavy but focus sharp.
-                        Then the fans go silent, your classmates vanish, and the room feels hollow.
-                        You type your credentials. The moment you press "Log in," the monitor ripples like water, \
-                        and the world folds to black.
-                        When you open your eyes, you're no longer in the lab.
-                        """
+                💡 The lab hums with fluorescent light. You sit before the CodeChum login screen, 
+                nerves heavy but focus sharp.
+                You place your hands on the keyboard... ⌨️
+                """
         );
+        loginScreen(); // << Player actually logs in here
+
+        PrintUtil.type(
+                """
+                The moment you press "Log in," the monitor ripples like water... 🌊
+                The screen glitches... ⚡
+                And the world folds to black. 🕳️
+                
+                When you open your eyes, you're no longer in the lab. 👁️
+                """
+        );
+
         System.out.println("=======================================================================================================================");
-        startGamePrompt();
 
         PrintUtil.pause(1000);
         System.out.println();

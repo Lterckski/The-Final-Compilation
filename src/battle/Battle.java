@@ -47,7 +47,7 @@ public class Battle {
                 case 4 -> player.displaySkills();
                 case 5 -> enemy.displayStats();
                 case 6 -> enemy.displaySkills();
-                case 7 -> player.quitGame();
+                case 7 -> StoryEngine.quitGame();
                 default -> System.out.println("❌ Invalid input! Please select a valid option.");
             }
         }

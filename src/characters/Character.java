@@ -6,6 +6,7 @@ import inventory.Armor;
 import inventory.Inventory;
 import inventory.Potions;
 import inventory.Weapon;
+import storyEngine.StoryEngine;
 import utils.InputUtil;
 import utils.PrintUtil;
 
@@ -232,7 +233,7 @@ public abstract class Character {
                 case 3 ->  player.displaySkills();
                 case 4 -> enemy.displayStats();
                 case 5 -> enemy.displaySkills();
-                case 6 -> player.quitGame();
+                case 6 -> StoryEngine.quitGame();
                 case 0 -> goBack = true;
                 default -> System.out.println("❌ Invalid input! Please select a valid option.");
             }
@@ -425,37 +426,5 @@ public abstract class Character {
         else soulShards -= amount;
     }
 
-
-    // ✅ Quit Game with Confirmation
-    public static void quitGame() {
-        while (true) {  // Loop until valid confirmation
-            System.out.println("\nTo confirm exit, type exactly:");
-            System.out.println("\"OBJECT ORIENTED PROGRAMMING\"");
-            System.out.println("Or type exactly \"CANCEL\" to return to the game.");
-            System.out.print("Enter input: ");
-
-            try {
-                String input = InputUtil.scan.nextLine();
-
-                if (input.equals("OBJECT ORIENTED PROGRAMMING")) {  // ✅ Exact match required
-                    System.out.println("\n=================================");
-                    System.out.println("  Thank you for playing!");
-                    System.out.println("  Your journey ends here...");
-                    System.out.println("=================================\n");
-                    System.exit(0);   // terminate program safely
-                }
-                else if (input.equals("CANCEL")) {  // ✅ Exact match required
-                    System.out.println("Returning to game...");
-                    break;  // safely return to game
-                }
-                else {
-                    System.out.println("Invalid input. Please type the exact phrase or CANCEL.\n");
-                }
-
-            } catch (Exception e) {
-                System.out.println("Input error detected. Exit cancelled for safety.\n");
-            }
-        }
-    }
 
 }
