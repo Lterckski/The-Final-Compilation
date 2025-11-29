@@ -10,9 +10,9 @@ public class World2 {
 
     public void run(Character player) {
         System.out.println();
-        System.out.println("                                                   ╦ ╦╔═╗╦═╗╦  ╔╦╗ ");
-        System.out.println("╔═════════════════════════════════════════════════ ║║║║ ║╠╦╝║   ║║   ══════════════════════════════════════════════════════════╗");
-        System.out.println("                                                   ╚╩╝╚═╝╩╚═╩═╝═╩╝  ");
+        System.out.println("                                                   ╦ ╦╔═╗╦═╗╦  ╔╦╗ ══╗");
+        System.out.println("╔═════════════════════════════════════════════════ ║║║║ ║╠╦╝║   ║║ ╔═╝ ══════════════════════════════════════════════════════════╗");
+        System.out.println("                                                   ╚╩╝╚═╝╩╚═╩═╝═╩╝ ╚══ ");
 
 
 
@@ -524,7 +524,7 @@ public class World2 {
             System.out.println("@@@@###%#+#*=-----:   -%+        .#*..::----++*#%%@@%%@@@@");
             System.out.println("@@@%@@%#%%@@%%#%#**==+%@*.     ..-#@#==+*%#%%%%%####@%%@@@");
             System.out.println("@@@@@@@@@@@%@@@%%@@@@@@@@@@@%%@@@@@@@@@@@%@@@%@%@@@@@@*#@@");
-            System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+            System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
             System.out.println();
         } catch (InterruptedException e) {
             e.printStackTrace();
