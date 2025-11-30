@@ -35,21 +35,25 @@ public class Inventory {
         hasPhoenixSoulstone = false;
     }
 
-    // --- Generates a bar (red for HP, default for others) ---
-    private String generateBar(int current, int max, boolean isHp) {
-        int totalBars = 10;
+    // --- Generates a bar (wider, no colors) ---
+    private String generateBar(int current, int max) {
+        int totalBars = 46; // wider bar
         int filledBars = (int) ((double) current / max * totalBars);
 
-        String bar = "[" +
-                "█".repeat(filledBars) +
-                " ".repeat(totalBars - filledBars) +
-                "]";
+        return "█".repeat(filledBars) +
+                "░".repeat(totalBars - filledBars);
+    }
 
-        if (isHp) {
-            return "\u001B[32m" + bar + "\u001B[0m"; // red color for HP
-        } else {
-            return bar;
-        }
+    // --- Helper function to get weapon emoji ---
+    private String getWeaponEmoji() {
+        String classType = player.getClassType();
+
+        return switch (classType) {
+            case "Swordsman" -> "🗡️";
+            case "Archer" -> "🏹";
+            case "Mage" -> "🔮";
+            default -> "⚔️"; // default weapon emoji
+        };
     }
 
     // --- Inventory Menu ---
@@ -57,32 +61,44 @@ public class Inventory {
         boolean exit = false;
 
         while (!exit) {
+            System.out.println();
+            System.out.println("╔══════════════════════════════════════════════════════════════════════╗");
+            System.out.println("               🎒 ╦ ╔╗╔ ╦  ╦ ╔═╗ ╔╗╔ ╔╦╗ ╔═╗ ╦═╗ ╦ ╦ 🎒");
+            System.out.println("               🎒 ║ ║║║ ╚╗╔╝ ║╣  ║║║  ║  ║ ║ ╠╦╝ ╚╦╝ 🎒");
+            System.out.println("               🎒 ╩ ╝╚╝  ╚╝  ╚═╝ ╝╚╝  ╩  ╚═╝ ╩╚═  ╩  🎒");
+            System.out.println("╠══════════════════════════════════════════════════════════════════════╣");
 
-            // INVENTORY HEADER
-            System.out.println("┌───────────────🧰 INVENTORY───────────────┐");
+            // --- HP and Energy Bars with labels ---
+            System.out.printf("  %-8s %-22s %3d/%-3d %s%n",
+                    "HP", generateBar(player.getHp(), player.getMaxHP()),
+                    player.getHp(), player.getMaxHP(), "💚");
 
-            System.out.println(" 💚 HP       : " +
-                    generateBar(player.getHp(), player.getMaxHP(), true) + " " +
-                    player.getHp() + "/" + player.getMaxHP());
+            System.out.printf("  %-8s %-22s %3d/%-3d %s%n",
+                    player.getEnergyName(), generateBar(player.getEnergy(), player.getMaxEnergy()),
+                    player.getEnergy(), player.getMaxEnergy(), player.getEnergyEmoji());
 
-            System.out.println(" 🔋 " + player.getEnergyName() + "     : " +
-                    generateBar(player.getEnergy(), player.getMaxEnergy(), false) + " " +
-                    player.getEnergy() + "/" + player.getMaxEnergy());
 
+
+            System.out.println("  ────────────────────────────────────────────────────────────────────");
             // EQUIPPED ITEMS
-            System.out.println(" 🗡️ Equipped Weapon : " +
-                    (equippedWeapon != null ? equippedWeapon.getName() : "No Weapon Equipped"));
+            System.out.printf("  %s %-10s %-20s%n",
+                    getWeaponEmoji(), "Equipped Weapon  :  ",
+                    equippedWeapon != null ? equippedWeapon.getName() : "No Weapon Equipped");
 
-            System.out.println(" 🛡️ Equipped Armor  : " +
-                    (equippedArmor != null ? equippedArmor.getName() : "No Armor Equipped"));
+            System.out.printf("  %s %-10s %-20s%n",
+                    "🛡️ ", "Equipped Armor  :  ",
+                    equippedArmor != null ? equippedArmor.getName() : "No Weapon Equipped");
+
+            System.out.println("  ──────────────────────────────────────────");
 
             // POTIONS
-            System.out.println(" 🍃 Normal Healing Potion : " + potions.getNormalHealingPotions());
-            System.out.println(" 💞 Full Healing Potion   : " + potions.getFullHealingPotions());
-            System.out.println(" ⚡ Energy Potion          : " + potions.getEnergyPotions());
-            System.out.println(" 💠 Soul Shards           : " + player.getSoulShards());
+            System.out.println("  🍃 Normal Healing Potion  :  " + potions.getNormalHealingPotions());
+            System.out.println("  💞 Full Healing Potion    :  " + potions.getFullHealingPotions());
+            System.out.println("  ✨ Energy Potion          :  " + potions.getEnergyPotions());
+            System.out.println("  💠 Soul Shards            :  " + player.getSoulShards());
 
-            System.out.println("└───────────────────────────────────────────┘");
+
+            System.out.println("╚══════════════════════════════════════════════════════════════════════╝");
 
 
             // MENU

@@ -164,9 +164,7 @@ public abstract class Character {
         }
 
 // Print the header
-        System.out.println("\n┌─────────────────── " + classEmoji + " " + "PLAYER STATS " + classEmoji +" ───────────────────┐");
-
-
+        System.out.println("┌─────────────────── " + classEmoji + " " + "PLAYER STATS " + classEmoji +" ───────────────────┐");
 
         // Determine energy type
         if (classType.equalsIgnoreCase("Mage")) {
@@ -204,7 +202,8 @@ public abstract class Character {
                 "  (Base " + baseDefense +
                 " | Armor " + String.format("%+d", armorDefBonus) +
                 " | " + defLabel + " " + String.format("%+d", effectDefMod) + ")");
-            System.out.println("└───────────────────────────────────────────────────────────┘");
+
+        System.out.println("└───────────────────────────────────────────────────────────┘");
     }
 
 

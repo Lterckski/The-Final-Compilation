@@ -148,14 +148,16 @@ public class Tester {
         } while (player == null);  // repeat until valid choice
         player.getInventory().setEquippedArmor(Armor.LEATHER_GUARD);
 
+        Enemy testEnemy1 = new World1Enemy1();
+        Battle testBattle1 = new Battle(player, testEnemy1);
+        testBattle1.startBattle();
+        testEnemy1.dropLoot(player);
+
         player.lootSoulShards(60);
         MagicShop shop = new MagicShop(player);
         shop.openShop();
 
-        Enemy testEnemy1 = new World3Miniboss1();
-        Battle testBattle1 = new Battle(player, testEnemy1);
-        testBattle1.startBattle();
-        testEnemy1.dropLoot(player);
+
 
 
         World3 world3 = new World3();

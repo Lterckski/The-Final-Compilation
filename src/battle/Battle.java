@@ -55,33 +55,41 @@ public class Battle {
     }
 
     // ---------- HEALTH BAR UTIL ----------
-    private String generateBar(int current, int max, int length, String colorCode) {
+    private String generateBar(int current, int max) {
+        int length = 18;
         int filled = (int) Math.round((double) current / max * length);
         int empty = length - filled;
         StringBuilder bar = new StringBuilder();
-        bar.append(colorCode);
+
+        // add filled blocks
         for (int i = 0; i < filled; i++) bar.append("█");
-        bar.append("\u001B[0m"); // reset color
-        for (int i = 0; i < empty; i++) bar.append(" ");
+
+        // add empty space
+        for (int i = 0; i < empty; i++) bar.append("░");
+
         return bar.toString();
     }
 
+
     private void  displayBattleStats() {
-        String playerHpBar = generateBar(player.getHp(), player.getMaxHP(), 10, "\u001B[32m"); // Green
-        String playerStaminaBar = generateBar(player.getEnergy(), player.getMaxEnergy(), 10, "\u001B[37m"); // Gray
-        String enemyHpBar = generateBar(enemy.getHp(), enemy.getMaxHP(), 10, "\u001B[31m"); // Red
+        String playerHpBar = generateBar(player.getHp(), player.getMaxHP()); // Green
+        String playerStaminaBar = generateBar(player.getEnergy(), player.getMaxEnergy()); // Gray
+        String enemyHpBar = generateBar(enemy.getHp(), enemy.getMaxHP()); // Red
 
         // Top border
-        System.out.println("┌─────────────────────────────────────────────────────────────────────────────────┐");
+        System.out.println("┌───────────────────────────────────────────────────────────────────────────────────┐");
 
-        // HP line
-        System.out.printf("  💚 %-8s : [%s] %d/%d     ❤\uFE0F Enemy HP  : [%s] %d/%d%n",
-                "Your HP", playerHpBar, player.getHp(), player.getMaxHP(),
-                enemyHpBar, enemy.getHp(), enemy.getMaxHP());
+        // --- Player HP ---
+        System.out.printf("  %-8s %s %3d/%-3d  %s",
+                "Your HP", playerHpBar, player.getHp(), player.getMaxHP(), "💚 ");
 
-        // Energy / Stamina line
-        System.out.printf("  %s %-8s : [%s] %d/%d%n",
-                player.getEnergyEmoji(), player.getEnergyName(), playerStaminaBar, player.getEnergy(), player.getMaxEnergy());
+    // --- Enemy HP ---
+        System.out.printf("  %-8s %s %3d/%-3d  %s%n",
+                "Enemy HP", enemyHpBar, enemy.getHp(), enemy.getMaxHP(), "❤️");
+
+        System.out.printf("  %-8s %s %3d/%-3d  %s%n",
+                player.getEnergyName(), playerStaminaBar, player.getEnergy(), player.getMaxEnergy(),
+                player.getEnergyEmoji());
 
         // If enemy has shield
         if (enemy instanceof FinalBoss fb && fb.getShield() > 0) {
@@ -89,18 +97,65 @@ public class Battle {
         }
 
         // Bottom border
-        System.out.println("└─────────────────────────────────────────────────────────────────────────────────┘");
+        System.out.println("└───────────────────────────────────────────────────────────────────────────────────┘");
+    }
+
+    public String worldDisplay(int worldLevel) {
+        return switch (worldLevel) {
+            case 1 -> """
+┓ ┏┏┓┳┓┓ ┳┓ ┓
+═══════════════ ┃┃┃┃┃┣┫┃ ┃┃ ┃ ═══════════════
+┗┻┛┗┛┛┗┗┛┻┛ ┻
+""";
+            case 2 -> """
+┓ ┏┏┓┳┓┓ ┳┓ ┏┓
+═══════════════ ┃┃┃┃┃┣┫┃ ┃┃ ┏┛ ═══════════════
+┗┻┛┗┛┛┗┗┛┻┛ ┗━
+""";
+            case 3 -> """
+┓ ┏┏┓┳┓┓ ┳┓ ┏┓
+ ┫┃┃┃┃┣┫┃ ┃┃  ┫
+┗┛┻┛┗┛┛┗┗┛┻┛ ┗┛
+""";
+            default -> """
+┓ ┏┏┓┳┓┓ ┳┓
+═══════════════ ┃┃┃┃┃┣┫┃ ┃┃ ═══════════════
+┗┻┛┗┛┛┗┗┛┻┛
+""";
+        };
+    }
+
+
+    private String centerText(String text, int width) {
+        int padding = (width - text.length()) / 2;
+        if (padding < 0) padding = 0; // avoid negative
+        return " ".repeat(padding) + text;
     }
 
     // ---------- BATTLE LOOP ----------
     public void battleLoop() {
         PrintUtil.line();
         System.out.println();
+
+        int consoleWidth = 80;
         int worldLevel = StoryEngine.getCurrWorldLevel();
-        System.out.println("============== WORLD " + worldLevel + " ==============");
-        String firstName = player.getName().split(" ")[0];
-        System.out.println("⚔️ Battle Start! " + firstName + " vs " + enemy.getName());
-        PrintUtil.hr();
+        String worldAscii = worldDisplay(worldLevel);
+
+// --- Center the ASCII art ---
+        for (String line : worldAscii.split("\n")) {
+            System.out.println(centerText(line, consoleWidth));
+        }
+
+// --- Battle start message ---
+        String firstName = player.getName().split(" ")[0].toUpperCase();
+        String battleText = "⚔️ BATTLE START! " + firstName + " VS " + enemy.getName().toUpperCase();
+        System.out.println(centerText(battleText, consoleWidth));
+
+// --- Centered horizontal line ---
+        System.out.println(centerText("════════════════════════════════════════════════════════════════", consoleWidth));
+
+// --- Wait for input ---
+        InputUtil.pressEnterToContinue();
 
         while (player.isAlive() && enemy.isAlive()) {
 
