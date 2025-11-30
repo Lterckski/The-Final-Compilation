@@ -214,6 +214,14 @@ public class Inventory {
         } while (true);
         return confirm == 1;
     }
+    public void equipLegendaryWeapon(Weapon w) {
+        this.equippedWeapon = w;
+    }
+
+    public void equipLegendaryArmor(Armor a) {
+        this.equippedArmor = a;
+    }
+
 
 
 }
