@@ -91,6 +91,7 @@ public abstract class Weapon {
         return enchantments;
     }
 
+
     public abstract void applyEffects(Character player, Character enemy, int damage);
     public abstract void displayInfo();
 
