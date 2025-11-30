@@ -419,6 +419,9 @@ public class World3 {
         PrintUtil.line();
         player.getEffects().resetAllEffects();
 
+        // --- Pre Final Encounter ---
+        new PreFinalEncounter().start(player);
+
         // --- Boss: the revelation ---
         PrintUtil.title("BOSS — Sir Khai, the Necromancer");
         PrintUtil.event("At the summit, the Third Stone pulses with violet light.");
