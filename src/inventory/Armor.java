@@ -142,7 +142,6 @@ public class Armor {
         }
 
         System.out.println("═════════════════════════════════════");
-        InputUtil.pressEnterToContinue();
         System.out.println();
     }
 

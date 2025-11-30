@@ -1,15 +1,12 @@
 package battle;
 
 import characters.Character;
-import enemies.Enemy;
 import enemies.FinalBoss;
 import utils.ColorUtil;
 import utils.InputUtil;
 import utils.PrintUtil;
 import storyEngine.StoryEngine;
-import events.JavaTrial;
-
-import java.awt.*;
+import events.ReviveTrial;
 
 
 public class Battle {
@@ -232,7 +229,7 @@ public class Battle {
                 }
 
                 System.out.println("💀 You collapse, your vision fading...");
-                boolean survived = JavaTrial.run(player);
+                boolean survived = ReviveTrial.run(player);
 
                 if (survived) {
                     int revivedHp = player.getMaxHP() / 2;
@@ -240,7 +237,7 @@ public class Battle {
 
                     player.setHp(revivedHp);
                     player.setEnergy(revivedEnergy);
-
+                    player.getEffects().resetAllEffects();
                     player.setReviveUsed(true);
 
                     System.out.println("✨ Knowledge revives you!");

@@ -48,7 +48,6 @@ public class Staff extends Weapon{
         }
 
         System.out.println("═════════════════════════════════════");
-        InputUtil.pressEnterToContinue();
         System.out.println();
     }
 

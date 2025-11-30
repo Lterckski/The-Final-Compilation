@@ -47,7 +47,6 @@ public class Bow extends Weapon{
         }
 
         System.out.println("═════════════════════════════════════");
-        InputUtil.pressEnterToContinue();
         System.out.println();
     }
 

@@ -47,7 +47,6 @@ public class Sword extends Weapon{
         }
 
         System.out.println("═════════════════════════════════════");
-        InputUtil.pressEnterToContinue();
         System.out.println();
     }
 

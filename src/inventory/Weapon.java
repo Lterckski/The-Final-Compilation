@@ -91,6 +91,16 @@ public abstract class Weapon {
         return enchantments;
     }
 
+    public String getWeaponEmoji(Character player) {
+        String classType = player.getClassType();
+
+        return switch (classType) {
+            case "Swordsman" -> "🗡️";
+            case "Archer" -> "🏹";
+            case "Mage" -> "🔮";
+            default -> "⚔️"; // default weapon emoji
+        };
+    }
 
     public abstract void applyEffects(Character player, Character enemy, int damage);
     public abstract void displayInfo();

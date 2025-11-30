@@ -4,7 +4,7 @@ import characters.Character;
 import utils.InputUtil;
 import utils.PrintUtil;
 
-public class JavaTrial {
+public class ReviveTrial {
 
     public static boolean run(Character player) {
 

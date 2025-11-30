@@ -2,6 +2,7 @@ import battle.Battle;
 import characters.*;
 import characters.Character;
 import enemies.*;
+import events.PrefiEncounter;
 import inventory.*;
 
 import events.MagicShop;
@@ -147,9 +148,12 @@ public class Tester {
             }
         } while (player == null);  // repeat until valid choice
         player.getInventory().setEquippedArmor(Armor.LEATHER_GUARD);
-<<<<<<< HEAD
 
-=======
+        PrefiEncounter prefiEncounter = new PrefiEncounter();
+        prefiEncounter.start(player);
+
+        Enemy test = new World2Miniboss2();
+        Battle testb = new Battle(player,test);
         /*
         Enemy testEnemy1 = new World1Enemy1();
         Battle testBattle1 = new Battle(player, testEnemy1);
@@ -184,9 +188,8 @@ public class Tester {
         World3 world3 = new World3();
         world3.run(player);
         */
->>>>>>> 1491fac2862efcad92a1c9e540d1e09fe7119660
 
-        new PreFinalEncounter().start(player);
+//        new PreFinalEncounter().start(player);
 
 
         Enemy testEnemy2 = new World2Miniboss2();

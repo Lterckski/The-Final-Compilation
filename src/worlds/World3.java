@@ -418,7 +418,18 @@ public class World3 {
         player.getEffects().resetAllEffects();
 
         // --- Pre Final Encounter ---
-        new PreFinalEncounter().start(player);
+        PrintUtil.type("""
+                As you advance deeper into the ruins, a cloaked figure materializes before you.
+                
+                "Before you face the Final Boss… prove your mastery of the pillars of OOP.
+                Each question must be answered within time… and without error."
+                
+                Answer every question correctly to earn ONE legendary artifact.
+                One mistake — and your trial ends immediately.
+                """);
+
+        PrintUtil.title("🌩 PRE-FINAL BOSS RANDOM ENCOUNTER");
+        // TODO : call method
 
         // --- Boss: the revelation ---
         PrintUtil.title("BOSS — Sir Khai, the Necromancer");
