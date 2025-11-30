@@ -14,6 +14,7 @@ public class World3Miniboss1 extends Enemy {
 
     @Override
     public void displaySkills() {
+        System.out.println();
         System.out.println("┌──────────────────────────────── 🛡️🏰 THE TOWER WARDEN SKILLS 🏰🛡️ ───────────────────────────────┐");
         System.out.println(" 🗡️ Skill 1 – Grave Cleaver");
         System.out.println(" 📝 Description : The Tower Warden performs a deathly slash, inflicting pure damage to its victims.");
@@ -27,6 +28,7 @@ public class World3Miniboss1 extends Enemy {
         System.out.println(" ✨ Effects     :");
         System.out.println(" - 🛡️ Increases " + name + "'s DEF by 50 for 2 turns.");
         System.out.println("└──────────────────────────────────────────────────────────────────────────────────────────────────┘");
+        System.out.println();
     }
 
 

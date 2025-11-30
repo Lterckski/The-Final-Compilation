@@ -164,6 +164,7 @@ public abstract class Character {
         }
 
 // Print the header
+        System.out.println();
         System.out.println("┌─────────────────── " + classEmoji + " " + "PLAYER STATS " + classEmoji +" ───────────────────┐");
 
         // Determine energy type
@@ -204,6 +205,7 @@ public abstract class Character {
                 " | " + defLabel + " " + String.format("%+d", effectDefMod) + ")");
 
         System.out.println("└───────────────────────────────────────────────────────────┘");
+        System.out.println();
     }
 
 

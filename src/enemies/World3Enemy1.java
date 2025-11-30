@@ -44,12 +44,14 @@ public class World3Enemy1 extends Enemy {
 
     @Override
     public void displaySkills() {
+        System.out.println();
         System.out.println("┌────────────────────────────────── 🔥 FLAME REVENANT SKILLS 🔥 ─────────────────────────────────┐");
         System.out.println(" 📝 Description : Flame Revenants hurl blazing fireballs from afar, burning anything in its path.");
         System.out.println(" 💥 Damage     : (" + (int)(attack * 1.00) + " — " + (int)(attack * 1.35) + ")");
         System.out.println(" ✨ Effects    :");
         System.out.println(" - 🔥 Applies Burn for 2 turns");
         System.out.println("└────────────────────────────────────────────────────────────────────────────────────────────────┘");
+        System.out.println();
     }
 
 

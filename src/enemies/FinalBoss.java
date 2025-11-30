@@ -207,6 +207,7 @@ public class FinalBoss extends Enemy {
         System.out.println(" 🔮 Null Energy Stacks : " + nullEnergy);
         System.out.println(" 🌑 Void Energy Stacks : " + voidEnergy);
         System.out.println("└──────────────────────────────────────────────┘");
+        System.out.println();
 
     }
 

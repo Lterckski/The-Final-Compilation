@@ -47,6 +47,7 @@ public class World2Enemy4 extends Enemy{
 
     @Override
     public void displaySkills() {
+        System.out.println();
         System.out.println("┌─────────────────────────────── 🧟‍♂️ GHOUL FOOTMEN SKILLS 🧟‍♂️ ────────────────────────────────┐");
         System.out.println(" ⚔️ Skill       : Rotten Cleave");
         System.out.println(" 📝 Description : The Ghoul Footman slashes with a putrid blade, spreading disease and pain.");
@@ -54,6 +55,7 @@ public class World2Enemy4 extends Enemy{
         System.out.println(" ✨ Effects    :");
         System.out.println(" - 🩸 30% chance to inflict Bleed for 2 turns");
         System.out.println("└────────────────────────────────────────────────────────────────────────────────────────────┘");
+        System.out.println();
     }
 
 

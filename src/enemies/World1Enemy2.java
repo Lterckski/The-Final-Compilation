@@ -43,6 +43,7 @@ public class World1Enemy2 extends Enemy {
 
     @Override
     public void displaySkills() {
+        System.out.println();
         System.out.println("┌─────────────────────────────── 👻 SHADE SPRITES SKILLS 👻 ──────────────────────────────┐");
         System.out.println(" 🗡️ Skill     : Trickster Strike");
         System.out.println(" 📝 Description: The Shade Sprites strike mischievously, leaving their target disoriented.");
@@ -50,6 +51,7 @@ public class World1Enemy2 extends Enemy {
         System.out.println(" ✨ Effects   :");
         System.out.println(" - 30% chance to 😵 Confuse target");
         System.out.println("└─────────────────────────────────────────────────────────────────────────────────────────┘");
+        System.out.println();
     }
 
 

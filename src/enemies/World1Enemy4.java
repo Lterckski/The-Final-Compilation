@@ -49,6 +49,7 @@ public class World1Enemy4 extends Enemy {
 
     @Override
     public void displaySkills() {
+        System.out.println();
         System.out.println("┌──────────────────────────────────── 🦇 CARRION BATS SKILLS 🦇 ──────────────────────────────────┐");
         System.out.println(" 🗣️ Skill     : Screech");
         System.out.println(" 📝 Description: The bats emit a piercing screech, unsettling their foe and lowering their attack.");
@@ -56,6 +57,7 @@ public class World1Enemy4 extends Enemy {
         System.out.println(" ✨ Effects   :");
         System.out.println(" - 30% chance to 🩸 Weaken: reduces target’s ATK by 20% for 2 turns");
         System.out.println("└─────────────────────────────────────────────────────────────────────────────────────────────────┘");
+        System.out.println();
     }
 
 

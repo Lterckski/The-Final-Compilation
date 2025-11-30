@@ -78,6 +78,7 @@ public class World2Miniboss1 extends Enemy{
 
     @Override
     public void displaySkills() {
+        System.out.println();
         System.out.println("┌──────────────────────────── ⛓️ THE BLACK JAILER SKILLS ⛓️ ─────────────────────────────┐");
         System.out.println(" 🔗 Skill 1    : Shackling Chains");
         System.out.println(" 📝 Description: The Black Jailer swings his chains to bind and cripple his opponent.");
@@ -91,6 +92,7 @@ public class World2Miniboss1 extends Enemy{
         System.out.println(" ✨ Effects   :");
         System.out.println(" - 🩸 30% chance to inflict Bleed for 2 turns");
         System.out.println("└───────────────────────────────────────────────────────────────────────────────────────┘");
+        System.out.println();
     }
 
 

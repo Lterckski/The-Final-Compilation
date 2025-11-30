@@ -47,6 +47,7 @@ public class World2Enemy1 extends Enemy{
 
     @Override
     public void displaySkills() {
+        System.out.println();
         System.out.println("┌──────────────────────────────── 🐀 PLAGUE VERMIN SKILLS 🐀 ────────────────────────────────┐");
         System.out.println(" 🦷 Skill       : Plague Bite");
         System.out.println(" 📝 Description : The Plague Vermin bites viciously, infecting its target with deadly poison.");
@@ -54,6 +55,7 @@ public class World2Enemy1 extends Enemy{
         System.out.println(" ✨ Effects    :");
         System.out.println(" - ☣️ Applies Poison for 1 turn");
         System.out.println("└────────────────────────────────────────────────────────────────────────────────────────────┘");
+        System.out.println();
     }
 
 

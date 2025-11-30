@@ -11,7 +11,8 @@ public abstract class Enemy extends Character{
     // Show stats
     @Override
     public void displayStats() {
-        System.out.println("\n┌───────────── \uD83D\uDC79 ENEMY STATS \uD83D\uDC79 ─────────────┐");
+        System.out.println();
+        System.out.println("┌───────────── \uD83D\uDC79 ENEMY STATS \uD83D\uDC79 ─────────────┐");
 
         System.out.printf("%-8s    : %s%n", " 🧟 Name", name);
         System.out.printf("%-8s    : %d/%d%n", " 💀 HP", hp, maxHP);
@@ -31,7 +32,7 @@ public abstract class Enemy extends Character{
                 " 🛡️ Defense", defense, baseDefense, defLabel, defDiff);
 
         System.out.println("└──────────────────────────────────────────────┘");
-
+        System.out.println();
     }
 
 

@@ -14,6 +14,7 @@ public class Kael extends  Character{      // 15% crit chance
 
     @Override
     public void displaySkills() {
+        System.out.println();
         System.out.println("┌────────────────────────────────────── ⚔️ KAEL'S SKILLS ⚔️ ───────────────────────────────────────┐");
 
         // Passive
@@ -43,6 +44,7 @@ public class Kael extends  Character{      // 15% crit chance
         System.out.println("   - 🩸 Applies Bleed (10 damage per turn for 2 turns)");
         System.out.println("   - 🛡️ Grants Fortified (+20% DEF for 2 turns)");
         System.out.println("└───────────────────────────────────────────────────────────────────────────────────────────────────┘");
+        System.out.println();
     }
 
 

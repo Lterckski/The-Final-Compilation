@@ -64,6 +64,7 @@ public class World1Miniboss1 extends Enemy {
 
     @Override
     public void displaySkills() {
+        System.out.println();
         System.out.println("┌──────────────────────────── 🦌 THE HOLLOW STAG SKILLS 🦌 ──────────────────────────────┐");
         System.out.println(" ⚡ Skill 1    : Deathly Charge");
         System.out.println(" 📝 Description: The Hollow Stag charges with deadly force, attempting to stun its foe.");
@@ -77,6 +78,7 @@ public class World1Miniboss1 extends Enemy {
         System.out.println(" ✨ Effects   :");
         System.out.println(" - Reduces target’s 🛡️ DEF by 20% for 2 turns");
         System.out.println("└────────────────────────────────────────────────────────────────────────────────────────┘");
+        System.out.println();
     }
 
 
