@@ -57,7 +57,7 @@ public class Armor {
 
         do {
             validChoice = true;
-            System.out.println("Do you want to pick it up? (1 = Yes, 0 = No)");
+            System.out.print("Do you want to pick it up? (1 = Yes, 0 = No): ");
             int choice = InputUtil.scanInput();
 
             if (choice == 1) {
@@ -66,7 +66,7 @@ public class Armor {
 
                 boolean validConfirm  = true;
                 do {
-                    System.out.println("Are you sure you want to ignore the armor? (1 = Yes, 0 = No)");
+                    System.out.print("Are you sure you want to ignore the armor? (1 = Yes, 0 = No): ");
                     int confirm = InputUtil.scanInput();
 
                     if (confirm == 1) {

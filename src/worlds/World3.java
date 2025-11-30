@@ -10,6 +10,7 @@ import utils.PrintUtil;
 public class World3 {
 
     public void run(Character player) {
+        PrintUtil.pause(2000);
         System.out.println();
         System.out.println("                                                      ╦ ╦╔═╗╦═╗╦  ╔╦╗  ═╗");
         System.out.println("╔════════════════════════════════════════════════════ ║║║║ ║╠╦╝║   ║║  ═╣ ═══════════════════════════════════════════════════════════╗");
@@ -116,7 +117,7 @@ public class World3 {
 
 
         PrintUtil.event("You steel yourself and begin the ascent.");
-        PrintUtil.effect("The air thickens with magic. Each step hums with a pulse from the Stones you carry.\n");
+        PrintUtil.effect("The air thickens with magic. Each step hums with a pulse from the Stones you carry.");
         InputUtil.pressEnterToContinue();
 
         PrintUtil.event("From the darkness crawl soldiers of bone and beasts stitched from shadow.");
@@ -267,8 +268,7 @@ public class World3 {
         PrintUtil.event("Halfway up, you find a mural etched into obsidian.");
         PrintUtil.type(
                 "It shows a hooded figure holding three glowing stones, beneath a phrase in your own language:\n" +
-                        "  'To teach is to control.'\n"
-        );
+                        "  'To teach is to control.'");
         InputUtil.pressEnterToContinue();
         PrintUtil.line();
 
