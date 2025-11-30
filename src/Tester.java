@@ -147,7 +147,15 @@ public class Tester {
             }
         } while (player == null);  // repeat until valid choice
         player.getInventory().setEquippedArmor(Armor.LEATHER_GUARD);
+<<<<<<< HEAD
 
+=======
+        /*
+        Enemy testEnemy1 = new World1Enemy1();
+        Battle testBattle1 = new Battle(player, testEnemy1);
+        testBattle1.startBattle();
+        testEnemy1.dropLoot(player);
+>>>>>>> 1491fac2862efcad92a1c9e540d1e09fe7119660
 
         player.lootSoulShards(60);
         MagicShop shop = new MagicShop(player);
@@ -171,9 +179,14 @@ public class Tester {
         testBattle1.startBattle();
         testEnemy1.dropLoot(player);
 
+<<<<<<< HEAD
+=======
+        World3 world3 = new World3();
+        world3.run(player);
+        */
+>>>>>>> 1491fac2862efcad92a1c9e540d1e09fe7119660
 
-
-
+        new PreFinalEncounter().start(player);
 
 
         Enemy testEnemy2 = new World2Miniboss2();
