@@ -4,6 +4,7 @@ import enemies.*;
 import battle.Battle;
 import characters.Character;
 import events.MagicShop;
+import utils.ColorUtil;
 import utils.InputUtil;
 import utils.PrintUtil;
 
@@ -84,8 +85,7 @@ public class World2 {
         System.out.println("                   .          .:.                          ");
         System.out.println();
 
-
-        PrintUtil.type("🎯 Objective: Defeat 3 Plague Vermins!\n");
+        PrintUtil.type(ColorUtil.boldBrightMagenta(("🎯 Objective: Defeat 3 Plague Vermins!\n").toUpperCase()));
         InputUtil.pressEnterToContinue();
         PrintUtil.line();
 
@@ -164,8 +164,7 @@ public class World2 {
         System.out.println("                   :--=--==+++==-----:    ..               ");
         System.out.println();
 
-
-        PrintUtil.type("🎯 Objective: Defeat 2 Forsaken Cultists!\n");
+        PrintUtil.type(ColorUtil.boldBrightMagenta(("🎯 Objective: Defeat 2 Forsaken Cultists!\n").toUpperCase()));
         InputUtil.pressEnterToContinue();
         PrintUtil.line();
 
@@ -242,8 +241,7 @@ public class World2 {
         System.out.println("                                                          ");
         System.out.println();
 
-
-        PrintUtil.type("🎯 Objective: Defeat 3 Blight Hounds!\n");
+        PrintUtil.type(ColorUtil.boldBrightMagenta(("🎯 Objective: Defeat 3 Blight Hounds!\n").toUpperCase()));
         InputUtil.pressEnterToContinue();
         PrintUtil.line();
 
@@ -323,8 +321,7 @@ public class World2 {
         System.out.println("                                                          ");
         System.out.println();
 
-
-        PrintUtil.type("🎯 Objective: Defeat 2 Ghoul Footmen!\n");
+        PrintUtil.type(ColorUtil.boldBrightMagenta(("🎯 Objective: Defeat 2 Ghoul Footmen!\n").toUpperCase()));
         InputUtil.pressEnterToContinue();
         PrintUtil.line();
 
@@ -418,8 +415,7 @@ public class World2 {
         System.out.println("                   ::.             .::.                    ");
         System.out.println();
 
-
-        PrintUtil.type("🎯 Objective: Defeat The Black Jailer!\n");
+        PrintUtil.type(ColorUtil.boldBrightMagenta(("🎯 Objective: Defeat The Black Jailer!\n").toUpperCase()));
         InputUtil.pressEnterToContinue();
         PrintUtil.line();
 
@@ -503,7 +499,7 @@ public class World2 {
         System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
         System.out.println();
 
-        PrintUtil.type("🎯 Objective: Defeat The Corrupted King!\n");
+        PrintUtil.type(ColorUtil.boldBrightMagenta(("🎯 Objective: Defeat The Corrupted King!\n").toUpperCase()));
         InputUtil.pressEnterToContinue();
         PrintUtil.line();
 

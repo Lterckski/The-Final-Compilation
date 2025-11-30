@@ -1,6 +1,7 @@
 package inventory;
 
 import characters.Character;
+import utils.ColorUtil;
 import utils.InputUtil;
 import utils.PrintUtil;
 
@@ -37,7 +38,7 @@ public class Inventory {
 
     // --- Generates a bar (wider, no colors) ---
     private String generateBar(int current, int max) {
-        int totalBars = 46; // wider bar
+        int totalBars = 44; // wider bar
         int filledBars = (int) ((double) current / max * totalBars);
 
         return "█".repeat(filledBars) +
@@ -62,46 +63,53 @@ public class Inventory {
 
         while (!exit) {
             System.out.println();
-            System.out.println("╔══════════════════════════════════════════════════════════════════════╗");
-            System.out.println("               🎒 ╦ ╔╗╔ ╦  ╦ ╔═╗ ╔╗╔ ╔╦╗ ╔═╗ ╦═╗ ╦ ╦ 🎒");
-            System.out.println("               🎒 ║ ║║║ ╚╗╔╝ ║╣  ║║║  ║  ║ ║ ╠╦╝ ╚╦╝ 🎒");
-            System.out.println("               🎒 ╩ ╝╚╝  ╚╝  ╚═╝ ╝╚╝  ╩  ╚═╝ ╩╚═  ╩  🎒");
-            System.out.println("╠══════════════════════════════════════════════════════════════════════╣");
+            // --- Borders in bold bright cyan ---
+            System.out.println(ColorUtil.boldBrightCyan("╔══════════════════════════════════════════════════════════════════════╗"));
+            System.out.println(ColorUtil.boldBrightCyan("               🎒 ╦ ╔╗╔ ╦  ╦ ╔═╗ ╔╗╔ ╔╦╗ ╔═╗ ╦═╗ ╦ ╦ 🎒"));
+            System.out.println(ColorUtil.boldBrightCyan("               🎒 ║ ║║║ ╚╗╔╝ ║╣  ║║║  ║  ║ ║ ╠╦╝ ╚╦╝ 🎒"));
+            System.out.println(ColorUtil.boldBrightCyan("               🎒 ╩ ╝╚╝  ╚╝  ╚═╝ ╝╚╝  ╩  ╚═╝ ╩╚═  ╩  🎒"));
+            System.out.println(ColorUtil.boldBrightCyan("╠══════════════════════════════════════════════════════════════════════╣"));
 
             // --- HP and Energy Bars with labels ---
-            System.out.printf("  %-8s %-22s %3d/%-3d %s%n",
-                    "HP", generateBar(player.getHp(), player.getMaxHP()),
-                    player.getHp(), player.getMaxHP(), "💚");
+            System.out.printf("  %-21s %-4s %s %s%n",
+                    ColorUtil.boldBrightGreen("HP"),
+                    ColorUtil.boldBrightGreen(generateBar(player.getHp(), player.getMaxHP())),
+                    ColorUtil.boldBrightGreen(player.getHp() + " / " + player.getMaxHP()),
+                    ColorUtil.boldBrightGreen("💚"));
 
-            System.out.printf("  %-8s %-22s %3d/%-3d %s%n",
-                    player.getEnergyName(), generateBar(player.getEnergy(), player.getMaxEnergy()),
-                    player.getEnergy(), player.getMaxEnergy(), player.getEnergyEmoji());
-
-
-
-            System.out.println("  ────────────────────────────────────────────────────────────────────");
-            // EQUIPPED ITEMS
-            System.out.printf("  %s %-10s %-20s%n",
-                    getWeaponEmoji(), "Equipped Weapon  :  ",
-                    equippedWeapon != null ? equippedWeapon.getName() : "No Weapon Equipped");
-
-            System.out.printf("  %s %-10s %-20s%n",
-                    "🛡️ ", "Equipped Armor  :  ",
-                    equippedArmor != null ? equippedArmor.getName() : "No Weapon Equipped");
-
-            System.out.println("  ──────────────────────────────────────────");
-
-            // POTIONS
-            System.out.println("  🍃 Normal Healing Potion  :  " + potions.getNormalHealingPotions());
-            System.out.println("  💞 Full Healing Potion    :  " + potions.getFullHealingPotions());
-            System.out.println("  ✨ Energy Potion          :  " + potions.getEnergyPotions());
-            System.out.println("  💠 Soul Shards            :  " + player.getSoulShards());
+            // --- Energy Bar with label ---
+            System.out.printf("  %-21s %-4s %s %s%n",
+                    ColorUtil.boldBrightWhite(player.getEnergyName()),
+                    ColorUtil.boldBrightWhite(generateBar(player.getEnergy(), player.getMaxEnergy())),
+                    ColorUtil.boldBrightWhite(player.getEnergy() + " / " + player.getMaxEnergy()),
+                    ColorUtil.boldBrightWhite(player.getEnergyEmoji()));
 
 
-            System.out.println("╚══════════════════════════════════════════════════════════════════════╝");
+            System.out.println(ColorUtil.boldBrightCyan("  ────────────────────────────────────────────────────────────────────"));
 
+            // --- EQUIPPED ITEMS ---
+            System.out.printf("  %s %-10s %s%n",
+                    getWeaponEmoji(),
+                    ColorUtil.cyan("Equipped Weapon  :  "),
+                    equippedWeapon != null ? ColorUtil.boldBrightYellow(equippedWeapon.getName()) : ColorUtil.boldBrightYellow("No Weapon Equipped"));
 
-            // MENU
+            System.out.printf("  %s %-10s %s%n",
+                    "🛡️ ",
+                    ColorUtil.cyan("Equipped Armor  :  "),
+                    equippedArmor != null ? ColorUtil.boldBrightYellow(equippedArmor.getName()) : ColorUtil.boldBrightYellow("No Armor Equipped"));
+
+            System.out.println(ColorUtil.boldBrightCyan("  ──────────────────────────────────────────"));
+
+            // --- POTIONS ---
+            System.out.println( ColorUtil.cyan("  🍃 Normal Healing Potion  :  ") + ColorUtil.boldBrightYellow(""+getPotions().getNormalHealingPotions()));
+            System.out.println( ColorUtil.cyan("  💞 Full Healing Potion    :  ") + ColorUtil.boldBrightYellow(""+getPotions().getFullHealingPotions()));
+            System.out.println( ColorUtil.cyan("  ✨ Energy Potion          :  ") + ColorUtil.boldBrightYellow(""+getPotions().getEnergyPotions()));
+            System.out.println( ColorUtil.cyan("  💠 Soul Shards            :  ") + ColorUtil.boldBrightYellow(""+player.getSoulShards()));
+
+            System.out.println(ColorUtil.boldBrightCyan("╚══════════════════════════════════════════════════════════════════════╝"));
+            System.out.println();
+
+            // --- MENU ---
             PrintUtil.line();
             System.out.println("[1] ⚔️ Show Weapon Info");
             System.out.println("[2] 🛡️ Show Armor Info");
@@ -118,12 +126,12 @@ public class Inventory {
 
                 case 1 -> {
                     if (equippedWeapon != null) equippedWeapon.displayInfo();
-                    else System.out.println("❌ No weapon equipped!");
+                    else System.out.println(ColorUtil.boldBrightRed("❌") + " No weapon equipped!");
                 }
 
                 case 2 -> {
                     if (equippedArmor != null) equippedArmor.displayInfo();
-                    else System.out.println("❌ No armor equipped!");
+                    else System.out.println(ColorUtil.boldBrightRed("❌") + " No armor equipped!");
                 }
 
                 case 3 -> usePotion("normal");
@@ -132,10 +140,12 @@ public class Inventory {
 
                 case 0 -> exit = true;
 
-                default -> System.out.println("❌ Invalid input! Try again.");
+                default -> System.out.println(ColorUtil.boldBrightRed("❌") + " Invalid input! Try again.");
+
             }
         }
     }
+
 
     // --- Potion Handling ---
     private void usePotion(String type) {

@@ -1,8 +1,11 @@
 package events;
 
+import utils.ColorUtil;
 import utils.InputUtil;
 import utils.PrintUtil;
 import characters.Character;
+
+import java.awt.*;
 
 public class MagicShop {
     private final Character player;
@@ -17,20 +20,21 @@ public class MagicShop {
         while (!exit) {
             // Header
             System.out.println();
-            System.out.println("╔════════════════════════════════════════════════════════════════════════════════════════════════╗");
-            System.out.println("                            🛍️ ╔╦╗ ╔═╗ ╔═╗ ╦ ╔═╗   ╔═╗ ╦ ╦ ╔═╗ ╔═╗ 🛍️");
-            System.out.println("                            🔮 ║║║ ╠═╣ ║ ╦ ║ ║     ╚═╗ ╠═╣ ║ ║ ╠═╝ 🔮");
-            System.out.println("                            🛍️ ╩ ╩ ╩ ╩ ╚═╝ ╩ ╚═╝   ╚═╝ ╩ ╩ ╚═╝ ╩   🛍️");
-            System.out.println("╚════════════════════════════════════════════════════════════════════════════════════════════════╝");
-            System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> 💠 SOUL SHARDS : " + player.getSoulShards() +" <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<\n");
+            System.out.println(ColorUtil.boldBrightCyan("╔════════════════════════════════════════════════════════════════════════════════════════════════╗"));
+            System.out.println(ColorUtil.boldBrightCyan("                            🛍️ ╔╦╗ ╔═╗ ╔═╗ ╦ ╔═╗   ╔═╗ ╦ ╦ ╔═╗ ╔═╗ 🛍️"));
+            System.out.println(ColorUtil.boldBrightCyan("                            🔮 ║║║ ╠═╣ ║ ╦ ║ ║     ╚═╗ ╠═╣ ║ ║ ╠═╝ 🔮"));
+            System.out.println(ColorUtil.boldBrightCyan("                            🛍️ ╩ ╩ ╩ ╩ ╚═╝ ╩ ╚═╝   ╚═╝ ╩ ╩ ╚═╝ ╩   🛍️"));
+            System.out.println(ColorUtil.boldBrightCyan("╚════════════════════════════════════════════════════════════════════════════════════════════════╝"));
 
-// Permanent Stat Upgrades
-            System.out.println("├──────────────────────────────── 💎 PERMANENT STAT UPGRADES 💎 ────────────────────────────────┤");
-            System.out.printf(" %5s%-3s %-33s %-42s 💠 %d%n", "[1]", " 💖", "Vitality Blessing", "+100 Max HP", 10);
-            System.out.printf(" %5s%-3s %-33s %-42s 💠 %d%n", "[2]", " ⚔️", "Attack Infusion", "+8 ATK", 12);
-            System.out.printf(" %5s%-3s %-33s %-42s 💠 %d%n", "[3]", " 🛡️", "Fortified Spirit", "+2 DEF", 10);
+            System.out.println(ColorUtil.boldBrightYellow(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> 💠 SOUL SHARDS : " + player.getSoulShards() + " <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<\n"));
 
-// Dynamic Soul Battery based on class
+            // Permanent Stat Upgrades
+            System.out.println(ColorUtil.boldBrightCyan("├──────────────────────────────── 💎 PERMANENT STAT UPGRADES 💎 ────────────────────────────────┤"));
+            System.out.printf(" %5s%-3s %-44s %-43s 💠 %s%n", ColorUtil.boldBrightCyan("[1]"), " 💖", ColorUtil.cyan("Vitality Blessing"), "+100 Max HP", ColorUtil.boldBrightYellow("10"));
+            System.out.printf(" %5s%-3s %-44s %-43s 💠 %s%n", ColorUtil.boldBrightCyan("[2]"), " ⚔️", ColorUtil.cyan("Attack Infusion"), "+8 ATK", ColorUtil.boldBrightYellow("12"));
+            System.out.printf(" %5s%-3s %-44s %-43s 💠 %s%n", ColorUtil.boldBrightCyan("[3]"), " 🛡️", ColorUtil.cyan("Fortified Spirit"), "+2 DEF", ColorUtil.boldBrightYellow("10"));
+
+            // Dynamic Soul Battery based on class
             String energyLabel;
             int energyValue;
 
@@ -49,37 +53,37 @@ public class MagicShop {
                 }
             }
 
-            System.out.printf(" %5s%-3s %-33s %-42s 💠 %d%n",
-                    "[4]", " ⚡ ", "Soul Battery",
+            System.out.printf(" %5s%-3s %-45s %-42s 💠 %s%n",
+                    ColorUtil.boldBrightCyan("[4]"), " ⚡ ", ColorUtil.cyan("Soul Battery"),
                     energyValue > 0 ? "+" + energyValue + energyLabel : " ❌",
-                    8);
+                    ColorUtil.boldBrightYellow("8"));
 
-
-// Weapon/Armor Enchantments
-            System.out.println("├────────────────────────────── 🌟 WEAPON / ARMOR ENCHANTMENTS 🌟 ──────────────────────────────┤");
-            System.out.printf(" %5s%-3s %-30s %-45s 💠 %d%n", "[5]", " 💖", "Vital Surge", "+5% Lifesteal " + xMark("Swordsman", "Archer", "Mage"), 28);
-            System.out.printf(" %5s%-3s %-30s %-45s 💠 %d%n", "[6]", " ⛓️", "Shock Bind", "20% chance to Stun " + xMark("Swordsman"), 30);
-            System.out.printf(" %5s%-3s %-30s %-45s 💠 %d%n", "[7]", " ❄️", "Frost Arrow", "ATKs have 20% to Freeze " + xMark("Archer"), 30);
-            System.out.printf(" %5s%-3s %-30s %-45s 💠 %d%n", "[8]", " ✨", "Arc Surge", "+3 Energy per ATK " + xMark("Mage"), 26);
-            System.out.printf(" %5s%-3s %-30s %-45s 💠 %d%n", "[9]", " ☠️", "Venom Infusion", "20% Poison chance" + xMark("Swordsman","Archer","Mage"), 30);
-            System.out.printf(" %5s%-3s %-30s %-45s 💠 %d%n", "[10]", " 🩸", "Razor Edge", "+20% chance" + xMark("Swordsman", "Archer"), 32);
-            System.out.printf(" %5s%-3s %-30s %-45s 💠 %d%n", "[11]", " 🛡️", "Fortified Plating", "Armor +10 DEF" + xMark("Swordsman","Archer","Mage"), 26);
+            // Weapon/Armor Enchantments
+            System.out.println(ColorUtil.boldBrightCyan("├────────────────────────────── 🌟 WEAPON / ARMOR ENCHANTMENTS 🌟 ──────────────────────────────┤"));
+            System.out.printf(" %5s%-3s %-41s %-46s 💠 %s%n", ColorUtil.boldBrightCyan("[5]"), " 💖", ColorUtil.cyan("Vital Surge"), "+5% Lifesteal " + xMark("Swordsman", "Archer", "Mage"), ColorUtil.boldBrightYellow("28"));
+            System.out.printf(" %5s%-3s %-41s %-46s 💠 %s%n", ColorUtil.boldBrightCyan("[6]"), " ⛓️", ColorUtil.cyan("Shock Bind"), "20% chance to Stun " + xMark("Swordsman"), ColorUtil.boldBrightYellow("30"));
+            System.out.printf(" %5s%-3s %-41s %-46s 💠 %s%n", ColorUtil.boldBrightCyan("[7]"), " ❄️", ColorUtil.cyan("Frost Arrow"), "ATKs have 20% to Freeze " + xMark("Archer"), ColorUtil.boldBrightYellow("30"));
+            System.out.printf(" %5s%-3s %-41s %-46s 💠 %s%n", ColorUtil.boldBrightCyan("[8]"), " ✨", ColorUtil.cyan("Arc Surge"), "+3 Energy per ATK " + xMark("Mage"), ColorUtil.boldBrightYellow("26"));
+            System.out.printf(" %5s%-3s %-41s %-46s 💠 %s%n", ColorUtil.boldBrightCyan("[9]"), " ☠️", ColorUtil.cyan("Venom Infusion"), "20% Poison chance" + xMark("Swordsman","Archer","Mage"), ColorUtil.boldBrightYellow("30"));
+            System.out.printf(" %5s%-3s %-41s %-46s 💠 %s%n", ColorUtil.boldBrightCyan("[10]"), " 🩸", ColorUtil.cyan("Razor Edge"), "+20% chance" + xMark("Swordsman", "Archer"), ColorUtil.boldBrightYellow("32"));
+            System.out.printf(" %5s%-3s %-41s %-46s 💠 %s%n", ColorUtil.boldBrightCyan("[11]"), " 🛡️", ColorUtil.cyan("Fortified Plating"), "Armor +10 DEF" + xMark("Swordsman","Archer","Mage"), ColorUtil.boldBrightYellow("26"));
 
 // Potions
-            System.out.println("├──────────────────────────────────────── 🧪 POTIONS 🧪 ────────────────────────────────────────┤");
-            System.out.printf(" %5s%-3s %-38s %-37s 💠 %d%n", "[12]", " 🍃", "Normal Healing Potion", "1x", 6);
-            System.out.printf(" %5s%-3s %-38s %-37s 💠 %d%n", "[13]", " 💞", "Full Healing Potion", "1x", 18);
-            System.out.printf(" %5s%-3s %-38s %-37s 💠 %d%n", "[14]", " ⚡ ", "Energy Potion", "1x", 8);
+            System.out.println(ColorUtil.boldBrightCyan("├──────────────────────────────────────── 🧪 POTIONS 🧪 ────────────────────────────────────────┤"));
+            System.out.printf(" %5s%-3s %-46s %-41s 💠 %s%n", ColorUtil.boldBrightCyan("[12]"), " 🍃", ColorUtil.cyan("Normal Healing Potion"), "1x", ColorUtil.boldBrightYellow("6"));
+            System.out.printf(" %5s%-3s %-46s %-41s 💠 %s%n", ColorUtil.boldBrightCyan("[13]"), " 💞", ColorUtil.cyan("Full Healing Potion"), "1x", ColorUtil.boldBrightYellow("18"));
+            System.out.printf(" %5s%-3s %-46s %-41s 💠 %s%n", ColorUtil.boldBrightCyan("[14]"), " ⚡ ", ColorUtil.cyan("Energy Potion"), "1x", ColorUtil.boldBrightYellow("8"));
 
 // Special Item
-            System.out.println("├────────────────────────────────────── 🔮 SPECIAL ITEM 🔮 ──────────────────────────────────────┤");
-            System.out.printf(" %5s%-3s %-30s %-45s 💠 %d%n", "[15]", " 🕊️", "Phoenix Soulstone", "Revive once with 50% HP & Energy", 40);
+            System.out.println(ColorUtil.boldBrightCyan("├────────────────────────────────────── 🔮 SPECIAL ITEM 🔮 ──────────────────────────────────────┤"));
+            System.out.printf(" %5s%-3s %-33s %-54s 💠 %s%n", ColorUtil.boldBrightCyan("[15]"), " 🕊️", ColorUtil.cyan("Phoenix Soulstone"), "Revive once with 50% HP & Energy", ColorUtil.boldBrightYellow("40"));
 
 // Exit
-            System.out.println("├────────────────────────────────────────────────────────────────────────────────────────────────┤");
-            System.out.println("  [16] \uD83D\uDCDC Menu");
-            System.out.println("   [0] ➜] Exit Shop");
-            System.out.println("╚════════════════════════════════════════════════════════════════════════════════════════════════╝");
+            System.out.println(ColorUtil.boldBrightCyan("├────────────────────────────────────────────────────────────────────────────────────────────────┤"));
+            System.out.println(ColorUtil.boldBrightCyan(" [16] ") + ColorUtil.cyan("📰 Menu"));
+            System.out.println(ColorUtil.boldBrightCyan("  [0] ") + ColorUtil.cyan("➜] Exit Shop"));
+            System.out.println(ColorUtil.boldBrightCyan("╚════════════════════════════════════════════════════════════════════════════════════════════════╝"));
+
 
             System.out.print("Enter item to purchase: ");
             int choice = InputUtil.scanInput();

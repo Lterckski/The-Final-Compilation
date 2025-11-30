@@ -27,7 +27,7 @@ public class Potions {
         normalHealingPotions--;
 
         int oldHP = owner.getHp();
-        int healAmount = (int) (owner.getMaxHP() * 0.20);
+        int healAmount = (int) (owner.getMaxHP() * 0.15);
         owner.heal(healAmount);
         int newHP = owner.getHp();
 

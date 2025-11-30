@@ -3,10 +3,13 @@ package battle;
 import characters.Character;
 import enemies.Enemy;
 import enemies.FinalBoss;
+import utils.ColorUtil;
 import utils.InputUtil;
 import utils.PrintUtil;
 import storyEngine.StoryEngine;
 import events.JavaTrial;
+
+import java.awt.*;
 
 
 public class Battle {
@@ -56,7 +59,7 @@ public class Battle {
 
     // ---------- HEALTH BAR UTIL ----------
     private String generateBar(int current, int max) {
-        int length = 18;
+        int length = 20;
         int filled = (int) Math.round((double) current / max * length);
         int empty = length - filled;
         StringBuilder bar = new StringBuilder();
@@ -77,27 +80,37 @@ public class Battle {
         String enemyHpBar = generateBar(enemy.getHp(), enemy.getMaxHP()); // Red
 
         // Top border
-        System.out.println("┌───────────────────────────────────────────────────────────────────────────────────┐");
+        System.out.println(ColorUtil.boldBrightCyan("┌────────────────────────────────────────────────────────────────────────────────────┐"));
 
-        // --- Player HP ---
-        System.out.printf("  %-8s %s %3d/%-3d  %s",
-                "Your HP", playerHpBar, player.getHp(), player.getMaxHP(), "💚 ");
+// --- Player HP ---
+        System.out.printf("  %-21s %-4s %s %s  ",
+                ColorUtil.boldBrightGreen("Your HP"),
+                ColorUtil.boldBrightGreen(playerHpBar),
+                ColorUtil.boldBrightGreen(player.getHp() + "/" + player.getMaxHP()),
+                "💚");
 
-    // --- Enemy HP ---
-        System.out.printf("  %-8s %s %3d/%-3d  %s%n",
-                "Enemy HP", enemyHpBar, enemy.getHp(), enemy.getMaxHP(), "❤️");
+// --- Enemy HP ---
+        System.out.printf("  %-22s %-4s %s %s%n",
+                ColorUtil.boldBrightRed("Enemy HP"),
+                ColorUtil.boldBrightRed(enemyHpBar),
+                ColorUtil.boldBrightRed(enemy.getHp() + "/" + enemy.getMaxHP()),
+                "❤️");
 
-        System.out.printf("  %-8s %s %3d/%-3d  %s%n",
-                player.getEnergyName(), playerStaminaBar, player.getEnergy(), player.getMaxEnergy(),
+// --- Player Energy ---
+        System.out.printf("  %-21s %-4s %s %s%n",
+                ColorUtil.boldBrightWhite(player.getEnergyName()),
+                ColorUtil.boldBrightWhite(playerStaminaBar),
+                ColorUtil.boldBrightWhite(player.getEnergy() + "/" + player.getMaxEnergy()),
                 player.getEnergyEmoji());
 
-        // If enemy has shield
+// --- Enemy Shield (if any) ---
         if (enemy instanceof FinalBoss fb && fb.getShield() > 0) {
-            System.out.printf("🛡️ Enemy Shield Active: %d%n", fb.getShield());
+            System.out.println(ColorUtil.boldBrightRed("🛡️ Enemy Shield Active: " + fb.getShield()));
         }
 
-        // Bottom border
-        System.out.println("└───────────────────────────────────────────────────────────────────────────────────┘");
+// Bottom border
+        System.out.println(ColorUtil.boldBrightCyan("└────────────────────────────────────────────────────────────────────────────────────┘"));
+
     }
 
     public String worldDisplay(int worldLevel) {
@@ -169,7 +182,7 @@ public class Battle {
                 System.out.println();
                 displayBattleStats();
 
-                System.out.println("-- Your Turn --");
+                System.out.println(ColorUtil.boldBrightGreen("── YOUR TURN ──"));
                 player.turn(enemy);
             } else {
                 InputUtil.pressEnterToContinue();
@@ -190,15 +203,15 @@ public class Battle {
             enemy.getEffects().updateDefenseModifiers();
 
             if (enemy.getEffects().checkEffects()) {
-                System.out.println("\n-- Enemy Turn --");
+                System.out.println(ColorUtil.boldBrightRed("\n── ENEMY TURN ──"));
                 PrintUtil.pause(800);
                 enemy.turn(player);
             }
 
             // Apply DoT after enemy acts
             enemy.getEffects().updateDoTEffects();
-            InputUtil.pressEnterToContinue();
             PrintUtil.line();
+            InputUtil.pressEnterToContinue();
 
             if (!player.isAlive()) {
                 if (player.getInventory().hasPhoenixSoulstone()) {
@@ -209,6 +222,7 @@ public class Battle {
                     System.out.println("🕊️ The Phoenix Soulstone revives you!");
                     System.out.println("✨ You return with restored strength!");
                     System.out.println("💚 HP : " + player.getHp() + " | " + player.getEnergyEmoji() + " " + player.getEnergyName() + " : " + player.getEnergy());
+                    continue;
                 }
 
                 if (player.hasUsedReviveTrial()) {

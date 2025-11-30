@@ -2,6 +2,7 @@ package characters;
 
 import enemies.Enemy;
 import enemies.FinalBoss;
+import utils.ColorUtil;
 import utils.InputUtil;
 import utils.PrintUtil;
 import utils.RandomUtil;
@@ -15,35 +16,36 @@ public class Kael extends  Character{      // 15% crit chance
     @Override
     public void displaySkills() {
         System.out.println();
-        System.out.println("┌────────────────────────────────────── ⚔️ KAEL'S SKILLS ⚔️ ───────────────────────────────────────┐");
+        System.out.println(ColorUtil.boldBrightCyan("┌────────────────────────────────────── ⚔️ KAEL'S SKILLS ⚔️ ───────────────────────────────────────┐"));
 
-        // Passive
-        System.out.println("  ✨ Passive – Blade Swift");
-        System.out.println("  15% chance to deal a Critical Hit (×1.5 damage).");
-        System.out.println("  Effect: When a Critical Hit occurs, 🔋 Kael gains +5% Stamina.\n");
+// Passive
+        System.out.println("  " + ColorUtil.boldBrightYellow("✨ Passive – Blade Swift"));
+        System.out.println("  " + ColorUtil.cyan("15% chance to deal a Critical Hit (") + ColorUtil.boldBrightYellow("×1.5") + ColorUtil.cyan(" damage)."));
+        System.out.println("  " + ColorUtil.cyan("Effect: When a Critical Hit occurs, 🔋 Kael gains ") + ColorUtil.boldBrightYellow("+5%") + ColorUtil.cyan(" Stamina.\n"));
 
-        // Skill 1
-        System.out.println("  🗡️ Skill 1 – Blade Rush (🔋 5 Stamina)");
-        System.out.println("  📜 Description: A quick, fluid slash that catches the opponent off guard.");
-        System.out.println("  💥 Damage: (" + (int)(attack * 1.15) + " — " + (int)(attack * 1.35) + ")");
-        System.out.println("  ⚡ Effects:");
-        System.out.println("    - 💪 30% chance to apply Strengthen (+20% ATK for 2 turns)\n");
+// Skill 1
+        System.out.println("  " + ColorUtil.boldBrightYellow("🗡️ Skill 1 – Blade Rush (🔋 5 Stamina)"));
+        System.out.println("  " + ColorUtil.cyan("📜 Description: A quick, fluid slash that catches the opponent off guard."));
+        System.out.println("  " + ColorUtil.cyan("💥 Damage: (") + ColorUtil.boldBrightYellow((int)(attack * 1.15) + " — " + (int)(attack * 1.35)) + ColorUtil.cyan(")"));
+        System.out.println("  " + ColorUtil.cyan("⚡ Effects:"));
+        System.out.println("    - " + ColorUtil.cyan("💪 30% chance to apply Strengthen (+20% ATK for 2 turns)\n"));
 
-        // Skill 2
-        System.out.println("  ⚔\uFE0F Skill 2 – Piercing Slash (🔋 10 Stamina)");
-        System.out.println("  📜 Description: A powerful, focused strike aimed to pierce enemy's armor.");
-        System.out.println("  💥 Damage: (" + (int)(attack * 1.35) + " — " + (int)(attack * 1.55) + ") — Ignores Defense");
-        System.out.println("   ⚡ Effects:");
-        System.out.println("     - 💫 30% chance to Stun (1 turn)\n");
+// Skill 2
+        System.out.println("  " + ColorUtil.boldBrightYellow("⚔️ Skill 2 – Piercing Slash (🔋 10 Stamina)"));
+        System.out.println("  " + ColorUtil.cyan("📜 Description: A powerful, focused strike aimed to pierce enemy's armor."));
+        System.out.println("  " + ColorUtil.cyan("💥 Damage: (") + ColorUtil.boldBrightYellow((int)(attack * 1.35) + " — " + (int)(attack * 1.55)) + ColorUtil.cyan(") — Ignores Defense"));
+        System.out.println("  " + ColorUtil.cyan("⚡ Effects:"));
+        System.out.println("    - " + ColorUtil.cyan("💫 30% chance to Stun (1 turn)\n"));
 
-        // Ultimate
-        System.out.println("  ✝️ Ultimate – Eternal Cross Slash (🔋 20 Stamina)");
-        System.out.println("  📜 Description: Kael unleashes a flurry of crossing strikes infused with unyielding determination.");
-        System.out.println("  💥 Damage: 3 hits, each dealing (" + (int)(attack * 1.40) + " — " + (int)(attack * 2.20) + ")");
-        System.out.println("  ⚡ Effects:");
-        System.out.println("   - 🩸 Applies Bleed (10 damage per turn for 2 turns)");
-        System.out.println("   - 🛡️ Grants Fortified (+20% DEF for 2 turns)");
-        System.out.println("└───────────────────────────────────────────────────────────────────────────────────────────────────┘");
+// Ultimate
+        System.out.println("  " + ColorUtil.boldBrightYellow("✝️ Ultimate – Eternal Cross Slash (🔋 20 Stamina)"));
+        System.out.println("  " + ColorUtil.cyan("📜 Description: Kael unleashes a flurry of crossing strikes infused with unyielding determination."));
+        System.out.println("  " + ColorUtil.cyan("💥 Damage: 3 hits, each dealing (") + ColorUtil.boldBrightYellow((int)(attack * 1.40) + " — " + (int)(attack * 2.20)) + ColorUtil.cyan(")"));
+        System.out.println("  " + ColorUtil.cyan("⚡ Effects:"));
+        System.out.println("    - " + ColorUtil.cyan("🩸 Applies Bleed (10 damage per turn for 2 turns)"));
+        System.out.println("    - " + ColorUtil.cyan("🛡️ Grants Fortified (+20% DEF for 2 turns)"));
+
+        System.out.println(ColorUtil.boldBrightCyan("└───────────────────────────────────────────────────────────────────────────────────────────────────┘"));
         System.out.println();
     }
 
@@ -92,7 +94,7 @@ public class Kael extends  Character{      // 15% crit chance
             return;
         }
 
-        System.out.println("🗡️ You used Blade Rush on " + target.getName() + " (🔋-" + energyCost + " Stamina)");
+        System.out.println(ColorUtil.boldBrightWhite("🗡️ You used Blade Rush on " + target.getName() + " (🔋-" + energyCost + " Stamina)"));
         PrintUtil.pause(800);
 
         if(this.getEffects().checkConfuse()) return;
@@ -122,7 +124,7 @@ public class Kael extends  Character{      // 15% crit chance
             return;
         }
 
-        System.out.println("⚔\uFE0F You used Piercing Slash on " + target.getName() + " (🔋-" + energyCost + " Stamina)");
+        System.out.println(ColorUtil.boldBrightWhite("⚔\uFE0F You used Piercing Slash on " + target.getName() + " (🔋-" + energyCost + " Stamina)"));
         PrintUtil.pause(800);
 
         if(this.getEffects().checkConfuse()) return;
@@ -153,7 +155,7 @@ public class Kael extends  Character{      // 15% crit chance
         }
 
         int totalDamage = 0;
-        System.out.println("✝️ You unleash your ultimate technique: Eternal Cross Slash!" + " (🔋-" + energyCost + " Stamina)");
+        System.out.println(ColorUtil.boldBrightWhite("✝️ You unleash your ultimate technique: Eternal Cross Slash!" + " (🔋-" + energyCost + " Stamina)"));
         PrintUtil.pause(800);
 
         for(int i = 1; i <= 3; i++){
@@ -188,34 +190,41 @@ public class Kael extends  Character{      // 15% crit chance
         while (!isValid) {
             // If ultimate is on cooldown
             if (ultimateCounter > 0) {
-                System.out.println("[1] ⚔\uFE0F Skill 1   -  Blade Rush (🔋 5 Stamina)");
-                System.out.println("[2] \uD83D\uDDE1\uFE0F Skill 2   -  Piercing Slash (🔋 10 Stamina)");
-                System.out.println("[3] ✨ Ultimate  -  Eternal Cross Slash (🔋 20 Stamina) ❌ (Available in " + ultimateCounter + " turns)");
-                System.out.println("[4] \uD83D\uDEE1\uFE0F Skip Turn -  Restore 10% of Max HP and 20 Stamina");
-                System.out.println("[5] \uD83D\uDCDC Show Menu");
-                System.out.print("Choose your action: ");
+                System.out.println(ColorUtil.boldBrightGreen("[1]") + " " + ColorUtil.green("⚔️ Skill 1   -  Blade Rush (🔋 5 Stamina)"));
+                System.out.println(ColorUtil.boldBrightGreen("[2]") + " " + ColorUtil.green("🛡️ Skill 2   -  Piercing Slash (🔋 10 Stamina)"));
+                System.out.println(ColorUtil.boldBrightGreen("[3]") + " " + ColorUtil.green("✨ Ultimate  -  Eternal Cross Slash (🔋 20 Stamina) ")
+                        + ColorUtil.red("❌ (Available in " + ultimateCounter + " turns)"));
+                System.out.println(ColorUtil.boldBrightGreen("[4]") + " " + ColorUtil.green("\uD83D\uDEE1\uFE0F Skip Turn -  Restore 10% of Max HP and 20 Stamina"));
+                System.out.println(ColorUtil.boldBrightGreen("[5]") + " " + ColorUtil.green("📜 Show Menu"));
+                System.out.print(ColorUtil.boldBrightWhite("Choose your action: "));
 
                 int choice = InputUtil.scanInput();
                 PrintUtil.shortLine();
 
                 switch (choice) {
-                    case 1 -> { bladeRush(target); isValid = true; ultimateCounter--;}
-                    case 2 -> { piercingSlash(target); isValid = true; ultimateCounter--;}
-                    case 3 -> { System.out.println("❌ Ultimate is on cooldown! Can only be used after " + ultimateCounter + " turns."); PrintUtil.line();}
-                    case 4 -> { skipTurn(); isValid = true; ultimateCounter--;}
+                    case 1 -> { bladeRush(target); isValid = true; ultimateCounter--; }
+                    case 2 -> { piercingSlash(target); isValid = true; ultimateCounter--; }
+                    case 3 -> {
+                        System.out.println(ColorUtil.red("❌ Ultimate is on cooldown! Can only be used after " + ultimateCounter + " turns."));
+                        PrintUtil.line();
+                    }
+                    case 4 -> { skipTurn(); isValid = true; ultimateCounter--; }
                     case 5 -> displayMenu(this, target);
-                    default -> { System.out.println("❌ Invalid action! You missed your turn."); PrintUtil.pause(800); isValid = true; ultimateCounter--; }
+                    default -> {
+                        System.out.println(ColorUtil.red("❌ Invalid action! You missed your turn."));
+                        PrintUtil.pause(800);
+                        isValid = true;
+                        ultimateCounter--;
+                    }
                 }
 
-            }
-            // If ultimate is ready
-            else {
-                System.out.println("[1] ⚔\uFE0F Skill 1   -  Blade Rush (🔋 5 Stamina)");
-                System.out.println("[2] \uD83D\uDDE1\uFE0F Skill 2   -  Piercing Slash (🔋 10 Stamina)");
-                System.out.println("[3] ✨ Ultimate  -  Eternal Cross Slash (🔋 20 Stamina)");
-                System.out.println("[4] \uD83D\uDEE1\uFE0F Skip Turn -  Restore 10% of Max HP and 20 Stamina");
-                System.out.println("[5] \uD83D\uDCDC Show Menu");
-                System.out.print("Choose your action: ");
+            } else { // Ultimate ready
+                System.out.println(ColorUtil.boldBrightGreen("[1]") + " " + ColorUtil.green("⚔️ Skill 1   -  Blade Rush (🔋 5 Stamina)"));
+                System.out.println(ColorUtil.boldBrightGreen("[2]") + " " + ColorUtil.green("🛡️ Skill 2   -  Piercing Slash (🔋 10 Stamina)"));
+                System.out.println(ColorUtil.boldBrightGreen("[3]") + " " + ColorUtil.green("✨ Ultimate  -  Eternal Cross Slash (🔋 20 Stamina)"));
+                System.out.println(ColorUtil.boldBrightGreen("[4]") + " " + ColorUtil.green("\uD83D\uDEE1\uFE0F Skip Turn -  Restore 10% of Max HP and 20 Stamina"));
+                System.out.println(ColorUtil.boldBrightGreen("[5]") + " " + ColorUtil.green("📜 Show Menu"));
+                System.out.print(ColorUtil.boldBrightWhite("Choose your action: "));
 
                 int choice = InputUtil.scanInput();
                 PrintUtil.shortLine();
@@ -226,10 +235,15 @@ public class Kael extends  Character{      // 15% crit chance
                     case 3 -> { eternalCrossSlash(target); isValid = true; }
                     case 4 -> { skipTurn(); isValid = true; }
                     case 5 -> displayMenu(this, target);
-                    default -> { System.out.println("❌ Invalid action! You missed your turn."); PrintUtil.pause(800); isValid = true; }
+                    default -> {
+                        System.out.println(ColorUtil.red("❌ Invalid action! You missed your turn."));
+                        PrintUtil.pause(800);
+                        isValid = true;
+                    }
                 }
             }
         }
     }
+
 
 }

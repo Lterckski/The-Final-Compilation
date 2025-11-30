@@ -1,6 +1,7 @@
 package enemies;
 
 import characters.Character;
+import utils.ColorUtil;
 
 public abstract class Enemy extends Character{
     // Constructor
@@ -12,27 +13,32 @@ public abstract class Enemy extends Character{
     @Override
     public void displayStats() {
         System.out.println();
-        System.out.println("┌───────────── \uD83D\uDC79 ENEMY STATS \uD83D\uDC79 ─────────────┐");
+        System.out.println(ColorUtil.boldBrightRed("┌───────────── 👹 ENEMY STATS 👹 ─────────────┐"));
 
-        System.out.printf("%-8s    : %s%n", " 🧟 Name", name);
-        System.out.printf("%-8s    : %d/%d%n", " 💀 HP", hp, maxHP);
+// Name
+        System.out.println(ColorUtil.boldBrightRed(" 🧟 Name    : ") + ColorUtil.boldBrightYellow(name));
 
-        // Attack difference
+// HP
+        System.out.println(ColorUtil.boldBrightRed(" ❤️ HP      : ") + ColorUtil.boldBrightYellow(hp + " / " + maxHP));
+
+// Attack difference
         int atkDiff = attack - baseAttack;
         String atkLabel = (atkDiff >= 0) ? "Buff" : "Debuff";
+        System.out.println(ColorUtil.boldBrightRed(" ⚔️ Attack  : ") + ColorUtil.boldBrightYellow(
+                attack + " (Base " + baseAttack + " | " + atkLabel + " " + String.format("%+d", atkDiff) + ")"));
 
-        System.out.printf("%-8s  : %d (Base %d | %s %+d)%n",
-                " ⚔️ Attack", attack, baseAttack, atkLabel, atkDiff);
-
-        // Defense difference
+// Defense difference
         int defDiff = defense - baseDefense;
         String defLabel = (defDiff >= 0) ? "Buff" : "Debuff";
+        System.out.println(ColorUtil.boldBrightRed(" 🛡️ Defense : ") + ColorUtil.boldBrightYellow(
+                defense + " (Base " + baseDefense + " | " + defLabel + " " + String.format("%+d", defDiff) + ")"));
 
-        System.out.printf("%-8s : %d  (Base %d | %s %+d)%n",
-                " 🛡️ Defense", defense, baseDefense, defLabel, defDiff);
-
-        System.out.println("└──────────────────────────────────────────────┘");
+// Outer bottom bar
+        System.out.println(ColorUtil.boldBrightRed("└──────────────────────────────────────────────┘"));
         System.out.println();
+
+
+
     }
 
 

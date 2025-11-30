@@ -1,6 +1,7 @@
 package characters;
 
 import enemies.Enemy;
+import utils.ColorUtil;
 import utils.InputUtil;
 import utils.PrintUtil;
 import utils.RandomUtil;
@@ -12,38 +13,40 @@ public class Simon extends Character {
     @Override
     public void displaySkills() {
         System.out.println();
-        System.out.println("┌────────────────────────────────────── 🔮 SIMON'S SKILLS 🔮 ───────────────────────────────────────┐");
+        System.out.println(ColorUtil.boldBrightCyan("┌────────────────────────────────────── 🔮 SIMON'S SKILLS 🔮 ───────────────────────────────────────┐"));
 
         // Passive
-        System.out.println("  ✨ Passive – Arcane Flow");
-        System.out.println("  Restores +5% of total 💧 Mana each turn.\n");
+        System.out.println("  " + ColorUtil.boldBrightYellow("✨ Passive – Arcane Flow"));
+        System.out.println("  " + ColorUtil.cyan("Restores ") + ColorUtil.boldBrightYellow("+5%") + ColorUtil.cyan(" of total 💧 Mana each turn.\n"));
 
         // Skill 1 – Fireball
-        System.out.println("  🔥 Skill 1 – Fireball (💧 15 Mana)");
-        System.out.println("  📜 Description: Conjures a blazing orb of fire and hurls it at an enemy.");
-        System.out.println("  💥 Damage: (" + (int)(attack * 1.25) + " — " + (int)(attack * 1.55) + ")");
-        System.out.println("  ⚡ Effects:");
-        System.out.println("    - 🔥 Applies Burn (1 turn)");
-        System.out.println("    - 🛡️ 30% chance to Weaken target (-20% ATK for 2 turns)\n");
+        System.out.println("  " + ColorUtil.boldBrightYellow("🔥 Skill 1 – Fireball (💧 15 Mana)"));
+        System.out.println("  " + ColorUtil.cyan("📜 Description: Conjures a blazing orb of fire and hurls it at an enemy."));
+        System.out.println("  " + ColorUtil.cyan("💥 Damage: (") + ColorUtil.boldBrightYellow((int)(attack * 1.25) + " — " + (int)(attack * 1.55)) + ColorUtil.cyan(")"));
+        System.out.println("  " + ColorUtil.cyan("⚡ Effects:"));
+        System.out.println("    - " + ColorUtil.cyan("🔥 Applies Burn (1 turn)"));
+        System.out.println("    - " + ColorUtil.cyan("🛡️ 30% chance to Weaken target (-20% ATK for 2 turns)\n"));
 
         // Skill 2 – Ice Prison
-        System.out.println("  ❄️ Skill 2 – Ice Prison (💧 25 Mana)");
-        System.out.println("  📜 Description: Encases the target in solid ice, restricting movement and draining warmth.");
-        System.out.println("  💥 Damage: (" + (int)(attack * 0.60) + " — " + (int)(attack * 0.90) + ")");
-        System.out.println("  ⚡ Effects:");
-        System.out.println("    - ❄️ 30% chance to Freeze (target skips 1 turn)");
-        System.out.println("    - 🛡️ If frozen: reduces DEF by 15% for 2 turns\n");
+        System.out.println("  " + ColorUtil.boldBrightYellow("❄️ Skill 2 – Ice Prison (💧 25 Mana)"));
+        System.out.println("  " + ColorUtil.cyan("📜 Description: Encases the target in solid ice, restricting movement and draining warmth."));
+        System.out.println("  " + ColorUtil.cyan("💥 Damage: (") + ColorUtil.boldBrightYellow((int)(attack * 0.60) + " — " + (int)(attack * 0.90)) + ColorUtil.cyan(")"));
+        System.out.println("  " + ColorUtil.cyan("⚡ Effects:"));
+        System.out.println("    - " + ColorUtil.cyan("❄️ 30% chance to Freeze (target skips 1 turn)"));
+        System.out.println("    - " + ColorUtil.cyan("🛡️ If frozen: reduces DEF by 15% for 2 turns\n"));
 
         // Ultimate – Meteor Storm
-        System.out.println("  ☄️ Ultimate – Meteor Storm (💧 40 Mana)");
-        System.out.println("  📜 Description: Summons a storm of blazing meteors, striking the opponent multiple times.");
-        System.out.println("  💥 Damage: 5 hits, each dealing (" + (int)(attack * 1.00) + " — " + (int)(attack * 1.50) + ")");
-        System.out.println("  ⚡ Effects:");
-        System.out.println("    - 💪 Grants Strengthen (+20% ATK for 2 turns)");
-        System.out.println("    - 🔥 50% chance to apply Burn (2 turns)");
-        System.out.println("└───────────────────────────────────────────────────────────────────────────────────────────────────┘");
+        System.out.println("  " + ColorUtil.boldBrightYellow("☄️ Ultimate – Meteor Storm (💧 40 Mana)"));
+        System.out.println("  " + ColorUtil.cyan("📜 Description: Summons a storm of blazing meteors, striking the opponent multiple times."));
+        System.out.println("  " + ColorUtil.cyan("💥 Damage: 5 hits, each dealing (") + ColorUtil.boldBrightYellow((int)(attack * 1.00) + " — " + (int)(attack * 1.50)) + ColorUtil.cyan(")"));
+        System.out.println("  " + ColorUtil.cyan("⚡ Effects:"));
+        System.out.println("    - " + ColorUtil.cyan("💪 Grants Strengthen (+20% ATK for 2 turns)"));
+        System.out.println("    - " + ColorUtil.cyan("🔥 50% chance to apply Burn (2 turns)"));
+
+        System.out.println(ColorUtil.boldBrightCyan("└───────────────────────────────────────────────────────────────────────────────────────────────────┘"));
         System.out.println();
     }
+
 
 
     public void showBackstory() {
@@ -86,7 +89,7 @@ public class Simon extends Character {
             return;
         }
 
-        System.out.println("🔥 You cast Fireball on " + target.getName() + " (💧-" + energyCost + " Mana)");
+        System.out.println(ColorUtil.boldBrightWhite("🔥 You cast Fireball on " + target.getName() + " (💧-" + energyCost + " Mana)"));
         PrintUtil.pause(800);
 
         if (this.getEffects().checkConfuse()) return;
@@ -121,7 +124,7 @@ public class Simon extends Character {
             return;
         }
 
-        System.out.println("❄️ You cast Ice Prison on " + target.getName() + " (💧-" + energyCost + " Mana)");
+        System.out.println(ColorUtil.boldBrightWhite("❄️ You cast Ice Prison on " + target.getName() + " (💧-" + energyCost + " Mana)"));
         PrintUtil.pause(800);
 
         if (this.getEffects().checkConfuse()) return;
@@ -154,7 +157,7 @@ public class Simon extends Character {
             return;
         }
 
-        System.out.println("☄️ You unleash your ultimate: Meteor Storm (💧-" + energyCost + " Mana)!");
+        System.out.println(ColorUtil.boldBrightWhite("☄️ You unleash your ultimate: Meteor Storm (💧-" + energyCost + " Mana)!"));
         PrintUtil.pause(800);
 
         int totalDamage = 0;
@@ -193,14 +196,14 @@ public class Simon extends Character {
         boolean isValid = false;
 
         while (!isValid) {
-            // If ultimate is on cooldown
-            if (ultimateCounter > 0) {
-                System.out.println("[1] \uD83D\uDD25 Skill 1   -  Fireball (💧 15 Mana)");
-                System.out.println("[2] ❄\uFE0F Skill 2   -  Ice Prison (💧 25 Mana)");
-                System.out.println("[3] \uD83C\uDF0B Ultimate  -  Meteor Storm (💧 40 Mana) ❌ (Available in " + ultimateCounter + " turns)");
-                System.out.println("[4] \uD83D\uDEE1\uFE0F Skip Turn -  Restore 10% of Max HP and 30 Mana");
-                System.out.println("[5] \uD83D\uDCDC Show Menu");
-                System.out.print("Choose your action: ");
+            if (ultimateCounter > 0) { // Ultimate on cooldown
+                System.out.println(ColorUtil.boldBrightGreen("[1]") + " " + ColorUtil.green("🔥 Skill 1   -  Fireball (💧 15 Mana)"));
+                System.out.println(ColorUtil.boldBrightGreen("[2]") + " " + ColorUtil.green("❄️ Skill 2   -  Ice Prison (💧 25 Mana)"));
+                System.out.println(ColorUtil.boldBrightGreen("[3]") + " " + ColorUtil.green("🌋 Ultimate  -  Meteor Storm (💧 40 Mana) ")
+                        + ColorUtil.red("❌ (Available in " + ultimateCounter + " turns)"));
+                System.out.println(ColorUtil.boldBrightGreen("[4]") + " " + ColorUtil.green("\uD83D\uDEE1\uFE0F Skip Turn - Restore 10% of Max HP and 30 Mana"));
+                System.out.println(ColorUtil.boldBrightGreen("[5]") + " " + ColorUtil.green("📜 Show Menu"));
+                System.out.print(ColorUtil.boldBrightWhite("Choose your action: "));
 
                 int choice = InputUtil.scanInput();
                 PrintUtil.shortLine();
@@ -208,22 +211,27 @@ public class Simon extends Character {
                 switch (choice) {
                     case 1 -> { fireball(target); isValid = true; ultimateCounter--; }
                     case 2 -> { icePrison(target); isValid = true; ultimateCounter--; }
-                    case 3 -> { System.out.println("❌ Ultimate is on cooldown! Can only be used after " + ultimateCounter + " turns."); PrintUtil.line();}
+                    case 3 -> {
+                        System.out.println(ColorUtil.red("❌ Ultimate is on cooldown! Can only be used after " + ultimateCounter + " turns."));
+                        PrintUtil.line();
+                    }
                     case 4 -> { skipTurn(); isValid = true; ultimateCounter--; }
                     case 5 -> displayMenu(this, target); // doesn’t consume the turn
-                    default -> { System.out.println("❌ Invalid action! You missed your turn."); PrintUtil.pause(800); isValid = true; ultimateCounter--; }
+                    default -> {
+                        System.out.println(ColorUtil.red("❌ Invalid action! You missed your turn."));
+                        PrintUtil.pause(800);
+                        isValid = true;
+                        ultimateCounter--;
+                    }
                 }
 
-            }
-            // If ultimate is ready
-            else {
-                PrintUtil.shortLine();
-                System.out.println("[1] \uD83D\uDD25 Skill 1   -  Fireball (💧 15 Mana)");
-                System.out.println("[2] ❄\uFE0F Skill 2   -  Ice Prison (💧 25 Mana)");
-                System.out.println("[3] \uD83C\uDF0B Ultimate  -  Meteor Storm (💧 40 Mana)");
-                System.out.println("[4] \uD83D\uDEE1\uFE0F Skip Turn -  Restore 10% of Max HP and 30 Mana");
-                System.out.println("[5] \uD83D\uDCDC Show Menu");
-                System.out.print("Choose your action: ");
+            } else { // Ultimate ready
+                System.out.println(ColorUtil.boldBrightGreen("[1]") + " " + ColorUtil.green("🔥 Skill 1   -  Fireball (💧 15 Mana)"));
+                System.out.println(ColorUtil.boldBrightGreen("[2]") + " " + ColorUtil.green("❄️ Skill 2   -  Ice Prison (💧 25 Mana)"));
+                System.out.println(ColorUtil.boldBrightGreen("[3]") + " " + ColorUtil.green("🌋 Ultimate  -  Meteor Storm (💧 40 Mana)"));
+                System.out.println(ColorUtil.boldBrightGreen("[4]") + " " + ColorUtil.green("\uD83D\uDEE1\uFE0F Skip Turn - Restore 10% of Max HP and 30 Mana"));
+                System.out.println(ColorUtil.boldBrightGreen("[5]") + " " + ColorUtil.green("📜 Show Menu"));
+                System.out.print(ColorUtil.boldBrightWhite("Choose your action: "));
 
                 int choice = InputUtil.scanInput();
                 PrintUtil.shortLine();
@@ -234,7 +242,11 @@ public class Simon extends Character {
                     case 3 -> { meteorStorm(target); isValid = true; }
                     case 4 -> { skipTurn(); isValid = true; }
                     case 5 -> displayMenu(this, target); // doesn’t consume the turn
-                    default -> { System.out.println("❌ Invalid action! You missed your turn."); PrintUtil.pause(800); isValid = true; }
+                    default -> {
+                        System.out.println(ColorUtil.red("❌ Invalid action! You missed your turn."));
+                        PrintUtil.pause(800);
+                        isValid = true;
+                    }
                 }
             }
         }

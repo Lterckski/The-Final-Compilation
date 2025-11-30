@@ -3,6 +3,7 @@ package worlds;
 import enemies.*;
 import battle.Battle;
 import characters.Character;
+import utils.ColorUtil;
 import utils.InputUtil;
 import utils.PrintUtil;
 
@@ -73,8 +74,7 @@ public class World3 {
         System.out.println("                     :              .:                    ");
         System.out.println();
 
-
-        PrintUtil.type("🎯 Objective: Defeat 3 Flame Revenants!\n");
+        PrintUtil.type(ColorUtil.boldBrightMagenta(("🎯 Objective: Defeat 3 Flame Revenants!\n").toUpperCase()));
         InputUtil.pressEnterToContinue();
         PrintUtil.line();
 
@@ -156,8 +156,7 @@ public class World3 {
         System.out.println("                       .::-=+=:.                           ");
         System.out.println();
 
-
-        PrintUtil.type("🎯 Objective: Defeat 2 Bone Warlocks!\n");
+        PrintUtil.type(ColorUtil.boldBrightMagenta(("🎯 Objective: Defeat 2 Bone Warlocks!\n").toUpperCase()));
         InputUtil.pressEnterToContinue();
         PrintUtil.line();
 
@@ -223,8 +222,7 @@ public class World3 {
         System.out.println("       :+*********+++#%*+*%%*****==#+-+===+++++====:      ");
         System.out.println();
 
-
-        PrintUtil.type("🎯 Objective: Defeat 2 Obsidian Crushers!\n");
+        PrintUtil.type(ColorUtil.boldBrightMagenta(("🎯 Objective: Defeat 2 Obsidian Crushers!\n").toUpperCase()));
         InputUtil.pressEnterToContinue();
         PrintUtil.line();
 
@@ -301,7 +299,7 @@ public class World3 {
         System.out.println("      ..-@#.                           ..                  ");
         System.out.println();
 
-        PrintUtil.type("🎯 Objective: Defeat 3 Soulflayer Gargoyles!\n");
+        PrintUtil.type(ColorUtil.boldBrightMagenta(("🎯 Objective: Defeat 3 Soulflayer Gargoyles!\n").toUpperCase()));
         InputUtil.pressEnterToContinue();
         PrintUtil.line();
 
@@ -395,7 +393,7 @@ public class World3 {
         System.out.println("@@@@@@@@@@@@@@@@@@@@@@%#+.     .:+**#@@@@@@@@@@@@@@@@@@@@@@");
         System.out.println();
 
-        PrintUtil.type("🎯 Objective: Defeat Zyrryl, The Tower Warden!\n");
+        PrintUtil.type(ColorUtil.boldBrightMagenta(("🎯 Objective: Defeat Zyrryl, The Tower Warden!\n").toUpperCase()));
         InputUtil.pressEnterToContinue();
         PrintUtil.line();
 

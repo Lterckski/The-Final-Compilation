@@ -3,6 +3,7 @@ package worlds;
 import enemies.*;
 import battle.Battle;
 import characters.Character;
+import utils.ColorUtil;
 import utils.InputUtil;
 import utils.PrintUtil;
 
@@ -290,7 +291,8 @@ public class World3Final {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        PrintUtil.type("🎯 Objective: Defeat Khai, the Void Ascendant!\n");
+
+        PrintUtil.type(ColorUtil.boldBrightMagenta(("🎯 Objective: Defeat Khai, The Necromancer!\n").toUpperCase()));
         InputUtil.pressEnterToContinue();
         PrintUtil.line();
 

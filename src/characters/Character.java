@@ -8,6 +8,7 @@ import inventory.Inventory;
 import inventory.Potions;
 import inventory.Weapon;
 import storyEngine.StoryEngine;
+import utils.ColorUtil;
 import utils.InputUtil;
 import utils.PrintUtil;
 
@@ -165,47 +166,45 @@ public abstract class Character {
 
 // Print the header
         System.out.println();
-        System.out.println("┌─────────────────── " + classEmoji + " " + "PLAYER STATS " + classEmoji +" ───────────────────┐");
+        System.out.println(ColorUtil.boldBrightCyan("┌─────────────────── " + classEmoji + " PLAYER STATS " + classEmoji +" ───────────────────┐"));
 
-        // Determine energy type
+// Determine energy type
         if (classType.equalsIgnoreCase("Mage")) {
-            energyLabel = " 💧 Mana    ";
+            energyLabel = " 💧 Mana     ";
         } else if (classType.equalsIgnoreCase("Archer")) {
-            energyLabel = " 🏹 Arrows  ";
+            energyLabel = " 🏹 Arrows   ";
         } else {
-            energyLabel = " 🔋 Stamina ";
+            energyLabel = " 🔋 Stamina  ";
         }
+
+        System.out.println(ColorUtil.boldBrightCyan(" 👤 Name/Class  :  ") + ColorUtil.boldBrightYellow(name + " (" + classType + ")"));
 
         if (level == 30) {
-            System.out.println("🏆 Level      : MAX");
-            System.out.println("✨ EXP        : MAX");
+            System.out.println(ColorUtil.boldBrightCyan(" 🏆 Level       :  ") + ColorUtil.boldBrightYellow("MAX"));
+            System.out.println(ColorUtil.boldBrightCyan(" ✨ EXP         :  ") + ColorUtil.boldBrightYellow("MAX"));
         } else {
-
+            System.out.println(ColorUtil.boldBrightCyan(" 🏆 Level       :  ") + ColorUtil.boldBrightYellow(String.valueOf(level)));
+            System.out.println(ColorUtil.boldBrightCyan(" ✨ EXP         :  ") + ColorUtil.boldBrightYellow(exp + " / " + nextLevelExp));
         }
 
-        System.out.println(" 👤 Name/Class : " + name + " (" + classType + ")");
+        System.out.println(ColorUtil.boldBrightCyan(" 💚 HP          :  ") + ColorUtil.boldBrightYellow(hp + " / " + maxHP));
+        System.out.println(ColorUtil.boldBrightCyan(energyLabel + "    :  ") + ColorUtil.boldBrightYellow(energy + " / " + maxEnergy));
 
+        System.out.println(ColorUtil.boldBrightCyan(" ⚔️ Attack      :  ") +
+                ColorUtil.boldBrightYellow(attack +
+                        " (Base " + baseAttack +
+                        " | Weapon " + String.format("%+d", weaponAtkBonus) +
+                        " | " + atkLabel + " " + String.format("%+d", effectAtkMod) + ")"));
 
-        System.out.println(" 🏆 Level      : " + level);
-        System.out.println(" ✨ EXP        : " + exp + " / " + nextLevelExp);
+        System.out.println(ColorUtil.boldBrightCyan(" 🛡️ Defense     :  ") +
+                ColorUtil.boldBrightYellow(defense +
+                        " (Base " + baseDefense +
+                        " | Armor " + String.format("%+d", armorDefBonus) +
+                        " | " + defLabel + " " + String.format("%+d", effectDefMod) + ")"));
 
-        System.out.println(" ❤️ HP         : " + hp + " / " + maxHP);
-        System.out.println(energyLabel + "   : " + energy + " / " + maxEnergy);
-
-
-
-        System.out.println(" ⚔️ Attack     : " + attack +
-                " (Base " + baseAttack +
-                " | Weapon " + String.format("%+d", weaponAtkBonus) +
-                " | " + atkLabel + " " + String.format("%+d", effectAtkMod) + ")");
-
-        System.out.println(" 🛡️ Defense    : " + defense +
-                "  (Base " + baseDefense +
-                " | Armor " + String.format("%+d", armorDefBonus) +
-                " | " + defLabel + " " + String.format("%+d", effectDefMod) + ")");
-
-        System.out.println("└───────────────────────────────────────────────────────────┘");
+        System.out.println(ColorUtil.boldBrightCyan("└───────────────────────────────────────────────────────────┘"));
         System.out.println();
+
     }
 
 
