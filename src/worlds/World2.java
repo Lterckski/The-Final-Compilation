@@ -191,7 +191,7 @@ public class World2 {
 
         for (int i = 1; i <= 2; i++) {
             PrintUtil.hr();
-            System.out.println("☠️ Forsaken Cultist " + i + " raises a cursed dagger!");
+            System.out.println("☠️ Forsaken Cultist " + i + " conjures a cursed dagger!");
             PrintUtil.hr();
             InputUtil.pressEnterToContinue();
 
@@ -220,7 +220,7 @@ public class World2 {
         // -------------------- Blight Hounds --------------------
         PrintUtil.effect("A low growl echoes from the halls ahead...");
         PrintUtil.type("""
-                From the black mist, two Blight Hounds leap forth,
+                From the black mist, three Blight Hounds leap forth,
                 their fangs glinting and bodies wrapped in poisonous clouds.
                 """);
 
@@ -466,12 +466,12 @@ public class World2 {
                 "                                                                                          ");
         PrintUtil.pause(1500);
 
-        System.out.println("                                                                                                                    \n" +
-                "                                                                                                                    \n" +
-                "██████ ██  ██ ██████   ▄█████ ▄████▄ █████▄  █████▄  ██  ██ █████▄ ██████ ██████ ████▄    ██ ▄█▀ ██ ███  ██  ▄████  \n" +
-                "  ██   ██████ ██▄▄     ██     ██  ██ ██▄▄██▄ ██▄▄██▄ ██  ██ ██▄▄█▀   ██   ██▄▄   ██  ██   ████   ██ ██ ▀▄██ ██  ▄▄▄ \n" +
-                "  ██   ██  ██ ██▄▄▄▄   ▀█████ ▀████▀ ██   ██ ██   ██ ▀████▀ ██       ██   ██▄▄▄▄ ████▀    ██ ▀█▄ ██ ██   ██  ▀███▀  \n" +
-                "                                                                                                                    ");
+        System.out.println("                                                                                                                                                                     \n" +
+                "                                                                                                                                                                     \n" +
+                "██     ██  ██ ██████ ██  ██ ██████ █████▄        ██████ ██  ██ ██████   ▄█████ ▄████▄ █████▄  █████▄  ██  ██ █████▄ ██████ ██████ ████▄    ██ ▄█▀ ██ ███  ██  ▄████  \n" +
+                "██     ██  ██   ██   ██████ ██▄▄   ██▄▄██▄         ██   ██████ ██▄▄     ██     ██  ██ ██▄▄██▄ ██▄▄██▄ ██  ██ ██▄▄█▀   ██   ██▄▄   ██  ██   ████   ██ ██ ▀▄██ ██  ▄▄▄ \n" +
+                "██████ ▀████▀   ██   ██  ██ ██▄▄▄▄ ██   ██  ▄      ██   ██  ██ ██▄▄▄▄   ▀█████ ▀████▀ ██   ██ ██   ██ ▀████▀ ██       ██   ██▄▄▄▄ ████▀    ██ ▀█▄ ██ ██   ██  ▀███▀  \n" +
+                "                                           ▀                                                                                                                         ");
 
         System.out.println("===========================================================================");
         PrintUtil.type(
