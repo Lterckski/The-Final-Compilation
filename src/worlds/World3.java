@@ -10,6 +10,7 @@ import utils.PrintUtil;
 public class World3 {
 
     public void run(Character player) {
+        PrintUtil.pause(2000);
         System.out.println();
         System.out.println("                                                      ╦ ╦╔═╗╦═╗╦  ╔╦╗  ═╗");
         System.out.println("╔════════════════════════════════════════════════════ ║║║║ ║╠╦╝║   ║║  ═╣ ═══════════════════════════════════════════════════════════╗");
