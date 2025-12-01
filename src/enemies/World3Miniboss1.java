@@ -5,6 +5,7 @@ import inventory.Armor;
 import inventory.Bow;
 import inventory.Staff;
 import inventory.Sword;
+import utils.ColorUtil;
 import utils.PrintUtil;
 import utils.RandomUtil;
 
@@ -15,21 +16,27 @@ public class World3Miniboss1 extends Enemy {
     @Override
     public void displaySkills() {
         System.out.println();
-        System.out.println("┌──────────────────────────────── 🛡️🏰 THE TOWER WARDEN SKILLS 🏰🛡️ ───────────────────────────────┐");
-        System.out.println(" 🗡️ Skill 1 – Grave Cleaver");
-        System.out.println(" 📝 Description : The Tower Warden performs a deathly slash, inflicting pure damage to its victims.");
-        System.out.println(" 💥 Damage      : (" + (int)(attack * 1.00) + " — " + (int)(attack * 1.15) + ")");
-        System.out.println(" ✨ Effects     :");
-        System.out.println(" - 🔥 Inflicts pure damage, ignoring defense.\n");
+        System.out.println(ColorUtil.boldBrightRed("┌──────────────────────────────── 🛡️🏰 THE TOWER WARDEN SKILLS 🏰🛡️ ───────────────────────────────┐"));
 
-        System.out.println(" 🛡️ Skill 2 – Bone Shield");
-        System.out.println(" 📝 Description : The Tower Warden raises its shield, increasing its defenses.");
-        System.out.println(" 💥 Damage      : –");
-        System.out.println(" ✨ Effects     :");
-        System.out.println(" - 🛡️ Increases " + name + "'s DEF by 50 for 2 turns.");
-        System.out.println("└──────────────────────────────────────────────────────────────────────────────────────────────────┘");
+        // Skill 1
+        System.out.println(ColorUtil.boldBrightYellow("  🗡️ Skill – Grave Cleaver"));
+        System.out.println(ColorUtil.red(" 📜 Description : The Tower Warden performs a deathly slash, inflicting pure damage to its victims."));
+        System.out.println(ColorUtil.red(" 💥 Damage : (") + ColorUtil.boldBrightYellow((int)(attack * 1.00) + " — " + (int)(attack * 1.15)) + ColorUtil.red(")"));
+        System.out.println(ColorUtil.red(" ✨ Effects :"));
+        System.out.println(ColorUtil.red("    - 🔥 Inflicts pure damage, ignoring defense."));
+        System.out.println();
+
+        // Skill 2
+        System.out.println(ColorUtil.boldBrightYellow("  🛡️ Skill – Bone Shield"));
+        System.out.println(ColorUtil.red(" 📜 Description : The Tower Warden raises its shield, increasing its defenses."));
+        System.out.println(ColorUtil.red(" 💥 Damage : –"));
+        System.out.println(ColorUtil.red(" ✨ Effects :"));
+        System.out.println(ColorUtil.red("    - 🛡️ Increases " + name + "'s DEF by 50 for 2 turns."));
+
+        System.out.println(ColorUtil.boldBrightRed("└──────────────────────────────────────────────────────────────────────────────────────────────────┘"));
         System.out.println();
     }
+
 
 
     public void graveCleaver(Character target) {
@@ -67,8 +74,9 @@ public class World3Miniboss1 extends Enemy {
     @Override
     public void dropLoot(Character player){
         PrintUtil.pause(800);
-        System.out.println("╦════════════════════════════════════╦");
-        System.out.println("  🎁 You received:");
+        System.out.println();
+        System.out.println(ColorUtil.boldBrightYellow("┬───────────────────────────────────┬"));
+        System.out.println(ColorUtil.brightYellow("  🎁 You received:"));
         player.lootSoulShards(10);
         player.getPotions().lootPotions(true);
         player.gainExp(rewardExp());

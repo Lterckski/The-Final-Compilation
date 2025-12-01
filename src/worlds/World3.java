@@ -3,6 +3,7 @@ package worlds;
 import enemies.*;
 import battle.Battle;
 import characters.Character;
+import events.PrefiEncounter;
 import utils.ColorUtil;
 import utils.InputUtil;
 import utils.PrintUtil;
@@ -75,7 +76,7 @@ public class World3 {
         System.out.println("                     :              .:                    ");
         System.out.println();
 
-        PrintUtil.type(ColorUtil.boldBrightMagenta(("🎯 Objective: Defeat 3 Flame Revenants!\n").toUpperCase()));
+        PrintUtil.type(ColorUtil.boldBrightMagenta((("🎯 Objective: Defeat 3 Flame Revenants!").toUpperCase())));
         InputUtil.pressEnterToContinue();
         PrintUtil.line();
 
@@ -157,7 +158,7 @@ public class World3 {
         System.out.println("                       .::-=+=:.                           ");
         System.out.println();
 
-        PrintUtil.type(ColorUtil.boldBrightMagenta(("🎯 Objective: Defeat 2 Bone Warlocks!\n").toUpperCase()));
+        PrintUtil.type(ColorUtil.boldBrightMagenta((("🎯 Objective: Defeat 2 Bone Warlocks!").toUpperCase())));
         InputUtil.pressEnterToContinue();
         PrintUtil.line();
 
@@ -223,7 +224,7 @@ public class World3 {
         System.out.println("       :+*********+++#%*+*%%*****==#+-+===+++++====:      ");
         System.out.println();
 
-        PrintUtil.type(ColorUtil.boldBrightMagenta(("🎯 Objective: Defeat 2 Obsidian Crushers!\n").toUpperCase()));
+        PrintUtil.type(ColorUtil.boldBrightMagenta((("🎯 Objective: Defeat 2 Obsidian Crushers!").toUpperCase())));
         InputUtil.pressEnterToContinue();
         PrintUtil.line();
 
@@ -299,7 +300,7 @@ public class World3 {
         System.out.println("      ..-@#.                           ..                  ");
         System.out.println();
 
-        PrintUtil.type(ColorUtil.boldBrightMagenta(("🎯 Objective: Defeat 3 Soulflayer Gargoyles!\n").toUpperCase()));
+        PrintUtil.type(ColorUtil.boldBrightMagenta((("🎯 Objective: Defeat 3 Soulflayer Gargoyles!").toUpperCase())));
         InputUtil.pressEnterToContinue();
         PrintUtil.line();
 
@@ -393,7 +394,7 @@ public class World3 {
         System.out.println("@@@@@@@@@@@@@@@@@@@@@@%#+.     .:+**#@@@@@@@@@@@@@@@@@@@@@@");
         System.out.println();
 
-        PrintUtil.type(ColorUtil.boldBrightMagenta(("🎯 Objective: Defeat Zyrryl, The Tower Warden!\n").toUpperCase()));
+        PrintUtil.type(ColorUtil.boldBrightMagenta((("🎯 Objective: Defeat Zyrryl, The Tower Warden!").toUpperCase())));
         InputUtil.pressEnterToContinue();
         PrintUtil.line();
 
@@ -429,7 +430,8 @@ public class World3 {
                 """);
 
         PrintUtil.title("🌩 PRE-FINAL BOSS RANDOM ENCOUNTER");
-        // TODO : call method
+        PrefiEncounter prefiEncounter = new PrefiEncounter();
+        prefiEncounter.start(player);
 
         // --- Boss: the revelation ---
         PrintUtil.title("BOSS — Sir Khai, the Necromancer");

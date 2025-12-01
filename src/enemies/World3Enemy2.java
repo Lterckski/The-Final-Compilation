@@ -2,6 +2,7 @@ package enemies;
 
 import characters.Character;
 import inventory.Armor;
+import utils.ColorUtil;
 import utils.PrintUtil;
 import utils.RandomUtil;
 
@@ -47,12 +48,13 @@ public class World3Enemy2 extends Enemy {
     @Override
     public void displaySkills() {
         System.out.println();
-        System.out.println("┌───────────────────────────── 💀 BONE WARLOCK SKILLS 💀 ────────────────────────────┐");
-        System.out.println(" 📝 Description : Bone Warlock casts Shadow Bolt, reducing the target's attack damage.");
-        System.out.println(" 💥 Damage      : (" + (int)(attack * 1.00) + " — " + (int)(attack * 1.25) + ")");
-        System.out.println(" ✨ Effects     :");
-        System.out.println(" - ⚔️ 30% chance to apply ATK Debuff: reduces target's damage by 30%");
-        System.out.println("└────────────────────────────────────────────────────────────────────────────────────┘");
+        System.out.println(ColorUtil.boldBrightRed("┌───────────────────────────── 💀 BONE WARLOCK SKILLS 💀 ────────────────────────────┐"));
+        System.out.println(ColorUtil.boldBrightYellow("  💀 Skill – Shadow Bolt"));
+        System.out.println(ColorUtil.red(" 📜 Description : Bone Warlock casts Shadow Bolt, reducing the target's attack damage."));
+        System.out.println(ColorUtil.red(" 💥 Damage : (") + ColorUtil.boldBrightYellow((int)(attack * 1.00) + " — " + (int)(attack * 1.25)) + ColorUtil.red(")"));
+        System.out.println(ColorUtil.red(" ✨ Effects :"));
+        System.out.println(ColorUtil.red("    - ⚔️ 30% chance to apply ATK Debuff: reduces target's damage by 30%"));
+        System.out.println(ColorUtil.boldBrightRed("└────────────────────────────────────────────────────────────────────────────────────┘"));
         System.out.println();
     }
 
@@ -64,8 +66,9 @@ public class World3Enemy2 extends Enemy {
     @Override
     public void dropLoot(Character player){
         PrintUtil.pause(800);
-        System.out.println("┬───────────────────────────────────┬");
-        System.out.println("  🎁 You received:");
+        System.out.println();
+        System.out.println(ColorUtil.boldBrightYellow("┬───────────────────────────────────┬"));
+        System.out.println(ColorUtil.brightYellow("  🎁 You received:"));
         player.lootSoulShards(RandomUtil.range(2,4));
         player.getPotions().lootPotions(false);
         player.gainExp(rewardExp());

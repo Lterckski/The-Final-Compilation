@@ -181,13 +181,12 @@ public class Battle {
 
                 System.out.println(ColorUtil.boldBrightGreen("── YOUR TURN ──"));
                 player.turn(enemy);
-            } else {
-                InputUtil.pressEnterToContinue();
             }
 
             // Apply poison/burn etc. after action
             player.getEffects().updateDoTEffects();
             PrintUtil.line();
+            InputUtil.pressEnterToContinue();
 
             if (!enemy.isAlive()) {
                 //System.out.println("🔥 You defeated " + enemy.getName() + "!");

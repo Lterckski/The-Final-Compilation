@@ -1,6 +1,7 @@
 package enemies;
 
 import characters.Character;
+import utils.ColorUtil;
 import utils.InputUtil;
 import utils.PrintUtil;
 import utils.RandomUtil;
@@ -87,26 +88,34 @@ public class World2Miniboss2 extends Enemy {
     @Override
     public void displaySkills() {
         System.out.println();
-        System.out.println("┌──────────────────────────── 👑 THE CORRUPTED KING SKILLS 👑 ──────────────────────────────┐");
-        System.out.println(" 💀 Skill 1    : Crown of Despair");
-        System.out.println(" 📝 Description: The Corrupted King raises his crown, instilling fear and weakening his foe.");
-        System.out.println(" 💥 Damage    : —");
-        System.out.println(" ✨ Effects   :");
-        System.out.println(" - ⚔️ Reduces hero’s ATK by 20% for 2 turns (Weaken)\n");
+        System.out.println(ColorUtil.boldBrightRed("┌──────────────────────────── 👑 THE CORRUPTED KING SKILLS 👑 ──────────────────────────────┐"));
 
-        System.out.println(" 🌑 Skill 2    : Dark Judgement");
-        System.out.println(" 📝 Description: A shadowy strike that crushes the hero with dark energy.");
-        System.out.println(" 💥 Damage    : (" + (int)(attack * 1.0) + " — " + (int)(attack * 1.15) + ")");
-        System.out.println(" ✨ Effects   : —\n");
+        // Skill 1
+        System.out.println(ColorUtil.boldBrightYellow("  💀 Skill 1 – Crown of Despair"));
+        System.out.println(ColorUtil.red(" 📜 Description : The Corrupted King raises his crown, instilling fear and weakening his foe."));
+        System.out.println(ColorUtil.red(" 💥 Damage : —"));
+        System.out.println(ColorUtil.red(" ✨ Effects :"));
+        System.out.println(ColorUtil.red("    - ⚔️ Reduces hero’s ATK by 20% for 2 turns (Weaken)"));
+        System.out.println();
 
-        System.out.println(" 🔥 Skill 3    : King’s Wrath");
-        System.out.println(" 📝 Description: The Corrupted King unleashes a furious strike, overwhelming his enemy.");
-        System.out.println(" 💥 Damage    : (" + (int)(attack * 0.71) + " — " + (int)(attack * 0.85) + ")");
-        System.out.println(" ✨ Effects   :");
-        System.out.println(" - ⚡ 30% chance to Stun the target");
-        System.out.println("└────────────────────────────────────────────────────────────────────────────────────────┘");
+        // Skill 2
+        System.out.println(ColorUtil.boldBrightYellow("  🌑 Skill 2 – Dark Judgement"));
+        System.out.println(ColorUtil.red(" 📜 Description : A shadowy strike that crushes the hero with dark energy."));
+        System.out.println(ColorUtil.red(" 💥 Damage : (") + ColorUtil.boldBrightYellow((int)(attack * 1.0) + " — " + (int)(attack * 1.15)) + ColorUtil.red(")"));
+        System.out.println(ColorUtil.red(" ✨ Effects : —"));
+        System.out.println();
+
+        // Skill 3
+        System.out.println(ColorUtil.boldBrightYellow("  🔥 Ultimate – King’s Wrath"));
+        System.out.println(ColorUtil.red(" 📜 Description : The Corrupted King unleashes a furious strike, overwhelming his enemy."));
+        System.out.println(ColorUtil.red(" 💥 Damage : (") + ColorUtil.boldBrightYellow((int)(attack * 0.71) + " — " + (int)(attack * 0.85)) + ColorUtil.red(")"));
+        System.out.println(ColorUtil.red(" ✨ Effects :"));
+        System.out.println(ColorUtil.red("    - ⚡ 30% chance to Stun the target"));
+
+        System.out.println(ColorUtil.boldBrightRed("└────────────────────────────────────────────────────────────────────────────────────────┘"));
         System.out.println();
     }
+
 
 
     @Override
@@ -123,8 +132,9 @@ public class World2Miniboss2 extends Enemy {
     @Override
     public void dropLoot(Character player){
         PrintUtil.pause(800);
-        System.out.println("╦════════════════════════════════════╦");
-        System.out.println("  🎁 You received:");
+        System.out.println();
+        System.out.println(ColorUtil.boldBrightYellow("┬───────────────────────────────────┬"));
+        System.out.println(ColorUtil.brightYellow("  🎁 You received:"));
         player.lootSoulShards(14);
         player.getPotions().lootPotions(true);
         player.gainExp(rewardExp());

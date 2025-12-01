@@ -2,6 +2,7 @@ package enemies;
 
 import characters.Character;
 import inventory.Armor;
+import utils.ColorUtil;
 import utils.PrintUtil;
 import utils.RandomUtil;
 
@@ -39,12 +40,13 @@ public class World3Enemy4 extends Enemy {
     @Override
     public void displaySkills() {
         System.out.println();
-        System.out.println("┌───────────────────────────── 🦇 SOULFLAYER GARGOYLE SKILLS 🦇 ────────────────────────────┐");
-        System.out.println(" 📝 Description : Soulflayer Gargoyle unleashes a soul-crushing scream, confusing its victim.");
-        System.out.println(" 💥 Damage      : (" + (int)(attack * 1.00) + " — " + (int)(attack * 1.20) + ")");
-        System.out.println(" ✨ Effects     :");
-        System.out.println(" - 😵 Confuses the target");
-        System.out.println("└────────────────────────────────────────────────────────────────────────────────────────────┘");
+        System.out.println(ColorUtil.boldBrightRed("┌───────────────────────────── 🦇 SOULFLAYER GARGOYLE SKILLS 🦇 ────────────────────────────┐"));
+        System.out.println(ColorUtil.boldBrightYellow("  🦇 Skill – Soul Scream"));
+        System.out.println(ColorUtil.red(" 📜 Description : Soulflayer Gargoyle unleashes a soul-crushing scream, confusing its victim."));
+        System.out.println(ColorUtil.red(" 💥 Damage : (") + ColorUtil.boldBrightYellow((int)(attack * 1.00) + " — " + (int)(attack * 1.20)) + ColorUtil.red(")"));
+        System.out.println(ColorUtil.red(" ✨ Effects :"));
+        System.out.println(ColorUtil.red("    - 😵 Confuses the target"));
+        System.out.println(ColorUtil.boldBrightRed("└────────────────────────────────────────────────────────────────────────────────────────────┘"));
         System.out.println();
     }
 
@@ -56,8 +58,9 @@ public class World3Enemy4 extends Enemy {
     @Override
     public void dropLoot(Character player){
         PrintUtil.pause(800);
-        System.out.println("┬───────────────────────────────────┬");
-        System.out.println("  🎁 You received:");
+        System.out.println();
+        System.out.println(ColorUtil.boldBrightYellow("┬───────────────────────────────────┬"));
+        System.out.println(ColorUtil.brightYellow("  🎁 You received:"));
         player.lootSoulShards(RandomUtil.range(2,4));
         player.getPotions().lootPotions(false);
         player.gainExp(rewardExp());

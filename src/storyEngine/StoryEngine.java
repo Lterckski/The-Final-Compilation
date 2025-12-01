@@ -6,6 +6,7 @@ import inventory.Armor;
 import inventory.Bow;
 import inventory.Staff;
 import inventory.Sword;
+import utils.ColorUtil;
 import utils.InputUtil;
 import utils.PrintUtil;
 import worlds.*;
@@ -256,17 +257,21 @@ public class StoryEngine {
                     Kael kael = new Kael();
                     if (characterMenu(kael)) {
                         player = kael;
-                        PrintUtil.line();
-                        System.out.println("⚔️ You have chosen " + player.getName() + ", the valiant Swordsman!");
+
+                        System.out.println(ColorUtil.boldBrightCyan("┌────────────────────────────────────────────────────────────────┐"));
+                        System.out.println(ColorUtil.boldBrightCyan("  ⚔️ You have chosen " + player.getName().toUpperCase() + ", the valiant Swordsman! "));
+                        System.out.println(ColorUtil.boldBrightCyan("└────────────────────────────────────────────────────────────────┘"));
+
                         kael.showBackstory();
-                        PrintUtil.line();
+
                         System.out.println("✨ The gods bestow upon you your starting gear...");
                         player.getInventory().setEquippedWeapon(Sword.OLD_BROADSWORD);
                         player.getInventory().setEquippedArmor(Armor.LEATHER_GUARD);
-                        System.out.println("🗡️ *The --" + player.getInventory().getEquippedWeapon().getName() + "-- rests firmly in your grasp, its blade marked by the scars of past battles.*");
-                        System.out.println("🛡️ *The --" + player.getInventory().getEquippedArmor().getName() + "-- fits perfectly, worn yet dependable — a true warrior’s first defense.*");
-                        System.out.println("⚡ Strength surges through your veins as your journey begins...");
+                        System.out.println(ColorUtil.boldBrightYellow("🗡️ *The --" + player.getInventory().getEquippedWeapon().getName() + "-- rests firmly in your grasp, its blade marked by the scars of past battles.*"));
+                        System.out.println(ColorUtil.boldBrightYellow("🛡️ *The --" + player.getInventory().getEquippedArmor().getName() + "-- fits perfectly, worn yet dependable — a true warrior’s first defense.*"));
+                        System.out.println(ColorUtil.boldBrightYellow("⚡ Strength surges through your veins as your journey begins..."));
                         PrintUtil.line();
+                        InputUtil.pressEnterToContinue();
 
                         PrintUtil.pause(1000);
                         System.out.println();
@@ -313,18 +318,22 @@ public class StoryEngine {
                     Karl karl = new Karl();
                     if (characterMenu(karl)) {
                         player = karl;
-                        PrintUtil.line();
-                        System.out.println("🏹 You have chosen " + player.getName() + ", the sharp-eyed Archer!");
+
+                        System.out.println(ColorUtil.boldBrightCyan("┌──────────────────────────────────────────────────────────────────┐"));
+                        System.out.println(ColorUtil.boldBrightCyan("  🏹 You have chosen " + player.getName() .toUpperCase()+ ", the sharp-eyed Archer! "));
+                        System.out.println(ColorUtil.boldBrightCyan("└──────────────────────────────────────────────────────────────────┘"));
+
                         karl.showBackstory();
-                        PrintUtil.line();
+
                         System.out.println("🌬️ The winds whisper and bless you with your starting equipment...");
                         player.getInventory().setEquippedWeapon(Bow.WOODEN_BOW);
                         player.getInventory().setEquippedArmor(Armor.LEATHER_GUARD);
-                        System.out.println("🏹 *The --" + player.getInventory().getEquippedWeapon().getName() + "-- hums softly as you draw the string — eager to strike true.*");
-                        System.out.println("🛡️ *The --" + player.getInventory().getEquippedArmor().getName() + "-- wraps around you lightly, offering freedom and silent agility.*");
-                        System.out.println("✨ *You are granted a --Magic Quiver--, filled with arrows that regenerate through ancient magic.*");
+                        System.out.println(ColorUtil.boldBrightYellow("🏹 *The --" + player.getInventory().getEquippedWeapon().getName() + "-- hums softly as you draw the string — eager to strike true.*"));
+                        System.out.println(ColorUtil.boldBrightYellow("🛡️ *The --" + player.getInventory().getEquippedArmor().getName() + "-- wraps around you lightly, offering freedom and silent agility.*"));
+                        System.out.println(ColorUtil.boldBrightYellow("✨ *You are granted a --Magic Quiver--, filled with arrows that regenerate through ancient magic.*"));
                         System.out.println("🌿 The forest seems to watch over you as your path unfolds...");
                         PrintUtil.line();
+                        InputUtil.pressEnterToContinue();
 
                         PrintUtil.pause(1000);
                         System.out.println();
@@ -370,17 +379,21 @@ public class StoryEngine {
                     Simon simon = new Simon();
                     if (characterMenu(simon)) {
                         player = simon;
-                        PrintUtil.line();
-                        System.out.println("🧙‍♂️ You have chosen " + player.getName() + ", the wise Mage!");
+
+                        System.out.println(ColorUtil.boldBrightCyan("┌───────────────────────────────────────────────────────────────┐"));
+                        System.out.println(ColorUtil.boldBrightCyan("        🧙‍♂️ You have chosen " + player.getName().toUpperCase() + ", the wise Mage! "));
+                        System.out.println(ColorUtil.boldBrightCyan("└───────────────────────────────────────────────────────────────┘"));
+
                         simon.showBackstory();
-                        PrintUtil.line();
+
                         System.out.println("✨ The arcane forces converge to gift you ancient relics of power...");
                         player.getInventory().setEquippedWeapon(Staff.WOODEN_STAFF);
                         player.getInventory().setEquippedArmor(Armor.LEATHER_GUARD);
-                        System.out.println("🔮 *The --" + player.getInventory().getEquippedWeapon().getName() + "-- pulses faintly, whispering secrets of forgotten spells.*");
-                        System.out.println("🛡️ *The --" + player.getInventory().getEquippedArmor().getName() + "-- shimmers with faint runes — fragile, yet brimming with arcane energy.*");
+                        System.out.println(ColorUtil.boldBrightYellow("🔮 *The --" + player.getInventory().getEquippedWeapon().getName() + "-- pulses faintly, whispering secrets of forgotten spells.*"));
+                        System.out.println(ColorUtil.boldBrightYellow("🛡️ *The --" + player.getInventory().getEquippedArmor().getName() + "-- shimmers with faint runes — fragile, yet brimming with arcane energy.*"));
                         System.out.println("💫 Magic stirs in the air around you as your journey begins...");
                         PrintUtil.line();
+                        InputUtil.pressEnterToContinue();
 
                         PrintUtil.pause(1000);
                         System.out.println();

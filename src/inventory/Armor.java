@@ -1,9 +1,12 @@
 package inventory;
 
 import characters.Character;
+import utils.ColorUtil;
 import utils.InputUtil;
 import utils.PrintUtil;
 import utils.RandomUtil;
+
+import java.awt.*;
 
 public class Armor {
     private final String name;
@@ -48,7 +51,7 @@ public class Armor {
     }
 
     public boolean lootArmor() {
-        System.out.println("\n🎁 Target has dropped an armor!");
+        System.out.println(ColorUtil.boldBrightYellow("\n🎁 Enemy has dropped an armor!"));
         PrintUtil.pause(800);
         this.displayInfo();
 
@@ -70,17 +73,17 @@ public class Armor {
                     int confirm = InputUtil.scanInput();
 
                     if (confirm == 1) {
-                        System.out.println("You ignored the armor.");
+                        System.out.println(ColorUtil.boldBrightRed("You ignored the armor..."));
                     } else if (confirm == 0) {
                         validChoice = false; // go back to pick up question
                     } else {
-                        System.out.println("❌ Invalid input! Try again.");
+                        System.out.println(ColorUtil.boldBrightRed("❌ Invalid input! Try again."));
                         validConfirm = false;
                     }
                 } while (!validConfirm);
 
             } else {
-                System.out.println("❌ Invalid input! Try again.");
+                System.out.println(ColorUtil.boldBrightRed("❌ Invalid input! Try again."));
                 validChoice = false;
             }
 
@@ -98,7 +101,7 @@ public class Armor {
             player.setDefense(player.getDefense() + defBuff);
             isEquipped = true;
             player.getInventory().setEquippedArmor(this);
-            System.out.println("⚙\uFE0F " + name + " Equipped! ⬆\uFE0F Defense increased by " + defBuff + ". 🛡️ Current DEF: " + player.getDefense());
+            System.out.println(ColorUtil.boldBrightYellow("⚙\uFE0F " + name + " Equipped! ⬆\uFE0F Defense increased by " + defBuff + ". 🛡️ Current DEF: " + player.getDefense()));
         } else {
             currentlyEquipped.unequip(player);
 
@@ -107,7 +110,7 @@ public class Armor {
             player.getInventory().setEquippedArmor(this);
 
             System.out.println("You upgraded your armor!");
-            System.out.println("⚙\uFE0F " + name + " Equipped! ⬆\uFE0F Defense increased by " + (this.defBuff - currentlyEquipped.defBuff) + ". 🛡️ Current DEF: " + player.getDefense());
+            System.out.println(ColorUtil.boldBrightYellow("⚙\uFE0F " + name + " Equipped! ⬆\uFE0F Defense increased by " + (this.defBuff - currentlyEquipped.defBuff) + ". 🛡️ Current DEF: " + player.getDefense()));
         }
         PrintUtil.line();
         PrintUtil.pause(800);
@@ -120,30 +123,31 @@ public class Armor {
 
     public void displayInfo() {
         System.out.println();
-        System.out.println("═════════════════════════════════════");
-        System.out.println(" 🛡️ " + name + " [" + rarity + "]");
-        System.out.println("  + " + defBuff + " DEF");
+        System.out.println(ColorUtil.boldBrightCyan("═════════════════════════════════════"));
+        System.out.println(ColorUtil.boldBrightYellow(" 🛡️ " + name + " [" + rarity + "]"));
+        System.out.println(ColorUtil.boldBrightYellow("  + " + defBuff + " DEF"));
 
         // Immunities
-        if(immuneDebuff) {
-            System.out.println(" ✨ Immune to: (ATK ↓)⚔️ & (DEF ↓)🛡️ Debuffs");
+        if (immuneDebuff) {
+            System.out.println(ColorUtil.boldBrightYellow(" ✨ Immune to: (ATK ↓)⚔️ & (DEF ↓)🛡️ Debuffs"));
         }
         if (immuneEffects) {
-            System.out.println(" ✨ Immune to: Poison☠️, Burn🔥, and Bleed🩸");
+            System.out.println(ColorUtil.boldBrightYellow(" ✨ Immune to: Poison☠️, Burn🔥, and Bleed🩸"));
         }
 
         if (reflectChance > 0) {
-            System.out.println(" 🛡️ " + reflectChance + "% chance to reflect " + reflectPercent + "% damage back to attacker");
+            System.out.println(ColorUtil.boldBrightYellow(" 🛡️ " + reflectChance + "% chance to reflect " + reflectPercent + "% damage back to attacker"));
         }
 
         if (hasEnchantment) {
-            System.out.println(" ✨ Enchantments:");
-                System.out.println("   - 🛡️ Fortified Plating (+10 Armor DEF)");
+            System.out.println(ColorUtil.boldBrightYellow(" ✨ Enchantments:"));
+            System.out.println(ColorUtil.boldBrightYellow("   - 🛡️ Fortified Plating (+10 Armor DEF)"));
         }
 
-        System.out.println("═════════════════════════════════════");
+        System.out.println(ColorUtil.boldBrightCyan("═════════════════════════════════════"));
         System.out.println();
     }
+
 
     public boolean checkDebuffImmunity(){
         return immuneDebuff;

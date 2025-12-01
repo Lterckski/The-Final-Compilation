@@ -7,6 +7,8 @@ import utils.InputUtil;
 import utils.PrintUtil;
 import utils.RandomUtil;
 
+import java.awt.*;
+
 public class Kael extends  Character{      // 15% crit chance
 
     public Kael() {
@@ -49,28 +51,30 @@ public class Kael extends  Character{      // 15% crit chance
         System.out.println();
     }
 
-
     public void showBackstory() {
-        PrintUtil.line();
-        System.out.println("Kael Saint Laurent was born in the shadow of the Black Castle, in a family");
-        System.out.println("that lived modestly within the crumbling Town of Decay. His childhood was");
-        System.out.println("marked by sickness in the streets and guards demanding bribes, yet Kael never");
-        System.out.println("let the rot of the world steal his spirit. He spent hours watching the castle");
-        System.out.println("soldiers train, imitating their sword movements with sticks until his hands");
-        System.out.println("blistered, slowly turning mimicry into skill.");
         System.out.println();
-        System.out.println("Even as a child, he carried himself with the bearing of a leader. Kael would");
-        System.out.println("gather the other children of the town into ragtag games of knights and kings,");
-        System.out.println("but unlike the corrupted rulers above, he always played the protector—");
-        System.out.println("shielding his friends from imagined dangers. In a place where hope was rare,");
-        System.out.println("Kael's presence became a quiet anchor, hinting that even in the midst of");
-        System.out.println("decay, someone could rise to stand against the darkness.");
+        System.out.println(ColorUtil.boldBrightCyan  ("┌───────────────────────────── 📘 KAEL'S BACKSTORY 📘 ─────────────────────────────┐"));
+        System.out.println(ColorUtil.brightYellow("  Kael Saint Laurent was born in the shadow of the Black Castle, in a family that"));
+        System.out.println(ColorUtil.brightYellow("  lived modestly within the crumbling Town of Decay. His childhood was"));
+        System.out.println(ColorUtil.brightYellow("  marked by sickness in the streets and guards demanding bribes, yet Kael never"));
+        System.out.println(ColorUtil.brightYellow("  let the rot of the world steal his spirit. He spent hours watching the castle"));
+        System.out.println(ColorUtil.brightYellow("  soldiers train, imitating their sword movements with sticks until his hands"));
+        System.out.println(ColorUtil.brightYellow("  blistered, slowly turning mimicry into skill."));
+        System.out.println();
+        System.out.println(ColorUtil.brightYellow("  Even as a child, he carried himself with the bearing of a leader. Kael would"));
+        System.out.println(ColorUtil.brightYellow("  gather the other children of the town into ragtag games of knights and kings,"));
+        System.out.println(ColorUtil.brightYellow("  but unlike the corrupted rulers above, he always played the protector—"));
+        System.out.println(ColorUtil.brightYellow("  shielding his friends from imagined dangers. In a place where hope was rare,"));
+        System.out.println(ColorUtil.brightYellow("  Kael's presence became a quiet anchor, hinting that even in the midst of"));
+        System.out.println(ColorUtil.brightYellow("  decay, someone could rise to stand against the darkness."));
+        System.out.println(ColorUtil.brightYellow("└──────────────────────────────────────────────────────────────────────────────────┘"));
+        System.out.println();
     }
 
     // Passive - Blade Swift
     private int bladeSwift(int damage) {
         if (RandomUtil.chance(15)) {
-            System.out.println("⚡ Critical Hit! Blade Swift activated!");
+            System.out.println(ColorUtil.brightMagenta("⚡ Critical Hit! Blade Swift activated!"));
             PrintUtil.pause(800);
             damage = (int) (damage * 1.5);
 
@@ -78,8 +82,7 @@ public class Kael extends  Character{      // 15% crit chance
             int energyGained = (int)(maxEnergy * 0.05);
             energy += energyGained;
             if (energy > maxEnergy) energy = maxEnergy;
-            System.out.println("✨ Gained +" + energyGained + " energy from precision! ("
-                    + energy + "/" + maxEnergy + ")");
+            System.out.println(ColorUtil.brightMagenta("✨ Gained +" + energyGained + " energy from precision! (" + energy + "/" + maxEnergy + ")"));
             PrintUtil.pause(800);
         }
         return damage;
@@ -89,7 +92,7 @@ public class Kael extends  Character{      // 15% crit chance
     public void bladeRush(Character target){
         int energyCost = 5;
         if(!consumeEnergy(energyCost)){
-            System.out.println("❌ Not enough Stamina to use Blade Rush!");
+            System.out.println(ColorUtil.boldBrightRed("❌ Not enough Stamina to use Blade Rush!"));
             PrintUtil.pause(800);
             return;
         }
@@ -119,7 +122,7 @@ public class Kael extends  Character{      // 15% crit chance
     public void piercingSlash(Character target){
         int energyCost = 10;
         if(!consumeEnergy(energyCost)){
-            System.out.println("❌ Not enough Stamina to use Piercing Slash!");
+            System.out.println(ColorUtil.boldBrightRed("❌ Not enough Stamina to use Piercing Slash!"));
             PrintUtil.pause(800);
             return;
         }
@@ -149,7 +152,7 @@ public class Kael extends  Character{      // 15% crit chance
     public void eternalCrossSlash(Character target){
         int energyCost = 20;
         if (!consumeEnergy(energyCost)) {
-            System.out.println("❌ Not enough Stamina to use Eternal Cross Slash!");
+            System.out.println(ColorUtil.boldBrightRed("❌ Not enough Stamina to use Eternal Cross Slash!"));
             PrintUtil.pause(800);
             return;
         }
@@ -211,7 +214,7 @@ public class Kael extends  Character{      // 15% crit chance
                     case 4 -> { skipTurn(); isValid = true; ultimateCounter--; }
                     case 5 -> displayMenu(this, target);
                     default -> {
-                        System.out.println(ColorUtil.red("❌ Invalid action! You missed your turn."));
+                        System.out.println(ColorUtil.boldBrightRed("❌ Invalid action! You missed your turn."));
                         PrintUtil.pause(800);
                         isValid = true;
                         ultimateCounter--;
@@ -236,7 +239,7 @@ public class Kael extends  Character{      // 15% crit chance
                     case 4 -> { skipTurn(); isValid = true; }
                     case 5 -> displayMenu(this, target);
                     default -> {
-                        System.out.println(ColorUtil.red("❌ Invalid action! You missed your turn."));
+                        System.out.println(ColorUtil.boldBrightRed("❌ Invalid action! You missed your turn."));
                         PrintUtil.pause(800);
                         isValid = true;
                     }

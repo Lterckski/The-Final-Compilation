@@ -1,6 +1,7 @@
 package battle;
 
 import characters.Character;
+import utils.ColorUtil;
 import utils.PrintUtil;
 
 import java.util.ArrayList;
@@ -47,49 +48,48 @@ public class Effects {
     // ------------------- APPLY STATUS/EFFECTS -------------------
     public void applyFreeze() {
         frozen = true;
-        System.out.println("❄️ Target is Frozen solid and skips their turn!");
+        System.out.println(ColorUtil.brightMagenta("❄️ Target is Frozen solid and skips their turn!"));
         PrintUtil.pause(800);
     }
 
     public void applyStun() {
         stunned = true;
-        System.out.println("💫 Target is Stunned and can't act!");
+        System.out.println(ColorUtil.brightMagenta("💫 Target is Stunned and can't act!"));
         PrintUtil.pause(800);
     }
 
     public void applyImmobilize() {
         immobilized = true;
-        System.out.println("⛓️ Target is Immobilized and cannot move!");
+        System.out.println(ColorUtil.brightMagenta("⛓️ Target is Immobilized and cannot move!"));
         PrintUtil.pause(800);
     }
 
     public void applyConfuse() {
         confused = true;
-        System.out.println("💭 Target is Confused and might miss their next attack!");
+        System.out.println(ColorUtil.brightMagenta("💭 Target is Confused and might miss their next attack!"));
         PrintUtil.pause(800);
     }
 
     public void applyFear() {
         feared = true;
         confused = true; // Fear also confuses the target
-        System.out.println("😱 Target is Terrified by Fear, skips their turn, and becomes Confused!");
+        System.out.println(ColorUtil.boldBrightMagenta("😱 Target is Terrified by Fear, skips their turn, and becomes Confused!"));
         PrintUtil.pause(800);
     }
 
     public void applyNimble() {
         nimble = true;
-        System.out.println("⚡ You become Nimble and may dodge the next attack!");
+        System.out.println(ColorUtil.brightMagenta("⚡ You become Nimble and may dodge the next attack!"));
         PrintUtil.pause(800);
     }
 
     // ------------------- APPLY BUFFS/DEBUFFS -------------------
-
     public void applyAttackBuff(int percent, int duration) {
         int amount = (int) Math.round(owner.getAttack() * (percent / 100.0));
         atkBuffs.add(new StatModifier(amount, duration+1));
         owner.setAttack(owner.getAttack() + amount);
 
-        System.out.println("💪 Strengthen activated! +" + percent + "% ATK for " + duration + " turn/s!");
+        System.out.println(ColorUtil.brightMagenta("💪 Strengthen activated! +" + percent + "% ATK for " + duration + " turn/s!"));
         PrintUtil.pause(800);
     }
 
@@ -98,7 +98,7 @@ public class Effects {
         atkDebuffs.add(new StatModifier(amount, duration+1));
         owner.setAttack(owner.getAttack() - amount);
 
-        System.out.println("💢 Weaken applied! -" + percent + "% ATK for " + duration + " turn/s!");
+        System.out.println(ColorUtil.brightMagenta("💢 Weaken applied! -" + percent + "% ATK for " + duration + " turn/s!"));
         PrintUtil.pause(800);
     }
 
@@ -107,7 +107,7 @@ public class Effects {
         defBuffs.add(new StatModifier(amount, duration+1));
         owner.setDefense(owner.getDefense() + amount);
 
-        System.out.println("🛡️ Fortified activated! +" + percent + "% DEF for " + duration + " turn/s!");
+        System.out.println(ColorUtil.brightMagenta("🛡️ Fortified activated! +" + percent + "% DEF for " + duration + " turn/s!"));
         PrintUtil.pause(800);
     }
 
@@ -116,7 +116,7 @@ public class Effects {
         defBuffs.add(new StatModifier(amount, duration));
         owner.setDefense(owner.getDefense() + amount);
 
-        System.out.println("🛡️ Shield activated! +" + amount + " DEF for " + duration + " turn/s!");
+        System.out.println(ColorUtil.brightMagenta("🛡️ Shield activated! +" + amount + " DEF for " + duration + " turn/s!"));
         PrintUtil.pause(800);
     }
 
@@ -125,32 +125,32 @@ public class Effects {
         defDebuffs.add(new StatModifier(amount, duration+1));
         owner.setDefense(owner.getDefense() - amount);
 
-        System.out.println("🔻 Fragile applied! -" + percent + "% DEF for " + duration + " turn/s!");
+        System.out.println(ColorUtil.brightMagenta("🔻 Fragile applied! -" + percent + "% DEF for " + duration + " turn/s!"));
         PrintUtil.pause(800);
     }
 
-
+    //-----------------------------------
     public void applyPoison(int turns) {
         poisonTurnsLeft += turns;
-        System.out.println("☠️ Target is poisoned for " + turns + " turn/s!");
+        System.out.println(ColorUtil.brightMagenta("☠️ Target is poisoned for " + turns + " turn/s!"));
         PrintUtil.pause(800);
     }
 
     public void applyBleed(int turns) {
         bleedInitialTurns += turns;
         bleedTurnsLeft += turns;
-        System.out.println("🩸 Target is bleeding for " + turns + " turn/s!");
+        System.out.println(ColorUtil.brightMagenta("🩸 Target is bleeding for " + turns + " turn/s!"));
         PrintUtil.pause(800);
     }
 
     public void applyBurn(int turns) {
         if(owner.getName().equals("Flame Revenant")){
-            System.out.println("❌ Target is Immune to Burn! Effect can't be applied");
+            System.out.println(ColorUtil.brightMagenta("❌ Target is Immune to Burn! Effect can't be applied"));
             PrintUtil.pause(800);
             return;
         }
         burnTurnsLeft += turns;
-        System.out.println("🔥 Target is burned for " + turns + " turn/s!");
+        System.out.println(ColorUtil.brightMagenta("🔥 Target is burned for " + turns + " turn/s!"));
         PrintUtil.pause(800);
     }
 
@@ -177,26 +177,26 @@ public class Effects {
     // ------------------- TURN CHECKS -------------------
     public boolean checkEffects() {
         if (frozen) {
-            System.out.println(owner.getName() + " is Frozen. TURN SKIPPED!");
+            System.out.println(ColorUtil.boldBrightMagenta(owner.getName() + " is Frozen. TURN SKIPPED!"));
             PrintUtil.pause(800);
             frozen = false;
             return false;
         }
         if (stunned) {
-            System.out.println(owner.getName() + " is Stunned. TURN SKIPPED!");
+            System.out.println(ColorUtil.boldBrightMagenta(owner.getName() + " is Stunned. TURN SKIPPED!"));
             PrintUtil.pause(800);
             stunned = false;
             return false;
         }
         if (immobilized) {
-            System.out.println(owner.getName() + " is Immobilized. Can only regain energy. TURN SKIPPED!");
+            System.out.println(ColorUtil.boldBrightMagenta(owner.getName() + " is Immobilized. Can only regain energy. TURN SKIPPED!"));
             PrintUtil.pause(800);
             owner.skipTurn();
             immobilized = false;
             return false;
         }
         if (feared) {
-            System.out.println(owner.getName() + " is Feared. Can only regain energy. TURN SKIPPED!");
+            System.out.println(ColorUtil.boldBrightMagenta(owner.getName() + " is Feared. Can only regain energy. TURN SKIPPED!"));
             PrintUtil.pause(800);
             owner.skipTurn();
             feared = false;
@@ -209,8 +209,9 @@ public class Effects {
         if (confused) {
             if (Math.random() < 0.50) {
                 PrintUtil.pause(1700);
-                System.out.println(owner.getName() + " missed the attack due to confusion!");
+                System.out.println(ColorUtil.boldBrightMagenta(owner.getName() + " missed the attack due to confusion!"));
                 PrintUtil.pause(800);
+                confused = false;
                 return true;
             }
             confused = false;
@@ -220,8 +221,8 @@ public class Effects {
 
     public boolean checkDodge() {
         if (nimble) {
-            if (Math.random() < .50) {
-                System.out.println(owner.getName() + " dodged the attack due to Nimble!");
+            if (Math.random() < 0.50) {
+                System.out.println(ColorUtil.boldBrightMagenta(owner.getName() + " dodged the attack due to Nimble!"));
                 PrintUtil.pause(800);
                 nimble = false;
                 return true;
@@ -239,7 +240,7 @@ public class Effects {
         // ----- POISON -----
         if (poisonTurnsLeft > 0) {
             int poisonDamage = Math.max(1, (int)(atk * 0.05)); // 5% of atk
-            System.out.println("☠ " + owner.getName() + " is poisoned! 💔 Took " + poisonDamage + " damage.");
+            System.out.println(ColorUtil.brightMagenta("☠ " + owner.getName() + " is poisoned! 💔 Took " + poisonDamage + " damage."));
             PrintUtil.pause(800);
             owner.takeDamage(poisonDamage);
             poisonTurnsLeft--;
@@ -251,8 +252,8 @@ public class Effects {
             int scalePercent = Math.min(4 + 2 * (bleedInitialTurns - bleedTurnsLeft), 16);
             int bleedDamage = Math.max(1, (atk * scalePercent) / 100);
 
-            System.out.println("🩸 " + owner.getName() + " is bleeding! 💔 Took "
-                    + bleedDamage + " damage (" + scalePercent + "% of ATK).");
+            System.out.println(ColorUtil.brightMagenta("🩸 " + owner.getName() + " is bleeding! 💔 Took "
+                    + bleedDamage + " damage (" + scalePercent + "% of ATK)."));
             PrintUtil.pause(800);
 
             owner.takeDamage(bleedDamage);
@@ -262,7 +263,7 @@ public class Effects {
         // ----- BURN -----
         if (burnTurnsLeft > 0) {
             int burnDamage = Math.max(1, (int)(atk * 0.06)); // 6% of atk
-            System.out.println("🔥 " + owner.getName() + " is burning! 💔 Took " + burnDamage + " damage.");
+            System.out.println(ColorUtil.brightMagenta("🔥 " + owner.getName() + " is burning! 💔 Took " + burnDamage + " damage."));
             PrintUtil.pause(800);
             owner.takeDamage(burnDamage);
             burnTurnsLeft--;
@@ -279,7 +280,7 @@ public class Effects {
             if (mod.turnsLeft <= 0) {
                 owner.setAttack(owner.getAttack() - mod.amount);
                 atkBuffs.remove(i);
-                System.out.println(owner.getName() + "'s attack buff has worn off!");
+                System.out.println(ColorUtil.boldBrightMagenta(owner.getName() + "'s attack buff has worn off!"));
                 PrintUtil.pause(800);
             }
         }
@@ -291,11 +292,12 @@ public class Effects {
             if (mod.turnsLeft <= 0) {
                 owner.setAttack(owner.getAttack() + mod.amount);
                 atkDebuffs.remove(i);
-                System.out.println(owner.getName() + "'s attack debuff has faded!");
+                System.out.println(ColorUtil.boldBrightMagenta(owner.getName() + "'s attack debuff has faded!"));
                 PrintUtil.pause(800);
             }
         }
     }
+
 
     // ------------------- UPDATE DEF BUFFS/DEBUFFS -------------------
     public void updateDefenseModifiers() {
@@ -306,7 +308,7 @@ public class Effects {
             if (mod.turnsLeft <= 0) {
                 owner.setDefense(owner.getDefense() - mod.amount);
                 defBuffs.remove(i);
-                System.out.println(owner.getName() + "'s defense buff has worn off!");
+                System.out.println(ColorUtil.boldBrightMagenta(owner.getName() + "'s defense buff has worn off!"));
                 PrintUtil.pause(800);
             }
         }
@@ -318,11 +320,12 @@ public class Effects {
             if (mod.turnsLeft <= 0) {
                 owner.setDefense(owner.getDefense() + mod.amount);
                 defDebuffs.remove(i);
-                System.out.println(owner.getName() + "'s defense debuff has faded!");
+                System.out.println(ColorUtil.boldBrightMagenta(owner.getName() + "'s defense debuff has faded!"));
                 PrintUtil.pause(800);
             }
         }
     }
+
 
     // ------------------- RESET ALL EFFECTS -------------------
     public void resetAllEffects() {

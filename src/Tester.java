@@ -149,11 +149,15 @@ public class Tester {
         } while (player == null);  // repeat until valid choice
         player.getInventory().setEquippedArmor(Armor.LEATHER_GUARD);
 
+
+        Enemy test = new World3Enemy4();
+        Battle testb = new Battle(player,test);
+
+        testb.startBattle();
+
         PrefiEncounter prefiEncounter = new PrefiEncounter();
         prefiEncounter.start(player);
 
-        Enemy test = new World2Miniboss2();
-        Battle testb = new Battle(player,test);
         /*
         Enemy testEnemy1 = new World1Enemy1();
         Battle testBattle1 = new Battle(player, testEnemy1);

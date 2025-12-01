@@ -1,6 +1,7 @@
 package enemies;
 
 import characters.Character;
+import utils.ColorUtil;
 import utils.InputUtil;
 import utils.PrintUtil;
 import utils.RandomUtil;
@@ -79,21 +80,27 @@ public class World2Miniboss1 extends Enemy{
     @Override
     public void displaySkills() {
         System.out.println();
-        System.out.println("┌──────────────────────────── ⛓️ THE BLACK JAILER SKILLS ⛓️ ─────────────────────────────┐");
-        System.out.println(" 🔗 Skill 1    : Shackling Chains");
-        System.out.println(" 📝 Description: The Black Jailer swings his chains to bind and cripple his opponent.");
-        System.out.println(" 💥 Damage    : (" + (int)(attack * 1.00) + " — " + (int)(attack * 1.33) + ")");
-        System.out.println(" ✨ Effects   :");
-        System.out.println(" - 🛑 30% chance to Immobilize the target\n");
+        System.out.println(ColorUtil.boldBrightRed("┌──────────────────────────── ⛓️ THE BLACK JAILER SKILLS ⛓️ ─────────────────────────────┐"));
 
-        System.out.println(" ⚡ Skill 2    : Tormenting Lash");
-        System.out.println(" 📝 Description: The Black Jailer lashes his whip, leaving his foe bleeding.");
-        System.out.println(" 💥 Damage    : (" + (int)(attack * 1.33) + " — " + (int)(attack * 1.73) + ")");
-        System.out.println(" ✨ Effects   :");
-        System.out.println(" - 🩸 30% chance to inflict Bleed for 2 turns");
-        System.out.println("└───────────────────────────────────────────────────────────────────────────────────────┘");
+        // Skill 1
+        System.out.println(ColorUtil.boldBrightYellow("  🔗 Skill 1 – Shackling Chains"));
+        System.out.println(ColorUtil.red(" 📜 Description : The Black Jailer swings his chains to bind and cripple his opponent."));
+        System.out.println(ColorUtil.red(" 💥 Damage : (") + ColorUtil.boldBrightYellow((int)(attack * 1.00) + " — " + (int)(attack * 1.33)) + ColorUtil.red(")"));
+        System.out.println(ColorUtil.red(" ✨ Effects :"));
+        System.out.println(ColorUtil.red("    - 🛑 30% chance to Immobilize the target"));
+        System.out.println();
+
+        // Skill 2
+        System.out.println(ColorUtil.boldBrightYellow("  ⚡ Skill 2 – Tormenting Lash"));
+        System.out.println(ColorUtil.red(" 📜 Description : The Black Jailer lashes his whip, leaving his foe bleeding."));
+        System.out.println(ColorUtil.red(" 💥 Damage : (") + ColorUtil.boldBrightYellow((int)(attack * 1.33) + " — " + (int)(attack * 1.73)) + ColorUtil.red(")"));
+        System.out.println(ColorUtil.red(" ✨ Effects :"));
+        System.out.println(ColorUtil.red("    - 🩸 30% chance to inflict Bleed for 2 turns"));
+
+        System.out.println(ColorUtil.boldBrightRed("└───────────────────────────────────────────────────────────────────────────────────────┘"));
         System.out.println();
     }
+
 
 
 
@@ -106,8 +113,9 @@ public class World2Miniboss1 extends Enemy{
     @Override
     public void dropLoot(Character player){
         PrintUtil.pause(800);
-        System.out.println("╦════════════════════════════════════╦");
-        System.out.println("  🎁 You received:");
+        System.out.println();
+        System.out.println(ColorUtil.boldBrightYellow("┬───────────────────────────────────┬"));
+        System.out.println(ColorUtil.brightYellow("  🎁 You received:"));
         player.lootSoulShards(12);
         player.getPotions().lootPotions(true);
         player.gainExp(rewardExp());

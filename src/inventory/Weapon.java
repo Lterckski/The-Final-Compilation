@@ -2,6 +2,7 @@ package inventory;
 
 import characters.Character;
 import enemies.Enemy;
+import utils.ColorUtil;
 import utils.InputUtil;
 import utils.PrintUtil;
 
@@ -106,8 +107,7 @@ public abstract class Weapon {
     public abstract void displayInfo();
 
     public boolean lootWeapon() {
-        System.out.println("╦═══════════════════════════════╦");
-        System.out.println(" 🎁 Enemy has dropped a weapon!");
+        System.out.println(ColorUtil.boldBrightYellow("\n🎁 Enemy has dropped a weapon!"));
         PrintUtil.pause(800);
         this.displayInfo();
 
@@ -129,17 +129,17 @@ public abstract class Weapon {
                     int confirm = InputUtil.scanInput();
 
                     if (confirm == 1) {
-                        System.out.println("You ignored the weapon.");
+                        System.out.println(ColorUtil.boldBrightRed("You ignored the weapon..."));
                     } else if (confirm == 0) {
                         validChoice = false; // go back to pick up question
                     } else {
-                        System.out.println("❌ Invalid input! Try again.");
+                        System.out.println(ColorUtil.boldBrightRed("❌ Invalid input! Try again."));
                         validConfirm = false;
                     }
                 } while (!validConfirm);
 
             } else {
-                System.out.println("❌ Invalid input! Try again.");
+                System.out.println(ColorUtil.boldBrightRed("❌ Invalid input! Try again."));
                 validChoice = false;
             }
 
@@ -157,7 +157,7 @@ public abstract class Weapon {
             character.setAttack(character.getAttack() + atkBuff);
             isEquipped = true;
             character.getInventory().setEquippedWeapon(this);
-            System.out.println("⚙\uFE0F " + name + " Equipped! ⬆\uFE0F Attack increased by " + atkBuff + ". ⚔\uFE0F Current ATK: " + character.getAttack());
+            System.out.println(ColorUtil.boldBrightYellow("⚙\uFE0F " + name + " Equipped! ⬆\uFE0F Attack increased by " + atkBuff + ". ⚔\uFE0F Current ATK: " + character.getAttack()));
         } else{
             currentlyEquipped.unequip(character);
 
@@ -167,7 +167,7 @@ public abstract class Weapon {
 
             System.out.println("You upgraded your weapon!");
             PrintUtil.pause(800);
-            System.out.println("⚙\uFE0F " + name + " Equipped! ⬆\uFE0F Attack increased by " + (this.getAtkBuff() - currentlyEquipped.getAtkBuff()) + ". ⚔\uFE0F Current ATK: " + character.getAttack());
+            System.out.println(ColorUtil.boldBrightYellow("⚙\uFE0F " + name + " Equipped! ⬆\uFE0F Attack increased by " + (this.getAtkBuff() - currentlyEquipped.getAtkBuff()) + ". ⚔\uFE0F Current ATK: " + character.getAttack()));
         }
         PrintUtil.line();
         PrintUtil.pause(800);
@@ -177,6 +177,5 @@ public abstract class Weapon {
         character.setAttack(character.getAttack() - atkBuff);
         isEquipped = false;
     }
-
 
 }

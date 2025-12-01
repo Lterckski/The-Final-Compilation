@@ -2,6 +2,7 @@ package enemies;
 
 import characters.Character;
 import inventory.Armor;
+import utils.ColorUtil;
 import utils.PrintUtil;
 import utils.RandomUtil;
 
@@ -184,57 +185,75 @@ public class FinalBoss extends Enemy {
 
     @Override
     public void displayStats() {
-        System.out.println("\n┌───────────── \uD83D\uDC79 ENEMY STATS \uD83D\uDC79 ─────────────┐");
-        System.out.println(" 👤 Name    : " + name);
-        System.out.println(" ❤️ HP      : " + hp + "/" + maxHP);
-
-        // ⚔️ Attack
-        System.out.print(" ⚔\uFE0F Attack  : " + baseAttack);
-        if (attack > baseAttack) System.out.print(" (+" + (attack - baseAttack) + ")");
-        else if (attack < baseAttack) System.out.print(" (-" + (baseAttack - attack) + ")");
         System.out.println();
+        System.out.println(ColorUtil.boldBrightRed("┌───────────── 👹 ENEMY STATS 👹 ─────────────┐"));
 
-        // 🛡️ Defense
-        System.out.print(" \uD83D\uDEE1\uFE0F Defense : " + baseDefense);
-        if (defense > baseDefense) System.out.print(" (+" + (defense - baseDefense) + ")");
-        else if (defense < baseDefense) System.out.print(" (-" + (baseDefense - defense) + ")");
+        // Name
+        System.out.println(ColorUtil.boldBrightRed("  👤 Name       : ") + ColorUtil.boldBrightYellow(name));
+
+        // HP
+        System.out.println(ColorUtil.boldBrightRed("  ❤️ HP        : ") + ColorUtil.boldBrightYellow(hp + " / " + maxHP));
+
+        // Attack
+        int atkDiff = attack - baseAttack;
+        String atkLabel = (atkDiff > 0) ? "Buff" : (atkDiff < 0) ? "Debuff" : "Neutral";
+        System.out.println(ColorUtil.boldBrightRed("  ⚔️ Attack     : ") + ColorUtil.boldBrightYellow(
+                attack + " (Base " + baseAttack + " | " + atkLabel + " " + String.format("%+d", atkDiff) + ")"));
+
+        // Defense
+        int defDiff = defense - baseDefense;
+        String defLabel = (defDiff > 0) ? "Buff" : (defDiff < 0) ? "Debuff" : "Neutral";
+        System.out.println(ColorUtil.boldBrightRed("  🛡️ Defense    : ") + ColorUtil.boldBrightYellow(
+                defense + " (Base " + baseDefense + " | " + defLabel + " " + String.format("%+d", defDiff) + ")"));
+
+        // Shield
+        if (shield > 0)
+            System.out.println(ColorUtil.boldBrightRed("  🛡️ Active Shield : ") + ColorUtil.boldBrightYellow(shield + " (1 Turn)"));
+
+        // Stack Info
+        System.out.println(ColorUtil.boldBrightRed("  🔮 Null Energy Stacks : ") + ColorUtil.boldBrightYellow(String.valueOf(nullEnergy)));
+        System.out.println(ColorUtil.boldBrightRed("  🌑 Void Energy Stacks : ") + ColorUtil.boldBrightYellow(String.valueOf(voidEnergy)));
+
+        // Outer bottom bar
+        System.out.println(ColorUtil.boldBrightRed("└──────────────────────────────────────────────┘"));
         System.out.println();
-
-        // 🩸 Shield
-        if (shield > 0) System.out.println("🛡️ Active Shield : " + shield + " (1 Turn)");
-
-        // 📈 Stack Info
-        System.out.println(" 🔮 Null Energy Stacks : " + nullEnergy);
-        System.out.println(" 🌑 Void Energy Stacks : " + voidEnergy);
-        System.out.println("└──────────────────────────────────────────────┘");
-        System.out.println();
-
     }
+
 
     @Override
     public void displaySkills() {
-        System.out.println("┌───────────── 🕷️ FINAL BOSS: KHAI THE NECROMANCER SKILLS 🕷️ ──────────────┐");
-        System.out.println(" 💀 Skill 1 – Soul Drain");
-        System.out.println(" 📝 Description : Drains the target’s life essence to heal himself.");
-        System.out.println(" ⚔️ Damage      : (" + (int)(attack * 1.0) + ")");
-        System.out.println(" ✨ Effects     :");
-        System.out.println(" - ❤️ Heals self for 100 HP\n");
+        System.out.println();
+        System.out.println(ColorUtil.boldBrightRed("┌───────────── 🕷️ FINAL BOSS: KHAI THE NECROMANCER SKILLS 🕷️ ──────────────┐"));
 
-        System.out.println(" 🛡️ Skill 2 – Encapsulation");
-        System.out.println(" 📝 Description : Forms a dark barrier that absorbs 50 damage for 1 turn.");
-        System.out.println(" ⚔️ Damage      : —");
-        System.out.println(" ✨ Effects     :");
-        System.out.println(" - 🛡️ Grants a 50-damage shield for 1 turn");
-        System.out.println(" - 🔮 If shield remains intact → Gain Null Energy (+5% ATK permanently)");
-        System.out.println(" - 🌑 If shield breaks → Gain Void Energy (+5% DEF permanently)\n");
+        // Skill 1
+        System.out.println(ColorUtil.boldBrightYellow("  💀 Skill – Soul Drain"));
+        System.out.println(ColorUtil.red(" 📜 Description : Drains the target’s life essence to heal himself."));
+        System.out.println(ColorUtil.red(" ⚔️ Damage : (") + ColorUtil.boldBrightYellow((int)(attack * 1.0) + "") + ColorUtil.red(")"));
+        System.out.println(ColorUtil.red(" ✨ Effects :"));
+        System.out.println(ColorUtil.red("    - ❤️ Heals self for 100 HP"));
+        System.out.println();
 
-        System.out.println(" 🌌 Skill 3 – Dark Ascension");
-        System.out.println(" 📝 Description : Releases immense dark power upon the target.");
-        System.out.println(" ⚔️ Damage      : (" + (int)(attack * 1.6) + " — " + (int)(attack * 2.0) + ")");
-        System.out.println(" ✨ Effects     :");
-        System.out.println(" - 😱 50% chance to apply Fear to target");
-        System.out.println("└──────────────────────────────────────────────────────────────────────────┘");
+        // Skill 2
+        System.out.println(ColorUtil.boldBrightYellow("  🛡️ Skill – Encapsulation"));
+        System.out.println(ColorUtil.red(" 📜 Description : Forms a dark barrier that absorbs 50 damage for 1 turn."));
+        System.out.println(ColorUtil.red(" ⚔️ Damage : –"));
+        System.out.println(ColorUtil.red(" ✨ Effects :"));
+        System.out.println(ColorUtil.red("    - 🛡️ Grants a 50-damage shield for 1 turn"));
+        System.out.println(ColorUtil.red("    - 🔮 If shield remains intact → Gain Null Energy (+5% ATK permanently)"));
+        System.out.println(ColorUtil.red("    - 🌑 If shield breaks → Gain Void Energy (+5% DEF permanently)"));
+        System.out.println();
+
+        // Skill 3
+        System.out.println(ColorUtil.boldBrightYellow("  🌌 Skill – Dark Ascension"));
+        System.out.println(ColorUtil.red(" 📜 Description : Releases immense dark power upon the target."));
+        System.out.println(ColorUtil.red(" ⚔️ Damage : (") + ColorUtil.boldBrightYellow((int)(attack * 1.6) + " — " + (int)(attack * 2.0)) + ColorUtil.red(")"));
+        System.out.println(ColorUtil.red(" ✨ Effects :"));
+        System.out.println(ColorUtil.red("    - 😱 50% chance to apply Fear to target"));
+
+        System.out.println(ColorUtil.boldBrightRed("└──────────────────────────────────────────────────────────────────────────┘"));
+        System.out.println();
     }
+
 
 
 }

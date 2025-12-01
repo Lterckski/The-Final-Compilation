@@ -2,6 +2,7 @@ package enemies;
 
 
 import characters.Character;
+import utils.ColorUtil;
 import utils.PrintUtil;
 import utils.RandomUtil;
 import inventory.*;
@@ -49,13 +50,13 @@ public class World2Enemy2 extends Enemy{
     @Override
     public void displaySkills() {
         System.out.println();
-        System.out.println("┌────────────────────── 🔮 FORSAKEN CULTISTS SKILLS 🔮 ───────────────────────┐");
-        System.out.println(" ⚡ Skill       : Shadow Bolt");
-        System.out.println(" 📝 Description : Cultists hurl dark bolts of energy, weakening their foe.");
-        System.out.println(" ⚔️ Damage     : (" + (int)(attack * 1.00) + " — " + (int)(attack * 1.33) + ")");
-        System.out.println(" ✨ Effects    :");
-        System.out.println(" - 💀 30% chance to apply Weaken: reduces target’s ATK by 20% for 2 turns");
-        System.out.println("└─────────────────────────────────────────────────────────────────────────────┘");
+        System.out.println(ColorUtil.boldBrightRed("┌────────────────────── 🔮 FORSAKEN CULTISTS SKILLS 🔮 ───────────────────────┐"));
+        System.out.println(ColorUtil.boldBrightYellow("  ⚡ Skill – Shadow Bolt"));
+        System.out.println(ColorUtil.red(" 📜 Description : Cultists hurl dark bolts of energy, weakening their foe."));
+        System.out.println(ColorUtil.red(" 💥 Damage : (") + ColorUtil.boldBrightYellow((int)(attack * 1.00) + " — " + (int)(attack * 1.33)) + ColorUtil.red(")"));
+        System.out.println(ColorUtil.red(" ✨ Effects :"));
+        System.out.println(ColorUtil.red("    - 💀 30% chance to apply Weaken: reduces target’s ATK by 20% for 2 turns"));
+        System.out.println(ColorUtil.boldBrightRed("└─────────────────────────────────────────────────────────────────────────────┘"));
         System.out.println();
     }
 
@@ -69,8 +70,9 @@ public class World2Enemy2 extends Enemy{
     @Override
     public void dropLoot(Character player){
         PrintUtil.pause(800);
-        System.out.println("┬───────────────────────────────────┬");
-        System.out.println("  🎁 You received:");
+        System.out.println();
+        System.out.println(ColorUtil.boldBrightYellow("┬───────────────────────────────────┬"));
+        System.out.println(ColorUtil.brightYellow("  🎁 You received:"));
         player.lootSoulShards(RandomUtil.range(2,3));
         player.getPotions().lootPotions(false);
         player.gainExp(rewardExp());

@@ -49,25 +49,27 @@ public class Karl extends Character{
         System.out.println();
     }
 
-
-
     public void showBackstory() {
-        PrintUtil.line();
-        System.out.println("Karl Clover Dior IV was born and raised in the Forest of Silence, a place");
-        System.out.println("where the air is thick with mist and danger lurks in every shadow.");
-        System.out.println("His father, once a skilled archer, taught him the bow not as a weapon of");
-        System.out.println("glory but as a means of survival against Rotfang Wolves, Carrion Bats, and");
-        System.out.println("the twisted Dreadbark Treants that haunted their home.");
         System.out.println();
-        System.out.println("The forest shaped Karl's instincts—quiet, patient, always watching—and his");
-        System.out.println("arrows rarely missed their mark. When the silence deepened and the Hollow");
-        System.out.println("Stag began to prowl, Karl realized that the forest itself had become");
-        System.out.println("corrupted, demanding a hunter strong enough to fight back.");
+        System.out.println(ColorUtil.boldBrightCyan("┌───────────────────────────── 📘 KARL'S BACKSTORY 📘 ─────────────────────────────┐"));
+        System.out.println(ColorUtil.brightYellow  ("  Karl Clover Dior IV was born and raised in the Forest of Silence, a place"));
+        System.out.println(ColorUtil.brightYellow  ("  where the air is thick with mist and danger lurks in every shadow."));
+        System.out.println(ColorUtil.brightYellow  ("  His father, once a skilled archer, taught him the bow not as a weapon of"));
+        System.out.println(ColorUtil.brightYellow  ("  glory but as a means of survival against Rotfang Wolves, Carrion Bats, and"));
+        System.out.println(ColorUtil.brightYellow  ("  the twisted Dreadbark Treants that haunted their home."));
         System.out.println();
-        System.out.println("Now, with his father's teachings in his heart and the weight of his homeland");
-        System.out.println("on his shoulders, Karl hunts not just for survival but to restore the balance");
-        System.out.println("of the place he calls home.");
+        System.out.println(ColorUtil.brightYellow  ("  The forest shaped Karl's instincts—quiet, patient, always watching—and his"));
+        System.out.println(ColorUtil.brightYellow  ("  arrows rarely missed their mark. When the silence deepened and the Hollow"));
+        System.out.println(ColorUtil.brightYellow  ("  Stag began to prowl, Karl realized that the forest itself had become"));
+        System.out.println(ColorUtil.brightYellow  ("  corrupted, demanding a hunter strong enough to fight back."));
+        System.out.println();
+        System.out.println(ColorUtil.brightYellow  ("  Now, with his father's teachings in his heart and the weight of his homeland"));
+        System.out.println(ColorUtil.brightYellow  ("  on his shoulders, Karl hunts not just for survival but to restore the balance"));
+        System.out.println(ColorUtil.brightYellow  ("  of the place he calls home."));
+        System.out.println(ColorUtil.boldBrightCyan("└──────────────────────────────────────────────────────────────────────────────────┘"));
+        System.out.println();
     }
+
 
     // Passive - Hunter's Instinct
     private int hunterInstincts(int damage, Character target){
@@ -75,7 +77,7 @@ public class Karl extends Character{
 
        if(hpPercent < 0.3){
            damage = (int) (damage * 1.2);
-           System.out.println("\uD83C\uDFAF Hunter's Instinct is active! Deals extra damage.");
+           System.out.println(ColorUtil.brightMagenta("\uD83C\uDFAF Hunter's Instinct is active! Deals extra damage."));
            PrintUtil.pause(800);
        }
        return damage;
@@ -85,7 +87,7 @@ public class Karl extends Character{
     public void piercingArrow(Character target) {
         int energyCost = 1;
         if (!consumeEnergy(energyCost)) {
-            System.out.println("❌ Not enough Arrows to use Piercing Arrow!");
+            System.out.println(ColorUtil.boldBrightRed("❌ Not enough Arrows to use Piercing Arrow!"));
             PrintUtil.pause(800);
             return;
         }
@@ -114,7 +116,7 @@ public class Karl extends Character{
     public void bullsEye(Character target) {
         int energyCost = 3;
         if (!consumeEnergy(energyCost)) {
-            System.out.println("❌ Not enough Arrows to use Bullseye!");
+            System.out.println(ColorUtil.boldBrightRed("❌ Not enough Arrows to use Bullseye!"));
             PrintUtil.pause(800);
             return;
         }
@@ -144,7 +146,7 @@ public class Karl extends Character{
     public void rainOfAThousandArrows(Character target) {
         int energyCost = 5;
         if (!consumeEnergy(energyCost)) {
-            System.out.println("❌ Not enough Arrows to use Rain of a Thousand Arrows!");
+            System.out.println(ColorUtil.boldBrightRed("❌ Not enough Arrows to use Rain of a Thousand Arrows!"));
             PrintUtil.pause(800);
             return;
         }
@@ -188,7 +190,7 @@ public class Karl extends Character{
                 System.out.println(ColorUtil.boldBrightGreen("[2]") + " " + ColorUtil.green("🎯 Skill 2   -  Bullseye (➶ 1 Heavy Arrow ═ 3 Arrows)"));
                 System.out.println(ColorUtil.boldBrightGreen("[3]") + " " + ColorUtil.green("🌩️ Ultimate  -  Rain of A Thousand Arrows (➶ 5 Arrows) ")
                         + ColorUtil.red("❌ (Available in " + ultimateCounter + " turns)"));
-                System.out.println(ColorUtil.boldBrightGreen("[4]") + " " + ColorUtil.green("\uD83D\uDEE1\uFE0F Skip Turn - Restore 10% of Max HP and Replenish 6 Arrows"));
+                System.out.println(ColorUtil.boldBrightGreen("[4]") + " " + ColorUtil.green("\uD83D\uDEE1\uFE0F Skip Turn -  Restore 10% of Max HP and Replenish 6 Arrows"));
                 System.out.println(ColorUtil.boldBrightGreen("[5]") + " " + ColorUtil.green("📜 Show Menu"));
                 System.out.print(ColorUtil.boldBrightWhite("Choose your action: "));
 
@@ -205,7 +207,7 @@ public class Karl extends Character{
                     case 4 -> { skipTurn(); isValid = true; ultimateCounter--; }
                     case 5 -> displayMenu(this, target);
                     default -> {
-                        System.out.println(ColorUtil.red("❌ Invalid action! You missed your turn."));
+                        System.out.println(ColorUtil.boldBrightRed("❌ Invalid action! You missed your turn."));
                         PrintUtil.pause(800);
                         isValid = true;
                         ultimateCounter--;
@@ -230,7 +232,7 @@ public class Karl extends Character{
                     case 4 -> { skipTurn(); isValid = true; }
                     case 5 -> displayMenu(this, target);
                     default -> {
-                        System.out.println(ColorUtil.red("❌ Invalid action! You missed your turn."));
+                        System.out.println(ColorUtil.boldBrightRed("❌ Invalid action! You missed your turn."));
                         PrintUtil.pause(800);
                         isValid = true;
                     }

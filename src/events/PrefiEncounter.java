@@ -148,7 +148,7 @@ public class PrefiEncounter {
                     case 2 -> {
                         // CONFIRM SELECTION
                         if (choseWeapon) {
-                            player.getInventory().equipLegendaryWeapon(legendaryWeapon);
+                            legendaryWeapon.equip(player);
 
                             PrintUtil.type(ColorUtil.boldBrightGreen("""
                                 ⚔️ You grasp the Legendary Weapon...
@@ -162,8 +162,7 @@ public class PrefiEncounter {
                                 its form crumbling into soft violet ashes—
                                 drifting upward and fading into nothingness.
                                 """));
-                        } else {
-                            player.getInventory().equipLegendaryArmor(legendaryArmor);
+                        } else {legendaryArmor.equip(player);
 
                             PrintUtil.type(ColorUtil.boldBrightGreen("""
                                 🛡️ You claim the Legendary Armor.

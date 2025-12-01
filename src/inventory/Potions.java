@@ -1,6 +1,8 @@
 package inventory;
 
 import characters.Character;
+import utils.ColorUtil;
+import utils.InputUtil;
 import utils.PrintUtil;
 import utils.RandomUtil;
 
@@ -21,7 +23,6 @@ public class Potions {
     public void useNormalHealingPotion() {
         if (normalHealingPotions <= 0) {
             System.out.println("❌ No Normal Healing Potions left!");
-            PrintUtil.pause(800);
             return;
         }
         normalHealingPotions--;
@@ -31,15 +32,12 @@ public class Potions {
         owner.heal(healAmount);
         int newHP = owner.getHp();
 
-        System.out.println("💖✨ Used a Normal Healing Potion! Restored "
-                + healAmount + " HP (" + oldHP + " → " + newHP + ")");
-        PrintUtil.pause(800);
+        System.out.println(ColorUtil.boldBrightGreen("💖✨ Used a Normal Healing Potion! Restored " + healAmount + " HP (" + oldHP + " → " + newHP + ")"));
     }
 
     public void useFullHealingPotion() {
         if (fullHealingPotions <= 0) {
             System.out.println("❌ No Full Healing Potions left!");
-            PrintUtil.pause(800);
             return;
         }
         fullHealingPotions--;
@@ -48,15 +46,12 @@ public class Potions {
         owner.heal(owner.getMaxHP());
         int newHP = owner.getHp();
 
-        System.out.println("💖✨ Used a Full Healing Potion! Fully restored HP! "
-                + "(" + oldHP + " → " + newHP + ")");
-        PrintUtil.pause(800);
+        System.out.println(ColorUtil.boldBrightGreen("💖✨ Used a Full Healing Potion! Fully restored HP! " + "(" + oldHP + " → " + newHP + ")"));
     }
 
     public void useEnergyPotion() {
         if (energyPotions <= 0) {
             System.out.println("❌ No Energy Potions left!");
-            PrintUtil.pause(800);
             return;
         }
 
@@ -76,10 +71,7 @@ public class Potions {
         owner.restoreEnergy(energyRestored);
         int newEnergy = owner.getEnergy();
 
-        System.out.println(energyEmoji + "✨ Used an Energy Potion! Restored "
-                + energyRestored + " " + energyName + " ("
-                + oldEnergy + " → " + newEnergy + ")");
-        PrintUtil.pause(800);
+        System.out.println(ColorUtil.boldBrightGreen("✨ Used an Energy Potion! Restored " + energyRestored + " " + energyName + " (" + oldEnergy + " → " + newEnergy + ")"));
     }
 
     public void lootPotions(boolean willDropFullHealingPotions){
@@ -98,16 +90,16 @@ public class Potions {
         }
 
         if(normalHealingPotionsCount > 0){
-            System.out.println("  🍃 " + normalHealingPotionsCount + " Normal Healing Potion" + (normalHealingPotionsCount > 1 ? "s" : ""));
+            System.out.println(ColorUtil.brightYellow("  🍃 " + normalHealingPotionsCount + " Normal Healing Potion" + (normalHealingPotionsCount > 1 ? "s" : "")));
         }
         if(energyPotionsCount > 0){
-            System.out.println("   ⚡ " + energyPotionsCount + " Energy Potion" + (energyPotionsCount > 1 ? "s" : ""));
+            System.out.println(ColorUtil.brightYellow("   ⚡ " + energyPotionsCount + " Energy Potion" + (energyPotionsCount > 1 ? "s" : "")));
         }
 
         if(willDropFullHealingPotions){
             int dropped = RandomUtil.range(1,2);
             fullHealingPotions += dropped;
-            System.out.println("  💞 " + dropped + " Full Healing Potion" + (dropped > 1 ? "s" : ""));
+            System.out.println(ColorUtil.brightYellow("  💞 " + dropped + " Full Healing Potion" + (dropped > 1 ? "s" : "")));
         }
 
     }

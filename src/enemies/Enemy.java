@@ -38,7 +38,6 @@ public abstract class Enemy extends Character{
         System.out.println();
 
 
-
     }
 
 

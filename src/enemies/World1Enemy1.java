@@ -2,8 +2,11 @@ package enemies;
 
 import characters.Character;
 import inventory.Armor;
+import utils.ColorUtil;
 import utils.PrintUtil;
 import utils.RandomUtil;
+
+import java.awt.*;
 
 public class World1Enemy1 extends Enemy {
     // Constructor
@@ -38,16 +41,14 @@ public class World1Enemy1 extends Enemy {
     @Override
     public void displaySkills() {
         System.out.println();
-        System.out.println("┌─────────────────────────── 🐺 ROTFANG WOLVES SKILLS 🐺 ──────────────────────────────┐");
-        System.out.println(" 🗡️ Skill     : Savage Howl");
-        System.out.println(" 📝 Description: The wolves unleash a feral howl, striking their target with raw power.");
-        System.out.println(" ⚔️ Damage    : (" + (int)(attack * 1.00) + " — " + (int)(attack * 1.50) + ")");
-        System.out.println(" ✨ Effects   : —");
-        System.out.println("└──────────────────────────────────────────────────────────────────────────────────────┘");
+        System.out.println(ColorUtil.boldBrightRed("┌──────────────────────────── 🐺 ROTFANG WOLVES SKILLS 🐺 ──────────────────────────────┐"));
+        System.out.println(ColorUtil.boldBrightYellow(" 🐺 Skill – Savage Howl"));
+        System.out.println(ColorUtil.red(" 📜 Description : The wolves unleash a feral howl, striking their target with raw power."));
+        System.out.println(ColorUtil.red(" 💥 Damage : (") + ColorUtil.boldBrightYellow((int)(attack * 1.00) + " — " + (int)(attack * 1.50)) + ColorUtil.red(")"));
+        System.out.println(ColorUtil.red(" ✨ Effects : —"));
+        System.out.println(ColorUtil.boldBrightRed("└────────────────────────────────────────────────────────────────────────────────────────┘"));
         System.out.println();
     }
-
-
 
 
     @Override
@@ -58,8 +59,9 @@ public class World1Enemy1 extends Enemy {
     @Override
     public void dropLoot(Character player){
         PrintUtil.pause(800);
-        System.out.println("┬───────────────────────────────────┬");
-        System.out.println("  🎁 You received:");
+        System.out.println();
+        System.out.println(ColorUtil.boldBrightYellow("┬───────────────────────────────────┬"));
+        System.out.println(ColorUtil.brightYellow("  🎁 You received:"));
         player.lootSoulShards(RandomUtil.range(1,2));
         player.getPotions().lootPotions(false);
         player.gainExp(rewardExp());

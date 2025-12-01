@@ -67,7 +67,7 @@ public class World1 {
         System.out.println();
 
 
-        PrintUtil.type(ColorUtil.boldBrightMagenta("🎯 Objective: Defeat 3 Rotfang Wolves!\n").toUpperCase());
+        PrintUtil.type(ColorUtil.boldBrightMagenta(("🎯 Objective: Defeat 3 Rotfang Wolves!").toUpperCase()));
         InputUtil.pressEnterToContinue();
         PrintUtil.line();
 
@@ -136,7 +136,7 @@ public class World1 {
         System.out.println("                                                          ");
         System.out.println("                                                          ");
 
-        PrintUtil.type(ColorUtil.boldBrightMagenta("🎯 Objective: Defeat 2 Shade Sprites!\n").toUpperCase());
+        PrintUtil.type(ColorUtil.boldBrightMagenta((("🎯 Objective: Defeat 2 Shade Sprites!").toUpperCase())));
         InputUtil.pressEnterToContinue();
         PrintUtil.line();
 
@@ -213,7 +213,7 @@ public class World1 {
         System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
         System.out.println();
 
-        PrintUtil.type(ColorUtil.boldBrightMagenta(("🎯 Objective: Defeat 2 Dreadbark Treants!\n").toUpperCase()));
+        PrintUtil.type(ColorUtil.boldBrightMagenta((("🎯 Objective: Defeat 2 Dreadbark Treants!").toUpperCase())));
         InputUtil.pressEnterToContinue();
         PrintUtil.line();
 
@@ -283,7 +283,7 @@ public class World1 {
         System.out.println("                                                          ");
         System.out.println();
 
-        PrintUtil.type(ColorUtil.boldBrightMagenta(("🎯 Objective: Defeat 4 Carrion Bats!\n").toUpperCase()));
+        PrintUtil.type(ColorUtil.boldBrightMagenta((("🎯 Objective: Defeat 4 Carrion Bats!").toUpperCase())));
         InputUtil.pressEnterToContinue();
         PrintUtil.line();
 
@@ -388,7 +388,7 @@ public class World1 {
         System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
         System.out.println();
 
-        PrintUtil.type(ColorUtil.boldBrightMagenta(("🎯 Objective: Defeat The Hollow Stag!\n").toUpperCase()));
+        PrintUtil.type(ColorUtil.boldBrightMagenta((("🎯 Objective: Defeat The Hollow Stag!").toUpperCase())));
         InputUtil.pressEnterToContinue();
         PrintUtil.line();
 

@@ -2,6 +2,7 @@ package enemies;
 
 import characters.Character;
 import inventory.Armor;
+import utils.ColorUtil;
 import utils.PrintUtil;
 import utils.RandomUtil;
 
@@ -46,16 +47,15 @@ public class World1Enemy3 extends Enemy {
     @Override
     public void displaySkills() {
         System.out.println();
-        System.out.println("┌────────────────────────── 🌳 DREADBARK TREANTS SKILLS 🌳 ────────────────────────────┐");
-        System.out.println(" 🪓 Skill     : Root Snare");
-        System.out.println(" 📝 Description: The Treants lash out with entangling roots, trying to trap their foe.");
-        System.out.println(" ⚔️ Damage    : (" + (int)(attack * 1.00) + " — " + (int)(attack * 1.50) + ")");
-        System.out.println(" ✨ Effects   :");
-        System.out.println(" - 30% chance to 🌿 Immobilize target");
-        System.out.println("└──────────────────────────────────────────────────────────────────────────────────────┘");
+        System.out.println(ColorUtil.boldBrightRed("┌────────────────────────── 🌳 DREADBARK TREANTS SKILLS 🌳 ────────────────────────────┐"));
+        System.out.println(ColorUtil.boldBrightYellow("🌿 Skill – Root Snare"));
+        System.out.println(ColorUtil.red(" 📜 Description : The Treants lash out with entangling roots, trying to trap their foe."));
+        System.out.println(ColorUtil.red(" 💥 Damage : (") + ColorUtil.boldBrightYellow((int)(attack * 1.00) + " — " + (int)(attack * 1.50)) + ColorUtil.red(")"));
+        System.out.println(ColorUtil.red(" ✨ Effects :"));
+        System.out.println(ColorUtil.red("    - 30% chance to 🌿 Immobilize target"));
+        System.out.println(ColorUtil.boldBrightRed("└──────────────────────────────────────────────────────────────────────────────────────┘"));
         System.out.println();
     }
-
 
 
     @Override
@@ -66,8 +66,9 @@ public class World1Enemy3 extends Enemy {
     @Override
     public void dropLoot(Character player){
         PrintUtil.pause(800);
-        System.out.println("┬───────────────────────────────────┬");
-        System.out.println("  🎁 You received:");
+        System.out.println();
+        System.out.println(ColorUtil.boldBrightYellow("┬───────────────────────────────────┬"));
+        System.out.println(ColorUtil.brightYellow("  🎁 You received:"));
         player.lootSoulShards(RandomUtil.range(1,2));
         player.getPotions().lootPotions(false);
         player.gainExp(rewardExp());

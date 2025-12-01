@@ -5,6 +5,7 @@ import inventory.Armor;
 import inventory.Bow;
 import inventory.Staff;
 import inventory.Sword;
+import utils.ColorUtil;
 import utils.PrintUtil;
 import utils.RandomUtil;
 
@@ -65,21 +66,26 @@ public class World1Miniboss1 extends Enemy {
     @Override
     public void displaySkills() {
         System.out.println();
-        System.out.println("┌──────────────────────────── 🦌 THE HOLLOW STAG SKILLS 🦌 ──────────────────────────────┐");
-        System.out.println(" ⚡ Skill 1    : Deathly Charge");
-        System.out.println(" 📝 Description: The Hollow Stag charges with deadly force, attempting to stun its foe.");
-        System.out.println(" ⚔️ Damage    : (" + (int)(attack * 1.00) + " — " + (int)(attack * 1.20) + ")");
-        System.out.println(" ✨ Effects   :");
-        System.out.println(" - 30% chance to 😵 Stun the target\n");
+        System.out.println(ColorUtil.boldBrightRed("┌──────────────────────────── 🦌 THE HOLLOW STAG SKILLS 🦌 ──────────────────────────────┐"));
 
-        System.out.println(" 🌑 Skill 2    : Blackened Howl");
-        System.out.println(" 📝 Description: The stag lets out a blackened howl, weakening its opponent's defenses.");
-        System.out.println(" ⚔️ Damage    : —");
-        System.out.println(" ✨ Effects   :");
-        System.out.println(" - Reduces target’s 🛡️ DEF by 20% for 2 turns");
-        System.out.println("└────────────────────────────────────────────────────────────────────────────────────────┘");
+        System.out.println(ColorUtil.boldBrightYellow("  ⚡ Skill 1 – Deathly Charge"));
+        System.out.println(ColorUtil.red(" 📜 Description : The Hollow Stag charges with deadly force, attempting to stun its foe."));
+        System.out.println(ColorUtil.red(" 💥 Damage : (") + ColorUtil.boldBrightYellow((int)(attack * 1.00) + " — " + (int)(attack * 1.20)) + ColorUtil.red(")"));
+        System.out.println(ColorUtil.red(" ✨ Effects :"));
+        System.out.println(ColorUtil.red("    - 30% chance to 😵 Stun the target"));
+        System.out.println();
+
+        // Skill 2
+        System.out.println(ColorUtil.boldBrightYellow("  🌑 Skill 2 – Blackened Howl"));
+        System.out.println(ColorUtil.red(" 📜 Description : The stag lets out a blackened howl, weakening its opponent's defenses."));
+        System.out.println(ColorUtil.red(" 💥 Damage : —"));
+        System.out.println(ColorUtil.red(" ✨ Effects :"));
+        System.out.println(ColorUtil.red("    - Reduces target’s 🛡️ DEF by 20% for 2 turns"));
+
+        System.out.println(ColorUtil.boldBrightRed("└────────────────────────────────────────────────────────────────────────────────────────┘"));
         System.out.println();
     }
+
 
 
 
@@ -96,8 +102,9 @@ public class World1Miniboss1 extends Enemy {
     @Override
     public void dropLoot(Character player) {
         PrintUtil.pause(800);
-        System.out.println("╦════════════════════════════════════╦");
-        System.out.println("  🎁 You received:");
+        System.out.println();
+        System.out.println(ColorUtil.boldBrightYellow("┬───────────────────────────────────┬"));
+        System.out.println(ColorUtil.brightYellow("  🎁 You received:"));
         player.lootSoulShards(10);
         player.getPotions().lootPotions(true);
         player.gainExp(rewardExp());

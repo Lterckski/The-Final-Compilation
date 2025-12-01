@@ -326,7 +326,7 @@ public class World3Final {
             e.printStackTrace();
         }
 
-        PrintUtil.type(ColorUtil.boldBrightMagenta(("🎯 Objective: Defeat Khai, The Necromancer!\n").toUpperCase()));
+        PrintUtil.type(ColorUtil.boldBrightMagenta((("🎯 Objective: Defeat Khai, The Necromancer!").toUpperCase())));
         InputUtil.pressEnterToContinue();
         PrintUtil.line();
 

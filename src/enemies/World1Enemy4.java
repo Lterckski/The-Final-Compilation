@@ -2,6 +2,7 @@ package enemies;
 
 import characters.Character;
 import inventory.Armor;
+import utils.ColorUtil;
 import utils.PrintUtil;
 import utils.RandomUtil;
 
@@ -50,15 +51,16 @@ public class World1Enemy4 extends Enemy {
     @Override
     public void displaySkills() {
         System.out.println();
-        System.out.println("┌──────────────────────────────────── 🦇 CARRION BATS SKILLS 🦇 ──────────────────────────────────┐");
-        System.out.println(" 🗣️ Skill     : Screech");
-        System.out.println(" 📝 Description: The bats emit a piercing screech, unsettling their foe and lowering their attack.");
-        System.out.println(" ⚔️ Damage    : (" + (int)(attack * 1.00) + " — " + (int)(attack * 1.33) + ")");
-        System.out.println(" ✨ Effects   :");
-        System.out.println(" - 30% chance to 🩸 Weaken: reduces target’s ATK by 20% for 2 turns");
-        System.out.println("└─────────────────────────────────────────────────────────────────────────────────────────────────┘");
+        System.out.println(ColorUtil.boldBrightRed("┌──────────────────────────────────── 🦇 CARRION BATS SKILLS 🦇 ──────────────────────────────────┐"));
+        System.out.println(ColorUtil.boldBrightYellow("  🗣️ Skill – Screech"));
+        System.out.println(ColorUtil.red(" 📜 Description : The bats emit a piercing screech, unsettling their foe and lowering their attack."));
+        System.out.println(ColorUtil.red(" 💥 Damage : (") + ColorUtil.boldBrightYellow((int)(attack * 1.00) + " — " + (int)(attack * 1.33)) + ColorUtil.red(")"));
+        System.out.println(ColorUtil.red(" ✨ Effects :"));
+        System.out.println(ColorUtil.red("    - 30% chance to 💢 Weaken: reduces target’s ATK by 20% for 2 turns"));
+        System.out.println(ColorUtil.boldBrightRed("└─────────────────────────────────────────────────────────────────────────────────────────────────┘"));
         System.out.println();
     }
+
 
 
     @Override
@@ -69,8 +71,9 @@ public class World1Enemy4 extends Enemy {
     @Override
     public void dropLoot(Character player){
         PrintUtil.pause(800);
-        System.out.println("┬───────────────────────────────────┬");
-        System.out.println("  🎁 You received:");
+        System.out.println();
+        System.out.println(ColorUtil.boldBrightYellow("┬───────────────────────────────────┬"));
+        System.out.println(ColorUtil.brightYellow("  🎁 You received:"));
         player.lootSoulShards(1);
         player.getPotions().lootPotions(false);
         player.gainExp(rewardExp());

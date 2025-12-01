@@ -6,6 +6,8 @@ import utils.InputUtil;
 import utils.PrintUtil;
 import utils.RandomUtil;
 
+import java.awt.*;
+
 public class Simon extends Character {
 
     public Simon() { super("Simon Versace", "Mage", 60, 2, 120, 15); }
@@ -47,26 +49,28 @@ public class Simon extends Character {
         System.out.println();
     }
 
-
-
     public void showBackstory() {
-        PrintUtil.line();
-        System.out.println("Simon Versace — a mage with an unshakable dream of becoming the most");
-        System.out.println("powerful sorcerer alive. From childhood, mana coursed naturally through");
-        System.out.println("his veins, earning him the title of prodigy in the whispers of others.");
-        System.out.println("Yet beneath that promise of greatness, Simon was still just a boy—");
-        System.out.println("vulnerable, human, and plagued by a fear he could never quite conquer: spiders.");
         System.out.println();
-        System.out.println("He hails from the Forest of Silence, a place where no birds sing and no");
-        System.out.println("wind dares stir the trees. The air is unnaturally still, as if the forest");
-        System.out.println("itself is holding its breath—an unsettling quiet that lingers in the minds");
-        System.out.println("of all who dwell there. Within its academy, Simon immersed himself in study,");
-        System.out.println("mastering theory and knowledge with ease. But soon, he discovered that wisdom");
-        System.out.println("confined to books was not enough to fulfill his ambitions.");
+        System.out.println(ColorUtil.boldBrightCyan("┌───────────────────────────── 📘 SIMON'S BACKSTORY 📘 ─────────────────────────────┐"));
+        System.out.println(ColorUtil.brightYellow("  Simon Versace — a mage with an unshakable dream of becoming the most powerful"));
+        System.out.println(ColorUtil.brightYellow("  sorcerer alive. From childhood, mana coursed naturally through"));
+        System.out.println(ColorUtil.brightYellow("  his veins, earning him the title of prodigy in the whispers of others."));
+        System.out.println(ColorUtil.brightYellow("  Yet beneath that promise of greatness, Simon was still just a boy—"));
+        System.out.println(ColorUtil.brightYellow("  vulnerable, human, and plagued by a fear he could never quite conquer: spiders."));
         System.out.println();
-        System.out.println("If he truly wished to claim power, he would need more than learning—");
-        System.out.println("he would need experience.");
+        System.out.println(ColorUtil.brightYellow("  He hails from the Forest of Silence, a place where no birds sing and no"));
+        System.out.println(ColorUtil.brightYellow("  wind dares stir the trees. The air is unnaturally still, as if the forest"));
+        System.out.println(ColorUtil.brightYellow("  itself is holding its breath—an unsettling quiet that lingers in the minds"));
+        System.out.println(ColorUtil.brightYellow("  of all who dwell there. Within its academy, Simon immersed himself in study,"));
+        System.out.println(ColorUtil.brightYellow("  mastering theory and knowledge with ease. But soon, he discovered that wisdom"));
+        System.out.println(ColorUtil.brightYellow("  confined to books was not enough to fulfill his ambitions."));
+        System.out.println();
+        System.out.println(ColorUtil.brightYellow("  If he truly wished to claim power, he would need more than learning—"));
+        System.out.println(ColorUtil.brightYellow("  he would need experience."));
+        System.out.println(ColorUtil.boldBrightCyan("└──────────────────────────────────────────────────────────────────────────────────┘"));
+        System.out.println();
     }
+
 
     private void arcaneFlow() {
         int restored = (int)(maxEnergy * 0.05);
@@ -74,8 +78,7 @@ public class Simon extends Character {
         this.restoreEnergy(restored);
         int after = energy;
 
-        System.out.println("✨ Arcane Flow restores " + restored + " Mana! " +
-                "(💧 " + before + " → " + after + ")");
+        System.out.println(ColorUtil.brightMagenta("✨ Arcane Flow restores " + restored + " Mana! " + "(💧 " + before + " → " + after + ")"));
         PrintUtil.pause(800);
     }
 
@@ -84,7 +87,7 @@ public class Simon extends Character {
     public void fireball(Character target) {
         int energyCost = 15;
         if (!consumeEnergy(energyCost)) {
-            System.out.println("❌ Not enough Mana to cast Fireball!");
+            System.out.println(ColorUtil.boldBrightRed("❌ Not enough Mana to cast Fireball!"));
             PrintUtil.pause(800);
             return;
         }
@@ -119,7 +122,7 @@ public class Simon extends Character {
     public void icePrison(Character target) {
         int energyCost = 25;
         if (!consumeEnergy(energyCost)) {
-            System.out.println("❌ Not enough Mana to cast Ice Prison!");
+            System.out.println(ColorUtil.boldBrightRed("❌ Not enough Mana to cast Ice Prison!"));
             PrintUtil.pause(800);
             return;
         }
@@ -152,7 +155,7 @@ public class Simon extends Character {
     public void meteorStorm(Character target) {
         int energyCost = 40;
         if (!consumeEnergy(energyCost)) {
-            System.out.println("❌ Not enough Mana to cast Meteor Storm!");
+            System.out.println(ColorUtil.boldBrightRed("❌ Not enough Mana to cast Meteor Storm!"));
             PrintUtil.pause(800);
             return;
         }
@@ -218,7 +221,7 @@ public class Simon extends Character {
                     case 4 -> { skipTurn(); isValid = true; ultimateCounter--; }
                     case 5 -> displayMenu(this, target); // doesn’t consume the turn
                     default -> {
-                        System.out.println(ColorUtil.red("❌ Invalid action! You missed your turn."));
+                        System.out.println(ColorUtil.boldBrightRed("❌ Invalid action! You missed your turn."));
                         PrintUtil.pause(800);
                         isValid = true;
                         ultimateCounter--;
@@ -243,7 +246,7 @@ public class Simon extends Character {
                     case 4 -> { skipTurn(); isValid = true; }
                     case 5 -> displayMenu(this, target); // doesn’t consume the turn
                     default -> {
-                        System.out.println(ColorUtil.red("❌ Invalid action! You missed your turn."));
+                        System.out.println(ColorUtil.boldBrightRed("❌ Invalid action! You missed your turn."));
                         PrintUtil.pause(800);
                         isValid = true;
                     }

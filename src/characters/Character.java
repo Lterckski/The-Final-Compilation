@@ -12,6 +12,7 @@ import utils.ColorUtil;
 import utils.InputUtil;
 import utils.PrintUtil;
 
+import java.awt.*;
 import java.sql.SQLOutput;
 
 public abstract class Character {
@@ -164,11 +165,11 @@ public abstract class Character {
             classEmoji = "🛡️"; // Default warrior/shield
         }
 
-// Print the header
+        // Print the header
         System.out.println();
         System.out.println(ColorUtil.boldBrightCyan("┌─────────────────── " + classEmoji + " PLAYER STATS " + classEmoji +" ───────────────────┐"));
 
-// Determine energy type
+        // Determine energy type
         if (classType.equalsIgnoreCase("Mage")) {
             energyLabel = " 💧 Mana     ";
         } else if (classType.equalsIgnoreCase("Archer")) {
@@ -204,7 +205,6 @@ public abstract class Character {
 
         System.out.println(ColorUtil.boldBrightCyan("└───────────────────────────────────────────────────────────┘"));
         System.out.println();
-
     }
 
 
@@ -352,9 +352,11 @@ public abstract class Character {
 
     public void gainExp(int amount){
         exp += amount;
-        System.out.println("  ✨ Gained " + amount + " XP!");
-        System.out.println("┴───────────────────────────────────┴");
+        System.out.println(ColorUtil.brightYellow("  ✨ Gained " + amount + " XP!"));
+        System.out.println(ColorUtil.boldBrightYellow("┴───────────────────────────────────┴"));
         InputUtil.pressEnterToContinue();
+        System.out.println();
+
         while(level < XP_TABLE.length && exp >= nextLevelExp){
             levelUp();
         }
@@ -365,19 +367,17 @@ public abstract class Character {
             level++;
             PrintUtil.hr();
             System.out.println("✨ LEVEL UP! You are now Level " + level + "! ✨");
-            System.out.println("💖 HP & " + getEnergyEmoji() + " " + getEnergyName() + " Restored!");
+            System.out.println("25% of 💖 HP & " + getEnergyEmoji() + " " + getEnergyName() + " Restored!");
 
             int oldHp = maxHP;
             int oldAtk = baseAttack;
             int oldDef = baseDefense;
-            int oldEnergy = maxEnergy;
 
             switch (classType) {
                 case "Swordsman" -> {
                     maxHP += 100 + (int)(maxHP * 0.02);
                     baseAttack += 2;
                     baseDefense += 2;
-                    maxEnergy += 5;
                 }
                 case "Archer" -> {
                     maxHP += 70 + (int)(maxHP * 0.02);
@@ -395,8 +395,12 @@ public abstract class Character {
                 }
             }
 
-            hp = maxHP;
-            energy = maxEnergy;
+            hp += (int)(maxHP * 0.25);
+            if (hp > maxHP) hp = maxHP;
+
+            energy += (int)(maxEnergy * 0.25);
+            if (energy > maxEnergy) energy = maxEnergy;
+
 
             exp -= nextLevelExp;
             if (level < XP_TABLE.length) nextLevelExp = XP_TABLE[level];
@@ -405,10 +409,9 @@ public abstract class Character {
 
             System.out.printf("%-8s : +%d → %d%n", "💚 HP", (maxHP - oldHp), maxHP);
             System.out.printf("%-8s : +%d → %d%n", "⚔️ ATK", (baseAttack - oldAtk), attack);
-            System.out.printf("%-8s : +%d → %d%n", "🛡️ DEF", (baseDefense - oldDef), defense);
-            System.out.printf("%-8s : +%d → %d%n", getEnergyEmoji() + " " + getEnergyName(),
-                    (maxEnergy - oldEnergy), maxEnergy);
+            System.out.printf("%-8s  : +%d → %d%n", "🛡️ DEF", (baseDefense - oldDef), defense);
             PrintUtil.hr();
+            System.out.println();
             PrintUtil.pause(800);
         }
     }
@@ -419,7 +422,7 @@ public abstract class Character {
     }
 
     public void lootSoulShards(int dropped) {
-        System.out.println("  💠 " + dropped + " Soul Shard" + (dropped > 1 ? "s" : ""));
+        System.out.println(ColorUtil.brightYellow("  💠 " + dropped + " Soul Shard" + (dropped > 1 ? "s" : "")));
         soulShards += dropped;
     }
 

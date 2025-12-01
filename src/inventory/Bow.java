@@ -2,6 +2,7 @@ package inventory;
 
 import characters.Character;
 import enemies.Enemy;
+import utils.ColorUtil;
 import utils.InputUtil;
 import utils.PrintUtil;
 import utils.RandomUtil;
@@ -27,28 +28,29 @@ public class Bow extends Weapon{
     @Override
     public void displayInfo() {
         System.out.println();
-        System.out.println("═════════════════════════════════════");
-        System.out.println(" 🏹 " + getName() + " [" + getRarity() + "]");
-        System.out.println("  + " + getAtkBuff() + " ATK");
+        System.out.println(ColorUtil.boldBrightCyan("═════════════════════════════════════"));
+        System.out.println(ColorUtil.boldBrightYellow(" 🏹 " + getName() + " [" + getRarity() + "]"));
+        System.out.println(ColorUtil.boldBrightYellow("  + " + getAtkBuff() + " ATK"));
 
         if (getLifestealPercent() > 0) {
-            System.out.println(" 💝 Restores " + getLifestealPercent() + "% HP of damage dealt");
+            System.out.println(ColorUtil.boldBrightYellow(" 💝 Restores " + getLifestealPercent() + "% HP of damage dealt"));
         }
 
         if (attackTwiceChance > 0) {
-            System.out.println(" 🎯 " + attackTwiceChance + "% chance to deal extra damage");
+            System.out.println(ColorUtil.boldBrightYellow(" 🎯 " + attackTwiceChance + "% chance to deal extra damage"));
         }
 
         if (!getEnchantments().isEmpty()) {
-            System.out.println(" ✨ Enchantments:");
+            System.out.println(ColorUtil.boldBrightYellow(" ✨ Enchantments:"));
             for (Map.Entry<String, String> enchant : getEnchantments().entrySet()) {
-                System.out.println("   - " + enchant.getKey() + " " + enchant.getValue());
+                System.out.println(ColorUtil.boldBrightYellow("   - " + enchant.getKey() + " " + enchant.getValue()));
             }
         }
 
-        System.out.println("═════════════════════════════════════");
+        System.out.println(ColorUtil.boldBrightCyan("═════════════════════════════════════"));
         System.out.println();
     }
+
 
     @Override
     public void applyEffects(Character player, Character enemy, int damage) {

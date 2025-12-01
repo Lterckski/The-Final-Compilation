@@ -5,6 +5,8 @@ import utils.ColorUtil;
 import utils.InputUtil;
 import utils.PrintUtil;
 
+import java.awt.*;
+
 public class Inventory {
 
     private final Character player;
@@ -107,7 +109,6 @@ public class Inventory {
             System.out.println( ColorUtil.cyan("  💠 Soul Shards            :  ") + ColorUtil.boldBrightYellow(""+player.getSoulShards()));
 
             System.out.println(ColorUtil.boldBrightCyan("╚══════════════════════════════════════════════════════════════════════╝"));
-            System.out.println();
 
             // --- MENU ---
             PrintUtil.line();
@@ -127,11 +128,13 @@ public class Inventory {
                 case 1 -> {
                     if (equippedWeapon != null) equippedWeapon.displayInfo();
                     else System.out.println(ColorUtil.boldBrightRed("❌") + " No weapon equipped!");
+                    InputUtil.pressEnterToContinue();
                 }
 
                 case 2 -> {
                     if (equippedArmor != null) equippedArmor.displayInfo();
                     else System.out.println(ColorUtil.boldBrightRed("❌") + " No armor equipped!");
+                    InputUtil.pressEnterToContinue();
                 }
 
                 case 3 -> usePotion("normal");
@@ -170,13 +173,9 @@ public class Inventory {
             default -> { return; }
         }
 
-        if (current >= max) {
-            System.out.println("💡 Already full! No potion needed.");
-            return;
-        }
-
         if (available <= 0) {
-            System.out.println("❌ No potions of this type left!\n");
+            System.out.println(ColorUtil.boldBrightRed("❌ No potions of this type left!"));
+            InputUtil.pressEnterToContinue();
             return;
         }
 
@@ -186,30 +185,47 @@ public class Inventory {
             System.out.print("How many do you want to use? ");
             amount = InputUtil.scanInput();
             if (amount > 0 && amount <= available) break;
-            System.out.println("❌ Invalid amount! Please enter between 1 and " + available);
+            System.out.println(ColorUtil.boldBrightRed("❌ Invalid amount! Please enter between 1 and " + available));
         }
 
         if (!areYouSure()) {
-            System.out.println("Potion not used.");
+            System.out.println(ColorUtil.boldBrightRed("Potion not used..."));
             return;
         }
 
         for (int i = 0; i < amount; i++) {
             switch (type) {
                 case "normal" -> {
-                    if (player.getHp() < player.getMaxHP()) potions.useNormalHealingPotion();
-                    else { System.out.println("💡 HP is full. Remaining potions not used."); break; }
+                    if (player.getHp() < player.getMaxHP()) {
+                        potions.useNormalHealingPotion();
+                    }
+                    else {
+                        System.out.println(ColorUtil.boldBrightGreen("💡 HP is full. Remaining potions not used."));
+                        InputUtil.pressEnterToContinue();
+                        return;
+                    }
                 }
                 case "full" -> {
-                    if (player.getHp() < player.getMaxHP()) potions.useFullHealingPotion();
-                    else { System.out.println("💡 HP is full. Remaining potions not used."); break; }
+                    if (player.getHp() < player.getMaxHP()) {
+                        potions.useFullHealingPotion();
+                    } else {
+                        System.out.println(ColorUtil.boldBrightGreen("💡 HP is full. Remaining potions not used."));
+                        InputUtil.pressEnterToContinue();
+                        return;
+                    }
                 }
                 case "energy" -> {
-                    if (player.getEnergy() < player.getMaxEnergy()) potions.useEnergyPotion();
-                    else { System.out.println("💡 Energy is full. Remaining potions not used."); break; }
+                    if (player.getEnergy() < player.getMaxEnergy()) {
+                        potions.useEnergyPotion();
+                    } else {
+                        System.out.println(ColorUtil.boldBrightGreen("💡 Energy is full. Remaining potions not used."));
+                        InputUtil.pressEnterToContinue();
+                        return;
+                    }
                 }
             }
         }
+        InputUtil.pressEnterToContinue();
     }
 
     // --- Confirmation prompt ---
@@ -220,18 +236,10 @@ public class Inventory {
             confirm = InputUtil.scanInput();
             if (confirm == 1) break;
             else if (confirm == 0) break;
-            else System.out.println("❌ Invalid input! Try again.\n");
+            else System.out.println(ColorUtil.boldBrightRed("❌ Invalid input! Try again.\n"));
         } while (true);
         return confirm == 1;
     }
-    public void equipLegendaryWeapon(Weapon w) {
-        this.equippedWeapon = w;
-    }
-
-    public void equipLegendaryArmor(Armor a) {
-        this.equippedArmor = a;
-    }
-
 
 
 }

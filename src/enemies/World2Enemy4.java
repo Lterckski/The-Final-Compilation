@@ -1,6 +1,7 @@
 package enemies;
 
 import characters.Character;
+import utils.ColorUtil;
 import utils.PrintUtil;
 import utils.RandomUtil;
 import inventory.*;
@@ -48,13 +49,13 @@ public class World2Enemy4 extends Enemy{
     @Override
     public void displaySkills() {
         System.out.println();
-        System.out.println("┌─────────────────────────────── 🧟‍♂️ GHOUL FOOTMEN SKILLS 🧟‍♂️ ────────────────────────────────┐");
-        System.out.println(" ⚔️ Skill       : Rotten Cleave");
-        System.out.println(" 📝 Description : The Ghoul Footman slashes with a putrid blade, spreading disease and pain.");
-        System.out.println(" 💥 Damage     : (" + (int)(attack * 1.00) + " — " + (int)(attack * 1.30) + ")");
-        System.out.println(" ✨ Effects    :");
-        System.out.println(" - 🩸 30% chance to inflict Bleed for 2 turns");
-        System.out.println("└────────────────────────────────────────────────────────────────────────────────────────────┘");
+        System.out.println(ColorUtil.boldBrightRed("┌─────────────────────────────── 🧟‍♂️ GHOUL FOOTMEN SKILLS 🧟‍♂️ ────────────────────────────────┐"));
+        System.out.println(ColorUtil.boldBrightYellow("  ⚔️ Skill – Rotten Cleave"));
+        System.out.println(ColorUtil.red(" 📜 Description : The Ghoul Footman slashes with a putrid blade, spreading disease and pain."));
+        System.out.println(ColorUtil.red(" 💥 Damage : (") + ColorUtil.boldBrightYellow((int)(attack * 1.00) + " — " + (int)(attack * 1.30)) + ColorUtil.red(")"));
+        System.out.println(ColorUtil.red(" ✨ Effects :"));
+        System.out.println(ColorUtil.red("    - 🩸 30% chance to inflict Bleed for 2 turns"));
+        System.out.println(ColorUtil.boldBrightRed("└────────────────────────────────────────────────────────────────────────────────────────────┘"));
         System.out.println();
     }
 
@@ -68,8 +69,9 @@ public class World2Enemy4 extends Enemy{
     @Override
     public void dropLoot(Character player){
         PrintUtil.pause(800);
-        System.out.println("┬───────────────────────────────────┬");
-        System.out.println("  🎁 You received:");
+        System.out.println();
+        System.out.println(ColorUtil.boldBrightYellow("┬───────────────────────────────────┬"));
+        System.out.println(ColorUtil.brightYellow("  🎁 You received:"));
         player.lootSoulShards(RandomUtil.range(2,3));
         player.getPotions().lootPotions(false);
         player.gainExp(rewardExp());

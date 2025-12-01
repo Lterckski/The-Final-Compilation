@@ -2,6 +2,7 @@ package enemies;
 
 
 import characters.Character;
+import utils.ColorUtil;
 import utils.PrintUtil;
 import utils.RandomUtil;
 import inventory.*;
@@ -50,17 +51,16 @@ public class World2Enemy3 extends Enemy{
     @Override
     public void displaySkills() {
         System.out.println();
-        System.out.println("┌─────────────────────────────────── 🐕‍🦺 BLIGHT HOUNDS SKILLS 🐕‍🦺 ─────────────────────────────────┐");
-
-        System.out.println(" 💥 Skill       : Corpse Explosion");
-        System.out.println(" 📝 Description : The Blight Hounds cause corpses to explode, damaging and weakening their target.");
-        System.out.println(" ⚔️ Damage     : (" + (int)(attack * 1.00) + " — " + (int)(attack * 1.55) + ")");
-        System.out.println(" ✨ Effects    :");
-        System.out.println(" - 🛡️ 30% chance to reduce target’s DEF by 30% for 2 turns");
-
-        System.out.println("└─────────────────────────────────────────────────────────────────────────────────────────────────┘");
+        System.out.println(ColorUtil.boldBrightRed("┌─────────────────────────────────── 🐕‍🦺 BLIGHT HOUNDS SKILLS 🐕‍🦺 ─────────────────────────────────┐"));
+        System.out.println(ColorUtil.boldBrightYellow("  💥 Skill – Corpse Explosion"));
+        System.out.println(ColorUtil.red(" 📜 Description : The Blight Hounds cause corpses to explode, damaging and weakening their target."));
+        System.out.println(ColorUtil.red(" 💥 Damage : (") + ColorUtil.boldBrightYellow((int)(attack * 1.00) + " — " + (int)(attack * 1.55)) + ColorUtil.red(")"));
+        System.out.println(ColorUtil.red(" ✨ Effects :"));
+        System.out.println(ColorUtil.red("    - 🛡️ 30% chance to reduce target’s DEF by 30% for 2 turns"));
+        System.out.println(ColorUtil.boldBrightRed("└─────────────────────────────────────────────────────────────────────────────────────────────────┘"));
         System.out.println();
     }
+
 
 
 
@@ -72,8 +72,9 @@ public class World2Enemy3 extends Enemy{
     @Override
     public void dropLoot(Character player){
         PrintUtil.pause(800);
-        System.out.println("┬───────────────────────────────────┬");
-        System.out.println("  🎁 You received:");
+        System.out.println();
+        System.out.println(ColorUtil.boldBrightYellow("┬───────────────────────────────────┬"));
+        System.out.println(ColorUtil.brightYellow("  🎁 You received:"));
         player.lootSoulShards(RandomUtil.range(2,3));
         player.getPotions().lootPotions(false);
         player.gainExp(rewardExp());
