@@ -333,8 +333,10 @@ public class World3Final {
         Enemy finalBoss = new FinalBoss();
         Battle finalBattle = new Battle(player, finalBoss);
 
+        System.out.println();
         finalBoss.displayStats();
         InputUtil.pressEnterToContinue();
+        System.out.println();
 
         finalBattle.startBattle();
 

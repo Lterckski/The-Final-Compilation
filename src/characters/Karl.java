@@ -52,8 +52,8 @@ public class Karl extends Character{
     public void showBackstory() {
         System.out.println();
         System.out.println(ColorUtil.boldBrightCyan("┌───────────────────────────── 📘 KARL'S BACKSTORY 📘 ─────────────────────────────┐"));
-        System.out.println(ColorUtil.brightYellow  ("  Karl Clover Dior IV was born and raised in the Forest of Silence, a place"));
-        System.out.println(ColorUtil.brightYellow  ("  where the air is thick with mist and danger lurks in every shadow."));
+        System.out.println(ColorUtil.brightYellow  ("  Karl Clover Dior IV was born and raised in the Forest of Silence, a place where"));
+        System.out.println(ColorUtil.brightYellow  ("  the air is thick with mist and danger lurks in every shadow."));
         System.out.println(ColorUtil.brightYellow  ("  His father, once a skilled archer, taught him the bow not as a weapon of"));
         System.out.println(ColorUtil.brightYellow  ("  glory but as a means of survival against Rotfang Wolves, Carrion Bats, and"));
         System.out.println(ColorUtil.brightYellow  ("  the twisted Dreadbark Treants that haunted their home."));
@@ -69,6 +69,7 @@ public class Karl extends Character{
         System.out.println(ColorUtil.boldBrightCyan("└──────────────────────────────────────────────────────────────────────────────────┘"));
         System.out.println();
     }
+
 
 
     // Passive - Hunter's Instinct
@@ -100,7 +101,12 @@ public class Karl extends Character{
         int damage = (int) RandomUtil.range(attack * 1.10, attack * 1.25);
         int reduced = hunterInstincts(damage, target);
 
-        System.out.println("💔 Target is hit for " + reduced + " Pure Damage!");
+        System.out.println(
+                ColorUtil.brightGreen("💔 Target is hit for ")
+                        + ColorUtil.boldBrightWhite(String.valueOf(reduced))
+                        + ColorUtil.brightGreen(" Pure Damage!")
+        );
+
         PrintUtil.pause(800);
         target.takeDamage(reduced);
 
@@ -131,7 +137,12 @@ public class Karl extends Character{
         damage = hunterInstincts(damage, target);
         int reduced = calculateDamage(target, damage);
 
-        System.out.println("💔 Target is hit for " + reduced + " Critical Damage!");
+        System.out.println(
+                ColorUtil.brightGreen("💔 Target is hit for ")
+                        + ColorUtil.boldBrightWhite(String.valueOf(reduced))
+                        + ColorUtil.brightGreen(" Critical Damage!")
+        );
+
         PrintUtil.pause(800);
         target.takeDamage(reduced);
 
@@ -164,12 +175,22 @@ public class Karl extends Character{
             if (this.getEffects().checkConfuse()) reduced = 0;
             totalDamage += reduced;
 
-            System.out.println("→💥 Arrow " + i + " fired! 💔 Target is hit for " + reduced + " damage!");
+            System.out.println(
+                    ColorUtil.brightGreen("→💥 Arrow " + i + " fired! 💔 Target is hit for ")
+                            + ColorUtil.boldBrightWhite(String.valueOf(reduced))
+                            + ColorUtil.brightGreen(" damage!")
+            );
+
+
             PrintUtil.pause(800);
 
         }
 
-        System.out.println("🏹🌧️ Rain of a Thousand Arrows finished! Total damage dealt: " + totalDamage);
+        System.out.println(
+                ColorUtil.brightGreen("🏹🌧️ Rain of a Thousand Arrows finished! Total damage dealt: ")
+                        + ColorUtil.boldBrightWhite(String.valueOf(totalDamage))
+        );
+
         PrintUtil.pause(800);
         target.takeDamage(totalDamage);
 

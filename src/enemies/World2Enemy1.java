@@ -13,7 +13,7 @@ public class World2Enemy1 extends Enemy{
     }
 
     public void plagueBite(Character target){
-        System.out.println("🐀 " + name + " used Plague Bite!");
+        System.out.println(ColorUtil.boldBrightRed("🐀 " + name + " used Plague Bite!"));
         PrintUtil.pause(800);
         if(target.getEffects().checkDodge()) return;
         if (this.getEffects().checkConfuse()) return;
@@ -21,9 +21,12 @@ public class World2Enemy1 extends Enemy{
         int damage = (int)RandomUtil.range(attack * 1.00, attack * 1.55);
         int reduced = calculateDamage(target, damage);
 
-        System.out.println("→💔 Plague Bite hits for " + reduced + " damage!");
+        System.out.println(ColorUtil.brightRed("→💔 Plague Bite hits for ")
+                + ColorUtil.boldBrightWhite(String.valueOf(reduced))
+                + ColorUtil.brightRed(" damage!"));
         PrintUtil.pause(800);
         target.takeDamage(reduced);
+
 
 
         // Armor reflect check
@@ -31,7 +34,7 @@ public class World2Enemy1 extends Enemy{
         if (equippedArmor != null) {
             int reflectDamage = equippedArmor.checkReflectDamage(reduced);
             if (reflectDamage > 0) {
-                System.out.println("🪞 " + equippedArmor.getName() + " reflected " + reflectDamage + " damage back to " + name + "!");
+                System.out.println(ColorUtil.brightMagenta("🪞 " + equippedArmor.getName() + " reflected " + reflectDamage + " damage back to " + name + "!"));
                 PrintUtil.pause(800);
                 this.takeDamage(reflectDamage);
             }
@@ -39,7 +42,7 @@ public class World2Enemy1 extends Enemy{
 
         // Poison effect with immunity check
         if (equippedArmor != null && equippedArmor.checkEffectsImmunity()) {
-            System.out.println("✨ " + target.getName() + " resisted Poison ☠️ due to " + equippedArmor.getName() + "!");
+            System.out.println(ColorUtil.brightMagenta("✨ " + target.getName() + " resisted Poison ☠️ due to " + equippedArmor.getName() + "!"));
             PrintUtil.pause(800);
         } else {
             target.getEffects().applyPoison(1);

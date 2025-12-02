@@ -12,7 +12,7 @@ public class World2Enemy4 extends Enemy{
     }
 
     public void rottenCleave(Character target){
-        System.out.println("🧟 " + name + " swings Rotten Cleave!");
+        System.out.println(ColorUtil.boldBrightRed("🧟 " + name + " swings Rotten Cleave!"));
         PrintUtil.pause(800);
         if(target.getEffects().checkDodge()) return;
         if (this.getEffects().checkConfuse()) return;
@@ -20,16 +20,19 @@ public class World2Enemy4 extends Enemy{
         int damage = (int)RandomUtil.range(attack * 1.00 , attack * 1.30);
         int reduced = calculateDamage(target, damage);
 
-        System.out.println("→💔 Rotten Cleave hits for " + reduced + " damage!");
+        System.out.println(ColorUtil.brightRed("→💔 Rotten Cleave hits for ")
+                + ColorUtil.boldBrightWhite(String.valueOf(reduced))
+                + ColorUtil.brightRed(" damage!"));
         PrintUtil.pause(800);
         target.takeDamage(reduced);
+
 
         // Reflect check
         Armor equippedArmor = target.getInventory().getEquippedArmor();
         if (equippedArmor != null) {
             int reflectDamage = equippedArmor.checkReflectDamage(reduced);
             if (reflectDamage > 0) {
-                System.out.println("🪞 " + equippedArmor.getName() + " reflected " + reflectDamage + " damage back to " + name + "!");
+                System.out.println(ColorUtil.brightMagenta("🪞 " + equippedArmor.getName() + " reflected " + reflectDamage + " damage back to " + name + "!"));
                 PrintUtil.pause(800);
                 this.takeDamage(reflectDamage);
             }
@@ -37,7 +40,7 @@ public class World2Enemy4 extends Enemy{
         // 30% chance to apply Bleed — check armor immunity first
         if (RandomUtil.chance(30)) {
             if (equippedArmor != null && equippedArmor.checkEffectsImmunity()) {
-                System.out.println("✨ " + target.getName() + " resisted Bleed 🩸 due to " + equippedArmor.getName() + "!");
+                System.out.println(ColorUtil.brightMagenta("✨ " + target.getName() + " resisted Bleed 🩸 due to " + equippedArmor.getName() + "!"));
                 PrintUtil.pause(800);
             } else {
                 target.getEffects().applyBleed(2);

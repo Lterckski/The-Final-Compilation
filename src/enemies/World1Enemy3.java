@@ -14,7 +14,7 @@ public class World1Enemy3 extends Enemy {
 
     // Skill: Root Snare (6–9 damage, immobilize 1 turn)
     public void rootSnare(Character target) {
-        System.out.println("🌳 " + name + " strikes with Root Snare!");
+        System.out.println(ColorUtil.boldBrightRed("🌳 " + name + " strikes with Root Snare!"));
         PrintUtil.pause(800);
         if (target.getEffects().checkDodge()) return;
         if (this.getEffects().checkConfuse()) return;
@@ -22,7 +22,9 @@ public class World1Enemy3 extends Enemy {
         int damage = (int) RandomUtil.range(attack * 1.0, attack * 1.5);
         int reduced = calculateDamage(target, damage);
 
-        System.out.println("→💔 Root Snare hits for " + reduced + " damage!");
+        System.out.println(ColorUtil.brightRed("→💔 Root Snare hits for ")
+                + ColorUtil.boldBrightWhite(String.valueOf(reduced))
+                + ColorUtil.brightRed(" damage!"));
         PrintUtil.pause(800);
         target.takeDamage(reduced);
 
@@ -31,7 +33,7 @@ public class World1Enemy3 extends Enemy {
         if (equippedArmor != null) {
             int reflectDamage = equippedArmor.checkReflectDamage(reduced);
             if (reflectDamage > 0) {
-                System.out.println("🪞 " + equippedArmor.getName() + " reflected " + reflectDamage + " damage back to " + name + "!");
+                System.out.println(ColorUtil.brightMagenta("🪞 " + equippedArmor.getName() + " reflected " + reflectDamage + " damage back to " + name + "!"));
                 PrintUtil.pause(800);
                 this.takeDamage(reflectDamage);
             }

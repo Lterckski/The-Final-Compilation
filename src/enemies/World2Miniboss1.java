@@ -13,7 +13,7 @@ public class World2Miniboss1 extends Enemy{
     }
 
     public void shacklingChains(Character target){
-        System.out.println("⛓️ " + name + " used Shackling Chains!");
+        System.out.println(ColorUtil.boldBrightRed("⛓️ " + name + " used Shackling Chains!"));
         PrintUtil.pause(800);
         if(target.getEffects().checkDodge()) return;
         if (this.getEffects().checkConfuse()) return;
@@ -21,16 +21,19 @@ public class World2Miniboss1 extends Enemy{
         int damage = (int)RandomUtil.range(attack * 1.00, attack * 1.33);
         int reduced = calculateDamage(target, damage);
 
-        System.out.println("→💔 Shackling Chains hits for " + reduced + " damage!");
+        System.out.println(ColorUtil.brightRed("→💔 Shackling Chains hits for ")
+                + ColorUtil.boldBrightWhite(String.valueOf(reduced))
+                + ColorUtil.brightRed(" damage!"));
         PrintUtil.pause(800);
         target.takeDamage(reduced);
+
 
         // Reflect damage check
         Armor equippedArmor = target.getInventory().getEquippedArmor();
         if (equippedArmor != null) {
             int reflectDamage = equippedArmor.checkReflectDamage(reduced);
             if (reflectDamage > 0) {
-                System.out.println("🪞 " + equippedArmor.getName() + " reflected " + reflectDamage + " damage back to " + name + "!");
+                System.out.println(ColorUtil.brightMagenta("🪞 " + equippedArmor.getName() + " reflected " + reflectDamage + " damage back to " + name + "!"));
                 PrintUtil.pause(800);
                 this.takeDamage(reflectDamage);
             }
@@ -44,7 +47,7 @@ public class World2Miniboss1 extends Enemy{
     }
 
     public void tormentingLash(Character target){
-        System.out.println("🩸 " + name + " lashes with Tormenting Lash!");
+        System.out.println(ColorUtil.boldBrightRed("🩸 " + name + " lashes with Tormenting Lash!"));
         PrintUtil.pause(800);
         if(target.getEffects().checkDodge()) return;
         if (this.getEffects().checkConfuse()) return;
@@ -52,16 +55,19 @@ public class World2Miniboss1 extends Enemy{
         int damage = (int)RandomUtil.range(attack * 1.33, attack * 1.73);
         int reduced = calculateDamage(target, damage);
 
-        System.out.println("→💔 Tormenting Lash hits for " + reduced + " damage!");
+        System.out.println(ColorUtil.brightRed("→💔 Tormenting Lash hits for ")
+                + ColorUtil.boldBrightWhite(String.valueOf(reduced))
+                + ColorUtil.brightRed(" damage!"));
         PrintUtil.pause(800);
         target.takeDamage(reduced);
+
 
         // Reflect damage check
         Armor equippedArmor = target.getInventory().getEquippedArmor();
         if (equippedArmor != null) {
             int reflectDamage = equippedArmor.checkReflectDamage(reduced);
             if (reflectDamage > 0) {
-                System.out.println("🪞 " + equippedArmor.getName() + " reflected " + reflectDamage + " damage back to " + name + "!");
+                System.out.println(ColorUtil.brightMagenta("🪞 " + equippedArmor.getName() + " reflected " + reflectDamage + " damage back to " + name + "!"));
                 PrintUtil.pause(800);
                 this.takeDamage(reflectDamage);
             }
@@ -69,7 +75,7 @@ public class World2Miniboss1 extends Enemy{
 
         // Bleed — check immunity
         if (equippedArmor != null && equippedArmor.checkEffectsImmunity()) {
-            System.out.println("✨ " + target.getName() + " resisted Bleed 🩸 due to " + equippedArmor.getName() + "!");
+            System.out.println(ColorUtil.brightMagenta("✨ " + target.getName() + " resisted Bleed 🩸 due to " + equippedArmor.getName() + "!"));
             PrintUtil.pause(800);
         } else {
             target.getEffects().applyBleed(2);
