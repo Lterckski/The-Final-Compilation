@@ -411,6 +411,7 @@ public class World1 {
 
         PrintUtil.line();
         PrintUtil.type("""
+                ✅🏆Mini-Boss Defeated!
                 🌟 The Hollow Stag staggers, its luminous eyes fading to black.
                 With one final, echoing cry, it collapses to the ground. The forest trembles… then exhales.
                 """);
