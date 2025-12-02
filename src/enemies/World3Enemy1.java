@@ -11,6 +11,29 @@ public class World3Enemy1 extends Enemy {
     public World3Enemy1() { super("Flame Revenant", 982, 44, 80); }
 
     public void emberBurst(Character target) {
+        PrintUtil.type(ColorUtil.boldBrightRed("                                                          \n" +
+                "                             .                            \n" +
+                "                           +##*.                          \n" +
+                "                          .#%%#.                          \n" +
+                "                             .                            \n" +
+                "                                     =                    \n" +
+                "                                  .-**:                   \n" +
+                "                                 =+#*:..                  \n" +
+                "                               .=%%%%+=.                  \n" +
+                "                              *:=%%%%%-+=                 \n" +
+                "                  ...        #%%%%#%%@@@#-                \n" +
+                "             .::::.=.    =--#@%@@%%%%%%%%#-:              \n" +
+                "           .=*###*+-+. -*%%*-: -#%%%@@+ .=%%-             \n" +
+                "          :+#%%%%##=+%#=--: .  .=%%%%+    .-+*.           \n" +
+                "           +%%%@@%%* :.       =-#@@@@%#:-.  :=*+          \n" +
+                "           .##%%%%#: ...    ..#%@@@@@@@@%=     -          \n" +
+                "             :-=-::::       :%%@#=.  =#@%@%-              \n" +
+                "                          :+%@%=.       :@@+              \n" +
+                "                         :*@%-          =%%-              \n" +
+                "                        -%*:             *#.              \n" +
+                "                       :#=               +%%*=            \n" +
+                "                      =++:                                \n" +
+                "                                                          "));
         System.out.println("🔥 " + name + " unleashes Ember Burst!");
         PrintUtil.pause(800);
         if(target.getEffects().checkDodge()) return;

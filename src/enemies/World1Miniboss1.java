@@ -17,6 +17,35 @@ public class World1Miniboss1 extends Enemy {
 
     // Skill 1: Deathly Charge (ATK × 1.00–1.20), 30% chance to Stun
     public void deathlyCharge(Character target) {
+        PrintUtil.type(ColorUtil.boldBrightRed("                                                          \n" +
+                "                                                          \n" +
+                "                    :       .=                            \n" +
+                "                     +       :+                           \n" +
+                "                    -#      .#*                           \n" +
+                "                 :*%=  :*#%@#.                            \n" +
+                "                -#*  :%@#:                                \n" +
+                "           -    +%= =%%*+*+.   -:                         \n" +
+                "           %==%@%%%.%%@%+=*@#=*#.                         \n" +
+                "            ..   +@@%@@@@@@===                            \n" +
+                "               .+#%@@@%#%@@@@@=                           \n" +
+                "                 :%@@@@@@@@@@@@%-                         \n" +
+                "                 -%@@%%@@@@%@@@@%*.                       \n" +
+                "                  :#%-@@@@@@%@@@@#:                       \n" +
+                "                   :=+@@@@@@@@@@@%=                       \n" +
+                "                 :@@#*%@@%@@@@@@@@-                       \n" +
+                "                 .@=+#@%%@@@@%@@@@+          ::           \n" +
+                "                 .%% *@#@%%%#@@@@@@#.       =@-           \n" +
+                "                  .@%:@#+#@@@@@@@@@@@=      +@+           \n" +
+                "                      =-   +@@@%@@@@@=       -            \n" +
+                "                           #@%@%@@@@@%=      -            \n" +
+                "                          .%@@@%@@@@+ *%.   =:            \n" +
+                "                           %@@@*#@@@-   .==:              \n" +
+                "                            .%@%:.#@@+                    \n" +
+                "                              *%.  :%=                    \n" +
+                "                             .@=   :%.                    \n" +
+                "                            +@#.   *@:                    \n" +
+                "                           -#*    +%#                     \n" +
+                "                                                          "));
         System.out.println("🦌 " + name + " charges with Deathly Charge!");
         PrintUtil.pause(800);
         if (target.getEffects().checkDodge()) return;
@@ -49,6 +78,33 @@ public class World1Miniboss1 extends Enemy {
 
     // Skill 2: Blackened Howl (reduces target DEF by 20% for 2 turns)
     public void blackenedHowl(Character target) {
+        PrintUtil.type(ColorUtil.boldBrightRed("                                                          \n" +
+                "                                               .          \n" +
+                "                                      .  :....:           \n" +
+                "                   :           .:      :.... ....         \n" +
+                "                   +         +-        -..  .  ::         \n" +
+                "                 +-         #-         -.:.  . .:         \n" +
+                "                +-          =#=::.     -... :.:. .        \n" +
+                "                +=       .--::=+##=. :..:                 \n" +
+                "                :*=-::-=+%%%%%%+=##*-::                   \n" +
+                "                  :*###+:    .*%@%##*+                    \n" +
+                "                            .#%@@@%%@+.                   \n" +
+                "                           =%@%@@@@@%%:                   \n" +
+                "                         -#@@@@@@@@%--                    \n" +
+                "                        -%@@@@@@@@@@=                     \n" +
+                "                       -%@@@@@@@@@%%#                     \n" +
+                "              :+   :=+%@@@%@@@@@@@@%+                     \n" +
+                "               =**#@@@@@@@@@@@%@@@@%-                     \n" +
+                "                 *@@@@@@@@@@@@%@@@@@@%#.                  \n" +
+                "                .#@%@@%@@@@@@@%@#.   -@:                  \n" +
+                "                :%@@@*-@@@@*.  ##    -@-                  \n" +
+                "              .*@@@@+ :%@@%.   %*   .#@                   \n" +
+                "              :%+     +@=     +%=   -%.                   \n" +
+                "              -%.      :%=    %*                          \n" +
+                "              +@:       :%#.                              \n" +
+                "             .+#+::--++=**++=+--:....                     \n" +
+                "                        .                                 \n" +
+                "                                                          "));
         System.out.println("🗣️ " + name + " unleashes Blackened Howl!");
         PrintUtil.pause(800);
         if (target.getEffects().checkDodge()) return;
