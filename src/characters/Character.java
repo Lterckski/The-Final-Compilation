@@ -367,7 +367,7 @@ public abstract class Character {
             level++;
             PrintUtil.hr();
             System.out.println("✨ LEVEL UP! You are now Level " + level + "! ✨");
-            System.out.println("25% of 💖 HP & " + getEnergyEmoji() + " " + getEnergyName() + " Restored!");
+            System.out.println("50% of 💖 HP & " + getEnergyEmoji() + " " + getEnergyName() + " Restored!");
 
             int oldHp = maxHP;
             int oldAtk = baseAttack;
@@ -395,10 +395,10 @@ public abstract class Character {
                 }
             }
 
-            hp += (int)(maxHP * 0.25);
+            hp += (int)(maxHP * 0.50);
             if (hp > maxHP) hp = maxHP;
 
-            energy += (int)(maxEnergy * 0.25);
+            energy += (int)(maxEnergy * 0.50);
             if (energy > maxEnergy) energy = maxEnergy;
 
 
@@ -418,7 +418,7 @@ public abstract class Character {
 
     public void recalculateBuffs(){
         attack = baseAttack + getWeapon().getAtkBuff();
-        defense = baseDefense + getArmor().getDefBuff();
+        defense = baseDefense + getArmor().getDefBuff() + getArmor().getAddDefBuff();
     }
 
     public void lootSoulShards(int dropped) {

@@ -195,9 +195,9 @@ public class World2Miniboss1 extends Enemy{
         Armor aegisMail = Armor.AEGIS_MAIL;         // +25 DEF, immune to debuff ↓
         Armor vanguardRobe = Armor.VANGUARD_ROBE;   // +25 DEF, immune to status effects
 
-        System.out.println("1️⃣ " + aegisMail.getName() + " → +25 DEF 🛡️, immune to ATK⬇️ & DEF⬇️");
+        System.out.println("[1] " + aegisMail.getName() + " → +25 DEF 🛡️, immune to ATK⬇️ & DEF⬇️");
         PrintUtil.pause(800);
-        System.out.println("2️⃣ " + vanguardRobe.getName() + " → +25 DEF 🛡️, immune to Poison ☠️, Burn 🔥, Bleed 🩸");
+        System.out.println("[2] " + vanguardRobe.getName() + " → +25 DEF 🛡️, immune to Poison ☠️, Burn 🔥, Bleed 🩸");
         PrintUtil.pause(800);
         System.out.print("\nChoose one to equip (1 or 2): ");
 

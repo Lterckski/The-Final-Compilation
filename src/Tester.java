@@ -2,17 +2,12 @@ import battle.Battle;
 import characters.*;
 import characters.Character;
 import enemies.*;
+import events.MagicShop;
 import events.PrefiEncounter;
 import inventory.*;
 
-import events.MagicShop;
-
-import utils.ColorUtil;
 import utils.InputUtil;
 import utils.PrintUtil;
-import worlds.*;
-
-import java.sql.SQLOutput;
 
 public class Tester {
     public static void main(String[] args) {
@@ -149,57 +144,57 @@ public class Tester {
         } while (player == null);  // repeat until valid choice
         player.getInventory().setEquippedArmor(Armor.LEATHER_GUARD);
 
+        MagicShop magicShop = new MagicShop(player);
 
-        Enemy test = new World1Enemy1();
-        Battle testb = new Battle(player,test);
+        Enemy enemy1 = new World2Miniboss1();
+//      Battle battle = new Battle(player,enemy1);
+//      battle.startBattle();
 
-        testb.startBattle();
+        enemy1.dropLoot(player);
 
-        PrefiEncounter prefiEncounter = new PrefiEncounter();
-        prefiEncounter.start(player);
+        Enemy enemy2 = new World2Miniboss2();
+//      Battle battle2 = new Battle(player, enemy2);
+//      battle2.startBattle();
 
-        /*
-        Enemy testEnemy1 = new World1Enemy1();
-        Battle testBattle1 = new Battle(player, testEnemy1);
-        testBattle1.startBattle();
-        testEnemy1.dropLoot(player);
->>>>>>> 1491fac2862efcad92a1c9e540d1e09fe7119660
+        enemy2.dropLoot(player);
 
-        player.lootSoulShards(60);
+        player.lootSoulShards(90);
         MagicShop shop = new MagicShop(player);
         shop.openShop();
 
-//        World1 world1 = new World1();
-//        world1.run(player);
+        Enemy enemy3 = new FinalBoss();
+        Battle battle3 = new Battle(player, enemy3);
+
+        battle3.startBattle();
+
+
+//        PrefiEncounter prefiEncounter = new PrefiEncounter();
+//        prefiEncounter.start(player);
+
+
+//        Enemy testEnemy1 = new World1Enemy1();
+//        Battle testBattle1 = new Battle(player, testEnemy1);
+//        testBattle1.startBattle();
+//        testEnemy1.dropLoot(player);
+
 //
-//        World2 world2 = new World2();
-//        world2.run(player);
+////        World1 world1 = new World1();
+////        world1.run(player);
+////
+////        World2 world2 = new World2();
+////        world2.run(player);
+////
+////        World3 world3 = new World3();
+////        world3.run(player);
 //
-//        World3 world3 = new World3();
-//        world3.run(player);
-
-
-        Enemy testEnemy1 = new World1Enemy1();
-        Battle testBattle1 = new Battle(player, testEnemy1);
-
-        System.out.println();
-        PrintUtil.type(ColorUtil.boldBrightMagenta(("🎯 Objective: Defeat 3 Rotfang Wolves!\n").toUpperCase()));
-        testBattle1.startBattle();
-        testEnemy1.dropLoot(player);
-
-<<<<<<< HEAD
-=======
-        World3 world3 = new World3();
-        world3.run(player);
-        */
-
-//        new PreFinalEncounter().start(player);
-
-
-        Enemy testEnemy2 = new World2Miniboss2();
-        Battle testBattle2 = new Battle(player, testEnemy2);
-        testBattle2.startBattle();
-        testEnemy2.dropLoot(player);
+//
+//        Enemy testEnemy1 = new World1Enemy1();
+//        Battle testBattle1 = new Battle(player, testEnemy1);
+//
+//        System.out.println();
+//        PrintUtil.type(ColorUtil.boldBrightMagenta(("🎯 Objective: Defeat 3 Rotfang Wolves!\n").toUpperCase()));
+//        testBattle1.startBattle();
+//        testEnemy1.dropLoot(player);
 
 
     }

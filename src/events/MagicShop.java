@@ -65,7 +65,7 @@ public class MagicShop {
             System.out.printf(" %5s%-3s %-41s %-46s 💠 %s%n", ColorUtil.boldBrightCyan("[7]"), " ❄️", ColorUtil.cyan("Frost Arrow"), "ATKs have 20% to Freeze " + xMark("Archer"), ColorUtil.boldBrightYellow("30"));
             System.out.printf(" %5s%-3s %-41s %-46s 💠 %s%n", ColorUtil.boldBrightCyan("[8]"), " ✨", ColorUtil.cyan("Arc Surge"), "+3 Energy per ATK " + xMark("Mage"), ColorUtil.boldBrightYellow("26"));
             System.out.printf(" %5s%-3s %-41s %-46s 💠 %s%n", ColorUtil.boldBrightCyan("[9]"), " ☠️", ColorUtil.cyan("Venom Infusion"), "20% Poison chance" + xMark("Swordsman","Archer","Mage"), ColorUtil.boldBrightYellow("30"));
-            System.out.printf(" %5s%-3s %-41s %-46s 💠 %s%n", ColorUtil.boldBrightCyan("[10]"), " 🩸", ColorUtil.cyan("Razor Edge"), "+20% chance" + xMark("Swordsman", "Archer"), ColorUtil.boldBrightYellow("32"));
+            System.out.printf(" %5s%-3s %-41s %-46s 💠 %s%n", ColorUtil.boldBrightCyan("[10]"), " 🩸", ColorUtil.cyan("Razor Edge"), "+20% Bleed chance" + xMark("Swordsman", "Archer"), ColorUtil.boldBrightYellow("32"));
             System.out.printf(" %5s%-3s %-41s %-46s 💠 %s%n", ColorUtil.boldBrightCyan("[11]"), " 🛡️", ColorUtil.cyan("Fortified Plating"), "Armor +10 DEF" + xMark("Swordsman","Archer","Mage"), ColorUtil.boldBrightYellow("26"));
 
 // Potions
@@ -245,7 +245,7 @@ public class MagicShop {
 
             var weapon = player.getWeapon();
             int oldLifesteal = weapon.getLifestealPercent();
-            weapon.setLifestealPercent(oldLifesteal + 5);
+            weapon.setAddLifestealPercent(weapon.getAddLifestealPercent() + 5);
 
             player.getWeapon().addEnchantment(
                     "💖 Vital Surge",
@@ -253,7 +253,7 @@ public class MagicShop {
             );
 
             System.out.println("💖 --" + weapon.getName() + "-- is now empowered with " + name
-                    + "-- 💖 Lifesteal: " + oldLifesteal + "% → " + weapon.getLifestealPercent()
+                    + "-- 💖 Lifesteal: " + oldLifesteal + "% → " + (weapon.getLifestealPercent()+ weapon.getAddLifestealPercent()) + "% "
                     + " (💠- " + cost + " Soul Shards)");
 
             InputUtil.pressEnterToContinue();
@@ -390,14 +390,15 @@ public class MagicShop {
         if (attemptPurchase(name, cost)) {
             player.subtractSoulShards(cost);
 
-            var armor = player.getArmor(); // Assume player has getArmor() returning Armor object
+            var armor = player.getArmor();
             int oldDef = armor.getDefBuff();
-            armor.setDefBuff(oldDef + 10);
+            armor.setAddDefBuff(armor.getAddDefBuff() + 10);
             armor.setHasEnchantment(true);
 
             System.out.println("🛡️ --" + armor.getName() + "-- is reinforced with " + name + "! Armor DEF: "
-                    + oldDef + " → " + armor.getDefBuff() + " (💠- " + cost + " Soul Shards)");
+                    + oldDef + " → " + (armor.getDefBuff() + armor.getAddDefBuff()) + " (💠- " + cost + " Soul Shards)");
 
+            player.recalculateBuffs();
             InputUtil.pressEnterToContinue();
         }
     }
