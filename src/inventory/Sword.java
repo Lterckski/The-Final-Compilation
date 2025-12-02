@@ -57,10 +57,10 @@ public class Sword extends Weapon{
     public void applyEffects(Character player, Character enemy, int damage) {
         // 💖 Lifesteal
         if (getLifestealPercent() > 0) {
-            int healAmount = (int) (damage * getLifestealPercent() / 100.0);
+            int healAmount = (int) (damage * (getLifestealPercent()+getAddLifestealPercent()) / 100.0);
             healAmount = Math.min(healAmount, player.getMaxHP() - player.getHp());
             if (healAmount > 0) {
-                System.out.println("💖 " + this.getName() + " restores " + healAmount + " HP!");
+                System.out.println(ColorUtil.brightMagenta("💖 " + this.getName() + " restores " + healAmount + " HP!"));
                 PrintUtil.pause(800);
                 player.heal(healAmount);
             }
