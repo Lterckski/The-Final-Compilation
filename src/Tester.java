@@ -150,7 +150,7 @@ public class Tester {
         player.getInventory().setEquippedArmor(Armor.LEATHER_GUARD);
 
 
-        Enemy test = new World3Enemy4();
+        Enemy test = new World1Enemy1();
         Battle testb = new Battle(player,test);
 
         testb.startBattle();

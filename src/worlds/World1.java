@@ -76,12 +76,18 @@ public class World1 {
 
         System.out.println();
         enemy1.displaySkills();
+        InputUtil.pressEnterToContinue();
         System.out.println();
 
         for (int i = 1; i <= 3; i++) {
-            PrintUtil.hr();
-            System.out.println("🐺 Rotfang Wolf " + i + " lunges at you!");
-            PrintUtil.hr();
+            String text = "🐺 Rotfang Wolf " + i + " lunges at you!";
+            int width = 60; // total width of the bar
+            int padding = (width - text.length()) / 2;
+
+            System.out.println(ColorUtil.boldBrightRed("════════════════════════════════════════════════════════"));
+            System.out.println(ColorUtil.boldBrightRed(" ".repeat(padding) + text));
+            System.out.println(ColorUtil.boldBrightRed("════════════════════════════════════════════════════════"));
+
             InputUtil.pressEnterToContinue();
 
             battle1.startBattle();
@@ -145,6 +151,7 @@ public class World1 {
 
         System.out.println();
         enemy2.displaySkills();
+        InputUtil.pressEnterToContinue();
         System.out.println();
 
         for (int i = 1; i <= 2; i++) {
@@ -222,6 +229,7 @@ public class World1 {
 
         System.out.println();
         enemy3.displaySkills();
+        InputUtil.pressEnterToContinue();
         System.out.println();
 
         for (int i = 1; i <= 2; i++) {
@@ -292,6 +300,7 @@ public class World1 {
 
         System.out.println();
         enemy4.displaySkills();
+        InputUtil.pressEnterToContinue();
         System.out.println();
 
         for (int i = 1; i <= 4; i++) {
@@ -393,8 +402,10 @@ public class World1 {
         Enemy miniboss = new World1Miniboss1();
         Battle minibossBattle = new Battle(player, miniboss);
 
+        System.out.println();
         miniboss.displaySkills();
         InputUtil.pressEnterToContinue();
+        System.out.println();
 
         minibossBattle.startBattle();
 

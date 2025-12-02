@@ -112,7 +112,7 @@ public class Simon extends Character {
             return;
         }
 
-        System.out.println(ColorUtil.boldBrightWhite("🔥 You cast Fireball on " + target.getName() + " (💧-" + energyCost + " Mana)"));
+        System.out.println(ColorUtil.boldBrightGreen("🔥 You cast Fireball on " + target.getName() + " (💧-" + energyCost + " Mana)"));
         PrintUtil.pause(800);
 
         if (this.getEffects().checkConfuse()) return;
@@ -121,7 +121,12 @@ public class Simon extends Character {
         int reduced = calculateDamage(target, damage);
 
         // Fireball
-        System.out.println("💔 Target is hit for " + reduced + " damage!");
+        System.out.println(
+                ColorUtil.brightGreen("💔 Target is hit for ")
+                        + ColorUtil.boldBrightWhite(String.valueOf(reduced))
+                        + ColorUtil.brightGreen(" damage!")
+        );
+
         PrintUtil.pause(800);
         target.takeDamage(reduced);
 
@@ -169,7 +174,7 @@ public class Simon extends Character {
             return;
         }
 
-        System.out.println(ColorUtil.boldBrightWhite("❄️ You cast Ice Prison on " + target.getName() + " (💧-" + energyCost + " Mana)"));
+        System.out.println(ColorUtil.boldBrightGreen("❄️ You cast Ice Prison on " + target.getName() + " (💧-" + energyCost + " Mana)"));
         PrintUtil.pause(800);
 
         if (this.getEffects().checkConfuse()) return;
@@ -178,7 +183,12 @@ public class Simon extends Character {
         int reduced = calculateDamage(target, damage);
 
 
-        System.out.println("💔 Target is hit for " + reduced + " damage!");
+        System.out.println(
+                ColorUtil.brightGreen("💔 Target is hit for ")
+                        + ColorUtil.boldBrightWhite(String.valueOf(reduced))
+                        + ColorUtil.brightGreen(" damage!")
+        );
+
         PrintUtil.pause(800);
         target.takeDamage(reduced);
 
@@ -226,7 +236,7 @@ public class Simon extends Character {
             return;
         }
 
-        System.out.println(ColorUtil.boldBrightWhite("☄️ You unleash your ultimate: Meteor Storm (💧-" + energyCost + " Mana)!"));
+        System.out.println(ColorUtil.boldBrightGreen("☄️ You unleash your ultimate: Meteor Storm (💧-" + energyCost + " Mana)!"));
         PrintUtil.pause(800);
 
         int totalDamage = 0;
@@ -239,11 +249,20 @@ public class Simon extends Character {
             if (this.getEffects().checkConfuse()) reduced = 0;
             totalDamage += reduced;
 
-            System.out.println("→💥 Meteor " + i + " hits! 💔 Target is hit for " + reduced + " damage!");
+            System.out.println(
+                    ColorUtil.brightGreen("→💥 Meteor " + i + " hits! 💔 Target is hit for ")
+                            + ColorUtil.boldBrightWhite(String.valueOf(reduced))
+                            + ColorUtil.brightGreen(" damage!")
+            );
+
             PrintUtil.pause(800);
         }
 
-        System.out.println("☄️ Meteor Storm finished! Total damage dealt: " + totalDamage);
+        System.out.println(
+                ColorUtil.brightGreen("☄️ Meteor Storm finished! Total damage dealt: ")
+                        + ColorUtil.boldBrightWhite(String.valueOf(totalDamage))
+        );
+
         PrintUtil.pause(800);
         target.takeDamage(totalDamage);
 

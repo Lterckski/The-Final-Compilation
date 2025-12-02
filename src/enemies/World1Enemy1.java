@@ -53,7 +53,10 @@ public class World1Enemy1 extends Enemy {
         int damage = (int) RandomUtil.range(attack, attack * 1.5);
         int reduced = calculateDamage(target, damage);
 
-        System.out.println("→💔 Savage Howl hits for " + reduced + " damage!");
+        System.out.println(ColorUtil.brightRed("→💔 Savage Howl hits for ")
+                + ColorUtil.boldBrightWhite(String.valueOf(reduced))
+                + ColorUtil.brightRed(" damage!"));
+
         PrintUtil.pause(800);
         target.takeDamage(reduced);
 
@@ -62,7 +65,7 @@ public class World1Enemy1 extends Enemy {
         if (equippedArmor != null) {
             int reflectDamage = equippedArmor.checkReflectDamage(reduced);
             if (reflectDamage > 0) {
-                System.out.println("🪞 " + equippedArmor.getName() + " reflected " + reflectDamage + " damage back to " + name + "!");
+                System.out.println(ColorUtil.brightMagenta("🪞 " + equippedArmor.getName() + " reflected " + reflectDamage + " damage back to " + name + "!"));
                 PrintUtil.pause(800);
                 this.takeDamage(reflectDamage);
             }

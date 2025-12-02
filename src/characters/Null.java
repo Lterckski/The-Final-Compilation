@@ -11,38 +11,43 @@ public class Null extends Character {
                 99999,   // HP
                 9999,    // Attack
                 9999,    // Energy
-                999      // Defense
+                0      // Defense
         );
     }
 
     @Override
     public void displaySkills() {
-        System.out.println("\n----------- NULL TEST SKILLS -----------");
+        System.out.println();
+        System.out.println(ColorUtil.boldBrightCyan("┌────────────────────────────── ⚡ NULL'S SKILLS ⚡ ──────────────────────────────┐"));
+        // Skill 1
+        System.out.println("  " + ColorUtil.boldBrightYellow("💥 Skill 1 – Direct Hit (⚡ 5 Energy)"));
+        System.out.println("  " + ColorUtil.cyan("💥 Damage: ") + ColorUtil.boldBrightYellow(String.valueOf(attack)) + ColorUtil.cyan("\n"));
 
-        System.out.println("Skill 1 – Direct Hit (⚡ 5 Energy)");
-        System.out.println("Damage: ATK × 2");
+        // Skill 2
+        System.out.println("  " + ColorUtil.boldBrightYellow("🔥 Skill 2 – Obliterate (⚡ 10 Energy)"));
+        System.out.println("  " + ColorUtil.cyan("💥 Damage: ") + ColorUtil.boldBrightYellow(String.valueOf(attack * 2)) + ColorUtil.cyan("\n"));
 
-        System.out.println("\nSkill 2 – Obliterate (⚡ 10 Energy)");
-        System.out.println("Damage: ATK × 4");
+        // Ultimate
+        System.out.println("  " + ColorUtil.boldBrightYellow("🌌 Ultimate – World End (⚡ 20 Energy)"));
+        System.out.println("  " + ColorUtil.cyan("💥 Damage: ") + ColorUtil.boldBrightYellow(String.valueOf(attack * 3)) + ColorUtil.cyan(""));
 
-        System.out.println("\nUltimate – World End (⚡ 20 Energy)");
-        System.out.println("Damage: ATK × 10");
-
-        System.out.println("\nSkip Turn - Restore 10% Max HP & 20 Energy");
-        System.out.println("----------------------------------------");
+        System.out.println(ColorUtil.boldBrightCyan("└─────────────────────────────────────────────────────────────────────────────┘"));
+        System.out.println();
     }
+
 
     @Override
     public void turn(Character target) {
         boolean isValid = false;
 
         while (!isValid) {
-            System.out.println("[1] Skill 1   -  Direct Hit (⚡ 5 Energy)");
-            System.out.println("[2] Skill 2   -  Obliterate (⚡ 10 Energy)");
-            System.out.println("[3] Ultimate  -  World End (⚡ 20 Energy)");
-            System.out.println("[4] Skip Turn -  Restore 10% Max HP & 20 Energy");
-            System.out.println("[5] Show Menu");
-            System.out.print("Choose your action: ");
+            System.out.println(ColorUtil.boldBrightGreen("[1]") + " " + ColorUtil.green("💥 Skill 1   -  Direct Hit (⚡ 5 Energy)"));
+            System.out.println(ColorUtil.boldBrightGreen("[2]") + " " + ColorUtil.green("🔥 Skill 2   -  Obliterate (⚡ 10 Energy)"));
+            System.out.println(ColorUtil.boldBrightGreen("[3]") + " " + ColorUtil.green("🌌 Ultimate  -  World End (⚡ 20 Energy) ")
+                    + ColorUtil.red("❌ (Available in " + ultimateCounter + " turns)"));
+            System.out.println(ColorUtil.boldBrightGreen("[4]") + " " + ColorUtil.green("🛡️ Skip Turn -  Restore 10% Max HP & 20 Energy"));
+            System.out.println(ColorUtil.boldBrightGreen("[5]") + " " + ColorUtil.green("📜 Show Menu"));
+            System.out.print(ColorUtil.boldBrightWhite("Choose your action: "));
 
             int choice = InputUtil.scanInput();
             PrintUtil.shortLine();
@@ -54,7 +59,7 @@ public class Null extends Character {
                 case 4 -> { skipTurn(); isValid = true; }
                 case 5 -> displayMenu(this, target);
                 default -> {
-                    System.out.println("❌ Invalid action! Null skips the turn.");
+                    System.out.println(ColorUtil.boldBrightRed("❌ Invalid action! Null skips the turn."));
                     PrintUtil.pause(500);
                     isValid = true;
                 }
@@ -94,14 +99,19 @@ public class Null extends Character {
                 "    .#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"));
         int cost = 5;
         if (!consumeEnergy(cost)) {
-            System.out.println("❌ Not enough Energy!");
+            System.out.println(ColorUtil.boldBrightRed("❌ Not enough Energy!"));
             return;
         }
 
         int damage = attack * 2;
         int finalDamage = calculateDamage(target, damage);
 
-        System.out.println("💥 Null used Direct Hit! Dealt " + finalDamage + " damage.");
+        System.out.println(
+                ColorUtil.brightGreen("💥 Null used Direct Hit! Dealt ")
+                        + ColorUtil.boldBrightWhite(String.valueOf(finalDamage))
+                        + ColorUtil.brightGreen(" damage.")
+        );
+
         target.takeDamage(finalDamage);
     }
 
@@ -138,14 +148,19 @@ public class Null extends Character {
                 "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"));
         int cost = 10;
         if (!consumeEnergy(cost)) {
-            System.out.println("❌ Not enough Energy!");
+            System.out.println(ColorUtil.boldBrightRed("❌ Not enough Energy!"));
             return;
         }
 
         int damage = attack * 4;
         int finalDamage = calculateDamage(target, damage);
 
-        System.out.println("🔥 Null used OBLITERATE! Dealt " + finalDamage + " damage.");
+        System.out.println(
+                ColorUtil.brightGreen("🔥 Null used OBLITERATE! Dealt ")
+                        + ColorUtil.boldBrightWhite(String.valueOf(finalDamage))
+                        + ColorUtil.brightGreen(" damage.")
+        );
+
         target.takeDamage(finalDamage);
     }
 
@@ -184,14 +199,19 @@ public class Null extends Character {
                 "@@@@@@@@@@@@@@@@@@@@@@%%%%%@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"));
         int cost = 20;
         if (!consumeEnergy(cost)) {
-            System.out.println("❌ Not enough Energy!");
+            System.out.println(ColorUtil.boldBrightRed("❌ Not enough Energy!"));
             return;
         }
 
         int damage = attack * 10;
         int finalDamage = calculateDamage(target, damage);
 
-        System.out.println("🌋 Null used WORLD END!!! Massive " + finalDamage + " damage!");
+        System.out.println(
+                ColorUtil.brightGreen("🌋 Null used WORLD END!!! Massive ")
+                        + ColorUtil.boldBrightWhite(String.valueOf(finalDamage))
+                        + ColorUtil.brightGreen(" damage!")
+        );
+
         target.takeDamage(finalDamage);
     }
 }

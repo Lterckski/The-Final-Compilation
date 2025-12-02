@@ -51,16 +51,19 @@ public class World2Enemy2 extends Enemy{
         int damage = (int)RandomUtil.range(attack * 1.00, attack * 1.55);
         int reduced = calculateDamage(target, damage);
 
-        System.out.println("→💔 Shadow Bolt hits for " + reduced + " damage!");
+        System.out.println(ColorUtil.brightRed("→💔 Shadow Bolt hits for ")
+                + ColorUtil.boldBrightWhite(String.valueOf(reduced))
+                + ColorUtil.brightRed(" damage!"));
         PrintUtil.pause(800);
         target.takeDamage(reduced);
+
 
         //Reflect check
         Armor equippedArmor = target.getInventory().getEquippedArmor();
         if (equippedArmor != null) {
             int reflectDamage = equippedArmor.checkReflectDamage(reduced);
             if (reflectDamage > 0) {
-                System.out.println("🪞 " + equippedArmor.getName() + " reflected " + reflectDamage + " damage back to " + name + "!");
+                System.out.println(ColorUtil.brightMagenta("🪞 " + equippedArmor.getName() + " reflected " + reflectDamage + " damage back to " + name + "!"));
                 PrintUtil.pause(800);
                 this.takeDamage(reflectDamage);
             }
@@ -69,7 +72,7 @@ public class World2Enemy2 extends Enemy{
         // 30% chance to apply ATK debuff (check immunity first)
         if (RandomUtil.chance(30)) {
             if (equippedArmor != null && equippedArmor.checkEffectsImmunity()) {
-                System.out.println("✨ " + target.getName() + " resisted Weaken 🪫 due to " + equippedArmor.getName() + "!");
+                System.out.println(ColorUtil.brightMagenta("✨ " + target.getName() + " resisted Weaken 🪫 due to " + equippedArmor.getName() + "!"));
                 PrintUtil.pause(800);
             } else {
                 target.getEffects().applyAttackDebuff(20, 2);

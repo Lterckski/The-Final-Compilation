@@ -86,9 +86,12 @@ public class World2Miniboss2 extends Enemy {
         int damage = (int)RandomUtil.range(attack * 1.0, attack * 1.15);
         int reduced = calculateDamage(target, damage);
 
-        System.out.println("→💔 Dark Judgment hits for " + reduced + " damage!");
+        System.out.println(ColorUtil.brightRed("→💔 Dark Judgment hits for ")
+                + ColorUtil.boldBrightWhite(String.valueOf(reduced))
+                + ColorUtil.brightRed(" damage!"));
         PrintUtil.pause(800);
         target.takeDamage(reduced);
+
 
         //Reflect damage check
         Armor equippedArmor = target.getInventory().getEquippedArmor();
@@ -103,7 +106,7 @@ public class World2Miniboss2 extends Enemy {
     }
 
     public void kingsWrath(Character target){
-        System.out.println("🔥 " + name + " unleashes King's Wrath!");
+        System.out.println(ColorUtil.boldBrightRed("🔥 " + name + " unleashes King's Wrath!"));
         PrintUtil.pause(800);
         if(target.getEffects().checkDodge()) return;
         if (this.getEffects().checkConfuse()) return;
@@ -111,9 +114,12 @@ public class World2Miniboss2 extends Enemy {
         int damage = (int)RandomUtil.range(attack * 0.71, attack * 0.85);
         int reduced = calculateDamage(target, damage);
 
-        System.out.println("→💔 King's Wrath hits for " + reduced + " damage!");
+        System.out.println(ColorUtil.brightRed("→💔 King's Wrath hits for ")
+                + ColorUtil.boldBrightWhite(String.valueOf(reduced))
+                + ColorUtil.brightRed(" damage!"));
         PrintUtil.pause(800);
         target.takeDamage(reduced);
+
 
         Armor equippedArmor = target.getInventory().getEquippedArmor();
 

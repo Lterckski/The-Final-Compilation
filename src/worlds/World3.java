@@ -85,6 +85,7 @@ public class World3 {
 
         System.out.println();
         enemy1.displaySkills();
+        InputUtil.pressEnterToContinue();
         System.out.println();
 
         for (int i = 1; i <= 3; i++) {
@@ -167,6 +168,7 @@ public class World3 {
 
         System.out.println();
         enemy2.displaySkills();
+        InputUtil.pressEnterToContinue();
         System.out.println();
 
         for (int i = 1; i <= 2; i++) {
@@ -233,6 +235,7 @@ public class World3 {
 
         System.out.println();
         enemy3.displaySkills();
+        InputUtil.pressEnterToContinue();
         System.out.println();
 
         for (int i = 1; i <= 2; i++) {
@@ -309,6 +312,7 @@ public class World3 {
 
         System.out.println();
         enemy4.displaySkills();
+        InputUtil.pressEnterToContinue();
         System.out.println();
 
         for (int i = 1; i <= 3; i++) {
@@ -401,8 +405,10 @@ public class World3 {
         Enemy miniboss = new World3Miniboss1();
         Battle minibattle = new Battle(player, miniboss);
 
+        System.out.println();
         miniboss.displaySkills();
         InputUtil.pressEnterToContinue();
+        System.out.println();
 
         minibattle.startBattle();
 

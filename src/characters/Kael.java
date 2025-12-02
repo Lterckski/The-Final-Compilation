@@ -67,7 +67,7 @@ public class Kael extends  Character{      // 15% crit chance
         System.out.println(ColorUtil.brightYellow("  shielding his friends from imagined dangers. In a place where hope was rare,"));
         System.out.println(ColorUtil.brightYellow("  Kael's presence became a quiet anchor, hinting that even in the midst of"));
         System.out.println(ColorUtil.brightYellow("  decay, someone could rise to stand against the darkness."));
-        System.out.println(ColorUtil.brightYellow("└──────────────────────────────────────────────────────────────────────────────────┘"));
+        System.out.println(ColorUtil.boldBrightCyan("└──────────────────────────────────────────────────────────────────────────────────┘"));
         System.out.println();
     }
 
@@ -115,7 +115,7 @@ public class Kael extends  Character{      // 15% crit chance
             return;
         }
 
-        System.out.println(ColorUtil.boldBrightWhite("🗡️ You used Blade Rush on " + target.getName() + " (🔋-" + energyCost + " Stamina)"));
+        System.out.println(ColorUtil.boldBrightGreen("🗡️ You used Blade Rush on " + target.getName() + " (🔋-" + energyCost + " Stamina)"));
         PrintUtil.pause(800);
 
         if(this.getEffects().checkConfuse()) return;
@@ -124,7 +124,12 @@ public class Kael extends  Character{      // 15% crit chance
         damage = bladeSwift(damage);
         int reduced = calculateDamage(target, damage);
 
-        System.out.println("💔 Target is hit for " + reduced + " Damage!");
+        System.out.println(
+                ColorUtil.brightGreen("💔 Target is hit for ") +
+                        ColorUtil.boldBrightWhite(String.valueOf(reduced)) +
+                        ColorUtil.brightGreen(" Damage!")
+        );
+
         PrintUtil.pause(800);
         target.takeDamage(reduced);
 
@@ -161,7 +166,7 @@ public class Kael extends  Character{      // 15% crit chance
             return;
         }
 
-        System.out.println(ColorUtil.boldBrightWhite("⚔\uFE0F You used Piercing Slash on " + target.getName() + " (🔋-" + energyCost + " Stamina)"));
+        System.out.println(ColorUtil.boldBrightGreen("⚔\uFE0F You used Piercing Slash on " + target.getName() + " (🔋-" + energyCost + " Stamina)"));
         PrintUtil.pause(800);
 
         if(this.getEffects().checkConfuse()) return;
@@ -169,7 +174,12 @@ public class Kael extends  Character{      // 15% crit chance
         int damage = (int) RandomUtil.range(attack * 1.35,attack * 1.55);
         int reduced = bladeSwift(damage);
 
-        System.out.println("💔 Target is hit for " + reduced + " Pure Damage!");
+        System.out.println(
+                ColorUtil.brightGreen("💔 Target is hit for ")
+                        + ColorUtil.boldBrightWhite(String.valueOf(reduced))
+                        + ColorUtil.brightGreen(" Pure Damage!")
+        );
+
         PrintUtil.pause(800);
         target.takeDamage(reduced);
 
@@ -211,7 +221,7 @@ public class Kael extends  Character{      // 15% crit chance
         }
 
         int totalDamage = 0;
-        System.out.println(ColorUtil.boldBrightWhite("✝️ You unleash your ultimate technique: Eternal Cross Slash!" + " (🔋-" + energyCost + " Stamina)"));
+        System.out.println(ColorUtil.boldBrightGreen("✝️ You unleash your ultimate technique: Eternal Cross Slash!" + " (🔋-" + energyCost + " Stamina)"));
         PrintUtil.pause(800);
 
         for(int i = 1; i <= 3; i++){
@@ -222,12 +232,21 @@ public class Kael extends  Character{      // 15% crit chance
             if(this.getEffects().checkConfuse()) reduced = 0;
             totalDamage += reduced;
 
-            System.out.println(" →🔪 Hit " + i + "! 💔 You slashed the Target for " + reduced + " damage!");
+            System.out.println(
+                    ColorUtil.brightGreen(" →🔪 Hit " + i + "! 💔 You slashed the Target for ")
+                            + ColorUtil.boldBrightWhite(String.valueOf(reduced))
+                            + ColorUtil.brightGreen(" damage!")
+            );
+
             PrintUtil.pause(800);
 
         }
 
-        System.out.println("⚔️💥 Eternal Cross Slash finished! Total Damage dealt: " + totalDamage);
+        System.out.println(
+                ColorUtil.brightGreen("⚔️💥 Eternal Cross Slash finished! Total Damage dealt: ")
+                        + ColorUtil.boldBrightWhite(String.valueOf(totalDamage))
+        );
+
         PrintUtil.pause(800);
 
         target.takeDamage(totalDamage);

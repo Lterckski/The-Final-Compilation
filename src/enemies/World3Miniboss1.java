@@ -71,9 +71,12 @@ public class World3Miniboss1 extends Enemy {
 
         int damage = (int)RandomUtil.range(attack * 1.00, attack * 1.15);
 
-        System.out.println("→💔 Grave Cleaver hits for " + damage + " Pure Damage!");
+        System.out.println(ColorUtil.brightRed("→💔 Grave Cleaver hits for ")
+                + ColorUtil.boldBrightWhite(String.valueOf(damage))
+                + ColorUtil.brightRed(" Pure Damage!"));
         PrintUtil.pause(800);
         target.takeDamage(damage);
+
     }
 
     public void boneShield() {
@@ -111,7 +114,7 @@ public class World3Miniboss1 extends Enemy {
         System.out.println("🦴 " + name + " used Bone Shield!");
         PrintUtil.pause(800);
 
-        System.out.println("→🛡️ Bone Shield increases defense of " + name + " by +50 for 2 turns!");
+        System.out.println(ColorUtil.brightMagenta("→🛡️ Bone Shield increases defense of " + name + " by +50 for 2 turns!"));
         PrintUtil.pause(800);
         this.getEffects().applyDefenseBuff(50, 2, true);
     }

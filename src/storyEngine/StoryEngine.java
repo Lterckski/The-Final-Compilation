@@ -11,6 +11,8 @@ import utils.InputUtil;
 import utils.PrintUtil;
 import worlds.*;
 
+import java.awt.*;
+
 public class StoryEngine {
 
     private Character player;
@@ -441,14 +443,14 @@ public class StoryEngine {
                     if (characterMenu(test)) {
                         player = test;
                         PrintUtil.line();
-                        System.out.println("🧙‍♂️ You have chosen " + player.getName() + ", the Hacker!");
+                        System.out.println("🧙‍♂️ You have chosen " + player.getName() + ", the wise Mage!");
                         PrintUtil.line();
                         System.out.println("✨ The arcane forces converge to gift you ancient relics of power...");
                         player.getInventory().setEquippedWeapon(Staff.WOODEN_STAFF);
                         player.getInventory().setEquippedArmor(Armor.LEATHER_GUARD);
                         System.out.println("🔮 *The --" + player.getInventory().getEquippedWeapon().getName() + "-- pulses faintly, whispering secrets of forgotten spells.*");
-                        System.out.println("🛡️ *The --" + player.getInventory().getEquippedArmor().getName() + "-- shimmers with faint runes — fragile, yet brimming with dark arcane energy.*");
-                        System.out.println("💫 Dark corrupted magic stirs in the air around you as your journey begins...");
+                        System.out.println("🛡️ *The --" + player.getInventory().getEquippedArmor().getName() + "-- shimmers with faint runes — fragile, yet brimming with arcane energy.*");
+                        System.out.println("💫 Magic stirs in the air around you as your journey begins...");
                         PrintUtil.line();
 
                         PrintUtil.pause(1000);
@@ -463,37 +465,42 @@ public class StoryEngine {
                         System.out.println("                                 ▀         ▀          ");
 
                         PrintUtil.pause(1000);
-                        PrintUtil.type("                                                                          \n" +
-                                "                                                           \n" +
-                                "                         .=:                             :-.            \n" +
-                                "                         -@%%%#*+-.               .-+*##%%@-            \n" +
-                                "                         -%**#####%**@%%%%##%%%%++###*###%@-            \n" +
-                                "                         -@%%#####%**%#+=+*##%@@+*%####%%%@-            \n" +
-                                "                 .%#-    -@%@%##%##**%%###%%#%%@++%%%%%%%%@-     .+%#.  \n" +
-                                "                 :%%%%%*..+#%@@@%#%**%%%%@@@@#%%++%%%%@@%*+..+%%%%%%%:  \n" +
-                                "                 :%%#=*#@*%%%%%%##+:-+=+%@@@@%==::+#%%##%%%*###*+##%%:  \n" +
-                                "                 :%%#+*%@*%%#+*####+*##%@@@@@@%#++###%%##%%*%%###%%%%:  \n" +
-                                "                 :%%%#*%%*%###%@@%%+*@@@@@@@@@@@%###%@@###%*%%%%%%%%%:  \n" +
-                                "                 :%%#%%+#*%%%%%%@@#%@@@@@@@@@@@@@@%#@@#*##%*%%###*##%:  \n" +
-                                "                  =+++***=#####*%@@@@#%@@@@@@@@%#@@@@#*####+*****+++=   \n" +
-                                "                 .+*+=-::.......:%@#:.*@@@@@@@@=.-#@*......             \n" +
-                                "                 :@@@@%#*##%@%*%%%#%##%@@@@@@@@##%@%%@%###%@-           \n" +
-                                "                 :@@@@@@@%%%%@%%%%%%%%@@@@@@@@@@%@@@@@@@@%@@%.          \n" +
-                                "                 :@@@@@@@@@@@@@@@@@%%%%@@@@@@@@@@@@@%%%@@@@@@#==-:.     \n" +
-                                "                 :@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%=-----=%@@@@@@@@*-.    \n" +
-                                "                 :@@@@@@@@@@@@=     :%@@@%:.#@@@@=     .%@@@@@@@#       \n" +
-                                "                 :@@@@@@@@@@#:      *@@@#.   =@@@%.    .%@@@@@@%        \n" +
-                                "                 :@@@@@@@@@*       :@@@*      -@@@+    .%@@@@@@.        \n" +
-                                "                 :@@@@@@@@@+       #@@#.       +@@%    .%@@@@@+         \n" +
-                                "                 :@@@@@@@@@+       @@@=        -@@@:   .%@@@@@+         \n" +
-                                "                 :@@@@@@@@@+      -@@#.         *@@=   .%@@@%@+         \n" +
-                                "                 :@@@@@@@@@*:     +@@*          =%@#   .%@@@@%+         \n" +
-                                "                 :@@@@@@@@@@@*.   *@#:          .*@#   .%@%@%@%:        \n" +
-                                "                 :@@@@@@@@%%%%%%%#@@%#*+*######%#%%@#*#####@@@#%.       \n" +
-                                "              .:=*@@@@%@@@@%%%%%@@@##********#####%@@@##*#%%%#@@%%@%*+-:\n" +
-                                "              @@@@@@@@%%@@@%%%#%%%%#**+++++***++*#%%%%#*####*#%%%%@@%@@@\n" +
-                                "              @@@@@@@@@@@@@@@@@@@%%%#####**##%##%%%%%%%%%####%%%@@@%**@@\n" +
-                                "              @@@@@@@@@@@@@@@@@@@@@@@@%%%%@%@@@@@@@@@@@@@@@@@@@@@@@@@@@@\n");
+                        PrintUtil.type("                                                                           \n" +
+                                "                                                                           \n" +
+                                "                                                                           \n" +
+                                "                                                                           \n" +
+                                "                  -=====-:.                     .-======:                  \n" +
+                                "               .-*%@@@@%#=.:::              .::.:*%%@@@@#=:                \n" +
+                                "              .#%**+**#@@@@@*:              .=%@@@@%#*++*#%=               \n" +
+                                "              -.     .:-==+%@@@=          .%@@@#==--.     .::              \n" +
+                                "                          :===%@@.       +@@*==-.                          \n" +
+                                "                            .==-          .==-                             \n" +
+                                "                    -+++++=:  :=:         --   .-==+=-.                    \n" +
+                                "            .     +=:=#@@@%*+*= : .      .. =*++*##*+:-*:                  \n" +
+                                "             -:.-#=@@@@@@@@@@@@#  .       .#%@@@@@@@@@@%+*. ::             \n" +
+                                "            .-=*+*#*-:.:::.:=#+   .     .  :#=:=+**+=:.=#%%#=-             \n" +
+                                "            :       .:::::..     ..     :     .:-====-:.     ..            \n" +
+                                "                                 :.     ::                                 \n" +
+                                "                                ::.     ::.                                \n" +
+                                "                               :::.     ::::                               \n" +
+                                "                             .:  :.     .:  :                              \n" +
+                                "             .          .:--.   .:      .:   ..--:           .             \n" +
+                                "             .=-::.::---:.  .    :      .:       .:---:...:-=:             \n" +
+                                "              -=:#@@.          *%..::.::.-%+          .@@+:=-              \n" +
+                                "               -=.+@@.          .@@%**#@@#           +@@- =-               \n" +
+                                "                ==.#@@:        *@@@@#:%@@@@:        %@@..==                \n" +
+                                "                .-- *@@@@@@@@@@@@@@=   +@@@@@@@@@@@@@%. --.                \n" +
+                                "                  -=: =#%%%%%%%%%%:     -%%%%%%%%%%#: :=-                  \n" +
+                                "                   --.:         .:-======-.         :.--                   \n" +
+                                "                    .=. ...                     ..  .=.                    \n" +
+                                "                      :.          :-----.          .-                      \n" +
+                                "                       .:          #@@@=          :.                       \n" +
+                                "                         :         .@@@          :                         \n" +
+                                "                                   @@@@=              .                    \n" +
+                                "                                   @@@@@                                   \n" +
+                                "                                   @@@@%                                   \n" +
+                                "                                   %@@@.                                   \n" +
+                                "                             .      @@@                                    ");
                         System.out.print("\n");
 
 
