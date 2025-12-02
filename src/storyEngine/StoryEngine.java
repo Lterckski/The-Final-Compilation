@@ -237,7 +237,7 @@ public class StoryEngine {
                 "          ░  ░  ░   ░  ░           ░           ░       ░  ░    ░  ░   ░ ░          ░ ░         ░             ░      ░  ░     ░  ░         ░      ░ ░           ░ \n" +
                 "                                                                      ░                                                                                          ");
         System.out.println();
-        PrintUtil.pause(1000);
+        PrintUtil.pause(2000);
     }
 
     private Character chooseCharacter() {
@@ -562,5 +562,4 @@ public class StoryEngine {
         );
         System.out.println("[Checkpoint reached]\n");
     }
-
 }

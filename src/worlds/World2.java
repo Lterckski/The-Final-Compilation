@@ -192,7 +192,7 @@ public class World2 {
 
         for (int i = 1; i <= 2; i++) {
             PrintUtil.hr();
-            System.out.println("☠️ Forsaken Cultist " + i + " conjures a cursed dagger!");
+            System.out.println("☠️ Forsaken Cultist " + i + " has began chanting a spell!");
             PrintUtil.hr();
             InputUtil.pressEnterToContinue();
 
@@ -448,7 +448,7 @@ public class World2 {
 
         PrintUtil.line();
         PrintUtil.type("""
-                🏆 Mini-Boss Defeated!
+                ✅🏆 Mini-Boss Defeated!
                 The Black Jailer drops to his knees, his chains falling silent.
                 You have triumphed over his tyranny.
                 """);
@@ -534,7 +534,7 @@ public class World2 {
 
         PrintUtil.line();
         PrintUtil.type("""
-                👑 Final Victory!
+                ✅👑 Final Victory! - Boss Defeated!
                 The Corrupted King’s crown falls to the floor, echoing through the halls.
                 Darkness fades, and you stand as the savior of this cursed land.
                 """);
