@@ -86,6 +86,31 @@ public class Karl extends Character{
 
     // Skill 1 - Piercing Arrow
     public void piercingArrow(Character target) {
+        PrintUtil.type(ColorUtil.boldBrightGreen("                                             \n" +
+                "                                   ..                     \n" +
+                "                                   .   :                  \n" +
+                "                                 .        .               \n" +
+                "                               .           .              \n" +
+                "                           .  :             .             \n" +
+                "                             -@-            :             \n" +
+                "                   :@@@%*==***%:----------------:*=..->   \n" +
+                "                    .+%@#---::..-#@@+%+*==*%=             \n" +
+                "                        +%#=::=*#*+*:.     ..             \n" +
+                "                        .#@@%#@@=                         \n" +
+                "                         +@@@@@%: .                       \n" +
+                "                    =%:  -+*###+   .      .               \n" +
+                "                      =+*%@@%**@=   .   .                 \n" +
+                "                       +@@@@@-@@@+   :                    \n" +
+                "                       +@@@@*##@@@=                       \n" +
+                "                       *#*+=*=:-#%@-                      \n" +
+                "                      -@@*...   -@@@.                     \n" +
+                "                     -@@+        -@@:                     \n" +
+                "                    +@%=         -%%=                     \n" +
+                "                    %%+          .*%:                     \n" +
+                "                   =@*            +@:                     \n" +
+                "                  :@%             +@%-                    \n" +
+                "                  .:                .::                   \n" +
+                "                                                          "));
         int energyCost = 1;
         if (!consumeEnergy(energyCost)) {
             System.out.println(ColorUtil.boldBrightRed("❌ Not enough Arrows to use Piercing Arrow!"));
@@ -120,6 +145,33 @@ public class Karl extends Character{
 
     // Skill 2 - Bullseye
     public void bullsEye(Character target) {
+        PrintUtil.type(ColorUtil.boldBrightGreen("                                                          \n" +
+                "                                         :*%%%%@%+        \n" +
+                "                                       .%#: .::  -@+      \n" +
+                "                            :         .@= +%*=+%%: #*     \n" +
+                "                            .:        ## +#.:*+ -@-:%-    \n" +
+                "                               :.     %* #+.#@@= @+.#=    \n" +
+                "                                 ..   *@ -%- .  *@.-%:    \n" +
+                "                                  .    %# :%@@@@* :@+     \n" +
+                "                    .  ::          .    +@+.    :%%:      \n" +
+                "              ...   ..-@+          -:     :*%%%%+.        \n" +
+                "             -%@@@%+%%#+-.:--::::.:#@.                    \n" +
+                "               :+%#-:  ::+@@@=#==-:=-                     \n" +
+                "                  *@@@#%@+         .                      \n" +
+                "                  .@@@%@@=         .                      \n" +
+                "              ==   %@@@@@:        .                       \n" +
+                "               --.=%##*+#-      ..                        \n" +
+                "                -@%@@@%*@@=    .                          \n" +
+                "                 #@@@@+#@@@*  .                           \n" +
+                "                :+==*+#*=+*%:                             \n" +
+                "                *@@+ +.  =@@@                             \n" +
+                "               +@@-       :%@-                            \n" +
+                "              +%%:        :*#=                            \n" +
+                "             :##=         .#%-                            \n" +
+                "             +@=           +@=                            \n" +
+                "            -@+            -@@:                           \n" +
+                "            :-              .:=-                          \n" +
+                "                                                          "));
         int energyCost = 3;
         if (!consumeEnergy(energyCost)) {
             System.out.println(ColorUtil.boldBrightRed("❌ Not enough Arrows to use Bullseye!"));
@@ -155,6 +207,32 @@ public class Karl extends Character{
 
     // Ultimate - Rain of a Thousand Arrows
     public void rainOfAThousandArrows(Character target) {
+        PrintUtil.type(ColorUtil.boldBrightGreen("                                                          \n" +
+                "                                                      ..:> \n" +
+                "                            :                  :*- .-=    \n" +
+                "                             -         +    .  -=*        \n" +
+                "                               :. .:.:  :..::::     :-#* >\n" +
+                "                                .:-    **:::-=-=-:-:==   .\n" +
+                "                             .:::.:-.::.: .:---:-#*-=+=-=>\n" +
+                "                    .  :-  : :::.::=+-:::::--*#-:-*+::=+> \n" +
+                "              ...   ..-%#-......:--*+--===*#+-:::::-=>    \n" +
+                "             -%@@@%+%%#+-.-+*=+==++#@--.:...:--:::-=::--->\n" +
+                "               :+##-:  ::+%@@=#=+=-==+=:.:::::--:::--=+*#>\n" +
+                "                  +@@@#%@*...:-::----...:::--:-+#:...-=::>\n" +
+                "                   @@@%@@=  ....  .----:---::::::*%+::-:. \n" +
+                "              ==   #@@@@@-     .  :-: .::--:.:-:..::::-:  \n" +
+                "               --:-%##*+#-      .:. .      .:..:::==. .-> \n" +
+                "                -%%@@@%*@@+    .    =.    .. .=  .:-::..::\n" +
+                "                 #@@@@+#@@@#  :               ..   ...:>  \n" +
+                "                .+==++#*=+*%-                     ... .>  \n" +
+                "                +@@* +:  -%@@.                      .>    \n" +
+                "               +@@-       :%@=                            \n" +
+                "              +%%:        .*#+                            \n" +
+                "             :*#+          *%=                            \n" +
+                "             +@=           =%+                            \n" +
+                "            -@*            :@@-                           \n" +
+                "            :-              .:--                          \n" +
+                "                                                          "));
         int energyCost = 5;
         if (!consumeEnergy(energyCost)) {
             System.out.println(ColorUtil.boldBrightRed("❌ Not enough Arrows to use Rain of a Thousand Arrows!"));
