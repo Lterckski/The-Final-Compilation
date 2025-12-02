@@ -93,7 +93,7 @@ public class FinalBoss extends Enemy {
 
     // 🩸 Skill 1: Soul Drain
     public void soulDrain(Character target) {
-        PrintUtil.type("                                                          \n" +
+        PrintUtil.type(ColorUtil.boldBrightRed("                                                          \n" +
                 "                                                          \n" +
                 "      ..  .:                ::                            \n" +
                 "     .*+  -%=:     .:.     :%@:    .::.    :.     =:      \n" +
@@ -111,7 +111,8 @@ public class FinalBoss extends Enemy {
                 "%%%%%%%%%##########%%#%%%%%%%%%%##########################\n" +
                 "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%######%%%%%%%%%%%%%%##%%\n" +
                 "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%#-+%%\n" +
-                "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%@%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
+                "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%@%%%%%%%%%%%%%%%%%%%%%%%%%%%%"));
+        System.out.println();
         System.out.println(ColorUtil.boldBrightRed("💀 " + name + " casts Soul Drain!"));
         PrintUtil.pause(800);
         if (target.getEffects().checkDodge()) return;
@@ -166,6 +167,7 @@ public class FinalBoss extends Enemy {
                 "%%%###**##%%%%%%%%%%%%#######%##########%%%%%%%######%##%%\n" +
                 "%%%%#***#%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%#***##=+%%\n" +
                 "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%@%%%%%%%%%%%%%%%%%%%%%%%%%%%%"));
+        System.out.println();
         System.out.println(ColorUtil.boldBrightRed("🧿 " + name + " uses Encapsulation!"));
         PrintUtil.pause(800);
         if (!encapsulated) {
@@ -208,6 +210,7 @@ public class FinalBoss extends Enemy {
                 "%%%@@@@@@@%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%@@@@@%##%%\n" +
                 "%%%@@@@@@@@%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%@@@@@@@#==#%\n" +
                 "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%"));
+        System.out.println();
         System.out.println(ColorUtil.boldBrightRed("🌘 " + name + " unleashes Dark Ascension!"));
         PrintUtil.pause(800);
         if (target.getEffects().checkDodge()) return;
@@ -283,7 +286,6 @@ public class FinalBoss extends Enemy {
     }
 
     public void applyStun() {
-        // Immediately remove shield if active
         if (encapsulated && shield > 0) {
             shield = 0;
             shieldBroken = true;
@@ -325,10 +327,9 @@ public class FinalBoss extends Enemy {
         return;
     }
 
-    // 🧩 Required by abstract class Enemy
     @Override
     public int rewardExp() {
-        return 999999; // EXP gained for defeating the Final Boss
+        return 999999;
     }
 
 

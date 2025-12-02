@@ -189,14 +189,14 @@ public class Effects {
             return false;
         }
         if (immobilized) {
-            System.out.println(ColorUtil.boldBrightMagenta(owner.getName() + " is Immobilized. Can only regain energy. TURN SKIPPED!"));
+            System.out.println(ColorUtil.boldBrightMagenta(owner.getName() + " is Immobilized. Can only regain hp & energy. TURN SKIPPED!"));
             PrintUtil.pause(800);
             owner.skipTurn();
             immobilized = false;
             return false;
         }
         if (feared) {
-            System.out.println(ColorUtil.boldBrightMagenta(owner.getName() + " is Feared. Can only regain energy. TURN SKIPPED!"));
+            System.out.println(ColorUtil.boldBrightMagenta(owner.getName() + " is Feared. Can only regain hp & energy. TURN SKIPPED!"));
             PrintUtil.pause(800);
             owner.skipTurn();
             feared = false;

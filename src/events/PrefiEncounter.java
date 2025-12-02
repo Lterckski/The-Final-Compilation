@@ -184,7 +184,7 @@ public class PrefiEncounter {
 
                     case 3 -> confirming = false;
 
-                    default -> PrintUtil.type(ColorUtil.red("❌ Invalid option. Try again.\n"));
+                    default -> PrintUtil.type(ColorUtil.boldBrightRed("❌ Invalid option. Try again.\n"));
                 }
             }
         }

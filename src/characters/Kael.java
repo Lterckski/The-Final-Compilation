@@ -185,8 +185,8 @@ public class Kael extends  Character{      // 15% crit chance
 
         // 30% chance to apply Stun (from the sheer impact)
         if (RandomUtil.chance(30)) {
-            target.getEffects().applyStun(); // existing
-            if (target instanceof FinalBoss fb) fb.applyStun(); // remove shield if turn skipped
+            target.getEffects().applyStun();
+            if (target instanceof FinalBoss fb) fb.applyStun();
         }
 
         this.getWeapon().applyEffects(this,target,reduced);
