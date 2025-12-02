@@ -12,7 +12,23 @@ public class World2Enemy4 extends Enemy{
     }
 
     public void rottenCleave(Character target){
-        System.out.println(ColorUtil.boldBrightRed("🧟 " + name + " swings Rotten Cleave!"));
+        PrintUtil.type(ColorUtil.boldBrightRed("                                                          \n" +
+                "                                                          \n" +
+                "                                                          \n" +
+                "          =%%%@@@%#%=:..                          ..:::   \n" +
+                "            -%@@@@@@@#=.         .:::::---====---*#%@@@:  \n" +
+                "         :%@@@*+=-*@@@@@@%@@@@@@@@@@@@@@@@@@@@@@@@@%%##.  \n" +
+                "        +- :::-#%#*#%@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@:  \n" +
+                "          .=@@%#+*#%@@%#%@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@:  \n" +
+                "          #%%=   -*%@@@@@##%@@@@@@@%%%%%@@@@@@@@@@@@@@@:  \n" +
+                "        .#.    -%@+=.:::=*+*@@@@@#-.::-+*%@@@@@@@@@@%%%.  \n" +
+                "              :%%-.        :@@@@#:         .-+*%@@@@@@@:  \n" +
+                "              =#=.      ..-%@@@+.                 .:-+*.  \n" +
+                "              :.       =%@@@%=:.       .   .        ..:   \n" +
+                "                   -+#%@@#*-                              \n" +
+                "                                                          \n" +
+                "                                                          "));
+        System.out.println("🧟 " + name + " swings Rotten Cleave!");
         PrintUtil.pause(800);
         if(target.getEffects().checkDodge()) return;
         if (this.getEffects().checkConfuse()) return;

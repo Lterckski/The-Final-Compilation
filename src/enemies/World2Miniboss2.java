@@ -7,13 +7,38 @@ import utils.PrintUtil;
 import utils.RandomUtil;
 import inventory.*;
 
+import java.awt.*;
+
 public class World2Miniboss2 extends Enemy {
     public World2Miniboss2() {
         super("Luther Von", 854, 32, 140);
     }
 
     public void crownOfDespair(Character target) {
-        System.out.println(ColorUtil.boldBrightRed("👑 " + name + " casts Crown of Despair!"));
+        PrintUtil.type(ColorUtil.boldBrightRed("                                                          \n" +
+                "                        ...:.. :.                         \n" +
+                "                   :. .:.   ::::.. :..                    \n" +
+                "                  :... .   ..:.  .:-.: .                  \n" +
+                "               .. :: :-: .. .. ..:::..: :.:.              \n" +
+                "              ..:..-:. ::::..  -.....:- ..::              \n" +
+                "            ..:: .::. .:.           ::: ::..:.            \n" +
+                "            .:.. : :        -=       . .:: :..            \n" +
+                "           :  :.::    .=   -#%-   =.     .:.:..           \n" +
+                "           .    :. +: .=-+-.##.:*-=:.:+ .:... ..          \n" +
+                "         . :...:::  +.==#%%%*#%@%#+=.+  .:...:. :         \n" +
+                "          ::. .: .  .#%%%%%#%%#%%%%%#:   ......           \n" +
+                "         .: .::. ..  -%#*###**#####%-  ... .::.:          \n" +
+                "          :  :.:.     %%#**#**#**#%%.  ::-.  :.:          \n" +
+                "           ::....: .  =*%@%%##%%@%#=  . ::.-::            \n" +
+                "           : ...:::...               ..:::.:.::           \n" +
+                "            ..::.:.:.   ... .  ..  ..::..:.               \n" +
+                "              :.. .:-:-. .: .-.. ..:::-  ...              \n" +
+                "                 .:.::..::-: ..--:..: .. :                \n" +
+                "                .::.....   ::..::...:.:. .                \n" +
+                "                    -. :.    ...:...:.                    \n" +
+                "                          .::::::.                        \n" +
+                "                                                          "));
+        System.out.println("👑 " + name + " casts Crown of Despair!");
         PrintUtil.pause(800);
         if(target.getEffects().checkDodge()) return;
         if (this.getEffects().checkConfuse()) return;
@@ -29,7 +54,31 @@ public class World2Miniboss2 extends Enemy {
     }
 
     public void darkJudgement(Character target){
-        System.out.println(ColorUtil.boldBrightRed("⚔️ " + name + " uses Dark Judgment!"));
+        PrintUtil.type(ColorUtil.boldBrightRed("                                                          \n" +
+                "                          ::  ::                          \n" +
+                "                         +@@-#@@*                         \n" +
+                "                         -%@+%@%:                         \n" +
+                "                           -+@-                           \n" +
+                "                    +                                     \n" +
+                "                    =*=     *%=       .#+                 \n" +
+                "                     =:.   +%@%:      ++*                 \n" +
+                "                     :#= .=#@@@+      :#                  \n" +
+                "                      #%*%@%%%%%+     --                  \n" +
+                "                     .@@%%@@@%@%%=    *                   \n" +
+                "                     .%%%%%@@@@@%%*=-+#                   \n" +
+                "                 .    +#@@%%@%%%%@@%%*=                   \n" +
+                "                     .#@@@%%%@%%%%%%#*   .                \n" +
+                "               -:   =%@@@%%@%@#%%%===+    .               \n" +
+                "               -.  +%@@@@@@@@@%@@%*.::   .=               \n" +
+                "              .+.  %@@@@%%@@@@%@@%%++  . :+               \n" +
+                "               ++. = %@@%%@@%#@%@%%%+  ::#=               \n" +
+                "               :*+..  -#@@%%@@%@@%#+:-:.%#                \n" +
+                "              ..=%@+%.*#%@%@%%@%#%==*:*%%:.               \n" +
+                "                =#@@@%%%%#%@@%####%@@@@%--                \n" +
+                "               .-*%%###%%#%@%#@%%#%%%%%%+..               \n" +
+                "                        :-:       .                       \n" +
+                "                                                          "));
+        System.out.println("⚔️ " + name + " uses Dark Judgment!");
         PrintUtil.pause(800);
         if(target.getEffects().checkDodge()) return;
         if (this.getEffects().checkConfuse()) return;
