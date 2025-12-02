@@ -43,8 +43,7 @@ public class Null extends Character {
         while (!isValid) {
             System.out.println(ColorUtil.boldBrightGreen("[1]") + " " + ColorUtil.green("💥 Skill 1   -  Direct Hit (⚡ 5 Energy)"));
             System.out.println(ColorUtil.boldBrightGreen("[2]") + " " + ColorUtil.green("🔥 Skill 2   -  Obliterate (⚡ 10 Energy)"));
-            System.out.println(ColorUtil.boldBrightGreen("[3]") + " " + ColorUtil.green("🌌 Ultimate  -  World End (⚡ 20 Energy) ")
-                    + ColorUtil.red("❌ (Available in " + ultimateCounter + " turns)"));
+            System.out.println(ColorUtil.boldBrightGreen("[3]") + " " + ColorUtil.green("🌌 Ultimate  -  World End (⚡ 20 Energy) "));
             System.out.println(ColorUtil.boldBrightGreen("[4]") + " " + ColorUtil.green("🛡️ Skip Turn -  Restore 10% Max HP & 20 Energy"));
             System.out.println(ColorUtil.boldBrightGreen("[5]") + " " + ColorUtil.green("📜 Show Menu"));
             System.out.print(ColorUtil.boldBrightWhite("Choose your action: "));
