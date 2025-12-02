@@ -90,6 +90,24 @@ public class Kael extends  Character{      // 15% crit chance
 
     // Skill 1 - Blade Rush
     public void bladeRush(Character target){
+        PrintUtil.type(ColorUtil.boldBrightGreen("                                                          \n" +
+                "                .........                                 \n" +
+                "            .:-:.::-::...                                 \n" +
+                "         ..:..::.                                         \n" +
+                "        .:.::.                -@%-                        \n" +
+                "       .: .:.                .#%#%*-.                     \n" +
+                "       .:. ::.              .=@@*=:                       \n" +
+                "        .:...--:..         :%@%%#@%-                      \n" +
+                "          ..:::===--:. ..:*@##%#%%+.                      \n" +
+                "                   .:=+*%%%###@@@@=                       \n" +
+                "                      ....::-#@%@@%=.                     \n" +
+                "                           .#@@@@@@@+.                    \n" +
+                "                           :#@%@@#%@%=                    \n" +
+                "                          :#@#:   .+%%.                   \n" +
+                "                         :#@-.     -#%.                   \n" +
+                "                        :*=.        -%:                   \n" +
+                "                       .*%:         -%%#:                 \n" +
+                "                                                          "));
         int energyCost = 5;
         if(!consumeEnergy(energyCost)){
             System.out.println(ColorUtil.boldBrightRed("❌ Not enough Stamina to use Blade Rush!"));
@@ -120,6 +138,22 @@ public class Kael extends  Character{      // 15% crit chance
 
     // Skill 2 - Piercing Slash
     public void piercingSlash(Character target){
+        PrintUtil.type(ColorUtil.boldBrightGreen("                                                          \n" +
+                "                               ...                        \n" +
+                "                              .=@@*.                      \n" +
+                "                              :@@*+=:                     \n" +
+                "                             -*@@%%=.                     \n" +
+                "  ................         .=%@%##@%:                     \n" +
+                "    ....................::-#%**%%%%=.                     \n" +
+                "              ..........:+##%#*@@@@=.                     \n" +
+                "                       ... . :@@@@@@+.                    \n" +
+                "                             %@@@@@@@=.                   \n" +
+                "                            =*@%++=*@%+                   \n" +
+                "                           -#@+.    *%*                   \n" +
+                "                          :%#.      -%#                   \n" +
+                "                         -#-         =%:                  \n" +
+                "                        .=*.         :=**:                \n" +
+                "                                                          "));
         int energyCost = 10;
         if(!consumeEnergy(energyCost)){
             System.out.println(ColorUtil.boldBrightRed("❌ Not enough Stamina to use Piercing Slash!"));
@@ -150,6 +184,25 @@ public class Kael extends  Character{      // 15% crit chance
 
     //Ultimate - Eternal Cross Slash
     public void eternalCrossSlash(Character target){
+        PrintUtil.type(ColorUtil.boldBrightGreen("                                                          \n" +
+                "                                ..:.                      \n" +
+                "             .:--:   ::::::--:        :.                  \n" +
+                "          .:.   .--.    ..   -=::::--- .                  \n" +
+                "        :: . .:.      .: :::                              \n" +
+                "       .  . :.       :::-.     +@@=                       \n" +
+                "       . .  :.      .:::      -@%==:      ...             \n" +
+                "       ...   ..     .:.      -#@%%#-     ..:::            \n" +
+                "         :::..:-=-::::      =%%%#*%*      .:-::.          \n" +
+                "             .:..:+*+=-:::-#%=*%%%%:     .::::::-         \n" +
+                "                  ..   .=**##**%%@%:     ::-. ...:        \n" +
+                "                   .         :@@%%@@=  .:.-.   :  :       \n" +
+                "                             @@%@@%%@-:..:.    .: -       \n" +
+                "                            =#@#==:*%-  ..     :. :.      \n" +
+                "                        .  -#@:   ::   :   .:.:   .       \n" +
+                "                          :+*::--.  :#*     :.   ..       \n" +
+                "                        .:       ::. -%                   \n" +
+                "                         ==...        -+=                 \n" +
+                "                                                          "));
         int energyCost = 20;
         if (!consumeEnergy(energyCost)) {
             System.out.println(ColorUtil.boldBrightRed("❌ Not enough Stamina to use Eternal Cross Slash!"));

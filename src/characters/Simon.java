@@ -85,6 +85,26 @@ public class Simon extends Character {
 
     // Skill 1 – Fireball
     public void fireball(Character target) {
+        PrintUtil.type(ColorUtil.boldBrightGreen("                                                          \n" +
+                "                            %@*           :.              \n" +
+                "                            -@@@+     :+-  .:             \n" +
+                "              .+:           @@@@#.   :@%-...:.            \n" +
+                "             :=:==.        -@@@@@@#*%+=-:-::.             \n" +
+                "             .--=-.      :*%%@@@@@@@*-....-.              \n" +
+                "                -+      -%@@%##**####=...::               \n" +
+                "                 .=  .=%@@@@@@@@#=::..=-..                \n" +
+                "                  -@@@@@@@*#@@@@@#.                       \n" +
+                "                   .*%@@%:.%@@@@@@=                       \n" +
+                "                     *#+  +@@@@@@@@-                      \n" +
+                "                      -  =@@@%@@@@@@-                     \n" +
+                "                      .-:%@@@@%%@@@@@*                    \n" +
+                "                       .#@@@@@@%#@@@@@@#.                 \n" +
+                "                       .#@@@@@@@@%@@@@@@@#:               \n" +
+                "                       :%@@@@@@@@@@@@@@@@@@-              \n" +
+                "                       -@@@@@@@@@@@@@@@@@*::              \n" +
+                "                       *@@@@@@@@@@@@@@@@#=                \n" +
+                "                     :#@@*===. -**-   *@%-                \n" +
+                "                                                          "));
         int energyCost = 15;
         if (!consumeEnergy(energyCost)) {
             System.out.println(ColorUtil.boldBrightRed("❌ Not enough Mana to cast Fireball!"));
@@ -120,6 +140,28 @@ public class Simon extends Character {
 
     // Skill 2 – Ice Prison
     public void icePrison(Character target) {
+        PrintUtil.type(ColorUtil.boldBrightGreen("                                                          \n" +
+                "                         ..                               \n" +
+                "                        ...                               \n" +
+                "                            %@*          ...              \n" +
+                "                            -@@@+ ..  :*-  ..             \n" +
+                "            ...+-          .@@@@#.   :%#:.....            \n" +
+                "           ..-=:-=. .   ...-@@@@@@#*#........             \n" +
+                "             .--=-.  ....:=##%@@@@@@=.:.:...              \n" +
+                "                -+.     -%@@#*+++**#*....:.    ..         \n" +
+                "               ..:+  .=%@@@@@@#%*-....-:..     ..         \n" +
+                "            . ... -@@@@@@@*#@@@@@#.           ...         \n" +
+                "           .....   .*%@@%:.%@@@@@@=           ..          \n" +
+                "            ..       *#+  +@@@@@@@@-    ...  ..           \n" +
+                "           ..         -  =@@@%@@@@@@-   ....              \n" +
+                "           .          .--%@@@@%%@@@@@*  .  . ..           \n" +
+                "               .:..    .#@@##@@%*@@@%#*=.   ...           \n" +
+                "               .....   .#@#=%@@@@%*-::=@@#: .             \n" +
+                "            ..  ..:.   :%@@@@@@@#+=*%@@@@@@=              \n" +
+                "              .        -@@@*%@@@@@@@@@@@@*::              \n" +
+                "                      .*@@@@@@@@@@@@@@@@#=                \n" +
+                "                     :#@@*===. -+*-   *@%-                \n" +
+                "                                                          "));
         int energyCost = 25;
         if (!consumeEnergy(energyCost)) {
             System.out.println(ColorUtil.boldBrightRed("❌ Not enough Mana to cast Ice Prison!"));
@@ -153,6 +195,30 @@ public class Simon extends Character {
 
     // Ultimate – Meteor Storm
     public void meteorStorm(Character target) {
+        PrintUtil.type(ColorUtil.boldBrightGreen("                                                          \n" +
+                "                        ..  :.  .. ..                     \n" +
+                "                   .:.                  .:.               \n" +
+                "                .                       ..                \n" +
+                "                ..          %@*           :.              \n" +
+                "                            -@@@+     :*-  .:             \n" +
+                "          ::  .+:          .@@@@#.   :@%-...:..:          \n" +
+                "             :=:==.        -@@@@@@#*%+=-:-:.. ..          \n" +
+                "             .--+-.      :+%%@@@@@@@*-...:-.   .          \n" +
+                "         ::     -+      -%@@%##**####=...::               \n" +
+                "                 .=  .=%@@@@@@@@#=::..=-..    .:          \n" +
+                "       .:.        -@@@@@@@*#@@@@@#.          ..:.         \n" +
+                "       ..:         .*%@@%:.%@@@@@@=                       \n" +
+                "                     *#+  +@@@@@@@@-        ..    :.      \n" +
+                "            .:.       -  =@@@%@@@@@@-    ..               \n" +
+                "       .:    .        .--%@@@@%%@@@@@*          .         \n" +
+                "                       .#@@@@@@%*@@@@@@#.     .::         \n" +
+                "           .:     .    .#@@@@@@@@%@@@@@@@#:   ..:         \n" +
+                "           :.          :%@@@@@@@@@@@#:#@@@%=.             \n" +
+                "                .    .:=@@@@@@%@@@@@@@@@@*--:.            \n" +
+                "               ..   . .*@@@@@+#@@@@@@%%@=::.:.            \n" +
+                "                   .:-#@%=-==..-**= .:-#%-                \n" +
+                "                    ..      ...  .. ....                  \n" +
+                "                                                          "));
         int energyCost = 40;
         if (!consumeEnergy(energyCost)) {
             System.out.println(ColorUtil.boldBrightRed("❌ Not enough Mana to cast Meteor Storm!"));
