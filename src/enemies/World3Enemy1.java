@@ -34,7 +34,7 @@ public class World3Enemy1 extends Enemy {
                 "                       :#=               +%%*=            \n" +
                 "                      =++:                                \n" +
                 "                                                          "));
-        System.out.println("🔥 " + name + " unleashes Ember Burst!");
+        System.out.println(ColorUtil.boldBrightRed("🔥 " + name + " unleashes Ember Burst!"));
         PrintUtil.pause(800);
         if(target.getEffects().checkDodge()) return;
         if (this.getEffects().checkConfuse()) return;

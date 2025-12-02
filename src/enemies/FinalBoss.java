@@ -112,7 +112,7 @@ public class FinalBoss extends Enemy {
                 "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%######%%%%%%%%%%%%%%##%%\n" +
                 "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%#-+%%\n" +
                 "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%@%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
-        System.out.println("💀 " + name + " casts Soul Drain!");
+        System.out.println(ColorUtil.boldBrightRed("💀 " + name + " casts Soul Drain!"));
         PrintUtil.pause(800);
         if (target.getEffects().checkDodge()) return;
         if (this.getEffects().checkConfuse()) return;
@@ -166,7 +166,7 @@ public class FinalBoss extends Enemy {
                 "%%%###**##%%%%%%%%%%%%#######%##########%%%%%%%######%##%%\n" +
                 "%%%%#***#%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%#***##=+%%\n" +
                 "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%@%%%%%%%%%%%%%%%%%%%%%%%%%%%%"));
-        System.out.println("🧿 " + name + " uses Encapsulation!");
+        System.out.println(ColorUtil.boldBrightRed("🧿 " + name + " uses Encapsulation!"));
         PrintUtil.pause(800);
         if (!encapsulated) {
             shield = 50; // Shield lasts one turn
@@ -208,7 +208,7 @@ public class FinalBoss extends Enemy {
                 "%%%@@@@@@@%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%@@@@@%##%%\n" +
                 "%%%@@@@@@@@%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%@@@@@@@#==#%\n" +
                 "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%"));
-        System.out.println("🌘 " + name + " unleashes Dark Ascension!");
+        System.out.println(ColorUtil.boldBrightRed("🌘 " + name + " unleashes Dark Ascension!"));
         PrintUtil.pause(800);
         if (target.getEffects().checkDodge()) return;
         if (this.getEffects().checkConfuse()) return;

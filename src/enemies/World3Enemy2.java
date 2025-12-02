@@ -41,7 +41,7 @@ public class World3Enemy2 extends Enemy {
                 "           ..:=*#***#@%%%%%%@@@%##%##%*%%%*=-.            \n" +
                 "                ..::--=+++=++++++==-:::..                 \n" +
                 "                                                          "));
-        System.out.println("💀 " + name + " casts Shadow Bolt!");
+        System.out.println(ColorUtil.boldBrightRed("💀 " + name + " casts Shadow Bolt!"));
         PrintUtil.pause(800);
         if (target.getEffects().checkDodge()) return;
         if (this.getEffects().checkConfuse()) return;

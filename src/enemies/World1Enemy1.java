@@ -45,7 +45,7 @@ public class World1Enemy1 extends Enemy {
                 "        ::.. .-+***####%%@@@@@@@@@%####%%%#*+===++-.      \n" +
                 "                                                          \n" +
                 "                                                          "));
-        System.out.println("🐺 " + name + " unleashes Savage Howl!");
+        System.out.println(ColorUtil.boldBrightRed("🐺 " + name + " unleashes Savage Howl!"));
         PrintUtil.pause(800);
         if (target.getEffects().checkDodge()) return;
         if (this.getEffects().checkConfuse()) return;

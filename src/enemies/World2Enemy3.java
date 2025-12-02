@@ -42,7 +42,7 @@ public class World2Enemy3 extends Enemy{
                 "                         .#*  -%-                         \n" +
                 "                          .    .                          \n" +
                 "                                                          "));
-        System.out.println("🐕 " + name + " used Corpse Explosion!");
+        System.out.println(ColorUtil.boldBrightRed("🐕 " + name + " used Corpse Explosion!"));
         PrintUtil.pause(800);
         if(target.getEffects().checkDodge()) return;
         if (this.getEffects().checkConfuse()) return;

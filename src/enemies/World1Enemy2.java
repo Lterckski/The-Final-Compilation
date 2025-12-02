@@ -53,7 +53,7 @@ public class World1Enemy2 extends Enemy {
                 "         .    .*%@@@%#+-=#+ =%@@@@%*-  -#%@@%#-           \n" +
                 "                                      :                   \n" +
                 "                                                          "));
-        System.out.println("🧚 " + name + " attacks with Trickster Strike!");
+        System.out.println(ColorUtil.boldBrightRed("🧚 " + name + " attacks with Trickster Strike!"));
         PrintUtil.pause(800);
         if (target.getEffects().checkDodge()) return;
         if (this.getEffects().checkConfuse()) return;

@@ -64,7 +64,7 @@ public class World3Miniboss1 extends Enemy {
                 "           .:::=-:-=@#*%@@#*@@@@@##%@#==+=-=+-..          \n" +
                 "                   .=+-   ..+ -. .:.   :.                 \n" +
                 "                                                          "));
-        System.out.println("🤺 " + name + " used Grave Cleaver!");
+        System.out.println(ColorUtil.boldBrightRed("🤺 " + name + " used Grave Cleaver!"));
         PrintUtil.pause(800);
         if(target.getEffects().checkDodge()) return;
         if (this.getEffects().checkConfuse()) return;
@@ -111,7 +111,7 @@ public class World3Miniboss1 extends Enemy {
                 "                            -@.                           \n" +
                 "                             .                            \n" +
                 "                                                          "));
-        System.out.println("🦴 " + name + " used Bone Shield!");
+        System.out.println(ColorUtil.boldBrightRed("🦴 " + name + " used Bone Shield!"));
         PrintUtil.pause(800);
 
         System.out.println(ColorUtil.brightMagenta("→🛡️ Bone Shield increases defense of " + name + " by +50 for 2 turns!"));

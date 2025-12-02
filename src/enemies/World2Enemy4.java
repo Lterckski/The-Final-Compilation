@@ -28,7 +28,7 @@ public class World2Enemy4 extends Enemy{
                 "                   -+#%@@#*-                              \n" +
                 "                                                          \n" +
                 "                                                          "));
-        System.out.println("🧟 " + name + " swings Rotten Cleave!");
+        System.out.println(ColorUtil.boldBrightRed("🧟 " + name + " swings Rotten Cleave!"));
         PrintUtil.pause(800);
         if(target.getEffects().checkDodge()) return;
         if (this.getEffects().checkConfuse()) return;

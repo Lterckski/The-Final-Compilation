@@ -50,7 +50,7 @@ public class World1Enemy3 extends Enemy {
                 "     .-%@+   =@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@+:-*%@*.      \n" +
                 "         .*#*++**=-.*@@%+=+#@@@@*--==#@@+..-+%%+:         \n" +
                 "                                                          "));
-        System.out.println("🌳 " + name + " strikes with Root Snare!");
+        System.out.println(ColorUtil.boldBrightRed("🌳 " + name + " strikes with Root Snare!"));
         PrintUtil.pause(800);
         if (target.getEffects().checkDodge()) return;
         if (this.getEffects().checkConfuse()) return;

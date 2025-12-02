@@ -46,7 +46,7 @@ public class World1Miniboss1 extends Enemy {
                 "                            +@#.   *@:                    \n" +
                 "                           -#*    +%#                     \n" +
                 "                                                          "));
-        System.out.println("🦌 " + name + " charges with Deathly Charge!");
+        System.out.println(ColorUtil.boldBrightRed("🦌 " + name + " charges with Deathly Charge!"));
         PrintUtil.pause(800);
         if (target.getEffects().checkDodge()) return;
         if (this.getEffects().checkConfuse()) return;
@@ -107,7 +107,7 @@ public class World1Miniboss1 extends Enemy {
                 "             .+#+::--++=**++=+--:....                     \n" +
                 "                        .                                 \n" +
                 "                                                          "));
-        System.out.println("🗣️ " + name + " unleashes Blackened Howl!");
+        System.out.println(ColorUtil.boldBrightRed("🗣️ " + name + " unleashes Blackened Howl!"));
         PrintUtil.pause(800);
         if (target.getEffects().checkDodge()) return;
         if (this.getEffects().checkConfuse()) return;

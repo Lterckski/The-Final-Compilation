@@ -37,7 +37,7 @@ public class World2Enemy1 extends Enemy{
                 "       =#%#%*+-*-          *%%%@#.        =#####*         \n" +
                 "                         =##*#=+                          \n" +
                 "                                                          "));
-        System.out.println("🐀 " + name + " used Plague Bite!");
+        System.out.println(ColorUtil.boldBrightRed("🐀 " + name + " used Plague Bite!"));
         PrintUtil.pause(800);
         if(target.getEffects().checkDodge()) return;
         if (this.getEffects().checkConfuse()) return;

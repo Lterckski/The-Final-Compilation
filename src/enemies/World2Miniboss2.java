@@ -38,7 +38,7 @@ public class World2Miniboss2 extends Enemy {
                 "                    -. :.    ...:...:.                    \n" +
                 "                          .::::::.                        \n" +
                 "                                                          "));
-        System.out.println("👑 " + name + " casts Crown of Despair!");
+        System.out.println(ColorUtil.boldBrightRed("👑 " + name + " casts Crown of Despair!"));
         PrintUtil.pause(800);
         if(target.getEffects().checkDodge()) return;
         if (this.getEffects().checkConfuse()) return;
@@ -78,7 +78,7 @@ public class World2Miniboss2 extends Enemy {
                 "               .-*%%###%%#%@%#@%%#%%%%%%+..               \n" +
                 "                        :-:       .                       \n" +
                 "                                                          "));
-        System.out.println("⚔️ " + name + " uses Dark Judgment!");
+        System.out.println(ColorUtil.boldBrightRed("⚔️ " + name + " uses Dark Judgment!"));
         PrintUtil.pause(800);
         if(target.getEffects().checkDodge()) return;
         if (this.getEffects().checkConfuse()) return;

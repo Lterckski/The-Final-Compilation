@@ -42,7 +42,7 @@ public class World3Enemy4 extends Enemy {
                 "                  :###%*.         +@@@@%.                 \n" +
                 "                 #@@@%:          :%@@%-                   \n" +
                 "                :%@@%.          .#@%-                     "));
-        System.out.println("😈 " + name + " lets out a deafening Soul Scream!");
+        System.out.println(ColorUtil.boldBrightRed("😈 " + name + " lets out a deafening Soul Scream!"));
         PrintUtil.pause(800);
         if(target.getEffects().checkDodge()) return;
         if (this.getEffects().checkConfuse()) return;

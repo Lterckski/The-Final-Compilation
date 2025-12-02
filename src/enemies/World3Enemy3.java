@@ -35,7 +35,7 @@ public class World3Enemy3 extends Enemy {
                 "          --*%%%@@@@#%@%#@%%@@%######%%%#*++==-=-.        \n" +
                 "              .::=:.:: :-.    ..   ..                     \n" +
                 "                                                          "));
-        System.out.println("🪨 " + name + " uses Magma Slam!");
+        System.out.println(ColorUtil.boldBrightRed("🪨 " + name + " uses Magma Slam!"));
         PrintUtil.pause(800);
         if(target.getEffects().checkDodge()) return;
         if (this.getEffects().checkConfuse()) return;

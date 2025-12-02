@@ -39,7 +39,7 @@ public class World2Miniboss1 extends Enemy{
                 "                        .*@:   :%*.                       \n" +
                 "                      .:*@@+===*@@%=:.                    \n" +
                 "                                                          "));
-        System.out.println("⛓️ " + name + " used Shackling Chains!");
+        System.out.println(ColorUtil.boldBrightRed("⛓️ " + name + " used Shackling Chains!"));
         PrintUtil.pause(800);
         if(target.getEffects().checkDodge()) return;
         if (this.getEffects().checkConfuse()) return;
@@ -113,7 +113,7 @@ public class World2Miniboss1 extends Enemy{
                 "            :=*+++****+: .-*#%%%%#=-::-+***+=:            \n" +
                 "                                                          \n" +
                 "                                                          "));
-        System.out.println("🩸 " + name + " lashes with Tormenting Lash!");
+        System.out.println(ColorUtil.boldBrightRed("🩸 " + name + " lashes with Tormenting Lash!"));
         PrintUtil.pause(800);
         if(target.getEffects().checkDodge()) return;
         if (this.getEffects().checkConfuse()) return;

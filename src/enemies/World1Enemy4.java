@@ -34,7 +34,8 @@ public class World1Enemy4 extends Enemy {
                 "                                                          \n" +
                 "                                                          \n" +
                 "                                                          "));
-        System.out.println("🦇 " + name + " screeches loudly at the target!");
+        System.out.println(ColorUtil.boldBrightRed("🦇 " + name + " screeches loudly at the target!"));
+
         PrintUtil.pause(800);
         if (target.getEffects().checkDodge()) return;
         if (this.getEffects().checkConfuse()) return;

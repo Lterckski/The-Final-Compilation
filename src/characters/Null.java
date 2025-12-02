@@ -8,10 +8,10 @@ public class Null extends Character {
 
     public Null() {
         super("Null", "Mage",
-                99999,   // HP
-                9999,    // Attack
-                9999,    // Energy
-                0      // Defense
+                99999,
+                1,
+                9999,
+                999
         );
     }
 
