@@ -356,6 +356,7 @@ public class World1 {
         System.out.println();
 
         System.out.println("=================================================================================================================");
+        System.out.println();
         PrintUtil.type("""
                 Once a noble guardian of this forest, the Hollow Stag is now corrupted by the same darkness that drains the land.
                 Its hooves scorch the ground, and the forest holds its breath.

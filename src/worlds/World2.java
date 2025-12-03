@@ -476,6 +476,7 @@ public class World2 {
                 "                                           ▀                                                                                                                         ");
 
         System.out.println("===========================================================================");
+        System.out.println();
         PrintUtil.type(
                 "In the throne room, the King sits slumped—his crown fused to his skull.\n" +
                         "You battle him; each blow shakes the hall until, finally, he falls.\n"
