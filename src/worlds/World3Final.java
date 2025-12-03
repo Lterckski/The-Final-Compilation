@@ -259,10 +259,10 @@ public class World3Final {
         }
 
         PrintUtil.type(
-                "Khai transforms, robes shredding into wings of smoke, staff splitting into a blade of pure void.\n" +
+                "Khai the Gray transforms, robes shredding into wings of smoke, staff splitting into a blade of pure void.\n" +
                         "The Stones float around him like chained stars.\n"
         );
-        PrintUtil.say("Khai", "\"You were never meant to go home. You were meant to be my successor... or my sacrifice.\"\n");
+        PrintUtil.say("Khai the Necromancer", "\"You were never meant to go home. You were always meant to be my sacrifice.\"\n");
         PrintUtil.effect("The tower shakes as your final battle begins.");
         InputUtil.pressEnterToContinue();
 

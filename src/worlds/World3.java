@@ -43,8 +43,8 @@ public class World3 {
         System.out.println("======================================================================================================");
         System.out.println();
         PrintUtil.type(
-                "The land turns barren. Ash falls like snow. Rivers of molten fire carve through the black rock.\n" +
-                        "At the center, rising higher than mountains, stands the Necromancer’s Tower.\n"
+                "You have been travelling for days. You have reached a land where not a even a glimmer of life can be seen.\n The land has turned barren. Ash falls like snow. Rivers of molten fire carve through the black rock.\n" +
+                        "At the center, rising higher than mountains, stands a tower larger than anything you have ever seen. \n The Necromancer’s Tower.\n"
         );
         System.out.println("======================================================================================================");
         InputUtil.pressEnterToContinue();
@@ -496,11 +496,14 @@ public class World3 {
 
         // --- Boss: the revelation ---
         PrintUtil.title("BOSS — Sir Khai, the Necromancer");
-        PrintUtil.event("At the summit, the Third Stone pulses with violet light.");
-        PrintUtil.effect("You reach out. The Stones unite—humming like a single heartbeat.");
-        PrintUtil.event("Then Khai steps forward, staff blazing.\n");
-        PrintUtil.say("Sir Khai", "\"You’ve served well, student. Who better to collect the relics than one who trusts their teacher?\"");
-        PrintUtil.say("Sir Khai", "\"I guided you not to save this land—but to claim its power. The Necromancer you sought... is me.\"\n");
+        PrintUtil.event("At the summit, you see the Third Stone pulsing with violet light on an altar.");
+        PrintUtil.effect("You reach out. The Stones unite—humming and pulling themselves closer together like a single heartbeat.");
+        PrintUtil.event("Then Khai the Gray steps forward, staff blazing.\n");
+        PrintUtil.say("Sir Khai", "\"Finally. \nYou’ve served well, my student. Who better to collect the stones of life than one who trusts their teacher?\"");
+        PrintUtil.say("Sir Khai", "\"I have guided you not to save this land—but to claim its power. \n" +
+                "Because only the most skilled and pure can bring the stones together. I have been waiting for a student like you for a millenia. \n" +
+                "I wish to bring chaos not only to this land, but also in the lands beyond. \n" +
+                "The Necromancer you sought... The one who wants to bring chaos to all worlds... is ME!!!!!!!!!\"\n");
 
         PrintUtil.hr();
     }

@@ -50,9 +50,9 @@ public class World2 {
         System.out.println("=======================================================================================================");
         System.out.println();
         PrintUtil.type(
-                "Beyond the forest lies a town. Relief surges—until you step closer. The place is diseased.\n" +
-                        "Children cough in alleys, merchants peddle spoiled goods, and hollow-eyed guards demand bribes.\n" +
-                        "Every face tells the same story: something has poisoned this world.\n"
+                "As you make your way through the forest, you finally reach its edge and find that there lies a town. Relief surges—until you get nearer and see the town closer." +
+                        " The place is diseased.\n" + "Khai the Gray says, 'Children cough in alleys, merchants peddle spoiled goods, and hollow-eyed guards demand bribes.'\n" +
+                        "This town used to be the epitome of peace and unity. Now, every face tells the same story: something has poisoned this world.\n"
         );
 
         PrintUtil.say("Khai the Grey", "\"The Stones,\" he murmurs. \"They are both a curse and a cure.\"\n");
@@ -299,7 +299,7 @@ public class World2 {
         // -------------------- Ghoul Footmen --------------------
         PrintUtil.title("THE BLACK CASTLE");
         PrintUtil.event("Thunder cracks as you push open the gates.");
-        PrintUtil.effect("Knights with cracked armor and bleeding eyes lurch from the darkness.");
+        PrintUtil.effect("Once Honorable Knights are now found with cracked armor and bleeding eyes lurch from the darkness.");
 
         PrintUtil.type("""
                 Two Ghoul Footmen emerge, dragging rusted blades.
@@ -478,8 +478,8 @@ public class World2 {
         System.out.println("===========================================================================");
         System.out.println();
         PrintUtil.type(
-                "In the throne room, the King sits slumped—his crown fused to his skull.\n" +
-                        "You battle him; each blow shakes the hall until, finally, he falls.\n"
+                "In the throne room, the King sits slumped—his crown fused to his skull. and on it, you see the second stone as its centerpiece.\n" +
+                        "YOU DARE CHALLENGE MY AUTHORITY?! YOUR SKULL WILL BECOME BUT ANOTHER TROPHY IN MY HALLS.\n"
         );
         System.out.println("===========================================================================");
         System.out.println();
@@ -537,7 +537,7 @@ public class World2 {
         PrintUtil.type("""
                 ✅👑 Final Victory! - Boss Defeated!
                 The Corrupted King’s crown falls to the floor, echoing through the halls.
-                Darkness fades, and you stand as the savior of this cursed land.
+                The Darkness fades, and you stand as the savior of this cursed land.
                 """);
         PrintUtil.loot("You gain immense experience and legendary loot!\n");
         boss.dropLoot(player);
@@ -547,11 +547,11 @@ public class World2 {
 
         //-------------------------------------------------
         PrintUtil.effect("The King's breath rattles. A faint glimmer of humanity returns to his eyes.");
-        PrintUtil.say("Corrupted King", "\"The Necromancer… is not what he seems… choose wisely…\"");
-        PrintUtil.event("With a final sigh, his body crumbles into dust, leaving only echoes of his warning.");
+        PrintUtil.say("Corrupted King", "\"It's… It's you!!! NO!!!…\"");
+        PrintUtil.event("He screams with his dying breath as his body crumbles into dust, leaving only confusion of who he was referring to.");
         InputUtil.pressEnterToContinue();
 
-        PrintUtil.event("You lift the Second Stone, feeling its dark energy pulse in your hands.");
+        PrintUtil.event("You lift the Second Stone from his crown, feeling its dark energy pulse in your hands.");
         PrintUtil.effect("A cold wind sweeps through the empty halls, extinguishing every torch and whispering secrets of the past.");
         InputUtil.pressEnterToContinue();
         PrintUtil.line();

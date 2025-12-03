@@ -32,10 +32,13 @@ public class World1 {
         System.out.println("==================================================================================================================================================");
         System.out.println();
         PrintUtil.type("""
-                You wake in a dead forest. Bark is gray, leaves crunch to ash, and a cold mist coils between skeletal trees.
+                You wake up in a dead forest. Bark is gray, leaves crunch to ash, and a cold mist coils between skeletal trees.
                 Silence presses from every side—watching, waiting.
                 A voice: "Dong…"
-                From the mist steps a robed figure—your professor, Khai the Grey. "Find the Three Stones," he says. "Only then will your path home reveal itself."
+                From the mist steps a robed figure—your but you realize this person looks like your professor, Khai... 
+                "In this world, I am known as Khai the Gray, we suffer because an evil necromancer has corrupted these lands and we must find 
+                the  three stones of life that hold this world together to defeat him." he says.   
+                "Only then will your path home reveal itself."
                 """);
         System.out.println("==================================================================================================================================================");
         InputUtil.pressEnterToContinue();
