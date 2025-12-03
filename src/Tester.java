@@ -143,7 +143,7 @@ public class Tester {
             }
         } while (player == null);  // repeat until valid choice
         player.getInventory().setEquippedArmor(Armor.LEATHER_GUARD);
-
+/*
         MagicShop magicShop = new MagicShop(player);
 
         Enemy enemy1 = new World2Miniboss1();
@@ -161,15 +161,15 @@ public class Tester {
         player.lootSoulShards(90);
         MagicShop shop = new MagicShop(player);
         shop.openShop();
-
+*/
         Enemy enemy3 = new FinalBoss();
         Battle battle3 = new Battle(player, enemy3);
 
         battle3.startBattle();
 
 
-//        PrefiEncounter prefiEncounter = new PrefiEncounter();
-//        prefiEncounter.start(player);
+       PrefiEncounter prefiEncounter = new PrefiEncounter();
+      prefiEncounter.start(player);
 
 
 //        Enemy testEnemy1 = new World1Enemy1();

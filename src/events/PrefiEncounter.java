@@ -7,23 +7,30 @@ import utils.InputUtil;
 import utils.PrintUtil;
 
 import java.util.Scanner;
+import java.util.concurrent.*;
 
 public class PrefiEncounter {
 
-    private static final int TIME_LIMIT = 30; // in seconds
+    private static final int TIME_LIMIT = 30; // seconds
+    private static final Scanner SCANNER = new Scanner(System.in);
 
+    // Executor for timed input
+    private static final ExecutorService INPUT_EXECUTOR =
+            Executors.newSingleThreadExecutor();
+
+    // ---------------- START ENCOUNTER ----------------
     public void start(Character player) {
-        // TIMED QUESTION CHALLENGE
+
         boolean passed = askQuestions();
 
         if (!passed) {
             PrintUtil.line();
             PrintUtil.type("""
                     ❌ The trial ends.
-                    
+
                     The figure's voice echoes:
                     "You lack the foundation required to wield true power."
-                    
+
                     No legendary artifacts will be granted.
                     You step forward… toward the Final Boss.
                     """);
@@ -37,7 +44,7 @@ public class PrefiEncounter {
         InputUtil.pressEnterToContinue();
     }
 
-    // --- LEGENDARY REWARD ---
+    // ---------------- LEGENDARY REWARD ----------------
     private void rewardLegendary(Character player) {
         System.out.println();
         System.out.println(ColorUtil.boldBrightYellow("────────────────────────────────────────────────────────────────────"));
@@ -45,11 +52,12 @@ public class PrefiEncounter {
             ✨ Impressive… you demonstrated complete command of OOP.
 
             The figure raises both hands.
-            Two artifacts swirl into existence from a burst of violet fire..."""));
+            Two artifacts swirl into existence from a burst of violet fire...
+        """));
         System.out.println(ColorUtil.boldBrightYellow("────────────────────────────────────────────────────────────────────"));
 
-        // Generate class-specific legendary weapon
         Weapon legendaryWeapon;
+
         switch (player.getClassType()) {
             case "Swordsman" -> legendaryWeapon = Sword.CELESTIAL_EDGE;
             case "Archer"    -> legendaryWeapon = Bow.GOLDEN_TALON;
@@ -76,25 +84,22 @@ public class PrefiEncounter {
             System.out.println(ColorUtil.boldBrightCyan("╚═════════════════════════════════════════════════════════════════╝"));
             PrintUtil.line();
 
-            System.out.printf("  %s[1]%s %s  %-20s %s%n",
+            System.out.printf("  %s[1]%s %s  %-20s%n",
                     ColorUtil.boldBrightGreen(""),
                     ColorUtil.RESET,
                     weaponEmoji,
-                    ColorUtil.boldBrightYellow("Legendary Weapon : " + legendaryWeapon.getName()),
-                    ""
+                    ColorUtil.boldBrightYellow("Legendary Weapon : " + legendaryWeapon.getName())
             );
 
-            System.out.printf("  %s[2]%s 🛡️  %-20s %s%n",
+            System.out.printf("  %s[2]%s 🛡️  %-20s%n",
                     ColorUtil.boldBrightGreen(""),
                     ColorUtil.RESET,
-                    ColorUtil.boldBrightYellow("Legendary Armor  : " + legendaryArmor.getName()),
-                    ""
+                    ColorUtil.boldBrightYellow("Legendary Armor  : " + legendaryArmor.getName())
             );
 
-            System.out.printf("  %s[3]%s ❌  %-20s%n",
+            System.out.printf("  %s[3]%s ❌  Ignore and Walk away%n",
                     ColorUtil.boldBrightGreen(""),
-                    ColorUtil.RESET,
-                    "Ignore and Walk away"
+                    ColorUtil.RESET
             );
 
             PrintUtil.line();
@@ -105,7 +110,7 @@ public class PrefiEncounter {
                 PrintUtil.type(ColorUtil.gray("""
                     You slowly back away from the relics...
                     The violet flames dim, disappointed.
-                    """));
+                """));
                 return;
             }
 
@@ -116,14 +121,13 @@ public class PrefiEncounter {
 
             boolean choseWeapon = (choice == 1);
 
-            // SUBMENU
             boolean confirming = true;
 
             while (confirming) {
 
                 PrintUtil.line();
-                System.out.println(ColorUtil.boldBrightYellow("You selected: ") +
-                        ColorUtil.boldBrightCyan((choseWeapon ? legendaryWeapon.getName() : legendaryArmor.getName())));
+                System.out.println(ColorUtil.boldBrightYellow("You selected: ")
+                        + ColorUtil.boldBrightCyan(choseWeapon ? legendaryWeapon.getName() : legendaryArmor.getName()));
                 PrintUtil.line();
 
                 System.out.println("  [1] 📃 " + ColorUtil.cyan("Display Info"));
@@ -137,7 +141,6 @@ public class PrefiEncounter {
                 switch (confirmChoice) {
 
                     case 1 -> {
-                        // DISPLAY INFO
                         PrintUtil.line();
                         if (choseWeapon) legendaryWeapon.displayInfo();
                         else legendaryArmor.displayInfo();
@@ -146,36 +149,28 @@ public class PrefiEncounter {
                     }
 
                     case 2 -> {
-                        // CONFIRM SELECTION
                         if (choseWeapon) {
                             legendaryWeapon.equip(player);
-
                             PrintUtil.type(ColorUtil.boldBrightGreen("""
                                 ⚔️ You grasp the Legendary Weapon...
                                 It hums with ancient cosmic power.
-                                """));
-
+                            """));
                             PrintUtil.pause(700);
-
                             PrintUtil.type(ColorUtil.boldBrightMagenta("""
                                 🛡️ The Legendary Armor glows faintly...
-                                its form crumbling into soft violet ashes—
-                                drifting upward and fading into nothingness.
-                                """));
-                        } else {legendaryArmor.equip(player);
-
+                                its form crumbling into violet ashes.
+                            """));
+                        } else {
+                            legendaryArmor.equip(player);
                             PrintUtil.type(ColorUtil.boldBrightGreen("""
                                 🛡️ You claim the Legendary Armor.
-                                A warm celestial aura reinforces your spirit...
-                                """));
-
+                                A warm celestial aura surrounds you...
+                            """));
                             PrintUtil.pause(700);
-
                             PrintUtil.type(ColorUtil.boldBrightRed("""
                                 ⚔️ The Legendary Weapon emits a final chime—
-                                fractures form across its blade,
-                                before it explodes into shimmering golden dust.
-                                """));
+                                then shatters into golden dust.
+                            """));
                         }
 
                         PrintUtil.line();
@@ -184,12 +179,13 @@ public class PrefiEncounter {
 
                     case 3 -> confirming = false;
 
-                    default -> PrintUtil.type(ColorUtil.boldBrightRed("❌ Invalid option. Try again.\n"));
+                    default -> PrintUtil.type(ColorUtil.red("❌ Invalid option.\n"));
                 }
             }
         }
     }
 
+    // ---------------- OOP TRIAL QUESTIONS ----------------
     private boolean askQuestions() {
         System.out.println();
         System.out.println(ColorUtil.boldBrightYellow("╔══════════════════════════════════════════════════════════════════════╗"));
@@ -197,67 +193,52 @@ public class PrefiEncounter {
         System.out.println(ColorUtil.boldBrightYellow("╚══════════════════════════════════════════════════════════════════════╝"));
         InputUtil.pressEnterToContinue();
 
-        // Q1
-        if (!askTimed(
-                ColorUtil.cyan("""
-                    \nQ1: Kael, Karl, and Simon share HP/Energy from the Character class.
-                    Which OOP concept is this?
+        if (!askTimed(ColorUtil.cyan("""
+                \nQ1: Kael, Karl, and Simon share HP/Energy from the Character class.
+                Which OOP concept is this?
 
-                      1. Polymorphism
-                      2. Encapsulation
-                      3. Inheritance
-                      4. Abstraction
-                    """),
-                3
-        )) return false;
+                  1. Polymorphism
+                  2. Encapsulation
+                  3. Inheritance
+                  4. Abstraction
+            """), 3)) return false;
 
-        // Q2
-        if (!askTimed(
-                ColorUtil.cyan("""
-                    \nQ2: Inventory prevents direct access to the item list; only methods modify it.
-                    Which OOP concept is this?
+        if (!askTimed(ColorUtil.cyan("""
+                \nQ2: Inventory prevents direct access to the item list; only methods modify it.
+                Which OOP concept is this?
 
-                      1. Polymorphism
-                      2. Encapsulation
-                      3. Inheritance
-                      4. Abstraction
-                    """),
-                2
-        )) return false;
+                  1. Polymorphism
+                  2. Encapsulation
+                  3. Inheritance
+                  4. Abstraction
+            """), 2)) return false;
 
-        // Q3
-        if (!askTimed(
-                ColorUtil.cyan("""
-                    \nQ3: Kael.attack() and Simon.attack() behave differently,
-                    overriding Character.attack().
-                    Which OOP concept is this?
+        if (!askTimed(ColorUtil.cyan("""
+                \nQ3: Kael.attack() and Simon.attack() behave differently,
+                overriding Character.attack().
+                Which OOP concept is this?
 
-                      1. Abstraction
-                      2. Polymorphism
-                      3. Encapsulation
-                      4. Inheritance
-                    """),
-                2
-        )) return false;
+                  1. Abstraction
+                  2. Polymorphism
+                  3. Encapsulation
+                  4. Inheritance
+            """), 2)) return false;
 
-        // Q4
-        if (!askTimed(
-                ColorUtil.cyan("""
-                    \nQ4: Weapon is abstract, and Sword/Bow/Staff implement it differently,
-                    but share the same interface.
-                    Which OOP concept is this?
+        if (!askTimed(ColorUtil.cyan("""
+                \nQ4: Weapon is abstract, and Sword/Bow/Staff implement it differently,
+                but share the same interface.
+                Which OOP concept is this?
 
-                      1. Encapsulation
-                      2. Abstraction
-                      3. Inheritance
-                      4. Polymorphism
-                    """),
-                2
-        )) return false;
+                  1. Encapsulation
+                  2. Abstraction
+                  3. Inheritance
+                  4. Polymorphism
+            """), 2)) return false;
 
         return true;
     }
 
+    // ---------------- TIMED QUESTION ----------------
     private boolean askTimed(String question, int correctAnswer) {
         PrintUtil.line();
         System.out.println(question);
@@ -267,7 +248,6 @@ public class PrefiEncounter {
 
         Integer answer = readWithTimeout(TIME_LIMIT);
 
-        // TIMEOUT
         if (answer == null) {
             PrintUtil.line();
             PrintUtil.type(ColorUtil.red("""
@@ -275,7 +255,7 @@ public class PrefiEncounter {
 
                 The old master glares at you:
                 "You must think faster to survive what comes next…"
-                """));
+            """));
             return false;
         }
 
@@ -285,8 +265,8 @@ public class PrefiEncounter {
                 ❌ WRONG ANSWER.
 
                 The figure sighs:
-                "Your fundamentals are weak. You are not yet worthy."
-                """));
+                "Your fundamentals are weak. You are not worthy of the treasures of legend."
+            """));
             return false;
         }
 
@@ -294,29 +274,33 @@ public class PrefiEncounter {
         return true;
     }
 
-    // ---------------- READ INPUT WITH TIMEOUT ----------------
+    // ---------------- REAL TIMEOUT IMPLEMENTATION ----------------
     private Integer readWithTimeout(int seconds) {
-        Scanner scanner = new Scanner(System.in);
-        long startTime = System.currentTimeMillis();
-        long endTime = startTime + seconds * 1000L;
 
         System.out.print(ColorUtil.cyan("Enter choice: "));
 
-        while (System.currentTimeMillis() < endTime) {
-            if (scanner.hasNextLine()) {
-                String line = scanner.nextLine().trim();
+        Callable<Integer> task = () -> {
+            while (true) {
+                String line = SCANNER.nextLine().trim();
                 try {
                     return Integer.parseInt(line);
                 } catch (NumberFormatException e) {
                     System.out.print(ColorUtil.red("❌ Invalid input. Enter a number: "));
                 }
             }
+        };
 
-            try {
-                Thread.sleep(50); // reduce CPU usage
-            } catch (InterruptedException ignored) {}
+        Future<Integer> future = INPUT_EXECUTOR.submit(task);
+
+        try {
+            return future.get(seconds, TimeUnit.SECONDS);
+        } catch (TimeoutException e) {
+            future.cancel(true);
+            return null;
+        } catch (Exception e) {
+            return null;
         }
-
-        return null; // TIMEOUT
     }
+
+
 }
