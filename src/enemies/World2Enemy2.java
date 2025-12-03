@@ -11,7 +11,7 @@ import java.awt.*;
 
 public class World2Enemy2 extends Enemy{
     public World2Enemy2(){
-        super("Forsaken Cultist", 279, 27, 50);
+        super("Forsaken Cultist", 469, 14, 50);
     }
 
     public void shadowBolt(Character target){

@@ -10,6 +10,14 @@ import java.awt.*;
 public class MagicShop {
     private final Character player;
 
+    private boolean boughtVitalSurge = false;
+    private boolean boughtShockBind = false;
+    private boolean boughtFrostArrow = false;
+    private boolean boughtArcSurge = false;
+    private boolean boughtVenomInfusion = false;
+    private boolean boughtRazorEdge = false;
+    private boolean boughtFortifiedPlating = false;
+
     public MagicShop(Character player){
         this.player = player;
     }
@@ -240,8 +248,15 @@ public class MagicShop {
     }
 
     private void vitalSurge(String name, int cost) {
+        if (boughtVitalSurge) {
+            System.out.println(ColorUtil.boldBrightRed("❌ You have already acquired " + name + "!"));
+            InputUtil.pressEnterToContinue();
+            return;
+        }
+
         if (attemptPurchase(name, cost)) {
             player.subtractSoulShards(cost);
+            boughtVitalSurge = true;
 
             var weapon = player.getWeapon();
             int oldLifesteal = weapon.getLifestealPercent();
@@ -261,15 +276,22 @@ public class MagicShop {
     }
 
     private void shockBind(String name, int cost) {
+        if (boughtShockBind) {
+            System.out.println(ColorUtil.boldBrightRed("❌ You have already acquired " + name + "!"));
+            InputUtil.pressEnterToContinue();
+            return;
+        }
+
         // Only Swordsman can apply
         if (!player.getClassType().equalsIgnoreCase("Swordsman")) {
-            System.out.println("❌ " + name + " can only be applied to Swords!");
+            System.out.println(ColorUtil.boldBrightRed("❌ " + name + " can only be applied to Swords!"));
             InputUtil.pressEnterToContinue();
             return;
         }
 
         if (attemptPurchase(name, cost)) {
             player.subtractSoulShards(cost);
+            boughtShockBind = true;
 
             var weapon = player.getWeapon();
             int oldChance = weapon.getStunChance(); // Make sure Sword class has this
@@ -289,6 +311,12 @@ public class MagicShop {
     }
 
     private void frostArrow(String name, int cost) {
+        if (boughtFrostArrow) {
+            System.out.println(ColorUtil.boldBrightRed("❌ You have already acquired " + name + "!"));
+            InputUtil.pressEnterToContinue();
+            return;
+        }
+
         if (!player.getClassType().equalsIgnoreCase("Archer")) {
             System.out.println("❌ " + name + " can only be applied to Archers!");
             InputUtil.pressEnterToContinue();
@@ -297,6 +325,7 @@ public class MagicShop {
 
         if (attemptPurchase(name, cost)) {
             player.subtractSoulShards(cost);
+            boughtFrostArrow = true;
 
             var weapon = player.getWeapon();
             int oldFreeze = weapon.getFreezeChance(); // Make sure Weapon class has this
@@ -315,6 +344,12 @@ public class MagicShop {
     }
 
     private void arcSurge(String name, int cost) {
+        if (boughtArcSurge) {
+            System.out.println(ColorUtil.boldBrightRed("❌ You have already acquired " + name + "!"));
+            InputUtil.pressEnterToContinue();
+            return;
+        }
+
         if (!player.getClassType().equalsIgnoreCase("Mage")) {
             System.out.println("❌ " + name + " can only be applied to Mages!");
             InputUtil.pressEnterToContinue();
@@ -323,6 +358,7 @@ public class MagicShop {
 
         if (attemptPurchase(name, cost)) {
             player.subtractSoulShards(cost);
+            boughtArcSurge = true;
 
             var weapon = player.getWeapon();
             int oldEnergy = weapon.getEnergyPerAttack();
@@ -341,8 +377,15 @@ public class MagicShop {
     }
 
     private void venomInfusion(String name, int cost) {
+        if (boughtVenomInfusion) {
+            System.out.println(ColorUtil.boldBrightRed("❌ You have already acquired " + name + "!"));
+            InputUtil.pressEnterToContinue();
+            return;
+        }
+
         if (attemptPurchase(name, cost)) {
             player.subtractSoulShards(cost);
+            boughtVenomInfusion = true;
 
             var weapon = player.getWeapon();
             int oldPoison = weapon.getPoisonChance(); // Weapon class must have this
@@ -361,6 +404,12 @@ public class MagicShop {
     }
 
     private void razorEdge(String name, int cost) {
+        if (boughtRazorEdge) {
+            System.out.println(ColorUtil.boldBrightRed("❌ You have already acquired " + name + "!"));
+            InputUtil.pressEnterToContinue();
+            return;
+        }
+
         if (!player.getClassType().equalsIgnoreCase("Swordsman") && !player.getClassType().equalsIgnoreCase("Archer")) {
             System.out.println("❌ " + name + " can only be applied to Swordsmen or Archers!");
             InputUtil.pressEnterToContinue();
@@ -369,6 +418,7 @@ public class MagicShop {
 
         if (attemptPurchase(name, cost)) {
             player.subtractSoulShards(cost);
+            boughtRazorEdge = true;
 
             var weapon = player.getWeapon();
             int oldBleed = weapon.getBleedChance(); // Weapon class must have this
@@ -387,8 +437,15 @@ public class MagicShop {
     }
 
     private void fortifiedPlating(String name, int cost) {
+        if (boughtFortifiedPlating) {
+            System.out.println(ColorUtil.boldBrightRed("❌ You have already acquired " + name + "!"));
+            InputUtil.pressEnterToContinue();
+            return;
+        }
+
         if (attemptPurchase(name, cost)) {
             player.subtractSoulShards(cost);
+            boughtFortifiedPlating = true;
 
             var armor = player.getArmor();
             int oldDef = armor.getDefBuff();
@@ -418,6 +475,7 @@ public class MagicShop {
         int amount;
         while (true) {
             amount = InputUtil.scanInput();
+            if(amount == 0) return;
             if (amount >= 1 && amount <= maxAffordable) break;
             System.out.println("❌ Invalid amount! Enter a number between 1 and " + maxAffordable + ".");
         }
@@ -449,6 +507,7 @@ public class MagicShop {
         int amount;
         while (true) {
             amount = InputUtil.scanInput();
+            if(amount == 0) return;
             if (amount >= 1 && amount <= maxAffordable) break;
             System.out.println("❌ Invalid amount! Enter a number between 1 and " + maxAffordable + ".");
         }
@@ -480,6 +539,7 @@ public class MagicShop {
         int amount;
         while (true) {
             amount = InputUtil.scanInput();
+            if(amount == 0) return;
             if (amount >= 1 && amount <= maxAffordable) break;
             System.out.println("❌ Invalid amount! Enter a number between 1 and " + maxAffordable + ".");
         }

@@ -14,7 +14,7 @@ public class FinalBoss extends Enemy {
     private int shield = 0; // 🛡️ Shield value (temporary, lasts 1 turn)
 
     public FinalBoss() {
-        super("Khai the Necromancer", 3455, 50, 185);
+        super("Khai the Necromancer", 3455, 50, 200);
     }
 
     public int getShield(){ return shield; }

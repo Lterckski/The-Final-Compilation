@@ -59,7 +59,7 @@ public class Bow extends Weapon{
             int healAmount = (int) (damage * (getLifestealPercent()+getAddLifestealPercent()) / 100.0);
             healAmount = Math.min(healAmount, player.getMaxHP() - player.getHp());
             if (healAmount > 0) {
-                System.out.println("💖 " + this.getName() + " restores " + healAmount + " HP!");
+                System.out.println(ColorUtil.boldBrightMagenta("💖 " + this.getName() + " restores " + healAmount + " HP!"));
                 PrintUtil.pause(800);
                 player.heal(healAmount);
             }

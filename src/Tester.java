@@ -146,9 +146,9 @@ public class Tester {
 
         MagicShop magicShop = new MagicShop(player);
 
-        Enemy enemy1 = new World2Miniboss1();
-//      Battle battle = new Battle(player,enemy1);
-//      battle.startBattle();
+        Enemy enemy1 = new World1Enemy1();
+        Battle battle = new Battle(player,enemy1);
+        battle.startBattle();
 
         enemy1.dropLoot(player);
 

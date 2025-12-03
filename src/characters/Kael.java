@@ -22,8 +22,7 @@ public class Kael extends  Character{      // 15% crit chance
 
 // Passive
         System.out.println("  " + ColorUtil.boldBrightYellow("✨ Passive – Blade Swift"));
-        System.out.println("  " + ColorUtil.cyan("15% chance to deal a Critical Hit (") + ColorUtil.boldBrightYellow("×1.5") + ColorUtil.cyan(" damage)."));
-        System.out.println("  " + ColorUtil.cyan("Effect: When a Critical Hit occurs, 🔋 Kael gains ") + ColorUtil.boldBrightYellow("+5%") + ColorUtil.cyan(" Stamina.\n"));
+        System.out.println("  " + ColorUtil.cyan("When a Critical Hit occurs, 🔋 Kael gains ") + ColorUtil.boldBrightYellow("+5%") + ColorUtil.cyan(" Stamina.\n"));
 
 // Skill 1
         System.out.println("  " + ColorUtil.boldBrightYellow("🗡️ Skill 1 – Blade Rush (🔋 5 Stamina)"));
@@ -108,12 +107,9 @@ public class Kael extends  Character{      // 15% crit chance
                 "                        :*=.        -%:                   \n" +
                 "                       .*%:         -%%#:                 \n" +
                 "                                                          "));
+
         int energyCost = 5;
-        if(!consumeEnergy(energyCost)){
-            System.out.println(ColorUtil.boldBrightRed("❌ Not enough Stamina to use Blade Rush!"));
-            PrintUtil.pause(800);
-            return;
-        }
+        consumeEnergy(energyCost);
 
         System.out.println(ColorUtil.boldBrightGreen("🗡️ You used Blade Rush on " + target.getName() + " (🔋-" + energyCost + " Stamina)"));
         PrintUtil.pause(800);
@@ -159,12 +155,9 @@ public class Kael extends  Character{      // 15% crit chance
                 "                         -#-         =%:                  \n" +
                 "                        .=*.         :=**:                \n" +
                 "                                                          "));
+
         int energyCost = 10;
-        if(!consumeEnergy(energyCost)){
-            System.out.println(ColorUtil.boldBrightRed("❌ Not enough Stamina to use Piercing Slash!"));
-            PrintUtil.pause(800);
-            return;
-        }
+        consumeEnergy(energyCost);
 
         System.out.println(ColorUtil.boldBrightGreen("⚔\uFE0F You used Piercing Slash on " + target.getName() + " (🔋-" + energyCost + " Stamina)"));
         PrintUtil.pause(800);
@@ -213,14 +206,11 @@ public class Kael extends  Character{      // 15% crit chance
                 "                        .:       ::. -%                   \n" +
                 "                         ==...        -+=                 \n" +
                 "                                                          "));
-        int energyCost = 20;
-        if (!consumeEnergy(energyCost)) {
-            System.out.println(ColorUtil.boldBrightRed("❌ Not enough Stamina to use Eternal Cross Slash!"));
-            PrintUtil.pause(800);
-            return;
-        }
 
+        int energyCost = 20;
+        consumeEnergy(energyCost);
         int totalDamage = 0;
+
         System.out.println(ColorUtil.boldBrightGreen("✝️ You unleash your ultimate technique: Eternal Cross Slash!" + " (🔋-" + energyCost + " Stamina)"));
         PrintUtil.pause(800);
 
@@ -263,59 +253,54 @@ public class Kael extends  Character{      // 15% crit chance
         boolean isValid = false;
 
         while (!isValid) {
-            // If ultimate is on cooldown
-            if (ultimateCounter > 0) {
-                System.out.println(ColorUtil.boldBrightGreen("[1]") + " " + ColorUtil.green("⚔️ Skill 1   -  Blade Rush (🔋 5 Stamina)"));
-                System.out.println(ColorUtil.boldBrightGreen("[2]") + " " + ColorUtil.green("🛡️ Skill 2   -  Piercing Slash (🔋 10 Stamina)"));
-                System.out.println(ColorUtil.boldBrightGreen("[3]") + " " + ColorUtil.green("✨ Ultimate  -  Eternal Cross Slash (🔋 20 Stamina) ")
-                        + ColorUtil.red("❌ (Available in " + ultimateCounter + " turns)"));
-                System.out.println(ColorUtil.boldBrightGreen("[4]") + " " + ColorUtil.green("\uD83D\uDEE1\uFE0F Skip Turn -  Restore 10% of Max HP and 20 Stamina"));
-                System.out.println(ColorUtil.boldBrightGreen("[5]") + " " + ColorUtil.green("📜 Show Menu"));
-                System.out.print(ColorUtil.boldBrightWhite("Choose your action: "));
+            // Display skills
+            System.out.println(ColorUtil.boldBrightGreen("[1]") + " " + ColorUtil.green("🗡️ Skill 1   -  Blade Rush (🔋 5 Stamina)"));
+            System.out.println(ColorUtil.boldBrightGreen("[2]") + " " + ColorUtil.green("⚔\uFE0F Skill 2   -  Piercing Slash (🔋 10 Stamina)"));
+            System.out.println(ColorUtil.boldBrightGreen("[3]") + " " + ColorUtil.green("✝️ Ultimate  -  Eternal Cross Slash (🔋 20 Stamina)"
+                    + (ultimateCounter > 0 ? " " + ColorUtil.boldBrightRed(" ❌ Cooldown: " + ultimateCounter + " turn/s") : "")));
+            System.out.println(ColorUtil.boldBrightGreen("[4]") + " " + ColorUtil.green("\uD83D\uDEE1\uFE0F Skip Turn -  Restore 10% of Max HP and 20 Stamina"));
+            System.out.println(ColorUtil.boldBrightGreen("[5]") + " " + ColorUtil.green("📜 Show Menu"));
+            System.out.print(ColorUtil.boldBrightWhite("Choose your action: "));
 
-                int choice = InputUtil.scanInput();
-                PrintUtil.shortLine();
+            int choice = InputUtil.scanInput();
+            PrintUtil.shortLine();
 
-                switch (choice) {
-                    case 1 -> { bladeRush(target); isValid = true; ultimateCounter--; }
-                    case 2 -> { piercingSlash(target); isValid = true; ultimateCounter--; }
-                    case 3 -> {
-                        System.out.println(ColorUtil.red("❌ Ultimate is on cooldown! Can only be used after " + ultimateCounter + " turns."));
-                        PrintUtil.line();
-                    }
-                    case 4 -> { skipTurn(); isValid = true; ultimateCounter--; }
-                    case 5 -> displayMenu(this, target);
-                    default -> {
-                        System.out.println(ColorUtil.boldBrightRed("❌ Invalid action! You missed your turn."));
-                        PrintUtil.pause(800);
+            switch (choice) {
+                case 1 -> {
+                    if (energy >= 5) {
+                        bladeRush(target);
                         isValid = true;
                         ultimateCounter--;
+                    } else {
+                        System.out.println(ColorUtil.boldBrightRed("❌ Not enough Stamina to use Blade Rush! Choose again."));
                     }
                 }
-
-            } else { // Ultimate ready
-                System.out.println(ColorUtil.boldBrightGreen("[1]") + " " + ColorUtil.green("⚔️ Skill 1   -  Blade Rush (🔋 5 Stamina)"));
-                System.out.println(ColorUtil.boldBrightGreen("[2]") + " " + ColorUtil.green("🛡️ Skill 2   -  Piercing Slash (🔋 10 Stamina)"));
-                System.out.println(ColorUtil.boldBrightGreen("[3]") + " " + ColorUtil.green("✨ Ultimate  -  Eternal Cross Slash (🔋 20 Stamina)"));
-                System.out.println(ColorUtil.boldBrightGreen("[4]") + " " + ColorUtil.green("\uD83D\uDEE1\uFE0F Skip Turn -  Restore 10% of Max HP and 20 Stamina"));
-                System.out.println(ColorUtil.boldBrightGreen("[5]") + " " + ColorUtil.green("📜 Show Menu"));
-                System.out.print(ColorUtil.boldBrightWhite("Choose your action: "));
-
-                int choice = InputUtil.scanInput();
-                PrintUtil.shortLine();
-
-                switch (choice) {
-                    case 1 -> { bladeRush(target); isValid = true; }
-                    case 2 -> { piercingSlash(target); isValid = true; }
-                    case 3 -> { eternalCrossSlash(target); isValid = true; }
-                    case 4 -> { skipTurn(); isValid = true; }
-                    case 5 -> displayMenu(this, target);
-                    default -> {
-                        System.out.println(ColorUtil.boldBrightRed("❌ Invalid action! You missed your turn."));
-                        PrintUtil.pause(800);
+                case 2 -> {
+                    if (energy >= 10) {
+                        piercingSlash(target);
                         isValid = true;
+                        ultimateCounter--;
+                    } else {
+                        System.out.println(ColorUtil.boldBrightRed("❌ Not enough Stamina to use Piercing Slash! Choose again."));
                     }
                 }
+                case 3 -> {
+                    if (ultimateCounter > 0) {
+                        System.out.println(ColorUtil.boldBrightRed("❌ Ultimate is on cooldown! Can only be used after " + ultimateCounter + " turn/s."));
+                    } else if (energy >= 20) {
+                        eternalCrossSlash(target);
+                        isValid = true;
+                    } else {
+                        System.out.println(ColorUtil.boldBrightRed("❌ Not enough Stamina to use Eternal Cross Slash! Choose again."));
+                    }
+                }
+                case 4 -> {
+                    skipTurn();
+                    isValid = true;
+                    ultimateCounter--;
+                }
+                case 5 -> { displayMenu(this, target); } // does not consume turn
+                default -> System.out.println(ColorUtil.boldBrightRed("❌ Invalid action! Try again."));
             }
         }
     }

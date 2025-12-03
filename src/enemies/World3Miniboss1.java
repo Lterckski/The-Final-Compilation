@@ -13,7 +13,7 @@ import java.awt.*;
 
 public class World3Miniboss1 extends Enemy {
 
-    public World3Miniboss1() { super("Zyrryl", 3455, 88, 170); }
+    public World3Miniboss1() { super("Zyrryl", 2845, 67, 170); }
 
     @Override
     public void displaySkills() {

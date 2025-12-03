@@ -11,6 +11,7 @@ import storyEngine.StoryEngine;
 import utils.ColorUtil;
 import utils.InputUtil;
 import utils.PrintUtil;
+import utils.RandomUtil;
 
 import java.awt.*;
 import java.sql.SQLOutput;
@@ -269,25 +270,31 @@ public abstract class Character {
     public int calculateDamage(Character target, int damage) {
         int reduced = damage;
 
-        // If target is FinalBoss with a shield
+        // Critical hit check using your utility
+        if (RandomUtil.chance(15)) { // 20% crit chance
+            reduced = (int)(reduced * 1.5);
+            System.out.println(ColorUtil.brightMagenta("💥 Critical hit! Damage multiplied by 1.5x"));
+        }
+
+        // FinalBoss shield logic
         if (target instanceof FinalBoss fb && fb.getShield() > 0) {
-            // Only break shield if damage >= shield
             if (reduced >= fb.getShield()) {
                 int absorbed = fb.getShield();
-                fb.reduceShield(absorbed); // will trigger shieldBroken
+                fb.reduceShield(absorbed); // triggers shieldBroken
                 reduced -= absorbed;
             } else {
-                fb.reduceShield(reduced); // just reduce shield, won't break
+                fb.reduceShield(reduced); // just reduce shield
                 reduced = 0; // all damage absorbed
             }
         }
 
-        // Apply target's defense
+        // Apply defense
         reduced -= target.getDefense();
         if (reduced < 0) reduced = 0;
 
         return reduced;
     }
+
 
     public void takeDamage(int damage) {
         hp -= damage;
@@ -316,10 +323,10 @@ public abstract class Character {
 
         // Restore based on class
         switch (classType) {
-            case "Swordsman" -> restoreAmount = 20;
-            case "Archer" -> restoreAmount = 6;
-            case "Mage" -> restoreAmount = 30;
-            default -> restoreAmount = 0;
+            case "Swordsman" -> restoreAmount = 10;
+            case "Archer" -> restoreAmount = 3;
+            case "Mage" -> restoreAmount = 20;
+            default -> restoreAmount = 15;
         }
 
         int oldHp = hp;
@@ -328,7 +335,7 @@ public abstract class Character {
         energy += restoreAmount;
         if (energy > maxEnergy) energy = maxEnergy;
 
-        hp += (int)(maxHP * 0.1);
+        hp += (int)(maxHP * 0.05);
         if (hp > maxHP) hp = maxHP;
 
         System.out.println("✨ Turn skipped! Restored a bit of HP and " + getEnergyName() + ".");
@@ -367,7 +374,7 @@ public abstract class Character {
             level++;
             PrintUtil.hr();
             System.out.println("✨ LEVEL UP! You are now Level " + level + "! ✨");
-            System.out.println("50% of 💖 HP & " + getEnergyEmoji() + " " + getEnergyName() + " Restored!");
+            System.out.println("25% of 💖 HP & " + getEnergyEmoji() + " " + getEnergyName() + " Restored!");
 
             int oldHp = maxHP;
             int oldAtk = baseAttack;
@@ -375,32 +382,27 @@ public abstract class Character {
 
             switch (classType) {
                 case "Swordsman" -> {
-                    maxHP += 100 + (int)(maxHP * 0.02);
-                    baseAttack += 2;
+                    maxHP += 90 + (int)(maxHP * 0.01);
+                    baseAttack += 2 + StoryEngine.getCurrWorldLevel();
                     baseDefense += 2;
                 }
                 case "Archer" -> {
-                    maxHP += 70 + (int)(maxHP * 0.02);
-                    baseAttack += 4;
+                    maxHP += 70 + (int)(maxHP * 0.01);
+                    baseAttack += 3 + StoryEngine.getCurrWorldLevel();
                     baseDefense += 1;
-                    if (level % 10 == 0) {
-                        maxEnergy += 8;
-                    }
                 }
                 case "Mage" -> {
-                    maxHP += 50 + (int)(maxHP * 0.015);
-                    baseAttack += 5;
+                    maxHP += 50 + (int)(maxHP * 0.01);
+                    baseAttack += 4 + StoryEngine.getCurrWorldLevel();
                     baseDefense += 1;
-                    maxEnergy += 10;
                 }
             }
 
-            hp += (int)(maxHP * 0.50);
+            hp += (int)(maxHP * 0.25);
             if (hp > maxHP) hp = maxHP;
 
-            energy += (int)(maxEnergy * 0.50);
+            energy += (int)(maxEnergy * 0.25);
             if (energy > maxEnergy) energy = maxEnergy;
-
 
             exp -= nextLevelExp;
             if (level < XP_TABLE.length) nextLevelExp = XP_TABLE[level];

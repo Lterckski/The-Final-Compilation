@@ -11,7 +11,7 @@ import java.awt.*;
 
 public class World2Miniboss2 extends Enemy {
     public World2Miniboss2() {
-        super("Luther Von", 854, 32, 140);
+        super("Luther Von", 1254, 29, 140);
     }
 
     public void crownOfDespair(Character target) {
