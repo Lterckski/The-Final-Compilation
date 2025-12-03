@@ -80,14 +80,9 @@ public class World1 {
         System.out.println();
 
         for (int i = 1; i <= 3; i++) {
-            String text = "🐺 Rotfang Wolf " + i + " lunges at you!";
-            int width = 60; // total width of the bar
-            int padding = (width - text.length()) / 2;
-
-            System.out.println(ColorUtil.boldBrightRed("════════════════════════════════════════════════════════"));
-            System.out.println(ColorUtil.boldBrightRed(" ".repeat(padding) + text));
-            System.out.println(ColorUtil.boldBrightRed("════════════════════════════════════════════════════════"));
-
+            PrintUtil.hr();
+            System.out.println("🐺 Rotfang Wolf " + i + " lunges at you!");
+            PrintUtil.hr();
             InputUtil.pressEnterToContinue();
 
             battle1.startBattle();

@@ -95,7 +95,7 @@ public class Battle {
                 "❤️");
 
 // --- Player Energy ---
-        System.out.printf("  %-22s %-4s %s %s%n",
+        System.out.printf("  %-21s %-4s %s %s%n",
                 ColorUtil.boldBrightWhite(player.getEnergyName()),
                 ColorUtil.boldBrightWhite(playerStaminaBar),
                 ColorUtil.boldBrightWhite(player.getEnergy() + "/" + player.getMaxEnergy()),

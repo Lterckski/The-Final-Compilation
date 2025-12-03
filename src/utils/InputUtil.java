@@ -9,8 +9,14 @@ public class InputUtil {
     public static void pressEnterToContinue() {
         PrintUtil.pause(800);
         System.out.print(ColorUtil.brightGray("[Press ENTER to continue]"));
-        scan.nextLine();  // waits for user to press ENTER
+
+        if (scan.hasNextLine()) {
+            scan.nextLine();
+        }
+
+        scan.nextLine();
     }
+
 
     public static int scanInput() {
         String input = scan.nextLine();

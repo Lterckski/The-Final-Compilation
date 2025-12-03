@@ -172,7 +172,7 @@ public class World1Miniboss1 extends Enemy {
             if (ironShortsword.lootWeapon()) {
                 ironShortsword.equip(player);
             }
-        } else if (player.getClassType().equals("Bow")) {
+        } else if (player.getClassType().equals("Archer")) {
             Bow oakLongbow = Bow.OAK_LONGBOW;
             if (oakLongbow.lootWeapon()) {
                 oakLongbow.equip(player);

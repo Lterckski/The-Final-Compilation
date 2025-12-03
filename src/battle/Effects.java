@@ -253,7 +253,7 @@ public class Effects {
             int bleedDamage = Math.max(1, (atk * scalePercent) / 100);
 
             System.out.println(ColorUtil.brightMagenta("🩸 " + owner.getName() + " is bleeding! 💔 Took "
-                    + bleedDamage + " damage (" + scalePercent + "% of ATK)."));
+                    + bleedDamage + " damage."));
             PrintUtil.pause(800);
 
             owner.takeDamage(bleedDamage);
