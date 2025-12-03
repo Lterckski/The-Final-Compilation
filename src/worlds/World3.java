@@ -360,6 +360,7 @@ public class World3 {
                 "                                     ▀                                                                                                     ");
 
         System.out.println("==================================================================");
+        System.out.println();
         PrintUtil.type("""
                 As you reach the summit, molten light reveals a towering figure.
                 Zyrryl, Warden of the Shattered Tower, stands armed with cursed steel.
