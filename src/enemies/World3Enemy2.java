@@ -8,9 +8,9 @@ import utils.RandomUtil;
 
 public class World3Enemy2 extends Enemy {
 
-    public World3Enemy2() { super("Bone Warlock", 1129, 48, 85); }
+    public World3Enemy2() { super("Bone Warlock", 1829, 41, 95); }
 
-    public void shadowBolt(Character target) {
+    public void marrowBolt(Character target) {
         PrintUtil.type(ColorUtil.boldBrightRed("                                                          \n" +
                 "                                                          \n" +
                 "                          ..      :.                      \n" +
@@ -41,7 +41,7 @@ public class World3Enemy2 extends Enemy {
                 "           ..:=*#***#@%%%%%%@@@%##%##%*%%%*=-.            \n" +
                 "                ..::--=+++=++++++==-:::..                 \n" +
                 "                                                          "));
-        System.out.println(ColorUtil.boldBrightRed("💀 " + name + " casts Shadow Bolt!"));
+        System.out.println(ColorUtil.boldBrightRed("💀 " + name + " casts Marrow Bolt!"));
         PrintUtil.pause(800);
         if (target.getEffects().checkDodge()) return;
         if (this.getEffects().checkConfuse()) return;
@@ -49,7 +49,7 @@ public class World3Enemy2 extends Enemy {
         int damage = (int) RandomUtil.range(attack * 1.00, attack * 1.25);
         int reduced = calculateDamage(target, damage);
 
-        System.out.println(ColorUtil.brightRed("→💔 Shadow Bolt hits for ")
+        System.out.println(ColorUtil.brightRed("→💔 Marrow Bolt hits for ")
                 + ColorUtil.boldBrightWhite(String.valueOf(reduced))
                 + ColorUtil.brightRed(" damage!"));
         PrintUtil.pause(800);
@@ -69,7 +69,7 @@ public class World3Enemy2 extends Enemy {
 
         // 30% chance to apply Weaken (ATK debuff 30% for 2 turns) — check debuff immunity first
         if (RandomUtil.chance(30)) {
-            if (equippedArmor != null && equippedArmor.checkEffectsImmunity()) {
+            if (equippedArmor != null && equippedArmor.checkDebuffImmunity()) {
                 System.out.println(ColorUtil.brightMagenta("✨ " + target.getName() + " resisted Weaken 💢  due to " + equippedArmor.getName() + "!"));
                 PrintUtil.pause(800);
             } else {
@@ -82,8 +82,8 @@ public class World3Enemy2 extends Enemy {
     public void displaySkills() {
         System.out.println();
         System.out.println(ColorUtil.boldBrightRed("┌───────────────────────────── 💀 BONE WARLOCK SKILLS 💀 ────────────────────────────┐"));
-        System.out.println(ColorUtil.boldBrightYellow("  💀 Skill – Shadow Bolt"));
-        System.out.println(ColorUtil.red(" 📜 Description : Bone Warlock casts Shadow Bolt, reducing the target's attack damage."));
+        System.out.println(ColorUtil.boldBrightYellow("  💀 Skill – Marrow Bolt"));
+        System.out.println(ColorUtil.red(" 📜 Description : Bone Warlock casts Marrow Bolt, reducing the target's attack damage."));
         System.out.println(ColorUtil.red(" 💥 Damage : (") + ColorUtil.boldBrightYellow((int)(attack * 1.00) + " — " + (int)(attack * 1.25)) + ColorUtil.red(")"));
         System.out.println(ColorUtil.red(" ✨ Effects :"));
         System.out.println(ColorUtil.red("    - ⚔️ 30% chance to apply ATK Debuff: reduces target's damage by 30%"));
@@ -94,7 +94,7 @@ public class World3Enemy2 extends Enemy {
 
 
     @Override
-    public void turn(Character target) { shadowBolt(target); }
+    public void turn(Character target) { marrowBolt(target); }
 
     @Override
     public void dropLoot(Character player){

@@ -1,6 +1,7 @@
 package battle;
 
 import characters.Character;
+import enemies.Enemy;
 import enemies.FinalBoss;
 import utils.ColorUtil;
 import utils.InputUtil;
@@ -268,4 +269,5 @@ public class Battle {
         System.out.println("☠️ GAME OVER — Your story ends in shadow.");
         System.exit(0);
     }
+
 }

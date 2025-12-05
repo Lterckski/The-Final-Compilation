@@ -7,6 +7,7 @@ import utils.InputUtil;
 import utils.PrintUtil;
 import utils.RandomUtil;
 
+import java.awt.*;
 import java.util.Map;
 
 public class Sword extends Weapon{
@@ -56,10 +57,10 @@ public class Sword extends Weapon{
     public void applyEffects(Character player, Character enemy, int damage) {
         // 💖 Lifesteal
         if (getLifestealPercent() > 0) {
-            int healAmount = (int) (damage * getLifestealPercent() / 100.0);
+            int healAmount = (int) (damage * (getLifestealPercent()+getAddLifestealPercent()) / 100.0);
             healAmount = Math.min(healAmount, player.getMaxHP() - player.getHp());
             if (healAmount > 0) {
-                System.out.println("💖 " + this.getName() + " restores " + healAmount + " HP!");
+                System.out.println(ColorUtil.brightMagenta("💖 " + this.getName() + " restores " + healAmount + " HP!"));
                 PrintUtil.pause(800);
                 player.heal(healAmount);
             }
@@ -77,15 +78,19 @@ public class Sword extends Weapon{
 
         // ⛓️ Immobilize
         if (RandomUtil.chance(getStunChance())) {
-            enemy.getEffects().applyImmobilize();
+            enemy.getEffects().applyStun();
         }
 
         // ⚡ Extra hit (Double attack)
         if (RandomUtil.chance(attackTwiceChance)) {
-            System.out.println("⚡ Weapon effect activated! Extra hit triggered!");
+            System.out.println(ColorUtil.brightMagenta("⚡ Weapon effect activated! Extra hit triggered!"));
             PrintUtil.pause(800);
             int extraDamage = (int) RandomUtil.range(damage * 0.20, damage * 0.40);
-            System.out.println("🗡 Extra hit from weapon for " + extraDamage + " damage!");
+            System.out.println(
+                    ColorUtil.brightMagenta("🗡 Extra hit from weapon for ")
+                            + ColorUtil.boldBrightWhite(extraDamage + "")
+                            + ColorUtil.brightMagenta(" damage!")
+            );
             PrintUtil.pause(800);
             enemy.takeDamage(extraDamage);
         }

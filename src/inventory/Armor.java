@@ -14,6 +14,7 @@ public class Armor {
     private boolean isEquipped = false;
 
     private int defBuff;
+    private int addDefBuff = 0;
     private boolean hasEnchantment = false;
 
     private final boolean immuneDebuff;
@@ -48,6 +49,14 @@ public class Armor {
 
     public void setHasEnchantment(boolean hasEnchantment) {
         this.hasEnchantment = hasEnchantment;
+    }
+
+    public int getAddDefBuff() {
+        return addDefBuff;
+    }
+
+    public void setAddDefBuff(int addDefBuff) {
+        this.addDefBuff = addDefBuff;
     }
 
     public boolean lootArmor() {
@@ -129,10 +138,10 @@ public class Armor {
 
         // Immunities
         if (immuneDebuff) {
-            System.out.println(ColorUtil.boldBrightYellow(" ✨ Immune to: (ATK ↓)⚔️ & (DEF ↓)🛡️ Debuffs"));
+            System.out.println(ColorUtil.boldBrightYellow(" 🌿 Immune to: (ATK ↓)⚔️ & (DEF ↓)🛡️ Debuffs"));
         }
         if (immuneEffects) {
-            System.out.println(ColorUtil.boldBrightYellow(" ✨ Immune to: Poison☠️, Burn🔥, and Bleed🩸"));
+            System.out.println(ColorUtil.boldBrightYellow(" 🌿 Immune to: Poison☠️, Burn🔥, and Bleed🩸"));
         }
 
         if (reflectChance > 0) {

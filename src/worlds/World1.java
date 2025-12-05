@@ -32,10 +32,13 @@ public class World1 {
         System.out.println("==================================================================================================================================================");
         System.out.println();
         PrintUtil.type("""
-                You wake in a dead forest. Bark is gray, leaves crunch to ash, and a cold mist coils between skeletal trees.
+                You wake up in a dead forest. Bark is gray, leaves crunch to ash, and a cold mist coils between skeletal trees.
                 Silence presses from every side—watching, waiting.
                 A voice: "Dong…"
-                From the mist steps a robed figure—your professor, Khai the Grey. "Find the Three Stones," he says. "Only then will your path home reveal itself."
+                From the mist steps a robed figure—your but you realize this person looks like your professor, Khai... 
+                "In this world, I am known as Khai the Gray, we suffer because an evil necromancer has corrupted these lands and we must find 
+                the  three stones of life that hold this world together to defeat him." he says.   
+                "Only then will your path home reveal itself."
                 """);
         System.out.println("==================================================================================================================================================");
         InputUtil.pressEnterToContinue();
@@ -80,14 +83,9 @@ public class World1 {
         System.out.println();
 
         for (int i = 1; i <= 3; i++) {
-            String text = "🐺 Rotfang Wolf " + i + " lunges at you!";
-            int width = 60; // total width of the bar
-            int padding = (width - text.length()) / 2;
-
-            System.out.println(ColorUtil.boldBrightRed("════════════════════════════════════════════════════════"));
-            System.out.println(ColorUtil.boldBrightRed(" ".repeat(padding) + text));
-            System.out.println(ColorUtil.boldBrightRed("════════════════════════════════════════════════════════"));
-
+            PrintUtil.hr();
+            System.out.println("🐺 Rotfang Wolf " + i + " lunges at you!");
+            PrintUtil.hr();
             InputUtil.pressEnterToContinue();
 
             battle1.startBattle();
@@ -356,6 +354,7 @@ public class World1 {
         System.out.println();
 
         System.out.println("=================================================================================================================");
+        System.out.println();
         PrintUtil.type("""
                 Once a noble guardian of this forest, the Hollow Stag is now corrupted by the same darkness that drains the land.
                 Its hooves scorch the ground, and the forest holds its breath.
@@ -411,6 +410,7 @@ public class World1 {
 
         PrintUtil.line();
         PrintUtil.type("""
+                ✅🏆Mini-Boss Defeated!
                 🌟 The Hollow Stag staggers, its luminous eyes fading to black.
                 With one final, echoing cry, it collapses to the ground. The forest trembles… then exhales.
                 """);

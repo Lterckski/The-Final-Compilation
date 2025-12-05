@@ -15,9 +15,11 @@ public abstract class Weapon {
     private final String rarity;
     private boolean isEquipped = false;
     private final int atkBuff;
-
-
     private int lifestealPercent = 0;
+
+    private int addAtkBuff = 0;
+    private int addLifestealPercent = 0;
+
     private int poisonChance = 0;
     private int bleedChance = 0;
     private int stunChance = 0;
@@ -86,6 +88,22 @@ public abstract class Weapon {
 
     public void addEnchantment(String name, String description) {
         enchantments.put(name, description);
+    }
+
+    public int getAddLifestealPercent() {
+        return addLifestealPercent;
+    }
+
+    public void setAddLifestealPercent(int addLifestealPercent) {
+        this.addLifestealPercent = addLifestealPercent;
+    }
+
+    public int getAddAtkBuff() {
+        return addAtkBuff;
+    }
+
+    public void setAddAtkBuff(int addAtkBuff) {
+        this.addAtkBuff = addAtkBuff;
     }
 
     public Map<String, String> getEnchantments() {

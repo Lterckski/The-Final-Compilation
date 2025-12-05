@@ -40,7 +40,7 @@ public class Karl extends Character{
         // Ultimate – Rain of a Thousand Arrows
         System.out.println("  " + ColorUtil.boldBrightYellow("🌩️ Ultimate – Rain of a Thousand Arrows (➶ 5 Arrows)"));
         System.out.println("  " + ColorUtil.cyan("📜 Description: Karl releases a rapid flurry of arrows, overwhelming his opponent."));
-        System.out.println("  " + ColorUtil.cyan("💥 Damage: 5 hits, each dealing (") + ColorUtil.boldBrightYellow((int)(attack * 1.20) + " — " + (int)(attack * 1.80)) + ColorUtil.cyan(")"));
+        System.out.println("  " + ColorUtil.cyan("💥 Damage: 5 hits, each dealing (") + ColorUtil.boldBrightYellow((int)(attack * 1.00) + " — " + (int)(attack * 1.50)) + ColorUtil.cyan(")"));
         System.out.println("  " + ColorUtil.cyan("⚡ Effects:"));
         System.out.println("    - " + ColorUtil.cyan("🏃 Grants Nimble (increased dodge chance)"));
         System.out.println("    - " + ColorUtil.cyan("💪 Grants Strengthen (+20% ATK for 2 turns)"));
@@ -112,13 +112,9 @@ public class Karl extends Character{
                 "                  .:                .::                   \n" +
                 "                                                          "));
         int energyCost = 1;
-        if (!consumeEnergy(energyCost)) {
-            System.out.println(ColorUtil.boldBrightRed("❌ Not enough Arrows to use Piercing Arrow!"));
-            PrintUtil.pause(800);
-            return;
-        }
+        consumeEnergy(energyCost);
 
-        System.out.println(ColorUtil.boldBrightWhite("🏹 You used Piercing Arrow on " + target.getName() + " (➶-" + energyCost + " Arrow)"));
+        System.out.println(ColorUtil.boldBrightGreen("🏹 You used Piercing Arrow on " + target.getName() + " (➶-" + energyCost + " Arrow)"));
         PrintUtil.pause(800);
 
         if (this.getEffects().checkConfuse()) return;
@@ -173,13 +169,9 @@ public class Karl extends Character{
                 "            :-              .:=-                          \n" +
                 "                                                          "));
         int energyCost = 3;
-        if (!consumeEnergy(energyCost)) {
-            System.out.println(ColorUtil.boldBrightRed("❌ Not enough Arrows to use Bullseye!"));
-            PrintUtil.pause(800);
-            return;
-        }
+        consumeEnergy(energyCost);
 
-        System.out.println(ColorUtil.boldBrightWhite("🎯🔥 You used Bullseye on " + target.getName() + " (➶-" + energyCost + " Arrows)"));
+        System.out.println(ColorUtil.boldBrightGreen("🎯🔥 You used Bullseye on " + target.getName() + " (➶-" + energyCost + " Arrows)"));
         PrintUtil.pause(800);
 
         if (this.getEffects().checkConfuse()) return;
@@ -192,7 +184,7 @@ public class Karl extends Character{
         System.out.println(
                 ColorUtil.brightGreen("💔 Target is hit for ")
                         + ColorUtil.boldBrightWhite(String.valueOf(reduced))
-                        + ColorUtil.brightGreen(" Critical Damage!")
+                        + ColorUtil.brightGreen(" Damage!")
         );
 
         PrintUtil.pause(800);
@@ -234,19 +226,15 @@ public class Karl extends Character{
                 "            :-              .:--                          \n" +
                 "                                                          "));
         int energyCost = 5;
-        if (!consumeEnergy(energyCost)) {
-            System.out.println(ColorUtil.boldBrightRed("❌ Not enough Arrows to use Rain of a Thousand Arrows!"));
-            PrintUtil.pause(800);
-            return;
-        }
+        consumeEnergy(energyCost);
 
-        System.out.println(ColorUtil.boldBrightWhite("🌧️🏹 You unleash your ultimate: Rain of a Thousand Arrows!" + " (➶-" + energyCost + " Arrows)"));
+        System.out.println(ColorUtil.boldBrightGreen("🌧️🏹 You unleash your ultimate: Rain of a Thousand Arrows!" + " (➶-" + energyCost + " Arrows)"));
         PrintUtil.pause(800);
 
         int totalDamage = 0;
 
         for (int i = 1; i <= 5; i++) {
-            int damage = (int) RandomUtil.range(attack * 1.20, attack * 1.80);
+            int damage = (int) RandomUtil.range(attack * 1.00, attack * 1.60);
             damage = hunterInstincts(damage, target);
             int reduced = calculateDamage(target, damage);
 
@@ -284,61 +272,58 @@ public class Karl extends Character{
         boolean isValid = false;
 
         while (!isValid) {
-            if (ultimateCounter > 0) { // Ultimate on cooldown
-                System.out.println(ColorUtil.boldBrightGreen("[1]") + " " + ColorUtil.green("🏹 Skill 1   -  Piercing Arrow (➶ 1 Arrow)"));
-                System.out.println(ColorUtil.boldBrightGreen("[2]") + " " + ColorUtil.green("🎯 Skill 2   -  Bullseye (➶ 1 Heavy Arrow ═ 3 Arrows)"));
-                System.out.println(ColorUtil.boldBrightGreen("[3]") + " " + ColorUtil.green("🌩️ Ultimate  -  Rain of A Thousand Arrows (➶ 5 Arrows) ")
-                        + ColorUtil.red("❌ (Available in " + ultimateCounter + " turns)"));
-                System.out.println(ColorUtil.boldBrightGreen("[4]") + " " + ColorUtil.green("\uD83D\uDEE1\uFE0F Skip Turn -  Restore 10% of Max HP and Replenish 6 Arrows"));
-                System.out.println(ColorUtil.boldBrightGreen("[5]") + " " + ColorUtil.green("📜 Show Menu"));
-                System.out.print(ColorUtil.boldBrightWhite("Choose your action: "));
+            // Display skills
+            System.out.println(ColorUtil.boldBrightGreen("[1]") + " " + ColorUtil.green("🏹 Skill 1   -  Piercing Arrow (➶ 1 Arrow)"));
+            System.out.println(ColorUtil.boldBrightGreen("[2]") + " " + ColorUtil.green("🎯 Skill 2   -  Bullseye (➶ 1 Heavy Arrow ═ 3 Arrows)"));
+            System.out.println(ColorUtil.boldBrightGreen("[3]") + " " + ColorUtil.green("🌩️ Ultimate  -  Rain of A Thousand Arrows (➶ 5 Arrows)"
+                    + (ultimateCounter > 0 ? " " + ColorUtil.boldBrightRed("❌ Cooldown: " + ultimateCounter + " turn/s") : "")));
+            System.out.println(ColorUtil.boldBrightGreen("[4]") + " " + ColorUtil.green("\uD83D\uDEE1\uFE0F Skip Turn - Restore 10% of Max HP and Replenish 6 Arrows"));
+            System.out.println(ColorUtil.boldBrightGreen("[5]") + " " + ColorUtil.green("📜 Show Menu"));
+            System.out.print(ColorUtil.boldBrightWhite("Choose your action: "));
 
-                int choice = InputUtil.scanInput();
-                PrintUtil.shortLine();
+            int choice = InputUtil.scanInput();
+            PrintUtil.shortLine();
 
-                switch (choice) {
-                    case 1 -> { piercingArrow(target); isValid = true; ultimateCounter--; }
-                    case 2 -> { bullsEye(target); isValid = true; ultimateCounter--; }
-                    case 3 -> {
-                        System.out.println(ColorUtil.red("❌ Ultimate is on cooldown! Can only be used after " + ultimateCounter + " turns."));
-                        PrintUtil.line();
-                    }
-                    case 4 -> { skipTurn(); isValid = true; ultimateCounter--; }
-                    case 5 -> displayMenu(this, target);
-                    default -> {
-                        System.out.println(ColorUtil.boldBrightRed("❌ Invalid action! You missed your turn."));
-                        PrintUtil.pause(800);
+            switch (choice) {
+                case 1 -> {
+                    if (energy >= 1) {
+                        piercingArrow(target);
                         isValid = true;
                         ultimateCounter--;
+                    } else {
+                        System.out.println(ColorUtil.boldBrightRed("❌ Not enough Arrows to use Piercing Arrow! Choose again."));
                     }
                 }
-
-            } else { // Ultimate ready
-                System.out.println(ColorUtil.boldBrightGreen("[1]") + " " + ColorUtil.green("🏹 Skill 1   -  Piercing Arrow (➶ 1 Arrow)"));
-                System.out.println(ColorUtil.boldBrightGreen("[2]") + " " + ColorUtil.green("🎯 Skill 2   -  Bullseye (➶ 1 Heavy Arrow ═ 3 Arrows)"));
-                System.out.println(ColorUtil.boldBrightGreen("[3]") + " " + ColorUtil.green("🌩️ Ultimate  -  Rain of A Thousand Arrows (➶ 5 Arrows)"));
-                System.out.println(ColorUtil.boldBrightGreen("[4]") + " " + ColorUtil.green("\uD83D\uDEE1\uFE0F Skip Turn - Restore 10% of Max HP and Replenish 6 Arrows"));
-                System.out.println(ColorUtil.boldBrightGreen("[5]") + " " + ColorUtil.green("📜 Show Menu"));
-                System.out.print(ColorUtil.boldBrightWhite("Choose your action: "));
-
-                int choice = InputUtil.scanInput();
-                PrintUtil.shortLine();
-
-                switch (choice) {
-                    case 1 -> { piercingArrow(target); isValid = true; }
-                    case 2 -> { bullsEye(target); isValid = true; }
-                    case 3 -> { rainOfAThousandArrows(target); isValid = true; }
-                    case 4 -> { skipTurn(); isValid = true; }
-                    case 5 -> displayMenu(this, target);
-                    default -> {
-                        System.out.println(ColorUtil.boldBrightRed("❌ Invalid action! You missed your turn."));
-                        PrintUtil.pause(800);
+                case 2 -> {
+                    if (energy >= 3) {
+                        bullsEye(target);
                         isValid = true;
+                        ultimateCounter--;
+                    } else {
+                        System.out.println(ColorUtil.boldBrightRed("❌ Not enough Arrows to use Bullseye! Choose again."));
                     }
                 }
+                case 3 -> {
+                    if (ultimateCounter > 0) {
+                        System.out.println(ColorUtil.boldBrightRed("❌ Ultimate is on cooldown! Can only be used after " + ultimateCounter + " turn/s."));
+                    } else if (energy >= 5) {
+                        rainOfAThousandArrows(target);
+                        isValid = true;
+                    } else {
+                        System.out.println(ColorUtil.boldBrightRed("❌ Not enough Arrows to use Rain of A Thousand Arrows! Choose again."));
+                    }
+                }
+                case 4 -> {
+                    skipTurn();
+                    isValid = true;
+                    ultimateCounter--;
+                }
+                case 5 -> displayMenu(this, target); // does not consume turn
+                default -> System.out.println(ColorUtil.boldBrightRed("❌ Invalid action! Try again."));
             }
         }
     }
+
 
 }
 

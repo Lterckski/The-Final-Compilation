@@ -190,14 +190,14 @@ public class Effects {
             return false;
         }
         if (immobilized) {
-            System.out.println(ColorUtil.boldBrightMagenta(owner.getName() + " is Immobilized. Can only regain energy. TURN SKIPPED!"));
+            System.out.println(ColorUtil.boldBrightMagenta(owner.getName() + " is Immobilized. Can only regain hp & energy. TURN SKIPPED!"));
             PrintUtil.pause(800);
             owner.skipTurn();
             immobilized = false;
             return false;
         }
         if (feared) {
-            System.out.println(ColorUtil.boldBrightMagenta(owner.getName() + " is Feared. Can only regain energy. TURN SKIPPED!"));
+            System.out.println(ColorUtil.boldBrightMagenta(owner.getName() + " is Feared. Can only regain hp & energy. TURN SKIPPED!"));
             PrintUtil.pause(800);
             owner.skipTurn();
             feared = false;
@@ -249,6 +249,12 @@ public class Effects {
             int missingHP = owner.getMaxHP() - owner.getHp();
             int bleedDamage = Math.max(1, (int)(missingHP * 0.04)); // 4% of missing HP
             System.out.println(ColorUtil.brightMagenta("🩸 " + owner.getName() + " is bleeding! 💔 Took " + bleedDamage + " damage (based on missing HP)."));
+            // Scales 4%, 6%, 8%, ... up to 16%
+            int scalePercent = Math.min(4 + 2 * (bleedInitialTurns - bleedTurnsLeft), 16);
+            int bleedDamage = Math.max(1, (atk * scalePercent) / 100);
+
+            System.out.println(ColorUtil.brightMagenta("🩸 " + owner.getName() + " is bleeding! 💔 Took "
+                    + bleedDamage + " damage."));
             PrintUtil.pause(800);
             owner.takeDamage(bleedDamage);
             bleedTurnsLeft--;

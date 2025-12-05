@@ -75,7 +75,7 @@ public class Potions {
     }
 
     public void lootPotions(boolean willDropFullHealingPotions){
-        int totalDrops = RandomUtil.range(1, 3);
+        int totalDrops = RandomUtil.range(0, 2);
         int normalHealingPotionsCount = 0;
         int energyPotionsCount = 0;
 

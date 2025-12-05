@@ -115,9 +115,10 @@ public class StoryEngine {
         System.out.println();
         PrintUtil.type(
                 """
-                💡 The lab hums with fluorescent light. You sit before the CodeChum login screen, 
-                nerves heavy but focus sharp.
-                You place your hands on the keyboard... ⌨️
+                💡 It's just another tuesday, you come in for your java examination. You walk in,
+                and Professor Khai greets you warmly as you sit before the CodeChum login screen, 
+                nerves heavy now knowing if you're ready but focus remains sharp.
+                You place your hands on the keyboard and login... L10X17W.... ⌨️
                 """
         );
         PrintUtil.type(
@@ -173,9 +174,9 @@ public class StoryEngine {
                 """
                 The moment you press "Log in," the monitor ripples like water... 🌊
                 The screen glitches... ⚡
-                And the world folds to black. 🕳️
+                And the world turns to black as the room seems to wrap around you. 🕳️
                 
-                When you open your eyes, you're no longer in the lab. 👁️
+                When come to your senses, you're no longer in the lab. You wake up in an unfamiliar place.👁️
                 """
         );
         PrintUtil.pause(1000);
@@ -237,7 +238,7 @@ public class StoryEngine {
                 "          ░  ░  ░   ░  ░           ░           ░       ░  ░    ░  ░   ░ ░          ░ ░         ░             ░      ░  ░     ░  ░         ░      ░ ░           ░ \n" +
                 "                                                                      ░                                                                                          ");
         System.out.println();
-        PrintUtil.pause(1000);
+        PrintUtil.pause(2000);
     }
 
     private Character chooseCharacter() {
@@ -546,7 +547,7 @@ public class StoryEngine {
     private void transitionToWorld2() {
         currWorldLevel = 2;
         PrintUtil.type(
-                "Sir Khai's staff strikes the ground. \"Two stones remain,\" he intones.\n" +
+                "Sir Khai's staff strikes the ground. \"This forest is saved. Life is beautiful. Now we need to find two more stones,\" he says.\n" +
                         "A path opens through the ash—down into fog and distant thunder.\n"
         );
         System.out.println("[Checkpoint reached]\n");
@@ -562,5 +563,4 @@ public class StoryEngine {
         );
         System.out.println("[Checkpoint reached]\n");
     }
-
 }
