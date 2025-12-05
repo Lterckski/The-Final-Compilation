@@ -225,6 +225,41 @@ public class World2Miniboss2 extends Enemy {
             Sword twinstrikeBlade = Sword.TWINSTRIKE_BLADE;   // +15 ATK, 10% chance for 2nd attack
             Sword lifebondBlade = Sword.LIFEBOND_BLADE;    // +15 ATK, restores 3% HP of damage dealt
 
+            PrintUtil.type(ColorUtil.boldBrightCyan(
+                    "                                                            " + "                                                        \n" +
+                            "                                .                           " + "                                                        \n" +
+                            "                             .#*                            " + "                                                        \n" +
+                            "                            *@@                             " + "                                                  ==       \n" +
+                            "                          :@@@:                             " + "                                                 =@:       \n" +
+                            "                         :@@@#                              " + "                                                =@*        \n" +
+                            "                         @@@@=                              " + "                                               *@*.        \n" +
+                            "                        =@@@@.                              " + "                                             .@@*          \n" +
+                            "                        #@@@%                               " + "                                            =@@=           \n" +
+                            "                        #@@@#                               " + "                                          .#@%.            \n" +
+                            "                        *@@@*                               " + "                                        -@@+              \n" +
+                            "                        =@@@#                               " + "                                        %@@-               \n" +
+                            "                        :@@@#                               " + "                                      +@@#                 \n" +
+                            "                        :@@@%.                              " + "                                    :#%%-                  \n" +
+                            "                        .@@@@.                              " + "                                   *%%*                    \n" +
+                            "                        -@@@@#-                             " + "                                 +%%%-                     \n" +
+                            "                        +@@@@%*                             " + "                               =@@@+                       \n" +
+                            "                        %@@@@@*-                            " + "                             -%@@#.                        \n" +
+                            "                       :@@@@@@#                             " + "                           :@@@%-                          \n" +
+                            "                    .: =%@@@@@*. :                          " + "                         :#@%@*                            \n" +
+                            "                     =%#*+@@@=#%#.                          " + "                     :*:+@*@@.                             \n" +
+                            "                     .*+@#@@%%#*=                           " + "                   -%@++*##+                               \n" +
+                            "                          =%:                               " + "                   : =#%*-::                               \n" +
+                            "                          -#*.                              " + "                    -#*-*@+                                \n" +
+                            "                          -#++                              " + "                  .+*- .=-                                 \n" +
+                            "                          -#.:*                             " + "                 =#=                                        \n" +
+                            "                          -#. @.                            " + "             -.:*+                                          \n" +
+                            "                          #@@@=                             " + "            *=-=@                                           \n" +
+                            "                          .-:                               " + "           =: :%=                                          \n" +
+                            "                                                            " + "             .-:                                            \n"
+            ));
+
+
+
             System.out.println("[1]" + twinstrikeBlade.getName() + " → +15 ATK, 10% chance for a second attack ⚡");
             PrintUtil.pause(800);
             System.out.println("[2] " + lifebondBlade.getName() + " → +15 ATK, restores 3% HP of damage dealt 💖");
@@ -250,6 +285,40 @@ public class World2Miniboss2 extends Enemy {
             Bow twinshotBow = Bow.TWINSHOT_BOW;    // +15 ATK, 10% chance to attack twice
             Bow lifebloomBow = Bow.LIFEBLOOM_BOW;   // +15 ATK, restores 3% HP of damage dealt
 
+            PrintUtil.type(ColorUtil.boldBrightCyan(
+                    "                         :.                                                             =.                            \n" +
+                            "                       :#%                                                             *#                              \n" +
+                            "                       *:=:                                                           :%%                              \n" +
+                            "                      +.                                                              *%%=                            \n" +
+                            "                     -#.                                                              :. +=.                          \n" +
+                            "                     .+=                                                               .  =+.                         \n" +
+                            "                      :*:  ::                                                          .   :*+                        \n" +
+                            "                        =*++*-                                                         .    .*:.                      \n" +
+                            "                          :+#%*.:                                                      .    .#%                       \n" +
+                            "                           .*##%*                                                      .     :#+                      \n" +
+                            "                            :**#%-                                                     .    .#@+                      \n" +
+                            "                            :*%%%-                                                     .    *@= .                     \n" +
+                            "                           .=%+ -:                                                     .    +%.                       \n" +
+                            "                           :##-                                                        .    +#                        \n" +
+                            "                           :#:                                                         .    +#                        \n" +
+                            "                           :#=.                                                        .   .#@:                       \n" +
+                            "                           .+%- .                                                      .   -=##=:                     \n" +
+                            "                            -%#=*-                                                     .  :*:=@*.                     \n" +
+                            "                             =###=                                                     . :*: =#:                      \n" +
+                            "                            :**##:                                                     .     +*                       \n" +
+                            "                           .*##%*                                                      .    =*                        \n" +
+                            "                          :+#%*.:                                                      .  .=+:                        \n" +
+                            "                        =*++*:                                                         . :#=                          \n" +
+                            "                      :#:  ::                                                         =.-*.                           \n" +
+                            "                     .*=                                                               -%%:                           \n" +
+                            "                     -#.                                                               -##                            \n" +
+                            "                      +.                                                                -#                            \n" +
+                            "                       *-=:                                                              .:                           \n" +
+                            "                       :#%                                                                                             \n" +
+                            "                         :.                                                                                             \n"
+            ));
+
+
             System.out.println("[1] " + twinshotBow.getName() + " → +15 ATK, +10% chance to attack twice 🎯");
             PrintUtil.pause(800);
             System.out.println("[2] " + lifebloomBow.getName() + " → +15 ATK, restores 3% HP of damage dealt 💖");
@@ -274,6 +343,39 @@ public class World2Miniboss2 extends Enemy {
         } else if (player.getClassType().equals("Mage")) {
             Staff mysticMindStaff = Staff.MYSTIC_MIND_STAFF; // +15 ATK, 30% chance to confuse
             Staff flameheartStaff = Staff.FLAMEHEART_STAFF;  // +15 ATK, restores 3% HP of damage dealt
+
+            PrintUtil.type(ColorUtil.boldBrightCyan(
+                    "                                                        " + "                                                        \n" +
+                            "                        -=  :-                          " + "                       =      .-                        \n" +
+                            "                      ..*=  -*..                        " + "                      .#.     :%                        \n" +
+                            "                      -#-....:#=                        " + "                      +#.......%+                       \n" +
+                            "                     .+# .....#*:                       " + "                     -%+... ...*%:                      \n" +
+                            "                      +%=-:--=%+                        " + "                    .*%#:.:-:.=#%*                      \n" +
+                            "                      :+%####%*-                        " + "                      +%#+-+-*%%=                       \n" +
+                            "                         +@%*:                          " + "                     :..#%@%@#*..:                      \n" +
+                            "                         =##-                           " + "                      =%#*%*%*#%-                       \n" +
+                            "                          *#-                           " + "                       :=+#@#=-:                        \n" +
+                            "                         .#*.                           " + "                          -@-                           \n" +
+                            "                         :=*                            " + "                          -%-                           \n" +
+                            "                          -*:                           " + "                          -%-                           \n" +
+                            "                          =%:                           " + "                          .*.                           \n" +
+                            "                          =+                            " + "                          .+.                           \n" +
+                            "                          #+                            " + "                          .+.                           \n" +
+                            "                         .**.                           " + "                          .+.                           \n" +
+                            "                         #**.                           " + "                          .+.                           \n" +
+                            "                        :%+*                            " + "                          .+.                           \n" +
+                            "                         -#=                            " + "                          .=.                           \n" +
+                            "                          -*                            " + "                          .+.                           \n" +
+                            "                          -#.                           " + "                          .+.                           \n" +
+                            "                          :+                            " + "                          .+.                           \n" +
+                            "                          -=                            " + "                          .+.                           \n" +
+                            "                          ++                            " + "                          .*.                           \n" +
+                            "                          -+                            " + "                          -%-                           \n" +
+                            "                          -*                            " + "                          :#:                           \n" +
+                            "                          ++.                           " + "                           :                            \n" +
+                            "                          :-                            " + "                                                        \n"
+            ));
+
 
             System.out.println("[1] " + mysticMindStaff.getName() + " → +15 ATK, 30% chance to confuse enemy 🌀");
             PrintUtil.pause(800);

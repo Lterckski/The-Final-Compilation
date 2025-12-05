@@ -499,7 +499,29 @@ public class World3 {
 
         // --- Boss: the revelation ---
         PrintUtil.title("BOSS — Sir Khai, the Necromancer");
-        PrintUtil.effect("At the summit, you see the Third Stone pulsing with violet light on an altar.");
+        PrintUtil.type(ColorUtil.brightMagenta("                                     \n" +
+                "                                     \n" +
+                "                                     \n" +
+                "                                     \n" +
+                "                 :*-                 \n" +
+                "                :%#+=                \n" +
+                "               :%@#+=-               \n" +
+                "              .%@@#+==+.             \n" +
+                "             :%%@@@%+==#.            \n" +
+                "            -@%%@@@@@#==%:           \n" +
+                "           =%%%@@@@@@@%=*@-          \n" +
+                "          +%%@@@@@@%###%%%%+         \n" +
+                "         *%#%%%%@@%%####%@#%+        \n" +
+                "        *%#@@@#%@@@@@@%%%@#*#+       \n" +
+                "      .*@@@@@@@@%%%@@@@@@@%**#+      \n" +
+                "     :*@@@@@@%@%#####%@@@@@%***=     \n" +
+                "    :#@@@%%%@@%%%%%%%%%@@@@@%***=    \n" +
+                "   :#@%%%%%@@@@@@@%%%%%%%@@@@@@#*=   \n" +
+                "   ++++***************************=  \n" +
+                "                                     \n" +
+                "                                     \n" +
+                "                                     "));
+        PrintUtil.event("At the summit, you see the Third Stone pulsing with violet light on an altar.");
         PrintUtil.effect("You reach out. The Stones unite—humming and pulling themselves closer together like a single heartbeat.");
         PrintUtil.effect("Then Khai the Gray steps forward, staff blazing.\n");
         PrintUtil.pause(800);

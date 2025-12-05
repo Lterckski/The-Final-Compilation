@@ -413,6 +413,32 @@ public class World1 {
                 🌟 The Hollow Stag staggers, its luminous eyes fading to black.
                 With one final, echoing cry, it collapses to the ground. The forest trembles… then exhales.
                 """);
+        PrintUtil.type(ColorUtil.boldBrightYellow("                                     \n" +
+                "                                     \n" +
+                "                                     \n" +
+                "                  =*:                \n" +
+                "                .#@#+-               \n" +
+                "               -%@@#++=              \n" +
+                "              +@@@@#++++.            \n" +
+                "             *@@@@@#+++++:           \n" +
+                "           .*@@@@@@@%=====-          \n" +
+                "          .*@@@@@@@@@%+--=*+         \n" +
+                "         .+%%@@@@@@%#%%+--*@=        \n" +
+                "         +#%%@@@@@@###@%*-+%%-       \n" +
+                "        =##%%%%%@@%##%@@@#+%@%:      \n" +
+                "       :#%%%%%%%@@@%%@@@@@%%@@#.     \n" +
+                "      .*%%%@%%%%@@@@@@@@@@%+#@@=     \n" +
+                "      -%%@@%%%%%%@@@@@@@@@%*+*%%.    \n" +
+                "     .#@@@@%%%%%%%@@@@@@@@%####%=    \n" +
+                "     .%@%%%%##%%@@@@@@@@@@%#####+.   \n" +
+                "     .#%%%%%##%%@%%@@@@@@@%###%@+    \n" +
+                "      +%##%%%%%%%%%%@@@@@@%%@@@@-    \n" +
+                "      :####%####%%%@@@@@%%%@@@@+     \n" +
+                "       :*##%%###%%%%%%%%%%@@@%+      \n" +
+                "         =##%%%%%%%%%%%%%%@%*:       \n" +
+                "           -*%@%%%%%%%%%%%*:         \n" +
+                "              .-=+***+=-.            \n" +
+                "                                     "));
         PrintUtil.loot("""
                 You obtain the First Stone — pulsing with quiet power.
                 The corruption fades, and the path ahead glows faintly in the mist.

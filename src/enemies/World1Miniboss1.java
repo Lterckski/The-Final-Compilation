@@ -169,16 +169,102 @@ public class World1Miniboss1 extends Enemy {
 
         if (player.getClassType().equals("Swordsman")) {
             Sword ironShortsword = Sword.IRON_SHORTSWORD;
+            PrintUtil.type(ColorUtil.boldBrightGreen("                                                       \n" +
+                    "                                                       \n" +
+                    "                          .+.                          \n" +
+                    "                          -@-                          \n" +
+                    "                          -@=                          \n" +
+                    "                          =@=                          \n" +
+                    "                          =@+                          \n" +
+                    "                          +@+                          \n" +
+                    "                          +@+                          \n" +
+                    "                          +@+                          \n" +
+                    "                          +@*                          \n" +
+                    "                          *@*                          \n" +
+                    "                          *@*                          \n" +
+                    "                          *%#                          \n" +
+                    "                          #%#                          \n" +
+                    "                          #%#                          \n" +
+                    "                          #%#.                         \n" +
+                    "                          %%%.                         \n" +
+                    "                          %#%.                         \n" +
+                    "                          %#%.                         \n" +
+                    "                          %#%.                         \n" +
+                    "                         .%#%:                         \n" +
+                    "                     .:.::+%+::::.                     \n" +
+                    "                          =@+                          \n" +
+                    "                          =%+                          \n" +
+                    "                          =@=                          \n" +
+                    "                          :%-                          \n" +
+                    "                          #@#                          \n" +
+                    "                          .=.                          \n" +
+                    "                                                       "));
             if (ironShortsword.lootWeapon()) {
                 ironShortsword.equip(player);
             }
         } else if (player.getClassType().equals("Archer")) {
             Bow oakLongbow = Bow.OAK_LONGBOW;
+            PrintUtil.type(ColorUtil.boldBrightGreen("                                                       \n" +
+                    "                                                       \n" +
+                    "                                                       \n" +
+                    "                                                       \n" +
+                    "                         -                             \n" +
+                    "                        .#                             \n" +
+                    "                        -#-                            \n" +
+                    "                        . +*.                          \n" +
+                    "                       :    =*:                        \n" +
+                    "                      .       -#                       \n" +
+                    "                      .        .*:                     \n" +
+                    "                     .          -*                     \n" +
+                    "                     .          :*.                    \n" +
+                    "                    .           +@-                    \n" +
+                    "                   .-          .@#-:                   \n" +
+                    "                    :           ##:                    \n" +
+                    "                     .          +%:                    \n" +
+                    "                     .          :*.                    \n" +
+                    "                     .          -*                     \n" +
+                    "                      .        .#.                     \n" +
+                    "                      .       =*                       \n" +
+                    "                       :   .+*.                        \n" +
+                    "                        : ++                           \n" +
+                    "                        :#-                            \n" +
+                    "                        .#                             \n" +
+                    "                         -                             \n" +
+                    "                                                       \n" +
+                    "                                                       \n" +
+                    "                                                       \n" +
+                    "                                                       "));
             if (oakLongbow.lootWeapon()) {
                 oakLongbow.equip(player);
             }
         } else if (player.getClassType().equals("Mage")) {
             Staff apprenticeStaff = Staff.APPRENTICE_STAFF;
+            PrintUtil.type(ColorUtil.boldBrightGreen("                                                       \n" +
+                    "                                                       \n" +
+                    "                          :+.                          \n" +
+                    "                          +@=                          \n" +
+                    "                          =@-                          \n" +
+                    "                          :%:                          \n" +
+                    "                          :%:                          \n" +
+                    "                          :%:                          \n" +
+                    "                          :%:                          \n" +
+                    "                          :%:                          \n" +
+                    "                          :%:                          \n" +
+                    "                          :%:                          \n" +
+                    "                          :%:                          \n" +
+                    "                          :%:                          \n" +
+                    "                          :%:                          \n" +
+                    "                          :%:                          \n" +
+                    "                          :%:                          \n" +
+                    "                          :%:                          \n" +
+                    "                          :%:                          \n" +
+                    "                          :%:                          \n" +
+                    "                          :%:                          \n" +
+                    "                          :%:                          \n" +
+                    "                          :%:                          \n" +
+                    "                          .=.                          \n" +
+                    "                                                       \n" +
+                    "                                                       "));
             if (apprenticeStaff.lootWeapon()) {
                 apprenticeStaff.equip(player);
             }
@@ -186,6 +272,25 @@ public class World1Miniboss1 extends Enemy {
         PrintUtil.pause(800);
 
         Armor ironVanguard = Armor.IRON_VANGUARD;
+        PrintUtil.type(ColorUtil.boldBrightGreen("                                                       \n" +
+                "                                                       \n" +
+                "                                                       \n" +
+                "                     -#%###*###%#-                     \n" +
+                "                     -=. .:-:. .=-                     \n" +
+                "                     =:    :    :=                     \n" +
+                "                    .*%%. -#- .%%*.                    \n" +
+                "                   .%@@@@@@#@@@@@@#.                   \n" +
+                "                    *@@@@@@%@@@@@@*                    \n" +
+                "                    :%@@@@@@@@@@@%:                    \n" +
+                "                     =#@@@@@@@@@%=                     \n" +
+                "                     +#*%@@@@@%*#+                     \n" +
+                "                    =@@#*+***+*#@@=                    \n" +
+                "                   :@@#%#@@@@@#%#@@:                   \n" +
+                "                   *@@%%@+=.=+%%%%@*                   \n" +
+                "                   @@@@@*.   .*@@@@@                   \n" +
+                "                   -+#%#=     =#%#+-                   \n" +
+                "                                                       \n" +
+                "                                                       "));
         if (ironVanguard.lootArmor()) {
             ironVanguard.equip(player);
         }

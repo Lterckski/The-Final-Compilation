@@ -558,7 +558,31 @@ public class World2 {
         PrintUtil.effect("He screams with his dying breath as his body crumbles into dust, leaving only confusion of who he was referring to.");
         InputUtil.pressEnterToContinue();
 
-        PrintUtil.specialCyan("You lift the Second Stone from his crown, feeling its dark energy pulse in your hands.");
+        PrintUtil.type(ColorUtil.brightCyan("                                     \n" +
+                "                                     \n" +
+                "                                     \n" +
+                "          *%%##********+=+=          \n" +
+                "        +%%@@@@@##**+=====**-        \n" +
+                "      -%%%%@@@@@@@%*+====-+**+.      \n" +
+                "    :%%%%%@@@@@@@@@@@@%*=-=****+.    \n" +
+                "  .%%%%%%%@@@@@@@@@@@%#######****+   \n" +
+                "  *%###%%@@%###%@@@@@%#####%%%%%%%+  \n" +
+                "  *@%%%%@@@%##%@@@@@@%####%@%%%%%@+  \n" +
+                "  *@@@@@@@@%##%@@@@@@%##%@@@@%%%@@+  \n" +
+                "  *@@@@#%@@@@%@@@@@@@%%@@@@@@@%@@@+  \n" +
+                "  *@@@%%##@@@@@@@@@@@@@@@@@@@@@@@@+  \n" +
+                "  *@@%%%##%@%%##%@@@@@@@@@@@@@@@@@+  \n" +
+                "  *@%%%%%#######%@@@@@@@@@@@@@@@@@+  \n" +
+                "  *%%%%%%%#####%%@@@@@@@@@@@@@@@@@*  \n" +
+                "   =%@@@@@#%@@@@@@@@@@@@@@%%@@@@%:   \n" +
+                "     +@@@@%###%%@@%%@@@@@@%@@@%=     \n" +
+                "       *@@%#######%%@@@@@@#%@=       \n" +
+                "        .#@####%%%%%%%@@@%#*         \n" +
+                "          :+*************+           \n" +
+                "                                     \n" +
+                "                                     "));
+
+        PrintUtil.event("You lift the Second Stone from his crown, feeling its dark energy pulse in your hands.");
         PrintUtil.effect("A cold wind sweeps through the empty halls, extinguishing every torch and whispering secrets of the past.");
         InputUtil.pressEnterToContinue();
         PrintUtil.line();
