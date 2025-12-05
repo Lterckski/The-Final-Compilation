@@ -141,16 +141,106 @@ public class World3Miniboss1 extends Enemy {
 
         if (player.getClassType().equals("Swordsman")) {
             Sword eclipseGreatsword = Sword.ECLIPSE_GREATSWORD;
+            PrintUtil.type(ColorUtil.boldBrightMagenta("                                                       \n" +
+                    "                          . .                          \n" +
+                    "                         :+#+:                         \n" +
+                    "                          -#-                          \n" +
+                    "                         :-*=-                         \n" +
+                    "                          .#:                          \n" +
+                    "                        . .*: .                        \n" +
+                    "                       - :=#=:.=                       \n" +
+                    "                      :==+#%#+==:.                     \n" +
+                    "                      =*%#%%%#%#=                      \n" +
+                    "                      -*++*#*++#-                      \n" +
+                    "                      =:=#***=-:=                      \n" +
+                    "                       . -%#*. .                       \n" +
+                    "                       = #%@%#:=                       \n" +
+                    "                         .#@@#                         \n" +
+                    "                       .-=%@@:                         \n" +
+                    "                       -%@@@#.                         \n" +
+                    "                       =%@@@+                          \n" +
+                    "                       -%@@@=                          \n" +
+                    "                       -@@@@-                          \n" +
+                    "                       .@%@@=                          \n" +
+                    "                        @%@@*                          \n" +
+                    "                        +@@@%:                         \n" +
+                    "                         %%@@%.                        \n" +
+                    "                         :@@@%%                        \n" +
+                    "                          -%@%@                        \n" +
+                    "                           :%%%-                       \n" +
+                    "                             =@%                       \n" +
+                    "                               :-                      \n" +
+                    "                                                       "));
             if (eclipseGreatsword.lootWeapon()) {
                 eclipseGreatsword.equip(player);
             }
         } else if (player.getClassType().equals("Archer")) {
             Bow aetherstrikeBow = Bow.AETHERSTRIKE_BOW;
+            PrintUtil.type(ColorUtil.boldBrightMagenta("                                   ..                  \n" +
+                    "                               :-#-                    \n" +
+                    "                              -**.                     \n" +
+                    "                             .*#=                      \n" +
+                    "                             .=%+.=:                   \n" +
+                    "                              :##+:                    \n" +
+                    "                             := -*=.:                  \n" +
+                    "                                .*%:*                  \n" +
+                    "                                 -%#:                  \n" +
+                    "                                :##-                   \n" +
+                    "                          .   :-%%%*:                  \n" +
+                    "               :.           ..%@%-.+-                  \n" +
+                    "              .+##-      . :==*#:  -                   \n" +
+                    "                     ::.:  -=.=-                       \n" +
+                    "                        . :-##:                        \n" +
+                    "                       .   =%:.....                    \n" +
+                    "                        - =%+:       :=.               \n" +
+                    "                         =%%+.                         \n" +
+                    "                        .:=@%=                         \n" +
+                    "                        -..#%=.                        \n" +
+                    "                          -#%#                         \n" +
+                    "                    .     =%=:+                        \n" +
+                    "                    :-  :##%-                          \n" +
+                    "                   ..+#%*+=-:                          \n" +
+                    "                 .=###--  ..                           \n" +
+                    "                  %#-  +                               \n" +
+                    "                 --*                                   \n" +
+                    "                  +#                                   \n" +
+                    "                   ::                                  \n" +
+                    "                                                       "));
             if (aetherstrikeBow.lootWeapon()) {
                 aetherstrikeBow.equip(player);
             }
         } else if (player.getClassType().equals("Mage")) {
             Staff aethericStaff = Staff.AETHERIC_STAFF;
+            PrintUtil.type(ColorUtil.boldBrightMagenta("                                                       \n" +
+                    "                                                       \n" +
+                    "                          - -                          \n" +
+                    "                         :+ +-                         \n" +
+                    "                        +#:=:*+=                       \n" +
+                    "                       =%:#@%:%+                       \n" +
+                    "                     .:+%=%@%=%+                       \n" +
+                    "                       -%#*%##%=-                      \n" +
+                    "                       .=#%###=.-.                     \n" +
+                    "                         .=#+:-                        \n" +
+                    "                          :%-                          \n" +
+                    "                          :#-                          \n" +
+                    "                          -+.                          \n" +
+                    "                          .++.                         \n" +
+                    "                           =#                          \n" +
+                    "                          .=-                          \n" +
+                    "                         -++                           \n" +
+                    "                         .+.                           \n" +
+                    "                          *=:                          \n" +
+                    "                          .+-                          \n" +
+                    "                          .+-                          \n" +
+                    "                          :+.                          \n" +
+                    "                          --.                          \n" +
+                    "                         --+.                          \n" +
+                    "                           =-                          \n" +
+                    "                          .+:                          \n" +
+                    "                          :#:                          \n" +
+                    "                           -.                          \n" +
+                    "                                                       \n" +
+                    "                                                       "));
             if (aethericStaff.lootWeapon()) {
                 aethericStaff.equip(player);
             }
@@ -159,6 +249,36 @@ public class World3Miniboss1 extends Enemy {
         PrintUtil.pause(800);
 
         Armor skyforgePlate = Armor.SKYFORGE_PLATE;
+        PrintUtil.type(ColorUtil.boldBrightMagenta("                                                       \n" +
+                "                                                       \n" +
+                "                                                       \n" +
+                "                                                       \n" +
+                "              .                        ..              \n" +
+                "             :*##.   :#@@@@@@@@@#:   .##*:             \n" +
+                "          ..-*%%@%+*@%@@@@@@@@@@@@@#+%@%%*=:           \n" +
+                "         :#@%%@@@@@@@@@%%@@@@@%%@@@@@@%@@%%@#-         \n" +
+                "        =*@@#=*@@@@@@@@@%%%%%%%@@@@@@@@@#=#@@*:        \n" +
+                "       .=#+#@#@@@@@@@%##@@@@@@@##%@@@@@@@%@#+#+..      \n" +
+                "       -%@@#@@@@@@@%@%#####@#####%@@@@@@@@@#@@%-       \n" +
+                "       .+@@@@@@@@@@@@@%#@#@@@#%#%@@@@@@@@@@@@@*.       \n" +
+                "       .*@@@@@%=#@@@@@@%#**#***%@@@@@@#-%@@@@@#.       \n" +
+                "      :.*@@@@%-.#@@@@@@%#%#%#%#%@@@@@@#.-%@@@@*::      \n" +
+                "       -##*==. *@@@@@@@@%@@@@@%@@@@@@@@*..==+#*-       \n" +
+                "               =%@@@@@@@@%%%%%@@@@@@@@%=               \n" +
+                "                +%@@@@@@%@@@@*%@@@@@@%+                \n" +
+                "               .=#@@@@@@==%@@-+@@@@@@#=.               \n" +
+                "                 :@@@@@@+#@@@#*@@@@@@:                 \n" +
+                "                 -#@@@@@@@@@@@@@@@@@#-                 \n" +
+                "                 -%@@@@@#+%@%+#@@@@@%-                 \n" +
+                "               .*@@@@@@@#=#@%+*@@@@@@@*.               \n" +
+                "                *@@@@@@@@@@@@@@@@@@@@@#.               \n" +
+                "                :*@@@@@@@@@@@@@@@@@@@*:                \n" +
+                "                  ==*%@@@@@@@@@@@%*==                  \n" +
+                "                        .-*#*-.                        \n" +
+                "                                                       \n" +
+                "                                                       \n" +
+                "                                                       \n" +
+                "                                                       "));
         if (skyforgePlate.lootArmor()) {
             skyforgePlate.equip(player);
         }
