@@ -103,6 +103,7 @@ public class Tester {
 //        simon.showSkills();
 //        */
 
+
         System.out.println("Welcome to The Final Compilation");
         PrintUtil.pause(1000);
 
@@ -150,13 +151,18 @@ public class Tester {
         player.getInventory().setEquippedArmor(Armor.LEATHER_GUARD);
 
 
-        Enemy test = new World1Enemy1();
-        Battle testb = new Battle(player,test);
 
-        testb.startBattle();
 
-        PrefiEncounter prefiEncounter = new PrefiEncounter();
-        prefiEncounter.start(player);
+
+
+        //player.getInventory().getPotions().acquireFullHealingPotion(500);
+        //player.getInventory().getPotions().acquireEnergyPotion(500);
+
+        //Test test = new Test();
+        //test.run(player);
+
+
+
 
         /*
         Enemy testEnemy1 = new World1Enemy1();
@@ -196,10 +202,12 @@ public class Tester {
 //        new PreFinalEncounter().start(player);
 
 
-        Enemy testEnemy2 = new World2Miniboss2();
+       /* Enemy testEnemy2 = new World2Miniboss2();
         Battle testBattle2 = new Battle(player, testEnemy2);
         testBattle2.startBattle();
         testEnemy2.dropLoot(player);
+
+        */
 
 
     }

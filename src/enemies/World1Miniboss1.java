@@ -191,5 +191,5 @@ public class World1Miniboss1 extends Enemy {
         }
     }
     @Override
-    public int rewardExp(){return 616;}
+    public int rewardExp(){return 538;}
 }

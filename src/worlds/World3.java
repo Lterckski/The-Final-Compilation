@@ -171,7 +171,7 @@ public class World3 {
         InputUtil.pressEnterToContinue();
         System.out.println();
 
-        for (int i = 1; i <= 2; i++) {
+        for (int i = 1; i <= 3; i++) {
             PrintUtil.hr();
             System.out.println("💀 Bone Warlock " + i + " raises its staff, channeling dark fire!");
             PrintUtil.hr();
@@ -315,7 +315,7 @@ public class World3 {
         InputUtil.pressEnterToContinue();
         System.out.println();
 
-        for (int i = 1; i <= 3; i++) {
+        for (int i = 1; i <= 4; i++) {
             PrintUtil.hr();
             System.out.println("😈 Soulflayer Gargoyle " + i + " swoops down from above!");
             PrintUtil.hr();
