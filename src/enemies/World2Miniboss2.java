@@ -7,15 +7,13 @@ import utils.PrintUtil;
 import utils.RandomUtil;
 import inventory.*;
 
-import java.awt.*;
-
 public class World2Miniboss2 extends Enemy {
     public World2Miniboss2() {
         super("Luther Von", 1254, 29, 140);
     }
 
     public void crownOfDespair(Character target) {
-        PrintUtil.type(ColorUtil.boldBrightRed("                                                          \n" +
+        PrintUtil.print(ColorUtil.boldBrightRed("                                                          \n" +
                 "                        ...:.. :.                         \n" +
                 "                   :. .:.   ::::.. :..                    \n" +
                 "                  :... .   ..:.  .:-.: .                  \n" +
@@ -54,7 +52,7 @@ public class World2Miniboss2 extends Enemy {
     }
 
     public void darkJudgement(Character target){
-        PrintUtil.type(ColorUtil.boldBrightRed("                                                          \n" +
+        PrintUtil.print(ColorUtil.boldBrightRed("                                                          \n" +
                 "                          ::  ::                          \n" +
                 "                         +@@-#@@*                         \n" +
                 "                         -%@+%@%:                         \n" +
@@ -106,7 +104,7 @@ public class World2Miniboss2 extends Enemy {
     }
 
     public void kingsWrath(Character target){
-        PrintUtil.type(ColorUtil.boldBrightRed("                                                          \n" +
+        PrintUtil.print(ColorUtil.boldBrightRed("                                                          \n" +
                 "                 :            .                           \n" +
                 "                 +.         *%%%*     =                   \n" +
                 "                 =%  :.    =@@@@%-    #                   \n" +
@@ -403,7 +401,5 @@ public class World2Miniboss2 extends Enemy {
     }
 
     @Override
-    public int rewardExp(){
-        return 5692;
-    }
+    public int rewardExp(){return RandomUtil.range(1600,2000);}
 }

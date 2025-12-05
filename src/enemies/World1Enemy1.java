@@ -6,15 +6,13 @@ import utils.ColorUtil;
 import utils.PrintUtil;
 import utils.RandomUtil;
 
-import java.awt.*;
-
 public class World1Enemy1 extends Enemy {
     // Constructor
     public World1Enemy1() { super("Rotfang Wolf", 60, 5, 10); }
 
     // Skill: Savage Howl (10–15 damage)
     public void savageHowl(Character target) {
-        PrintUtil.type(ColorUtil.boldBrightRed("                                                          \n" +
+        PrintUtil.print(ColorUtil.boldBrightRed("                                                          \n" +
                 "                                                          \n" +
                 "           .+#@@@@@%#*=.       :-:              ::        \n" +
                 "          *@+.       .-*%%*-      :=+-            *=      \n" +

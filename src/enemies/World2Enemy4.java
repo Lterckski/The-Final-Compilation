@@ -12,7 +12,7 @@ public class World2Enemy4 extends Enemy{
     }
 
     public void rottenCleave(Character target){
-        PrintUtil.type(ColorUtil.boldBrightRed("                                                          \n" +
+        PrintUtil.print(ColorUtil.boldBrightRed("                                                          \n" +
                 "                                                          \n" +
                 "                                                          \n" +
                 "          =%%%@@@%#%=:..                          ..:::   \n" +
@@ -97,7 +97,5 @@ public class World2Enemy4 extends Enemy{
     }
 
     @Override
-    public int rewardExp(){
-        return RandomUtil.range(304,311);
-    }
+    public int rewardExp(){return RandomUtil.range(280,325);}
 }

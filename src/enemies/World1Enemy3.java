@@ -14,7 +14,7 @@ public class World1Enemy3 extends Enemy {
 
     // Skill: Root Snare (6–9 damage, immobilize 1 turn)
     public void rootSnare(Character target) {
-        PrintUtil.type(ColorUtil.boldBrightRed("                                                          \n" +
+        PrintUtil.print(ColorUtil.boldBrightRed("                                                          \n" +
                 "                             -                            \n" +
                 "                  . -: ..  =#   : .-                      \n" +
                 "                   #*%..=. #    :**:    :-                \n" +
@@ -107,13 +107,13 @@ public class World1Enemy3 extends Enemy {
         System.out.println();
         System.out.println(ColorUtil.boldBrightYellow("┬───────────────────────────────────┬"));
         System.out.println(ColorUtil.brightYellow("  🎁 You received:"));
-        player.lootSoulShards(RandomUtil.range(1,2));
+        player. lootSoulShards(RandomUtil.range(1,2));
         player.getPotions().lootPotions(false);
         player.gainExp(rewardExp());
     }
 
     @Override
     public int rewardExp(){
-        return RandomUtil.range(65,71);
+        return RandomUtil.range(70,80);
     }
 }

@@ -13,7 +13,7 @@ public class World2Enemy1 extends Enemy{
     }
 
     public void plagueBite(Character target){
-        PrintUtil.type(ColorUtil.boldBrightRed("                                                          \n" +
+        PrintUtil.print(ColorUtil.boldBrightRed("                                                          \n" +
                 "                                           .=-            \n" +
                 "                                          =-              \n" +
                 "                            :            .*               \n" +
@@ -107,6 +107,6 @@ public class World2Enemy1 extends Enemy{
 
     @Override
     public int rewardExp(){
-        return RandomUtil.range(128,145);
+        return RandomUtil.range(480,540);
     }
 }

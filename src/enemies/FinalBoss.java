@@ -93,7 +93,7 @@ public class FinalBoss extends Enemy {
 
     // 🩸 Skill 1: Soul Drain
     public void soulDrain(Character target) {
-        PrintUtil.type(ColorUtil.boldBrightRed("                                                          \n" +
+        PrintUtil.print(ColorUtil.boldBrightRed("                                                          \n" +
                 "                                                          \n" +
                 "      ..  .:                ::                            \n" +
                 "     .*+  -%=:     .:.     :%@:    .::.    :.     =:      \n" +
@@ -146,7 +146,7 @@ public class FinalBoss extends Enemy {
 
     // 🛡️ Skill 2: Encapsulation (creates a 1-turn shield)
     public void encapsulation() {
-        PrintUtil.type(ColorUtil.boldBrightRed("                                                          \n" +
+        PrintUtil.print(ColorUtil.boldBrightRed("                                                          \n" +
                 "                       ..-==-----.                        \n" +
                 "                     .:=*#**+****##*-                     \n" +
                 "                   -=+*++***=----=++*#-                   \n" +
@@ -181,7 +181,7 @@ public class FinalBoss extends Enemy {
 
     // 🌑 Skill 3: Dark Ascension
     public void darkAscension(Character target) {
-        PrintUtil.type(ColorUtil.boldBrightRed("                                                          \n" +
+        PrintUtil.print(ColorUtil.boldBrightRed("                                                          \n" +
                 "                      ..    ==    ..                      \n" +
                 "                      .++. :@@: .*+.                      \n" +
                 "                       :*%@@@@@@%+:                       \n" +

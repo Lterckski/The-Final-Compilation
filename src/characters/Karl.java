@@ -1,6 +1,6 @@
 package characters;
 
-import enemies.Enemy;
+import enemies.FinalBoss;
 import utils.ColorUtil;
 import utils.InputUtil;
 import utils.PrintUtil;
@@ -86,7 +86,7 @@ public class Karl extends Character{
 
     // Skill 1 - Piercing Arrow
     public void piercingArrow(Character target) {
-        PrintUtil.type(ColorUtil.boldBrightGreen("                                             \n" +
+        PrintUtil.print(ColorUtil.boldBrightGreen("                                             \n" +
                 "                                   ..                     \n" +
                 "                                   .   :                  \n" +
                 "                                 .        .               \n" +
@@ -139,9 +139,34 @@ public class Karl extends Character{
         this.getWeapon().applyEffects(this,target,reduced);
     }
 
+    private int calculateCritDamage(Character target, int damage) {
+        int reduced = damage;
+
+        // Critical hit check (only if allowed)
+        reduced = (int)(reduced * 1.5);
+        System.out.println(ColorUtil.brightMagenta("💥 Critical hit! Damage multiplied by 1.5x"));
+
+        // FinalBoss shield logic
+        if (target instanceof FinalBoss fb && fb.getShield() > 0) {
+            if (reduced >= fb.getShield()) {
+                int absorbed = fb.getShield();
+                fb.reduceShield(absorbed);
+                reduced -= absorbed;
+            } else {
+                fb.reduceShield(reduced);
+                reduced = 0;
+            }
+        }
+
+        // Apply defense
+        reduced -= target.getDefense();
+        if (reduced < 0) reduced = 0;
+
+        return reduced;
+    }
     // Skill 2 - Bullseye
     public void bullsEye(Character target) {
-        PrintUtil.type(ColorUtil.boldBrightGreen("                                                          \n" +
+        PrintUtil.print(ColorUtil.boldBrightGreen("                                                          \n" +
                 "                                         :*%%%%@%+        \n" +
                 "                                       .%#: .::  -@+      \n" +
                 "                            :         .@= +%*=+%%: #*     \n" +
@@ -177,9 +202,8 @@ public class Karl extends Character{
         if (this.getEffects().checkConfuse()) return;
 
         int damage = (int) RandomUtil.range(attack * 1.25, attack * 1.50);
-        damage = (int) (damage * 1.5); // guaranteed crit
         damage = hunterInstincts(damage, target);
-        int reduced = calculateDamage(target, damage);
+        int reduced = calculateCritDamage(target, damage);
 
         System.out.println(
                 ColorUtil.brightGreen("💔 Target is hit for ")
@@ -199,7 +223,7 @@ public class Karl extends Character{
 
     // Ultimate - Rain of a Thousand Arrows
     public void rainOfAThousandArrows(Character target) {
-        PrintUtil.type(ColorUtil.boldBrightGreen("                                                          \n" +
+        PrintUtil.print(ColorUtil.boldBrightGreen("                                                          \n" +
                 "                                                      ..:> \n" +
                 "                            :                  :*- .-=    \n" +
                 "                             -         +    .  -=*        \n" +
@@ -277,7 +301,7 @@ public class Karl extends Character{
             System.out.println(ColorUtil.boldBrightGreen("[2]") + " " + ColorUtil.green("🎯 Skill 2   -  Bullseye (➶ 1 Heavy Arrow ═ 3 Arrows)"));
             System.out.println(ColorUtil.boldBrightGreen("[3]") + " " + ColorUtil.green("🌩️ Ultimate  -  Rain of A Thousand Arrows (➶ 5 Arrows)"
                     + (ultimateCounter > 0 ? " " + ColorUtil.boldBrightRed("❌ Cooldown: " + ultimateCounter + " turn/s") : "")));
-            System.out.println(ColorUtil.boldBrightGreen("[4]") + " " + ColorUtil.green("\uD83D\uDEE1\uFE0F Skip Turn - Restore 10% of Max HP and Replenish 6 Arrows"));
+            System.out.println(ColorUtil.boldBrightGreen("[4]") + " " + ColorUtil.green("\uD83D\uDEE1\uFE0F Skip Turn -  Restore 10% of Max HP and Replenish 6 Arrows"));
             System.out.println(ColorUtil.boldBrightGreen("[5]") + " " + ColorUtil.green("📜 Show Menu"));
             System.out.print(ColorUtil.boldBrightWhite("Choose your action: "));
 

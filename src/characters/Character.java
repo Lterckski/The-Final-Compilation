@@ -1,7 +1,6 @@
 package characters;
 
 import battle.Effects;
-import enemies.Enemy;
 import enemies.FinalBoss;
 import inventory.Armor;
 import inventory.Inventory;
@@ -12,9 +11,6 @@ import utils.ColorUtil;
 import utils.InputUtil;
 import utils.PrintUtil;
 import utils.RandomUtil;
-
-import java.awt.*;
-import java.sql.SQLOutput;
 
 public abstract class Character {
 
@@ -172,11 +168,11 @@ public abstract class Character {
 
         // Determine energy type
         if (classType.equalsIgnoreCase("Mage")) {
-            energyLabel = " 💧 Mana     ";
+            energyLabel = " 💧 Mana    ";
         } else if (classType.equalsIgnoreCase("Archer")) {
-            energyLabel = " 🏹 Arrows   ";
+            energyLabel = " 🏹 Arrows  ";
         } else {
-            energyLabel = " 🔋 Stamina  ";
+            energyLabel = " 🔋 Stamina ";
         }
 
         System.out.println(ColorUtil.boldBrightCyan(" 👤 Name/Class  :  ") + ColorUtil.boldBrightYellow(name + " (" + classType + ")"));
@@ -373,8 +369,8 @@ public abstract class Character {
         if(level < 30){
             level++;
             PrintUtil.hr();
-            System.out.println("✨ LEVEL UP! You are now Level " + level + "! ✨");
-            System.out.println("25% of 💖 HP & " + getEnergyEmoji() + " " + getEnergyName() + " Restored!");
+            PrintUtil.specialCyan("✨ LEVEL UP! You are now Level " + level + "! ✨");
+            PrintUtil.specialCyan("25% of 💖 HP & " + getEnergyEmoji() + " " + getEnergyName() + " Restored!");
 
             int oldHp = maxHP;
             int oldAtk = baseAttack;
@@ -409,9 +405,9 @@ public abstract class Character {
 
             recalculateBuffs();
 
-            System.out.printf("%-8s : +%d → %d%n", "💚 HP", (maxHP - oldHp), maxHP);
-            System.out.printf("%-8s : +%d → %d%n", "⚔️ ATK", (baseAttack - oldAtk), attack);
-            System.out.printf("%-8s  : +%d → %d%n", "🛡️ DEF", (baseDefense - oldDef), defense);
+            PrintUtil.specialCyan(String.format("%-8s : +%d → %d%n", "💚 HP", (maxHP - oldHp), maxHP));
+            PrintUtil.specialCyan(String.format("%-8s : +%d → %d%n", "⚔️ ATK", (baseAttack - oldAtk), attack));
+            PrintUtil.specialCyan(String.format("%-8s  : +%d → %d%n", "🛡️ DEF", (baseDefense - oldDef), defense));
             PrintUtil.hr();
             System.out.println();
             PrintUtil.pause(800);

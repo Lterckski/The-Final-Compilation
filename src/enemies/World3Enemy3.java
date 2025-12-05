@@ -11,7 +11,7 @@ public class World3Enemy3 extends Enemy {
     public World3Enemy3() { super("Obsidian Crusher", 2099, 48, 100); }
 
     public void magmaSlam(Character target) {
-        PrintUtil.type(ColorUtil.boldBrightRed("                                                          \n" +
+        PrintUtil.print(ColorUtil.boldBrightRed("                                                          \n" +
                 "            . ::++++**+=-:..                              \n" +
                 "        .   .-==+*- =-          .                         \n" +
                 "      . :=%%#++-:..-+=-.                                  \n" +
@@ -97,6 +97,6 @@ public class World3Enemy3 extends Enemy {
 
     @Override
     public int rewardExp(){
-        return RandomUtil.range(1057,1107);
+        return RandomUtil.range(1650,1700);
     }
 }

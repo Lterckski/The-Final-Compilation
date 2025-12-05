@@ -13,7 +13,7 @@ public class World2Miniboss1 extends Enemy{
     }
 
     public void shacklingChains(Character target){
-        PrintUtil.type(ColorUtil.boldBrightRed("                                                          \n" +
+        PrintUtil.print(ColorUtil.boldBrightRed("                                                          \n" +
                 "                     .-:::.-=-:-=+=:.                     \n" +
                 "                   =+-: .:. .+=  :=+===                   \n" +
                 "                 :: .::--:  @@%*=:. =- :=-.               \n" +
@@ -73,7 +73,7 @@ public class World2Miniboss1 extends Enemy{
     }
 
     public void tormentingLash(Character target){
-        PrintUtil.type(ColorUtil.boldBrightRed("                                                          \n" +
+        PrintUtil.print(ColorUtil.boldBrightRed("                                                          \n" +
                 "                                   -#*##-                 \n" +
                 "                .*+::==           =-    *#                \n" +
                 "               -#.    -.          -.     #+               \n" +
@@ -254,7 +254,5 @@ public class World2Miniboss1 extends Enemy{
     }
 
     @Override
-    public int rewardExp(){
-        return 1833;
-    }
+    public int rewardExp(){return RandomUtil.range(3600,4100);}
 }

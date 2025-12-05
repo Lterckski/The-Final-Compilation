@@ -33,7 +33,7 @@ public class Epilogue {
         System.out.println();
         PrintUtil.pause(1000);
 
-        PrintUtil.type(
+        PrintUtil.print(
                 "With your last strike, the tower collapses. The Stones shatter. Light swallows everything.\n\n" +
                         "You jolt awake. Back in the lab. The CodeChum login screen still waits.\n" +
                         "The timer blinks: 00:00:01. Not a single problem solved.\n\n" +

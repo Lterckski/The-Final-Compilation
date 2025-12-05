@@ -11,7 +11,7 @@ public class World3Enemy4 extends Enemy {
     public World3Enemy4() { super("Soulflayer Gargoyle", 2293, 48, 90); }
 
     public void soulScream(Character target) {
-        PrintUtil.type(ColorUtil.boldBrightRed("                                                          \n" +
+        PrintUtil.print(ColorUtil.boldBrightRed("                                                          \n" +
                 "                                                          \n" +
                 ".:-==+==-:.      -:                       ..              \n" +
                 "####%%%%@@%###++*:                       --.              \n" +
@@ -102,6 +102,6 @@ public class World3Enemy4 extends Enemy {
 
     @Override
     public int rewardExp(){
-        return RandomUtil.range(596,647);
+        return RandomUtil.range(930,970);
     }
 }

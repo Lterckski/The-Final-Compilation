@@ -1,12 +1,9 @@
 package characters;
 
-import enemies.Enemy;
 import utils.ColorUtil;
 import utils.InputUtil;
 import utils.PrintUtil;
 import utils.RandomUtil;
-
-import java.awt.*;
 
 public class Simon extends Character {
 
@@ -85,7 +82,7 @@ public class Simon extends Character {
 
     // Skill 1 – Fireball
     public void fireball(Character target) {
-        PrintUtil.type(ColorUtil.boldBrightGreen("                                                          \n" +
+        PrintUtil.print(ColorUtil.boldBrightGreen("                                                          \n" +
                 "                            %@*           :.              \n" +
                 "                            -@@@+     :+-  .:             \n" +
                 "              .+:           @@@@#.   :@%-...:.            \n" +
@@ -141,7 +138,7 @@ public class Simon extends Character {
 
     // Skill 2 – Ice Prison
     public void icePrison(Character target) {
-        PrintUtil.type(ColorUtil.boldBrightGreen("                                                          \n" +
+        PrintUtil.print(ColorUtil.boldBrightGreen("                                                          \n" +
                 "                         ..                               \n" +
                 "                        ...                               \n" +
                 "                            %@*          ...              \n" +
@@ -197,7 +194,7 @@ public class Simon extends Character {
 
     // Ultimate – Meteor Storm
     public void meteorStorm(Character target) {
-        PrintUtil.type(ColorUtil.boldBrightGreen("                                                          \n" +
+        PrintUtil.print(ColorUtil.boldBrightGreen("                                                          \n" +
                 "                        ..  :.  .. ..                     \n" +
                 "                   .:.                  .:.               \n" +
                 "                .                       ..                \n" +
@@ -277,7 +274,7 @@ public class Simon extends Character {
             System.out.println(ColorUtil.boldBrightGreen("[2]") + " " + ColorUtil.green("❄️ Skill 2   -  Ice Prison (💧 25 Mana)"));
             System.out.println(ColorUtil.boldBrightGreen("[3]") + " " + ColorUtil.green("🌋 Ultimate  -  Meteor Storm (💧 40 Mana)"
                     + (ultimateCounter > 0 ? " " + ColorUtil.boldBrightRed("❌ Cooldown: " + ultimateCounter + " turns") : "")));
-            System.out.println(ColorUtil.boldBrightGreen("[4]") + " " + ColorUtil.green("\uD83D\uDEE1\uFE0F Skip Turn - Restore 10% of Max HP and 30 Mana"));
+            System.out.println(ColorUtil.boldBrightGreen("[4]") + " " + ColorUtil.green("\uD83D\uDEE1\uFE0F Skip Turn -  Restore 10% of Max HP and 30 Mana"));
             System.out.println(ColorUtil.boldBrightGreen("[5]") + " " + ColorUtil.green("📜 Show Menu"));
             System.out.print(ColorUtil.boldBrightWhite("Choose your action: "));
 

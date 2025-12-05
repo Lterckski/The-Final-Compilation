@@ -1,7 +1,6 @@
 package battle;
 
 import characters.Character;
-import enemies.Enemy;
 import enemies.FinalBoss;
 import utils.ColorUtil;
 import utils.InputUtil;
@@ -260,7 +259,7 @@ public class Battle {
     public void gameOver() {
         PrintUtil.line();
         System.out.println("⚔️ You have been defeated in battle...");
-        PrintUtil.type("""
+        PrintUtil.print("""
         💀 Darkness overwhelms you...
         The battlefield falls silent, your vision fades,
         and the echoes of your struggles vanish into the void.

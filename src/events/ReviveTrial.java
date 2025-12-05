@@ -9,7 +9,7 @@ public class ReviveTrial {
     public static boolean run(Character player) {
 
         PrintUtil.title("Necromancer's Java Trial");
-        PrintUtil.type("""
+        PrintUtil.print("""
                 Your vision fades... the last strike echoes in your ears.
                 As darkness closes in, a distorted whisper pierces the void:
                 
@@ -42,7 +42,7 @@ public class ReviveTrial {
         PrintUtil.line();
 
         if (correct && withinTime) {
-            PrintUtil.type("""
+            PrintUtil.print("""
                     ✅ CORRECT.
                     A warm surge pulses through your body as the voice mutters:
                     "You understand increments... you shall rise again."
@@ -53,14 +53,14 @@ public class ReviveTrial {
             return true;
 
         } else if (!withinTime) {
-            PrintUtil.type("""
+            PrintUtil.print("""
                     ⏱ TOO SLOW.
                     The whisper fades:
                     "In both battle and code... hesitation is death."
                     """);
 
         } else {
-            PrintUtil.type("""
+            PrintUtil.print("""
                     ❌ INCORRECT.
                     The echo sighs:
                     "Study your operators, student. Not even death will debug your mistakes."

@@ -68,7 +68,7 @@ public class Null extends Character {
 
     // Skill 1 – Direct Hit
     private void directHit(Character target) {
-        PrintUtil.type(ColorUtil.boldBrightGreen("                                                          \n" +
+        PrintUtil.print(ColorUtil.boldBrightGreen("                                                          \n" +
                 "                      .. .-..                             \n" +
                 "                     . . .:=-  .    .                     \n" +
                 "                   .-+ .::=--:+  .                        \n" +
@@ -116,7 +116,7 @@ public class Null extends Character {
 
     // Skill 2 – Obliterate
     private void obliterate(Character target) {
-        PrintUtil.type(ColorUtil.boldBrightGreen("                                                          \n" +
+        PrintUtil.print(ColorUtil.boldBrightGreen("                                                          \n" +
                 "                          .:.                             \n" +
                 "                        .#@@@#                            \n" +
                 "                        *@@@@@+                           \n" +
@@ -165,7 +165,7 @@ public class Null extends Character {
 
     // Ultimate – World End
     private void worldEnd(Character target) {
-        PrintUtil.type(ColorUtil.boldBrightGreen("                                                          \n" +
+        PrintUtil.print(ColorUtil.boldBrightGreen("                                                          \n" +
                 "                                                          \n" +
                 "           .=:                             :-.            \n" +
                 "           -@%%%#*+-.               .-+*##%%@-            \n" +

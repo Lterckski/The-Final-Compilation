@@ -10,7 +10,6 @@ public class InputUtil {
         PrintUtil.pause(800);
         System.out.print(ColorUtil.brightGray("[Press ENTER to continue]"));
 
-
         scan.nextLine();
     }
 
