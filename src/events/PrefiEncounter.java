@@ -25,7 +25,7 @@ public class PrefiEncounter {
 
         if (!passed) {
             PrintUtil.line();
-            PrintUtil.type("""
+            PrintUtil.print("""
                     ❌ The trial ends.
 
                     The figure's voice echoes:
@@ -48,7 +48,7 @@ public class PrefiEncounter {
     private void rewardLegendary(Character player) {
         System.out.println();
         System.out.println(ColorUtil.boldBrightYellow("────────────────────────────────────────────────────────────────────"));
-        PrintUtil.type(ColorUtil.boldBrightYellow("""
+        PrintUtil.print(ColorUtil.boldBrightYellow("""
             ✨ Impressive… you demonstrated complete command of OOP.
 
             The figure raises both hands.
@@ -63,7 +63,7 @@ public class PrefiEncounter {
             case "Archer"    -> legendaryWeapon = Bow.GOLDEN_TALON;
             case "Mage"      -> legendaryWeapon = Staff.CHRONOMANCER_STAFF;
             default -> {
-                PrintUtil.type("❌ ERROR: Unknown class type.");
+                legendaryWeapon = Staff.CHRONOMANCER_STAFF;
                 return;
             }
         }
@@ -107,7 +107,7 @@ public class PrefiEncounter {
             int choice = InputUtil.scanInput();
 
             if (choice == 3) {
-                PrintUtil.type(ColorUtil.gray("""
+                PrintUtil.print(ColorUtil.gray("""
                     You slowly back away from the relics...
                     The violet flames dim, disappointed.
                 """));
@@ -115,7 +115,7 @@ public class PrefiEncounter {
             }
 
             if (choice != 1 && choice != 2) {
-                PrintUtil.type(ColorUtil.red("❌ Invalid choice. Try again.\n"));
+                PrintUtil.print(ColorUtil.red("❌ Invalid choice. Try again.\n"));
                 continue;
             }
 
@@ -151,23 +151,23 @@ public class PrefiEncounter {
                     case 2 -> {
                         if (choseWeapon) {
                             legendaryWeapon.equip(player);
-                            PrintUtil.type(ColorUtil.boldBrightGreen("""
+                            PrintUtil.print(ColorUtil.boldBrightGreen("""
                                 ⚔️ You grasp the Legendary Weapon...
                                 It hums with ancient cosmic power.
                             """));
                             PrintUtil.pause(700);
-                            PrintUtil.type(ColorUtil.boldBrightMagenta("""
+                            PrintUtil.print(ColorUtil.boldBrightMagenta("""
                                 🛡️ The Legendary Armor glows faintly...
                                 its form crumbling into violet ashes.
                             """));
                         } else {
                             legendaryArmor.equip(player);
-                            PrintUtil.type(ColorUtil.boldBrightGreen("""
+                            PrintUtil.print(ColorUtil.boldBrightGreen("""
                                 🛡️ You claim the Legendary Armor.
                                 A warm celestial aura surrounds you...
                             """));
                             PrintUtil.pause(700);
-                            PrintUtil.type(ColorUtil.boldBrightRed("""
+                            PrintUtil.print(ColorUtil.boldBrightRed("""
                                 ⚔️ The Legendary Weapon emits a final chime—
                                 then shatters into golden dust.
                             """));
@@ -179,7 +179,7 @@ public class PrefiEncounter {
 
                     case 3 -> confirming = false;
 
-                    default -> PrintUtil.type(ColorUtil.red("❌ Invalid option.\n"));
+                    default -> PrintUtil.print(ColorUtil.red("❌ Invalid option.\n"));
                 }
             }
         }
@@ -250,7 +250,7 @@ public class PrefiEncounter {
 
         if (answer == null) {
             PrintUtil.line();
-            PrintUtil.type(ColorUtil.red("""
+            PrintUtil.print(ColorUtil.red("""
                 ⏱ TIME'S UP!
 
                 The old master glares at you:
@@ -261,7 +261,7 @@ public class PrefiEncounter {
 
         if (answer != correctAnswer) {
             PrintUtil.line();
-            PrintUtil.type(ColorUtil.red("""
+            PrintUtil.print(ColorUtil.red("""
                 ❌ WRONG ANSWER.
 
                 The figure sighs:
@@ -270,7 +270,7 @@ public class PrefiEncounter {
             return false;
         }
 
-        PrintUtil.type(ColorUtil.green("✅ CORRECT!"));
+        PrintUtil.print(ColorUtil.green("✅ CORRECT!"));
         return true;
     }
 

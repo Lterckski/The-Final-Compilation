@@ -14,7 +14,7 @@ public class World1Enemy4 extends Enemy {
 
     // Skill: Screech (6–8 damage, chance to confuse 1 turn)
     public void screech(Character target) {
-        PrintUtil.type(ColorUtil.boldBrightRed("                                                          \n" +
+        PrintUtil.print(ColorUtil.boldBrightRed("                                                          \n" +
                 "                                                          \n" +
                 "                                                          \n" +
                 "         .*@@@@%*.                                        \n" +

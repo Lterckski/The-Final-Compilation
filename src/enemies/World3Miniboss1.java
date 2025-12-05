@@ -9,8 +9,6 @@ import utils.ColorUtil;
 import utils.PrintUtil;
 import utils.RandomUtil;
 
-import java.awt.*;
-
 public class World3Miniboss1 extends Enemy {
 
     public World3Miniboss1() { super("Zyrryl", 2845, 67, 170); }
@@ -42,7 +40,7 @@ public class World3Miniboss1 extends Enemy {
 
 
     public void graveCleaver(Character target) {
-        PrintUtil.type(ColorUtil.boldBrightRed("                                                          \n" +
+        PrintUtil.print(ColorUtil.boldBrightRed("                                                          \n" +
                 "             :-:           . .                            \n" +
                 "             -+-          .*-#:                           \n" +
                 "              :-          *@*@#.                          \n" +
@@ -80,7 +78,7 @@ public class World3Miniboss1 extends Enemy {
     }
 
     public void boneShield() {
-        PrintUtil.type(ColorUtil.boldBrightRed("                                                          \n" +
+        PrintUtil.print(ColorUtil.boldBrightRed("                                                          \n" +
                 "                                                          \n" +
                 "                            +.                            \n" +
                 "                            #@                            \n" +

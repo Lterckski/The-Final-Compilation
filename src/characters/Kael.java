@@ -1,13 +1,10 @@
 package characters;
 
-import enemies.Enemy;
 import enemies.FinalBoss;
 import utils.ColorUtil;
 import utils.InputUtil;
 import utils.PrintUtil;
 import utils.RandomUtil;
-
-import java.awt.*;
 
 public class Kael extends  Character{      // 15% crit chance
 
@@ -89,7 +86,7 @@ public class Kael extends  Character{      // 15% crit chance
 
     // Skill 1 - Blade Rush
     public void bladeRush(Character target){
-        PrintUtil.type(ColorUtil.boldBrightGreen("                                                          \n" +
+        PrintUtil.print(ColorUtil.boldBrightGreen("                                                          \n" +
                 "                .........                                 \n" +
                 "            .:-:.::-::...                                 \n" +
                 "         ..:..::.                                         \n" +
@@ -139,7 +136,7 @@ public class Kael extends  Character{      // 15% crit chance
 
     // Skill 2 - Piercing Slash
     public void piercingSlash(Character target){
-        PrintUtil.type(ColorUtil.boldBrightGreen("                                                          \n" +
+        PrintUtil.print(ColorUtil.boldBrightGreen("                                                          \n" +
                 "                               ...                        \n" +
                 "                              .=@@*.                      \n" +
                 "                              :@@*+=:                     \n" +
@@ -187,7 +184,7 @@ public class Kael extends  Character{      // 15% crit chance
 
     //Ultimate - Eternal Cross Slash
     public void eternalCrossSlash(Character target){
-        PrintUtil.type(ColorUtil.boldBrightGreen("                                                          \n" +
+        PrintUtil.print(ColorUtil.boldBrightGreen("                                                          \n" +
                 "                                ..:.                      \n" +
                 "             .:--:   ::::::--:        :.                  \n" +
                 "          .:.   .--.    ..   -=::::--- .                  \n" +

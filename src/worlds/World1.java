@@ -3,35 +3,32 @@ package worlds;
 import enemies.*;
 import battle.Battle;
 import characters.Character;
-import utils.ColorUtil;
 import utils.InputUtil;
 import utils.PrintUtil;
-
-import java.sql.SQLOutput;
 
 public class World1 {
 
     public void run(Character player) {
         PrintUtil.pause(2000);
         System.out.println();
-        System.out.println("                                                                               ╦ ╦╔═╗╦═╗╦  ╔╦╗   ╗");
-        System.out.println("╔═════════════════════════════════════════════════════════════════════════════ ║║║║ ║╠╦╝║   ║║   ║ ════════════════════════════════════════════════════════════════════════════════════╗");
-        System.out.println("                                                                               ╚╩╝╚═╝╩╚═╩═╝═╩╝   ╩");
+        PrintUtil.title("                                                                               ╦ ╦╔═╗╦═╗╦  ╔╦╗   ╗");
+        PrintUtil.title("╔═════════════════════════════════════════════════════════════════════════════ ║║║║ ║╠╦╝║   ║║   ║ ════════════════════════════════════════════════════════════════════════════════════╗");
+        PrintUtil.title("                                                                               ╚╩╝╚═╝╩╚═╩═╝═╩╝   ╩");
         System.out.println();
-        System.out.println(" ▄▀▀▀█▀▀▄  ▄▀▀▄ ▄▄   ▄▀▀█▄▄▄▄      ▄▀▀▀█▄    ▄▀▀▀▀▄   ▄▀▀▄▀▀▀▄  ▄▀▀█▄▄▄▄  ▄▀▀▀▀▄  ▄▀▀▀█▀▀▄      ▄▀▀▀▀▄   ▄▀▀▀█▄        ▄▀▀▀▀▄  ▄▀▀█▀▄   ▄▀▀▀▀▄     ▄▀▀█▄▄▄▄  ▄▀▀▄ ▀▄  ▄▀▄▄▄▄   ▄▀▀█▄▄▄▄ \n" +
-                "█    █  ▐ █  █   ▄▀ ▐  ▄▀   ▐     █  ▄▀  ▀▄ █      █ █   █   █ ▐  ▄▀   ▐ █ █   ▐ █    █  ▐     █      █ █  ▄▀  ▀▄     █ █   ▐ █   █  █ █    █     ▐  ▄▀   ▐ █  █ █ █ █ █    ▌ ▐  ▄▀   ▐ \n" +
-                "▐   █     ▐  █▄▄▄█    █▄▄▄▄▄      ▐ █▄▄▄▄   █      █ ▐  █▀▀█▀    █▄▄▄▄▄     ▀▄   ▐   █         █      █ ▐ █▄▄▄▄          ▀▄   ▐   █  ▐ ▐    █       █▄▄▄▄▄  ▐  █  ▀█ ▐ █        █▄▄▄▄▄  \n" +
-                "   █         █   █    █    ▌       █    ▐   ▀▄    ▄▀  ▄▀    █    █    ▌  ▀▄   █     █          ▀▄    ▄▀  █    ▐       ▀▄   █      █        █        █    ▌    █   █    █        █    ▌  \n" +
-                " ▄▀         ▄▀  ▄▀   ▄▀▄▄▄▄        █          ▀▀▀▀   █     █    ▄▀▄▄▄▄    █▀▀▀    ▄▀             ▀▀▀▀    █             █▀▀▀    ▄▀▀▀▀▀▄   ▄▀▄▄▄▄▄▄▀ ▄▀▄▄▄▄   ▄▀   █    ▄▀▄▄▄▄▀  ▄▀▄▄▄▄   \n" +
-                "█          █   █     █    ▐       █                  ▐     ▐    █    ▐    ▐      █                      █              ▐      █       █  █         █    ▐   █    ▐   █     ▐   █    ▐   \n" +
-                "▐          ▐   ▐     ▐            ▐                             ▐                ▐                      ▐                     ▐       ▐  ▐         ▐        ▐        ▐         ▐        ");
+        PrintUtil.title(" ▄▀▀▀█▀▀▄  ▄▀▀▄ ▄▄   ▄▀▀█▄▄▄▄      ▄▀▀▀█▄    ▄▀▀▀▀▄   ▄▀▀▄▀▀▀▄  ▄▀▀█▄▄▄▄  ▄▀▀▀▀▄  ▄▀▀▀█▀▀▄      ▄▀▀▀▀▄   ▄▀▀▀█▄        ▄▀▀▀▀▄  ▄▀▀█▀▄   ▄▀▀▀▀▄     ▄▀▀█▄▄▄▄  ▄▀▀▄ ▀▄  ▄▀▄▄▄▄   ▄▀▀█▄▄▄▄ \n" +
+                           "█    █  ▐ █  █   ▄▀ ▐  ▄▀   ▐     █  ▄▀  ▀▄ █      █ █   █   █ ▐  ▄▀   ▐ █ █   ▐ █    █  ▐     █      █ █  ▄▀  ▀▄     █ █   ▐ █   █  █ █    █     ▐  ▄▀   ▐ █  █ █ █ █ █    ▌ ▐  ▄▀   ▐ \n" +
+                           "▐   █     ▐  █▄▄▄█    █▄▄▄▄▄      ▐ █▄▄▄▄   █      █ ▐  █▀▀█▀    █▄▄▄▄▄     ▀▄   ▐   █         █      █ ▐ █▄▄▄▄          ▀▄   ▐   █  ▐ ▐    █       █▄▄▄▄▄  ▐  █  ▀█ ▐ █        █▄▄▄▄▄  \n" +
+                           "   █         █   █    █    ▌       █    ▐   ▀▄    ▄▀  ▄▀    █    █    ▌  ▀▄   █     █          ▀▄    ▄▀  █    ▐       ▀▄   █      █        █        █    ▌    █   █    █        █    ▌  \n" +
+                           " ▄▀         ▄▀  ▄▀   ▄▀▄▄▄▄        █          ▀▀▀▀   █     █    ▄▀▄▄▄▄    █▀▀▀    ▄▀             ▀▀▀▀    █             █▀▀▀    ▄▀▀▀▀▀▄   ▄▀▄▄▄▄▄▄▀ ▄▀▄▄▄▄   ▄▀   █    ▄▀▄▄▄▄▀  ▄▀▄▄▄▄   \n" +
+                           "█          █   █     █    ▐       █                  ▐     ▐    █    ▐    ▐      █                      █              ▐      █       █  █         █    ▐   █    ▐   █     ▐   █    ▐   \n" +
+                           "▐          ▐   ▐     ▐            ▐                             ▐                ▐                      ▐                     ▐       ▐  ▐         ▐        ▐        ▐         ▐        ");
         System.out.println();
-        System.out.println("╚══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝");
+        PrintUtil.title("╚══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝");
         System.out.println();
 
-        System.out.println("==================================================================================================================================================");
+        System.out.println("══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════");
         System.out.println();
-        PrintUtil.type("""
+        PrintUtil.story("""
                 You wake up in a dead forest. Bark is gray, leaves crunch to ash, and a cold mist coils between skeletal trees.
                 Silence presses from every side—watching, waiting.
                 A voice: "Dong…"
@@ -40,37 +37,38 @@ public class World1 {
                 the  three stones of life that hold this world together to defeat him." he says.   
                 "Only then will your path home reveal itself."
                 """);
-        System.out.println("==================================================================================================================================================");
+        System.out.println("══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════");
         InputUtil.pressEnterToContinue();
 
         // -------------------- Rotfang Wolves --------------------
 
         PrintUtil.line();
-        PrintUtil.type("""
+        PrintUtil.story("""
                 ⚔️ Suddenly, the ground trembles as three Rotfang Wolves emerge from the shadows!
                 Their glowing red eyes fixate on you, teeth bared and claws digging into the earth.
                 Prepare yourself for a ferocious battle!
                 """);
 
         PrintUtil.pause(1500);
-        System.out.println("                                                           ");
-        System.out.println("                                  *%#                      ");
-        System.out.println("                               *@@@@%                      ");
-        System.out.println("                               *@@@@#                      ");
-        System.out.println("                              %@@@@@@       %  %           ");
-        System.out.println("                           .%@@@@@@@#      .%@@%           ");
-        System.out.println("        +#-            =%@@@@@@@@@@@.     .@@@@%           ");
-        System.out.println("       =%@@@@#=:     #@@@@@@@@@@@@@*   .=%@@@@%+           ");
-        System.out.println("      :+=@@@@@@@@@@##@@@@@@@@@@@@@%+%@@@@@@@@@%            ");
-        System.out.println("          +@@@@@@@%#*@@%%%#%*@@##*+%@@@@@@@@@@.            ");
-        System.out.println("            =@@@@*%@*@@*#@@. @% %%*%@*@###@#%:             ");
-        System.out.println("             #::*%@*%**=##*@=+% *#*#: @= -+.*              ");
-        System.out.println("            --  =  #  +-++=  =% *=-  *.   +.-              ");
-        System.out.println("           --  .-  @ =:  +*   @-=#:   *   +:=              ");
+        PrintUtil.enemyEncounter("                                                           ");
+        PrintUtil.enemyEncounter("                                  *%#                      ");
+        PrintUtil.enemyEncounter("                               *@@@@%                      ");
+        PrintUtil.enemyEncounter("                               *@@@@#                      ");
+        PrintUtil.enemyEncounter("                              %@@@@@@       %  %           ");
+        PrintUtil.enemyEncounter("                           .%@@@@@@@#      .%@@%           ");
+        PrintUtil.enemyEncounter("        +#-            =%@@@@@@@@@@@.     .@@@@%           ");
+        PrintUtil.enemyEncounter("       =%@@@@#=:     #@@@@@@@@@@@@@*   .=%@@@@%+           ");
+        PrintUtil.enemyEncounter("      :+=@@@@@@@@@@##@@@@@@@@@@@@@%+%@@@@@@@@@%            ");
+        PrintUtil.enemyEncounter("          +@@@@@@@%#*@@%%%#%*@@##*+%@@@@@@@@@@.            ");
+        PrintUtil.enemyEncounter("            =@@@@*%@*@@*#@@. @% %%*%@*@###@#%:             ");
+        PrintUtil.enemyEncounter("             #::*%@*%**=##*@=+% *#*#: @= -+.*              ");
+        PrintUtil.enemyEncounter("            --  =  #  +-++=  =% *=-  *.   +.-              ");
+        PrintUtil.enemyEncounter("           --  .-  @ =:  +*   @-=#:   *   +:=              ");
+        PrintUtil.pause(600);
         System.out.println();
 
 
-        PrintUtil.type(ColorUtil.boldBrightMagenta(("🎯 Objective: Defeat 3 Rotfang Wolves!").toUpperCase()));
+        PrintUtil.objective(("🎯 Objective: Defeat 3 Rotfang Wolves!"));
         InputUtil.pressEnterToContinue();
         PrintUtil.line();
 
@@ -84,13 +82,13 @@ public class World1 {
 
         for (int i = 1; i <= 3; i++) {
             PrintUtil.hr();
-            System.out.println("🐺 Rotfang Wolf " + i + " lunges at you!");
+            PrintUtil.enemyEncounter("🐺 Rotfang Wolf " + i + " lunges at you!");
             PrintUtil.hr();
             InputUtil.pressEnterToContinue();
 
             battle1.startBattle();
 
-            System.out.println("✅ You have defeated Wolf " + i + "!");
+            PrintUtil.enemyDefeated("✅ You have defeated Wolf " + i + "!");
             PrintUtil.line();
             enemy1.dropLoot(player);
 
@@ -101,7 +99,7 @@ public class World1 {
         }
 
         PrintUtil.line();
-        PrintUtil.type("""
+        PrintUtil.victory("""
                 🎉 Victory! The last of the Rotfang Wolves collapses to the ground.
                 The forest falls silent, and you catch your breath, victorious.
                 """);
@@ -112,7 +110,7 @@ public class World1 {
 
         // -------------------- Shade Sprites --------------------
         PrintUtil.line();
-        PrintUtil.type("""
+        PrintUtil.story("""
                 🌫️ The mist thickens... shadows twist into vague shapes.
                 From the darkness, two Shade Sprites materialize — faint outlines of faces flickering in and out of sight.
                 Their whispers echo through your mind like broken static.
@@ -120,27 +118,27 @@ public class World1 {
 
         PrintUtil.pause(1500);
         System.out.println("                                                          ");
-        System.out.println("             .+@+.                                        ");
-        System.out.println("             -%@#:            :                           ");
-        System.out.println("            -@@@@%:           .+    .+@=     =:           ");
-        System.out.println("           .*@@@@@+        .:..+-:.-#@@@*:.::-.:=:.       ");
-        System.out.println("           -@@@@@@@:       ..+++#%@@@@@@@@@%*+*+          ");
-        System.out.println("          .%@@@@@@@#.     :.-*+*==#*#@@@***===--=:        ");
-        System.out.println("          =*#@@@@@+*-          :+=.-%@@@#::==.            ");
-        System.out.println("         :#-=@@@@@--#.        .+:.+@@@@@@%-.--            ");
-        System.out.println("          . =@@@@@: .          .=*@@@@@@@@@#+-.           ");
-        System.out.println("            =@@@@%:            :--%@@@@@@@#*=::           ");
-        System.out.println("            -%@@@%:            :.-+#@@@@@%=-:             ");
-        System.out.println("            :+%@@+:              ::-#@@@+--               ");
-        System.out.println("            .=*%#=.                .=%%%+.                ");
-        System.out.println("             :-*+-                  .-%+                  ");
-        System.out.println("              .=-.                   .+                   ");
-        System.out.println("              .-.                     .                   ");
-        System.out.println("               .                                          ");
-        System.out.println("                                                          ");
+        PrintUtil.enemyEncounter("             .+@+.                                        ");
+        PrintUtil.enemyEncounter("             -%@#:            :                           ");
+        PrintUtil.enemyEncounter("            -@@@@%:           .+    .+@=     =:           ");
+        PrintUtil.enemyEncounter("           .*@@@@@+        .:..+-:.-#@@@*:.::-.:=:.       ");
+        PrintUtil.enemyEncounter("           -@@@@@@@:       ..+++#%@@@@@@@@@%*+*+          ");
+        PrintUtil.enemyEncounter("          .%@@@@@@@#.     :.-*+*==#*#@@@***===--=:        ");
+        PrintUtil.enemyEncounter("          =*#@@@@@+*-          :+=.-%@@@#::==.            ");
+        PrintUtil.enemyEncounter("         :#-=@@@@@--#.        .+:.+@@@@@@%-.--            ");
+        PrintUtil.enemyEncounter("          . =@@@@@: .          .=*@@@@@@@@@#+-.           ");
+        PrintUtil.enemyEncounter("            =@@@@%:            :--%@@@@@@@#*=::           ");
+        PrintUtil.enemyEncounter("            -%@@@%:            :.-+#@@@@@%=-:             ");
+        PrintUtil.enemyEncounter("            :+%@@+:              ::-#@@@+--               ");
+        PrintUtil.enemyEncounter("            .=*%#=.                .=%%%+.                ");
+        PrintUtil.enemyEncounter("             :-*+-                  .-%+                  ");
+        PrintUtil.enemyEncounter("              .=-.                   .+                   ");
+        PrintUtil.enemyEncounter("              .-.                     .                   ");
+        PrintUtil.enemyEncounter("               .                                          ");
+        PrintUtil.enemyEncounter("                                                          ");
         System.out.println("                                                          ");
 
-        PrintUtil.type(ColorUtil.boldBrightMagenta((("🎯 Objective: Defeat 2 Shade Sprites!").toUpperCase())));
+        PrintUtil.objective(("🎯 Objective: Defeat 2 Shade Sprites!"));
         InputUtil.pressEnterToContinue();
         PrintUtil.line();
 
@@ -154,13 +152,13 @@ public class World1 {
 
         for (int i = 1; i <= 2; i++) {
             PrintUtil.hr();
-            System.out.println("👻 Shade Sprite " + i + " phases through the air toward you!");
+            PrintUtil.enemyEncounter("👻 Shade Sprite " + i + " phases through the air toward you!");
             PrintUtil.hr();
             InputUtil.pressEnterToContinue();
 
             battle2.startBattle();
 
-            System.out.println("✅ You dispelled Shade Sprite " + i + "!");
+            PrintUtil.enemyDefeated("✅ You dispelled Shade Sprite " + i + "!");
             PrintUtil.line();
             enemy2.dropLoot(player);
 
@@ -171,7 +169,7 @@ public class World1 {
         }
 
         PrintUtil.line();
-        PrintUtil.type("""
+        PrintUtil.victory("""
                 🌌 Silence returns. The mist recedes, revealing faint lights hovering like stars among the trees.
                 You feel your strength returning after overcoming the whispering darkness.
                 """);
@@ -182,7 +180,7 @@ public class World1 {
 
         // -------------------- Dreadbark Treants --------------------
         PrintUtil.line();
-        PrintUtil.type("""
+        PrintUtil.story("""
                 🌲 The ground rumbles... massive roots burst from beneath your feet!
                 From the fog rise two Dreadbark Treants — ancient trees corrupted by decay.
                 Their hollow eyes glow with green fire as they creak and move toward you.
@@ -190,35 +188,35 @@ public class World1 {
 
         PrintUtil.pause(1500);
         System.out.println();
-        System.out.println("            :+:    .=:                ...:+-:.            ");
-        System.out.println("           ==*::.::-+.:              .:=+*-:..-=:-        ");
-        System.out.println("          -=##*+#*=%=*-             .=+*=+##*#=-.-        ");
-        System.out.println("       ++=.:..-#%%#..  ::          .  -:*#@%#@%*. .       ");
-        System.out.println("       .-#:=*##%@@#+*===-            :-=.:#%@%-:.   :*-   ");
-        System.out.println("      :+*=@@@@@@%%%@@@#*-               :##@@%%.   -#%#-  ");
-        System.out.println("       --+@@@@@@%%%@@@*:             ::*@%%%%%%%-. :*#+.  ");
-        System.out.println("        :@@@#@@@@@@@%@#:            .-*@@@@%@@%@%-  :=.   ");
-        System.out.println("      ++@%-==#@@@@@# +%#=.        .:=#%*%+#@@@*%***-=-    ");
-        System.out.println("     :#@%= ::*%@@@@+..=@@=.           =#:.-%@*:=*:  :-    ");
-        System.out.println("    .-#@#- ..#@@@@@%= .*%#:           %# -#@@@+.*%-.:.    ");
-        System.out.println("     =%+..  .#@@@@@@#+*-:#*.        .:%: +%%@%#. =:##:    ");
-        System.out.println("     +@=   :=@@@@@@@@=.-*@@+         -+  =@%%%#. : :+.    ");
-        System.out.println("    .*%*= .=%@%=*%=@@%=  =%%#+-:.    =%: +@%#%#. . :=     ");
-        System.out.println("    -%- - -*@%=:+*.=@@*   : :%@%%%#: *:- +@%%%%.   .-     ");
-        System.out.println("    .*#-  .@@*  :=.:*@%=  .   -+@@@- :=..%%%%@@.   ::     ");
-        System.out.println("     :.   @@@+  :  *@@*        .-:      =@%@@@@=   -      ");
-        System.out.println("     .    @@#.     .%@#                 #@@%@%%%. .-      ");
-        System.out.println("        :%@#..     ..@@=              :*@@%@@@@@=:.-      ");
-        System.out.println("       :*@@*         %@@=        -=. -*#@%@@@@@@*-.- --.  ");
-        System.out.println("  : :#@@@@@@*:  .  -+@@@@@#+. .  -=-*@@@@@@@%@@@@%+#===.  ");
-        System.out.println("+*%@@@@@@@@@@@@@@@@@@@@@@@@@@@#*#%@@@@%@@@@@@@@@@@@@@@@%*+");
-        System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
-        System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
-        System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*#@@");
-        System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+        PrintUtil.enemyEncounter("            :+:    .=:                ...:+-:.            ");
+        PrintUtil.enemyEncounter("           ==*::.::-+.:              .:=+*-:..-=:-        ");
+        PrintUtil.enemyEncounter("          -=##*+#*=%=*-             .=+*=+##*#=-.-        ");
+        PrintUtil.enemyEncounter("       ++=.:..-#%%#..  ::          .  -:*#@%#@%*. .       ");
+        PrintUtil.enemyEncounter("       .-#:=*##%@@#+*===-            :-=.:#%@%-:.   :*-   ");
+        PrintUtil.enemyEncounter("      :+*=@@@@@@%%%@@@#*-               :##@@%%.   -#%#-  ");
+        PrintUtil.enemyEncounter("       --+@@@@@@%%%@@@*:             ::*@%%%%%%%-. :*#+.  ");
+        PrintUtil.enemyEncounter("        :@@@#@@@@@@@%@#:            .-*@@@@%@@%@%-  :=.   ");
+        PrintUtil.enemyEncounter("      ++@%-==#@@@@@# +%#=.        .:=#%*%+#@@@*%***-=-    ");
+        PrintUtil.enemyEncounter("     :#@%= ::*%@@@@+..=@@=.           =#:.-%@*:=*:  :-    ");
+        PrintUtil.enemyEncounter("    .-#@#- ..#@@@@@%= .*%#:           %# -#@@@+.*%-.:.    ");
+        PrintUtil.enemyEncounter("     =%+..  .#@@@@@@#+*-:#*.        .:%: +%%@%#. =:##:    ");
+        PrintUtil.enemyEncounter("     +@=   :=@@@@@@@@=.-*@@+         -+  =@%%%#. : :+.    ");
+        PrintUtil.enemyEncounter("    .*%*= .=%@%=*%=@@%=  =%%#+-:.    =%: +@%#%#. . :=     ");
+        PrintUtil.enemyEncounter("    -%- - -*@%=:+*.=@@*   : :%@%%%#: *:- +@%%%%.   .-     ");
+        PrintUtil.enemyEncounter("    .*#-  .@@*  :=.:*@%=  .   -+@@@- :=..%%%%@@.   ::     ");
+        PrintUtil.enemyEncounter("     :.   @@@+  :  *@@*        .-:      =@%@@@@=   -      ");
+        PrintUtil.enemyEncounter("     .    @@#.     .%@#                 #@@%@%%%. .-      ");
+        PrintUtil.enemyEncounter("        :%@#..     ..@@=              :*@@%@@@@@=:.-      ");
+        PrintUtil.enemyEncounter("       :*@@*         %@@=        -=. -*#@%@@@@@@*-.- --.  ");
+        PrintUtil.enemyEncounter("  : :#@@@@@@*:  .  -+@@@@@#+. .  -=-*@@@@@@@%@@@@%+#===.  ");
+        PrintUtil.enemyEncounter("+*%@@@@@@@@@@@@@@@@@@@@@@@@@@@#*#%@@@@%@@@@@@@@@@@@@@@@%*+");
+        PrintUtil.enemyEncounter("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+        PrintUtil.enemyEncounter("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+        PrintUtil.enemyEncounter("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*#@@");
+        PrintUtil.enemyEncounter("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
         System.out.println();
 
-        PrintUtil.type(ColorUtil.boldBrightMagenta((("🎯 Objective: Defeat 2 Dreadbark Treants!").toUpperCase())));
+        PrintUtil.objective(("🎯 Objective: Defeat 2 Dreadbark Treants!"));
         InputUtil.pressEnterToContinue();
         PrintUtil.line();
 
@@ -232,13 +230,13 @@ public class World1 {
 
         for (int i = 1; i <= 2; i++) {
             PrintUtil.hr();
-            System.out.println("🌳 Dreadbark Treant " + i + " slams its massive arm down at you!");
+            PrintUtil.enemyEncounter("🌳 Dreadbark Treant " + i + " slams its massive arm down at you!");
             PrintUtil.hr();
             InputUtil.pressEnterToContinue();
 
             battle3.startBattle();
 
-            System.out.println("✅ You felled Dreadbark Treant " + i + "!");
+            PrintUtil.enemyDefeated("✅ You felled Dreadbark Treant " + i + "!");
             PrintUtil.line();
             enemy3.dropLoot(player);
 
@@ -249,7 +247,7 @@ public class World1 {
         }
 
         PrintUtil.line();
-        PrintUtil.type("""
+        PrintUtil.victory("""
                 🍃 The Treants collapse, their bark crumbling into soil.
                 Life stirs in the forest again — small sprouts rise where their bodies fell.
                 """);
@@ -260,7 +258,7 @@ public class World1 {
 
         // -------------------- Carrion Bats --------------------
         PrintUtil.line();
-        PrintUtil.type("""
+        PrintUtil.story("""
                 🦇 A shrill screech pierces the silence!
                 Four Carrion Bats dive from the canopy, their wings slicing through the fog.
                 The air reeks of rot as they circle you, ready to strike.
@@ -268,28 +266,28 @@ public class World1 {
 
         PrintUtil.pause(1500);
         System.out.println();
-        System.out.println("                         .-                                ");
-        System.out.println("                      .*@@-                                ");
-        System.out.println("                     -@@%-                                 ");
-        System.out.println("                  =*+@@*:                                 ");
-        System.out.println("          .+@@@@@@@@@%.                                    ");
-        System.out.println("         ..+##%#=-=%@+          .                          ");
-        System.out.println("                                :%%-                       ");
-        System.out.println("                                 -%@+                      ");
-        System.out.println("                                   =@@%::::.               ");
-        System.out.println("                    .-:            .#%**%@%%+.            ");
-        System.out.println("                     =@@*.                                 ");
-        System.out.println("                      -%@%=-:                              ");
-        System.out.println("                        .#@@%#%@@%#=                       ");
-        System.out.println("                         :#*-::+=:.                        ");
-        System.out.println("                                                          ");
-        System.out.println("                                     :%#:                  ");
-        System.out.println("                                       .+@@%#=.           ");
-        System.out.println("                                                          ");
-        System.out.println("                                                          ");
+        PrintUtil.enemyEncounter("                         .-                                ");
+        PrintUtil.enemyEncounter("                      .*@@-                                ");
+        PrintUtil.enemyEncounter("                     -@@%-                                 ");
+        PrintUtil.enemyEncounter("                  =*+@@*:                                 ");
+        PrintUtil.enemyEncounter("          .+@@@@@@@@@%.                                    ");
+        PrintUtil.enemyEncounter("         ..+##%#=-=%@+          .                          ");
+        PrintUtil.enemyEncounter("                                :%%-                       ");
+        PrintUtil.enemyEncounter("                                 -%@+                      ");
+        PrintUtil.enemyEncounter("                                   =@@%::::.               ");
+        PrintUtil.enemyEncounter("                    .-:            .#%**%@%%+.            ");
+        PrintUtil.enemyEncounter("                     =@@*.                                 ");
+        PrintUtil.enemyEncounter("                      -%@%=-:                              ");
+        PrintUtil.enemyEncounter("                        .#@@%#%@@%#=                       ");
+        PrintUtil.enemyEncounter("                         :#*-::+=:.                        ");
+        PrintUtil.enemyEncounter("                                                          ");
+        PrintUtil.enemyEncounter("                                     :%#:                  ");
+        PrintUtil.enemyEncounter("                                       .+@@%#=.           ");
+        PrintUtil.enemyEncounter("                                                          ");
+        PrintUtil.enemyEncounter("                                                          ");
         System.out.println();
 
-        PrintUtil.type(ColorUtil.boldBrightMagenta((("🎯 Objective: Defeat 4 Carrion Bats!").toUpperCase())));
+        PrintUtil.objective(("🎯 Objective: Defeat 4 Carrion Bats!"));
         InputUtil.pressEnterToContinue();
         PrintUtil.line();
 
@@ -303,13 +301,13 @@ public class World1 {
 
         for (int i = 1; i <= 4; i++) {
             PrintUtil.hr();
-            System.out.println("🦇 Carrion Bat " + i + " swoops down, fangs bared!");
+            PrintUtil.enemyEncounter("🦇 Carrion Bat " + i + " swoops down, fangs bared!");
             PrintUtil.hr();
             InputUtil.pressEnterToContinue();
 
             battle4.startBattle();
 
-            System.out.println("✅ You slayed Carrion Bat " + i + "!");
+            PrintUtil.enemyDefeated("✅ You slayed Carrion Bat " + i + "!");
             PrintUtil.line();
             enemy4.dropLoot(player);
 
@@ -320,7 +318,7 @@ public class World1 {
         }
 
         PrintUtil.line();
-        PrintUtil.type("""
+        PrintUtil.victory("""
                 💨 The last bat crashes into the ground.
                 The forest grows quiet once more, the stench of decay lifting into the cold wind.
                 """);
@@ -331,7 +329,7 @@ public class World1 {
 
         // -------------------- MINI-BOSS — THE HOLLOW STAG --------------------
         PrintUtil.line();
-        PrintUtil.type("""
+        PrintUtil.story("""
                 🌕 The mist thins, revealing a clearing drenched in moonlight.
                 The trees twist around a great blackened oak — and from behind it steps a massive stag.
                 Its antlers are cracked and glowing faintly, its eyes burning with white fire.
@@ -345,7 +343,7 @@ public class World1 {
                 "                                                                                                            ");
         PrintUtil.pause(1500);
 
-        System.out.println("                                                                                                   \n" +
+        PrintUtil.event("                                                                                                   \n" +
                 "                                                                                                   \n" +
                 "██████ ██  ██ ██████   ██  ██ ▄████▄ ██     ██     ▄████▄ ██     ██   ▄█████ ██████ ▄████▄  ▄████  \n" +
                 "  ██   ██████ ██▄▄     ██████ ██  ██ ██     ██     ██  ██ ██ ▄█▄ ██   ▀▀▀▄▄▄   ██   ██▄▄██ ██  ▄▄▄ \n" +
@@ -353,19 +351,20 @@ public class World1 {
                 "                                                                                                   ");
         System.out.println();
 
-        System.out.println("=================================================================================================================");
+        PrintUtil.objective("═════════════════════════════════════════════════════════════════════════════════════════════════════════════════");
         System.out.println();
-        PrintUtil.type("""
+        PrintUtil.effect("""
                 Once a noble guardian of this forest, the Hollow Stag is now corrupted by the same darkness that drains the land.
                 Its hooves scorch the ground, and the forest holds its breath.
                 Prepare yourself — this will be no ordinary fight.
                 """);
-        System.out.println("=================================================================================================================");
+        System.out.println();
+        PrintUtil.objective("═════════════════════════════════════════════════════════════════════════════════════════════════════════════════");
         System.out.println();
         PrintUtil.pause(1500);
 
         System.out.println();
-        PrintUtil.type("                                                          \n" +
+        PrintUtil.enemyEncounter("                                                          \n" +
                 "                          :                               \n" +
                 "                -:         *:                             \n" +
                 "                 *.        -#                             \n" +
@@ -394,7 +393,7 @@ public class World1 {
                 "                                                          ");
         System.out.println();
 
-        PrintUtil.type(ColorUtil.boldBrightMagenta((("🎯 Objective: Defeat The Hollow Stag!").toUpperCase())));
+        PrintUtil.objective(("🎯 Objective: Defeat The Hollow Stag!"));
         InputUtil.pressEnterToContinue();
         PrintUtil.line();
 
@@ -409,7 +408,7 @@ public class World1 {
         minibossBattle.startBattle();
 
         PrintUtil.line();
-        PrintUtil.type("""
+        PrintUtil.victory("""
                 ✅🏆Mini-Boss Defeated!
                 🌟 The Hollow Stag staggers, its luminous eyes fading to black.
                 With one final, echoing cry, it collapses to the ground. The forest trembles… then exhales.
@@ -423,7 +422,7 @@ public class World1 {
         PrintUtil.line();
         player.getEffects().resetAllEffects();
 
-        PrintUtil.event("You claim the First Stone from a tree black with rot. Light bursts outward; the forest exhales.");
+        PrintUtil.specialCyan("You claim the First Stone from a tree black with rot. Light bursts outward; the forest exhales.");
         InputUtil.pressEnterToContinue();
     }
 }

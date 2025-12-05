@@ -17,7 +17,7 @@ public class World1Miniboss1 extends Enemy {
 
     // Skill 1: Deathly Charge (ATK × 1.00–1.20), 30% chance to Stun
     public void deathlyCharge(Character target) {
-        PrintUtil.type(ColorUtil.boldBrightRed("                                                          \n" +
+        PrintUtil.print(ColorUtil.boldBrightRed("                                                          \n" +
                 "                                                          \n" +
                 "                    :       .=                            \n" +
                 "                     +       :+                           \n" +
@@ -80,7 +80,7 @@ public class World1Miniboss1 extends Enemy {
 
     // Skill 2: Blackened Howl (reduces target DEF by 20% for 2 turns)
     public void blackenedHowl(Character target) {
-        PrintUtil.type(ColorUtil.boldBrightRed("                                                          \n" +
+        PrintUtil.print(ColorUtil.boldBrightRed("                                                          \n" +
                 "                                               .          \n" +
                 "                                      .  :....:           \n" +
                 "                   :           .:      :.... ....         \n" +

@@ -14,10 +14,10 @@ public class World3 {
     public void run(Character player) {
         PrintUtil.pause(2000);
         System.out.println();
-        System.out.println("                                                      ╦ ╦╔═╗╦═╗╦  ╔╦╗  ═╗");
-        System.out.println("╔════════════════════════════════════════════════════ ║║║║ ║╠╦╝║   ║║  ═╣ ═══════════════════════════════════════════════════════════╗");
-        System.out.println("                                                      ╚╩╝╚═╝╩╚═╩═╝═╩╝  ═╝\n");
-        System.out.println("████████╗██╗  ██╗███████╗    ███╗   ██╗███████╗ ██████╗██████╗  ██████╗ ███╗   ███╗ █████╗ ███╗   ██╗ ██████╗███████╗██████╗ ███████╗    \n" +
+        PrintUtil.title("                                                      ╦ ╦╔═╗╦═╗╦  ╔╦╗  ═╗");
+        PrintUtil.title("╔════════════════════════════════════════════════════ ║║║║ ║╠╦╝║   ║║  ═╣ ═══════════════════════════════════════════════════════════╗");
+        PrintUtil.title("                                                      ╚╩╝╚═╝╩╚═╩═╝═╩╝  ═╝\n");
+        PrintUtil.title("████████╗██╗  ██╗███████╗    ███╗   ██╗███████╗ ██████╗██████╗  ██████╗ ███╗   ███╗ █████╗ ███╗   ██╗ ██████╗███████╗██████╗ ███████╗    \n" +
                 "╚══██╔══╝██║  ██║██╔════╝    ████╗  ██║██╔════╝██╔════╝██╔══██╗██╔═══██╗████╗ ████║██╔══██╗████╗  ██║██╔════╝██╔════╝██╔══██╗██╔════╝    \n" +
                 "   ██║   ███████║█████╗      ██╔██╗ ██║█████╗  ██║     ██████╔╝██║   ██║██╔████╔██║███████║██╔██╗ ██║██║     █████╗  ██████╔╝███████╗    \n" +
                 "   ██║   ██╔══██║██╔══╝      ██║╚██╗██║██╔══╝  ██║     ██╔══██╗██║   ██║██║╚██╔╝██║██╔══██║██║╚██╗██║██║     ██╔══╝  ██╔══██╗╚════██║    \n" +
@@ -38,45 +38,46 @@ public class World3 {
                 "                            ╚███╔███╔╝██║  ██║███████║   ██║   ███████╗███████╗██║  ██║██║ ╚████║██████╔╝                                \n" +
                 "                             ╚══╝╚══╝ ╚═╝  ╚═╝╚══════╝   ╚═╝   ╚══════╝╚══════╝╚═╝  ╚═╝╚═╝  ╚═══╝╚═════╝                                 \n" +
                 "                                                                                                                                         ");
-        System.out.println("╚═════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝");
+        PrintUtil.title("╚═════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝");
 
-        System.out.println("======================================================================================================");
+        System.out.println("══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════");
         System.out.println();
-        PrintUtil.type(
-                "You have been travelling for days. You have reached a land where not a even a glimmer of life can be seen.\n The land has turned barren. Ash falls like snow. Rivers of molten fire carve through the black rock.\n" +
+        PrintUtil.story(
+                            "You have been travelling for days. You have reached a land where not a even a glimmer of life can be seen.\n The land has turned barren. Ash falls like snow. Rivers of molten fire carve through the black rock.\n" +
                         "At the center, rising higher than mountains, stands a tower larger than anything you have ever seen. \n The Necromancer’s Tower.\n"
         );
-        System.out.println("======================================================================================================");
+        System.out.println();
+        System.out.println("══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════");
         InputUtil.pressEnterToContinue();
         PrintUtil.line();
 
         // -------------------- Flame Revenants --------------------
         PrintUtil.line();
-        PrintUtil.type("""
+        PrintUtil.story("""
                 🔥 From the molten cracks below, Flame Revenants rise,
                 their forms flickering with ember and hatred.
                 """);
         PrintUtil.pause(1500);
 
-        System.out.println("                                                          ");
-        System.out.println("                             :                            ");
-        System.out.println("                            :+*                           ");
-        System.out.println("             .:.          -:%#+--          .:.            ");
-        System.out.println("            :*+==-       -*+%@#+#-       -+=+*:           ");
-        System.out.println("           #@%###+       -#%%%%@#=       =##*%@#          ");
-        System.out.println("           -#%@@@@+.     +#%@@@%##=.   .+@@@@%#-          ");
-        System.out.println("            :%@@@*+%#: :**.:%@%- -%+ :*%++@@%%:           ");
-        System.out.println("           :%+-%@*:.%:.+#--*@@@#. :*::%.:*@%-+%-          ");
-        System.out.println("          .#**@@@@=:*=:*=:*@@#@@%::*==#:=@@@@*=%-         ");
-        System.out.println("        ::-+%@#--%@#:.==:*@%- .*@%-:: :#@%--#@%=..:-===-  ");
-        System.out.println("  =+=+-.  :@*. . .#@*= .*%+.    -#*. :=@#:   .+@:   :++*- ");
-        System.out.println(" :*++.     ##.-*===:#@-=@+.      =@*=@%.     .##          ");
-        System.out.println("           -*.--==.  :%@=         -%%:        *=          ");
-        System.out.println("         .**+:==:    .#%-         -%#.        +**:        ");
-        System.out.println("                     :              .:                    ");
+        PrintUtil.enemyEncounter("                                                          ");
+        PrintUtil.enemyEncounter("                             :                            ");
+        PrintUtil.enemyEncounter("                            :+*                           ");
+        PrintUtil.enemyEncounter("             .:.          -:%#+--          .:.            ");
+        PrintUtil.enemyEncounter("            :*+==-       -*+%@#+#-       -+=+*:           ");
+        PrintUtil.enemyEncounter("           #@%###+       -#%%%%@#=       =##*%@#          ");
+        PrintUtil.enemyEncounter("           -#%@@@@+.     +#%@@@%##=.   .+@@@@%#-          ");
+        PrintUtil.enemyEncounter("            :%@@@*+%#: :**.:%@%- -%+ :*%++@@%%:           ");
+        PrintUtil.enemyEncounter("           :%+-%@*:.%:.+#--*@@@#. :*::%.:*@%-+%-          ");
+        PrintUtil.enemyEncounter("          .#**@@@@=:*=:*=:*@@#@@%::*==#:=@@@@*=%-         ");
+        PrintUtil.enemyEncounter("        ::-+%@#--%@#:.==:*@%- .*@%-:: :#@%--#@%=..:-===-  ");
+        PrintUtil.enemyEncounter("  =+=+-.  :@*. . .#@*= .*%+.    -#*. :=@#:   .+@:   :++*- ");
+        PrintUtil.enemyEncounter(" :*++.     ##.-*===:#@-=@+.      =@*=@%.     .##          ");
+        PrintUtil.enemyEncounter("           -*.--==.  :%@=         -%%:        *=          ");
+        PrintUtil.enemyEncounter("         .**+:==:    .#%-         -%#.        +**:        ");
+        PrintUtil.enemyEncounter("                     :              .:                    ");
         System.out.println();
 
-        PrintUtil.type(ColorUtil.boldBrightMagenta((("🎯 Objective: Defeat 3 Flame Revenants!").toUpperCase())));
+        PrintUtil.objective(("🎯 Objective: Defeat 3 Flame Revenants!"));
         InputUtil.pressEnterToContinue();
         PrintUtil.line();
 
@@ -90,13 +91,13 @@ public class World3 {
 
         for (int i = 1; i <= 3; i++) {
             PrintUtil.hr();
-            System.out.println("🔥 Flame Revenant " + i + " emerges from the lava!");
+            PrintUtil.enemyEncounter("🔥 Flame Revenant " + i + " emerges from the lava!");
             PrintUtil.hr();
             InputUtil.pressEnterToContinue();
 
             battle1.startBattle();
 
-            System.out.println("✅ You have defeated Flame Revenant " + i + "!");
+            PrintUtil.enemyDefeated("✅ You have defeated Flame Revenant " + i + "!");
             PrintUtil.line();
             enemy1.dropLoot(player);
 
@@ -108,7 +109,7 @@ public class World3 {
         }
 
         PrintUtil.line();
-        PrintUtil.type("""
+        PrintUtil.victory("""
                     🎉 Victory! The last revenant collapses into molten shards.
                     The lava around you cools slightly — a brief moment of calm.
                     """);
@@ -120,46 +121,46 @@ public class World3 {
 
         PrintUtil.event("You steel yourself and begin the ascent.");
         PrintUtil.effect("The air thickens with magic. Each step hums with a pulse from the Stones you carry.");
-        InputUtil.pressEnterToContinue();
+        System.out.println();
 
-        PrintUtil.event("From the darkness crawl soldiers of bone and beasts stitched from shadow.");
+        PrintUtil.effect("From the darkness crawl soldiers of bone and beasts stitched from shadow.");
         InputUtil.pressEnterToContinue();
 
         // -------------------- Bone Warlocks --------------------
         PrintUtil.effect("The ground trembles as sinister energy gathers.");
-        PrintUtil.type("""
+        PrintUtil.story("""
                 From the shadows, Bone Warlocks appear, chanting forbidden incantations.
                 """);
 
         PrintUtil.pause(1500);
         System.out.println("                                                          ");
-        System.out.println("   :..            .                                        ");
-        System.out.println("  .-+-.      .=: .:+                                       ");
-        System.out.println("  -*%*:      .*%%%%*                                       ");
-        System.out.println("   .*#:    -: .+%%= ..-                                    ");
-        System.out.println("    -*-    --#%@@@@%*-:                                    ");
-        System.out.println("     +=   =*@@@@@@@@@@+:                                  ");
-        System.out.println("      =:  .#@@@@@@@@@@+.                                  ");
-        System.out.println("     .#@::=%@@@@@@@@@%-         .-=::..@@*     :..        ");
-        System.out.println("      .**%@@%%@@@@@@@@@*.      .=+#%%@@@@@*:   =..:-:     ");
-        System.out.println("       -::++#@@@@@@@@#@%-      .+@@@@@@@@@#=. ...%=.::    ");
-        System.out.println("        + :=@@@@@@@@@**%=     -:#@@@@@@@@@@*:  ::..:      ");
-        System.out.println("        --:%@@@@@@@@@*-*+    =@@+.+%@@@@##%*:..:#=+:      ");
-        System.out.println("         #*=%@@@@@@@@%-+=   .#@+  -#@@%=. -%@%+-:         ");
-        System.out.println("       .:=+%@@@@@@@@@@*::   .@=  -%@@@@@#-  .              ");
-        System.out.println("         -@=#@@@@@@@@%++.   -@+ :#@@@@@@@@#-               ");
-        System.out.println("        ---#@@@@@@@%@@#:    =%.:#@@@@@@@@@@@#=            ");
-        System.out.println("       .. *%@@%%@@@%@@#+       +@@@%@@@%*#+%@#.           ");
-        System.out.println("         ..+@@+=##*+#@=:.     +@@***%%%* -+@%:            ");
-        System.out.println("     .. : ..#* ..+-..@-   :- -@%= :.-*=:  -#+     .       ");
-        System.out.println("       =-* -@* ::: :.@#:+@%+.@*  ::  .. . -@*.:.+=        ");
-        System.out.println("      .:%@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%%@@@@@@=.       ");
-        System.out.println("   :+#%@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%#*:    ");
-        System.out.println("          :+.:-:-#+ :=#@@@@@@@@@@@@#=. =+-::.              ");
-        System.out.println("                       .::-=+=:.                           ");
+        PrintUtil.enemyEncounter("   :..            .                                        ");
+        PrintUtil.enemyEncounter("  .-+-.      .=: .:+                                       ");
+        PrintUtil.enemyEncounter("  -*%*:      .*%%%%*                                       ");
+        PrintUtil.enemyEncounter("   .*#:    -: .+%%= ..-                                    ");
+        PrintUtil.enemyEncounter("    -*-    --#%@@@@%*-:                                    ");
+        PrintUtil.enemyEncounter("     +=   =*@@@@@@@@@@+:                                  ");
+        PrintUtil.enemyEncounter("      =:  .#@@@@@@@@@@+.                                  ");
+        PrintUtil.enemyEncounter("     .#@::=%@@@@@@@@@%-         .-=::..@@*     :..        ");
+        PrintUtil.enemyEncounter("      .**%@@%%@@@@@@@@@*.      .=+#%%@@@@@*:   =..:-:     ");
+        PrintUtil.enemyEncounter("       -::++#@@@@@@@@#@%-      .+@@@@@@@@@#=. ...%=.::    ");
+        PrintUtil.enemyEncounter("        + :=@@@@@@@@@**%=     -:#@@@@@@@@@@*:  ::..:      ");
+        PrintUtil.enemyEncounter("        --:%@@@@@@@@@*-*+    =@@+.+%@@@@##%*:..:#=+:      ");
+        PrintUtil.enemyEncounter("         #*=%@@@@@@@@%-+=   .#@+  -#@@%=. -%@%+-:         ");
+        PrintUtil.enemyEncounter("       .:=+%@@@@@@@@@@*::   .@=  -%@@@@@#-  .              ");
+        PrintUtil.enemyEncounter("         -@=#@@@@@@@@%++.   -@+ :#@@@@@@@@#-               ");
+        PrintUtil.enemyEncounter("        ---#@@@@@@@%@@#:    =%.:#@@@@@@@@@@@#=            ");
+        PrintUtil.enemyEncounter("       .. *%@@%%@@@%@@#+       +@@@%@@@%*#+%@#.           ");
+        PrintUtil.enemyEncounter("         ..+@@+=##*+#@=:.     +@@***%%%* -+@%:            ");
+        PrintUtil.enemyEncounter("     .. : ..#* ..+-..@-   :- -@%= :.-*=:  -#+     .       ");
+        PrintUtil.enemyEncounter("       =-* -@* ::: :.@#:+@%+.@*  ::  .. . -@*.:.+=        ");
+        PrintUtil.enemyEncounter("      .:%@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%%@@@@@@=.       ");
+        PrintUtil.enemyEncounter("   :+#%@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%#*:    ");
+        PrintUtil.enemyEncounter("          :+.:-:-#+ :=#@@@@@@@@@@@@#=. =+-::.              ");
+        PrintUtil.enemyEncounter("                       .::-=+=:.                           ");
         System.out.println();
 
-        PrintUtil.type(ColorUtil.boldBrightMagenta((("🎯 Objective: Defeat 2 Bone Warlocks!").toUpperCase())));
+        PrintUtil.objective(("🎯 Objective: Defeat 2 Bone Warlocks!"));
         InputUtil.pressEnterToContinue();
         PrintUtil.line();
 
@@ -173,13 +174,13 @@ public class World3 {
 
         for (int i = 1; i <= 3; i++) {
             PrintUtil.hr();
-            System.out.println("💀 Bone Warlock " + i + " raises its staff, channeling dark magic!");
+            PrintUtil.enemyEncounter("💀 Bone Warlock " + i + " raises its staff, channeling dark magic!");
             PrintUtil.hr();
             InputUtil.pressEnterToContinue();
 
             battle2.startBattle();
 
-            System.out.println("✅ You have defeated Bone Warlock " + i + "!");
+            PrintUtil.enemyDefeated("✅ You have defeated Bone Warlock " + i + "!");
             PrintUtil.line();
             enemy2.dropLoot(player);
 
@@ -190,7 +191,7 @@ public class World3 {
         }
 
         PrintUtil.line();
-        PrintUtil.type("""
+        PrintUtil.victory("""
                     🎉 Victory! The Bone Warlocks crumble, their souls screaming into the void.
                     The heat intensifies — something greater stirs within the peaks.
                     """);
@@ -200,33 +201,33 @@ public class World3 {
         player.getEffects().resetAllEffects();
 
         // -------------------- Obsidian Crushers --------------------
-        PrintUtil.event("A deep rumble echoes through the caverns.");
+        PrintUtil.effect("A deep rumble echoes through the caverns.");
         PrintUtil.effect("Lava bursts upward, and massive shadows rise behind the flames.");
 
-        PrintUtil.type("""
+        PrintUtil.story("""
                 Obsidian Crushers emerge — molten giants forged from stone and fury.
                 """);
 
         PrintUtil.pause(1500);
-        System.out.println("                 :  -               .  :      .*@-        ");
-        System.out.println("              ...*#%#=  :.      .:  *+#*=..   :%@@*:      ");
-        System.out.println("             .*@@@@@@#@@@-      =@@%#@@@@%+    -@@@%+.    ");
-        System.out.println("  .--.       -%@@@@@@@@@@#.    :#@@@@@@@@@%-:=*#-#@@#-    ");
-        System.out.println(" .%@@@%+.   :+%@@@@@@@@@@*:.  .:#@@@@@@@@@@%@%:   -:      ");
-        System.out.println("  .-+*##%#*%@@@#%@@@@@%#@@@+  -@@@%@@@@@@%%@#:            ");
-        System.out.println("          -+++*+#@@@@@-:%@%-   +%@#%@@@@%. .               ");
-        System.out.println("              .*@@@@@@@%@%:     .#@@@@@@@%=                ");
-        System.out.println("             -%@@@@@@@@@@#**.  +%@@@@@@@@@@#:              ");
-        System.out.println("           .=@@@@@@@@@@@%- .   .#@@@@@@@@@@@#+.           ");
-        System.out.println("      .==:.+@@@%-+@@**@@@*=   =#@@@#=@@#.=%@@@- :=+=.     ");
-        System.out.println("     :*%#=::@@@+  -*:.:%@@@= =@@@%- .*-  .*@@#. :*%%=     ");
-        System.out.println("   .:+#@@*:*%@@=   -   -@@@+ *@@@=       .=@@##=+%@%*:    ");
-        System.out.println("   .-*%@@@@@@@#=*+.  :%=:#@@#@@*+=**.  .*#+#@@@@@@@%*+:   ");
-        System.out.println("     :+%@@@@@@@@@@*%--=@@%@@@@@@@@*--+%#@@@@@@@@@@%*-.    ");
-        System.out.println("       :+*********+++#%*+*%%*****==#+-+===+++++====:      ");
+        PrintUtil.enemyEncounter("                 :  -               .  :      .*@-        ");
+        PrintUtil.enemyEncounter("              ...*#%#=  :.      .:  *+#*=..   :%@@*:      ");
+        PrintUtil.enemyEncounter("             .*@@@@@@#@@@-      =@@%#@@@@%+    -@@@%+.    ");
+        PrintUtil.enemyEncounter("  .--.       -%@@@@@@@@@@#.    :#@@@@@@@@@%-:=*#-#@@#-    ");
+        PrintUtil.enemyEncounter(" .%@@@%+.   :+%@@@@@@@@@@*:.  .:#@@@@@@@@@@%@%:   -:      ");
+        PrintUtil.enemyEncounter("  .-+*##%#*%@@@#%@@@@@%#@@@+  -@@@%@@@@@@%%@#:            ");
+        PrintUtil.enemyEncounter("          -+++*+#@@@@@-:%@%-   +%@#%@@@@%. .               ");
+        PrintUtil.enemyEncounter("              .*@@@@@@@%@%:     .#@@@@@@@%=                ");
+        PrintUtil.enemyEncounter("             -%@@@@@@@@@@#**.  +%@@@@@@@@@@#:              ");
+        PrintUtil.enemyEncounter("           .=@@@@@@@@@@@%- .   .#@@@@@@@@@@@#+.           ");
+        PrintUtil.enemyEncounter("      .==:.+@@@%-+@@**@@@*=   =#@@@#=@@#.=%@@@- :=+=.     ");
+        PrintUtil.enemyEncounter("     :*%#=::@@@+  -*:.:%@@@= =@@@%- .*-  .*@@#. :*%%=     ");
+        PrintUtil.enemyEncounter("   .:+#@@*:*%@@=   -   -@@@+ *@@@=       .=@@##=+%@%*:    ");
+        PrintUtil.enemyEncounter("   .-*%@@@@@@@#=*+.  :%=:#@@#@@*+=**.  .*#+#@@@@@@@%*+:   ");
+        PrintUtil.enemyEncounter("     :+%@@@@@@@@@@*%--=@@%@@@@@@@@*--+%#@@@@@@@@@@%*-.    ");
+        PrintUtil.enemyEncounter("       :+*********+++#%*+*%%*****==#+-+===+++++====:      ");
         System.out.println();
 
-        PrintUtil.type(ColorUtil.boldBrightMagenta((("🎯 Objective: Defeat 2 Obsidian Crushers!").toUpperCase())));
+        PrintUtil.objective(("🎯 Objective: Defeat 2 Obsidian Crushers!"));
         InputUtil.pressEnterToContinue();
         PrintUtil.line();
 
@@ -240,13 +241,13 @@ public class World3 {
 
         for (int i = 1; i <= 2; i++) {
             PrintUtil.hr();
-            System.out.println("🪨 Obsidian Crusher " + i + " roars and slams the ground!");
+            PrintUtil.enemyEncounter("🪨 Obsidian Crusher " + i + " roars and slams the ground!");
             PrintUtil.hr();
             InputUtil.pressEnterToContinue();
 
             battle3.startBattle();
 
-            System.out.println("✅ You have defeated Obsidian Crusher " + i + "!");
+            PrintUtil.enemyDefeated("✅ You have defeated Obsidian Crusher " + i + "!");
             PrintUtil.line();
             enemy3.dropLoot(player);
 
@@ -257,7 +258,7 @@ public class World3 {
         }
 
         PrintUtil.line();
-        PrintUtil.type("""
+        PrintUtil.victory("""
                     🎉 Victory! The Crushers shatter, falling into the lava below.
                     The tremors subside — the way forward opens.
                     """);
@@ -267,8 +268,8 @@ public class World3 {
         player.getEffects().resetAllEffects();
 
 
-        PrintUtil.event("Halfway up, you find a mural etched into obsidian.");
-        PrintUtil.type(
+        PrintUtil.effect("Halfway up, you find a mural etched into obsidian.");
+        PrintUtil.story(
                 "It shows a hooded figure holding three glowing stones, beneath a phrase in your own language:\n" +
                         "  'To teach is to control.'");
         InputUtil.pressEnterToContinue();
@@ -276,34 +277,34 @@ public class World3 {
 
         // -------------------- Soulflayer Gargoyles --------------------
         PrintUtil.effect("A chilling wind cuts through the heat.");
-        PrintUtil.type("""
+        PrintUtil.story("""
                 From the shadows of molten stone, Soulflayer Gargoyles take flight.
                 Their shrieks pierce the air, echoing through the infernal spires.
                 """);
 
         PrintUtil.pause(1500);
-        System.out.println("          -%@@%#*:                      .+#%@@%-          ");
-        System.out.println("           .#@@@@@@#..-            ::.*@@@@@@%:           ");
-        System.out.println("           +@@@@@@@@@@#    .  .    *@@@@@@@@@@*           ");
-        System.out.println("            -#@@@@@@@@%-  .+  =:  -%@@@@@@@@%-            ");
-        System.out.println("              =@@@@@@@@@+..*@@#. =@@@@@@@@@+               ");
-        System.out.println("              ::.-*@@@@@@@@@@@@@@@@@@@@#-.::               ");
-        System.out.println("   -+:.            -#==#%@@@@@@@@@#==*=                    ");
-        System.out.println("   .#@@#-       .      :#%%@@@@%%#-  ...                   ");
-        System.out.println("  -#@@@@@*    -*:     -#= :#@@%- =#-  .#@@#+:              ");
-        System.out.println("   .+@@@@@#=:#@+.    :#=:-%@@@@@=.+#: :%@@@@@#-:  :-.     ");
-        System.out.println("    -%@@@@@+@@*=#*.   :-+#%=*@-%%- -.  -%@@@@@%.+@%-      ");
-        System.out.println("      .=@@@@@@@@@@#:  := ++:%- =*       +%@@@@@@@%:+-     ");
-        System.out.println("       :#%%@@@@*.:..   =%%+-.  .*#=.      .*@@@@@@@@@*.   ");
-        System.out.println("     .+%+:@@@*#%#%%+                        :%@@@@%-=-    ");
-        System.out.println("     .: .%@@@+.                           .*@@@#@%@+.     ");
-        System.out.println("         *@@*@#:                     .#= :%@@@*.+@%**+**. ");
-        System.out.println("     -+-.*@#**.                    =:  =%@@%=#@=  .==     ");
-        System.out.println("    :-  :@  .:-=.                  -#%@*  . =+.           ");
-        System.out.println("      ..-@#.                           ..                  ");
+        PrintUtil.enemyEncounter("          -%@@%#*:                      .+#%@@%-          ");
+        PrintUtil.enemyEncounter("           .#@@@@@@#..-            ::.*@@@@@@%:           ");
+        PrintUtil.enemyEncounter("           +@@@@@@@@@@#    .  .    *@@@@@@@@@@*           ");
+        PrintUtil.enemyEncounter("            -#@@@@@@@@%-  .+  =:  -%@@@@@@@@%-            ");
+        PrintUtil.enemyEncounter("              =@@@@@@@@@+..*@@#. =@@@@@@@@@+               ");
+        PrintUtil.enemyEncounter("              ::.-*@@@@@@@@@@@@@@@@@@@@#-.::               ");
+        PrintUtil.enemyEncounter("   -+:.            -#==#%@@@@@@@@@#==*=                    ");
+        PrintUtil.enemyEncounter("   .#@@#-       .      :#%%@@@@%%#-  ...                   ");
+        PrintUtil.enemyEncounter("  -#@@@@@*    -*:     -#= :#@@%- =#-  .#@@#+:              ");
+        PrintUtil.enemyEncounter("   .+@@@@@#=:#@+.    :#=:-%@@@@@=.+#: :%@@@@@#-:  :-.     ");
+        PrintUtil.enemyEncounter("    -%@@@@@+@@*=#*.   :-+#%=*@-%%- -.  -%@@@@@%.+@%-      ");
+        PrintUtil.enemyEncounter("      .=@@@@@@@@@@#:  := ++:%- =*       +%@@@@@@@%:+-     ");
+        PrintUtil.enemyEncounter("       :#%%@@@@*.:..   =%%+-.  .*#=.      .*@@@@@@@@@*.   ");
+        PrintUtil.enemyEncounter("     .+%+:@@@*#%#%%+                        :%@@@@%-=-    ");
+        PrintUtil.enemyEncounter("     .: .%@@@+.                           .*@@@#@%@+.     ");
+        PrintUtil.enemyEncounter("         *@@*@#:                     .#= :%@@@*.+@%**+**. ");
+        PrintUtil.enemyEncounter("     -+-.*@#**.                    =:  =%@@%=#@=  .==     ");
+        PrintUtil.enemyEncounter("    :-  :@  .:-=.                  -#%@*  . =+.           ");
+        PrintUtil.enemyEncounter("      ..-@#.                           ..                  ");
         System.out.println();
 
-        PrintUtil.type(ColorUtil.boldBrightMagenta((("🎯 Objective: Defeat 3 Soulflayer Gargoyles!").toUpperCase())));
+        PrintUtil.objective(("🎯 Objective: Defeat 3 Soulflayer Gargoyles!"));
         InputUtil.pressEnterToContinue();
         PrintUtil.line();
 
@@ -317,13 +318,13 @@ public class World3 {
 
         for (int i = 1; i <= 4; i++) {
             PrintUtil.hr();
-            System.out.println("😈 Soulflayer Gargoyle " + i + " swoops down from above!");
+            PrintUtil.enemyEncounter("😈 Soulflayer Gargoyle " + i + " swoops down from above!");
             PrintUtil.hr();
             InputUtil.pressEnterToContinue();
 
             battle4.startBattle();
 
-            System.out.println("✅ You have defeated Soulflayer Gargoyle " + i + "!");
+            PrintUtil.enemyDefeated("✅ You have defeated Soulflayer Gargoyle " + i + "!");
             PrintUtil.line();
             enemy4.dropLoot(player);
 
@@ -334,7 +335,7 @@ public class World3 {
         }
 
         PrintUtil.line();
-        PrintUtil.type("""
+        PrintUtil.victory("""
                     🎉 Victory! The last Gargoyle falls, shattering to dust midair.
                     Silence returns — save for the slow, rising heartbeat of the volcano.
                     """);
@@ -352,54 +353,56 @@ public class World3 {
                 "                                                                                                            ");
         PrintUtil.pause(1500);
 
-        System.out.println("                                                                                                                                           \n" +
+        PrintUtil.event("                                                                                                                                           \n" +
                 "                                                                                                                                           \n" +
                 "██████ ▄▄ ▄▄ ▄▄▄▄  ▄▄▄▄  ▄▄ ▄▄ ▄▄          ██████ ▄▄ ▄▄ ▄▄▄▄▄   ██████ ▄▄▄  ▄▄   ▄▄ ▄▄▄▄▄ ▄▄▄▄    ██     ██  ▄▄▄  ▄▄▄▄  ▄▄▄▄  ▄▄▄▄▄ ▄▄  ▄▄ \n" +
                 " ▄▄▀▀  ▀███▀ ██▄█▄ ██▄█▄ ▀███▀ ██            ██   ██▄██ ██▄▄      ██  ██▀██ ██ ▄ ██ ██▄▄  ██▄█▄   ██ ▄█▄ ██ ██▀██ ██▄█▄ ██▀██ ██▄▄  ███▄██ \n" +
                 "██████   █   ██ ██ ██ ██   █   ██▄▄▄  ▄      ██   ██ ██ ██▄▄▄     ██  ▀███▀  ▀█▀█▀  ██▄▄▄ ██ ██    ▀██▀██▀  ██▀██ ██ ██ ████▀ ██▄▄▄ ██ ▀██ \n" +
                 "                                     ▀                                                                                                     ");
 
-        System.out.println("==================================================================");
         System.out.println();
-        PrintUtil.type("""
-                As you reach the summit, molten light reveals a towering figure.
+        PrintUtil.objective("═══════════════════════════════════════════════════════════════════════════");
+        System.out.println();
+        PrintUtil.effect("""
+                                  As you reach the summit, molten light reveals a towering figure.
                 Zyrryl, Warden of the Shattered Tower, stands armed with cursed steel.
                 """);
-        System.out.println("==================================================================");
+        System.out.println();
+        PrintUtil.objective("═══════════════════════════════════════════════════════════════════════════");
         System.out.println();
 
         PrintUtil.pause(1500);
-        System.out.println("                                                       ..:");
-        System.out.println("                                                    =%#+-#");
-        System.out.println("                         -.     :               .+.:+@%%@@");
-        System.out.println("                    =.  =-.:   :-=         .=: :+#@@@%+=+-");
-        System.out.println("                    %: -%-+-:+-+=*. -     -%#**#-.:. ..   ");
-        System.out.println("    .              .@+::##=%@@@+#*..#.    =#=*##=+        ");
-        System.out.println("   :+.             .%@@@@@@@@@@@@#+#%.    :*@#*%*         ");
-        System.out.println("   -#-             :#@@@@@@@@@@@@@@@=    .#%=-.      :.   ");
-        System.out.println("   =%=            :%@@@@@@@@@@@@@@@@-   .+#:        .+-   ");
-        System.out.println("  .#@#:          :-=@@@@@@%%%@%%@@%#+  .**.     .   .*-   ");
-        System.out.println("  +#@+.  .      .+#@@#=*@@@@@@@%#@%+::#%=       :   :%*.  ");
-        System.out.println("  *@@#: .:   .. .#@@%. :*@@@@@%-.+@@@@@%:       :.  =@%:  ");
-        System.out.println(" :-@@#*:.:   ..  *@@+ :*#@@@@@@*=:::+*.        .:: .*@#=- ");
-        System.out.println(" #+@@@+.::  .:.  -@@. =#@@@@@@@@%*-+=      .  ..::.:*@@%+ ");
-        System.out.println(" %@@@@#-::. .:.  .#@#=#@@@@@@@@@@@@+.     .:  .::::-#@@@#=");
-        System.out.println(":@@@@@@%-:...::.  +@*#@@@@@@@@@@@@@@*.    ::. .::--#@%@@%-");
-        System.out.println(" -%@@%@+-::::::..  -#@@@@@@@@@@@@@@@@#.  ..:...::*=@@@@@@-");
-        System.out.println("  =@@@@@@---::::.  :%@@@@#+@@@@+*@@@@@%:*.::.::::*+@@@@@@*");
-        System.out.println("  *#=*@@@:++::::...:@@@@*:-%@@% . :%@@@@+.:::::::=%@@@+.  ");
-        System.out.println("      :%%@%+::::::+@@@@+  .%@##  =@@@@@%:::::::::%@@@@=   ");
-        System.out.println("      +@@@@%-::::#@@@%:   =**=-:*#@@@-.::::::::*:@@@%%#:  ");
-        System.out.println("      :+%@@@*::::%@@%:   +-:.-  .#@@*: ::::::::##@@#      ");
-        System.out.println("          @@#:::*@@=.. :+:  .     +@@=:::::.:-=#--=.    -@");
-        System.out.println("@#==           *@@#..:=#:         :%@@@+.    .+:     .*@@-");
-        System.out.println("@@@@@@%+-:. :.-%@@=. .....    ...:-#@@@@@%+.  ..:+##%@@@@@");
-        System.out.println("@@@@@@@@@@@@@@@@@@@@@@%##*=::=**#%@@@@@@@@@@@@@@@@@@@@@@@@@");
-        System.out.println("@@@@@@@@@@@@@@@%%#*+-:..-+*#%@@@@@@%%@@@@@@@@@@@@@@@@@*#@@");
-        System.out.println("@@@@@@@@@@@@@@@@@@@@@@%#+.     .:+**#@@@@@@@@@@@@@@@@@@@@@@");
+        PrintUtil.enemyEncounter("                                                       ..:");
+        PrintUtil.enemyEncounter("                                                    =%#+-#");
+        PrintUtil.enemyEncounter("                         -.     :               .+.:+@%%@@");
+        PrintUtil.enemyEncounter("                    =.  =-.:   :-=         .=: :+#@@@%+=+-");
+        PrintUtil.enemyEncounter("                    %: -%-+-:+-+=*. -     -%#**#-.:. ..   ");
+        PrintUtil.enemyEncounter("    .              .@+::##=%@@@+#*..#.    =#=*##=+        ");
+        PrintUtil.enemyEncounter("   :+.             .%@@@@@@@@@@@@#+#%.    :*@#*%*         ");
+        PrintUtil.enemyEncounter("   -#-             :#@@@@@@@@@@@@@@@=    .#%=-.      :.   ");
+        PrintUtil.enemyEncounter("   =%=            :%@@@@@@@@@@@@@@@@-   .+#:        .+-   ");
+        PrintUtil.enemyEncounter("  .#@#:          :-=@@@@@@%%%@%%@@%#+  .**.     .   .*-   ");
+        PrintUtil.enemyEncounter("  +#@+.  .      .+#@@#=*@@@@@@@%#@%+::#%=       :   :%*.  ");
+        PrintUtil.enemyEncounter("  *@@#: .:   .. .#@@%. :*@@@@@%-.+@@@@@%:       :.  =@%:  ");
+        PrintUtil.enemyEncounter(" :-@@#*:.:   ..  *@@+ :*#@@@@@@*=:::+*.        .:: .*@#=- ");
+        PrintUtil.enemyEncounter(" #+@@@+.::  .:.  -@@. =#@@@@@@@@%*-+=      .  ..::.:*@@%+ ");
+        PrintUtil.enemyEncounter(" %@@@@#-::. .:.  .#@#=#@@@@@@@@@@@@+.     .:  .::::-#@@@#=");
+        PrintUtil.enemyEncounter(":@@@@@@%-:...::.  +@*#@@@@@@@@@@@@@@*.    ::. .::--#@%@@%-");
+        PrintUtil.enemyEncounter(" -%@@%@+-::::::..  -#@@@@@@@@@@@@@@@@#.  ..:...::*=@@@@@@-");
+        PrintUtil.enemyEncounter("  =@@@@@@---::::.  :%@@@@#+@@@@+*@@@@@%:*.::.::::*+@@@@@@*");
+        PrintUtil.enemyEncounter("  *#=*@@@:++::::...:@@@@*:-%@@% . :%@@@@+.:::::::=%@@@+.  ");
+        PrintUtil.enemyEncounter("      :%%@%+::::::+@@@@+  .%@##  =@@@@@%:::::::::%@@@@=   ");
+        PrintUtil.enemyEncounter("      +@@@@%-::::#@@@%:   =**=-:*#@@@-.::::::::*:@@@%%#:  ");
+        PrintUtil.enemyEncounter("      :+%@@@*::::%@@%:   +-:.-  .#@@*: ::::::::##@@#      ");
+        PrintUtil.enemyEncounter("          @@#:::*@@=.. :+:  .     +@@=:::::.:-=#--=.    -@");
+        PrintUtil.enemyEncounter("@#==           *@@#..:=#:         :%@@@+.    .+:     .*@@-");
+        PrintUtil.enemyEncounter("@@@@@@%+-:. :.-%@@=. .....    ...:-#@@@@@%+.  ..:+##%@@@@@");
+        PrintUtil.enemyEncounter("@@@@@@@@@@@@@@@@@@@@@@%##*=::=**#%@@@@@@@@@@@@@@@@@@@@@@@@@");
+        PrintUtil.enemyEncounter("@@@@@@@@@@@@@@@%%#*+-:..-+*#%@@@@@@%%@@@@@@@@@@@@@@@@@*#@@");
+        PrintUtil.enemyEncounter("@@@@@@@@@@@@@@@@@@@@@@%#+.     .:+**#@@@@@@@@@@@@@@@@@@@@@@");
         System.out.println();
 
-        PrintUtil.type(ColorUtil.boldBrightMagenta((("🎯 Objective: Defeat Zyrryl, The Tower Warden!").toUpperCase())));
+        PrintUtil.objective(("🎯 Objective: Defeat Zyrryl, The Tower Warden!"));
         InputUtil.pressEnterToContinue();
         PrintUtil.line();
 
@@ -414,7 +417,7 @@ public class World3 {
         minibattle.startBattle();
 
         PrintUtil.line();
-        PrintUtil.type("""
+        PrintUtil.victory("""
                     ✅🏆 Mini-Boss Defeated!
                     Zyrryl falls to one knee, his molten armor cracking apart.
                     You have shattered the guardian of flame.
@@ -426,7 +429,7 @@ public class World3 {
         player.getEffects().resetAllEffects();
 
         // --- Pre Final Encounter ---
-        PrintUtil.type("""
+        PrintUtil.effect("""
                 As you advance deeper into the ruins, a cloaked figure materializes before you.
                 
                 "Before you face the Final Boss… prove your mastery of the pillars of OOP.
@@ -451,7 +454,7 @@ public class World3 {
 
         PrintUtil.pause(1500);
 
-        System.out.println("                                                                                                                           \n" +
+        PrintUtil.event("                                                                                                                           \n" +
                 "                                                                                                                           \n" +
                 "▄█████ ██ █████▄    ██  ██ ▄████▄ ███  ██       ██████ ██  ██ ██████   ▄█████▄ ██  ██ ██████ █████▄  ██████ ███  ██ ██████ \n" +
                 "▀▀▀▄▄▄ ██ ██▄▄██▄   ██▄▄██ ██  ██ ██ ▀▄██         ██   ██████ ██▄▄     ██ ▄ ██ ██  ██ ██▄▄   ██▄▄██▄ ██▄▄   ██ ▀▄██   ██   \n" +
@@ -459,7 +462,7 @@ public class World3 {
                 "                                          ▀                                 ▀▀                                             ");
 
         PrintUtil.pause(1500);
-        PrintUtil.type("                                                          \n" +
+        PrintUtil.objective("                                                          \n" +
                 "                                                          \n" +
                 "                        -*%@@@@@%=                        \n" +
                 "                       +@@@%-=%@@@*.                      \n" +
@@ -496,9 +499,10 @@ public class World3 {
 
         // --- Boss: the revelation ---
         PrintUtil.title("BOSS — Sir Khai, the Necromancer");
-        PrintUtil.event("At the summit, you see the Third Stone pulsing with violet light on an altar.");
+        PrintUtil.effect("At the summit, you see the Third Stone pulsing with violet light on an altar.");
         PrintUtil.effect("You reach out. The Stones unite—humming and pulling themselves closer together like a single heartbeat.");
-        PrintUtil.event("Then Khai the Gray steps forward, staff blazing.\n");
+        PrintUtil.effect("Then Khai the Gray steps forward, staff blazing.\n");
+        PrintUtil.pause(800);
         PrintUtil.say("Sir Khai", "\"Finally. \nYou’ve served well, my student. Who better to collect the stones of life than one who trusts their teacher?\"");
         PrintUtil.say("Sir Khai", "\"I have guided you not to save this land—but to claim its power. \n" +
                 "Because only the most skilled and pure can bring the stones together. I have been waiting for a student like you for a millenia. \n" +

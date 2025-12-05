@@ -14,7 +14,7 @@ public class World1Enemy3 extends Enemy {
 
     // Skill: Root Snare (6–9 damage, immobilize 1 turn)
     public void rootSnare(Character target) {
-        PrintUtil.type(ColorUtil.boldBrightRed("                                                          \n" +
+        PrintUtil.print(ColorUtil.boldBrightRed("                                                          \n" +
                 "                             -                            \n" +
                 "                  . -: ..  =#   : .-                      \n" +
                 "                   #*%..=. #    :**:    :-                \n" +

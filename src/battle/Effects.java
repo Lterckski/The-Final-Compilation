@@ -235,48 +235,53 @@ public class Effects {
 
     // ------------------- DoT EFFECTS -------------------
     public void updateDoTEffects() {
-// ----- POISON (scales with Max HP) -----
+        // ----- POISON (scales with Max HP) -----
         if (poisonTurnsLeft > 0) {
             int poisonDamage = Math.max(1, (int)(owner.getMaxHP() * 0.05)); // 5% of Max HP
-            System.out.println(ColorUtil.brightMagenta("☠ " + owner.getName() + " is poisoned! 💔 Took " + poisonDamage + " damage."));
+            System.out.println(
+                    ColorUtil.brightMagenta("☠ " + owner.getName() + " is poisoned! 💔 Took ") +
+                            ColorUtil.boldBrightWhite(String.valueOf(poisonDamage)) +
+                            ColorUtil.brightMagenta(" damage.")
+            );
             PrintUtil.pause(800);
             owner.takeDamage(poisonDamage);
             poisonTurnsLeft--;
         }
 
-// ----- BLEED (scales with Missing HP) -----
+        // ----- BLEED (scales with Missing HP) -----
         if (bleedTurnsLeft > 0) {
             int missingHP = owner.getMaxHP() - owner.getHp();
-            int bleedDamage = Math.max(1, (int)(missingHP * 0.04)); // 4% of missing HP
-            System.out.println(ColorUtil.brightMagenta("🩸 " + owner.getName() + " is bleeding! 💔 Took " + bleedDamage + " damage (based on missing HP)."));
-            // Scales 4%, 6%, 8%, ... up to 16%
-            int scalePercent = Math.min(4 + 2 * (bleedInitialTurns - bleedTurnsLeft), 16);
-            int bleedDamage = Math.max(1, (atk * scalePercent) / 100);
+            int bleedDamage = Math.max(1, (int)(missingHP * 0.1)); // 10% of missing HP
 
-            System.out.println(ColorUtil.brightMagenta("🩸 " + owner.getName() + " is bleeding! 💔 Took "
-                    + bleedDamage + " damage."));
+            System.out.println(
+                    ColorUtil.brightMagenta("🩸 " + owner.getName() + " is bleeding! 💔 Took ") +
+                            ColorUtil.boldBrightWhite(String.valueOf(bleedDamage)) +
+                            ColorUtil.brightMagenta(" damage.")
+            );
             PrintUtil.pause(800);
             owner.takeDamage(bleedDamage);
             bleedTurnsLeft--;
         }
 
-// ----- BURN (scales with Current HP) -----
+        // ----- BURN (scales with Current HP) -----
         if (burnTurnsLeft > 0) {
             int burnDamage;
 
             if (owner instanceof FinalBoss) {
-                // Boss: weaker burn to avoid instant melting
                 int rawBurn = (int)((owner.getMaxHP() * 0.01) + (owner.getHp() * 0.01));
-                int burnCap = (int)(owner.getMaxHP() * 0.03); // max 3% of Max HP
+                int burnCap = (int)(owner.getMaxHP() * 0.03);
                 burnDamage = Math.max(1, Math.min(rawBurn, burnCap));
             } else {
-                // Normal enemies: standard hybrid burn
                 int rawBurn = (int)((owner.getMaxHP() * 0.02) + (owner.getHp() * 0.02));
-                int burnCap = (int)(owner.getMaxHP() * 0.06); // max 6% of Max HP
+                int burnCap = (int)(owner.getMaxHP() * 0.06);
                 burnDamage = Math.max(1, Math.min(rawBurn, burnCap));
             }
 
-            System.out.println(ColorUtil.brightMagenta("🔥 " + owner.getName() + " is burning! 💔 Took " + burnDamage + " damage."));
+            System.out.println(
+                    ColorUtil.brightMagenta("🔥 " + owner.getName() + " is burning! 💔 Took ") +
+                            ColorUtil.boldBrightWhite(String.valueOf(burnDamage)) +
+                            ColorUtil.brightMagenta(" damage.")
+            );
             PrintUtil.pause(800);
             owner.takeDamage(burnDamage);
             burnTurnsLeft--;

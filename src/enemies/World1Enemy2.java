@@ -6,8 +6,6 @@ import utils.ColorUtil;
 import utils.PrintUtil;
 import utils.RandomUtil;
 
-import java.awt.*;
-
 public class World1Enemy2 extends Enemy {
     // Constructor
     public World1Enemy2() {
@@ -16,7 +14,7 @@ public class World1Enemy2 extends Enemy {
 
     // Skill: Trickster Strike (8–13 damage)
     public void tricksterStrike(Character target) {
-        PrintUtil.type(ColorUtil.boldBrightRed("                                                          \n" +
+        PrintUtil.print(ColorUtil.boldBrightRed("                                                          \n" +
                 "                                      :=+=:               \n" +
                 "               =#+-+#.              =%:  .+%*             \n" +
                 "             .*+     #             :*      .##            \n" +

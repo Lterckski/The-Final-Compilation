@@ -197,7 +197,7 @@ public class Tester {
 //        testBattle1.startBattle();
 //        testEnemy1.dropLoot(player);
 
-        */
+
 
 
     }

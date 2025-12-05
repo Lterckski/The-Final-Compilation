@@ -11,7 +11,7 @@ public class World3Enemy1 extends Enemy {
     public World3Enemy1() { super("Flame Revenant", 1682, 28, 80); }
 
     public void emberBurst(Character target) {
-        PrintUtil.type(ColorUtil.boldBrightRed("                                                          \n" +
+        PrintUtil.print(ColorUtil.boldBrightRed("                                                          \n" +
                 "                             .                            \n" +
                 "                           +##*.                          \n" +
                 "                          .#%%#.                          \n" +
