@@ -172,11 +172,11 @@ public abstract class Character {
 
         // Determine energy type
         if (classType.equalsIgnoreCase("Mage")) {
-            energyLabel = " 💧 Mana     ";
+            energyLabel = " 💧 Mana    ";
         } else if (classType.equalsIgnoreCase("Archer")) {
-            energyLabel = " 🏹 Arrows   ";
+            energyLabel = " 🏹 Arrows  ";
         } else {
-            energyLabel = " 🔋 Stamina  ";
+            energyLabel = " 🔋 Stamina ";
         }
 
         System.out.println(ColorUtil.boldBrightCyan(" 👤 Name/Class  :  ") + ColorUtil.boldBrightYellow(name + " (" + classType + ")"));

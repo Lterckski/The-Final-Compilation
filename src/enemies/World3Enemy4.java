@@ -102,6 +102,6 @@ public class World3Enemy4 extends Enemy {
 
     @Override
     public int rewardExp(){
-        return RandomUtil.range(596,647);
+        return RandomUtil.range(930,970);
     }
 }

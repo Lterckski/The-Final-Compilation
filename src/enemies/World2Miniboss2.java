@@ -301,7 +301,5 @@ public class World2Miniboss2 extends Enemy {
     }
 
     @Override
-    public int rewardExp(){
-        return 5692;
-    }
+    public int rewardExp(){return RandomUtil.range(1600,2000);}
 }

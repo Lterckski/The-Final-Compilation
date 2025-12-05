@@ -98,6 +98,7 @@ public class Tester {
 //        simon.showSkills();
 //        */
 
+
         System.out.println("Welcome to The Final Compilation");
         PrintUtil.pause(1000);
 
@@ -195,6 +196,8 @@ public class Tester {
 //        PrintUtil.type(ColorUtil.boldBrightMagenta(("🎯 Objective: Defeat 3 Rotfang Wolves!\n").toUpperCase()));
 //        testBattle1.startBattle();
 //        testEnemy1.dropLoot(player);
+
+        */
 
 
     }
