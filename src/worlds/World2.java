@@ -4,6 +4,7 @@ import enemies.*;
 import battle.Battle;
 import characters.Character;
 import events.MagicShop;
+import utils.ColorUtil;
 import utils.InputUtil;
 import utils.PrintUtil;
 
@@ -558,7 +559,7 @@ public class World2 {
         PrintUtil.effect("He screams with his dying breath as his body crumbles into dust, leaving only confusion of who he was referring to.");
         InputUtil.pressEnterToContinue();
 
-        PrintUtil.type(ColorUtil.brightCyan("                                     \n" +
+        System.out.println(ColorUtil.brightCyan("                                     \n" +
                 "                                     \n" +
                 "                                     \n" +
                 "          *%%##********+=+=          \n" +
@@ -582,7 +583,9 @@ public class World2 {
                 "                                     \n" +
                 "                                     "));
 
-        PrintUtil.event("You lift the Second Stone from his crown, feeling its dark energy pulse in your hands.");
+        PrintUtil.loot("You lift the Second Stone from his crown, feeling its dark energy pulse in your hands.");
+        PrintUtil.pause(800);
+        System.out.println();
         PrintUtil.effect("A cold wind sweeps through the empty halls, extinguishing every torch and whispering secrets of the past.");
         InputUtil.pressEnterToContinue();
         PrintUtil.line();

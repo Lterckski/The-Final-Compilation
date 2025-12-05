@@ -225,7 +225,7 @@ public class World2Miniboss2 extends Enemy {
             Sword twinstrikeBlade = Sword.TWINSTRIKE_BLADE;   // +15 ATK, 10% chance for 2nd attack
             Sword lifebondBlade = Sword.LIFEBOND_BLADE;    // +15 ATK, restores 3% HP of damage dealt
 
-            PrintUtil.type(ColorUtil.boldBrightCyan(
+            System.out.println(ColorUtil.boldBrightCyan(
                     "                                                            " + "                                                        \n" +
                             "                                .                           " + "                                                        \n" +
                             "                             .#*                            " + "                                                        \n" +
@@ -285,7 +285,7 @@ public class World2Miniboss2 extends Enemy {
             Bow twinshotBow = Bow.TWINSHOT_BOW;    // +15 ATK, 10% chance to attack twice
             Bow lifebloomBow = Bow.LIFEBLOOM_BOW;   // +15 ATK, restores 3% HP of damage dealt
 
-            PrintUtil.type(ColorUtil.boldBrightCyan(
+            System.out.println(ColorUtil.boldBrightCyan(
                     "                         :.                                                             =.                            \n" +
                             "                       :#%                                                             *#                              \n" +
                             "                       *:=:                                                           :%%                              \n" +
@@ -344,7 +344,7 @@ public class World2Miniboss2 extends Enemy {
             Staff mysticMindStaff = Staff.MYSTIC_MIND_STAFF; // +15 ATK, 30% chance to confuse
             Staff flameheartStaff = Staff.FLAMEHEART_STAFF;  // +15 ATK, restores 3% HP of damage dealt
 
-            PrintUtil.type(ColorUtil.boldBrightCyan(
+            System.out.println(ColorUtil.boldBrightCyan(
                     "                                                        " + "                                                        \n" +
                             "                        -=  :-                          " + "                       =      .-                        \n" +
                             "                      ..*=  -*..                        " + "                      .#.     :%                        \n" +

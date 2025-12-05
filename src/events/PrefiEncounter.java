@@ -82,7 +82,7 @@ public class PrefiEncounter {
             System.out.println(ColorUtil.boldBrightCyan("╔═════════════════════════════════════════════════════════════════╗"));
             System.out.println(ColorUtil.boldBrightCyan("               🟡 CHOOSE YOUR LEGENDARY ARTIFACT 🟡"));
             System.out.println(ColorUtil.boldBrightCyan("╚═════════════════════════════════════════════════════════════════╝"));
-            PrintUtil.type(ColorUtil.boldBrightYellow(
+            System.out.println(ColorUtil.boldBrightYellow(
                     "                        :                        " + "                          +                       " + "                     .-:--                        " + "                      .   .                       \n" +
                             "                       *@*                       " + "                         :*:                      " + "                   .+-:-==-+:                    " + "                     -:.- --                      \n" +
                             "                       .#.                       " + "                        .##.                      " + "                  :+-=+++++-+:                    " + "                  .  -%@%@%:  .:-                \n" +

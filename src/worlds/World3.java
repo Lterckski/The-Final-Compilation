@@ -499,7 +499,7 @@ public class World3 {
 
         // --- Boss: the revelation ---
         PrintUtil.title("BOSS — Sir Khai, the Necromancer");
-        PrintUtil.type(ColorUtil.brightMagenta("                                     \n" +
+        System.out.println(ColorUtil.brightMagenta("                                     \n" +
                 "                                     \n" +
                 "                                     \n" +
                 "                                     \n" +
@@ -521,8 +521,12 @@ public class World3 {
                 "                                     \n" +
                 "                                     \n" +
                 "                                     "));
-        PrintUtil.event("At the summit, you see the Third Stone pulsing with violet light on an altar.");
-        PrintUtil.effect("You reach out. The Stones unite—humming and pulling themselves closer together like a single heartbeat.");
+        PrintUtil.loot("At the summit, you see the Third Stone pulsing with violet light on an altar.");
+        PrintUtil.pause(600);
+        PrintUtil.loot("You reach out. The Stones unite—humming and pulling themselves closer together like a single heartbeat.");
+        PrintUtil.pause(600);
+        System.out.println();
+
         PrintUtil.effect("Then Khai the Gray steps forward, staff blazing.\n");
         PrintUtil.pause(800);
         PrintUtil.say("Sir Khai", "\"Finally. \nYou’ve served well, my student. Who better to collect the stones of life than one who trusts their teacher?\"");

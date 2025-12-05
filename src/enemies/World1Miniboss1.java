@@ -169,7 +169,7 @@ public class World1Miniboss1 extends Enemy {
 
         if (player.getClassType().equals("Swordsman")) {
             Sword ironShortsword = Sword.IRON_SHORTSWORD;
-            PrintUtil.type(ColorUtil.boldBrightGreen("                                                       \n" +
+            System.out.println(ColorUtil.boldBrightGreen("                                                       \n" +
                     "                                                       \n" +
                     "                          .+.                          \n" +
                     "                          -@-                          \n" +
@@ -204,7 +204,7 @@ public class World1Miniboss1 extends Enemy {
             }
         } else if (player.getClassType().equals("Archer")) {
             Bow oakLongbow = Bow.OAK_LONGBOW;
-            PrintUtil.type(ColorUtil.boldBrightGreen("                                                       \n" +
+            System.out.println(ColorUtil.boldBrightGreen("                                                       \n" +
                     "                                                       \n" +
                     "                                                       \n" +
                     "                                                       \n" +
@@ -239,7 +239,7 @@ public class World1Miniboss1 extends Enemy {
             }
         } else if (player.getClassType().equals("Mage")) {
             Staff apprenticeStaff = Staff.APPRENTICE_STAFF;
-            PrintUtil.type(ColorUtil.boldBrightGreen("                                                       \n" +
+            System.out.println(ColorUtil.boldBrightGreen("                                                       \n" +
                     "                                                       \n" +
                     "                          :+.                          \n" +
                     "                          +@=                          \n" +
@@ -272,7 +272,7 @@ public class World1Miniboss1 extends Enemy {
         PrintUtil.pause(800);
 
         Armor ironVanguard = Armor.IRON_VANGUARD;
-        PrintUtil.type(ColorUtil.boldBrightGreen("                                                       \n" +
+        System.out.println(ColorUtil.boldBrightGreen("                                                       \n" +
                 "                                                       \n" +
                 "                                                       \n" +
                 "                     -#%###*###%#-                     \n" +

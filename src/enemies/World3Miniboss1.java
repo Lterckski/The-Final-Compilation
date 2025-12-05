@@ -139,7 +139,7 @@ public class World3Miniboss1 extends Enemy {
 
         if (player.getClassType().equals("Swordsman")) {
             Sword eclipseGreatsword = Sword.ECLIPSE_GREATSWORD;
-            PrintUtil.type(ColorUtil.boldBrightMagenta("                                                       \n" +
+            System.out.println(ColorUtil.boldBrightMagenta("                                                       \n" +
                     "                          . .                          \n" +
                     "                         :+#+:                         \n" +
                     "                          -#-                          \n" +
@@ -174,7 +174,7 @@ public class World3Miniboss1 extends Enemy {
             }
         } else if (player.getClassType().equals("Archer")) {
             Bow aetherstrikeBow = Bow.AETHERSTRIKE_BOW;
-            PrintUtil.type(ColorUtil.boldBrightMagenta("                                   ..                  \n" +
+            System.out.println(ColorUtil.boldBrightMagenta("                                   ..                  \n" +
                     "                               :-#-                    \n" +
                     "                              -**.                     \n" +
                     "                             .*#=                      \n" +
@@ -209,7 +209,7 @@ public class World3Miniboss1 extends Enemy {
             }
         } else if (player.getClassType().equals("Mage")) {
             Staff aethericStaff = Staff.AETHERIC_STAFF;
-            PrintUtil.type(ColorUtil.boldBrightMagenta("                                                       \n" +
+            System.out.println(ColorUtil.boldBrightMagenta("                                                       \n" +
                     "                                                       \n" +
                     "                          - -                          \n" +
                     "                         :+ +-                         \n" +
@@ -247,7 +247,7 @@ public class World3Miniboss1 extends Enemy {
         PrintUtil.pause(800);
 
         Armor skyforgePlate = Armor.SKYFORGE_PLATE;
-        PrintUtil.type(ColorUtil.boldBrightMagenta("                                                       \n" +
+        System.out.println(ColorUtil.boldBrightMagenta("                                                       \n" +
                 "                                                       \n" +
                 "                                                       \n" +
                 "                                                       \n" +

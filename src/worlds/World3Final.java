@@ -503,7 +503,7 @@ public class World3Final {
 
         PrintUtil.pause(2000);
 
-        PrintUtil.type(ColorUtil.boldBrightCyan("""
+        System.out.println(ColorUtil.boldBrightCyan("""
                                  :                              
    -            ..             -+=   .:   :         .        :   
                  -+:          :     *+ =   *        .           

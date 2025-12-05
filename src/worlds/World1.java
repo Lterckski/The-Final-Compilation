@@ -3,6 +3,7 @@ package worlds;
 import enemies.*;
 import battle.Battle;
 import characters.Character;
+import utils.ColorUtil;
 import utils.InputUtil;
 import utils.PrintUtil;
 
@@ -413,7 +414,7 @@ public class World1 {
                 🌟 The Hollow Stag staggers, its luminous eyes fading to black.
                 With one final, echoing cry, it collapses to the ground. The forest trembles… then exhales.
                 """);
-        PrintUtil.type(ColorUtil.boldBrightYellow("                                     \n" +
+        System.out.println(ColorUtil.boldBrightYellow("                                     \n" +
                 "                                     \n" +
                 "                                     \n" +
                 "                  =*:                \n" +

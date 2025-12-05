@@ -195,7 +195,7 @@ public class World2Miniboss1 extends Enemy{
         Armor aegisMail = Armor.AEGIS_MAIL;         // +25 DEF, immune to debuff ↓
         Armor vanguardRobe = Armor.VANGUARD_ROBE;   // +25 DEF, immune to status effects
 
-        PrintUtil.type(ColorUtil.boldBrightCyan(
+        System.out.println(ColorUtil.boldBrightCyan(
                 "                                                        " + "                                                        \n" +
                         "                                                        " + "                                                        \n" +
                         "                                                        " + "                                                        \n" +
