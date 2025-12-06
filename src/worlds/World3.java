@@ -43,8 +43,10 @@ public class World3 {
         System.out.println("══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════");
         System.out.println();
         PrintUtil.story(
-                            "You have been travelling for days. You have reached a land where not a even a glimmer of life can be seen.\n The land has turned barren. Ash falls like snow. Rivers of molten fire carve through the black rock.\n" +
-                        "At the center, rising higher than mountains, stands a tower larger than anything you have ever seen. \n The Necromancer’s Tower.\n"
+                            "You have been travelling for days. You have reached a land where not a even a glimmer of life can be seen.\n" +
+                                    "The land has turned barren. Ash falls like snow. Rivers of molten fire carve through the black rock.\n" +
+                        "At the center, rising higher than mountains, stands a tower larger than anything you have ever seen. " +
+                                    "\nThe Necromancer’s Tower."
         );
         System.out.println();
         System.out.println("══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════");
@@ -364,7 +366,7 @@ public class World3 {
         PrintUtil.objective("═══════════════════════════════════════════════════════════════════════════");
         System.out.println();
         PrintUtil.effect("""
-                                  As you reach the summit, molten light reveals a towering figure.
+                As you reach the summit, molten light reveals a towering figure.
                 Zyrryl, Warden of the Shattered Tower, stands armed with cursed steel.
                 """);
         System.out.println();

@@ -29,7 +29,7 @@ public class Simon extends Character {
         // Skill 2 – Ice Prison
         System.out.println("  " + ColorUtil.boldBrightYellow("❄️ Skill 2 – Ice Prison (💧 25 Mana)"));
         System.out.println("  " + ColorUtil.cyan("📜 Description: Encases the target in solid ice, restricting movement and draining warmth."));
-        System.out.println("  " + ColorUtil.cyan("💥 Damage: (") + ColorUtil.boldBrightYellow((int)(attack * 0.80) + " — " + (int)(attack * 1.20)) + ColorUtil.cyan(")"));
+        System.out.println("  " + ColorUtil.cyan("💥 Damage: (") + ColorUtil.boldBrightYellow((int)(attack * 0.10) + " — " + (int)(attack * 1.25)) + ColorUtil.cyan(")"));
         System.out.println("  " + ColorUtil.cyan("⚡ Effects:"));
         System.out.println("    - " + ColorUtil.cyan("❄️ 30% chance to Freeze (target skips 1 turn)"));
         System.out.println("    - " + ColorUtil.cyan("🛡️ If frozen: reduces DEF by 15% for 2 turns\n"));
@@ -168,7 +168,7 @@ public class Simon extends Character {
 
         if (this.getEffects().checkConfuse()) return;
 
-        int damage = (int) RandomUtil.range(attack * 0.80, attack * 1.20);
+        int damage = (int) RandomUtil.range(attack * 0.10, attack * 1.25);
         int reduced = calculateDamage(target, damage);
 
 
@@ -273,7 +273,7 @@ public class Simon extends Character {
             System.out.println(ColorUtil.boldBrightGreen("[1]") + " " + ColorUtil.green("🔥 Skill 1   -  Fireball (💧 15 Mana)"));
             System.out.println(ColorUtil.boldBrightGreen("[2]") + " " + ColorUtil.green("❄️ Skill 2   -  Ice Prison (💧 25 Mana)"));
             System.out.println(ColorUtil.boldBrightGreen("[3]") + " " + ColorUtil.green("🌋 Ultimate  -  Meteor Storm (💧 40 Mana)"
-                    + (ultimateCounter > 0 ? " " + ColorUtil.boldBrightRed("❌ Cooldown: " + ultimateCounter + " turns") : "")));
+                    + (ultimateCounter > 0 ? " " + ColorUtil.boldBrightRed("❌ Cooldown: " + ultimateCounter + " turn/s") : "")));
             System.out.println(ColorUtil.boldBrightGreen("[4]") + " " + ColorUtil.green("\uD83D\uDEE1\uFE0F Skip Turn -  Restore 10% of Max HP and 30 Mana"));
             System.out.println(ColorUtil.boldBrightGreen("[5]") + " " + ColorUtil.green("📜 Show Menu"));
             System.out.print(ColorUtil.boldBrightWhite("Choose your action: "));
@@ -302,7 +302,7 @@ public class Simon extends Character {
                 }
                 case 3 -> {
                     if (ultimateCounter > 0) {
-                        System.out.println(ColorUtil.boldBrightRed("❌ Ultimate is on cooldown! Can only be used after " + ultimateCounter + " turns."));
+                        System.out.println(ColorUtil.boldBrightRed("❌ Ultimate is on cooldown! Can only be used after " + ultimateCounter + " turn/s."));
                     } else if (energy >= 40) {
                         meteorStorm(target);
                         isValid = true;

@@ -39,6 +39,8 @@ public class StoryEngine {
 
         Epilogue end = new Epilogue();
         end.run(player);
+
+        System.exit(0);
     }
 
 
@@ -178,9 +180,6 @@ public class StoryEngine {
                 When come to your senses, you're no longer in the lab. You wake up in an unfamiliar place.👁️
                 """
         );
-        PrintUtil.pause(1000);
-
-        PrintUtil.title("╔═════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╗");
 
         PrintUtil.pause(1000);
         System.out.println();
@@ -467,6 +466,7 @@ public class StoryEngine {
                         System.out.println(ColorUtil.boldBrightCyan("      ┌──────────────────────────────────────────────────────────────────┐"));
                         System.out.println(ColorUtil.boldBrightCyan("        🧙‍♂️ You have chosen " + player.getName().toUpperCase() + ", the Overpowered Test Mage! "));
                         System.out.println(ColorUtil.boldBrightCyan("      └──────────────────────────────────────────────────────────────────┘"));
+                        System.out.println();
 
                         PrintUtil.line();
                         System.out.println(ColorUtil.brightRed("⚡ *This Test Mage is fully powered — ready to blaze through the game!*"));

@@ -484,9 +484,9 @@ public class World2 {
 
         PrintUtil.objective("════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════");
         System.out.println();
-        PrintUtil.objective(
-                                "In the throne room, the King sits slumped—his crown fused to his skull. and on it, you see the second stone as its centerpiece.\n" +
-                        "YOU DARE CHALLENGE MY AUTHORITY?! YOUR SKULL WILL BECOME BUT ANOTHER TROPHY IN MY HALLS.\n"
+        PrintUtil.effect(
+                "In the throne room, the King sits slumped—his crown fused to his skull. and on it, you see the second stone as its centerpiece.\n" +
+                        "YOU DARE CHALLENGE MY AUTHORITY?! YOUR SKULL WILL BECOME BUT ANOTHER TROPHY IN MY HALLS."
         );
         System.out.println();
         PrintUtil.objective("════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════");

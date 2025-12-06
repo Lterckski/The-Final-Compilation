@@ -370,7 +370,7 @@ public abstract class Character {
             level++;
             PrintUtil.hr();
             PrintUtil.specialCyan("✨ LEVEL UP! You are now Level " + level + "! ✨");
-            PrintUtil.specialCyan("25% of 💖 HP & " + getEnergyEmoji() + " " + getEnergyName() + " Restored!");
+            PrintUtil.specialCyan("50% of 💖 HP & " + getEnergyEmoji() + " " + getEnergyName() + " Restored!");
 
             int oldHp = maxHP;
             int oldAtk = baseAttack;
@@ -394,10 +394,10 @@ public abstract class Character {
                 }
             }
 
-            hp += (int)(maxHP * 0.25);
+            hp += (int)(maxHP * 0.50);
             if (hp > maxHP) hp = maxHP;
 
-            energy += (int)(maxEnergy * 0.25);
+            energy += (int)(maxEnergy * 0.50);
             if (energy > maxEnergy) energy = maxEnergy;
 
             exp -= nextLevelExp;
@@ -405,9 +405,9 @@ public abstract class Character {
 
             recalculateBuffs();
 
-            PrintUtil.specialCyan(String.format("%-8s : +%d → %d%n", "💚 HP", (maxHP - oldHp), maxHP));
-            PrintUtil.specialCyan(String.format("%-8s : +%d → %d%n", "⚔️ ATK", (baseAttack - oldAtk), attack));
-            PrintUtil.specialCyan(String.format("%-8s  : +%d → %d%n", "🛡️ DEF", (baseDefense - oldDef), defense));
+            PrintUtil.specialCyan(String.format("%-8s : +%d → %d", "💚 Max HP", (maxHP - oldHp), maxHP));
+            PrintUtil.specialCyan(String.format("%-8s : +%d → %d", "⚔️ Max ATK", (baseAttack - oldAtk), attack));
+            PrintUtil.specialCyan(String.format("%-8s  : +%d → %d", "🛡️ DEF", (baseDefense - oldDef), defense));
             PrintUtil.hr();
             System.out.println();
             PrintUtil.pause(800);

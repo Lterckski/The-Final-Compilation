@@ -36,7 +36,7 @@ public class PrintUtil {
 
     public static void event(String text) {
         pause(800);
-        System.out.println(ColorUtil.boldBrightYellow("» " + text + "\n"));
+        System.out.println(ColorUtil.boldBrightYellow(text));
     }
 
     public static void print(String block) {

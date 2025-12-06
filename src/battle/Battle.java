@@ -174,12 +174,12 @@ public class Battle {
             player.getEffects().updateAttackModifiers();
             player.getEffects().updateDefenseModifiers();
 
-            if (player.getEffects().checkEffects()) {
-                // --- PLAYER STATUS TRACKER ---
-                System.out.println();
-                displayBattleStats();
+            System.out.println();
+            displayBattleStats();
 
-                System.out.println(ColorUtil.boldBrightGreen("── YOUR TURN ──"));
+            System.out.println(ColorUtil.boldBrightGreen("── YOUR TURN ──"));
+
+            if (player.getEffects().checkEffects()) {
                 player.turn(enemy);
             }
 
@@ -198,8 +198,9 @@ public class Battle {
             enemy.getEffects().updateAttackModifiers();
             enemy.getEffects().updateDefenseModifiers();
 
+            System.out.println(ColorUtil.boldBrightRed("\n── ENEMY TURN ──"));
+
             if (enemy.getEffects().checkEffects()) {
-                System.out.println(ColorUtil.boldBrightRed("\n── ENEMY TURN ──"));
                 PrintUtil.pause(800);
                 enemy.turn(player);
             }

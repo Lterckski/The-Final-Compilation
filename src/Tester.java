@@ -8,6 +8,7 @@ import inventory.*;
 
 import utils.InputUtil;
 import utils.PrintUtil;
+import worlds.World1;
 
 public class Tester {
     public static void main(String[] args) {
@@ -144,6 +145,11 @@ public class Tester {
             }
         } while (player == null);  // repeat until valid choice
         player.getInventory().setEquippedArmor(Armor.LEATHER_GUARD);
+
+
+        World1 world1 = new World1();
+        world1.run(player);
+
 /*
         MagicShop magicShop = new MagicShop(player);
 
@@ -179,8 +185,7 @@ public class Tester {
 //        testEnemy1.dropLoot(player);
 
 //
-////        World1 world1 = new World1();
-////        world1.run(player);
+
 ////
 ////        World2 world2 = new World2();
 ////        world2.run(player);
