@@ -534,7 +534,7 @@ public class World3Final {
           :        #-   =        :*#####*+:   .:.                
                     +      *                                      
                       -                                           
-                         Press to continue                        
+                                                
 """));
 
 
