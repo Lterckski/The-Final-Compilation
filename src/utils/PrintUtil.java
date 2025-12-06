@@ -27,7 +27,6 @@ public class PrintUtil {
 
     public static void title(String t) {
         System.out.println(ColorUtil.boldBrightYellow(t));
-        System.out.println();
     }
 
     public static void loot(String text) {

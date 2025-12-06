@@ -196,6 +196,7 @@ public class Null extends Character {
                 "@@@@@@@@%%@@@%%%%%@%%#**+*@@%%%%%#%%@@@%%##%##*#%%%%%@%@@@\n" +
                 "@@@@@@@@@@@@@@@@@@%%%%###*#%%%@@%%%%%@%%%%#####%%%@@@%**@@\n" +
                 "@@@@@@@@@@@@@@@@@@@@@@%%%%%@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"));
+        System.out.println();
         int cost = 20;
         if (!consumeEnergy(cost)) {
             System.out.println(ColorUtil.boldBrightRed("❌ Not enough Energy!"));
