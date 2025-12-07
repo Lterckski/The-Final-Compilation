@@ -29,7 +29,7 @@ public class Simon extends Character {
         // Skill 2 – Ice Prison
         System.out.println("  " + ColorUtil.boldBrightYellow("❄️ Skill 2 – Ice Prison (💧 25 Mana)"));
         System.out.println("  " + ColorUtil.cyan("📜 Description: Encases the target in solid ice, restricting movement and draining warmth."));
-        System.out.println("  " + ColorUtil.cyan("💥 Damage: (") + ColorUtil.boldBrightYellow((int)(attack * 0.10) + " — " + (int)(attack * 1.25)) + ColorUtil.cyan(")"));
+        System.out.println("  " + ColorUtil.cyan("💥 Damage: (") + ColorUtil.boldBrightYellow((int)(attack * 1.00) + " — " + (int)(attack * 1.25)) + ColorUtil.cyan(")"));
         System.out.println("  " + ColorUtil.cyan("⚡ Effects:"));
         System.out.println("    - " + ColorUtil.cyan("❄️ 30% chance to Freeze (target skips 1 turn)"));
         System.out.println("    - " + ColorUtil.cyan("🛡️ If frozen: reduces DEF by 15% for 2 turns\n"));
@@ -37,7 +37,7 @@ public class Simon extends Character {
         // Ultimate – Meteor Storm
         System.out.println("  " + ColorUtil.boldBrightYellow("☄️ Ultimate – Meteor Storm (💧 40 Mana)"));
         System.out.println("  " + ColorUtil.cyan("📜 Description: Summons a storm of blazing meteors, striking the opponent multiple times."));
-        System.out.println("  " + ColorUtil.cyan("💥 Damage: 5 hits, each dealing (") + ColorUtil.boldBrightYellow((int)(attack * 1.00) + " — " + (int)(attack * 1.50)) + ColorUtil.cyan(")"));
+        System.out.println("  " + ColorUtil.cyan("💥 Damage: 5 hits, each dealing (") + ColorUtil.boldBrightYellow((int)(attack * 0.90) + " — " + (int)(attack * 1.20)) + ColorUtil.cyan(")"));
         System.out.println("  " + ColorUtil.cyan("⚡ Effects:"));
         System.out.println("    - " + ColorUtil.cyan("💪 Grants Strengthen (+20% ATK for 2 turns)"));
         System.out.println("    - " + ColorUtil.cyan("🔥 50% chance to apply Burn (2 turns)"));
@@ -168,7 +168,7 @@ public class Simon extends Character {
 
         if (this.getEffects().checkConfuse()) return;
 
-        int damage = (int) RandomUtil.range(attack * 0.10, attack * 1.25);
+        int damage = (int) RandomUtil.range(attack * 1.00, attack * 1.25);
         int reduced = calculateDamage(target, damage);
 
 
@@ -227,7 +227,7 @@ public class Simon extends Character {
         int totalDamage = 0;
 
         for (int i = 1; i <= 5; i++) {
-            int damage = (int) RandomUtil.range(attack * 1.00, attack * 1.50);
+            int damage = (int) RandomUtil.range(attack * 0.90, attack * 1.40);
             int reduced = calculateDamage(target, damage);
 
             // Check if target is confused
