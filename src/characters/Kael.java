@@ -38,7 +38,7 @@ public class Kael extends  Character{      // 15% crit chance
 // Ultimate
         System.out.println("  " + ColorUtil.boldBrightYellow("✝️ Ultimate – Eternal Cross Slash (🔋 20 Stamina)"));
         System.out.println("  " + ColorUtil.cyan("📜 Description: Kael unleashes a flurry of crossing strikes infused with unyielding determination."));
-        System.out.println("  " + ColorUtil.cyan("💥 Damage: 3 hits, each dealing (") + ColorUtil.boldBrightYellow((int)(attack * 1.40) + " — " + (int)(attack * 2.20)) + ColorUtil.cyan(")"));
+        System.out.println("  " + ColorUtil.cyan("💥 Damage: 3 hits, each dealing (") + ColorUtil.boldBrightYellow((int)(attack * 1.20) + " — " + (int)(attack * 2.00)) + ColorUtil.cyan(")"));
         System.out.println("  " + ColorUtil.cyan("⚡ Effects:"));
         System.out.println("    - " + ColorUtil.cyan("🩸 Applies Bleed (10 damage per turn for 2 turns)"));
         System.out.println("    - " + ColorUtil.cyan("🛡️ Grants Fortified (+20% DEF for 2 turns)"));
@@ -212,7 +212,7 @@ public class Kael extends  Character{      // 15% crit chance
         PrintUtil.pause(800);
 
         for(int i = 1; i <= 3; i++){
-            int damage = (int) RandomUtil.range(attack * 1.40,attack * 2.20);
+            int damage = (int) RandomUtil.range(attack * 1.20,attack * 2.00);
             damage = bladeSwift(damage);
             int reduced = calculateDamage(target, damage);
 

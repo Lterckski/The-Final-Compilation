@@ -186,7 +186,7 @@ public class World3 {
             PrintUtil.line();
             enemy2.dropLoot(player);
 
-            if (i < 2) {
+            if (i < 3) {
                 enemy2 = new World3Enemy2();
                 battle2 = new Battle(player, enemy2);
             }
@@ -318,7 +318,7 @@ public class World3 {
         InputUtil.pressEnterToContinue();
         System.out.println();
 
-        for (int i = 1; i <= 4; i++) {
+        for (int i = 1; i <= 3; i++) {
             PrintUtil.hr();
             PrintUtil.enemyEncounter("😈 Soulflayer Gargoyle " + i + " swoops down from above!");
             PrintUtil.hr();

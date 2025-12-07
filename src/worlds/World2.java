@@ -401,8 +401,8 @@ public class World2 {
         PrintUtil.objective("═════════════════════════════════════════════════════════════════════════════════");
         System.out.println();
         PrintUtil.effect("""
-                            In the dungeons below, chains rattle.
-                            The Black Jailer steps from the shadows, dragging hooks and blades behind him.
+               In the dungeons below, chains rattle.
+               The Black Jailer steps from the shadows, dragging hooks and blades behind him.
                 """);
         System.out.println();
         PrintUtil.objective("═════════════════════════════════════════════════════════════════════════════════");
