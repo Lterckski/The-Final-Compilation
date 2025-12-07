@@ -298,7 +298,7 @@ public class Effects {
             if (mod.turnsLeft <= 0) {
                 owner.setAttack(owner.getAttack() - mod.amount);
                 atkBuffs.remove(i);
-                System.out.println(ColorUtil.boldBrightMagenta(owner.getName() + "'s attack buff has worn off!"));
+//                System.out.println(ColorUtil.boldBrightMagenta(owner.getName() + "'s attack buff has worn off!"));
                 PrintUtil.pause(800);
             }
         }
@@ -310,7 +310,7 @@ public class Effects {
             if (mod.turnsLeft <= 0) {
                 owner.setAttack(owner.getAttack() + mod.amount);
                 atkDebuffs.remove(i);
-                System.out.println(ColorUtil.boldBrightMagenta(owner.getName() + "'s attack debuff has faded!"));
+//                System.out.println(ColorUtil.boldBrightMagenta(owner.getName() + "'s attack debuff has faded!"));
                 PrintUtil.pause(800);
             }
         }
@@ -326,7 +326,7 @@ public class Effects {
             if (mod.turnsLeft <= 0) {
                 owner.setDefense(owner.getDefense() - mod.amount);
                 defBuffs.remove(i);
-                System.out.println(ColorUtil.boldBrightMagenta(owner.getName() + "'s defense buff has worn off!"));
+//                System.out.println(ColorUtil.boldBrightMagenta(owner.getName() + "'s defense buff has worn off!"));
                 PrintUtil.pause(800);
             }
         }
@@ -338,7 +338,7 @@ public class Effects {
             if (mod.turnsLeft <= 0) {
                 owner.setDefense(owner.getDefense() + mod.amount);
                 defDebuffs.remove(i);
-                System.out.println(ColorUtil.boldBrightMagenta(owner.getName() + "'s defense debuff has faded!"));
+//                System.out.println(ColorUtil.boldBrightMagenta(owner.getName() + "'s defense debuff has faded!"));
                 PrintUtil.pause(800);
             }
         }

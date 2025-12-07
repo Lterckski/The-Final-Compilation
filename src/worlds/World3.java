@@ -39,14 +39,16 @@ public class World3 {
                 "                             ╚══╝╚══╝ ╚═╝  ╚═╝╚══════╝   ╚═╝   ╚══════╝╚══════╝╚═╝  ╚═╝╚═╝  ╚═══╝╚═════╝                                 \n" +
                 "                                                                                                                                         ");
         PrintUtil.title("╚═════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝");
+        InputUtil.pressEnterToContinue();
+        System.out.println();
 
         System.out.println("══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════");
         System.out.println();
         PrintUtil.story(
-                            "You have been travelling for days. You have reached a land where not a even a glimmer of life can be seen.\n" +
-                                    "The land has turned barren. Ash falls like snow. Rivers of molten fire carve through the black rock.\n" +
+                "You have been travelling for days. You have reached a land where not a even a glimmer of life can be seen.\n" +
+                        "The land has turned barren. Ash falls like snow. Rivers of molten fire carve through the black rock.\n" +
                         "At the center, rising higher than mountains, stands a tower larger than anything you have ever seen. " +
-                                    "\nThe Necromancer’s Tower."
+                        "\nThe Necromancer’s Tower."
         );
         System.out.println();
         System.out.println("══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════");
@@ -54,6 +56,7 @@ public class World3 {
         PrintUtil.line();
 
         // -------------------- Flame Revenants --------------------
+        System.out.println();
         PrintUtil.line();
         PrintUtil.story("""
                 🔥 From the molten cracks below, Flame Revenants rise,
@@ -92,15 +95,17 @@ public class World3 {
         System.out.println();
 
         for (int i = 1; i <= 3; i++) {
-            PrintUtil.hr();
+            System.out.println(ColorUtil.boldBrightRed("════════════════════════════════════════════"));
             PrintUtil.enemyEncounter("🔥 Flame Revenant " + i + " emerges from the lava!");
-            PrintUtil.hr();
+            System.out.println(ColorUtil.boldBrightRed("════════════════════════════════════════════"));
             InputUtil.pressEnterToContinue();
 
             battle1.startBattle();
 
+            System.out.println();
+            System.out.println(ColorUtil.boldBrightGreen("───────────────────────────────────────"));
             PrintUtil.enemyDefeated("✅ You have defeated Flame Revenant " + i + "!");
-            PrintUtil.line();
+            System.out.println(ColorUtil.boldBrightGreen("───────────────────────────────────────"));
             enemy1.dropLoot(player);
 
             if (i < 3) {
@@ -110,12 +115,14 @@ public class World3 {
 
         }
 
+        PrintUtil.objective(("🎯 Objective: Defeat 3 Flame Revenants! ✅ (3 / 3)"));
+        System.out.println();
         PrintUtil.line();
         PrintUtil.victory("""
                     🎉 Victory! The last revenant collapses into molten shards.
                     The lava around you cools slightly — a brief moment of calm.
                     """);
-        PrintUtil.loot("You gain experience and loot from the battle.\n");
+        PrintUtil.loot("You gain experience and loot from the battle.");
         InputUtil.pressEnterToContinue();
         PrintUtil.line();
         player.getEffects().resetAllEffects();
@@ -129,6 +136,7 @@ public class World3 {
         InputUtil.pressEnterToContinue();
 
         // -------------------- Bone Warlocks --------------------
+        System.out.println();
         PrintUtil.effect("The ground trembles as sinister energy gathers.");
         PrintUtil.story("""
                 From the shadows, Bone Warlocks appear, chanting forbidden incantations.
@@ -175,15 +183,17 @@ public class World3 {
         System.out.println();
 
         for (int i = 1; i <= 3; i++) {
-            PrintUtil.hr();
+            System.out.println(ColorUtil.boldBrightRed("═════════════════════════════════════════════════════"));
             PrintUtil.enemyEncounter("💀 Bone Warlock " + i + " raises its staff, channeling dark magic!");
-            PrintUtil.hr();
+            System.out.println(ColorUtil.boldBrightRed("═════════════════════════════════════════════════════"));
             InputUtil.pressEnterToContinue();
 
             battle2.startBattle();
 
+            System.out.println();
+            System.out.println(ColorUtil.boldBrightGreen("───────────────────────────────────────"));
             PrintUtil.enemyDefeated("✅ You have defeated Bone Warlock " + i + "!");
-            PrintUtil.line();
+            System.out.println(ColorUtil.boldBrightGreen("───────────────────────────────────────"));
             enemy2.dropLoot(player);
 
             if (i < 3) {
@@ -192,17 +202,20 @@ public class World3 {
             }
         }
 
+        PrintUtil.objective(("🎯 Objective: Defeat 2 Bone Warlocks! ✅ (2 / 2)"));
+        System.out.println();
         PrintUtil.line();
         PrintUtil.victory("""
                     🎉 Victory! The Bone Warlocks crumble, their souls screaming into the void.
                     The heat intensifies — something greater stirs within the peaks.
                     """);
-        PrintUtil.loot("You gain experience and loot from your fiery victory.\n");
+        PrintUtil.loot("You gain experience and loot from your fiery victory.");
         InputUtil.pressEnterToContinue();
         PrintUtil.line();
         player.getEffects().resetAllEffects();
 
         // -------------------- Obsidian Crushers --------------------
+        System.out.println();
         PrintUtil.effect("A deep rumble echoes through the caverns.");
         PrintUtil.effect("Lava bursts upward, and massive shadows rise behind the flames.");
 
@@ -242,15 +255,17 @@ public class World3 {
         System.out.println();
 
         for (int i = 1; i <= 2; i++) {
-            PrintUtil.hr();
+            System.out.println(ColorUtil.boldBrightRed("═══════════════════════════════════════════"));
             PrintUtil.enemyEncounter("🪨 Obsidian Crusher " + i + " roars and slams the ground!");
-            PrintUtil.hr();
+            System.out.println(ColorUtil.boldBrightRed("═══════════════════════════════════════════"));
             InputUtil.pressEnterToContinue();
 
             battle3.startBattle();
 
+            System.out.println();
+            System.out.println(ColorUtil.boldBrightGreen("────────────────────────────────────"));
             PrintUtil.enemyDefeated("✅ You have defeated Obsidian Crusher " + i + "!");
-            PrintUtil.line();
+            System.out.println(ColorUtil.boldBrightGreen("────────────────────────────────────"));
             enemy3.dropLoot(player);
 
             if (i < 2) {
@@ -259,12 +274,14 @@ public class World3 {
             }
         }
 
+        PrintUtil.objective(("🎯 Objective: Defeat 2 Obsidian Crushers! ✅ (2 / 2)"));
+        System.out.println();
         PrintUtil.line();
         PrintUtil.victory("""
                     🎉 Victory! The Crushers shatter, falling into the lava below.
                     The tremors subside — the way forward opens.
                     """);
-        PrintUtil.loot("You gain experience and loot from your battle.\n");
+        PrintUtil.loot("You gain experience and loot from your battle.");
         InputUtil.pressEnterToContinue();
         PrintUtil.line();
         player.getEffects().resetAllEffects();
@@ -278,6 +295,7 @@ public class World3 {
         PrintUtil.line();
 
         // -------------------- Soulflayer Gargoyles --------------------
+        System.out.println();
         PrintUtil.effect("A chilling wind cuts through the heat.");
         PrintUtil.story("""
                 From the shadows of molten stone, Soulflayer Gargoyles take flight.
@@ -319,15 +337,17 @@ public class World3 {
         System.out.println();
 
         for (int i = 1; i <= 3; i++) {
-            PrintUtil.hr();
+            System.out.println(ColorUtil.boldBrightRed("══════════════════════════════════"));
             PrintUtil.enemyEncounter("😈 Soulflayer Gargoyle " + i + " swoops down from above!");
-            PrintUtil.hr();
+            System.out.println(ColorUtil.boldBrightRed("══════════════════════════════════"));
             InputUtil.pressEnterToContinue();
 
             battle4.startBattle();
 
+            System.out.println();
+            System.out.println(ColorUtil.boldBrightGreen("────────────────────────────────────"));
             PrintUtil.enemyDefeated("✅ You have defeated Soulflayer Gargoyle " + i + "!");
-            PrintUtil.line();
+            System.out.println(ColorUtil.boldBrightGreen("────────────────────────────────────"));
             enemy4.dropLoot(player);
 
             if (i < 3) {
@@ -336,17 +356,20 @@ public class World3 {
             }
         }
 
+        PrintUtil.objective(("🎯 Objective: Defeat 3 Soulflayer Gargoyles! ✅ (3 / 3)"));
+        System.out.println();
         PrintUtil.line();
         PrintUtil.victory("""
                     🎉 Victory! The last Gargoyle falls, shattering to dust midair.
                     Silence returns — save for the slow, rising heartbeat of the volcano.
                     """);
-        PrintUtil.loot("You gain experience and loot from your hard-fought battle.\n");
+        PrintUtil.loot("You gain experience and loot from your hard-fought battle.");
         InputUtil.pressEnterToContinue();
         PrintUtil.line();
         player.getEffects().resetAllEffects();
 
         // -------------------- MINIBOSS: ZYRRYL, THE TOWER WARDEN --------------------
+        System.out.println();
         PrintUtil.event("                                                                                                            \n" +
                 "                                                                                                            \n" +
                 "██▄  ▄██ ▄▄ ▄▄  ▄▄ ▄▄ ▄▄▄▄   ▄▄▄   ▄▄▄▄  ▄▄▄▄   ██████ ▄▄  ▄▄  ▄▄▄▄  ▄▄▄  ▄▄ ▄▄ ▄▄  ▄▄ ▄▄▄▄▄▄ ▄▄▄▄▄ ▄▄▄▄    \n" +
@@ -418,6 +441,8 @@ public class World3 {
 
         minibattle.startBattle();
 
+        PrintUtil.objective(("🎯 Objective: Defeat Zyrryl, The Tower Warden! ✅"));
+        System.out.println();
         PrintUtil.line();
         PrintUtil.victory("""
                     ✅🏆 Mini-Boss Defeated!
@@ -431,6 +456,7 @@ public class World3 {
         player.getEffects().resetAllEffects();
 
         // --- Pre Final Encounter ---
+        System.out.println();
         PrintUtil.effect("""
                 As you advance deeper into the ruins, a cloaked figure materializes before you.
                 
@@ -531,8 +557,8 @@ public class World3 {
 
         PrintUtil.effect("Then Khai the Gray steps forward, staff blazing.\n");
         PrintUtil.pause(800);
-        PrintUtil.say("Sir Khai", "\"Finally. \nYou’ve served well, my student. Who better to collect the stones of life than one who trusts their teacher?\"");
-        PrintUtil.say("Sir Khai", "\"I have guided you not to save this land—but to claim its power. \n" +
+        PrintUtil.sayRed("Sir Khai", "\"Finally. \nYou’ve served well, my student. Who better to collect the stones of life than one who trusts their teacher?\"");
+        PrintUtil.sayRed("Sir Khai", "\"I have guided you not to save this land—but to claim its power. \n" +
                 "Because only the most skilled and pure can bring the stones together. I have been waiting for a student like you for a millenia. \n" +
                 "I wish to bring chaos not only to this land, but also in the lands beyond. \n" +
                 "The Necromancer you sought... The one who wants to bring chaos to all worlds... is ME!!!!!!!!!\"\n");

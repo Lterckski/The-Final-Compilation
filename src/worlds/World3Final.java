@@ -262,7 +262,7 @@ public class World3Final {
                 "Khai the Gray transforms, robes shredding into wings of smoke, staff splitting into a blade of pure void.\n" +
                         "The Stones float around him like chained stars.\n"
         );
-        PrintUtil.say("Khai the Necromancer", "\"You were never meant to go home. You were always meant to be my sacrifice.\"\n");
+        PrintUtil.sayRed("Khai the Necromancer", "\"You were never meant to go home. You were always meant to be my sacrifice.\"\n");
         PrintUtil.effect("The tower shakes as your final battle begins.");
         InputUtil.pressEnterToContinue();
 
@@ -381,6 +381,8 @@ public class World3Final {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+        System.out.println();
+        PrintUtil.objective(("🎯 Objective: Defeat Khai, The Necromancer! ✅"));
         PrintUtil.victory("""
                 🏆 Victory! Khai staggers, his form unraveling into smoke and stars.
                 The tower falls silent. The Stones hover gently before dissipating.

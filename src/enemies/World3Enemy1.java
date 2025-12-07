@@ -8,7 +8,7 @@ import utils.RandomUtil;
 
 public class World3Enemy1 extends Enemy {
 
-    public World3Enemy1() { super("Flame Revenant", 1682, 28, 80); }
+    public World3Enemy1() { super("Flame Revenant", 1682, 28, 303); }
 
     public void emberBurst(Character target) {
         PrintUtil.print(ColorUtil.boldBrightRed("                                                          \n" +

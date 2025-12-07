@@ -9,7 +9,7 @@ import inventory.*;
 
 public class World2Miniboss2 extends Enemy {
     public World2Miniboss2() {
-        super("Luther Von", 1254, 29, 140);
+        super("Luther Von", 1254, 29, 350);
     }
 
     public void crownOfDespair(Character target) {
@@ -39,7 +39,7 @@ public class World2Miniboss2 extends Enemy {
         System.out.println(ColorUtil.boldBrightRed("👑 " + name + " casts Crown of Despair!"));
         PrintUtil.pause(800);
         if(target.getEffects().checkDodge()) return;
-        if (this.getEffects().checkConfuse()) return;
+        if(this.getEffects().checkConfuse()) return;
 
         // Check immunity to debuff
         Armor equippedArmor = target.getInventory().getEquippedArmor();

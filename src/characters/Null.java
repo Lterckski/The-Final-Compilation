@@ -58,9 +58,8 @@ public class Null extends Character {
                 case 4 -> { skipTurn(); isValid = true; }
                 case 5 -> displayMenu(this, target);
                 default -> {
-                    System.out.println(ColorUtil.boldBrightRed("❌ Invalid action! Null skips the turn."));
-                    PrintUtil.pause(500);
-                    isValid = true;
+                    System.out.println(ColorUtil.boldBrightRed("❌ Invalid action! Try again."));
+                    PrintUtil.shortLine();
                 }
             }
         }

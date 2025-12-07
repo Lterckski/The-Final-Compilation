@@ -9,7 +9,7 @@ import inventory.*;
 
 public class World2Miniboss1 extends Enemy{
     public World2Miniboss1(){
-        super("The Black Jailer", 946, 24, 120);
+        super("The Black Jailer", 946, 24, 289);
     }
 
     public void shacklingChains(Character target){

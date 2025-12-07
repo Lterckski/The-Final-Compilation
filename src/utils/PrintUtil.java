@@ -49,7 +49,7 @@ public class PrintUtil {
     }
 
     public static void enemyDefeated(String text){
-        System.out.println(ColorUtil.boldBrightGreen(text));
+        System.out.println(ColorUtil.boldBrightGreen(text.toUpperCase()));
     }
 
     public static void objective(String text) {
@@ -106,7 +106,7 @@ public class PrintUtil {
             System.out.print(c);
 
             try {
-                Thread.sleep(20);
+                Thread.sleep(40);
             } catch (InterruptedException ignored) {}
         }
 
@@ -146,7 +146,7 @@ public class PrintUtil {
             System.out.print(c);
 
             try {
-                Thread.sleep(20);
+                Thread.sleep(40);
             } catch (InterruptedException ignored) {}
         }
 
@@ -154,7 +154,7 @@ public class PrintUtil {
         System.out.println();
     }
 
-    public static void say(String who, String line) {
+    public static void sayRed(String who, String line) {
         skip = false;
         String fullLine = ColorUtil.brightRed(who + ": " + line);
 
@@ -189,7 +189,50 @@ public class PrintUtil {
             System.out.print(c);
 
             try {
-                Thread.sleep(20);
+                Thread.sleep(40);
+            } catch (InterruptedException ignored) {
+            }
+        }
+
+        System.out.println();
+    }
+
+    public static void sayCyan(String line) {
+        skip = false;
+        String fullLine = ColorUtil.brightCyan(line);
+
+        pause(800); // initial pause before speaking
+
+        Thread inputThread = new Thread(() -> {
+            try {
+                BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+                // Wait until user presses ENTER (line available)
+                while (!br.ready()) {
+                    Thread.sleep(30);
+                }
+
+                br.readLine(); // consume ENTER
+                skip = true;
+
+            } catch (Exception ignored) {
+            }
+        });
+
+        inputThread.start();
+
+        // Typewriter animation
+        for (char c : fullLine.toCharArray()) {
+            if (skip) {
+                System.out.print(fullLine.substring(fullLine.indexOf(c))); // print remainder instantly
+                System.out.println();
+                return;
+            }
+
+            System.out.print(c);
+
+            try {
+                Thread.sleep(40);
             } catch (InterruptedException ignored) {
             }
         }

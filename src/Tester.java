@@ -146,9 +146,9 @@ public class Tester {
         } while (player == null);  // repeat until valid choice
         player.getInventory().setEquippedArmor(Armor.LEATHER_GUARD);
 
-
-        World1 world1 = new World1();
-        world1.run(player);
+//
+//        World1 world1 = new World1();
+//        world1.run(player);
 
 /*
         MagicShop magicShop = new MagicShop(player);

@@ -7,6 +7,8 @@ import utils.ColorUtil;
 import utils.InputUtil;
 import utils.PrintUtil;
 
+import java.awt.*;
+
 public class World1 {
 
     public void run(Character player) {
@@ -25,6 +27,7 @@ public class World1 {
                            "▐          ▐   ▐     ▐            ▐                             ▐                ▐                      ▐                     ▐       ▐  ▐         ▐        ▐        ▐         ▐        ");
         System.out.println();
         PrintUtil.title("╚══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝");
+        InputUtil.pressEnterToContinue();
         System.out.println();
 
         System.out.println("══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════");
@@ -32,8 +35,14 @@ public class World1 {
         PrintUtil.story("""
                 You wake up in a dead forest. Bark is gray, leaves crunch to ash, and a cold mist coils between skeletal trees.
                 Silence presses from every side—watching, waiting.
+                """);
+        PrintUtil.sayCyan("""
                 A voice: "Dong…"
-                From the mist steps a robed figure—your but you realize this person looks like your professor, Khai... 
+                """);
+        PrintUtil.story("""
+                From the mist steps a robed figure—your but you realize this person looks like your professor, Khai...\s
+                """);
+        PrintUtil.sayCyan("""        
                 "In this world, I am known as Khai the Gray, we suffer because an evil necromancer has corrupted these lands and we must find 
                 the  three stones of life that hold this world together to defeat him." he says.   
                 "Only then will your path home reveal itself."
@@ -42,7 +51,7 @@ public class World1 {
         InputUtil.pressEnterToContinue();
 
         // -------------------- Rotfang Wolves --------------------
-
+        System.out.println();
         PrintUtil.line();
         PrintUtil.story("""
                 ⚔️ Suddenly, the ground trembles as three Rotfang Wolves emerge from the shadows!
@@ -82,15 +91,16 @@ public class World1 {
         System.out.println();
 
         for (int i = 1; i <= 3; i++) {
-            PrintUtil.hr();
+            System.out.println(ColorUtil.boldBrightRed("════════════════════════════════════"));
             PrintUtil.enemyEncounter("🐺 Rotfang Wolf " + i + " lunges at you!");
-            PrintUtil.hr();
-            InputUtil.pressEnterToContinue();
+            System.out.println(ColorUtil.boldBrightRed("════════════════════════════════════"));
 
             battle1.startBattle();
 
-            PrintUtil.enemyDefeated("✅ You have defeated Wolf " + i + "!");
-            PrintUtil.line();
+            System.out.println();
+            System.out.println(ColorUtil.boldBrightGreen("───────────────────────────────────────"));
+            PrintUtil.enemyDefeated("✅ You have defeated Rotfang Wolf " + i + "!");
+            System.out.println(ColorUtil.boldBrightGreen("───────────────────────────────────────"));
             enemy1.dropLoot(player);
 
             if (i < 3) { // reset for another wolf
@@ -99,17 +109,20 @@ public class World1 {
             }
         }
 
+        PrintUtil.objective(("🎯 Objective: Defeat 3 Rotfang Wolves! ✅ (3 / 3)"));
+        System.out.println();
         PrintUtil.line();
         PrintUtil.victory("""
                 🎉 Victory! The last of the Rotfang Wolves collapses to the ground.
                 The forest falls silent, and you catch your breath, victorious.
                 """);
-        PrintUtil.loot("You gain experience and loot from your hard-fought battle.\n");
-        InputUtil.pressEnterToContinue();
+        PrintUtil.loot("You gain experience and loot from your hard-fought battle.");
         PrintUtil.line();
+        InputUtil.pressEnterToContinue();
         player.getEffects().resetAllEffects();
 
         // -------------------- Shade Sprites --------------------
+        System.out.println();
         PrintUtil.line();
         PrintUtil.story("""
                 🌫️ The mist thickens... shadows twist into vague shapes.
@@ -152,15 +165,16 @@ public class World1 {
         System.out.println();
 
         for (int i = 1; i <= 2; i++) {
-            PrintUtil.hr();
+            System.out.println(ColorUtil.boldBrightRed("═══════════════════════════════════════════════════════"));
             PrintUtil.enemyEncounter("👻 Shade Sprite " + i + " phases through the air toward you!");
-            PrintUtil.hr();
-            InputUtil.pressEnterToContinue();
+            System.out.println(ColorUtil.boldBrightRed("═══════════════════════════════════════════════════════"));
 
             battle2.startBattle();
 
+            System.out.println();
+            System.out.println(ColorUtil.boldBrightGreen("───────────────────────────────────────"));
             PrintUtil.enemyDefeated("✅ You dispelled Shade Sprite " + i + "!");
-            PrintUtil.line();
+            System.out.println(ColorUtil.boldBrightGreen("───────────────────────────────────────"));
             enemy2.dropLoot(player);
 
             if (i < 2) { // reset for another shade
@@ -169,17 +183,20 @@ public class World1 {
             }
         }
 
+        PrintUtil.objective(("🎯 Objective: Defeat 2 Shade Sprites! ✅ (2 / 2)"));
+        System.out.println();
         PrintUtil.line();
         PrintUtil.victory("""
                 🌌 Silence returns. The mist recedes, revealing faint lights hovering like stars among the trees.
                 You feel your strength returning after overcoming the whispering darkness.
                 """);
-        PrintUtil.loot("You gain ethereal dust and experience from the fallen spirits.\n");
-        InputUtil.pressEnterToContinue();
+        PrintUtil.loot("Your victory rewards you with precious loot and experience!");
         PrintUtil.line();
+        InputUtil.pressEnterToContinue();
         player.getEffects().resetAllEffects();
 
         // -------------------- Dreadbark Treants --------------------
+        System.out.println();
         PrintUtil.line();
         PrintUtil.story("""
                 🌲 The ground rumbles... massive roots burst from beneath your feet!
@@ -230,15 +247,16 @@ public class World1 {
         System.out.println();
 
         for (int i = 1; i <= 2; i++) {
-            PrintUtil.hr();
+            System.out.println(ColorUtil.boldBrightRed("═════════════════════════════════════════════════════════"));
             PrintUtil.enemyEncounter("🌳 Dreadbark Treant " + i + " slams its massive arm down at you!");
-            PrintUtil.hr();
-            InputUtil.pressEnterToContinue();
+            System.out.println(ColorUtil.boldBrightRed("═════════════════════════════════════════════════════════"));
 
             battle3.startBattle();
 
+            System.out.println();
+            System.out.println(ColorUtil.boldBrightGreen("─────────────────────────────────────"));
             PrintUtil.enemyDefeated("✅ You felled Dreadbark Treant " + i + "!");
-            PrintUtil.line();
+            System.out.println(ColorUtil.boldBrightGreen("─────────────────────────────────────"));
             enemy3.dropLoot(player);
 
             if (i < 2) {
@@ -247,17 +265,20 @@ public class World1 {
             }
         }
 
+        PrintUtil.objective(("🎯 Objective: Defeat 2 Dreadbark Treants! ✅ ( 2 / 2)"));
+        System.out.println();
         PrintUtil.line();
         PrintUtil.victory("""
                 🍃 The Treants collapse, their bark crumbling into soil.
                 Life stirs in the forest again — small sprouts rise where their bodies fell.
                 """);
-        PrintUtil.loot("You gain wooden fragments and experience.\n");
-        InputUtil.pressEnterToContinue();
+        PrintUtil.loot("Your triumph echoes through the battlefield as treasures fall into your hands.");
         PrintUtil.line();
+        InputUtil.pressEnterToContinue();
         player.getEffects().resetAllEffects();
 
         // -------------------- Carrion Bats --------------------
+        System.out.println();
         PrintUtil.line();
         PrintUtil.story("""
                 🦇 A shrill screech pierces the silence!
@@ -301,15 +322,16 @@ public class World1 {
         System.out.println();
 
         for (int i = 1; i <= 4; i++) {
-            PrintUtil.hr();
+            System.out.println(ColorUtil.boldBrightRed("══════════════════════════════════════════"));
             PrintUtil.enemyEncounter("🦇 Carrion Bat " + i + " swoops down, fangs bared!");
-            PrintUtil.hr();
-            InputUtil.pressEnterToContinue();
+            System.out.println(ColorUtil.boldBrightRed("══════════════════════════════════════════"));
 
             battle4.startBattle();
 
+            System.out.println();
+            System.out.println(ColorUtil.boldBrightGreen("─────────────────────────────"));
             PrintUtil.enemyDefeated("✅ You slayed Carrion Bat " + i + "!");
-            PrintUtil.line();
+            System.out.println(ColorUtil.boldBrightGreen("─────────────────────────────"));
             enemy4.dropLoot(player);
 
             if (i < 4) {
@@ -318,17 +340,20 @@ public class World1 {
             }
         }
 
+        PrintUtil.objective(("🎯 Objective: Defeat 4 Carrion Bats! ✅ ( 4 / 4)"));
+        System.out.println();
         PrintUtil.line();
         PrintUtil.victory("""
                 💨 The last bat crashes into the ground.
                 The forest grows quiet once more, the stench of decay lifting into the cold wind.
                 """);
-        PrintUtil.loot("You gain torn wings and experience.\n");
-        InputUtil.pressEnterToContinue();
+        PrintUtil.loot("The battle ends. You feel stronger... and richer.");
         PrintUtil.line();
+        InputUtil.pressEnterToContinue();
         player.getEffects().resetAllEffects();
 
         // -------------------- MINI-BOSS — THE HOLLOW STAG --------------------
+        System.out.println();
         PrintUtil.line();
         PrintUtil.story("""
                 🌕 The mist thins, revealing a clearing drenched in moonlight.
@@ -359,7 +384,6 @@ public class World1 {
                 Its hooves scorch the ground, and the forest holds its breath.
                 Prepare yourself — this will be no ordinary fight.
                 """);
-        System.out.println();
         PrintUtil.objective("═════════════════════════════════════════════════════════════════════════════════════════════════════════════════");
         System.out.println();
         PrintUtil.pause(1500);
@@ -408,12 +432,19 @@ public class World1 {
 
         minibossBattle.startBattle();
 
+        PrintUtil.objective(("🎯 Objective: Defeat The Hollow Stag! ✅"));
+        System.out.println();
         PrintUtil.line();
         PrintUtil.victory("""
                 ✅🏆Mini-Boss Defeated!
                 🌟 The Hollow Stag staggers, its luminous eyes fading to black.
                 With one final, echoing cry, it collapses to the ground. The forest trembles… then exhales.
                 """);
+        miniboss.dropLoot(player);
+        PrintUtil.line();
+        InputUtil.pressEnterToContinue();
+        player.getEffects().resetAllEffects();
+
         System.out.println(ColorUtil.boldBrightYellow("                                     \n" +
                 "                                     \n" +
                 "                                     \n" +
@@ -444,11 +475,8 @@ public class World1 {
                 You obtain the First Stone — pulsing with quiet power.
                 The corruption fades, and the path ahead glows faintly in the mist.
                 """);
-        miniboss.dropLoot(player);
-        InputUtil.pressEnterToContinue();
-        PrintUtil.line();
-        player.getEffects().resetAllEffects();
 
+        System.out.println();
         PrintUtil.specialCyan("You claim the First Stone from a tree black with rot. Light bursts outward; the forest exhales.");
         InputUtil.pressEnterToContinue();
     }

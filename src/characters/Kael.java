@@ -9,7 +9,7 @@ import utils.RandomUtil;
 public class Kael extends  Character{      // 15% crit chance
 
     public Kael() {
-        super("Kael Saint Laurent", "Swordsman" ,100, 5, 100, 10);
+        super("Kael Saint Laurent", "Swordsman" ,100, 5, 100, 15);
     }
 
     @Override
@@ -40,7 +40,7 @@ public class Kael extends  Character{      // 15% crit chance
         System.out.println("  " + ColorUtil.cyan("📜 Description: Kael unleashes a flurry of crossing strikes infused with unyielding determination."));
         System.out.println("  " + ColorUtil.cyan("💥 Damage: 3 hits, each dealing (") + ColorUtil.boldBrightYellow((int)(attack * 1.20) + " — " + (int)(attack * 2.00)) + ColorUtil.cyan(")"));
         System.out.println("  " + ColorUtil.cyan("⚡ Effects:"));
-        System.out.println("    - " + ColorUtil.cyan("🩸 Applies Bleed (10 damage per turn for 2 turns)"));
+        System.out.println("    - " + ColorUtil.cyan("🩸 Applies Bleed for 2 turns"));
         System.out.println("    - " + ColorUtil.cyan("🛡️ Grants Fortified (+20% DEF for 2 turns)"));
 
         System.out.println(ColorUtil.boldBrightCyan("└───────────────────────────────────────────────────────────────────────────────────────────────────┘"));
@@ -76,9 +76,11 @@ public class Kael extends  Character{      // 15% crit chance
 
             // Gain +5% of max energy (bonus adrenaline)
             int energyGained = (int)(maxEnergy * 0.05);
-            energy += energyGained;
-            if (energy > maxEnergy) energy = maxEnergy;
-            System.out.println(ColorUtil.brightMagenta("✨ Gained +" + energyGained + " energy from precision! (" + energy + "/" + maxEnergy + ")"));
+            int before = energy;
+            this.restoreEnergy(energyGained);
+            int after = energy;
+
+            System.out.println(ColorUtil.brightMagenta("✨ Gained +" + energyGained + " energy from precision! " + "(🔋 " + before + " → " + after + ")"));
             PrintUtil.pause(800);
         }
         return damage;
@@ -297,7 +299,10 @@ public class Kael extends  Character{      // 15% crit chance
                     ultimateCounter--;
                 }
                 case 5 -> { displayMenu(this, target); } // does not consume turn
-                default -> System.out.println(ColorUtil.boldBrightRed("❌ Invalid action! Try again."));
+                default -> {
+                    System.out.println(ColorUtil.boldBrightRed("❌ Invalid action! Try again."));
+                    PrintUtil.shortLine();
+                }
             }
         }
     }

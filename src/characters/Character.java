@@ -168,11 +168,11 @@ public abstract class Character {
 
         // Determine energy type
         if (classType.equalsIgnoreCase("Mage")) {
-            energyLabel = " 💧 Mana    ";
+            energyLabel = " 💧  Mana    ";
         } else if (classType.equalsIgnoreCase("Archer")) {
             energyLabel = " 🏹 Arrows  ";
         } else {
-            energyLabel = " 🔋 Stamina ";
+            energyLabel = " 🔋  Stamina ";
         }
 
         System.out.println(ColorUtil.boldBrightCyan(" 👤 Name/Class  :  ") + ColorUtil.boldBrightYellow(name + " (" + classType + ")"));
@@ -331,10 +331,10 @@ public abstract class Character {
         energy += restoreAmount;
         if (energy > maxEnergy) energy = maxEnergy;
 
-        hp += (int)(maxHP * 0.05);
+        hp += (int)(maxHP * 0.10);
         if (hp > maxHP) hp = maxHP;
 
-        System.out.println("✨ Turn skipped! Restored a bit of HP and " + getEnergyName() + ".");
+        System.out.println(ColorUtil.boldBrightGreen("✨ Turn skipped! Restored a bit of HP and " + getEnergyName() + "."));
         PrintUtil.pause(800);
         System.out.println("💖 HP: " + oldHp + " → " + hp + " | " + getEnergyEmoji() + " " + getEnergyName() + ": " + oldEnergy + " → " + energy);
         PrintUtil.pause(800);
@@ -368,9 +368,8 @@ public abstract class Character {
     public void levelUp() {
         if(level < 30){
             level++;
-            PrintUtil.hr();
+            PrintUtil.specialCyan("═════════════════════════════════════");
             PrintUtil.specialCyan("✨ LEVEL UP! You are now Level " + level + "! ✨");
-            PrintUtil.specialCyan("50% of 💖 HP & " + getEnergyEmoji() + " " + getEnergyName() + " Restored!");
 
             int oldHp = maxHP;
             int oldAtk = baseAttack;
@@ -379,17 +378,17 @@ public abstract class Character {
             switch (classType) {
                 case "Swordsman" -> {
                     maxHP += 90 + (int)(maxHP * 0.01);
-                    baseAttack += 2 + StoryEngine.getCurrWorldLevel();
+                    baseAttack += 10 + StoryEngine.getCurrWorldLevel() + (int)(attack * 0.05);
                     baseDefense += 2;
                 }
                 case "Archer" -> {
                     maxHP += 70 + (int)(maxHP * 0.01);
-                    baseAttack += 3 + StoryEngine.getCurrWorldLevel();
+                    baseAttack += 12 + StoryEngine.getCurrWorldLevel() + (int)(attack * 0.05);
                     baseDefense += 1;
                 }
                 case "Mage" -> {
                     maxHP += 50 + (int)(maxHP * 0.01);
-                    baseAttack += 4 + StoryEngine.getCurrWorldLevel();
+                    baseAttack += 14 + StoryEngine.getCurrWorldLevel() + (int)(attack * 0.05);
                     baseDefense += 1;
                 }
             }
@@ -405,10 +404,11 @@ public abstract class Character {
 
             recalculateBuffs();
 
-            PrintUtil.specialCyan(String.format("%-8s : +%d → %d", "💚 Max HP", (maxHP - oldHp), maxHP));
+            PrintUtil.specialCyan(String.format("%-8s : +%d → %d", "💚 Max HP ", (maxHP - oldHp), maxHP));
             PrintUtil.specialCyan(String.format("%-8s : +%d → %d", "⚔️ Max ATK", (baseAttack - oldAtk), attack));
-            PrintUtil.specialCyan(String.format("%-8s  : +%d → %d", "🛡️ DEF", (baseDefense - oldDef), defense));
-            PrintUtil.hr();
+            PrintUtil.specialCyan(String.format("%-8s  : +%d → %d", "🛡️ DEF  ", (baseDefense - oldDef), defense));
+            PrintUtil.specialCyan("50% of 💖 HP & " + getEnergyEmoji() + " " + getEnergyName() + " Restored!");
+            PrintUtil.specialCyan("═════════════════════════════════════");
             System.out.println();
             PrintUtil.pause(800);
         }

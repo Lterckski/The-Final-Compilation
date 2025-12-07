@@ -9,7 +9,7 @@ import utils.RandomUtil;
 public class Karl extends Character{
 
     public Karl() {
-        super("Karl Clover Dior IV", "Archer", 80, 3, 24, 12);
+        super("Karl Clover Dior IV", "Archer", 80, 3, 24, 17);
     }
 
     @Override
@@ -343,7 +343,10 @@ public class Karl extends Character{
                     ultimateCounter--;
                 }
                 case 5 -> displayMenu(this, target); // does not consume turn
-                default -> System.out.println(ColorUtil.boldBrightRed("❌ Invalid action! Try again."));
+                default -> {
+                    System.out.println(ColorUtil.boldBrightRed("❌ Invalid action! Try again."));
+                    PrintUtil.shortLine();
+                }
             }
         }
     }

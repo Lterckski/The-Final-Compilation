@@ -47,6 +47,7 @@ public class World2 {
                 "                                                                                                                                                                               " +
                 "                                                                                                                                                                             ");
         PrintUtil.title("╚═══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝");
+        InputUtil.pressEnterToContinue();
         System.out.println();
 
         System.out.println("════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════");
@@ -57,11 +58,12 @@ public class World2 {
                         "This town used to be the epitome of peace and unity. Now, every face tells the same story: something has poisoned this world.\n"
         );
 
-        PrintUtil.say("Khai the Grey", "\"The Stones,\" he murmurs. \"They are both a curse and a cure.\"\n");
+        PrintUtil.sayRed("Khai the Grey", "\"The Stones,\" he murmurs. \"They are both a curse and a cure.\"\n");
         System.out.println("════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════");
         InputUtil.pressEnterToContinue();
 
         // -------------------- Plague Vermins --------------------
+        System.out.println();
         PrintUtil.line();
         PrintUtil.story("""
         🐀 The stench of rot fills the air.
@@ -112,15 +114,17 @@ public class World2 {
         System.out.println();
 
         for(int i = 1; i <= 3; i++){
-            PrintUtil.hr();
+            System.out.println(ColorUtil.boldBrightRed("═══════════════════════════════════"));
             PrintUtil.enemyEncounter("🐀 Plague Vermin " + i + " lunges at you!");
-            PrintUtil.hr();
+            System.out.println(ColorUtil.boldBrightRed("═══════════════════════════════════"));
             InputUtil.pressEnterToContinue();
 
             battle1.startBattle();
 
+            System.out.println();
+            System.out.println(ColorUtil.boldBrightGreen("───────────────────────────────────────"));
             PrintUtil.enemyDefeated("✅ You have defeated Plague Vermin " + i + "!");
-            PrintUtil.line();
+            System.out.println(ColorUtil.boldBrightGreen("───────────────────────────────────────"));
             enemy1.dropLoot(player);
 
             if (i < 3) { // reset for next vermin
@@ -129,17 +133,20 @@ public class World2 {
             }
         }
 
+        PrintUtil.objective(("🎯 Objective: Defeat 3 Plague Vermins! ✅ (3 / 3)"));
+        System.out.println();
         PrintUtil.line();
         PrintUtil.victory("""
             🎉 Victory! The last of the Plague Vermin's collapses into the sludge.
             The foul air clears just enough for you to breathe again.
             """);
-        PrintUtil.loot("You gain experience and loot from your hard-fought battle.\n");
+        PrintUtil.loot("You gain experience and loot from your hard-fought battle.");
         InputUtil.pressEnterToContinue();
         PrintUtil.line();
         player.getEffects().resetAllEffects();
 
         // -------------------- Forsaken Cultists --------------------
+        System.out.println();
         PrintUtil.effect("You wander through the town's crumbling streets.");
         PrintUtil.effect("Townsfolk whisper rumors between coughs.");
         System.out.println();
@@ -194,15 +201,17 @@ public class World2 {
         System.out.println();
 
         for (int i = 1; i <= 2; i++) {
-            PrintUtil.hr();
+            System.out.println(ColorUtil.boldBrightRed("═══════════════════════════════════════════════════════"));
             PrintUtil.enemyEncounter("☠️ Forsaken Cultist " + i + " has began chanting a spell!");
-            PrintUtil.hr();
+            System.out.println(ColorUtil.boldBrightRed("═══════════════════════════════════════════════════════"));
             InputUtil.pressEnterToContinue();
 
             battle2.startBattle();
 
+            System.out.println();
+            System.out.println(ColorUtil.boldBrightGreen("───────────────────────────────────────"));
             PrintUtil.enemyDefeated("✅ You have defeated Forsaken Cultist " + i + "!");
-            PrintUtil.line();
+            System.out.println(ColorUtil.boldBrightGreen("───────────────────────────────────────"));
             enemy2.dropLoot(player);
 
             if (i < 2) {
@@ -211,17 +220,20 @@ public class World2 {
             }
         }
 
+        PrintUtil.objective(("🎯 Objective: Defeat 2 Forsaken Cultists! ✅ (2 / 2)"));
+        System.out.println();
         PrintUtil.line();
         PrintUtil.victory("""
                 🎉 Victory! The cultists’ chants fade into silence.
                 The air still hums with dark energy, but you stand victorious.
                 """);
-        PrintUtil.loot("You gain experience and loot from your grim battle.\n");
+        PrintUtil.loot("You gain experience and loot from your grim battle.");
         InputUtil.pressEnterToContinue();
         PrintUtil.line();
         player.getEffects().resetAllEffects();
 
         // -------------------- Blight Hounds --------------------
+        System.out.println();
         PrintUtil.effect("A low growl echoes from the halls ahead...");
         System.out.println();
         PrintUtil.story("""
@@ -273,15 +285,17 @@ public class World2 {
         System.out.println();
 
         for (int i = 1; i <= 3; i++) {
-            PrintUtil.hr();
+            System.out.println(ColorUtil.boldBrightRed("═══════════════════════════════════"));
             PrintUtil.enemyEncounter("🐕 Blight Hound " + i + " snarls and lunges!");
-            PrintUtil.hr();
+            System.out.println(ColorUtil.boldBrightRed("═══════════════════════════════════"));
             InputUtil.pressEnterToContinue();
 
             battle3.startBattle();
 
+            System.out.println();
+            System.out.println(ColorUtil.boldBrightGreen("───────────────────────────────────────"));
             PrintUtil.enemyDefeated("✅ You have defeated Blight Hound " + i + "!");
-            PrintUtil.line();
+            System.out.println(ColorUtil.boldBrightGreen("───────────────────────────────────────"));
             enemy3.dropLoot(player);
 
             if (i < 3) {
@@ -290,17 +304,20 @@ public class World2 {
             }
         }
 
+        PrintUtil.objective(("🎯 Objective: Defeat 3 Blight Hounds! ✅ (3 / 3)"));
+        System.out.println();
         PrintUtil.line();
         PrintUtil.victory("""
                 🎉 Victory! The Blight Hounds are no more.
                 The air still hums with dark energy, but you stand victorious.
                 """);
-        PrintUtil.loot("You gain experience and loot from your grim battle.\n");
+        PrintUtil.loot("You gain experience and loot from your grim battle.");
         InputUtil.pressEnterToContinue();
         PrintUtil.line();
         player.getEffects().resetAllEffects();
 
         // -------------------- Ghoul Footmen --------------------
+        System.out.println();
         PrintUtil.title("THE BLACK CASTLE");
 
         PrintUtil.event("Thunder cracks as you push open the gates.");
@@ -355,15 +372,17 @@ public class World2 {
         System.out.println();
 
         for(int i = 1; i <= 2; i++){
-            PrintUtil.hr();
+            System.out.println(ColorUtil.boldBrightRed("═══════════════════════════════════"));
             PrintUtil.enemyEncounter("🪓 Ghoul Footman " + i + " staggers toward you!");
-            PrintUtil.hr();
+            System.out.println(ColorUtil.boldBrightRed("═══════════════════════════════════"));
             InputUtil.pressEnterToContinue();
 
             battle4.startBattle();
 
+            System.out.println();
+            System.out.println(ColorUtil.boldBrightGreen("───────────────────────────────────────"));
             PrintUtil.enemyDefeated("✅ You have defeated Ghoul Footman " + i + "!");
-            PrintUtil.line();
+            System.out.println(ColorUtil.boldBrightGreen("───────────────────────────────────────"));
             enemy4.dropLoot(player);
 
             if (i < 2) {
@@ -372,17 +391,20 @@ public class World2 {
             }
         }
 
+        PrintUtil.objective(("🎯 Objective: Defeat 2 Ghoul Footmen! ✅ (2 / 2)"));
+        System.out.println();
         PrintUtil.line();
         PrintUtil.victory("""
                 🎉 Victory! The last ghoul crumbles into dust.
                 You tighten your grip on your weapon, ready for whatever lies ahead.
                 """);
-        PrintUtil.loot("You gain experience and loot from your hard-fought battle.\n");
+        PrintUtil.loot("You gain experience and loot from your hard-fought battle.");
         InputUtil.pressEnterToContinue();
         PrintUtil.line();
         player.getEffects().resetAllEffects();
 
         // -------------------- Mini-Boss: The Black Jailer --------------------
+        System.out.println();
         PrintUtil.event("                                                                                                            \n" +
                 "                                                                                                            \n" +
                 "██▄  ▄██ ▄▄ ▄▄  ▄▄ ▄▄ ▄▄▄▄   ▄▄▄   ▄▄▄▄  ▄▄▄▄   ██████ ▄▄  ▄▄  ▄▄▄▄  ▄▄▄  ▄▄ ▄▄ ▄▄  ▄▄ ▄▄▄▄▄▄ ▄▄▄▄▄ ▄▄▄▄    \n" +
@@ -452,6 +474,8 @@ public class World2 {
 
         miniBattle.startBattle();
 
+        PrintUtil.objective(("🎯 Objective: Defeat The Black Jailer! ✅"));
+        System.out.println();
         PrintUtil.line();
         PrintUtil.victory("""
                 ✅🏆 Mini-Boss Defeated!
@@ -465,6 +489,7 @@ public class World2 {
         player.getEffects().resetAllEffects();
 
         // -------------------- Boss: The Corrupted King --------------------
+        System.out.println();
         PrintUtil.event("                                                                                                            \n" +
                 "                                                                                          \n" +
                 "                                                                                          \n" +
@@ -541,6 +566,8 @@ public class World2 {
 
         bossBattle.startBattle();
 
+        PrintUtil.objective(("🎯 Objective: Defeat The Corrupted King! ✅"));
+        System.out.println();
         PrintUtil.line();
         PrintUtil.victory("""
                 ✅👑 Final Victory! - Boss Defeated!
@@ -554,8 +581,9 @@ public class World2 {
         player.getEffects().resetAllEffects();
 
         //-------------------------------------------------
+        System.out.println();
         PrintUtil.effect("The King's breath rattles. A faint glimmer of humanity returns to his eyes.");
-        PrintUtil.say("Corrupted King", "\"It's… It's you!!! NO!!!…\"");
+        PrintUtil.sayRed("Corrupted King", "\"It's… It's you!!! NO!!!…\"");
         PrintUtil.effect("He screams with his dying breath as his body crumbles into dust, leaving only confusion of who he was referring to.");
         InputUtil.pressEnterToContinue();
 
@@ -591,6 +619,7 @@ public class World2 {
         PrintUtil.line();
 
         // ---------------------- MAGIC SHOP ------------------------
+        System.out.println();
         PrintUtil.story("""
         As you take a step forward, a strange pull brushes against your soul.
         The world itself feels like it is shifting around you.

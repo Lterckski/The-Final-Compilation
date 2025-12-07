@@ -10,7 +10,7 @@ import inventory.*;
 public class World2Enemy3 extends Enemy{
 
     public World2Enemy3(){
-        super("Blight Hound", 443, 13, 55);
+        super("Blight Hound", 586, 13, 180);
     }
 
     public void corpseExplosion(Character target){

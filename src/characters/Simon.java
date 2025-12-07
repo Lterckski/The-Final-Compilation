@@ -7,7 +7,7 @@ import utils.RandomUtil;
 
 public class Simon extends Character {
 
-    public Simon() { super("Simon Versace", "Mage", 60, 2, 120, 15); }
+    public Simon() { super("Simon Versace", "Mage", 60, 2, 120, 18); }
 
     @Override
     public void displaySkills() {
@@ -316,7 +316,10 @@ public class Simon extends Character {
                     ultimateCounter--;
                 }
                 case 5 -> displayMenu(this, target); // does not consume turn
-                default -> System.out.println(ColorUtil.boldBrightRed("❌ Invalid action! Try again."));
+                default -> {
+                    System.out.println(ColorUtil.boldBrightRed("❌ Invalid action! Try again."));
+                    PrintUtil.shortLine();
+                }
             }
         }
     }

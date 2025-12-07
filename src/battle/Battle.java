@@ -77,36 +77,39 @@ public class Battle {
         String enemyHpBar = generateBar(enemy.getHp(), enemy.getMaxHP()); // Red
 
         // Top border
-        System.out.println(ColorUtil.boldBrightCyan("┌────────────────────────────────────────────────────────────────────────────────────┐"));
+        System.out.println(ColorUtil.boldBrightCyan("┌────────────────────────────────────────────────────────────────────────────────────────────┐"));
 
-// --- Player HP ---
+        // --- Player HP ---
         System.out.printf("  %-21s %-4s %s %s  ",
                 ColorUtil.boldBrightGreen("Your HP"),
                 ColorUtil.boldBrightGreen(playerHpBar),
                 ColorUtil.boldBrightGreen(player.getHp() + "/" + player.getMaxHP()),
                 "💚");
 
-// --- Enemy HP ---
+        // --- Enemy HP ---
         System.out.printf("  %-22s %-4s %s %s%n",
                 ColorUtil.boldBrightRed("Enemy HP"),
                 ColorUtil.boldBrightRed(enemyHpBar),
                 ColorUtil.boldBrightRed(enemy.getHp() + "/" + enemy.getMaxHP()),
                 "❤️");
 
-// --- Player Energy ---
-        System.out.printf("  %-21s %-4s %s %s%n",
+        // --- Player Energy ---
+        System.out.printf("  %-21s %-4s %s %s",
                 ColorUtil.boldBrightWhite(player.getEnergyName()),
                 ColorUtil.boldBrightWhite(playerStaminaBar),
                 ColorUtil.boldBrightWhite(player.getEnergy() + "/" + player.getMaxEnergy()),
                 player.getEnergyEmoji());
 
-// --- Enemy Shield (if any) ---
+        String shieldActive = "";
+        // --- Enemy Shield (if any) ---
         if (enemy instanceof FinalBoss fb && fb.getShield() > 0) {
-            System.out.println(ColorUtil.boldBrightRed("🛡️ Enemy Shield Active: " + fb.getShield()));
+            shieldActive = "🛡️ Enemy Shield Active: " + fb.getShield();
         }
 
-// Bottom border
-        System.out.println(ColorUtil.boldBrightCyan("└────────────────────────────────────────────────────────────────────────────────────┘"));
+        System.out.printf("  %s%n", ColorUtil.boldBrightRed((shieldActive)));
+
+        // Bottom border
+        System.out.println(ColorUtil.boldBrightCyan("└────────────────────────────────────────────────────────────────────────────────────────────┘"));
 
     }
 

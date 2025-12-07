@@ -9,7 +9,7 @@ import utils.RandomUtil;
 public class World1Enemy2 extends Enemy {
     // Constructor
     public World1Enemy2() {
-        super("Shade Sprites", 69, 4, 20);
+        super("Shade Sprites", 118, 4, 32);
     }
 
     // Skill: Trickster Strike (8–13 damage)
