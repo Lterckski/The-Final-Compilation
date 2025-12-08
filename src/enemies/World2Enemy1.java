@@ -9,7 +9,7 @@ import inventory.*;
 
 public class World2Enemy1 extends Enemy{
     public World2Enemy1(){
-        super("Plague Vermin", 421, 13, 104);
+        super("Plague Vermin", 550, 13, 121);
     }
 
     public void plagueBite(Character target){
@@ -107,6 +107,6 @@ public class World2Enemy1 extends Enemy{
 
     @Override
     public int rewardExp(){
-        return RandomUtil.range(480,540);
+        return 135;
     }
 }

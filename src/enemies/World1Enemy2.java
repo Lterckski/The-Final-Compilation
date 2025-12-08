@@ -9,7 +9,7 @@ import utils.RandomUtil;
 public class World1Enemy2 extends Enemy {
     // Constructor
     public World1Enemy2() {
-        super("Shade Sprites", 118, 4, 32);
+        super("Shade Sprites", 148, 4, 42);
     }
 
     // Skill: Trickster Strike (8–13 damage)
@@ -112,6 +112,6 @@ public class World1Enemy2 extends Enemy {
     }
     @Override
     public int rewardExp(){
-        return RandomUtil.range(65,77);
+        return 170;
     }
 }

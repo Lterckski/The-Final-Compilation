@@ -8,7 +8,7 @@ import utils.RandomUtil;
 
 public class World3Enemy4 extends Enemy {
 
-    public World3Enemy4() { super("Soulflayer Gargoyle", 2293, 48, 398); }
+    public World3Enemy4() { super("Soulflayer Gargoyle", 1420, 48, 245); }
 
     public void soulScream(Character target) {
         PrintUtil.print(ColorUtil.boldBrightRed("                                                          \n" +
@@ -68,7 +68,8 @@ public class World3Enemy4 extends Enemy {
             }
         }
 
-        target.getEffects().applyConfuse();
+        if(RandomUtil.chance(50))
+            target.getEffects().applyConfuse();
     }
 
     @Override
@@ -79,7 +80,7 @@ public class World3Enemy4 extends Enemy {
         System.out.println(ColorUtil.red(" 📜 Description : Soulflayer Gargoyle unleashes a soul-crushing scream, confusing its victim."));
         System.out.println(ColorUtil.red(" 💥 Damage : (") + ColorUtil.boldBrightYellow((int)(attack * 1.00) + " — " + (int)(attack * 1.20)) + ColorUtil.red(")"));
         System.out.println(ColorUtil.red(" ✨ Effects :"));
-        System.out.println(ColorUtil.red("    - 😵 Confuses the target"));
+        System.out.println(ColorUtil.red("    - 😵 50% Chance to Confuse the target"));
         System.out.println(ColorUtil.boldBrightRed("└────────────────────────────────────────────────────────────────────────────────────────────┘"));
         System.out.println();
     }
@@ -102,6 +103,6 @@ public class World3Enemy4 extends Enemy {
 
     @Override
     public int rewardExp(){
-        return RandomUtil.range(930,970);
+        return 3800;
     }
 }

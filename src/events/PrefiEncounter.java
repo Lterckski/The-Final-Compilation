@@ -256,25 +256,21 @@ public class PrefiEncounter {
                         if (choseWeapon) {
                             legendaryWeapon.equip(player);
                             PrintUtil.print(ColorUtil.boldBrightGreen("""
-                                ⚔️ You grasp the Legendary Weapon...
-                                It hums with ancient cosmic power.
-                            """));
+                            ⚔️ You grasp the Legendary Weapon...
+                            It hums with ancient cosmic power."""));
                             PrintUtil.pause(700);
                             PrintUtil.print(ColorUtil.boldBrightMagenta("""
-                                🛡️ The Legendary Armor glows faintly...
-                                its form crumbling into violet ashes.
-                            """));
+                             🛡️ The Legendary Armor glows faintly...
+                             its form crumbling into violet ashes."""));
                         } else {
                             legendaryArmor.equip(player);
                             PrintUtil.print(ColorUtil.boldBrightGreen("""
-                                🛡️ You claim the Legendary Armor.
-                                A warm celestial aura surrounds you...
-                            """));
+                            🛡️ You claim the Legendary Armor.
+                            A warm celestial aura surrounds you..."""));
                             PrintUtil.pause(700);
                             PrintUtil.print(ColorUtil.boldBrightRed("""
-                                ⚔️ The Legendary Weapon emits a final chime—
-                                then shatters into golden dust.
-                            """));
+                            ⚔️ The Legendary Weapon emits a final chime—
+                            then shatters into golden dust."""));
                         }
 
                         PrintUtil.line();
@@ -318,8 +314,7 @@ public class PrefiEncounter {
             """), 2)) return false;
 
         if (!askTimed(ColorUtil.cyan("""
-                \nQ3: Kael.attack() and Simon.attack() behave differently,
-                overriding Character.attack().
+                \nQ3: Kael.attack() and Simon.attack() behave differently, overriding Character.attack().
                 Which OOP concept is this?
 
                   1. Abstraction
@@ -329,8 +324,7 @@ public class PrefiEncounter {
             """), 2)) return false;
 
         if (!askTimed(ColorUtil.cyan("""
-                \nQ4: Weapon is abstract, and Sword/Bow/Staff implement it differently,
-                but share the same interface.
+                \nQ4: Weapon is abstract, and Sword/Bow/Staff implement it differently, but share the same interface.
                 Which OOP concept is this?
 
                   1. Encapsulation

@@ -237,7 +237,7 @@ public class Effects {
     public void updateDoTEffects() {
         // ----- POISON (scales with Max HP) -----
         if (poisonTurnsLeft > 0) {
-            int poisonDamage = Math.max(1, (int)(owner.getMaxHP() * 0.05)); // 5% of Max HP
+            int poisonDamage = Math.max(1, (int)(owner.getMaxHP() * 0.03)); // 3% of Max HP
             System.out.println(
                     ColorUtil.brightMagenta("☠ " + owner.getName() + " is poisoned! 💔 Took ") +
                             ColorUtil.boldBrightWhite(String.valueOf(poisonDamage)) +

@@ -79,8 +79,8 @@ public class World1 {
 
 
         PrintUtil.objective(("🎯 Objective: Defeat 3 Rotfang Wolves!"));
-        InputUtil.pressEnterToContinue();
         PrintUtil.line();
+        InputUtil.pressEnterToContinue();
 
         Enemy enemy1 = new World1Enemy1();
         Battle battle1 = new Battle(player, enemy1);
@@ -153,8 +153,8 @@ public class World1 {
         System.out.println("                                                          ");
 
         PrintUtil.objective(("🎯 Objective: Defeat 2 Shade Sprites!"));
-        InputUtil.pressEnterToContinue();
         PrintUtil.line();
+        InputUtil.pressEnterToContinue();
 
         Enemy enemy2 = new World1Enemy2();
         Battle battle2 = new Battle(player, enemy2);
@@ -235,8 +235,8 @@ public class World1 {
         System.out.println();
 
         PrintUtil.objective(("🎯 Objective: Defeat 2 Dreadbark Treants!"));
-        InputUtil.pressEnterToContinue();
         PrintUtil.line();
+        InputUtil.pressEnterToContinue();
 
         Enemy enemy3 = new World1Enemy3();
         Battle battle3 = new Battle(player, enemy3);
@@ -310,8 +310,8 @@ public class World1 {
         System.out.println();
 
         PrintUtil.objective(("🎯 Objective: Defeat 4 Carrion Bats!"));
-        InputUtil.pressEnterToContinue();
         PrintUtil.line();
+        InputUtil.pressEnterToContinue();
 
         Enemy enemy4 = new World1Enemy4();
         Battle battle4 = new Battle(player, enemy4);
@@ -367,7 +367,7 @@ public class World1 {
                 "██ ▀▀ ██ ██ ███▄██ ██ ██▄██ ██▀██ ███▄▄ ███▄▄   ██▄▄   ███▄██ ██▀▀▀ ██▀██ ██ ██ ███▄██   ██   ██▄▄  ██▄█▄ ▀ \n" +
                 "██    ██ ██ ██ ▀██ ██ ██▄█▀ ▀███▀ ▄▄██▀ ▄▄██▀   ██▄▄▄▄ ██ ▀██ ▀████ ▀███▀ ▀███▀ ██ ▀██   ██   ██▄▄▄ ██ ██ ▄ \n" +
                 "                                                                                                            ");
-        PrintUtil.pause(1500);
+        PrintUtil.pause(500);
 
         PrintUtil.event("                                                                                                   \n" +
                 "                                                                                                   \n" +
@@ -376,6 +376,7 @@ public class World1 {
                 "  ██   ██  ██ ██▄▄▄▄   ██  ██ ▀████▀ ██████ ██████ ▀████▀  ▀██▀██▀    █████▀   ██   ██  ██  ▀███▀  \n" +
                 "                                                                                                   ");
         System.out.println();
+        PrintUtil.pause(600);
 
         PrintUtil.objective("═════════════════════════════════════════════════════════════════════════════════════════════════════════════════");
         System.out.println();
@@ -419,8 +420,8 @@ public class World1 {
         System.out.println();
 
         PrintUtil.objective(("🎯 Objective: Defeat The Hollow Stag!"));
-        InputUtil.pressEnterToContinue();
         PrintUtil.line();
+        InputUtil.pressEnterToContinue();
 
         Enemy miniboss = new World1Miniboss1();
         Battle minibossBattle = new Battle(player, miniboss);
@@ -432,17 +433,18 @@ public class World1 {
 
         minibossBattle.startBattle();
 
+        System.out.println();
         PrintUtil.objective(("🎯 Objective: Defeat The Hollow Stag! ✅"));
         System.out.println();
         PrintUtil.line();
         PrintUtil.victory("""
-                ✅🏆Mini-Boss Defeated!
+                ✅🏆MINI-BOSS DEFEATED!
                 🌟 The Hollow Stag staggers, its luminous eyes fading to black.
-                With one final, echoing cry, it collapses to the ground. The forest trembles… then exhales.
-                """);
-        miniboss.dropLoot(player);
+                With one final, echoing cry, it collapses to the ground. The forest trembles… then exhales.""");
         PrintUtil.line();
+        miniboss.dropLoot(player);
         InputUtil.pressEnterToContinue();
+        PrintUtil.line();
         player.getEffects().resetAllEffects();
 
         System.out.println(ColorUtil.boldBrightYellow("                                     \n" +
@@ -476,6 +478,7 @@ public class World1 {
                 The corruption fades, and the path ahead glows faintly in the mist.
                 """);
 
+        PrintUtil.line();
         System.out.println();
         PrintUtil.specialCyan("You claim the First Stone from a tree black with rot. Light bursts outward; the forest exhales.");
         InputUtil.pressEnterToContinue();

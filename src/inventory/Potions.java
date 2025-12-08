@@ -29,11 +29,18 @@ public class Potions {
 
         int oldHP = owner.getHp();
         int healAmount = (int) (owner.getMaxHP() * 0.15);
-        owner.heal(healAmount);
-        int newHP = owner.getHp();
 
-        System.out.println(ColorUtil.boldBrightGreen("💖✨ Used a Normal Healing Potion! Restored " + healAmount + " HP (" + oldHP + " → " + newHP + ")"));
+        owner.heal(healAmount);
+
+        int newHP = owner.getHp();
+        int actualRestored = newHP - oldHP;
+
+        System.out.println(ColorUtil.boldBrightGreen(
+                "💖✨ Used a Normal Healing Potion! Restored "
+                        + actualRestored + " HP (" + oldHP + " → " + newHP + ")"
+        ));
     }
+
 
     public void useFullHealingPotion() {
         if (fullHealingPotions <= 0) {
@@ -43,11 +50,18 @@ public class Potions {
         fullHealingPotions--;
 
         int oldHP = owner.getHp();
-        owner.heal(owner.getMaxHP());
-        int newHP = owner.getHp();
 
-        System.out.println(ColorUtil.boldBrightGreen("💖✨ Used a Full Healing Potion! Fully restored HP! " + "(" + oldHP + " → " + newHP + ")"));
+        owner.heal(owner.getMaxHP());
+
+        int newHP = owner.getHp();
+        int actualRestored = newHP - oldHP;
+
+        System.out.println(ColorUtil.boldBrightGreen(
+                "💖✨ Used a Full Healing Potion! Restored "
+                        + actualRestored + " HP (" + oldHP + " → " + newHP + ")"
+        ));
     }
+
 
     public void useEnergyPotion() {
         if (energyPotions <= 0) {
@@ -59,19 +73,24 @@ public class Potions {
 
         String energyName = owner.getEnergyName();
         String energyEmoji = owner.getEnergyEmoji();
+
         int oldEnergy = owner.getEnergy();
-        int energyRestored = 0;
+        int restore = switch (owner.getClassType()) {
+            case "Swordsman" -> 30;
+            case "Archer"    -> 8;
+            case "Mage"      -> 40;
+            default -> 0;
+        };
 
-        switch (owner.getClassType()) {
-            case "Swordsman" -> energyRestored = 30;
-            case "Archer" -> energyRestored = 8;
-            case "Mage" -> energyRestored = 40;
-        }
+        owner.restoreEnergy(restore);
 
-        owner.restoreEnergy(energyRestored);
         int newEnergy = owner.getEnergy();
+        int actualRestored = newEnergy - oldEnergy;
 
-        System.out.println(ColorUtil.boldBrightGreen("✨ Used an Energy Potion! Restored " + energyRestored + " " + energyName + " (" + oldEnergy + " → " + newEnergy + ")"));
+        System.out.println(ColorUtil.boldBrightGreen(
+                "✨ Used an Energy Potion! Restored "
+                        + actualRestored + " " + energyName + " (" + oldEnergy + " → " + newEnergy + ")"
+        ));
     }
 
     public void lootPotions(boolean willDropFullHealingPotions){

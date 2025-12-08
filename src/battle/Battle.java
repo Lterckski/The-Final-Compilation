@@ -127,8 +127,8 @@ public class Battle {
 """;
             case 3 -> """
 ┓ ┏┏┓┳┓┓ ┳┓ ┏┓
- ┫┃┃┃┃┣┫┃ ┃┃  ┫
-┗┛┻┛┗┛┛┗┗┛┻┛ ┗┛
+═══════════════ ┃┃┃┃┃┣┫┃ ┃┃  ┫ ═══════════════
+┗┻┛┗┛┛┗┗┛┻┛ ┗┛
 """;
             default -> """
 ┓ ┏┏┓┳┓┓ ┳┓
@@ -231,7 +231,9 @@ public class Battle {
                     return;
                 }
 
+                System.out.println();
                 System.out.println("💀 You collapse, your vision fading...");
+                System.out.println();
                 boolean survived = ReviveTrial.run(player);
 
                 if (survived) {

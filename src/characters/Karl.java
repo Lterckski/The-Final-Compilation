@@ -9,7 +9,7 @@ import utils.RandomUtil;
 public class Karl extends Character{
 
     public Karl() {
-        super("Karl Clover Dior IV", "Archer", 80, 3, 24, 17);
+        super("Karl Clover Dior IV", "Archer", 80, 3, 24, 14);
     }
 
     @Override
@@ -40,7 +40,7 @@ public class Karl extends Character{
         // Ultimate – Rain of a Thousand Arrows
         System.out.println("  " + ColorUtil.boldBrightYellow("🌩️ Ultimate – Rain of a Thousand Arrows (➶ 5 Arrows)"));
         System.out.println("  " + ColorUtil.cyan("📜 Description: Karl releases a rapid flurry of arrows, overwhelming his opponent."));
-        System.out.println("  " + ColorUtil.cyan("💥 Damage: 5 hits, each dealing (") + ColorUtil.boldBrightYellow((int)(attack * 0.80) + " — " + (int)(attack * 1.20)) + ColorUtil.cyan(")"));
+        System.out.println("  " + ColorUtil.cyan("💥 Damage: 5 hits, each dealing (") + ColorUtil.boldBrightYellow((int)(attack * 0.70) + " — " + (int)(attack * 0.90)) + ColorUtil.cyan(")"));
         System.out.println("  " + ColorUtil.cyan("⚡ Effects:"));
         System.out.println("    - " + ColorUtil.cyan("🏃 Grants Nimble (increased dodge chance)"));
         System.out.println("    - " + ColorUtil.cyan("💪 Grants Strengthen (+20% ATK for 2 turns)"));
@@ -258,7 +258,7 @@ public class Karl extends Character{
         int totalDamage = 0;
 
         for (int i = 1; i <= 5; i++) {
-            int damage = (int) RandomUtil.range(attack * 0.80, attack * 1.20);
+            int damage = (int) RandomUtil.range(attack * 0.70, attack * 0.90);
             damage = hunterInstincts(damage, target);
             int reduced = calculateDamage(target, damage);
 
@@ -301,7 +301,7 @@ public class Karl extends Character{
             System.out.println(ColorUtil.boldBrightGreen("[2]") + " " + ColorUtil.green("🎯 Skill 2   -  Bullseye (➶ 1 Heavy Arrow ═ 3 Arrows)"));
             System.out.println(ColorUtil.boldBrightGreen("[3]") + " " + ColorUtil.green("🌩️ Ultimate  -  Rain of A Thousand Arrows (➶ 5 Arrows)"
                     + (ultimateCounter > 0 ? " " + ColorUtil.boldBrightRed("❌ Cooldown: " + ultimateCounter + " turn/s") : "")));
-            System.out.println(ColorUtil.boldBrightGreen("[4]") + " " + ColorUtil.green("\uD83D\uDEE1\uFE0F Skip Turn -  Restore 10% of Max HP and Replenish 6 Arrows"));
+            System.out.println(ColorUtil.boldBrightGreen("[4]") + " " + ColorUtil.green("\uD83D\uDEE1\uFE0F Skip Turn -  Restore 10% of Max HP and Replenish 3 Arrows"));
             System.out.println(ColorUtil.boldBrightGreen("[5]") + " " + ColorUtil.green("📜 Show Menu"));
             System.out.print(ColorUtil.boldBrightWhite("Choose your action: "));
 

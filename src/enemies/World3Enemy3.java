@@ -8,7 +8,7 @@ import utils.RandomUtil;
 
 public class World3Enemy3 extends Enemy {
 
-    public World3Enemy3() { super("Obsidian Crusher", 2099, 48, 379); }
+    public World3Enemy3() { super("Obsidian Crusher", 1583, 48, 320); }
 
     public void magmaSlam(Character target) {
         PrintUtil.print(ColorUtil.boldBrightRed("                                                          \n" +
@@ -97,6 +97,6 @@ public class World3Enemy3 extends Enemy {
 
     @Override
     public int rewardExp(){
-        return RandomUtil.range(1650,1700);
+        return 1900;
     }
 }

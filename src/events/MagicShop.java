@@ -187,7 +187,7 @@ public class MagicShop {
             int oldMaxHP = player.getMaxHP();
             player.setMaxHP(oldMaxHP + 100);
 
-            System.out.println("💖 " + name + " applied! Max HP increased by 100. 💚 HP : " + oldMaxHP + " → " + player.getMaxHP()
+            PrintUtil.reward("💖 " + name + " applied! Max HP increased by 100. 💚 HP : " + oldMaxHP + " → " + player.getMaxHP()
                     + " (💠- " + cost + " Soul Shards)");
         }
         InputUtil.pressEnterToContinue();
@@ -201,7 +201,7 @@ public class MagicShop {
             player.setBaseAttack(player.getBaseAttack() + 8);
             player.recalculateBuffs(); // updates effective attack
 
-            System.out.println("⚔️ " + name + " applied! ATK increased by 8. ⚔️ ATK : " + oldAtk + " → " + player.getAttack()
+            PrintUtil.reward("⚔️ " + name + " applied! ATK increased by 8. ⚔️ ATK : " + oldAtk + " → " + player.getAttack()
                     + " (💠- " + cost + " Soul Shards)");
         }
         InputUtil.pressEnterToContinue();
@@ -215,7 +215,7 @@ public class MagicShop {
             player.setBaseDefense(player.getBaseDefense() + 2);
             player.recalculateBuffs(); // updates effective defense
 
-            System.out.println("🛡️ " + name + " applied! DEF increased by 2. 🛡️ DEF : " + oldDef + " → " + player.getDefense()
+            PrintUtil.reward("🛡️ " + name + " applied! DEF increased by 2. 🛡️ DEF : " + oldDef + " → " + player.getDefense()
                     + " (💠- " + cost + " Soul Shards)");
         }
         InputUtil.pressEnterToContinue();
@@ -240,7 +240,7 @@ public class MagicShop {
             int oldMaxEnergy = player.getMaxEnergy();
             player.setMaxEnergy(oldMaxEnergy + energyIncrease);
 
-            System.out.println("⚡ " + name + " applied! Max Energy increased by "
+            PrintUtil.reward("⚡ " + name + " applied! Max Energy increased by "
                     + energyIncrease + ". " + player.getEnergyEmoji() + " " + player.getEnergyName() + " : " + oldMaxEnergy + " → " + player.getMaxEnergy()
                     + " (💠- " + cost + " Soul Shards)");
         }
@@ -267,7 +267,7 @@ public class MagicShop {
                     "(+5% Lifesteal on attacks)"
             );
 
-            System.out.println("💖 --" + weapon.getName() + "-- is now empowered with " + name
+            PrintUtil.reward("💖 --" + weapon.getName() + "-- is now empowered with " + name
                     + "-- 💖 Lifesteal: " + oldLifesteal + "% → " + (weapon.getLifestealPercent()+ weapon.getAddLifestealPercent()) + "% "
                     + " (💠- " + cost + " Soul Shards)");
 
@@ -302,7 +302,7 @@ public class MagicShop {
                     "(20% chance to stun enemies)"
             );
 
-            System.out.println("⛓️ --" + weapon.getName() + "-- crackles with " + name + "! Stun chance: "
+            PrintUtil.reward("⛓️ --" + weapon.getName() + "-- crackles with " + name + "! Stun chance: "
                     + weapon.getStunChance() + "% (💠- " + cost + " Soul Shards)");
 
 
@@ -336,7 +336,7 @@ public class MagicShop {
                     "(20% chance to Freeze target)"
             );
 
-            System.out.println("❄️ --" + weapon.getName() + "-- is now enchanted with " + name + "! Freeze chance: "
+            PrintUtil.reward("❄️ --" + weapon.getName() + "-- is now enchanted with " + name + "! Freeze chance: "
                     + weapon.getFreezeChance() + "% (💠- " + cost + " Soul Shards)");
 
             InputUtil.pressEnterToContinue();
@@ -369,7 +369,7 @@ public class MagicShop {
                     "(+3 Energy per attack)"
             );
 
-            System.out.println("✨ --" + weapon.getName() + "-- is now infused with " + name
+            PrintUtil.reward("✨ --" + weapon.getName() + "-- is now infused with " + name
                     + "! +3 Energy per attack (💠- " + cost + " Soul Shards)");
 
             InputUtil.pressEnterToContinue();
@@ -396,7 +396,7 @@ public class MagicShop {
                     "(20% chance to Poison target)"
             );
 
-            System.out.println("☠️ --" + weapon.getName() + "-- is now laced with " + name + "! Poison chance: "
+            PrintUtil.reward("☠️ --" + weapon.getName() + "-- is now laced with " + name + "! Poison chance: "
                     + weapon.getPoisonChance() + "% (💠- " + cost + " Soul Shards)");
 
             InputUtil.pressEnterToContinue();
@@ -452,7 +452,7 @@ public class MagicShop {
             armor.setAddDefBuff(armor.getAddDefBuff() + 10);
             armor.setHasEnchantment(true);
 
-            System.out.println("🛡️ --" + armor.getName() + "-- is reinforced with " + name + "! Armor DEF: "
+            PrintUtil.reward("🛡️ --" + armor.getName() + "-- is reinforced with " + name + "! Armor DEF: "
                     + oldDef + " → " + (armor.getDefBuff() + armor.getAddDefBuff()) + " (💠- " + cost + " Soul Shards)");
 
             player.recalculateBuffs();
@@ -485,7 +485,7 @@ public class MagicShop {
             player.subtractSoulShards(totalCost);
             player.getPotions().acquireNormalHealingPotion(amount);
 
-            System.out.println("🧪 " + name + " acquired! You gained " + amount + " potion" + (amount > 1 ? "s" : "") + "."
+            PrintUtil.reward("🧪 " + name + " acquired! You gained " + amount + " potion" + (amount > 1 ? "s" : "") + "."
                     + " (💠- " + totalCost + " Soul Shards)");
         }
 
@@ -517,7 +517,7 @@ public class MagicShop {
             player.subtractSoulShards(totalCost);
             player.getPotions().acquireFullHealingPotion(amount);
 
-            System.out.println("🧪 " + name + " acquired! You gained " + amount + " potion"
+            PrintUtil.reward("🧪 " + name + " acquired! You gained " + amount + " potion"
                     + (amount > 1 ? "s" : "") + "." + " (💠- " + totalCost + " Soul Shards)");
         }
 
@@ -549,7 +549,7 @@ public class MagicShop {
             player.subtractSoulShards(totalCost);
             player.getPotions().acquireEnergyPotion(amount);
 
-            System.out.println("⚡ " + name + " acquired! You gained " + amount + " potion"
+            PrintUtil.reward("⚡ " + name + " acquired! You gained " + amount + " potion"
                     + (amount > 1 ? "s" : "") + "." + " (💠- " + totalCost + " Soul Shards)");
         }
 
@@ -569,7 +569,7 @@ public class MagicShop {
             player.subtractSoulShards(cost);
             player.getInventory().acquirePhoenixSoulstone();
 
-            System.out.println("🕊️ Phoenix Soulstone acquired!");
+            PrintUtil.reward("🕊️ Phoenix Soulstone acquired!");
         }
 
         InputUtil.pressEnterToContinue();

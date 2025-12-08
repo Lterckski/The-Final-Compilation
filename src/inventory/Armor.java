@@ -22,7 +22,7 @@ public class Armor {
     private final int reflectChance;
     private final int reflectPercent;
 
-    public static final Armor LEATHER_GUARD = new Armor("Leather Guard", "⚪", 0, false, false, 0 ,0);
+    public static final Armor LEATHER_GUARD = new Armor("Leather Guard", "⚪", 5, false, false, 0 ,0);
     public static final Armor IRON_VANGUARD = new Armor("Iron Vanguard", "🟢", 10, false, false, 0 ,0);
     public static final Armor AEGIS_MAIL = new Armor("Aegis Mail", "🔵", 25,true, false,0, 0);
     public static final Armor VANGUARD_ROBE = new Armor("Vanguard Robe", "🟣", 25, false, true, 0,0);
@@ -118,7 +118,7 @@ public class Armor {
             isEquipped = true;
             player.getInventory().setEquippedArmor(this);
 
-            System.out.println("You upgraded your armor!");
+            System.out.println(ColorUtil.boldBrightCyan("You upgraded your armor!"));
             System.out.println(ColorUtil.boldBrightYellow("⚙\uFE0F " + name + " Equipped! ⬆\uFE0F Defense increased by " + (this.defBuff - currentlyEquipped.defBuff) + ". 🛡️ Current DEF: " + player.getDefense()));
         }
         PrintUtil.line();

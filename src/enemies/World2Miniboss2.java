@@ -9,7 +9,7 @@ import inventory.*;
 
 public class World2Miniboss2 extends Enemy {
     public World2Miniboss2() {
-        super("Luther Von", 1254, 29, 350);
+        super("Luther Von", 1254, 29, 250);
     }
 
     public void crownOfDespair(Character target) {
@@ -394,12 +394,12 @@ public class World2Miniboss2 extends Enemy {
                 System.out.println("The other weapon vanishes...");
                 PrintUtil.pause(800);
             } else {
-                System.out.println("\n❌ Invalid choice. Both weapons disappear...");
+                System.out.println("❌ Invalid choice. Both weapons disappear...");
                 PrintUtil.pause(800);
             }
         }
     }
 
     @Override
-    public int rewardExp(){return RandomUtil.range(1600,2000);}
+    public int rewardExp(){ return 5200;}
 }

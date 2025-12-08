@@ -8,7 +8,7 @@ import inventory.*;
 
 public class World2Enemy4 extends Enemy{
     public World2Enemy4(){
-        super("Ghoul Footmen", 654, 18, 201);
+        super("Ghoul Footmen", 782, 18, 201);
     }
 
     public void rottenCleave(Character target){
@@ -97,5 +97,5 @@ public class World2Enemy4 extends Enemy{
     }
 
     @Override
-    public int rewardExp(){return RandomUtil.range(280,325);}
+    public int rewardExp(){return 360;}
 }

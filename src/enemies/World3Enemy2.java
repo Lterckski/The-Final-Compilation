@@ -8,7 +8,7 @@ import utils.RandomUtil;
 
 public class World3Enemy2 extends Enemy {
 
-    public World3Enemy2() { super("Bone Warlock", 1829, 41, 349); }
+    public World3Enemy2() { super("Bone Warlock", 1285, 41, 292); }
 
     public void marrowBolt(Character target) {
         PrintUtil.print(ColorUtil.boldBrightRed("                                                          \n" +
@@ -109,6 +109,6 @@ public class World3Enemy2 extends Enemy {
 
     @Override
     public int rewardExp(){
-        return RandomUtil.range(965,1000);
+        return 2083;
     }
 }

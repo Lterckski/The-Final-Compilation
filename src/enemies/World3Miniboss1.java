@@ -11,7 +11,7 @@ import utils.RandomUtil;
 
 public class World3Miniboss1 extends Enemy {
 
-    public World3Miniboss1() { super("Zyrryl", 2845, 67, 405); }
+    public World3Miniboss1() { super("Zyrryl", 2845, 67, 320); }
 
     @Override
     public void displaySkills() {
@@ -283,5 +283,5 @@ public class World3Miniboss1 extends Enemy {
     }
 
     @Override
-    public int rewardExp(){return 29200;}
+    public int rewardExp(){ return 7900;}
 }

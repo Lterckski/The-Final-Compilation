@@ -343,9 +343,9 @@ public class StoryEngine {
                         player = karl;
 
                         System.out.println();
-                        System.out.println(ColorUtil.boldBrightCyan("        ┌──────────────────────────────────────────────────────────────────┐"));
-                        System.out.println(ColorUtil.boldBrightCyan("          🏹 You have chosen " + player.getName() .toUpperCase()+ ", the sharp-eyed Archer! "));
-                        System.out.println(ColorUtil.boldBrightCyan("        └──────────────────────────────────────────────────────────────────┘"));
+                        System.out.println(ColorUtil.boldBrightCyan("       ┌──────────────────────────────────────────────────────────────────┐"));
+                        System.out.println(ColorUtil.boldBrightCyan("         🏹 You have chosen " + player.getName() .toUpperCase()+ ", the sharp-eyed Archer! "));
+                        System.out.println(ColorUtil.boldBrightCyan("       └──────────────────────────────────────────────────────────────────┘"));
 
                         karl.showBackstory();
                         InputUtil.pressEnterToContinue();

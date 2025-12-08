@@ -12,11 +12,11 @@ import java.util.Map;
 public class Bow extends Weapon{
     private final int attackTwiceChance;
 
-    public static final Bow WOODEN_BOW = new Bow("Wooden Bow","⚪", 0 , 0, 0);
-    public static final Bow OAK_LONGBOW = new Bow("Oak Longbow","🟢", 5 , 0, 0);
-    public static final Bow TWINSHOT_BOW = new Bow("Twinshot Bow","🔵", 15, 10,0);
-    public static final Bow LIFEBLOOM_BOW = new Bow("Lifebloom Bow", "🔵", 15, 0, 3);
-    public static final Bow AETHERSTRIKE_BOW = new Bow("Aetherstrike Bow", "🟣", 30, 25, 5);
+    public static final Bow WOODEN_BOW = new Bow("Wooden Bow","⚪", 5 , 0, 0);
+    public static final Bow OAK_LONGBOW = new Bow("Oak Longbow","🟢", 10 , 0, 0);
+    public static final Bow TWINSHOT_BOW = new Bow("Twinshot Bow","🔵", 20, 10,0);
+    public static final Bow LIFEBLOOM_BOW = new Bow("Lifebloom Bow", "🔵", 20, 0, 3);
+    public static final Bow AETHERSTRIKE_BOW = new Bow("Aetherstrike Bow", "🟣", 35, 25, 5);
     public static final Bow GOLDEN_TALON = new Bow("Golden Talon", "🟡", 50, 35, 10);
 
     public Bow(String name, String rarity, int atkBuff, int twiceAttackChance, int lifestealPercent){

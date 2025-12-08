@@ -9,7 +9,7 @@ import inventory.*;
 
 public class World2Miniboss1 extends Enemy{
     public World2Miniboss1(){
-        super("The Black Jailer", 946, 24, 289);
+        super("The Black Jailer", 946, 24, 253);
     }
 
     public void shacklingChains(Character target){
@@ -241,18 +241,18 @@ public class World2Miniboss1 extends Enemy{
 
         if (choice == 1) {
             aegisMail.equip(player);
-            System.out.println("\nThe other armor fades away...");
+            System.out.println("The other armor fades away...");
             PrintUtil.pause(800);
         } else if (choice == 2) {
             vanguardRobe.equip(player);
-            System.out.println("\nThe other armor fades away...");
+            System.out.println("The other armor fades away...");
             PrintUtil.pause(800);
         } else {
-            System.out.println("\n❌ Invalid choice! Both armors vanish into the mist...");
+            System.out.println("❌ Invalid choice! Both armors vanish into the mist...");
             PrintUtil.pause(800);
         }
     }
 
     @Override
-    public int rewardExp(){return RandomUtil.range(3600,4100);}
+    public int rewardExp(){return 1915;}
 }

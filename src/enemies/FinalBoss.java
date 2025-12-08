@@ -14,7 +14,7 @@ public class FinalBoss extends Enemy {
     private int shield = 0; // 🛡️ Shield value (temporary, lasts 1 turn)
 
     public FinalBoss() {
-        super("Khai the Necromancer", 3455, 50, 480);
+        super("Khai the Necromancer", 3455, 50, 350);
     }
 
     public int getShield(){ return shield; }
@@ -65,7 +65,7 @@ public class FinalBoss extends Enemy {
         // Skill 1
         System.out.println(ColorUtil.boldBrightYellow("  💀 Skill – Soul Drain"));
         System.out.println(ColorUtil.red(" 📜 Description : Drains the target’s life essence to heal himself."));
-        System.out.println(ColorUtil.red(" ⚔️ Damage : (") + ColorUtil.boldBrightYellow((int)(attack * 1.0) + "") + ColorUtil.red(")"));
+        System.out.println(ColorUtil.red(" ⚔️ Damage : (") + ColorUtil.boldBrightYellow((int)(attack * 0.8) + "") + ColorUtil.red(")"));
         System.out.println(ColorUtil.red(" ✨ Effects :"));
         System.out.println(ColorUtil.red("    - ❤️ Heals self for 100 HP"));
         System.out.println();
@@ -83,7 +83,7 @@ public class FinalBoss extends Enemy {
         // Skill 3
         System.out.println(ColorUtil.boldBrightYellow("  🌌 Skill – Dark Ascension"));
         System.out.println(ColorUtil.red(" 📜 Description : Releases immense dark power upon the target."));
-        System.out.println(ColorUtil.red(" ⚔️ Damage : (") + ColorUtil.boldBrightYellow((int)(attack * 1.6) + " — " + (int)(attack * 2.0)) + ColorUtil.red(")"));
+        System.out.println(ColorUtil.red(" ⚔️ Damage : (") + ColorUtil.boldBrightYellow((int)(attack * 1.2) + " — " + (int)(attack * 1.6)) + ColorUtil.red(")"));
         System.out.println(ColorUtil.red(" ✨ Effects :"));
         System.out.println(ColorUtil.red("    - 😱 50% chance to apply Fear to target"));
 
@@ -118,7 +118,7 @@ public class FinalBoss extends Enemy {
         if (target.getEffects().checkDodge()) return;
         if (this.getEffects().checkConfuse()) return;
 
-        int damage = attack;
+        int damage = (int) (attack * 0.8);
         int reduced = calculateDamage(target, damage);
 
         System.out.println(ColorUtil.brightRed("→💔 Soul Drain hits for ")
@@ -126,7 +126,6 @@ public class FinalBoss extends Enemy {
                 + ColorUtil.brightRed(" damage!"));
         PrintUtil.pause(800);
         target.takeDamage(reduced);
-
 
         int heal = reduced;
         hp = Math.min(maxHP, hp + heal);
@@ -216,7 +215,7 @@ public class FinalBoss extends Enemy {
         if (target.getEffects().checkDodge()) return;
         if (this.getEffects().checkConfuse()) return;
 
-        int damage = (int) RandomUtil.range(attack * 1.6, attack * 2.0);
+        int damage = (int) RandomUtil.range(attack * 1.2, attack * 1.8);
         int reduced = calculateDamage(target, damage);
 
         System.out.println(ColorUtil.brightRed("→💔 Dark Ascension hits for ")

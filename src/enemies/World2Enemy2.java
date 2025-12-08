@@ -9,7 +9,7 @@ import inventory.*;
 
 public class World2Enemy2 extends Enemy{
     public World2Enemy2(){
-        super("Forsaken Cultist", 502, 14, 150);
+        super("Forsaken Cultist", 694, 14, 134);
     }
 
     public void shadowBolt(Character target){
@@ -110,7 +110,5 @@ public class World2Enemy2 extends Enemy{
     }
 
     @Override
-    public int rewardExp(){
-        return RandomUtil.range(215,245);
-    }
+    public int rewardExp(){ return 233;}
 }

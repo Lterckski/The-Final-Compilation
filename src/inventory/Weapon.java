@@ -183,7 +183,7 @@ public abstract class Weapon {
             isEquipped = true;
             character.getInventory().setEquippedWeapon(this);
 
-            System.out.println("You upgraded your weapon!");
+            System.out.println(ColorUtil.boldBrightCyan("You upgraded your weapon!"));
             PrintUtil.pause(800);
             System.out.println(ColorUtil.boldBrightYellow("⚙\uFE0F " + name + " Equipped! ⬆\uFE0F Attack increased by " + (this.getAtkBuff() - currentlyEquipped.getAtkBuff()) + ". ⚔\uFE0F Current ATK: " + character.getAttack()));
         }

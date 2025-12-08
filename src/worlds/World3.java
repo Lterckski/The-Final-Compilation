@@ -83,8 +83,8 @@ public class World3 {
         System.out.println();
 
         PrintUtil.objective(("🎯 Objective: Defeat 3 Flame Revenants!"));
-        InputUtil.pressEnterToContinue();
         PrintUtil.line();
+        InputUtil.pressEnterToContinue();
 
         Enemy enemy1 = new World3Enemy1();
         Battle battle1 = new Battle(player, enemy1);
@@ -123,8 +123,8 @@ public class World3 {
                     The lava around you cools slightly — a brief moment of calm.
                     """);
         PrintUtil.loot("You gain experience and loot from the battle.");
-        InputUtil.pressEnterToContinue();
         PrintUtil.line();
+        InputUtil.pressEnterToContinue();
         player.getEffects().resetAllEffects();
 
 
@@ -170,9 +170,9 @@ public class World3 {
         PrintUtil.enemyEncounter("                       .::-=+=:.                           ");
         System.out.println();
 
-        PrintUtil.objective(("🎯 Objective: Defeat 2 Bone Warlocks!"));
-        InputUtil.pressEnterToContinue();
+        PrintUtil.objective(("🎯 Objective: Defeat 3 Bone Warlocks!"));
         PrintUtil.line();
+        InputUtil.pressEnterToContinue();
 
         Enemy enemy2 = new World3Enemy2();
         Battle battle2 = new Battle(player, enemy2);
@@ -183,17 +183,17 @@ public class World3 {
         System.out.println();
 
         for (int i = 1; i <= 3; i++) {
-            System.out.println(ColorUtil.boldBrightRed("═════════════════════════════════════════════════════"));
+            System.out.println(ColorUtil.boldBrightRed("═══════════════════════════════════════════════════════════════"));
             PrintUtil.enemyEncounter("💀 Bone Warlock " + i + " raises its staff, channeling dark magic!");
-            System.out.println(ColorUtil.boldBrightRed("═════════════════════════════════════════════════════"));
+            System.out.println(ColorUtil.boldBrightRed("═══════════════════════════════════════════════════════════════"));
             InputUtil.pressEnterToContinue();
 
             battle2.startBattle();
 
             System.out.println();
-            System.out.println(ColorUtil.boldBrightGreen("───────────────────────────────────────"));
+            System.out.println(ColorUtil.boldBrightGreen("───────────────────────────────────────────"));
             PrintUtil.enemyDefeated("✅ You have defeated Bone Warlock " + i + "!");
-            System.out.println(ColorUtil.boldBrightGreen("───────────────────────────────────────"));
+            System.out.println(ColorUtil.boldBrightGreen("───────────────────────────────────────────"));
             enemy2.dropLoot(player);
 
             if (i < 3) {
@@ -202,7 +202,7 @@ public class World3 {
             }
         }
 
-        PrintUtil.objective(("🎯 Objective: Defeat 2 Bone Warlocks! ✅ (2 / 2)"));
+        PrintUtil.objective(("🎯 Objective: Defeat 3 Bone Warlocks! ✅ (3 / 3)"));
         System.out.println();
         PrintUtil.line();
         PrintUtil.victory("""
@@ -210,8 +210,8 @@ public class World3 {
                     The heat intensifies — something greater stirs within the peaks.
                     """);
         PrintUtil.loot("You gain experience and loot from your fiery victory.");
-        InputUtil.pressEnterToContinue();
         PrintUtil.line();
+        InputUtil.pressEnterToContinue();
         player.getEffects().resetAllEffects();
 
         // -------------------- Obsidian Crushers --------------------
@@ -243,8 +243,8 @@ public class World3 {
         System.out.println();
 
         PrintUtil.objective(("🎯 Objective: Defeat 2 Obsidian Crushers!"));
-        InputUtil.pressEnterToContinue();
         PrintUtil.line();
+        InputUtil.pressEnterToContinue();
 
         Enemy enemy3 = new World3Enemy3();
         Battle battle3 = new Battle(player, enemy3);
@@ -282,17 +282,18 @@ public class World3 {
                     The tremors subside — the way forward opens.
                     """);
         PrintUtil.loot("You gain experience and loot from your battle.");
-        InputUtil.pressEnterToContinue();
         PrintUtil.line();
+        InputUtil.pressEnterToContinue();
         player.getEffects().resetAllEffects();
 
-
+        System.out.println();
         PrintUtil.effect("Halfway up, you find a mural etched into obsidian.");
         PrintUtil.story(
                 "It shows a hooded figure holding three glowing stones, beneath a phrase in your own language:\n" +
                         "  'To teach is to control.'");
-        InputUtil.pressEnterToContinue();
+        System.out.println();
         PrintUtil.line();
+        InputUtil.pressEnterToContinue();
 
         // -------------------- Soulflayer Gargoyles --------------------
         System.out.println();
@@ -325,8 +326,8 @@ public class World3 {
         System.out.println();
 
         PrintUtil.objective(("🎯 Objective: Defeat 3 Soulflayer Gargoyles!"));
-        InputUtil.pressEnterToContinue();
         PrintUtil.line();
+        InputUtil.pressEnterToContinue();
 
         Enemy enemy4 = new World3Enemy4();
         Battle battle4 = new Battle(player, enemy4);
@@ -337,17 +338,17 @@ public class World3 {
         System.out.println();
 
         for (int i = 1; i <= 3; i++) {
-            System.out.println(ColorUtil.boldBrightRed("══════════════════════════════════"));
+            System.out.println(ColorUtil.boldBrightRed("═════════════════════════════════════════════"));
             PrintUtil.enemyEncounter("😈 Soulflayer Gargoyle " + i + " swoops down from above!");
-            System.out.println(ColorUtil.boldBrightRed("══════════════════════════════════"));
+            System.out.println(ColorUtil.boldBrightRed("═════════════════════════════════════════════"));
             InputUtil.pressEnterToContinue();
 
             battle4.startBattle();
 
             System.out.println();
-            System.out.println(ColorUtil.boldBrightGreen("────────────────────────────────────"));
+            System.out.println(ColorUtil.boldBrightGreen("───────────────────────────────────────────"));
             PrintUtil.enemyDefeated("✅ You have defeated Soulflayer Gargoyle " + i + "!");
-            System.out.println(ColorUtil.boldBrightGreen("────────────────────────────────────"));
+            System.out.println(ColorUtil.boldBrightGreen("───────────────────────────────────────────"));
             enemy4.dropLoot(player);
 
             if (i < 3) {
@@ -364,8 +365,8 @@ public class World3 {
                     Silence returns — save for the slow, rising heartbeat of the volcano.
                     """);
         PrintUtil.loot("You gain experience and loot from your hard-fought battle.");
-        InputUtil.pressEnterToContinue();
         PrintUtil.line();
+        InputUtil.pressEnterToContinue();
         player.getEffects().resetAllEffects();
 
         // -------------------- MINIBOSS: ZYRRYL, THE TOWER WARDEN --------------------
@@ -376,7 +377,7 @@ public class World3 {
                 "██ ▀▀ ██ ██ ███▄██ ██ ██▄██ ██▀██ ███▄▄ ███▄▄   ██▄▄   ███▄██ ██▀▀▀ ██▀██ ██ ██ ███▄██   ██   ██▄▄  ██▄█▄ ▀ \n" +
                 "██    ██ ██ ██ ▀██ ██ ██▄█▀ ▀███▀ ▄▄██▀ ▄▄██▀   ██▄▄▄▄ ██ ▀██ ▀████ ▀███▀ ▀███▀ ██ ▀██   ██   ██▄▄▄ ██ ██ ▄ \n" +
                 "                                                                                                            ");
-        PrintUtil.pause(1500);
+        PrintUtil.pause(500);
 
         PrintUtil.event("                                                                                                                                           \n" +
                 "                                                                                                                                           \n" +
@@ -384,6 +385,7 @@ public class World3 {
                 " ▄▄▀▀  ▀███▀ ██▄█▄ ██▄█▄ ▀███▀ ██            ██   ██▄██ ██▄▄      ██  ██▀██ ██ ▄ ██ ██▄▄  ██▄█▄   ██ ▄█▄ ██ ██▀██ ██▄█▄ ██▀██ ██▄▄  ███▄██ \n" +
                 "██████   █   ██ ██ ██ ██   █   ██▄▄▄  ▄      ██   ██ ██ ██▄▄▄     ██  ▀███▀  ▀█▀█▀  ██▄▄▄ ██ ██    ▀██▀██▀  ██▀██ ██ ██ ████▀ ██▄▄▄ ██ ▀██ \n" +
                 "                                     ▀                                                                                                     ");
+        PrintUtil.pause(600);
 
         System.out.println();
         PrintUtil.objective("═══════════════════════════════════════════════════════════════════════════");
@@ -427,9 +429,10 @@ public class World3 {
         PrintUtil.enemyEncounter("@@@@@@@@@@@@@@@@@@@@@@%#+.     .:+**#@@@@@@@@@@@@@@@@@@@@@@");
         System.out.println();
 
+        System.out.println();
         PrintUtil.objective(("🎯 Objective: Defeat Zyrryl, The Tower Warden!"));
-        InputUtil.pressEnterToContinue();
         PrintUtil.line();
+        InputUtil.pressEnterToContinue();
 
         Enemy miniboss = new World3Miniboss1();
         Battle minibattle = new Battle(player, miniboss);
@@ -441,6 +444,7 @@ public class World3 {
 
         minibattle.startBattle();
 
+        System.out.println();
         PrintUtil.objective(("🎯 Objective: Defeat Zyrryl, The Tower Warden! ✅"));
         System.out.println();
         PrintUtil.line();
@@ -449,9 +453,10 @@ public class World3 {
                     Zyrryl falls to one knee, his molten armor cracking apart.
                     You have shattered the guardian of flame.
                     """);
-        PrintUtil.loot("You gain rare loot and powerful rewards!\n");
+        PrintUtil.loot("You gain rare loot and powerful rewards!");
         miniboss.dropLoot(player);
         InputUtil.pressEnterToContinue();
+        System.out.println();
         PrintUtil.line();
         player.getEffects().resetAllEffects();
 
@@ -526,9 +531,9 @@ public class World3 {
         prefiEncounter.start(player);
 
         // --- Boss: the revelation ---
+        System.out.println();
         PrintUtil.title("BOSS — Sir Khai, the Necromancer");
-        System.out.println(ColorUtil.brightMagenta("                                     \n" +
-                "                                     \n" +
+        System.out.println(ColorUtil.brightMagenta(
                 "                                     \n" +
                 "                                     \n" +
                 "                 :*-                 \n" +

@@ -37,7 +37,7 @@ public class Simon extends Character {
         // Ultimate – Meteor Storm
         System.out.println("  " + ColorUtil.boldBrightYellow("☄️ Ultimate – Meteor Storm (💧 40 Mana)"));
         System.out.println("  " + ColorUtil.cyan("📜 Description: Summons a storm of blazing meteors, striking the opponent multiple times."));
-        System.out.println("  " + ColorUtil.cyan("💥 Damage: 5 hits, each dealing (") + ColorUtil.boldBrightYellow((int)(attack * 0.90) + " — " + (int)(attack * 1.20)) + ColorUtil.cyan(")"));
+        System.out.println("  " + ColorUtil.cyan("💥 Damage: 5 hits, each dealing (") + ColorUtil.boldBrightYellow((int)(attack * 0.60) + " — " + (int)(attack * 1.00)) + ColorUtil.cyan(")"));
         System.out.println("  " + ColorUtil.cyan("⚡ Effects:"));
         System.out.println("    - " + ColorUtil.cyan("💪 Grants Strengthen (+20% ATK for 2 turns)"));
         System.out.println("    - " + ColorUtil.cyan("🔥 50% chance to apply Burn (2 turns)"));
@@ -227,7 +227,7 @@ public class Simon extends Character {
         int totalDamage = 0;
 
         for (int i = 1; i <= 5; i++) {
-            int damage = (int) RandomUtil.range(attack * 0.90, attack * 1.40);
+            int damage = (int) RandomUtil.range(attack * 0.60, attack * 1.00);
             int reduced = calculateDamage(target, damage);
 
             // Check if target is confused
@@ -274,7 +274,7 @@ public class Simon extends Character {
             System.out.println(ColorUtil.boldBrightGreen("[2]") + " " + ColorUtil.green("❄️ Skill 2   -  Ice Prison (💧 25 Mana)"));
             System.out.println(ColorUtil.boldBrightGreen("[3]") + " " + ColorUtil.green("🌋 Ultimate  -  Meteor Storm (💧 40 Mana)"
                     + (ultimateCounter > 0 ? " " + ColorUtil.boldBrightRed("❌ Cooldown: " + ultimateCounter + " turn/s") : "")));
-            System.out.println(ColorUtil.boldBrightGreen("[4]") + " " + ColorUtil.green("\uD83D\uDEE1\uFE0F Skip Turn -  Restore 10% of Max HP and 30 Mana"));
+            System.out.println(ColorUtil.boldBrightGreen("[4]") + " " + ColorUtil.green("\uD83D\uDEE1\uFE0F Skip Turn -  Restore 10% of Max HP and 20 Mana"));
             System.out.println(ColorUtil.boldBrightGreen("[5]") + " " + ColorUtil.green("📜 Show Menu"));
             System.out.print(ColorUtil.boldBrightWhite("Choose your action: "));
 

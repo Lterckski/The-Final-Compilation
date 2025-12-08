@@ -13,11 +13,11 @@ import java.util.Map;
 public class Sword extends Weapon{
     private final int attackTwiceChance;
 
-    public static final Sword OLD_BROADSWORD = new Sword("Old Broadsword", "⚪", 0, 0, 0);
-    public static final Sword IRON_SHORTSWORD = new Sword("Iron Shortsword", "🟢", 5, 0, 0);
-    public static final Sword TWINSTRIKE_BLADE =  new Sword("Twinstrike Blade", "🔵", 15, 10, 0);
-    public static final Sword LIFEBOND_BLADE =  new Sword("Lifebond Blade", "🔵", 15, 0, 3);
-    public static final Sword ECLIPSE_GREATSWORD =  new Sword("Eclipse Greatsword", "🟣", 30, 25, 5);
+    public static final Sword OLD_BROADSWORD = new Sword("Old Broadsword", "⚪", 5, 0, 0);
+    public static final Sword IRON_SHORTSWORD = new Sword("Iron Shortsword", "🟢", 10, 0, 0);
+    public static final Sword TWINSTRIKE_BLADE =  new Sword("Twinstrike Blade", "🔵", 20, 10, 0);
+    public static final Sword LIFEBOND_BLADE =  new Sword("Lifebond Blade", "🔵", 20, 0, 3);
+    public static final Sword ECLIPSE_GREATSWORD =  new Sword("Eclipse Greatsword", "🟣", 35, 25, 5);
     public static final Sword CELESTIAL_EDGE = new Sword("Celestial Edge", "🟡", 50, 35, 10);
 
     public Sword(String name, String rarity, int atkBuff, int twiceAttackChance, int lifestealPercent){

@@ -9,7 +9,7 @@ import utils.RandomUtil;
 public class Kael extends  Character{      // 15% crit chance
 
     public Kael() {
-        super("Kael Saint Laurent", "Swordsman" ,100, 5, 100, 15);
+        super("Kael Saint Laurent", "Swordsman" ,100, 5, 100, 12);
     }
 
     @Override
@@ -38,7 +38,7 @@ public class Kael extends  Character{      // 15% crit chance
 // Ultimate
         System.out.println("  " + ColorUtil.boldBrightYellow("✝️ Ultimate – Eternal Cross Slash (🔋 20 Stamina)"));
         System.out.println("  " + ColorUtil.cyan("📜 Description: Kael unleashes a flurry of crossing strikes infused with unyielding determination."));
-        System.out.println("  " + ColorUtil.cyan("💥 Damage: 3 hits, each dealing (") + ColorUtil.boldBrightYellow((int)(attack * 1.20) + " — " + (int)(attack * 2.00)) + ColorUtil.cyan(")"));
+        System.out.println("  " + ColorUtil.cyan("💥 Damage: 3 hits, each dealing (") + ColorUtil.boldBrightYellow((int)(attack * 1.00) + " — " + (int)(attack * 1.80)) + ColorUtil.cyan(")"));
         System.out.println("  " + ColorUtil.cyan("⚡ Effects:"));
         System.out.println("    - " + ColorUtil.cyan("🩸 Applies Bleed for 2 turns"));
         System.out.println("    - " + ColorUtil.cyan("🛡️ Grants Fortified (+20% DEF for 2 turns)"));
@@ -214,7 +214,7 @@ public class Kael extends  Character{      // 15% crit chance
         PrintUtil.pause(800);
 
         for(int i = 1; i <= 3; i++){
-            int damage = (int) RandomUtil.range(attack * 1.20,attack * 2.00);
+            int damage = (int) RandomUtil.range(attack * 1.00,attack * 1.80);
             damage = bladeSwift(damage);
             int reduced = calculateDamage(target, damage);
 
@@ -257,7 +257,7 @@ public class Kael extends  Character{      // 15% crit chance
             System.out.println(ColorUtil.boldBrightGreen("[2]") + " " + ColorUtil.green("⚔\uFE0F Skill 2   -  Piercing Slash (🔋 10 Stamina)"));
             System.out.println(ColorUtil.boldBrightGreen("[3]") + " " + ColorUtil.green("✝️ Ultimate  -  Eternal Cross Slash (🔋 20 Stamina)"
                     + (ultimateCounter > 0 ? " " + ColorUtil.boldBrightRed(" ❌ Cooldown: " + ultimateCounter + " turn/s") : "")));
-            System.out.println(ColorUtil.boldBrightGreen("[4]") + " " + ColorUtil.green("\uD83D\uDEE1\uFE0F Skip Turn -  Restore 10% of Max HP and 20 Stamina"));
+            System.out.println(ColorUtil.boldBrightGreen("[4]") + " " + ColorUtil.green("\uD83D\uDEE1\uFE0F Skip Turn -  Restore 10% of Max HP and 10 Stamina"));
             System.out.println(ColorUtil.boldBrightGreen("[5]") + " " + ColorUtil.green("📜 Show Menu"));
             System.out.print(ColorUtil.boldBrightWhite("Choose your action: "));
 
@@ -272,6 +272,7 @@ public class Kael extends  Character{      // 15% crit chance
                         ultimateCounter--;
                     } else {
                         System.out.println(ColorUtil.boldBrightRed("❌ Not enough Stamina to use Blade Rush! Choose again."));
+                        PrintUtil.shortLine();
                     }
                 }
                 case 2 -> {
@@ -281,16 +282,19 @@ public class Kael extends  Character{      // 15% crit chance
                         ultimateCounter--;
                     } else {
                         System.out.println(ColorUtil.boldBrightRed("❌ Not enough Stamina to use Piercing Slash! Choose again."));
+                        PrintUtil.shortLine();
                     }
                 }
                 case 3 -> {
                     if (ultimateCounter > 0) {
                         System.out.println(ColorUtil.boldBrightRed("❌ Ultimate is on cooldown! Can only be used after " + ultimateCounter + " turn/s."));
+                        PrintUtil.shortLine();
                     } else if (energy >= 20) {
                         eternalCrossSlash(target);
                         isValid = true;
                     } else {
                         System.out.println(ColorUtil.boldBrightRed("❌ Not enough Stamina to use Eternal Cross Slash! Choose again."));
+                        PrintUtil.shortLine();
                     }
                 }
                 case 4 -> {

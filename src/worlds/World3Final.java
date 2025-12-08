@@ -11,8 +11,7 @@ public class World3Final {
 
     public void run(Character player) {
         PrintUtil.pause(2000);
-        PrintUtil.specialRed("                     \n" +
-                "                     \n" +
+        PrintUtil.specialRed(
                 "                     \n" +
                 "                     \n" +
                 " ██▓     ██▓     ██▓ \n" +
@@ -266,6 +265,7 @@ public class World3Final {
         PrintUtil.effect("The tower shakes as your final battle begins.");
         InputUtil.pressEnterToContinue();
 
+        System.out.println();
         PrintUtil.effect("""
                 Shadows twist around the room, coalescing into forms of the fallen.
                 Khai's laughter echoes, chilling your bones.
