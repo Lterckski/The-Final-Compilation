@@ -178,7 +178,7 @@ public class World2Miniboss1 extends Enemy{
 
     @Override
     public void turn(Character target) {
-        if (RandomUtil.chance(50)) shacklingChains(target);
+        if (RandomUtil.chance(40)) shacklingChains(target);
         else tormentingLash(target);
     }
 

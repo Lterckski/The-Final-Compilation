@@ -238,6 +238,8 @@ public class Effects {
         // ----- POISON (scales with Max HP) -----
         if (poisonTurnsLeft > 0) {
             int poisonDamage = Math.max(1, (int)(owner.getMaxHP() * 0.03)); // 3% of Max HP
+            poisonDamage = Math.min(poisonDamage, 45);
+
             System.out.println(
                     ColorUtil.brightMagenta("☠ " + owner.getName() + " is poisoned! 💔 Took ") +
                             ColorUtil.boldBrightWhite(String.valueOf(poisonDamage)) +
@@ -252,6 +254,7 @@ public class Effects {
         if (bleedTurnsLeft > 0) {
             int missingHP = owner.getMaxHP() - owner.getHp();
             int bleedDamage = Math.max(1, (int)(missingHP * 0.1)); // 10% of missing HP
+            bleedDamage = Math.min(bleedDamage, 45);
 
             System.out.println(
                     ColorUtil.brightMagenta("🩸 " + owner.getName() + " is bleeding! 💔 Took ") +
@@ -276,6 +279,7 @@ public class Effects {
                 int burnCap = (int)(owner.getMaxHP() * 0.06);
                 burnDamage = Math.max(1, Math.min(rawBurn, burnCap));
             }
+            burnDamage = Math.min(burnDamage, 45);
 
             System.out.println(
                     ColorUtil.brightMagenta("🔥 " + owner.getName() + " is burning! 💔 Took ") +
@@ -367,6 +371,7 @@ public class Effects {
         bleedTurnsLeft = 0;
         burnTurnsLeft = 0;
 
+        owner.setUltimateCounter(3);
     }
 
 }

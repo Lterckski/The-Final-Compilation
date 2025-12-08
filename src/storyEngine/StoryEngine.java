@@ -73,13 +73,6 @@ public class StoryEngine {
         PrintUtil.story("\nLogging in...");
         PrintUtil.pause(1200);
 
-        // Add extra dramatic effect
-        PrintUtil.story("Screen flickers...");
-        PrintUtil.pause(900);
-        PrintUtil.story("Everything goes silent.");
-        PrintUtil.pause(800);
-        PrintUtil.hr();
-
         // After logging in, continue with the story
     }
 
@@ -95,10 +88,12 @@ public class StoryEngine {
                 String input = InputUtil.scan.nextLine();
 
                 if (input.equals("OBJECT ORIENTED PROGRAMMING")) {  // ✅ Exact match required
-                    System.out.println("\n=================================");
-                    System.out.println("  Thank you for playing!");
-                    System.out.println("  Your journey ends here...");
-                    System.out.println("=================================\n");
+                    System.out.println();
+                    System.out.println("═════════════════════════════════");
+                    System.out.println("     Thank you for playing!");
+                    System.out.println("    Your journey ends here...");
+                    System.out.println("═════════════════════════════════");
+                    System.out.println();
                     System.exit(0);   // terminate program safely
                 }
                 else if (input.equals("CANCEL")) {  // ✅ Exact match required
@@ -164,6 +159,43 @@ public class StoryEngine {
         PrintUtil.pause(1000);
         loginScreen(); // << Player actually logs in here
 
+        int start = -1;
+        while (start != 1) {
+            // ASCII box with centered title
+            System.out.println();
+            PrintUtil.specialCyan("╔═════════════════════════════════════════════════╗");
+            PrintUtil.specialCyan("           OOP1 Final Exam Batch 1 - G1       ");
+            PrintUtil.specialCyan("     0 / 100                        01:00:00     ");
+            PrintUtil.specialCyan("  Overall Score                Activity closes in");
+            PrintUtil.specialCyan("╚═════════════════════════════════════════════════╝");
+            System.out.println();
+
+            System.out.println("Press " + ColorUtil.boldBrightGreen("1") + " to START the exam");
+            System.out.println("Press 0 to cancel");
+            System.out.print("Choice: ");
+
+            start = InputUtil.scanInput();
+
+            if (start == 0) {
+                System.out.println();
+                PrintUtil.story("You back out. The exam screen fades away...");
+                PrintUtil.pause(800);
+                System.exit(0);
+            }
+
+            if (start != 1) {
+                System.out.println(ColorUtil.boldBrightRed("❌ Invalid choice! Please press 1 to start."));
+            }
+        }
+
+        System.out.println();
+        PrintUtil.pause(1500);
+        PrintUtil.story("Screen flickers...");
+        PrintUtil.pause(900);
+        PrintUtil.story("Everything goes silent.");
+        PrintUtil.pause(800);
+        PrintUtil.hr();
+
         PrintUtil.pause(1000);
         PrintUtil.specialCyan("                                                                              \n" +
                 "                                                                              \n" +
@@ -189,7 +221,7 @@ public class StoryEngine {
 
         PrintUtil.story(
                 """
-                The moment you press "Log in," the monitor ripples like water... 🌊
+                The moment you press "Start", the monitor ripples like water... 🌊
                 The screen glitches... ⚡
                 And the world turns to black as the room seems to wrap around you. 🕳️
                 
@@ -275,26 +307,9 @@ public class StoryEngine {
                         player = kael;
 
                         System.out.println();
-                        System.out.println(ColorUtil.boldBrightCyan("        ┌────────────────────────────────────────────────────────────────┐"));
-                        System.out.println(ColorUtil.boldBrightCyan("          ⚔️ You have chosen " + player.getName().toUpperCase() + ", the valiant Swordsman! "));
-                        System.out.println(ColorUtil.boldBrightCyan("        └────────────────────────────────────────────────────────────────┘"));
-
-                        kael.showBackstory();
-                        InputUtil.pressEnterToContinue();
-
-                        PrintUtil.line();
-                        System.out.println(ColorUtil.boldBrightMagenta("✨ The gods bestow upon you your starting gear..."));
-                        PrintUtil.pause(800);
-                        player.getInventory().setEquippedWeapon(Sword.OLD_BROADSWORD);
-                        player.getInventory().setEquippedArmor(Armor.LEATHER_GUARD);
-
-                        System.out.println(ColorUtil.boldBrightYellow("🗡️ *The --" + player.getInventory().getEquippedWeapon().getName() + "-- rests firmly in your grasp, its blade marked by the scars of past battles.*"));
-                        PrintUtil.pause(800);
-                        System.out.println(ColorUtil.boldBrightYellow("🛡️ *The --" + player.getInventory().getEquippedArmor().getName() + "-- fits perfectly, worn yet dependable — a true warrior’s first defense.*"));
-                        PrintUtil.pause(800);
-                        System.out.println(ColorUtil.brightMagenta("⚡ Strength surges through your veins as your journey begins..."));
-                        PrintUtil.line();
-                        InputUtil.pressEnterToContinue();
+                        System.out.println(ColorUtil.boldBrightCyan("┌────────────────────────────────────────────────────────────────┐"));
+                        System.out.println(ColorUtil.boldBrightCyan("  ⚔️ You have chosen " + player.getName().toUpperCase() + ", the valiant Swordsman! "));
+                        System.out.println(ColorUtil.boldBrightCyan("└────────────────────────────────────────────────────────────────┘"));
 
                         PrintUtil.pause(1000);
                         System.out.println();
@@ -334,6 +349,22 @@ public class StoryEngine {
                         PrintUtil.specialCyan("                    :-==++*******++=-:.                   ");
                         PrintUtil.specialCyan("                                                          ");
                         System.out.println();
+
+                        kael.showBackstory();
+                        InputUtil.pressEnterToContinue();
+
+                        PrintUtil.line();
+                        System.out.println(ColorUtil.boldBrightMagenta("✨ The gods bestow upon you your starting gear..."));
+                        PrintUtil.pause(800);
+                        player.getInventory().setEquippedWeapon(Sword.OLD_BROADSWORD);
+                        player.getInventory().setEquippedArmor(Armor.LEATHER_GUARD);
+
+                        System.out.println(ColorUtil.boldBrightYellow("🗡️ *The --" + player.getInventory().getEquippedWeapon().getName() + "-- rests firmly in your grasp, its blade marked by the scars of past battles.*"));
+                        PrintUtil.pause(800);
+                        System.out.println(ColorUtil.boldBrightYellow("🛡️ *The --" + player.getInventory().getEquippedArmor().getName() + "-- fits perfectly, worn yet dependable — a true warrior’s first defense.*"));
+                        PrintUtil.pause(800);
+                        System.out.println(ColorUtil.brightMagenta("⚡ Strength surges through your veins as your journey begins..."));
+                        PrintUtil.line();
                     }
 
                 }
@@ -343,28 +374,9 @@ public class StoryEngine {
                         player = karl;
 
                         System.out.println();
-                        System.out.println(ColorUtil.boldBrightCyan("       ┌──────────────────────────────────────────────────────────────────┐"));
-                        System.out.println(ColorUtil.boldBrightCyan("         🏹 You have chosen " + player.getName() .toUpperCase()+ ", the sharp-eyed Archer! "));
-                        System.out.println(ColorUtil.boldBrightCyan("       └──────────────────────────────────────────────────────────────────┘"));
-
-                        karl.showBackstory();
-                        InputUtil.pressEnterToContinue();
-
-                        PrintUtil.line();
-                        System.out.println(ColorUtil.boldBrightMagenta("🌬️ The winds whisper and bless you with your starting equipment..."));
-                        PrintUtil.pause(800);
-                        player.getInventory().setEquippedWeapon(Bow.WOODEN_BOW);
-                        player.getInventory().setEquippedArmor(Armor.LEATHER_GUARD);
-
-                        System.out.println(ColorUtil.boldBrightYellow("🏹 *The --" + player.getInventory().getEquippedWeapon().getName() + "-- hums softly as you draw the string — eager to strike true.*"));
-                        PrintUtil.pause(800);
-                        System.out.println(ColorUtil.boldBrightYellow("🛡️ *The --" + player.getInventory().getEquippedArmor().getName() + "-- wraps around you lightly, offering freedom and silent agility.*"));
-                        PrintUtil.pause(800);
-                        System.out.println(ColorUtil.boldBrightYellow("✨ *You are granted a --Magic Quiver--, filled with arrows that regenerate through ancient magic.*"));
-                        PrintUtil.pause(800);
-                        System.out.println(ColorUtil.brightMagenta("🌿 The forest seems to watch over you as your path unfolds..."));
-                        PrintUtil.line();
-                        InputUtil.pressEnterToContinue();
+                        System.out.println(ColorUtil.boldBrightCyan("┌──────────────────────────────────────────────────────────────────┐"));
+                        System.out.println(ColorUtil.boldBrightCyan("  🏹 You have chosen " + player.getName() .toUpperCase()+ ", the sharp-eyed Archer! "));
+                        System.out.println(ColorUtil.boldBrightCyan("└──────────────────────────────────────────────────────────────────┘"));
 
                         PrintUtil.pause(1000);
                         System.out.println();
@@ -404,6 +416,23 @@ public class StoryEngine {
                         PrintUtil.specialCyan("                   .:=#%%%##%%%##*=:.                     ");
                         System.out.println();
 
+                        karl.showBackstory();
+                        InputUtil.pressEnterToContinue();
+
+                        PrintUtil.line();
+                        System.out.println(ColorUtil.boldBrightMagenta("🌬️ The winds whisper and bless you with your starting equipment..."));
+                        PrintUtil.pause(800);
+                        player.getInventory().setEquippedWeapon(Bow.WOODEN_BOW);
+                        player.getInventory().setEquippedArmor(Armor.LEATHER_GUARD);
+
+                        System.out.println(ColorUtil.boldBrightYellow("🏹 *The --" + player.getInventory().getEquippedWeapon().getName() + "-- hums softly as you draw the string — eager to strike true.*"));
+                        PrintUtil.pause(800);
+                        System.out.println(ColorUtil.boldBrightYellow("🛡️ *The --" + player.getInventory().getEquippedArmor().getName() + "-- wraps around you lightly, offering freedom and silent agility.*"));
+                        PrintUtil.pause(800);
+                        System.out.println(ColorUtil.boldBrightYellow("✨ *You are granted a --Magic Quiver--, filled with arrows that regenerate through ancient magic.*"));
+                        PrintUtil.pause(800);
+                        System.out.println(ColorUtil.brightMagenta("🌿 The forest seems to watch over you as your path unfolds..."));
+                        PrintUtil.line();
                     }
                 }
                 case 3 -> {
@@ -412,25 +441,9 @@ public class StoryEngine {
                         player = simon;
 
                         System.out.println();
-                        System.out.println(ColorUtil.boldBrightCyan("         ┌───────────────────────────────────────────────────────────────┐"));
-                        System.out.println(ColorUtil.boldBrightCyan("                 🧙‍♂️ You have chosen " + player.getName().toUpperCase() + ", the wise Mage! "));
-                        System.out.println(ColorUtil.boldBrightCyan("         └───────────────────────────────────────────────────────────────┘"));
-
-                        simon.showBackstory();
-                        InputUtil.pressEnterToContinue();
-
-                        PrintUtil.line();
-                        System.out.println(ColorUtil.boldBrightMagenta("✨ The arcane forces converge to gift you ancient relics of power..."));
-                        PrintUtil.pause(800);
-                        player.getInventory().setEquippedWeapon(Staff.WOODEN_STAFF);
-                        player.getInventory().setEquippedArmor(Armor.LEATHER_GUARD);
-                        System.out.println(ColorUtil.boldBrightYellow("🔮 *The --" + player.getInventory().getEquippedWeapon().getName() + "-- pulses faintly, whispering secrets of forgotten spells.*"));
-                        PrintUtil.pause(800);
-                        System.out.println(ColorUtil.boldBrightYellow("🛡️ *The --" + player.getInventory().getEquippedArmor().getName() + "-- shimmers with faint runes — fragile, yet brimming with arcane energy.*"));
-                        PrintUtil.pause(800);
-                        System.out.println(ColorUtil.brightMagenta("💫 Magic stirs in the air around you as your journey begins..."));
-                        PrintUtil.line();
-                        InputUtil.pressEnterToContinue();
+                        System.out.println(ColorUtil.boldBrightCyan("┌───────────────────────────────────────────────────────────────┐"));
+                        System.out.println(ColorUtil.boldBrightCyan("        🧙‍♂️ You have chosen " + player.getName().toUpperCase() + ", the wise Mage! "));
+                        System.out.println(ColorUtil.boldBrightCyan("└───────────────────────────────────────────────────────────────┘"));
 
                         PrintUtil.pause(1000);
                         System.out.println();
@@ -471,6 +484,20 @@ public class StoryEngine {
                         PrintUtil.specialCyan("                 :=+####%@@@@@@@@@%%%##*+=-                ");
                         System.out.println();
 
+                        simon.showBackstory();
+                        InputUtil.pressEnterToContinue();
+
+                        PrintUtil.line();
+                        System.out.println(ColorUtil.boldBrightMagenta("✨ The arcane forces converge to gift you ancient relics of power..."));
+                        PrintUtil.pause(800);
+                        player.getInventory().setEquippedWeapon(Staff.WOODEN_STAFF);
+                        player.getInventory().setEquippedArmor(Armor.LEATHER_GUARD);
+                        System.out.println(ColorUtil.boldBrightYellow("🔮 *The --" + player.getInventory().getEquippedWeapon().getName() + "-- pulses faintly, whispering secrets of forgotten spells.*"));
+                        PrintUtil.pause(800);
+                        System.out.println(ColorUtil.boldBrightYellow("🛡️ *The --" + player.getInventory().getEquippedArmor().getName() + "-- shimmers with faint runes — fragile, yet brimming with arcane energy.*"));
+                        PrintUtil.pause(800);
+                        System.out.println(ColorUtil.brightMagenta("💫 Magic stirs in the air around you as your journey begins..."));
+                        PrintUtil.line();
                     }
                 }
                 case 4 -> {
@@ -479,29 +506,10 @@ public class StoryEngine {
                         player = test;
 
                         System.out.println();
-                        System.out.println(ColorUtil.boldBrightCyan("      ┌──────────────────────────────────────────────────────────────────┐"));
-                        System.out.println(ColorUtil.boldBrightCyan("        🧙‍♂️ You have chosen " + player.getName().toUpperCase() + ", the Overpowered Test Mage! "));
-                        System.out.println(ColorUtil.boldBrightCyan("      └──────────────────────────────────────────────────────────────────┘"));
+                        System.out.println(ColorUtil.boldBrightCyan("┌──────────────────────────────────────────────────────────────────┐"));
+                        System.out.println(ColorUtil.boldBrightCyan("  🧙‍♂️ You have chosen " + player.getName().toUpperCase() + ", the Overpowered Test Mage! "));
+                        System.out.println(ColorUtil.boldBrightCyan("└──────────────────────────────────────────────────────────────────┘"));
                         System.out.println();
-
-                        PrintUtil.line();
-                        System.out.println(ColorUtil.brightRed("⚡ *This Test Mage is fully powered — ready to blaze through the game!*"));
-                        PrintUtil.pause(600);
-
-                        System.out.println(ColorUtil.boldBrightMagenta("✨ The arcane forces converge to gift you ancient relics of power..."));
-                        PrintUtil.pause(600);
-                        player.getInventory().setEquippedWeapon(Staff.WOODEN_STAFF);
-                        player.getInventory().setEquippedArmor(Armor.LEATHER_GUARD);
-
-                        System.out.println(ColorUtil.boldBrightYellow("🔮 *The --" + player.getInventory().getEquippedWeapon().getName() + "-- pulses faintly, whispering secrets of forgotten spells.*"));
-                        PrintUtil.pause(600);
-                        System.out.println(ColorUtil.boldBrightYellow("🛡️ *The --" + player.getInventory().getEquippedArmor().getName() + "-- shimmers with faint runes — fragile, yet brimming with arcane energy.*"));
-                        PrintUtil.pause(600);
-                        System.out.println(ColorUtil.brightMagenta("💫 *All spells are amplified, cooldowns are minimal — you are unstoppable!*"));
-                        PrintUtil.pause(600);
-                        System.out.println(ColorUtil.brightRed("🌌 *Use this character to quickly test events, mechanics, or navigate the game world.*"));
-                        PrintUtil.line();
-                        InputUtil.pressEnterToContinue();
 
                         PrintUtil.pause(1000);
                         PrintUtil.specialCyan("                     ███▄▄▄▄   ███    █▄   ▄█        ▄█       ");
@@ -546,9 +554,25 @@ public class StoryEngine {
                                 "              @@@@@@@@%%@@@%%%#%%%%#**+++++***++*#%%%%#*####*#%%%%@@%@@@\n" +
                                 "              @@@@@@@@@@@@@@@@@@@%%%#####**##%##%%%%%%%%%####%%%@@@%**@@\n" +
                                 "              @@@@@@@@@@@@@@@@@@@@@@@@%%%%@%@@@@@@@@@@@@@@@@@@@@@@@@@@@@\n");
-                        System.out.print("\n");
+                        System.out.println();
 
+                        PrintUtil.line();
+                        System.out.println(ColorUtil.brightRed("⚡ *This Test Mage is fully powered — ready to blaze through the game!*"));
+                        PrintUtil.pause(600);
 
+                        System.out.println(ColorUtil.boldBrightMagenta("✨ The arcane forces converge to gift you ancient relics of power..."));
+                        PrintUtil.pause(600);
+                        player.getInventory().setEquippedWeapon(Staff.WOODEN_STAFF);
+                        player.getInventory().setEquippedArmor(Armor.LEATHER_GUARD);
+
+                        System.out.println(ColorUtil.boldBrightYellow("🔮 *The --" + player.getInventory().getEquippedWeapon().getName() + "-- pulses faintly, whispering secrets of forgotten spells.*"));
+                        PrintUtil.pause(600);
+                        System.out.println(ColorUtil.boldBrightYellow("🛡️ *The --" + player.getInventory().getEquippedArmor().getName() + "-- shimmers with faint runes — fragile, yet brimming with arcane energy.*"));
+                        PrintUtil.pause(600);
+                        System.out.println(ColorUtil.brightMagenta("💫 *All spells are amplified, cooldowns are minimal — you are unstoppable!*"));
+                        PrintUtil.pause(600);
+                        System.out.println(ColorUtil.brightRed("🌌 *Use this character to quickly test events, mechanics, or navigate the game world.*"));
+                        PrintUtil.line();
                     }
                 }
                 default -> System.out.println("❌ Invalid choice! Please select a valid option.");

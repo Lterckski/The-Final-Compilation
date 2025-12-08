@@ -147,6 +147,7 @@ public class World2 {
 
         // -------------------- Forsaken Cultists --------------------
         System.out.println();
+        PrintUtil.line();
         PrintUtil.effect("You wander through the town's crumbling streets.");
         PrintUtil.effect("Townsfolk whisper rumors between coughs.");
         System.out.println();
@@ -234,6 +235,7 @@ public class World2 {
 
         // -------------------- Blight Hounds --------------------
         System.out.println();
+        PrintUtil.line();
         PrintUtil.effect("A low growl echoes from the halls ahead...");
         System.out.println();
         PrintUtil.story("""
@@ -285,9 +287,9 @@ public class World2 {
         System.out.println();
 
         for (int i = 1; i <= 3; i++) {
-            System.out.println(ColorUtil.boldBrightRed("═══════════════════════════════════"));
+            System.out.println(ColorUtil.boldBrightRed("═════════════════════════════════════"));
             PrintUtil.enemyEncounter("🐕 Blight Hound " + i + " snarls and lunges!");
-            System.out.println(ColorUtil.boldBrightRed("═══════════════════════════════════"));
+            System.out.println(ColorUtil.boldBrightRed("═════════════════════════════════════"));
             InputUtil.pressEnterToContinue();
 
             battle3.startBattle();
@@ -318,7 +320,9 @@ public class World2 {
 
         // -------------------- Ghoul Footmen --------------------
         System.out.println();
+        PrintUtil.line();
         PrintUtil.title("THE BLACK CASTLE");
+        System.out.println();
 
         PrintUtil.event("Thunder cracks as you push open the gates.");
         PrintUtil.effect("Once Honorable Knights are now found with cracked armor and bleeding eyes lurch from the darkness.");
@@ -372,9 +376,9 @@ public class World2 {
         System.out.println();
 
         for(int i = 1; i <= 2; i++){
-            System.out.println(ColorUtil.boldBrightRed("═══════════════════════════════════════"));
+            System.out.println(ColorUtil.boldBrightRed("════════════════════════════════════════"));
             PrintUtil.enemyEncounter("🪓 Ghoul Footman " + i + " staggers toward you!");
-            System.out.println(ColorUtil.boldBrightRed("═══════════════════════════════════════"));
+            System.out.println(ColorUtil.boldBrightRed("════════════════════════════════════════"));
             InputUtil.pressEnterToContinue();
 
             battle4.startBattle();
@@ -483,6 +487,7 @@ public class World2 {
                 You have triumphed over his tyranny.
                 """);
         PrintUtil.loot("You gain rare loot and a surge of experience!");
+        PrintUtil.line();
         miniBoss.dropLoot(player);
         InputUtil.pressEnterToContinue();
         PrintUtil.line();
@@ -497,7 +502,7 @@ public class World2 {
                 "██▄▄██ ██  ██ ▀▀▀▄▄▄ ▀▀▀▄▄▄   ██▄▄   ███▄██ ██▀▀▀ ██▀██ ██ ██ ███▄██   ██   ██▄▄  ██▄█▄ ▀ \n" +
                 "██▄▄█▀ ▀████▀ █████▀ █████▀   ██▄▄▄▄ ██ ▀██ ▀████ ▀███▀ ▀███▀ ██ ▀██   ██   ██▄▄▄ ██ ██ ▄ \n" +
                 "                                                                                          ");
-        PrintUtil.pause(1500);
+        PrintUtil.pause(1000);
 
         PrintUtil.event("                                                                                                                                                                     \n" +
                 "                                                                                                                                                                     \n" +
@@ -505,7 +510,7 @@ public class World2 {
                 "██     ██  ██   ██   ██████ ██▄▄   ██▄▄██▄         ██   ██████ ██▄▄     ██     ██  ██ ██▄▄██▄ ██▄▄██▄ ██  ██ ██▄▄█▀   ██   ██▄▄   ██  ██   ████   ██ ██ ▀▄██ ██  ▄▄▄ \n" +
                 "██████ ▀████▀   ██   ██  ██ ██▄▄▄▄ ██   ██  ▄      ██   ██  ██ ██▄▄▄▄   ▀█████ ▀████▀ ██   ██ ██   ██ ▀████▀ ██       ██   ██▄▄▄▄ ████▀    ██ ▀█▄ ██ ██   ██  ▀███▀  \n" +
                 "                                           ▀                                                                                                                         ");
-
+        PrintUtil.pause(1500);
 
         PrintUtil.objective("════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════");
         System.out.println();
@@ -575,7 +580,8 @@ public class World2 {
                 The Corrupted King’s crown falls to the floor, echoing through the halls.
                 The Darkness fades, and you stand as the savior of this cursed land.
                 """);
-        PrintUtil.loot("You gain immense experience and legendary loot!\n");
+        PrintUtil.loot("You gain immense experience and legendary loot!");
+        PrintUtil.line();
         boss.dropLoot(player);
         InputUtil.pressEnterToContinue();
         PrintUtil.line();
@@ -584,7 +590,9 @@ public class World2 {
         //-------------------------------------------------
         System.out.println();
         PrintUtil.effect("The King's breath rattles. A faint glimmer of humanity returns to his eyes.");
+        System.out.println();
         PrintUtil.sayRed("Corrupted King", "\"It's… It's you!!! NO!!!…\"");
+        System.out.println();
         PrintUtil.effect("He screams with his dying breath as his body crumbles into dust, leaving only confusion of who he was referring to.");
         InputUtil.pressEnterToContinue();
 

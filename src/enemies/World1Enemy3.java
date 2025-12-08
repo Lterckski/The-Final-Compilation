@@ -9,7 +9,7 @@ import utils.RandomUtil;
 public class World1Enemy3 extends Enemy {
     // Constructor
     public World1Enemy3() {
-        super("Dreadbark Treants", 204, 5, 55);
+        super("Dreadbark Treants", 204, 5, 46);
     }
 
     // Skill: Root Snare (6–9 damage, immobilize 1 turn)

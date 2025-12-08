@@ -37,7 +37,7 @@ public class Simon extends Character {
         // Ultimate – Meteor Storm
         System.out.println("  " + ColorUtil.boldBrightYellow("☄️ Ultimate – Meteor Storm (💧 40 Mana)"));
         System.out.println("  " + ColorUtil.cyan("📜 Description: Summons a storm of blazing meteors, striking the opponent multiple times."));
-        System.out.println("  " + ColorUtil.cyan("💥 Damage: 5 hits, each dealing (") + ColorUtil.boldBrightYellow((int)(attack * 0.60) + " — " + (int)(attack * 1.00)) + ColorUtil.cyan(")"));
+        System.out.println("  " + ColorUtil.cyan("💥 Damage: 5 hits, each dealing (") + ColorUtil.boldBrightYellow((int)(attack * 0.60) + " — " + (int)(attack * 0.90)) + ColorUtil.cyan(")"));
         System.out.println("  " + ColorUtil.cyan("⚡ Effects:"));
         System.out.println("    - " + ColorUtil.cyan("💪 Grants Strengthen (+20% ATK for 2 turns)"));
         System.out.println("    - " + ColorUtil.cyan("🔥 50% chance to apply Burn (2 turns)"));
@@ -227,7 +227,7 @@ public class Simon extends Character {
         int totalDamage = 0;
 
         for (int i = 1; i <= 5; i++) {
-            int damage = (int) RandomUtil.range(attack * 0.60, attack * 1.00);
+            int damage = (int) RandomUtil.range(attack * 0.60, attack * 0.90);
             int reduced = calculateDamage(target, damage);
 
             // Check if target is confused

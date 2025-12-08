@@ -7,6 +7,7 @@ import utils.PrintUtil;
 public class Epilogue {
 
     public void run(Character player) {
+        System.out.println();
         PrintUtil.title("▓█████  ██▓███   ██▓ ██▓     ▒█████    ▄████  █    ██ ▓█████ \n" +
                 "▓█   ▀ ▓██░  ██▒▓██▒▓██▒    ▒██▒  ██▒ ██▒ ▀█▒ ██  ▓██▒▓█   ▀ \n" +
                 "▒███   ▓██░ ██▓▒▒██▒▒██░    ▒██░  ██▒▒██░▄▄▄░▓██  ▒██░▒███   \n" +
@@ -35,13 +36,14 @@ public class Epilogue {
 
         PrintUtil.story(
                 "With your last strike, the tower collapses. The Stones shatter. Light swallows everything.\n\n" +
-                        "You jolt awake. Back in the lab. The CodeChum login screen still waits.\n" +
-                        "The timer blinks: 00:00:01. Not a single problem solved.\n\n" +
+                        "You jolt awake—back in the lab. The CodeChum **exam screen** stares back at you.\n" +
+                        "The timer blinks: 00:00:01. The exam has already ended.\n\n" +
                         "You conquered a world, fought betrayal, toppled a king—\n" +
-                        "but here, in reality, your exam hasn’t even started.\n\n" +
+                        "yet here, in reality, you didn’t even answer a single problem.\n\n" +
                         "And for a split second, when you glance at your professor across the room,\n" +
                         "you swear his eyes flash violet.\n"
         );
+
 
         InputUtil.pressEnterToContinue();
         System.out.println();

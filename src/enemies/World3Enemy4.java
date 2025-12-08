@@ -8,7 +8,7 @@ import utils.RandomUtil;
 
 public class World3Enemy4 extends Enemy {
 
-    public World3Enemy4() { super("Soulflayer Gargoyle", 1420, 48, 245); }
+    public World3Enemy4() { super("Soulflayer Gargoyle", 1420, 48, 280); }
 
     public void soulScream(Character target) {
         PrintUtil.print(ColorUtil.boldBrightRed("                                                          \n" +

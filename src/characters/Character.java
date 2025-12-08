@@ -125,6 +125,7 @@ public abstract class Character {
     public void setReviveUsed(boolean reviveUsed) {
         this.reviveUsed = reviveUsed;
     }
+    public void setUltimateCounter(int ultimateCounter) { this.ultimateCounter = ultimateCounter; }
     // ------------------- GETTER for Effects class -------------------
     public Effects getEffects(){ return effects; }
 
@@ -378,17 +379,17 @@ public abstract class Character {
             switch (classType) {
                 case "Swordsman" -> {
                     maxHP += 90 + (int)(maxHP * 0.01);
-                    baseAttack += 6 + StoryEngine.getCurrWorldLevel() + (int)(attack * 0.05);
+                    baseAttack += 6 + (int)(attack * 0.01);
                     baseDefense += 2;
                 }
                 case "Archer" -> {
                     maxHP += 70 + (int)(maxHP * 0.01);
-                    baseAttack += 7 + StoryEngine.getCurrWorldLevel() + (int)(attack * 0.05);
+                    baseAttack += 7 + (int)(attack * 0.01);
                     baseDefense += 1;
                 }
                 case "Mage" -> {
                     maxHP += 50 + (int)(maxHP * 0.01);
-                    baseAttack += 8 + StoryEngine.getCurrWorldLevel() + (int)(attack * 0.05);
+                    baseAttack += 8 + (int)(attack * 0.01);
                     baseDefense += 1;
                 }
             }

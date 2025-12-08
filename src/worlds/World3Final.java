@@ -374,8 +374,6 @@ public class World3Final {
             PrintUtil.enemyEncounter("          :  :*:#% .-==+#*%@@@@@@@@@@@%%#+*#++*-.##:=:  .        ");
             PrintUtil.enemyEncounter("          :-++*##%@@%@@@@@@@@@@@@@@@@@@@@@@@@@@@%#####*::.       ");
             PrintUtil.enemyEncounter("                .: ..=#%%@@@%##*+#%##%###+==+--=-:.              ");
-            PrintUtil.enemyEncounter("                                                                 ");
-            PrintUtil.enemyEncounter("                                                                 ");
             System.out.println();
 
         } catch (InterruptedException e) {
@@ -383,6 +381,7 @@ public class World3Final {
         }
         System.out.println();
         PrintUtil.objective(("🎯 Objective: Defeat Khai, The Necromancer! ✅"));
+        System.out.println();
         PrintUtil.victory("""
                 🏆 Victory! Khai staggers, his form unraveling into smoke and stars.
                 The tower falls silent. The Stones hover gently before dissipating.

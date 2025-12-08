@@ -125,7 +125,7 @@ public abstract class Weapon {
     public abstract void displayInfo();
 
     public boolean lootWeapon() {
-        System.out.println(ColorUtil.boldBrightYellow("\n🎁 Enemy has dropped a weapon!"));
+        System.out.println(ColorUtil.boldBrightYellow("🎁 Enemy has dropped a weapon!"));
         PrintUtil.pause(800);
         this.displayInfo();
 

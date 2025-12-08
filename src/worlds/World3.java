@@ -127,7 +127,7 @@ public class World3 {
         InputUtil.pressEnterToContinue();
         player.getEffects().resetAllEffects();
 
-
+        System.out.println();
         PrintUtil.event("You steel yourself and begin the ascent.");
         PrintUtil.effect("The air thickens with magic. Each step hums with a pulse from the Stones you carry.");
         System.out.println();
@@ -137,6 +137,7 @@ public class World3 {
 
         // -------------------- Bone Warlocks --------------------
         System.out.println();
+        PrintUtil.line();
         PrintUtil.effect("The ground trembles as sinister energy gathers.");
         PrintUtil.story("""
                 From the shadows, Bone Warlocks appear, chanting forbidden incantations.
@@ -183,17 +184,17 @@ public class World3 {
         System.out.println();
 
         for (int i = 1; i <= 3; i++) {
-            System.out.println(ColorUtil.boldBrightRed("═══════════════════════════════════════════════════════════════"));
+            System.out.println(ColorUtil.boldBrightRed("═════════════════════════════════════════════════════════════"));
             PrintUtil.enemyEncounter("💀 Bone Warlock " + i + " raises its staff, channeling dark magic!");
-            System.out.println(ColorUtil.boldBrightRed("═══════════════════════════════════════════════════════════════"));
+            System.out.println(ColorUtil.boldBrightRed("═════════════════════════════════════════════════════════════"));
             InputUtil.pressEnterToContinue();
 
             battle2.startBattle();
 
             System.out.println();
-            System.out.println(ColorUtil.boldBrightGreen("───────────────────────────────────────────"));
+            System.out.println(ColorUtil.boldBrightGreen("────────────────────────────────────────"));
             PrintUtil.enemyDefeated("✅ You have defeated Bone Warlock " + i + "!");
-            System.out.println(ColorUtil.boldBrightGreen("───────────────────────────────────────────"));
+            System.out.println(ColorUtil.boldBrightGreen("────────────────────────────────────────"));
             enemy2.dropLoot(player);
 
             if (i < 3) {
@@ -216,6 +217,7 @@ public class World3 {
 
         // -------------------- Obsidian Crushers --------------------
         System.out.println();
+        PrintUtil.line();
         PrintUtil.effect("A deep rumble echoes through the caverns.");
         PrintUtil.effect("Lava bursts upward, and massive shadows rise behind the flames.");
 
@@ -255,17 +257,17 @@ public class World3 {
         System.out.println();
 
         for (int i = 1; i <= 2; i++) {
-            System.out.println(ColorUtil.boldBrightRed("═══════════════════════════════════════════"));
+            System.out.println(ColorUtil.boldBrightRed("═════════════════════════════════════════════════"));
             PrintUtil.enemyEncounter("🪨 Obsidian Crusher " + i + " roars and slams the ground!");
-            System.out.println(ColorUtil.boldBrightRed("═══════════════════════════════════════════"));
+            System.out.println(ColorUtil.boldBrightRed("═════════════════════════════════════════════════"));
             InputUtil.pressEnterToContinue();
 
             battle3.startBattle();
 
             System.out.println();
-            System.out.println(ColorUtil.boldBrightGreen("────────────────────────────────────"));
+            System.out.println(ColorUtil.boldBrightGreen("────────────────────────────────────────"));
             PrintUtil.enemyDefeated("✅ You have defeated Obsidian Crusher " + i + "!");
-            System.out.println(ColorUtil.boldBrightGreen("────────────────────────────────────"));
+            System.out.println(ColorUtil.boldBrightGreen("────────────────────────────────────────"));
             enemy3.dropLoot(player);
 
             if (i < 2) {
@@ -297,6 +299,7 @@ public class World3 {
 
         // -------------------- Soulflayer Gargoyles --------------------
         System.out.println();
+        PrintUtil.line();
         PrintUtil.effect("A chilling wind cuts through the heat.");
         PrintUtil.story("""
                 From the shadows of molten stone, Soulflayer Gargoyles take flight.
@@ -338,17 +341,17 @@ public class World3 {
         System.out.println();
 
         for (int i = 1; i <= 3; i++) {
-            System.out.println(ColorUtil.boldBrightRed("═════════════════════════════════════════════"));
+            System.out.println(ColorUtil.boldBrightRed("═════════════════════════════════════════════════"));
             PrintUtil.enemyEncounter("😈 Soulflayer Gargoyle " + i + " swoops down from above!");
-            System.out.println(ColorUtil.boldBrightRed("═════════════════════════════════════════════"));
+            System.out.println(ColorUtil.boldBrightRed("═════════════════════════════════════════════════"));
             InputUtil.pressEnterToContinue();
 
             battle4.startBattle();
 
             System.out.println();
-            System.out.println(ColorUtil.boldBrightGreen("───────────────────────────────────────────"));
+            System.out.println(ColorUtil.boldBrightGreen("────────────────────────────────────────────"));
             PrintUtil.enemyDefeated("✅ You have defeated Soulflayer Gargoyle " + i + "!");
-            System.out.println(ColorUtil.boldBrightGreen("───────────────────────────────────────────"));
+            System.out.println(ColorUtil.boldBrightGreen("────────────────────────────────────────────"));
             enemy4.dropLoot(player);
 
             if (i < 3) {
@@ -394,7 +397,6 @@ public class World3 {
                 As you reach the summit, molten light reveals a towering figure.
                 Zyrryl, Warden of the Shattered Tower, stands armed with cursed steel.
                 """);
-        System.out.println();
         PrintUtil.objective("═══════════════════════════════════════════════════════════════════════════");
         System.out.println();
 
@@ -454,6 +456,7 @@ public class World3 {
                     You have shattered the guardian of flame.
                     """);
         PrintUtil.loot("You gain rare loot and powerful rewards!");
+        PrintUtil.line();
         miniboss.dropLoot(player);
         InputUtil.pressEnterToContinue();
         System.out.println();
@@ -532,10 +535,7 @@ public class World3 {
 
         // --- Boss: the revelation ---
         System.out.println();
-        PrintUtil.title("BOSS — Sir Khai, the Necromancer");
         System.out.println(ColorUtil.brightMagenta(
-                "                                     \n" +
-                "                                     \n" +
                 "                 :*-                 \n" +
                 "                :%#+=                \n" +
                 "               :%@#+=-               \n" +

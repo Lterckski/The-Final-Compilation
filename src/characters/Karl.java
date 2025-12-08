@@ -40,7 +40,7 @@ public class Karl extends Character{
         // Ultimate – Rain of a Thousand Arrows
         System.out.println("  " + ColorUtil.boldBrightYellow("🌩️ Ultimate – Rain of a Thousand Arrows (➶ 5 Arrows)"));
         System.out.println("  " + ColorUtil.cyan("📜 Description: Karl releases a rapid flurry of arrows, overwhelming his opponent."));
-        System.out.println("  " + ColorUtil.cyan("💥 Damage: 5 hits, each dealing (") + ColorUtil.boldBrightYellow((int)(attack * 0.70) + " — " + (int)(attack * 0.90)) + ColorUtil.cyan(")"));
+        System.out.println("  " + ColorUtil.cyan("💥 Damage: 5 hits, each dealing (") + ColorUtil.boldBrightYellow((int)(attack * 0.70) + " — " + (int)(attack * 0.80)) + ColorUtil.cyan(")"));
         System.out.println("  " + ColorUtil.cyan("⚡ Effects:"));
         System.out.println("    - " + ColorUtil.cyan("🏃 Grants Nimble (increased dodge chance)"));
         System.out.println("    - " + ColorUtil.cyan("💪 Grants Strengthen (+20% ATK for 2 turns)"));
@@ -258,7 +258,7 @@ public class Karl extends Character{
         int totalDamage = 0;
 
         for (int i = 1; i <= 5; i++) {
-            int damage = (int) RandomUtil.range(attack * 0.70, attack * 0.90);
+            int damage = (int) RandomUtil.range(attack * 0.70, attack * 0.80);
             damage = hunterInstincts(damage, target);
             int reduced = calculateDamage(target, damage);
 
