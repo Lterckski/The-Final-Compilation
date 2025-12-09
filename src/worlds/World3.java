@@ -122,7 +122,7 @@ public class World3 {
                     🎉 Victory! The last revenant collapses into molten shards.
                     The lava around you cools slightly — a brief moment of calm.
                     """);
-        PrintUtil.loot("You gain experience and loot from the battle.");
+        PrintUtil.loot("Experience flows into you as you gather the spoils of battle.");
         PrintUtil.line();
         InputUtil.pressEnterToContinue();
         player.getEffects().resetAllEffects();
@@ -283,7 +283,7 @@ public class World3 {
                     🎉 Victory! The Crushers shatter, falling into the lava below.
                     The tremors subside — the way forward opens.
                     """);
-        PrintUtil.loot("You gain experience and loot from your battle.");
+        PrintUtil.loot("Your hard-fought victory rewards you with experience and potions.");
         PrintUtil.line();
         InputUtil.pressEnterToContinue();
         player.getEffects().resetAllEffects();
@@ -367,7 +367,7 @@ public class World3 {
                     🎉 Victory! The last Gargoyle falls, shattering to dust midair.
                     Silence returns — save for the slow, rising heartbeat of the volcano.
                     """);
-        PrintUtil.loot("You gain experience and loot from your hard-fought battle.");
+        PrintUtil.loot("You grow stronger and collect the items left behind by your foes.");
         PrintUtil.line();
         InputUtil.pressEnterToContinue();
         player.getEffects().resetAllEffects();

@@ -32,7 +32,7 @@ public class Simon extends Character {
         System.out.println("  " + ColorUtil.cyan("💥 Damage: (") + ColorUtil.boldBrightYellow((int)(attack * 1.00) + " — " + (int)(attack * 1.25)) + ColorUtil.cyan(")"));
         System.out.println("  " + ColorUtil.cyan("⚡ Effects:"));
         System.out.println("    - " + ColorUtil.cyan("❄️ 30% chance to Freeze (target skips 1 turn)"));
-        System.out.println("    - " + ColorUtil.cyan("🛡️ If frozen: reduces DEF by 15% for 2 turns\n"));
+        System.out.println("    - " + ColorUtil.cyan("🛡️ If frozen: reduces DEF by 15% for 1 turn\n"));
 
         // Ultimate – Meteor Storm
         System.out.println("  " + ColorUtil.boldBrightYellow("☄️ Ultimate – Meteor Storm (💧 40 Mana)"));
@@ -185,7 +185,7 @@ public class Simon extends Character {
         if (RandomUtil.chance(50)) {
             target.getEffects().applyFreeze();
             // If frozen, apply DEF reduction
-            target.getEffects().applyDefenseDebuff(15, 2);
+            target.getEffects().applyDefenseDebuff(15, 1);
         }
         arcaneFlow();
 

@@ -10,7 +10,7 @@ import inventory.*;
 public class World2Enemy3 extends Enemy{
 
     public World2Enemy3(){
-        super("Blight Hound", 618, 13, 180);
+        super("Blight Hound", 620, 13, 138);
     }
 
     public void corpseExplosion(Character target){
@@ -47,7 +47,7 @@ public class World2Enemy3 extends Enemy{
         if(target.getEffects().checkDodge()) return;
         if (this.getEffects().checkConfuse()) return;
 
-        int damage = (int)RandomUtil.range(attack * 1.00, attack * 1.55);
+        int damage = (int)RandomUtil.range(attack * 1.00, attack * 1.20);
         int reduced = calculateDamage(target, damage);
 
         System.out.println(ColorUtil.brightRed("→💔 Corpse Explosion hits for ")
@@ -85,7 +85,7 @@ public class World2Enemy3 extends Enemy{
         System.out.println(ColorUtil.boldBrightRed("┌─────────────────────────────────── 🐕‍🦺 BLIGHT HOUNDS SKILLS 🐕‍🦺 ─────────────────────────────────┐"));
         System.out.println(ColorUtil.boldBrightYellow("  💥 Skill – Corpse Explosion"));
         System.out.println(ColorUtil.red(" 📜 Description : The Blight Hounds cause corpses to explode, damaging and weakening their target."));
-        System.out.println(ColorUtil.red(" 💥 Damage : (") + ColorUtil.boldBrightYellow((int)(attack * 1.00) + " — " + (int)(attack * 1.55)) + ColorUtil.red(")"));
+        System.out.println(ColorUtil.red(" 💥 Damage : (") + ColorUtil.boldBrightYellow((int)(attack * 1.00) + " — " + (int)(attack * 1.20)) + ColorUtil.red(")"));
         System.out.println(ColorUtil.red(" ✨ Effects :"));
         System.out.println(ColorUtil.red("    - 🛡️ 30% chance to reduce target’s DEF by 30% for 2 turns"));
         System.out.println(ColorUtil.boldBrightRed("└─────────────────────────────────────────────────────────────────────────────────────────────────┘"));

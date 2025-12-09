@@ -9,7 +9,7 @@ import inventory.*;
 
 public class World2Miniboss2 extends Enemy {
     public World2Miniboss2() {
-        super("Luther Von", 1254, 29, 250);
+        super("Luther Von", 1250, 29, 250);
     }
 
     public void crownOfDespair(Character target) {

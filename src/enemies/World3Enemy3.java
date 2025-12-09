@@ -8,7 +8,7 @@ import utils.RandomUtil;
 
 public class World3Enemy3 extends Enemy {
 
-    public World3Enemy3() { super("Obsidian Crusher", 1583, 48, 320); }
+    public World3Enemy3() { super("Obsidian Crusher", 1580, 48, 320); }
 
     public void magmaSlam(Character target) {
         PrintUtil.print(ColorUtil.boldBrightRed("                                                          \n" +

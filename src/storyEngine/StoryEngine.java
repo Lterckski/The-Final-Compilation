@@ -11,8 +11,6 @@ import utils.InputUtil;
 import utils.PrintUtil;
 import worlds.*;
 
-import java.awt.*;
-
 public class StoryEngine {
 
     private Character player;
@@ -349,12 +347,13 @@ public class StoryEngine {
                         PrintUtil.specialCyan("                    :-==++*******++=-:.                   ");
                         PrintUtil.specialCyan("                                                          ");
                         System.out.println();
+                        PrintUtil.pause(1500);
 
                         kael.showBackstory();
                         InputUtil.pressEnterToContinue();
 
                         PrintUtil.line();
-                        System.out.println(ColorUtil.boldBrightMagenta("✨ The gods bestow upon you your starting gear..."));
+                        PrintUtil.effect("✨ The gods bestow upon you your starting gear...");
                         PrintUtil.pause(800);
                         player.getInventory().setEquippedWeapon(Sword.OLD_BROADSWORD);
                         player.getInventory().setEquippedArmor(Armor.LEATHER_GUARD);
@@ -363,7 +362,7 @@ public class StoryEngine {
                         PrintUtil.pause(800);
                         System.out.println(ColorUtil.boldBrightYellow("🛡️ *The --" + player.getInventory().getEquippedArmor().getName() + "-- fits perfectly, worn yet dependable — a true warrior’s first defense.*"));
                         PrintUtil.pause(800);
-                        System.out.println(ColorUtil.brightMagenta("⚡ Strength surges through your veins as your journey begins..."));
+                        PrintUtil.effect("⚡ Strength surges through your veins as your journey begins...");
                         PrintUtil.line();
                     }
 
@@ -415,12 +414,13 @@ public class StoryEngine {
                         PrintUtil.specialCyan("              =%@@@%%@@@@@@@@@@@@@@@%@@%#-                ");
                         PrintUtil.specialCyan("                   .:=#%%%##%%%##*=:.                     ");
                         System.out.println();
+                        PrintUtil.pause(1500);
 
                         karl.showBackstory();
                         InputUtil.pressEnterToContinue();
 
                         PrintUtil.line();
-                        System.out.println(ColorUtil.boldBrightMagenta("🌬️ The winds whisper and bless you with your starting equipment..."));
+                        PrintUtil.effect("🌬️ The winds whisper and bless you with your starting equipment...");
                         PrintUtil.pause(800);
                         player.getInventory().setEquippedWeapon(Bow.WOODEN_BOW);
                         player.getInventory().setEquippedArmor(Armor.LEATHER_GUARD);
@@ -431,7 +431,7 @@ public class StoryEngine {
                         PrintUtil.pause(800);
                         System.out.println(ColorUtil.boldBrightYellow("✨ *You are granted a --Magic Quiver--, filled with arrows that regenerate through ancient magic.*"));
                         PrintUtil.pause(800);
-                        System.out.println(ColorUtil.brightMagenta("🌿 The forest seems to watch over you as your path unfolds..."));
+                        PrintUtil.effect("🌿 The forest seems to watch over you as your path unfolds...");
                         PrintUtil.line();
                     }
                 }
@@ -483,12 +483,13 @@ public class StoryEngine {
                         PrintUtil.specialCyan("                      #@*+#=.-##+ -@#                      ");
                         PrintUtil.specialCyan("                 :=+####%@@@@@@@@@%%%##*+=-                ");
                         System.out.println();
+                        PrintUtil.pause(1500);
 
                         simon.showBackstory();
                         InputUtil.pressEnterToContinue();
 
                         PrintUtil.line();
-                        System.out.println(ColorUtil.boldBrightMagenta("✨ The arcane forces converge to gift you ancient relics of power..."));
+                        PrintUtil.effect("✨ The arcane forces converge to gift you ancient relics of power...");
                         PrintUtil.pause(800);
                         player.getInventory().setEquippedWeapon(Staff.WOODEN_STAFF);
                         player.getInventory().setEquippedArmor(Armor.LEATHER_GUARD);
@@ -496,7 +497,7 @@ public class StoryEngine {
                         PrintUtil.pause(800);
                         System.out.println(ColorUtil.boldBrightYellow("🛡️ *The --" + player.getInventory().getEquippedArmor().getName() + "-- shimmers with faint runes — fragile, yet brimming with arcane energy.*"));
                         PrintUtil.pause(800);
-                        System.out.println(ColorUtil.brightMagenta("💫 Magic stirs in the air around you as your journey begins..."));
+                        PrintUtil.effect("💫 Magic stirs in the air around you as your journey begins...");
                         PrintUtil.line();
                     }
                 }
@@ -555,12 +556,13 @@ public class StoryEngine {
                                 "              @@@@@@@@@@@@@@@@@@@%%%#####**##%##%%%%%%%%%####%%%@@@%**@@\n" +
                                 "              @@@@@@@@@@@@@@@@@@@@@@@@%%%%@%@@@@@@@@@@@@@@@@@@@@@@@@@@@@\n");
                         System.out.println();
+                        PrintUtil.pause(1500);
 
                         PrintUtil.line();
                         System.out.println(ColorUtil.brightRed("⚡ *This Test Mage is fully powered — ready to blaze through the game!*"));
                         PrintUtil.pause(600);
 
-                        System.out.println(ColorUtil.boldBrightMagenta("✨ The arcane forces converge to gift you ancient relics of power..."));
+                        PrintUtil.effect("✨ The arcane forces converge to gift you ancient relics of power...");
                         PrintUtil.pause(600);
                         player.getInventory().setEquippedWeapon(Staff.WOODEN_STAFF);
                         player.getInventory().setEquippedArmor(Armor.LEATHER_GUARD);
@@ -571,7 +573,7 @@ public class StoryEngine {
                         PrintUtil.pause(600);
                         System.out.println(ColorUtil.brightMagenta("💫 *All spells are amplified, cooldowns are minimal — you are unstoppable!*"));
                         PrintUtil.pause(600);
-                        System.out.println(ColorUtil.brightRed("🌌 *Use this character to quickly test events, mechanics, or navigate the game world.*"));
+                        PrintUtil.effect("🌌 *Use this character to quickly test events, mechanics, or navigate the game world.*");
                         PrintUtil.line();
                     }
                 }
@@ -616,7 +618,7 @@ public class StoryEngine {
             A path begins to part through the settling ash, leading into a wall of fog and distant thunder.
             """);
 
-        PrintUtil.sayCyan("""
+        PrintUtil.sayGreen("""
             "This forest is saved. Life is beautiful," Sir Khai murmurs.
             "But our journey is far from over. Two more Stones remain… and darkness gathers ahead."
             """);
@@ -636,7 +638,7 @@ public class StoryEngine {
             The air grows colder—heavier—as if something ancient is waking beneath the clouds.
             """);
 
-        PrintUtil.sayCyan("""
+        PrintUtil.sayGreen("""
             "The final trial awaits," Khai says quietly.
             "Beyond that storm lies a realm where even light cannot survive… and where the last Stone is kept."
             """);

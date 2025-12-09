@@ -52,13 +52,17 @@ public class World2 {
 
         System.out.println("════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════");
         System.out.println();
-        PrintUtil.print(
-                           "As you make your way through the forest, you finally reach its edge and find that there lies a town. Relief surges—until you get nearer and see the town closer." +
-                        " The place is diseased.\n" + "Khai the Gray says, 'Children cough in alleys, merchants peddle spoiled goods, and hollow-eyed guards demand bribes.'\n" +
-                        "This town used to be the epitome of peace and unity. Now, every face tells the same story: something has poisoned this world.\n"
+        PrintUtil.story(
+                """
+                        As you make your way through the forest, you finally reach its edge and find that there lies a town.
+                        Relief surges—until you get nearer and see the town closer.The place is diseased.
+                        """
         );
+        PrintUtil.sayGreen("Khai the Gray says, \"Children cough in alleys, merchants peddle spoiled goods, and hollow-eyed guards demand bribes.\"");
+        System.out.println();
+        PrintUtil.story("This town used to be the epitome of peace and unity. Now, every face tells the same story: something has poisoned this world.");
 
-        PrintUtil.sayCyan("\"The Stones,\" Khai murmurs. \"They are both a curse and a cure.\"\n");
+//        PrintUtil.sayGreen("\"The Stones,\" Khai murmurs. \"They are both a curse and a cure.\"\n");
         System.out.println("════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════");
         InputUtil.pressEnterToContinue();
 
@@ -140,7 +144,7 @@ public class World2 {
             🎉 Victory! The last of the Plague Vermin's collapses into the sludge.
             The foul air clears just enough for you to breathe again.
             """);
-        PrintUtil.loot("You gain experience and loot from your hard-fought battle.");
+        PrintUtil.loot("You gain experience and claim the rewards from the grim battle.");
         PrintUtil.line();
         InputUtil.pressEnterToContinue();
         player.getEffects().resetAllEffects();
@@ -202,9 +206,9 @@ public class World2 {
         System.out.println();
 
         for (int i = 1; i <= 2; i++) {
-            System.out.println(ColorUtil.boldBrightRed("═════════════════════════════════════════════════════"));
+            System.out.println(ColorUtil.boldBrightRed("═══════════════════════════════════════════════════"));
             PrintUtil.enemyEncounter("☠️ Forsaken Cultist " + i + " has began chanting a spell!");
-            System.out.println(ColorUtil.boldBrightRed("═════════════════════════════════════════════════════"));
+            System.out.println(ColorUtil.boldBrightRed("═══════════════════════════════════════════════════"));
             InputUtil.pressEnterToContinue();
 
             battle2.startBattle();
@@ -228,7 +232,7 @@ public class World2 {
                 🎉 Victory! The cultists’ chants fade into silence.
                 The air still hums with dark energy, but you stand victorious.
                 """);
-        PrintUtil.loot("You gain experience and loot from your grim battle.");
+        PrintUtil.loot("You gain experience and rewards from your victorious fight.");
         PrintUtil.line();
         InputUtil.pressEnterToContinue();
         player.getEffects().resetAllEffects();
@@ -313,7 +317,7 @@ public class World2 {
                 🎉 Victory! The Blight Hounds are no more.
                 The air still hums with dark energy, but you stand victorious.
                 """);
-        PrintUtil.loot("You gain experience and loot from your grim battle.");
+        PrintUtil.loot("You gain experience and loot from the defeated enemies.");
         PrintUtil.line();
         InputUtil.pressEnterToContinue();
         player.getEffects().resetAllEffects();
@@ -402,7 +406,7 @@ public class World2 {
                 🎉 Victory! The last ghoul crumbles into dust.
                 You tighten your grip on your weapon, ready for whatever lies ahead.
                 """);
-        PrintUtil.loot("You gain experience and loot from your hard-fought battle.");
+        PrintUtil.loot("You gain experience and gather loot from your triumph.");
         PrintUtil.line();
         InputUtil.pressEnterToContinue();
         player.getEffects().resetAllEffects();

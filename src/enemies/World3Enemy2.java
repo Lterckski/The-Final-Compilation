@@ -8,7 +8,7 @@ import utils.RandomUtil;
 
 public class World3Enemy2 extends Enemy {
 
-    public World3Enemy2() { super("Bone Warlock", 1285, 41, 292); }
+    public World3Enemy2() { super("Bone Warlock", 1280, 41, 292); }
 
     public void marrowBolt(Character target) {
         PrintUtil.print(ColorUtil.boldBrightRed("                                                          \n" +
@@ -46,7 +46,7 @@ public class World3Enemy2 extends Enemy {
         if (target.getEffects().checkDodge()) return;
         if (this.getEffects().checkConfuse()) return;
 
-        int damage = (int) RandomUtil.range(attack * 1.00, attack * 1.25);
+        int damage = (int) RandomUtil.range(attack * 1.00, attack * 1.20);
         int reduced = calculateDamage(target, damage);
 
         System.out.println(ColorUtil.brightRed("→💔 Marrow Bolt hits for ")
@@ -84,7 +84,7 @@ public class World3Enemy2 extends Enemy {
         System.out.println(ColorUtil.boldBrightRed("┌───────────────────────────── 💀 BONE WARLOCK SKILLS 💀 ────────────────────────────┐"));
         System.out.println(ColorUtil.boldBrightYellow("  💀 Skill – Marrow Bolt"));
         System.out.println(ColorUtil.red(" 📜 Description : Bone Warlock casts Marrow Bolt, reducing the target's attack damage."));
-        System.out.println(ColorUtil.red(" 💥 Damage : (") + ColorUtil.boldBrightYellow((int)(attack * 1.00) + " — " + (int)(attack * 1.25)) + ColorUtil.red(")"));
+        System.out.println(ColorUtil.red(" 💥 Damage : (") + ColorUtil.boldBrightYellow((int)(attack * 1.00) + " — " + (int)(attack * 1.20)) + ColorUtil.red(")"));
         System.out.println(ColorUtil.red(" ✨ Effects :"));
         System.out.println(ColorUtil.red("    - ⚔️ 30% chance to apply ATK Debuff: reduces target's damage by 30%"));
         System.out.println(ColorUtil.boldBrightRed("└────────────────────────────────────────────────────────────────────────────────────┘"));

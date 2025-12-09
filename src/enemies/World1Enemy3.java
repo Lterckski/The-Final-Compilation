@@ -9,7 +9,7 @@ import utils.RandomUtil;
 public class World1Enemy3 extends Enemy {
     // Constructor
     public World1Enemy3() {
-        super("Dreadbark Treants", 204, 5, 46);
+        super("Dreadbark Treants", 200, 5, 46);
     }
 
     // Skill: Root Snare (6–9 damage, immobilize 1 turn)
@@ -55,7 +55,7 @@ public class World1Enemy3 extends Enemy {
         if (target.getEffects().checkDodge()) return;
         if (this.getEffects().checkConfuse()) return;
 
-        int damage = (int) RandomUtil.range(attack * 1.0, attack * 1.5);
+        int damage = (int) RandomUtil.range(attack * 1.0, attack * 1.20);
         int reduced = calculateDamage(target, damage);
 
         System.out.println(ColorUtil.brightRed("→💔 Root Snare hits for ")
@@ -76,7 +76,7 @@ public class World1Enemy3 extends Enemy {
         }
 
         // 30% chance to Immobilize
-        if (RandomUtil.chance(30)) {
+        if (RandomUtil.chance(20)) {
             target.getEffects().applyImmobilize();
         }
 
@@ -88,9 +88,9 @@ public class World1Enemy3 extends Enemy {
         System.out.println(ColorUtil.boldBrightRed("┌────────────────────────── 🌳 DREADBARK TREANTS SKILLS 🌳 ────────────────────────────┐"));
         System.out.println(ColorUtil.boldBrightYellow("🌿 Skill – Root Snare"));
         System.out.println(ColorUtil.red(" 📜 Description : The Treants lash out with entangling roots, trying to trap their foe."));
-        System.out.println(ColorUtil.red(" 💥 Damage : (") + ColorUtil.boldBrightYellow((int)(attack * 1.00) + " — " + (int)(attack * 1.50)) + ColorUtil.red(")"));
+        System.out.println(ColorUtil.red(" 💥 Damage : (") + ColorUtil.boldBrightYellow((int)(attack * 1.00) + " — " + (int)(attack * 1.20)) + ColorUtil.red(")"));
         System.out.println(ColorUtil.red(" ✨ Effects :"));
-        System.out.println(ColorUtil.red("    - 30% chance to 🌿 Immobilize target"));
+        System.out.println(ColorUtil.red("    - 20% chance to 🌿 Immobilize target"));
         System.out.println(ColorUtil.boldBrightRed("└──────────────────────────────────────────────────────────────────────────────────────┘"));
         System.out.println();
     }

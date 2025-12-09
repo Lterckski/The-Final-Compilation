@@ -12,7 +12,7 @@ import utils.RandomUtil;
 public class World1Miniboss1 extends Enemy {
     // Constructor
     public World1Miniboss1() {
-        super("The Hollow Stag", 444, 21, 118);
+        super("The Hollow Stag", 450, 21, 118);
     }
 
     // Skill 1: Deathly Charge (ATK × 1.00–1.20), 30% chance to Stun

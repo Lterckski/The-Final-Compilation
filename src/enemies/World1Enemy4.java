@@ -9,7 +9,7 @@ import utils.RandomUtil;
 public class World1Enemy4 extends Enemy {
     // Constructor
     public World1Enemy4() {
-        super("Carrion Bats", 287, 6, 64);
+        super("Carrion Bats", 260, 6, 64);
     }
 
     // Skill: Screech (6–8 damage, chance to confuse 1 turn)
@@ -40,7 +40,7 @@ public class World1Enemy4 extends Enemy {
         if (target.getEffects().checkDodge()) return;
         if (this.getEffects().checkConfuse()) return;
 
-        int damage = (int) RandomUtil.range(attack * 1.0, attack * 1.33);
+        int damage = (int) RandomUtil.range(attack * 1.0, attack * 1.20);
         int reduced = calculateDamage(target, damage);
 
         System.out.println(ColorUtil.brightRed("→💔 Screech hits for ")
@@ -78,7 +78,7 @@ public class World1Enemy4 extends Enemy {
         System.out.println(ColorUtil.boldBrightRed("┌──────────────────────────────────── 🦇 CARRION BATS SKILLS 🦇 ──────────────────────────────────┐"));
         System.out.println(ColorUtil.boldBrightYellow("  🗣️ Skill – Screech"));
         System.out.println(ColorUtil.red(" 📜 Description : The bats emit a piercing screech, unsettling their foe and lowering their attack."));
-        System.out.println(ColorUtil.red(" 💥 Damage : (") + ColorUtil.boldBrightYellow((int)(attack * 1.00) + " — " + (int)(attack * 1.33)) + ColorUtil.red(")"));
+        System.out.println(ColorUtil.red(" 💥 Damage : (") + ColorUtil.boldBrightYellow((int)(attack * 1.00) + " — " + (int)(attack * 1.20)) + ColorUtil.red(")"));
         System.out.println(ColorUtil.red(" ✨ Effects :"));
         System.out.println(ColorUtil.red("    - 30% chance to 💢 Weaken: reduces target’s ATK by 20% for 2 turns"));
         System.out.println(ColorUtil.boldBrightRed("└─────────────────────────────────────────────────────────────────────────────────────────────────┘"));

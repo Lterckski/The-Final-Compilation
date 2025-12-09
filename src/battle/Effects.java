@@ -241,7 +241,7 @@ public class Effects {
             poisonDamage = Math.min(poisonDamage, 45);
 
             System.out.println(
-                    ColorUtil.brightMagenta("☠ " + owner.getName() + " is poisoned! 💔 Took ") +
+                    ColorUtil.brightMagenta("☠️ " + owner.getName() + " is poisoned! 💔 Took ") +
                             ColorUtil.boldBrightWhite(String.valueOf(poisonDamage)) +
                             ColorUtil.brightMagenta(" damage.")
             );

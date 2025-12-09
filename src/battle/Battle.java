@@ -142,8 +142,10 @@ public class Battle {
     private String centerText(String text, int width) {
         int padding = (width - text.length()) / 2;
         if (padding < 0) padding = 0; // avoid negative
-        return " ".repeat(padding) + text;
+        int offset = 5; // extra 3 spaces to the right
+        return " ".repeat(padding + offset) + text;
     }
+
 
     // ---------- BATTLE LOOP ----------
     public void battleLoop() {
@@ -201,7 +203,8 @@ public class Battle {
             enemy.getEffects().updateAttackModifiers();
             enemy.getEffects().updateDefenseModifiers();
 
-            System.out.println(ColorUtil.boldBrightRed("\n── ENEMY TURN ──"));
+            System.out.println();
+            System.out.println(ColorUtil.boldBrightRed("── ENEMY TURN ──"));
 
             if (enemy.getEffects().checkEffects()) {
                 PrintUtil.pause(800);
@@ -226,13 +229,13 @@ public class Battle {
                 }
 
                 if (player.hasUsedReviveTrial()) {
-                    System.out.println("💀 You fall once more... there are no more second chances.");
+                    PrintUtil.specialRed("💀 You fall once more... there are no more second chances.");
                     gameOver();
                     return;
                 }
 
                 System.out.println();
-                System.out.println("💀 You collapse, your vision fading...");
+                PrintUtil.specialRed("💀 You collapse, your vision fading...");
                 System.out.println();
                 boolean survived = ReviveTrial.run(player);
 
@@ -245,11 +248,11 @@ public class Battle {
                     player.getEffects().resetAllEffects();
                     player.setReviveUsed(true);
 
-                    System.out.println("✨ Knowledge revives you!");
-                    System.out.println("You are restored with 50% HP and 50% " + player.getEnergyName() + ".");
+                    PrintUtil.reward("✨ Knowledge revives you!");
+                    PrintUtil.victory("You are restored with 50% HP and 50% " + player.getEnergyName() + ".");
                     PrintUtil.line();
                 } else{
-                    System.out.println("❌ You failed Khai's Java Trial.");
+                    PrintUtil.specialRed("❌ You failed Khai's Java Trial.");
                     System.out.println("Your journey ends here...");
                     gameOver();
                 }
@@ -264,9 +267,11 @@ public class Battle {
 
     public void gameOver() {
         PrintUtil.line();
-        System.out.println("⚔️ You have been defeated in battle...");
-        PrintUtil.print("""
+        PrintUtil.specialRed("⚔️ You have been defeated in battle...");
+        System.out.println();
+        PrintUtil.specialRed("""
         💀 Darkness overwhelms you...
+        
         The battlefield falls silent, your vision fades,
         and the echoes of your struggles vanish into the void.
         """);

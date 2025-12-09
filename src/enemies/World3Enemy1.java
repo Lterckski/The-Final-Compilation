@@ -39,7 +39,7 @@ public class World3Enemy1 extends Enemy {
         if(target.getEffects().checkDodge()) return;
         if (this.getEffects().checkConfuse()) return;
 
-        int damage = (int)RandomUtil.range(attack * 1.00, attack * 1.35);
+        int damage = (int)RandomUtil.range(attack * 1.00, attack * 1.20);
         int reduced = calculateDamage(target, damage);
 
         System.out.println(ColorUtil.brightRed("→💔 Ember Burst hits for ")
@@ -75,7 +75,7 @@ public class World3Enemy1 extends Enemy {
         System.out.println(ColorUtil.boldBrightRed("┌────────────────────────────────── 🔥 FLAME REVENANT SKILLS 🔥 ─────────────────────────────────┐"));
         System.out.println(ColorUtil.boldBrightYellow("  🔥 Skill – Flame Blast"));
         System.out.println(ColorUtil.red(" 📜 Description : Flame Revenants hurl blazing fireballs from afar, burning anything in its path."));
-        System.out.println(ColorUtil.red(" 💥 Damage : (") + ColorUtil.boldBrightYellow((int)(attack * 1.00) + " — " + (int)(attack * 1.35)) + ColorUtil.red(")"));
+        System.out.println(ColorUtil.red(" 💥 Damage : (") + ColorUtil.boldBrightYellow((int)(attack * 1.00) + " — " + (int)(attack * 1.20)) + ColorUtil.red(")"));
         System.out.println(ColorUtil.red(" ✨ Effects :"));
         System.out.println(ColorUtil.red("    - 🔥 Applies Burn for 2 turns"));
         System.out.println(ColorUtil.boldBrightRed("└────────────────────────────────────────────────────────────────────────────────────────────────┘"));

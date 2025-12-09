@@ -9,7 +9,7 @@ import inventory.*;
 
 public class World2Enemy1 extends Enemy{
     public World2Enemy1(){
-        super("Plague Vermin", 550, 13, 121);
+        super("Plague Vermin", 520, 13, 108);
     }
 
     public void plagueBite(Character target){
@@ -42,7 +42,7 @@ public class World2Enemy1 extends Enemy{
         if(target.getEffects().checkDodge()) return;
         if (this.getEffects().checkConfuse()) return;
 
-        int damage = (int)RandomUtil.range(attack * 1.00, attack * 1.55);
+        int damage = (int)RandomUtil.range(attack * 1.00, attack * 1.20);
         int reduced = calculateDamage(target, damage);
 
         System.out.println(ColorUtil.brightRed("→💔 Plague Bite hits for ")
@@ -79,7 +79,7 @@ public class World2Enemy1 extends Enemy{
         System.out.println(ColorUtil.boldBrightRed("┌──────────────────────────────── 🐀 PLAGUE VERMIN SKILLS 🐀 ────────────────────────────────┐"));
         System.out.println(ColorUtil.boldBrightYellow("  🦷 Skill – Plague Bite"));
         System.out.println(ColorUtil.red(" 📜 Description : The Plague Vermin bites viciously, infecting its target with deadly poison."));
-        System.out.println(ColorUtil.red(" 💥 Damage : (") + ColorUtil.boldBrightYellow((int)(attack * 1.00) + " — " + (int)(attack * 1.55)) + ColorUtil.red(")"));
+        System.out.println(ColorUtil.red(" 💥 Damage : (") + ColorUtil.boldBrightYellow((int)(attack * 1.00) + " — " + (int)(attack * 1.20)) + ColorUtil.red(")"));
         System.out.println(ColorUtil.red(" ✨ Effects :"));
         System.out.println(ColorUtil.red("    - ☣️ Applies Poison for 1 turn"));
         System.out.println(ColorUtil.boldBrightRed("└────────────────────────────────────────────────────────────────────────────────────────────┘"));

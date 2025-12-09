@@ -9,7 +9,7 @@ import utils.RandomUtil;
 public class World1Enemy2 extends Enemy {
     // Constructor
     public World1Enemy2() {
-        super("Shade Sprites", 98, 4, 24);
+        super("Shade Sprites", 80, 4, 24);
     }
 
     // Skill: Trickster Strike (8–13 damage)
@@ -56,7 +56,7 @@ public class World1Enemy2 extends Enemy {
         if (target.getEffects().checkDodge()) return;
         if (this.getEffects().checkConfuse()) return;
 
-        int damage = (int) RandomUtil.range(attack * 1.0, attack * 1.625);
+        int damage = (int) RandomUtil.range(attack * 1.0, attack * 1.20);
         int reduced = calculateDamage(target, damage);
 
         System.out.println(ColorUtil.brightRed("→💔 Trickster Strike hits for ")
@@ -87,7 +87,7 @@ public class World1Enemy2 extends Enemy {
         System.out.println(ColorUtil.boldBrightRed("┌─────────────────────────────── 👻 SHADE SPRITES SKILLS 👻 ──────────────────────────────┐"));
         System.out.println(ColorUtil.boldBrightYellow(" 👻 Skill – Trickster Strike"));
         System.out.println(ColorUtil.red(" 📜 Description : The Shade Sprites strike mischievously, leaving their target disoriented."));
-        System.out.println(ColorUtil.red(" 💥 Damage : (") + ColorUtil.boldBrightYellow((int)(attack * 1.00) + " — " + (int)(attack * 1.625)) + ColorUtil.red(")"));
+        System.out.println(ColorUtil.red(" 💥 Damage : (") + ColorUtil.boldBrightYellow((int)(attack * 1.00) + " — " + (int)(attack * 1.20)) + ColorUtil.red(")"));
         System.out.println(ColorUtil.red(" ✨ Effects :"));
         System.out.println(ColorUtil.red("    - 30% chance to 😵 Confuse target"));
         System.out.println(ColorUtil.boldBrightRed("└─────────────────────────────────────────────────────────────────────────────────────────┘"));

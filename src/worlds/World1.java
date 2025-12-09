@@ -7,8 +7,6 @@ import utils.ColorUtil;
 import utils.InputUtil;
 import utils.PrintUtil;
 
-import java.awt.*;
-
 public class World1 {
 
     public void run(Character player) {
@@ -36,13 +34,13 @@ public class World1 {
                 You wake up in a dead forest. Bark is gray, leaves crunch to ash, and a cold mist coils between skeletal trees.
                 Silence presses from every side—watching, waiting.
                 """);
-        PrintUtil.sayCyan("""
+        PrintUtil.sayGreen("""
                 A voice: "Dong…"
                 """);
         PrintUtil.story("""
                 From the mist steps a robed figure—your but you realize this person looks like your professor, Khai...\s
                 """);
-        PrintUtil.sayCyan("""        
+        PrintUtil.sayGreen("""        
                 "In this world, I am known as Khai the Gray, we suffer because an evil necromancer has corrupted these lands and we must find 
                 the  three stones of life that hold this world together to defeat him." he says.   
                 "Only then will your path home reveal itself."
@@ -116,7 +114,7 @@ public class World1 {
                 🎉 Victory! The last of the Rotfang Wolves collapses to the ground.
                 The forest falls silent, and you catch your breath, victorious.
                 """);
-        PrintUtil.loot("You gain experience and loot from your hard-fought battle.");
+        PrintUtil.loot("You emerge stronger, collecting experience and useful potions.");
         PrintUtil.line();
         InputUtil.pressEnterToContinue();
         player.getEffects().resetAllEffects();
@@ -172,9 +170,9 @@ public class World1 {
             battle2.startBattle();
 
             System.out.println();
-            System.out.println(ColorUtil.boldBrightGreen("───────────────────────────────────────"));
+            System.out.println(ColorUtil.boldBrightGreen("────────────────────────────────────"));
             PrintUtil.enemyDefeated("✅ You dispelled Shade Sprite " + i + "!");
-            System.out.println(ColorUtil.boldBrightGreen("───────────────────────────────────────"));
+            System.out.println(ColorUtil.boldBrightGreen("────────────────────────────────────"));
             enemy2.dropLoot(player);
 
             if (i < 2) { // reset for another shade
@@ -322,9 +320,9 @@ public class World1 {
         System.out.println();
 
         for (int i = 1; i <= 4; i++) {
-            System.out.println(ColorUtil.boldBrightRed("══════════════════════════════════════════"));
+            System.out.println(ColorUtil.boldBrightRed("═══════════════════════════════════════════"));
             PrintUtil.enemyEncounter("🦇 Carrion Bat " + i + " swoops down, fangs bared!");
-            System.out.println(ColorUtil.boldBrightRed("══════════════════════════════════════════"));
+            System.out.println(ColorUtil.boldBrightRed("═══════════════════════════════════════════"));
 
             battle4.startBattle();
 
@@ -371,9 +369,9 @@ public class World1 {
 
         PrintUtil.event("                                                                                                   \n" +
                 "                                                                                                   \n" +
-                "██████ ██  ██ ██████   ██  ██ ▄████▄ ██     ██     ▄████▄ ██     ██   ▄█████ ██████ ▄████▄  ▄████  \n" +
-                "  ██   ██████ ██▄▄     ██████ ██  ██ ██     ██     ██  ██ ██ ▄█▄ ██   ▀▀▀▄▄▄   ██   ██▄▄██ ██  ▄▄▄ \n" +
-                "  ██   ██  ██ ██▄▄▄▄   ██  ██ ▀████▀ ██████ ██████ ▀████▀  ▀██▀██▀    █████▀   ██   ██  ██  ▀███▀  \n" +
+                "   ██████ ██  ██ ██████   ██  ██ ▄████▄ ██     ██     ▄████▄ ██     ██   ▄█████ ██████ ▄████▄  ▄████  \n" +
+                "     ██   ██████ ██▄▄     ██████ ██  ██ ██     ██     ██  ██ ██ ▄█▄ ██   ▀▀▀▄▄▄   ██   ██▄▄██ ██  ▄▄▄ \n" +
+                "     ██   ██  ██ ██▄▄▄▄   ██  ██ ▀████▀ ██████ ██████ ▀████▀  ▀██▀██▀    █████▀   ██   ██  ██  ▀███▀  \n" +
                 "                                                                                                   ");
         System.out.println();
         PrintUtil.pause(600);
@@ -436,12 +434,17 @@ public class World1 {
         System.out.println();
         PrintUtil.objective(("🎯 Objective: Defeat The Hollow Stag! ✅"));
         System.out.println();
+        PrintUtil.pause(1000);
         PrintUtil.line();
         PrintUtil.victory("""
+                
                 ✅🏆MINI-BOSS DEFEATED!
                 🌟 The Hollow Stag staggers, its luminous eyes fading to black.
-                With one final, echoing cry, it collapses to the ground. The forest trembles… then exhales.""");
+                With one final, echoing cry, it collapses to the ground. The forest trembles… then exhales.
+                """);
         PrintUtil.line();
+        PrintUtil.pause(1000);
+
         miniboss.dropLoot(player);
         InputUtil.pressEnterToContinue();
         PrintUtil.line();
@@ -479,6 +482,7 @@ public class World1 {
                 """);
 
         PrintUtil.line();
+        PrintUtil.pause(1000);
         System.out.println();
         PrintUtil.specialCyan("You claim the First Stone from a tree black with rot. Light bursts outward; the forest exhales.");
         InputUtil.pressEnterToContinue();

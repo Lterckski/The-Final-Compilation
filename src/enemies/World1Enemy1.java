@@ -48,7 +48,7 @@ public class World1Enemy1 extends Enemy {
         if (target.getEffects().checkDodge()) return;
         if (this.getEffects().checkConfuse()) return;
 
-        int damage = (int) RandomUtil.range(attack, attack * 1.5);
+        int damage = (int) RandomUtil.range(attack, attack * 1.20);
         int reduced = calculateDamage(target, damage);
 
         System.out.println(ColorUtil.brightRed("→💔 Savage Howl hits for ")
@@ -76,7 +76,7 @@ public class World1Enemy1 extends Enemy {
         System.out.println(ColorUtil.boldBrightRed("┌──────────────────────────── 🐺 ROTFANG WOLVES SKILLS 🐺 ──────────────────────────────┐"));
         System.out.println(ColorUtil.boldBrightYellow(" 🐺 Skill – Savage Howl"));
         System.out.println(ColorUtil.red(" 📜 Description : The wolves unleash a feral howl, striking their target with raw power."));
-        System.out.println(ColorUtil.red(" 💥 Damage : (") + ColorUtil.boldBrightYellow((int)(attack * 1.00) + " — " + (int)(attack * 1.50)) + ColorUtil.red(")"));
+        System.out.println(ColorUtil.red(" 💥 Damage : (") + ColorUtil.boldBrightYellow((int)(attack * 1.00) + " — " + (int)(attack * 1.20)) + ColorUtil.red(")"));
         System.out.println(ColorUtil.red(" ✨ Effects : —"));
         System.out.println(ColorUtil.boldBrightRed("└────────────────────────────────────────────────────────────────────────────────────────┘"));
         System.out.println();

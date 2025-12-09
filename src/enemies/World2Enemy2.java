@@ -9,7 +9,7 @@ import inventory.*;
 
 public class World2Enemy2 extends Enemy{
     public World2Enemy2(){
-        super("Forsaken Cultist", 694, 14, 134);
+        super("Forsaken Cultist", 580, 14, 116);
     }
 
     public void shadowBolt(Character target){
@@ -46,7 +46,7 @@ public class World2Enemy2 extends Enemy{
         if(target.getEffects().checkDodge()) return;
         if (this.getEffects().checkConfuse()) return;
 
-        int damage = (int)RandomUtil.range(attack * 1.00, attack * 1.55);
+        int damage = (int)RandomUtil.range(attack * 1.00, attack * 1.20);
         int reduced = calculateDamage(target, damage);
 
         System.out.println(ColorUtil.brightRed("→💔 Shadow Bolt hits for ")
@@ -84,7 +84,7 @@ public class World2Enemy2 extends Enemy{
         System.out.println(ColorUtil.boldBrightRed("┌────────────────────── 🔮 FORSAKEN CULTISTS SKILLS 🔮 ───────────────────────┐"));
         System.out.println(ColorUtil.boldBrightYellow("  ⚡ Skill – Shadow Bolt"));
         System.out.println(ColorUtil.red(" 📜 Description : Cultists hurl dark bolts of energy, weakening their foe."));
-        System.out.println(ColorUtil.red(" 💥 Damage : (") + ColorUtil.boldBrightYellow((int)(attack * 1.00) + " — " + (int)(attack * 1.33)) + ColorUtil.red(")"));
+        System.out.println(ColorUtil.red(" 💥 Damage : (") + ColorUtil.boldBrightYellow((int)(attack * 1.00) + " — " + (int)(attack * 1.20)) + ColorUtil.red(")"));
         System.out.println(ColorUtil.red(" ✨ Effects :"));
         System.out.println(ColorUtil.red("    - 💀 30% chance to apply Weaken: reduces target’s ATK by 20% for 2 turns"));
         System.out.println(ColorUtil.boldBrightRed("└─────────────────────────────────────────────────────────────────────────────┘"));

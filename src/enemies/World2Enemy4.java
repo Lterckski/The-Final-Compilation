@@ -8,7 +8,7 @@ import inventory.*;
 
 public class World2Enemy4 extends Enemy{
     public World2Enemy4(){
-        super("Ghoul Footmen", 782, 18, 201);
+        super("Ghoul Footmen", 700, 18, 164);
     }
 
     public void rottenCleave(Character target){
@@ -33,7 +33,7 @@ public class World2Enemy4 extends Enemy{
         if(target.getEffects().checkDodge()) return;
         if (this.getEffects().checkConfuse()) return;
 
-        int damage = (int)RandomUtil.range(attack * 1.00 , attack * 1.30);
+        int damage = (int)RandomUtil.range(attack * 1.00 , attack * 1.20);
         int reduced = calculateDamage(target, damage);
 
         System.out.println(ColorUtil.brightRed("→💔 Rotten Cleave hits for ")
@@ -71,7 +71,7 @@ public class World2Enemy4 extends Enemy{
         System.out.println(ColorUtil.boldBrightRed("┌─────────────────────────────── 🧟‍♂️ GHOUL FOOTMEN SKILLS 🧟‍♂️ ────────────────────────────────┐"));
         System.out.println(ColorUtil.boldBrightYellow("  ⚔️ Skill – Rotten Cleave"));
         System.out.println(ColorUtil.red(" 📜 Description : The Ghoul Footman slashes with a putrid blade, spreading disease and pain."));
-        System.out.println(ColorUtil.red(" 💥 Damage : (") + ColorUtil.boldBrightYellow((int)(attack * 1.00) + " — " + (int)(attack * 1.30)) + ColorUtil.red(")"));
+        System.out.println(ColorUtil.red(" 💥 Damage : (") + ColorUtil.boldBrightYellow((int)(attack * 1.00) + " — " + (int)(attack * 1.20)) + ColorUtil.red(")"));
         System.out.println(ColorUtil.red(" ✨ Effects :"));
         System.out.println(ColorUtil.red("    - 🩸 30% chance to inflict Bleed for 2 turns"));
         System.out.println(ColorUtil.boldBrightRed("└────────────────────────────────────────────────────────────────────────────────────────────┘"));

@@ -2,8 +2,6 @@ package inventory;
 
 import characters.Character;
 import utils.ColorUtil;
-import utils.InputUtil;
-import utils.PrintUtil;
 import utils.RandomUtil;
 
 public class Potions {
@@ -93,13 +91,16 @@ public class Potions {
         ));
     }
 
-    public void lootPotions(boolean willDropFullHealingPotions){
+    public void lootPotions(boolean isMiniBoss){
         int totalDrops;
 
-        if(willDropFullHealingPotions){
-            totalDrops = RandomUtil.range(3,6);
+        if(isMiniBoss){
+            totalDrops = RandomUtil.range(4,8);
         } else{
-            totalDrops = RandomUtil.range(0, 2);
+            if(RandomUtil.chance(70))
+                totalDrops = RandomUtil.range(1, 3);
+            else
+                totalDrops = 0;
         }
 
         int normalHealingPotionsCount = 0;
@@ -122,7 +123,7 @@ public class Potions {
             System.out.println(ColorUtil.brightYellow("   ⚡ " + energyPotionsCount + " Energy Potion" + (energyPotionsCount > 1 ? "s" : "")));
         }
 
-        if(willDropFullHealingPotions){
+        if(isMiniBoss){
             int dropped = RandomUtil.range(1,2);
             fullHealingPotions += dropped;
             System.out.println(ColorUtil.brightYellow("  💞 " + dropped + " Full Healing Potion" + (dropped > 1 ? "s" : "")));

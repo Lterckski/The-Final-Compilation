@@ -407,7 +407,7 @@ public abstract class Character {
 
             PrintUtil.specialCyan(String.format("%-10s : +%d → %d", "💚 Max HP ", (maxHP - oldHp), maxHP));
             PrintUtil.specialCyan(String.format("%-10s : +%d → %d", "⚔️ Max ATK", (baseAttack - oldAtk), attack));
-            PrintUtil.specialCyan(String.format("%-10s   : +%d → %d", "🛡️ DEF  ", (baseDefense - oldDef), defense));
+            PrintUtil.specialCyan(String.format("%-10s  : +%d → %d", "🛡️ DEF  ", (baseDefense - oldDef), defense));
             PrintUtil.specialCyan("25% of 💖 HP & " + getEnergyEmoji() + " " + getEnergyName() + " Restored!");
             PrintUtil.specialCyan("═════════════════════════════════════");
             System.out.println();

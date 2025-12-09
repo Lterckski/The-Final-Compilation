@@ -198,9 +198,9 @@ public class PrintUtil {
         System.out.println();
     }
 
-    public static void sayCyan(String line) {
+    public static void sayGreen(String line) {
         skip = false;
-        String fullLine = ColorUtil.brightCyan(line);
+        String fullLine = ColorUtil.brightGreen(line);
 
         pause(800); // initial pause before speaking
 
