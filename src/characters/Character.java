@@ -378,7 +378,7 @@ public abstract class Character {
 
             switch (classType) {
                 case "Swordsman" -> {
-                    maxHP += 90 + (int)(maxHP * 0.01);
+                    maxHP += 80 + (int)(maxHP * 0.01);
                     baseAttack += 5 + (int)(attack * 0.01);
                     baseDefense += 2;
                 }
