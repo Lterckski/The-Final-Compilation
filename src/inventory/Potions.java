@@ -103,6 +103,7 @@ public class Potions {
                 totalDrops = 0;
         }
 
+
         int normalHealingPotionsCount = 0;
         int energyPotionsCount = 0;
 

@@ -345,7 +345,6 @@ public class StoryEngine {
                         PrintUtil.specialCyan("                  #@@@@@@@@@@@@@@@@@@@@%                  ");
                         PrintUtil.specialCyan("                 :*@@@@@@@@@@@@@@@@@@@@@@*                ");
                         PrintUtil.specialCyan("                    :-==++*******++=-:.                   ");
-                        PrintUtil.specialCyan("                                                          ");
                         System.out.println();
                         PrintUtil.pause(1500);
 
