@@ -24,18 +24,18 @@ public class Karl extends Character{
         // Skill 1 – Piercing Arrow
         System.out.println("  " + ColorUtil.boldBrightYellow("🏹 Skill 1 – Piercing Arrow (➶ 1 Arrow)"));
         System.out.println("  " + ColorUtil.cyan("📜 Description: Fires an arrow that slices through armor and flesh alike."));
-        System.out.println("  " + ColorUtil.cyan("💥 Damage: (") + ColorUtil.boldBrightYellow((int)(attack * 1.10) + " — " + (int)(attack * 1.25)) + ColorUtil.cyan(")"));
+        System.out.println("  " + ColorUtil.cyan("💥 Damage: (") + ColorUtil.boldBrightYellow((int)(attack * 1.00) + " — " + (int)(attack * 1.25)) + ColorUtil.cyan(")"));
         System.out.println("  " + ColorUtil.cyan("⚡ Effects:"));
-        System.out.println("    - " + ColorUtil.cyan("🛡️ Ignores 30% of the target’s Defense"));
+        System.out.println("    - " + ColorUtil.cyan("🛡️ Ignores target’s Defense"));
         System.out.println("    - " + ColorUtil.cyan("🩸 30% chance to inflict Bleed (2 turns)\n"));
 
         // Skill 2 – Bullseye
         System.out.println("  " + ColorUtil.boldBrightYellow("🎯 Skill 2 – Bullseye (➶ 1 Heavy Arrow ═ 3 Arrows)"));
         System.out.println("  " + ColorUtil.cyan("📜 Description: Karl steadies his breath and fires a deadly precise shot."));
-        System.out.println("  " + ColorUtil.cyan("💥 Damage: (") + ColorUtil.boldBrightYellow((int)(attack * 1.25) + " — " + (int)(attack * 1.50)) + ColorUtil.cyan(")"));
+        System.out.println("  " + ColorUtil.cyan("💥 Damage: (") + ColorUtil.boldBrightYellow((int)(attack * 1.10) + " — " + (int)(attack * 1.30)) + ColorUtil.cyan(")"));
         System.out.println("  " + ColorUtil.cyan("⚡ Effects:"));
         System.out.println("    - " + ColorUtil.cyan("🎯 Guaranteed Critical Hit (×1.5 multiplier)"));
-        System.out.println("    - " + ColorUtil.cyan("🛡️ 30% chance to apply Weakness (-30% DEF, 2 turns)\n"));
+        System.out.println("    - " + ColorUtil.cyan("🛡️ 30% chance to apply Weakness (-30% DEF for 2 turns)\n"));
 
         // Ultimate – Rain of a Thousand Arrows
         System.out.println("  " + ColorUtil.boldBrightYellow("🌩️ Ultimate – Rain of a Thousand Arrows (➶ 5 Arrows)"));
@@ -119,7 +119,7 @@ public class Karl extends Character{
 
         if (this.getEffects().checkConfuse()) return;
 
-        int damage = (int) RandomUtil.range(attack * 1.10, attack * 1.25);
+        int damage = (int) RandomUtil.range(attack * 1.00, attack * 1.25);
         int reduced = hunterInstincts(damage, target);
 
         System.out.println(
@@ -201,7 +201,7 @@ public class Karl extends Character{
 
         if (this.getEffects().checkConfuse()) return;
 
-        int damage = (int) RandomUtil.range(attack * 1.25, attack * 1.50);
+        int damage = (int) RandomUtil.range(attack * 1.10, attack * 1.30);
         damage = hunterInstincts(damage, target);
         int reduced = calculateCritDamage(target, damage);
 
@@ -316,6 +316,7 @@ public class Karl extends Character{
                         ultimateCounter--;
                     } else {
                         System.out.println(ColorUtil.boldBrightRed("❌ Not enough Arrows to use Piercing Arrow! Choose again."));
+                        PrintUtil.shortLine();
                     }
                 }
                 case 2 -> {
@@ -325,16 +326,19 @@ public class Karl extends Character{
                         ultimateCounter--;
                     } else {
                         System.out.println(ColorUtil.boldBrightRed("❌ Not enough Arrows to use Bullseye! Choose again."));
+                        PrintUtil.shortLine();
                     }
                 }
                 case 3 -> {
                     if (ultimateCounter > 0) {
                         System.out.println(ColorUtil.boldBrightRed("❌ Ultimate is on cooldown! Can only be used after " + ultimateCounter + " turn/s."));
+                        PrintUtil.shortLine();
                     } else if (energy >= 5) {
                         rainOfAThousandArrows(target);
                         isValid = true;
                     } else {
                         System.out.println(ColorUtil.boldBrightRed("❌ Not enough Arrows to use Rain of A Thousand Arrows! Choose again."));
+                        PrintUtil.shortLine();
                     }
                 }
                 case 4 -> {

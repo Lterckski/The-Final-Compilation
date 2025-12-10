@@ -33,13 +33,13 @@ public class FinalBoss extends Enemy {
 
         // Attack
         int atkDiff = attack - baseAttack;
-        String atkLabel = (atkDiff > 0) ? "Buff" : (atkDiff < 0) ? "Debuff" : "Neutral";
+        String atkLabel = (atkDiff >= 0) ? "Buff" : "Debuff";
         System.out.println(ColorUtil.boldBrightRed("  ⚔️ Attack     : ") + ColorUtil.boldBrightYellow(
                 attack + " (Base " + baseAttack + " | " + atkLabel + " " + String.format("%+d", atkDiff) + ")"));
 
         // Defense
         int defDiff = defense - baseDefense;
-        String defLabel = (defDiff > 0) ? "Buff" : (defDiff < 0) ? "Debuff" : "Neutral";
+        String defLabel = (defDiff >= 0) ? "Buff" : "Debuff";
         System.out.println(ColorUtil.boldBrightRed("  🛡️ Defense    : ") + ColorUtil.boldBrightYellow(
                 defense + " (Base " + baseDefense + " | " + defLabel + " " + String.format("%+d", defDiff) + ")"));
 
@@ -83,9 +83,9 @@ public class FinalBoss extends Enemy {
         // Skill 3
         System.out.println(ColorUtil.boldBrightYellow("  🌌 Skill – Dark Ascension"));
         System.out.println(ColorUtil.red(" 📜 Description : Releases immense dark power upon the target."));
-        System.out.println(ColorUtil.red(" ⚔️ Damage : (") + ColorUtil.boldBrightYellow((int)(attack * 1.2) + " — " + (int)(attack * 1.6)) + ColorUtil.red(")"));
+        System.out.println(ColorUtil.red(" ⚔️ Damage : (") + ColorUtil.boldBrightYellow((int)(attack * 1.0) + " — " + (int)(attack * 1.30)) + ColorUtil.red(")"));
         System.out.println(ColorUtil.red(" ✨ Effects :"));
-        System.out.println(ColorUtil.red("    - 😱 50% chance to apply Fear to target"));
+        System.out.println(ColorUtil.red("    - 😱 30% chance to apply Fear to target"));
 
         System.out.println(ColorUtil.boldBrightRed("└──────────────────────────────────────────────────────────────────────────┘"));
         System.out.println();
@@ -215,7 +215,7 @@ public class FinalBoss extends Enemy {
         if (target.getEffects().checkDodge()) return;
         if (this.getEffects().checkConfuse()) return;
 
-        int damage = (int) RandomUtil.range(attack * 1.2, attack * 1.8);
+        int damage = (int) RandomUtil.range(attack * 1.00, attack * 1.30);
         int reduced = calculateDamage(target, damage);
 
         System.out.println(ColorUtil.brightRed("→💔 Dark Ascension hits for ")
@@ -235,7 +235,7 @@ public class FinalBoss extends Enemy {
             }
         }
 
-        if (RandomUtil.chance(50)) target.getEffects().applyFear();
+        if (RandomUtil.chance(30)) target.getEffects().applyFear();
     }
 
     public void reduceShield(int amount) {

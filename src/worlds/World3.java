@@ -47,9 +47,9 @@ public class World3 {
         PrintUtil.story(
                 "You have been travelling for days. You have reached a land where not a even a glimmer of life can be seen.\n" +
                         "The land has turned barren. Ash falls like snow. Rivers of molten fire carve through the black rock.\n" +
-                        "At the center, rising higher than mountains, stands a tower larger than anything you have ever seen. " +
-                        "\nThe Necromancer’s Tower."
+                        "At the center, rising higher than mountains, stands a tower larger than anything you have ever seen.\n"
         );
+        PrintUtil.effect("The Necromancer’s Tower.");
         System.out.println();
         System.out.println("══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════");
         InputUtil.pressEnterToContinue();
@@ -265,9 +265,9 @@ public class World3 {
             battle3.startBattle();
 
             System.out.println();
-            System.out.println(ColorUtil.boldBrightGreen("────────────────────────────────────────"));
+            System.out.println(ColorUtil.boldBrightGreen("─────────────────────────────────────────"));
             PrintUtil.enemyDefeated("✅ You have defeated Obsidian Crusher " + i + "!");
-            System.out.println(ColorUtil.boldBrightGreen("────────────────────────────────────────"));
+            System.out.println(ColorUtil.boldBrightGreen("─────────────────────────────────────────"));
             enemy3.dropLoot(player);
 
             if (i < 2) {
@@ -535,29 +535,29 @@ public class World3 {
 
         // --- Boss: the revelation ---
         System.out.println();
+        System.out.println();
         System.out.println(ColorUtil.brightMagenta(
                 "                 :*-                 \n" +
-                "                :%#+=                \n" +
-                "               :%@#+=-               \n" +
-                "              .%@@#+==+.             \n" +
-                "             :%%@@@%+==#.            \n" +
-                "            -@%%@@@@@#==%:           \n" +
-                "           =%%%@@@@@@@%=*@-          \n" +
-                "          +%%@@@@@@%###%%%%+         \n" +
-                "         *%#%%%%@@%%####%@#%+        \n" +
-                "        *%#@@@#%@@@@@@%%%@#*#+       \n" +
-                "      .*@@@@@@@@%%%@@@@@@@%**#+      \n" +
-                "     :*@@@@@@%@%#####%@@@@@%***=     \n" +
-                "    :#@@@%%%@@%%%%%%%%%@@@@@%***=    \n" +
-                "   :#@%%%%%@@@@@@@%%%%%%%@@@@@@#*=   \n" +
-                "   ++++***************************=  \n" +
-                "                                     \n" +
-                "                                     \n" +
+                "                                  :%#+=                \n" +
+                "                                 :%@#+=-               \n" +
+                "                                .%@@#+==+.             \n" +
+                "                               :%%@@@%+==#.            \n" +
+                "                              -@%%@@@@@#==%:           \n" +
+                "                             =%%%@@@@@@@%=*@-          \n" +
+                "                            +%%@@@@@@%###%%%%+         \n" +
+                "                           *%#%%%%@@%%####%@#%+        \n" +
+                "                          *%#@@@#%@@@@@@%%%@#*#+       \n" +
+                "                        .*@@@@@@@@%%%@@@@@@@%**#+      \n" +
+                "                       :*@@@@@@%@%#####%@@@@@%***=     \n" +
+                "                      :#@@@%%%@@%%%%%%%%%@@@@@%***=    \n" +
+                "                     :#@%%%%%@@@@@@@%%%%%%%@@@@@@#*=   \n" +
+                "                     ++++***************************=  \n" +
+                "                                                       \n" +
                 "                                     "));
         PrintUtil.loot("At the summit, you see the Third Stone pulsing with violet light on an altar.");
         PrintUtil.pause(600);
         PrintUtil.loot("You reach out. The Stones unite—humming and pulling themselves closer together like a single heartbeat.");
-        PrintUtil.pause(600);
+        InputUtil.pressEnterToContinue();
         System.out.println();
 
         PrintUtil.effect("Then Khai the Gray steps forward, staff blazing.\n");

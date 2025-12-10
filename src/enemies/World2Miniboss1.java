@@ -9,7 +9,7 @@ import inventory.*;
 
 public class World2Miniboss1 extends Enemy{
     public World2Miniboss1(){
-        super("The Black Jailer", 950, 24, 253);
+        super("The Black Jailer", 1000, 24, 200);
     }
 
     public void shacklingChains(Character target){
@@ -235,22 +235,31 @@ public class World2Miniboss1 extends Enemy{
         PrintUtil.pause(800);
         System.out.println("[2] " + vanguardRobe.getName() + " → +25 DEF 🛡️, immune to Poison ☠️, Burn 🔥, Bleed 🩸");
         PrintUtil.pause(800);
-        System.out.print("\nChoose one to equip (1 or 2): ");
+        System.out.println();
 
-        int choice = InputUtil.scanInput();
+        int choice;
+        boolean validChoice = false;
 
-        if (choice == 1) {
-            aegisMail.equip(player);
-            System.out.println("The other armor fades away...");
-            PrintUtil.pause(800);
-        } else if (choice == 2) {
-            vanguardRobe.equip(player);
-            System.out.println("The other armor fades away...");
-            PrintUtil.pause(800);
-        } else {
-            System.out.println("❌ Invalid choice! Both armors vanish into the mist...");
-            PrintUtil.pause(800);
+        while (!validChoice) {
+            System.out.print("Choose an armor to equip (1 = Aegis Mail, 2 = Vanguard Robe): ");
+            choice = InputUtil.scanInput();
+
+            if (choice == 1) {
+                validChoice = true;
+                aegisMail.equip(player);
+                System.out.println(ColorUtil.brightRed("The other armor fades away..."));
+                PrintUtil.pause(800);
+            } else if (choice == 2) {
+                validChoice = true;
+                vanguardRobe.equip(player);
+                System.out.println(ColorUtil.brightRed("The other armor fades away..."));
+                PrintUtil.pause(800);
+            } else {
+                System.out.println(ColorUtil.boldBrightRed("❌ Invalid choice! Please choose 1 or 2."));
+                PrintUtil.pause(800);
+            }
         }
+
     }
 
     @Override

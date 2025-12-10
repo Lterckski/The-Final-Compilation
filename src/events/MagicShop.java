@@ -388,12 +388,12 @@ public class MagicShop {
             boughtVenomInfusion = true;
 
             var weapon = player.getWeapon();
-            int oldPoison = weapon.getPoisonChance(); // Weapon class must have this
+            int oldPoison = weapon.getPoisonChance();
             weapon.setPoisonChance(oldPoison + 20);
 
             player.getWeapon().addEnchantment(
                     "☠️ Venom Infusion",
-                    "(20% chance to Poison target)"
+                    "(+20% chance to Poison target)"
             );
 
             PrintUtil.reward("☠️ --" + weapon.getName() + "-- is now laced with " + name + "! Poison chance: "
@@ -426,10 +426,10 @@ public class MagicShop {
 
             player.getWeapon().addEnchantment(
                     "🩸 Razor Edge",
-                    "(20% chance to cause bleed damage)"
+                    "(+20% chance to cause bleed damage)"
             );
 
-            System.out.println("🩸 --" + weapon.getName() + "-- is now sharpened with " + name + "! Bleed chance: "
+            PrintUtil.reward("🩸 --" + weapon.getName() + "-- is now sharpened with " + name + "! Bleed chance: "
                     + weapon.getBleedChance() + "% (💠- " + cost + " Soul Shards)");
 
             InputUtil.pressEnterToContinue();

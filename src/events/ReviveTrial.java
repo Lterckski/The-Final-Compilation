@@ -3,6 +3,7 @@ package events;
 import characters.Character;
 import utils.InputUtil;
 import utils.PrintUtil;
+import utils.ColorUtil;
 
 public class ReviveTrial {
 
@@ -12,7 +13,7 @@ public class ReviveTrial {
         PrintUtil.print("""
                 Your vision fades... the last strike echoes in your ears.
                 As darkness closes in, a distorted whisper pierces the void:
-                
+
                 "Programmer... your story does not end unless your logic fails.
                  Answer me, and reclaim your life."
                 """);
@@ -30,14 +31,12 @@ public class ReviveTrial {
         System.out.println("[3] 12");
         System.out.println("[4] 13");
         PrintUtil.line();
-        System.out.print("Your answer (1-4): ");
 
-        long start = System.currentTimeMillis();
-        int answer = InputUtil.scanInput();
-        long elapsed = System.currentTimeMillis() - start;
+        // Use timed input
+        Integer answer = InputUtil.readWithTimeout(10); // 10-second limit
 
-        boolean correct = (answer == 3);      // 5 + 7 = 12
-        boolean withinTime = elapsed <= 10_000;
+        boolean correct = (answer != null && answer == 3); // 5 + 7 = 12
+        boolean withinTime = (answer != null);             // null means timeout
 
         PrintUtil.line();
 

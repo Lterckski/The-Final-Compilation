@@ -208,7 +208,7 @@ public class Effects {
 
     public boolean checkConfuse() {
         if (confused) {
-            if (Math.random() < 0.50) {
+            if (Math.random() < 0.40) {
                 PrintUtil.pause(1700);
                 System.out.println(ColorUtil.boldBrightMagenta(owner.getName() + " missed the attack due to confusion!"));
                 PrintUtil.pause(800);
@@ -222,7 +222,7 @@ public class Effects {
 
     public boolean checkDodge() {
         if (nimble) {
-            if (Math.random() < 0.50) {
+            if (Math.random() < 0.40) {
                 System.out.println(ColorUtil.boldBrightMagenta(owner.getName() + " dodged the attack due to Nimble!"));
                 PrintUtil.pause(800);
                 nimble = false;
@@ -253,7 +253,7 @@ public class Effects {
         // ----- BLEED (scales with Missing HP) -----
         if (bleedTurnsLeft > 0) {
             int missingHP = owner.getMaxHP() - owner.getHp();
-            int bleedDamage = Math.max(1, (int)(missingHP * 0.1)); // 10% of missing HP
+            int bleedDamage = Math.max(1, (int)(missingHP * 0.05)); // 5% of missing HP
             bleedDamage = Math.min(bleedDamage, 45);
 
             System.out.println(
@@ -356,6 +356,8 @@ public class Effects {
         atkDebuffs.clear();
         defBuffs.clear();
         defDebuffs.clear();
+
+        owner.recalculateBuffs(); // reset to original stat(remove buffs/debuffs)
 
         // Reset temporary statuses
         frozen = false;

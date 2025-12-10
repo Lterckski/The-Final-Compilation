@@ -379,6 +379,8 @@ public class World3Final {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+
+        PrintUtil.pause(1500);
         System.out.println();
         PrintUtil.objective(("🎯 Objective: Defeat Khai, The Necromancer! ✅"));
         System.out.println();
@@ -387,6 +389,7 @@ public class World3Final {
                 The tower falls silent. The Stones hover gently before dissipating.
                 You have triumphed over the ultimate darkness.
                 """);
+        InputUtil.pressEnterToContinue();
 
         try {
             Thread.sleep(1500);

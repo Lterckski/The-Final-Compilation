@@ -8,7 +8,7 @@ import inventory.*;
 
 public class World2Enemy4 extends Enemy{
     public World2Enemy4(){
-        super("Ghoul Footmen", 700, 18, 164);
+        super("Ghoul Footmen", 700, 18, 144);
     }
 
     public void rottenCleave(Character target){

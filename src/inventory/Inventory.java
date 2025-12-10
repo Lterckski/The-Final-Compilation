@@ -184,6 +184,7 @@ public class Inventory {
             System.out.println("You have " + available + " potion(s).");
             System.out.print("How many do you want to use? ");
             amount = InputUtil.scanInput();
+            if (amount == 0) return;
             if (amount > 0 && amount <= available) break;
             System.out.println(ColorUtil.boldBrightRed("❌ Invalid amount! Please enter between 1 and " + available));
         }

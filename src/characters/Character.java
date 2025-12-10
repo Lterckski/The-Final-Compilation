@@ -206,7 +206,6 @@ public abstract class Character {
     }
 
 
-
     public abstract void displaySkills();
     public abstract void turn (Character target);
 

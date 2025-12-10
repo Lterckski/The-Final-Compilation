@@ -75,7 +75,7 @@ public class Potions {
         int oldEnergy = owner.getEnergy();
         int restore = switch (owner.getClassType()) {
             case "Swordsman" -> 30;
-            case "Archer"    -> 8;
+            case "Archer"    -> 6;
             case "Mage"      -> 40;
             default -> 0;
         };

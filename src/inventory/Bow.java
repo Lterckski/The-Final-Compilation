@@ -1,27 +1,25 @@
 package inventory;
 
 import characters.Character;
-import enemies.Enemy;
 import utils.ColorUtil;
-import utils.InputUtil;
 import utils.PrintUtil;
 import utils.RandomUtil;
 
 import java.util.Map;
 
 public class Bow extends Weapon{
-    private final int attackTwiceChance;
+    private final int extraHitChance;
 
     public static final Bow WOODEN_BOW = new Bow("Wooden Bow","⚪", 5 , 0, 0);
     public static final Bow OAK_LONGBOW = new Bow("Oak Longbow","🟢", 10 , 0, 0);
-    public static final Bow TWINSHOT_BOW = new Bow("Twinshot Bow","🔵", 20, 10,0);
-    public static final Bow LIFEBLOOM_BOW = new Bow("Lifebloom Bow", "🔵", 20, 0, 3);
-    public static final Bow AETHERSTRIKE_BOW = new Bow("Aetherstrike Bow", "🟣", 35, 25, 5);
-    public static final Bow GOLDEN_TALON = new Bow("Golden Talon", "🟡", 50, 35, 10);
+    public static final Bow TWINSHOT_BOW = new Bow("Twinshot Bow","🔵", 20, 20,0);
+    public static final Bow LIFEBLOOM_BOW = new Bow("Lifebloom Bow", "🔵", 20, 0, 8);
+    public static final Bow AETHERSTRIKE_BOW = new Bow("Aetherstrike Bow", "🟣", 35, 25, 12);
+    public static final Bow GOLDEN_TALON = new Bow("Golden Talon", "🟡", 50, 30, 15);
 
-    public Bow(String name, String rarity, int atkBuff, int twiceAttackChance, int lifestealPercent){
+    public Bow(String name, String rarity, int atkBuff, int extraHitChance, int lifestealPercent){
         super(name,rarity,atkBuff);
-        this.attackTwiceChance = twiceAttackChance;
+        this.extraHitChance = extraHitChance;
         this.setLifestealPercent(lifestealPercent);
     }
 
@@ -36,8 +34,8 @@ public class Bow extends Weapon{
             System.out.println(ColorUtil.boldBrightYellow(" 💝 Restores " + getLifestealPercent() + "% HP of damage dealt"));
         }
 
-        if (attackTwiceChance > 0) {
-            System.out.println(ColorUtil.boldBrightYellow(" 🎯 " + attackTwiceChance + "% chance to deal extra damage"));
+        if (extraHitChance > 0) {
+            System.out.println(ColorUtil.boldBrightYellow(" 🎯 " + extraHitChance + "% chance to deal extra damage"));
         }
 
         if (!getEnchantments().isEmpty()) {
@@ -66,17 +64,17 @@ public class Bow extends Weapon{
         }
 
         // ☠️ Poison
-        if (RandomUtil.chance(getFreezeChance())) {
+        if (RandomUtil.chance(getPoisonChance())) {
             enemy.getEffects().applyPoison(2);
         }
 
         // 🩸 Bleed
-        if (RandomUtil.chance(getFreezeChance())) {
+        if (RandomUtil.chance(getBleedChance())) {
             enemy.getEffects().applyBleed(2);
         }
 
         // ⚡ Extra hit (Double attack)
-        if (RandomUtil.chance(attackTwiceChance)) {
+        if (RandomUtil.chance(extraHitChance)) {
             System.out.println(ColorUtil.brightMagenta("⚡ Weapon effect activated! Extra hit triggered!"));
             PrintUtil.pause(800);
             int extraDamage = (int) RandomUtil.range(damage * 0.20, damage * 0.40);

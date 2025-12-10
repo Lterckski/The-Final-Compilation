@@ -11,7 +11,7 @@ public class Null extends Character {
                 99999,
                 1,
                 9999,
-                999
+                9999
         );
     }
 
@@ -20,15 +20,15 @@ public class Null extends Character {
         System.out.println();
         System.out.println(ColorUtil.boldBrightCyan("┌────────────────────────────── ⚡ NULL'S SKILLS ⚡ ──────────────────────────────┐"));
         // Skill 1
-        System.out.println("  " + ColorUtil.boldBrightYellow("💥 Skill 1 – Direct Hit (⚡ 5 Energy)"));
+        System.out.println("  " + ColorUtil.boldBrightYellow("💥 Skill 1 – Direct Hit (💧 1 Mana)"));
         System.out.println("  " + ColorUtil.cyan("💥 Damage: ") + ColorUtil.boldBrightYellow(String.valueOf(attack)) + ColorUtil.cyan("\n"));
 
         // Skill 2
-        System.out.println("  " + ColorUtil.boldBrightYellow("🔥 Skill 2 – Obliterate (⚡ 10 Energy)"));
+        System.out.println("  " + ColorUtil.boldBrightYellow("🔥 Skill 2 – Obliterate (💧 1 Mana)"));
         System.out.println("  " + ColorUtil.cyan("💥 Damage: ") + ColorUtil.boldBrightYellow(String.valueOf(attack * 2)) + ColorUtil.cyan("\n"));
 
         // Ultimate
-        System.out.println("  " + ColorUtil.boldBrightYellow("🌌 Ultimate – World End (⚡ 20 Energy)"));
+        System.out.println("  " + ColorUtil.boldBrightYellow("🌌 Ultimate – World End (💧 1 Mana)"));
         System.out.println("  " + ColorUtil.cyan("💥 Damage: ") + ColorUtil.boldBrightYellow(String.valueOf(attack * 3)) + ColorUtil.cyan(""));
 
         System.out.println(ColorUtil.boldBrightCyan("└─────────────────────────────────────────────────────────────────────────────┘"));
@@ -41,9 +41,9 @@ public class Null extends Character {
         boolean isValid = false;
 
         while (!isValid) {
-            System.out.println(ColorUtil.boldBrightGreen("[1]") + " " + ColorUtil.green("💥 Skill 1   -  Direct Hit (⚡ 5 Energy)"));
-            System.out.println(ColorUtil.boldBrightGreen("[2]") + " " + ColorUtil.green("🔥 Skill 2   -  Obliterate (⚡ 10 Energy)"));
-            System.out.println(ColorUtil.boldBrightGreen("[3]") + " " + ColorUtil.green("🌌 Ultimate  -  World End (⚡ 20 Energy) "));
+            System.out.println(ColorUtil.boldBrightGreen("[1]") + " " + ColorUtil.green("💥 Skill 1   -  Direct Hit (💧 1 Mana)"));
+            System.out.println(ColorUtil.boldBrightGreen("[2]") + " " + ColorUtil.green("🔥 Skill 2   -  Obliterate (💧 1 Mana)"));
+            System.out.println(ColorUtil.boldBrightGreen("[3]") + " " + ColorUtil.green("🌌 Ultimate  -  World End (💧 1 Mana) "));
             System.out.println(ColorUtil.boldBrightGreen("[4]") + " " + ColorUtil.green("🛡️ Skip Turn -  Restore 10% Max HP & 20 Energy"));
             System.out.println(ColorUtil.boldBrightGreen("[5]") + " " + ColorUtil.green("📜 Show Menu"));
             System.out.print(ColorUtil.boldBrightWhite("Choose your action: "));

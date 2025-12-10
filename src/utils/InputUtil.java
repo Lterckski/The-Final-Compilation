@@ -1,6 +1,10 @@
 package utils;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 import java.util.Scanner;
+
+import static utils.PrintUtil.pause;
 
 public class InputUtil {
     // Single Scanner instance for the entire project
@@ -25,7 +29,34 @@ public class InputUtil {
                 return 99;
             }
         } catch (NumberFormatException e) {
-            return 9;
+            return 99;
         }
     }
+
+    // ---------------- TIMED INPUT ----------------
+    public static Integer readWithTimeout(int seconds) {
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        long endTime = System.currentTimeMillis() + seconds * 1000L;
+
+        System.out.print(ColorUtil.cyan("Enter choice: "));
+
+        try {
+            while (System.currentTimeMillis() < endTime) {
+                if (reader.ready()) {  // input is available
+                    String line = reader.readLine().trim();
+                    try {
+                        return Integer.parseInt(line);
+                    } catch (NumberFormatException e) {
+                        System.out.print(ColorUtil.red("❌ Invalid input. Enter a number: "));
+                    }
+                }
+                pause(50); // small delay to avoid CPU hog
+            }
+
+            return null;
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
 }

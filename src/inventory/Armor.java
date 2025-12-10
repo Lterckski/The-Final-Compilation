@@ -6,8 +6,6 @@ import utils.InputUtil;
 import utils.PrintUtil;
 import utils.RandomUtil;
 
-import java.awt.*;
-
 public class Armor {
     private final String name;
     private final String rarity;
@@ -43,7 +41,7 @@ public class Armor {
     public int getDefBuff(){ return defBuff; }
     public void setDefBuff(int defBuff) { this.defBuff = defBuff; }
 
-    public boolean isHasEnchantment() {
+    public boolean hasEnchantment() {
         return hasEnchantment;
     }
 
@@ -58,6 +56,8 @@ public class Armor {
     public void setAddDefBuff(int addDefBuff) {
         this.addDefBuff = addDefBuff;
     }
+
+    private String getRarity(){ return rarity; }
 
     public boolean lootArmor() {
         System.out.println(ColorUtil.boldBrightYellow("\n🎁 Enemy has dropped an armor!"));
@@ -106,24 +106,77 @@ public class Armor {
 
         PrintUtil.line();
 
-        if (currentlyEquipped == null) {
-            player.setDefense(player.getDefense() + defBuff);
-            isEquipped = true;
-            player.getInventory().setEquippedArmor(this);
-            System.out.println(ColorUtil.boldBrightYellow("⚙\uFE0F " + name + " Equipped! ⬆\uFE0F Defense increased by " + defBuff + ". 🛡️ Current DEF: " + player.getDefense()));
-        } else {
-            currentlyEquipped.unequip(player);
+        // Epic armor transfer logic
+        if(currentlyEquipped != null && this.getRarity().equals("🟣")) {
+            if(currentlyEquipped.hasEnchantment()) {
+                System.out.println("Do you want to transfer enchantments from your current armor? (Cost: 💠 20 Soul Shards)");
 
-            player.setDefense(player.getDefense() + defBuff);
-            isEquipped = true;
-            player.getInventory().setEquippedArmor(this);
+                boolean validChoice = false;
+                while (!validChoice) {
+                    System.out.print("1 = Yes, 0 = No: ");
+                    int choice = InputUtil.scanInput();
 
-            System.out.println(ColorUtil.boldBrightCyan("You upgraded your armor!"));
-            System.out.println(ColorUtil.boldBrightYellow("⚙\uFE0F " + name + " Equipped! ⬆\uFE0F Defense increased by " + (this.defBuff - currentlyEquipped.defBuff) + ". 🛡️ Current DEF: " + player.getDefense()));
+                    if(choice == 1) {
+                        validChoice = true;
+                        if(player.getSoulShards() >= 20) {
+                            player.subtractSoulShards(20);
+                            this.transferEnchantmentsFrom(currentlyEquipped);
+                            System.out.println(ColorUtil.boldBrightYellow("✅ Enchantments transferred to " + this.getName() + "! (💠 -20 Soul Shards)"));
+                        } else {
+                            System.out.println(ColorUtil.boldBrightRed("❌ Not enough Soul Shards!"));
+                        }
+                    } else if(choice == 0) {
+                        validChoice = true;
+                        System.out.println(ColorUtil.boldBrightRed("❌ You chose not to transfer enchantments."));
+                    } else {
+                        System.out.println(ColorUtil.boldBrightRed("❌ Invalid input! Try again."));
+                    }
+                }
+            }
         }
+
+        // Equip normally
+        if(currentlyEquipped != null) {
+            currentlyEquipped.unequip(player);
+        }
+
+        // Equip new armor
+        isEquipped = true;
+        player.getInventory().setEquippedArmor(this);
+
+        // Recalculate all buffs
+        player.recalculateBuffs();
+
+        // Calculate actual DEF increase for message
+        int defIncrease = (currentlyEquipped != null) ?
+                (player.getArmor().getDefBuff() + player.getArmor().getAddDefBuff()
+                        - (currentlyEquipped.getDefBuff() + currentlyEquipped.getAddDefBuff()))
+                : (player.getArmor().getDefBuff() + player.getArmor().getAddDefBuff());
+
+        System.out.println(ColorUtil.boldBrightYellow(
+                "⚙\uFE0F " + this.getName() + " Equipped! ⬆\uFE0F Defense increased by " + defIncrease +
+                        ". 🛡️ Current DEF: " + player.getDefense()
+        ));
+
         PrintUtil.line();
         PrintUtil.pause(800);
     }
+
+    public void transferEnchantmentsFrom(Armor oldArmor) {
+        if(oldArmor == null) return;
+
+        // Transfer enchantment flag
+        if(oldArmor.hasEnchantment()) {
+            this.setHasEnchantment(true);
+        }
+
+        // Transfer additional DEF buff
+        this.setAddDefBuff(this.getAddDefBuff() + oldArmor.getAddDefBuff());
+
+        System.out.println(ColorUtil.boldBrightYellow("✨ Transferred " + (oldArmor.hasEnchantment() ? "enchantments" : "no enchantments") +
+                " and +" + oldArmor.getAddDefBuff() + " DEF from " + oldArmor.getName() + " to " + this.getName() + "!"));
+    }
+
 
     public void unequip(Character player) {
         player.setDefense(player.getDefense() - defBuff);

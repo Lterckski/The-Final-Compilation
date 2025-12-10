@@ -6,13 +6,18 @@ import utils.ColorUtil;
 import utils.InputUtil;
 import utils.PrintUtil;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.sql.SQLOutput;
 import java.util.Scanner;
 import java.util.concurrent.*;
+
+import static utils.PrintUtil.pause;
 
 
 public class PrefiEncounter {
 
-    private static final int TIME_LIMIT = 30; // seconds
+    private static final int TIME_LIMIT = 15; // seconds
     private static final Scanner SCANNER = new Scanner(System.in);
 
     // Executor for timed input
@@ -181,8 +186,6 @@ public class PrefiEncounter {
                                     "                            .                               " + "                                                                                          \n"
                     ));
                 }
-
-
             }
 
 
@@ -224,7 +227,6 @@ public class PrefiEncounter {
             }
 
             boolean choseWeapon = (choice == 1);
-
             boolean confirming = true;
 
             while (confirming) {
@@ -239,11 +241,11 @@ public class PrefiEncounter {
                 System.out.println("  [3] 🔙 " + ColorUtil.yellow("Back"));
                 PrintUtil.line();
 
+                System.out.println(ColorUtil.brightRed("(❌ Enchantments cannot be transferred)"));
                 System.out.print(ColorUtil.cyan("Enter choice: "));
                 int confirmChoice = InputUtil.scanInput();
 
                 switch (confirmChoice) {
-
                     case 1 -> {
                         PrintUtil.line();
                         if (choseWeapon) legendaryWeapon.displayInfo();
@@ -258,7 +260,7 @@ public class PrefiEncounter {
                             PrintUtil.print(ColorUtil.boldBrightGreen("""
                             ⚔️ You grasp the Legendary Weapon...
                             It hums with ancient cosmic power."""));
-                            PrintUtil.pause(700);
+                            pause(700);
                             PrintUtil.print(ColorUtil.boldBrightMagenta("""
                              🛡️ The Legendary Armor glows faintly...
                              its form crumbling into violet ashes."""));
@@ -267,7 +269,7 @@ public class PrefiEncounter {
                             PrintUtil.print(ColorUtil.boldBrightGreen("""
                             🛡️ You claim the Legendary Armor.
                             A warm celestial aura surrounds you..."""));
-                            PrintUtil.pause(700);
+                            pause(700);
                             PrintUtil.print(ColorUtil.boldBrightRed("""
                             ⚔️ The Legendary Weapon emits a final chime—
                             then shatters into golden dust."""));
@@ -289,7 +291,7 @@ public class PrefiEncounter {
     private boolean askQuestions() {
         System.out.println();
         System.out.println(ColorUtil.boldBrightYellow("╔══════════════════════════════════════════════════════════════════════╗"));
-        System.out.println(ColorUtil.boldBrightYellow("   🧠 OOP TRIAL – You must answer EACH question within 30 seconds!"));
+        System.out.println(ColorUtil.boldBrightYellow("   🧠 OOP TRIAL – You must answer EACH question within 15 seconds!"));
         System.out.println(ColorUtil.boldBrightYellow("╚══════════════════════════════════════════════════════════════════════╝"));
         InputUtil.pressEnterToContinue();
 
@@ -342,62 +344,37 @@ public class PrefiEncounter {
         System.out.println(question);
         PrintUtil.line();
 
-        System.out.println(ColorUtil.yellow("⏱ You have 30 seconds to answer!"));
+        System.out.println(ColorUtil.yellow("⏱ You have 15 seconds to answer!"));
 
-        Integer answer = readWithTimeout(TIME_LIMIT);
+        // Use the new timed method
+        Integer answer = InputUtil.readWithTimeout(TIME_LIMIT);
 
-        if (answer == null) {
+        if (answer == null) { // timeout
+            System.out.println();
             PrintUtil.line();
-            PrintUtil.print(ColorUtil.red("""
-                ⏱ TIME'S UP!
+            System.out.println();
+            PrintUtil.print(ColorUtil.boldBrightRed("""
+⏱ TIME'S UP!
 
-                The old master glares at you:
-                "You must think faster to survive what comes next…"
-            """));
+The old master glares at you:
+"You must think faster to survive what comes next…"
+        """));
             return false;
         }
 
-        if (answer != correctAnswer) {
+        if (answer != correctAnswer) { // wrong
             PrintUtil.line();
             PrintUtil.print(ColorUtil.red("""
-                ❌ WRONG ANSWER.
+            ❌ WRONG ANSWER.
 
-                The figure sighs:
-                "Your fundamentals are weak. You are not worthy of the treasures of legend."
-            """));
+            The figure sighs:
+            "Your fundamentals are weak. You are not worthy of the treasures of legend."
+        """));
             return false;
         }
 
         PrintUtil.print(ColorUtil.green("✅ CORRECT!"));
         return true;
-    }
-
-    // ---------------- REAL TIMEOUT IMPLEMENTATION ----------------
-    private Integer readWithTimeout(int seconds) {
-
-        System.out.print(ColorUtil.cyan("Enter choice: "));
-
-        Callable<Integer> task = () -> {
-            while (true) {
-                String line = SCANNER.nextLine().trim();
-                try {
-                    return Integer.parseInt(line);
-                } catch (NumberFormatException e) {
-                    System.out.print(ColorUtil.red("❌ Invalid input. Enter a number: "));
-                }
-            }
-        };
-
-        Future<Integer> future = INPUT_EXECUTOR.submit(task);
-
-        try {
-            return future.get(seconds, TimeUnit.SECONDS);
-        } catch (TimeoutException e) {
-            future.cancel(true);
-            return null;
-        } catch (Exception e) {
-            return null;
-        }
     }
 
 

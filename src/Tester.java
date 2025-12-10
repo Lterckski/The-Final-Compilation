@@ -6,9 +6,11 @@ import events.MagicShop;
 import events.PrefiEncounter;
 import inventory.*;
 
+import utils.ColorUtil;
 import utils.InputUtil;
 import utils.PrintUtil;
 import worlds.World1;
+import worlds.World3Final;
 
 public class Tester {
     public static void main(String[] args) {
@@ -146,6 +148,116 @@ public class Tester {
         } while (player == null);  // repeat until valid choice
         player.getInventory().setEquippedArmor(Armor.LEATHER_GUARD);
 
+        // --- Pre Final Encounter ---
+        System.out.println();
+        PrintUtil.effect("""
+                As you advance deeper into the ruins, a cloaked figure materializes before you.
+                
+                "Before you face the Final Boss… prove your mastery of the pillars of OOP.
+                Each question must be answered within time… and without error."
+                
+                Answer every question correctly to earn ONE legendary artifact.
+                One mistake — and your trial ends immediately.
+                """);
+
+        PrintUtil.event("                                                                                                                    \n" +
+                "                                                                                                                    \n" +
+                "█████▄ █████▄  ██████         ██████ ██ ███  ██ ▄████▄ ██       █████▄ ▄████▄ ▄█████ ▄█████                         \n" +
+                "██▄▄█▀ ██▄▄██▄ ██▄▄     ▄▄▄   ██▄▄   ██ ██ ▀▄██ ██▄▄██ ██       ██▄▄██ ██  ██ ▀▀▀▄▄▄ ▀▀▀▄▄▄                         \n" +
+                "██     ██   ██ ██▄▄▄▄         ██     ██ ██   ██ ██  ██ ██████   ██▄▄█▀ ▀████▀ █████▀ █████▀                         \n" +
+                "                                                                                                                    \n" +
+                "                                                                                                                    \n" +
+                "                                                                                                                    \n" +
+                "█████▄  ▄████▄ ███  ██ ████▄  ▄████▄ ██▄  ▄██   ██████ ███  ██ ▄█████ ▄████▄ ██  ██ ███  ██ ██████ ██████ █████▄    \n" +
+                "██▄▄██▄ ██▄▄██ ██ ▀▄██ ██  ██ ██  ██ ██ ▀▀ ██   ██▄▄   ██ ▀▄██ ██     ██  ██ ██  ██ ██ ▀▄██   ██   ██▄▄   ██▄▄██▄ ▀ \n" +
+                "██   ██ ██  ██ ██   ██ ████▀  ▀████▀ ██    ██   ██▄▄▄▄ ██   ██ ▀█████ ▀████▀ ▀████▀ ██   ██   ██   ██▄▄▄▄ ██   ██ ▄ \n" +
+                "                                                                                                                    ");
+
+        PrintUtil.pause(1500);
+
+        PrintUtil.event("                                                                                                                           \n" +
+                "                                                                                                                           \n" +
+                "▄█████ ██ █████▄    ██  ██ ▄████▄ ███  ██       ██████ ██  ██ ██████   ▄█████▄ ██  ██ ██████ █████▄  ██████ ███  ██ ██████ \n" +
+                "▀▀▀▄▄▄ ██ ██▄▄██▄   ██▄▄██ ██  ██ ██ ▀▄██         ██   ██████ ██▄▄     ██ ▄ ██ ██  ██ ██▄▄   ██▄▄██▄ ██▄▄   ██ ▀▄██   ██   \n" +
+                "█████▀ ██ ██   ██    ▀██▀  ▀████▀ ██   ██  ▄      ██   ██  ██ ██▄▄▄▄   ▀█████▀ ▀████▀ ██▄▄▄▄ ██   ██ ██▄▄▄▄ ██   ██   ██   \n" +
+                "                                          ▀                                 ▀▀                                             ");
+
+        PrintUtil.pause(1500);
+        PrintUtil.objective("                                                          \n" +
+                "                                                          \n" +
+                "                        -*%@@@@@%=                        \n" +
+                "                       +@@@%-=%@@@*.                      \n" +
+                "                      :@@@@.   %@@@:                      \n" +
+                "                              +@@@#.                      \n" +
+                "                            +%@@@#.                       \n" +
+                "                           %@@@#.                         \n" +
+                "                          -@@@#                           \n" +
+                "                                                          \n" +
+                "                          -@@@%                           \n" +
+                "                          :*##+                           \n" +
+                "                                                          \n" +
+                "                            @@                            \n" +
+                "                           @@@@                           \n" +
+                "                        .*%@@@@#-                         \n" +
+                "                        *@@%%@%%#:                        \n" +
+                "                       :#@@@@@@@%=                        \n" +
+                "                       -@@@@@@@@@*.                       \n" +
+                "                       +@@@@@@@@@%-                       \n" +
+                "                      .#@@@@@@@@@@+                       \n" +
+                "                      :@@@@@@@@@@@#.                      \n" +
+                "                      =@@@@@@@@@@@@:                      \n" +
+                "                      +@@@@@@@@@@@@=                      \n" +
+                "                      *@@@@@@@@@@@@+                      \n" +
+                "                      %@@@@@@@@@@@@#                      \n" +
+                "                     .@@@@@@@@@@@@@%.                     \n" +
+                "                     -@@@@@@@@@@@@@@:                     \n" +
+                "                     +@@@@@@@@@@@@@@+                     \n" +
+                "                   -*##%%%%%%######**+:                   \n" +
+                "                                                          ");
+
+        PrefiEncounter prefiEncounter = new PrefiEncounter();
+        prefiEncounter.start(player);
+
+        // --- Boss: the revelation ---
+        System.out.println();
+        System.out.println(ColorUtil.brightMagenta(
+                "                 :*-                 \n" +
+                        "                :%#+=                \n" +
+                        "               :%@#+=-               \n" +
+                        "              .%@@#+==+.             \n" +
+                        "             :%%@@@%+==#.            \n" +
+                        "            -@%%@@@@@#==%:           \n" +
+                        "           =%%%@@@@@@@%=*@-          \n" +
+                        "          +%%@@@@@@%###%%%%+         \n" +
+                        "         *%#%%%%@@%%####%@#%+        \n" +
+                        "        *%#@@@#%@@@@@@%%%@#*#+       \n" +
+                        "      .*@@@@@@@@%%%@@@@@@@%**#+      \n" +
+                        "     :*@@@@@@%@%#####%@@@@@%***=     \n" +
+                        "    :#@@@%%%@@%%%%%%%%%@@@@@%***=    \n" +
+                        "   :#@%%%%%@@@@@@@%%%%%%%@@@@@@#*=   \n" +
+                        "   ++++***************************=  \n" +
+                        "                                     \n" +
+                        "                                     \n" +
+                        "                                     "));
+        PrintUtil.loot("At the summit, you see the Third Stone pulsing with violet light on an altar.");
+        PrintUtil.pause(600);
+        PrintUtil.loot("You reach out. The Stones unite—humming and pulling themselves closer together like a single heartbeat.");
+        InputUtil.pressEnterToContinue();
+        System.out.println();
+
+        PrintUtil.effect("Then Khai the Gray steps forward, staff blazing.\n");
+        PrintUtil.pause(800);
+        PrintUtil.sayRed("Sir Khai", "\"Finally. \nYou’ve served well, my student. Who better to collect the stones of life than one who trusts their teacher?\"");
+        PrintUtil.sayRed("Sir Khai", "\"I have guided you not to save this land—but to claim its power. \n" +
+                "Because only the most skilled and pure can bring the stones together. I have been waiting for a student like you for a millenia. \n" +
+                "I wish to bring chaos not only to this land, but also in the lands beyond. \n" +
+                "The Necromancer you sought... The one who wants to bring chaos to all worlds... is ME!!!!!!!!!\"\n");
+
+        PrintUtil.hr();
+
+        World3Final finale = new World3Final();
+        finale.run(player);
+
 //
 //        World1 world1 = new World1();
 //        world1.run(player);
@@ -169,14 +281,14 @@ public class Tester {
         MagicShop shop = new MagicShop(player);
         shop.openShop();
 */
-        Enemy enemy3 = new FinalBoss();
-        Battle battle3 = new Battle(player, enemy3);
-
-        battle3.startBattle();
-
-
-       PrefiEncounter prefiEncounter = new PrefiEncounter();
-      prefiEncounter.start(player);
+//        Enemy enemy3 = new FinalBoss();
+//        Battle battle3 = new Battle(player, enemy3);
+//
+//        battle3.startBattle();
+//
+//
+//       PrefiEncounter prefiEncounter = new PrefiEncounter();
+//      prefiEncounter.start(player);
 
 
 //        Enemy testEnemy1 = new World1Enemy1();

@@ -6,6 +6,7 @@ import utils.ColorUtil;
 import utils.InputUtil;
 import utils.PrintUtil;
 
+import java.awt.*;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -17,7 +18,6 @@ public abstract class Weapon {
     private final int atkBuff;
     private int lifestealPercent = 0;
 
-    private int addAtkBuff = 0;
     private int addLifestealPercent = 0;
 
     private int poisonChance = 0;
@@ -98,14 +98,6 @@ public abstract class Weapon {
         this.addLifestealPercent = addLifestealPercent;
     }
 
-    public int getAddAtkBuff() {
-        return addAtkBuff;
-    }
-
-    public void setAddAtkBuff(int addAtkBuff) {
-        this.addAtkBuff = addAtkBuff;
-    }
-
     public Map<String, String> getEnchantments() {
         return enchantments;
     }
@@ -171,29 +163,82 @@ public abstract class Weapon {
 
         PrintUtil.line();
 
-        if(currentlyEquipped == null){
-            character.setAttack(character.getAttack() + atkBuff);
-            isEquipped = true;
-            character.getInventory().setEquippedWeapon(this);
-            System.out.println(ColorUtil.boldBrightYellow("⚙\uFE0F " + name + " Equipped! ⬆\uFE0F Attack increased by " + atkBuff + ". ⚔\uFE0F Current ATK: " + character.getAttack()));
-        } else{
-            currentlyEquipped.unequip(character);
+        // Epic weapon transfer logic
+        if(currentlyEquipped != null && this.getRarity().equals("🟣")) {
+            if(!currentlyEquipped.getEnchantments().isEmpty()) {
+                System.out.println("Do you want to transfer enchantments from your current weapon? (Cost: 💠 20 Soul Shards)");
 
-            character.setAttack(character.getAttack() + atkBuff);
-            isEquipped = true;
-            character.getInventory().setEquippedWeapon(this);
+                boolean validChoice = false;
+                while (!validChoice) {
+                    System.out.print("1 = Yes, 0 = No: ");
+                    int choice = InputUtil.scanInput();
 
-            System.out.println(ColorUtil.boldBrightCyan("You upgraded your weapon!"));
-            PrintUtil.pause(800);
-            System.out.println(ColorUtil.boldBrightYellow("⚙\uFE0F " + name + " Equipped! ⬆\uFE0F Attack increased by " + (this.getAtkBuff() - currentlyEquipped.getAtkBuff()) + ". ⚔\uFE0F Current ATK: " + character.getAttack()));
+                    if(choice == 1) {
+                        validChoice = true;
+                        if(character.getSoulShards() >= 20) {
+                            character.subtractSoulShards(20);
+                            this.transferEnchantmentsFrom(currentlyEquipped);
+                            System.out.println(ColorUtil.boldBrightYellow("✅ Enchantments transferred to " + this.getName() + "! (💠 -20 Soul Shards)"));
+                        } else {
+                            System.out.println(ColorUtil.boldBrightRed("❌ Not enough Soul Shards!"));
+                        }
+                    } else if(choice == 0) {
+                        validChoice = true;
+                        System.out.println(ColorUtil.boldBrightRed("❌ You chose not to transfer enchantments."));
+                    } else {
+                        System.out.println(ColorUtil.brightRed("❌ Invalid input! Try again."));
+                    }
+                }
+            }
         }
+
+        // Equip weapon normally
+        if(currentlyEquipped != null){
+            currentlyEquipped.unequip(character);
+        }
+
+        // Equip new weapon
+        isEquipped = true;
+        character.getInventory().setEquippedWeapon(this);
+
+        // Recalculate attack based on baseAttack + weapon buffs
+        character.recalculateBuffs();
+
+        // Calculate actual ATK increase for message
+        int atkIncrease = (currentlyEquipped != null) ?
+                (character.getWeapon().getAtkBuff() - currentlyEquipped.getAtkBuff())
+                : character.getWeapon().getAtkBuff();
+
+        System.out.println(ColorUtil.boldBrightYellow(
+                "⚙\uFE0F " + this.getName() + " Equipped! ⬆\uFE0F Attack increased by " + atkIncrease +
+                        ". ⚔\uFE0F Current ATK: " + character.getAttack()
+        ));
+
         PrintUtil.line();
         PrintUtil.pause(800);
     }
+
 
     public void unequip(Character character) {
         character.setAttack(character.getAttack() - atkBuff);
         isEquipped = false;
     }
+
+    public void transferEnchantmentsFrom(Weapon oldWeapon) {
+        // Transfer all enchantments
+        for (Map.Entry<String, String> enchant : oldWeapon.getEnchantments().entrySet()) {
+            // Add the enchantment to this weapon
+            this.addEnchantment(enchant.getKey(), enchant.getValue());
+        }
+
+        // Transfer any stats that are stored per weapon
+        this.setAddLifestealPercent(this.getAddLifestealPercent() + oldWeapon.getAddLifestealPercent());
+        this.setPoisonChance(this.getPoisonChance() + oldWeapon.getPoisonChance());
+        this.setBleedChance(this.getBleedChance() + oldWeapon.getBleedChance());
+        this.setStunChance(this.getStunChance() + oldWeapon.getStunChance());
+        this.setFreezeChance(this.getFreezeChance() + oldWeapon.getFreezeChance());
+        this.setEnergyPerAttack(this.getEnergyPerAttack() + oldWeapon.getEnergyPerAttack());
+    }
+
 
 }

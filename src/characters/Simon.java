@@ -289,6 +289,7 @@ public class Simon extends Character {
                         ultimateCounter--;
                     } else {
                         System.out.println(ColorUtil.boldBrightRed("❌ Not enough Mana to cast Fireball! Choose again."));
+                        PrintUtil.shortLine();
                     }
                 }
                 case 2 -> {
@@ -298,16 +299,19 @@ public class Simon extends Character {
                         ultimateCounter--;
                     } else {
                         System.out.println(ColorUtil.boldBrightRed("❌ Not enough Mana to cast Ice Prison! Choose again."));
+                        PrintUtil.shortLine();
                     }
                 }
                 case 3 -> {
                     if (ultimateCounter > 0) {
                         System.out.println(ColorUtil.boldBrightRed("❌ Ultimate is on cooldown! Can only be used after " + ultimateCounter + " turn/s."));
+                        PrintUtil.shortLine();
                     } else if (energy >= 40) {
                         meteorStorm(target);
                         isValid = true;
                     } else {
                         System.out.println(ColorUtil.boldBrightRed("❌ Not enough Mana to cast Meteor Storm! Choose again."));
+                        PrintUtil.shortLine();
                     }
                 }
                 case 4 -> {

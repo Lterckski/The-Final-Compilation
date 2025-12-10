@@ -42,7 +42,7 @@ public class World1 {
                 """);
         PrintUtil.sayGreen("""        
                 "In this world, I am known as Khai the Gray, we suffer because an evil necromancer has corrupted these lands and we must find 
-                the  three stones of life that hold this world together to defeat him." he says.   
+                the three stones of life that hold this world together to defeat him." he says.   
                 "Only then will your path home reveal itself."
                 """);
         System.out.println("══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════");

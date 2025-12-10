@@ -81,23 +81,17 @@ public class PrintUtil {
         Thread inputThread = new Thread(() -> {
             try {
                 BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-
-                // Wait until user presses ENTER
                 while (!br.ready()) {
-                    Thread.sleep(30);
+                    pause(30);
                 }
-
                 br.readLine(); // consume ENTER
                 skip = true;
-
             } catch (Exception ignored) {}
         });
 
         inputThread.start();
 
-        // Typewriter animation with correct skip logic
-        int i = 0;
-        for (; i < colored.length(); i++) {
+        for (int i = 0; i < colored.length(); i++) {
             if (skip) {
                 System.out.print(colored.substring(i)); // print remainder instantly
                 System.out.println();
@@ -105,16 +99,12 @@ public class PrintUtil {
             }
 
             System.out.print(colored.charAt(i));
-
-            try {
-                Thread.sleep(40);
-            } catch (InterruptedException ignored) {}
+            pause(40);
         }
 
         pause(500);
         System.out.println();
     }
-
 
     public static void effect(String text) {
         skip = false;
@@ -123,40 +113,30 @@ public class PrintUtil {
         Thread inputThread = new Thread(() -> {
             try {
                 BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-
-                // Wait until user presses ENTER
                 while (!br.ready()) {
-                    Thread.sleep(30);
+                    pause(30);
                 }
-
-                br.readLine(); // consume ENTER
+                br.readLine();
                 skip = true;
-
             } catch (Exception ignored) {}
         });
 
         inputThread.start();
 
-        // Typewriter animation with correct skip logic
-        int i = 0;
-        for (; i < colored.length(); i++) {
+        for (int i = 0; i < colored.length(); i++) {
             if (skip) {
-                System.out.print(colored.substring(i)); // Instantly print the rest
+                System.out.print(colored.substring(i));
                 System.out.println();
                 return;
             }
 
             System.out.print(colored.charAt(i));
-
-            try {
-                Thread.sleep(40);
-            } catch (InterruptedException ignored) {}
+            pause(40);
         }
 
         pause(500);
         System.out.println();
     }
-
 
     public static void sayRed(String who, String line) {
         skip = false;
@@ -167,32 +147,25 @@ public class PrintUtil {
         Thread inputThread = new Thread(() -> {
             try {
                 BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-
                 while (!br.ready()) {
-                    Thread.sleep(30);
+                    pause(30);
                 }
-
-                br.readLine(); // consume ENTER
+                br.readLine();
                 skip = true;
-
             } catch (Exception ignored) {}
         });
 
         inputThread.start();
 
-        // Typewriter animation with correct skipping
-        int i = 0;
-        for (; i < fullLine.length(); i++) {
+        for (int i = 0; i < fullLine.length(); i++) {
             if (skip) {
-                System.out.print(fullLine.substring(i)); // Print remaining text instantly
+                System.out.print(fullLine.substring(i));
                 System.out.println();
                 return;
             }
 
             System.out.print(fullLine.charAt(i));
-            try {
-                Thread.sleep(40);
-            } catch (InterruptedException ignored) {}
+            pause(40);
         }
 
         System.out.println();
@@ -202,42 +175,34 @@ public class PrintUtil {
         skip = false;
         String fullLine = ColorUtil.brightGreen(line);
 
-        pause(800); // initial pause before speaking
+        pause(800);
 
         Thread inputThread = new Thread(() -> {
             try {
                 BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-
-                // Wait until user presses ENTER
                 while (!br.ready()) {
-                    Thread.sleep(30);
+                    pause(30);
                 }
-
-                br.readLine(); // consume ENTER
+                br.readLine();
                 skip = true;
-
             } catch (Exception ignored) {}
         });
 
         inputThread.start();
 
-        // Typewriter animation with correct skipping
-        int i = 0;
-        for (; i < fullLine.length(); i++) {
+        for (int i = 0; i < fullLine.length(); i++) {
             if (skip) {
-                System.out.print(fullLine.substring(i)); // Print the rest instantly
+                System.out.print(fullLine.substring(i));
                 System.out.println();
                 return;
             }
 
             System.out.print(fullLine.charAt(i));
-
-            try {
-                Thread.sleep(40);
-            } catch (InterruptedException ignored) {}
+            pause(40);
         }
 
         System.out.println();
     }
+
 
 }

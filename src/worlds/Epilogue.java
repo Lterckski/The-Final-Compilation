@@ -36,7 +36,29 @@ public class Epilogue {
 
         PrintUtil.story(
                 "With your last strike, the tower collapses. The Stones shatter. Light swallows everything.\n\n" +
-                        "You jolt awake—back in the lab. The CodeChum **exam screen** stares back at you.\n" +
+                        "You jolt awake—back in the lab. The CodeChum **exam screen** stares back at you.");
+        PrintUtil.specialCyan("                                                                              \n" +
+                "                                                                              \n" +
+                "                                                                              \n" +
+                "              .::==@@@@@@@@@@@@@@@@@@@@@@@@@@@%                               \n" +
+                "           .**..+##++:                     =@@*:.                             \n" +
+                "             +-.+%%@-                        .=**---*@@@@@@@=                 \n" +
+                "               ..:=@%%-                      .=*#:-+%#....:@+ -*=             \n" +
+                "        .%%+   .:%%-::                       :@=.:@@@@@@@@@%%:    :.          \n" +
+                "             .:..##=.                       :#+.@%@#......+=:.**+.            \n" +
+                "         .=+=.   ..%:                        .-*@##@@@@@@@@@+                 \n" +
+                "                ###=..                       :#. .@@@%==#@@@+                 \n" +
+                "         .===.     %@@                     ....@@:*%%%@@@@@@+                 \n" +
+                "           =.    .:%@@@@@@@@@@@@@@@@@@@@@@@%***==.@@@@@@@@@@*.   .::          \n" +
+                "             @@@-.............#@@@@-........... ..@@@@@@@@@@+  --.            \n" +
+                "                          .+@@@@@@@@@#-        :+=%@@@@*@@@@@*                \n" +
+                "                          =**#==++=-:        :++ :%@@@#:@@@@+  ::.            \n" +
+                "                 =++@%%%%%%%%#%#@#@#@##@#%#%%@%# .=@@@@@@@@@%:  ::.           \n" +
+                "           .#= ..+%@**#*#*%+#+#+*+#+#+#*#*%%#%==::##@@@@@@@@%.                \n" +
+                "           .--:.-#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@**::::::::::.                 \n" +
+                "                                                                              \n" +
+                "                                                                              ");
+        PrintUtil.story(
                         "The timer blinks: 00:00:01. The exam has already ended.\n\n" +
                         "You conquered a world, fought betrayal, toppled a king—\n" +
                         "yet here, in reality, you didn’t even answer a single problem.\n\n" +
