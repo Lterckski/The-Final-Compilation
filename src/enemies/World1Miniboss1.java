@@ -241,32 +241,34 @@ public class World1Miniboss1 extends Enemy {
             }
         } else if (player.getClassType().equals("Mage")) {
             Staff apprenticeStaff = Staff.APPRENTICE_STAFF;
-            System.out.println(ColorUtil.boldBrightGreen("                                                       \n" +
-                    "                                                       \n" +
-                    "       :+.                                            \n" +
-                    "       +@=                                            \n" +
-                    "       =@-                                            \n" +
-                    "       :%:                                            \n" +
-                    "       :%:                                            \n" +
-                    "       :%:                                            \n" +
-                    "       :%:                                            \n" +
-                    "       :%:                                            \n" +
-                    "       :%:                                            \n" +
-                    "       :%:                                            \n" +
-                    "       :%:                                            \n" +
-                    "       :%:                                            \n" +
-                    "       :%:                                            \n" +
-                    "       :%:                                            \n" +
-                    "       :%:                                            \n" +
-                    "       :%:                                            \n" +
-                    "       :%:                                            \n" +
-                    "       :%:                                            \n" +
-                    "       :%:                                            \n" +
-                    "       :%:                                            \n" +
-                    "       :%:                                            \n" +
-                    "       .=.                                            \n" +
-                    "                                                       \n" +
-                    "                                                       "));
+            System.out.println(ColorUtil.boldBrightGreen("                                                   \n" +
+                    "                                        :=.        \n" +
+                    "                                       .%%:        \n" +
+                    "                                     .:*@@%-       \n" +
+                    "                                     +@@%-         \n" +
+                    "                                    =@@#           \n" +
+                    "                                 :#@@%+:           \n" +
+                    "                                .+@#:              \n" +
+                    "                                +@%                \n" +
+                    "                               =@%:                \n" +
+                    "                             -%@*                  \n" +
+                    "                            *@@*                   \n" +
+                    "                          -@%-                     \n" +
+                    "                        .#@+                       \n" +
+                    "                       .@@-                        \n" +
+                    "                      -@#.                         \n" +
+                    "                    :%@-                           \n" +
+                    "                   -@*.                            \n" +
+                    "                  +@=                              \n" +
+                    "                .*%.                               \n" +
+                    "               :%*.                                \n" +
+                    "             .*%:                                  \n" +
+                    "            :%=                                    \n" +
+                    "          .##.                                     \n" +
+                    "         -#-                                       \n" +
+                    "        +*.                                        \n" +
+                    "       -=                                          \n" +
+                    "                                                   "));
 
             if (apprenticeStaff.lootWeapon()) {
                 apprenticeStaff.equip(player);

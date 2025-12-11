@@ -1,8 +1,11 @@
 package worlds;
 
 import characters.Character;
+import utils.ColorUtil;
 import utils.InputUtil;
 import utils.PrintUtil;
+
+import java.awt.*;
 
 public class Epilogue {
 
@@ -79,5 +82,28 @@ public class Epilogue {
                 "  ░       ░  ░░ ░   ░         ░      ░   ░ ░  ░ ░  ░     ░   \n" +
                 "          ░  ░  ░   ░  ░      ░  ░         ░    ░         ░  \n" +
                 "                                              ░           ░  \n");
+
+        System.out.println();
+        PrintUtil.title(ColorUtil.boldBrightCyan(
+                " ██████╗██████╗ ███████╗██████╗ ██╗████████╗███████╗\n" +
+                        "██╔════╝██╔══██╗██╔════╝██╔══██╗██║╚══██╔══╝██╔════╝\n" +
+                        "██║     ██████╔╝█████╗  ██║  ██║██║   ██║   ███████╗\n" +
+                        "██║     ██╔══██╗██╔══╝  ██║  ██║██║   ██║   ╚════██║\n" +
+                        "╚██████╗██║  ██║███████╗██████╔╝██║   ██║   ███████║\n" +
+                        " ╚═════╝╚═╝  ╚═╝╚══════╝╚═════╝ ╚═╝   ╚═╝   ╚══════╝\n" +
+                        "                                                    \n" +
+                        "\n" +
+                        "              Project Managers: Zyril Restauro & John Michael Arcenal\n" +
+                        "              Members: Karl Cyrus Solinap\n" +
+                        "                       Luther Dira\n" +
+                        "                       Simon Belino\n" +
+                        "\n" +
+                        "              Special Thanks to Our Adviser:\n" +
+                        "              Sir Kenn Migan Vincent C. Gumonan\n"
+        ));
+
+
+
+
     }
 }
