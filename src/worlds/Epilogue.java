@@ -4,12 +4,14 @@ import characters.Character;
 import utils.ColorUtil;
 import utils.InputUtil;
 import utils.PrintUtil;
+import utils.SoundUtil;
 
 import java.awt.*;
 
 public class Epilogue {
 
     public void run(Character player) {
+        SoundUtil.playLoop("epilogue.wav", 0.2f);
         System.out.println();
         PrintUtil.title("▓█████  ██▓███   ██▓ ██▓     ▒█████    ▄████  █    ██ ▓█████ \n" +
                 "▓█   ▀ ▓██░  ██▒▓██▒▓██▒    ▒██▒  ██▒ ██▒ ▀█▒ ██  ▓██▒▓█   ▀ \n" +
@@ -101,7 +103,7 @@ public class Epilogue {
                         "              Special Thanks to Our Adviser:\n" +
                         "              Sir Kenn Migan Vincent C. Gumonan\n"
         ));
-
+        SoundUtil.stopLoop();
 
 
 
