@@ -61,7 +61,7 @@ public class World3Enemy3 extends Enemy {
             }
         }
 
-        if(RandomUtil.chance(30)) {
+        if(RandomUtil.chance(20)) {
             target.getEffects().applyStun();
         }
     }
@@ -74,7 +74,7 @@ public class World3Enemy3 extends Enemy {
         System.out.println(ColorUtil.red(" 📜 Description : Obsidian Crusher slams the ground with blazing magma, stunning its victims."));
         System.out.println(ColorUtil.red(" 💥 Damage : (") + ColorUtil.boldBrightYellow((int)(attack * 1.00) + " — " + (int)(attack * 1.20)) + ColorUtil.red(")"));
         System.out.println(ColorUtil.red(" ✨ Effects :"));
-        System.out.println(ColorUtil.red("    - ⚡ Chance to apply Stun to target"));
+        System.out.println(ColorUtil.red("    - 💫 20% Chance to apply Stun to target"));
         System.out.println(ColorUtil.boldBrightRed("└────────────────────────────────────────────────────────────────────────────────────────────┘"));
         System.out.println();
     }

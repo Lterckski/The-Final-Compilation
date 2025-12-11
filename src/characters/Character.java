@@ -342,7 +342,6 @@ public abstract class Character {
     }
 
 
-
     public void heal(int amount){
         hp += amount;
         if(hp > maxHP) hp = maxHP;

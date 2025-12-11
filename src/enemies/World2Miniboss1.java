@@ -44,7 +44,7 @@ public class World2Miniboss1 extends Enemy{
         if(target.getEffects().checkDodge()) return;
         if (this.getEffects().checkConfuse()) return;
 
-        int damage = (int)RandomUtil.range(attack * 1.00, attack * 1.33);
+        int damage = (int)RandomUtil.range(attack * 1.00, attack * 1.30);
         int reduced = calculateDamage(target, damage);
 
         System.out.println(ColorUtil.brightRed("→💔 Shackling Chains hits for ")
@@ -118,7 +118,7 @@ public class World2Miniboss1 extends Enemy{
         if(target.getEffects().checkDodge()) return;
         if (this.getEffects().checkConfuse()) return;
 
-        int damage = (int)RandomUtil.range(attack * 1.33, attack * 1.73);
+        int damage = (int)RandomUtil.range(attack * 1.30, attack * 1.70);
         int reduced = calculateDamage(target, damage);
 
         System.out.println(ColorUtil.brightRed("→💔 Tormenting Lash hits for ")
@@ -157,7 +157,7 @@ public class World2Miniboss1 extends Enemy{
         // Skill 1
         System.out.println(ColorUtil.boldBrightYellow("  🔗 Skill 1 – Shackling Chains"));
         System.out.println(ColorUtil.red(" 📜 Description : The Black Jailer swings his chains to bind and cripple his opponent."));
-        System.out.println(ColorUtil.red(" 💥 Damage : (") + ColorUtil.boldBrightYellow((int)(attack * 1.00) + " — " + (int)(attack * 1.33)) + ColorUtil.red(")"));
+        System.out.println(ColorUtil.red(" 💥 Damage : (") + ColorUtil.boldBrightYellow((int)(attack * 1.00) + " — " + (int)(attack * 1.30)) + ColorUtil.red(")"));
         System.out.println(ColorUtil.red(" ✨ Effects :"));
         System.out.println(ColorUtil.red("    - 🛑 30% chance to Immobilize the target"));
         System.out.println();
@@ -165,7 +165,7 @@ public class World2Miniboss1 extends Enemy{
         // Skill 2
         System.out.println(ColorUtil.boldBrightYellow("  ⚡ Skill 2 – Tormenting Lash"));
         System.out.println(ColorUtil.red(" 📜 Description : The Black Jailer lashes his whip, leaving his foe bleeding."));
-        System.out.println(ColorUtil.red(" 💥 Damage : (") + ColorUtil.boldBrightYellow((int)(attack * 1.33) + " — " + (int)(attack * 1.73)) + ColorUtil.red(")"));
+        System.out.println(ColorUtil.red(" 💥 Damage : (") + ColorUtil.boldBrightYellow((int)(attack * 1.30) + " — " + (int)(attack * 1.70)) + ColorUtil.red(")"));
         System.out.println(ColorUtil.red(" ✨ Effects :"));
         System.out.println(ColorUtil.red("    - 🩸 30% chance to inflict Bleed for 2 turns"));
 

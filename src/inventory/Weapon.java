@@ -1,12 +1,10 @@
 package inventory;
 
 import characters.Character;
-import enemies.Enemy;
 import utils.ColorUtil;
 import utils.InputUtil;
 import utils.PrintUtil;
 
-import java.awt.*;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -158,8 +156,8 @@ public abstract class Weapon {
         return pickUp;
     }
 
-    public void equip(Character character) {
-        Weapon currentlyEquipped = character.getInventory().getEquippedWeapon();
+    public void equip(Character player) {
+        Weapon currentlyEquipped = player.getInventory().getEquippedWeapon();
 
         PrintUtil.line();
 
@@ -175,8 +173,8 @@ public abstract class Weapon {
 
                     if(choice == 1) {
                         validChoice = true;
-                        if(character.getSoulShards() >= 20) {
-                            character.subtractSoulShards(20);
+                        if(player.getSoulShards() >= 20) {
+                            player.subtractSoulShards(20);
                             this.transferEnchantmentsFrom(currentlyEquipped);
                             System.out.println(ColorUtil.boldBrightYellow("✅ Enchantments transferred to " + this.getName() + "! (💠 -20 Soul Shards)"));
                         } else {
@@ -194,24 +192,24 @@ public abstract class Weapon {
 
         // Equip weapon normally
         if(currentlyEquipped != null){
-            currentlyEquipped.unequip(character);
+            currentlyEquipped.unequip(player);
         }
 
         // Equip new weapon
         isEquipped = true;
-        character.getInventory().setEquippedWeapon(this);
+        player.getInventory().setEquippedWeapon(this);
 
         // Recalculate attack based on baseAttack + weapon buffs
-        character.recalculateBuffs();
+        player.recalculateBuffs();
 
         // Calculate actual ATK increase for message
         int atkIncrease = (currentlyEquipped != null) ?
-                (character.getWeapon().getAtkBuff() - currentlyEquipped.getAtkBuff())
-                : character.getWeapon().getAtkBuff();
+                (player.getWeapon().getAtkBuff() - currentlyEquipped.getAtkBuff())
+                : player.getWeapon().getAtkBuff();
 
         System.out.println(ColorUtil.boldBrightYellow(
                 "⚙\uFE0F " + this.getName() + " Equipped! ⬆\uFE0F Attack increased by " + atkIncrease +
-                        ". ⚔\uFE0F Current ATK: " + character.getAttack()
+                        ". ⚔\uFE0F Current ATK: " + player.getAttack()
         ));
 
         PrintUtil.line();
@@ -239,6 +237,5 @@ public abstract class Weapon {
         this.setFreezeChance(this.getFreezeChance() + oldWeapon.getFreezeChance());
         this.setEnergyPerAttack(this.getEnergyPerAttack() + oldWeapon.getEnergyPerAttack());
     }
-
 
 }

@@ -67,7 +67,7 @@ public class FinalBoss extends Enemy {
         System.out.println(ColorUtil.red(" 📜 Description : Drains the target’s life essence to heal himself."));
         System.out.println(ColorUtil.red(" ⚔️ Damage : (") + ColorUtil.boldBrightYellow((int)(attack * 0.8) + "") + ColorUtil.red(")"));
         System.out.println(ColorUtil.red(" ✨ Effects :"));
-        System.out.println(ColorUtil.red("    - ❤️ Heals self for 100 HP"));
+        System.out.println(ColorUtil.red("    - ❤️ Heals self for 100% of damage dealt"));
         System.out.println();
 
         // Skill 2
@@ -127,9 +127,8 @@ public class FinalBoss extends Enemy {
         PrintUtil.pause(800);
         target.takeDamage(reduced);
 
-        int heal = reduced;
-        hp = Math.min(maxHP, hp + heal);
-        System.out.println(ColorUtil.brightMagenta("💝 " + name + " absorbs life and heals " + heal + " HP!"));
+        heal(reduced);
+        System.out.println(ColorUtil.brightMagenta("💝 " + name + " absorbs life and heals " + reduced + " HP!"));
         PrintUtil.pause(800);
 
         Armor equippedArmor = target.getInventory().getEquippedArmor();

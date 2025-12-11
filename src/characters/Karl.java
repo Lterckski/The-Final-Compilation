@@ -30,7 +30,7 @@ public class Karl extends Character{
         System.out.println("    - " + ColorUtil.cyan("🩸 30% chance to inflict Bleed (2 turns)\n"));
 
         // Skill 2 – Bullseye
-        System.out.println("  " + ColorUtil.boldBrightYellow("🎯 Skill 2 – Bullseye (➶ 1 Heavy Arrow ═ 3 Arrows)"));
+        System.out.println("  " + ColorUtil.boldBrightYellow("🎯 Skill 2 – Bullseye (➶ Heavy Arrow ═ 3 Arrows)"));
         System.out.println("  " + ColorUtil.cyan("📜 Description: Karl steadies his breath and fires a deadly precise shot."));
         System.out.println("  " + ColorUtil.cyan("💥 Damage: (") + ColorUtil.boldBrightYellow((int)(attack * 1.10) + " — " + (int)(attack * 1.30)) + ColorUtil.cyan(")"));
         System.out.println("  " + ColorUtil.cyan("⚡ Effects:"));
@@ -298,7 +298,7 @@ public class Karl extends Character{
         while (!isValid) {
             // Display skills
             System.out.println(ColorUtil.boldBrightGreen("[1]") + " " + ColorUtil.green("🏹 Skill 1   -  Piercing Arrow (➶ 1 Arrow)"));
-            System.out.println(ColorUtil.boldBrightGreen("[2]") + " " + ColorUtil.green("🎯 Skill 2   -  Bullseye (➶ 1 Heavy Arrow ═ 3 Arrows)"));
+            System.out.println(ColorUtil.boldBrightGreen("[2]") + " " + ColorUtil.green("🎯 Skill 2   -  Bullseye (➶ Heavy Arrow ═ 3 Arrows)"));
             System.out.println(ColorUtil.boldBrightGreen("[3]") + " " + ColorUtil.green("🌩️ Ultimate  -  Rain of A Thousand Arrows (➶ 5 Arrows)"
                     + (ultimateCounter > 0 ? " " + ColorUtil.boldBrightRed("❌ Cooldown: " + ultimateCounter + " turn/s") : "")));
             System.out.println(ColorUtil.boldBrightGreen("[4]") + " " + ColorUtil.green("\uD83D\uDEE1\uFE0F Skip Turn -  Restore 10% of Max HP and Replenish 3 Arrows"));

@@ -137,7 +137,7 @@ public class World2Miniboss2 extends Enemy {
         if(target.getEffects().checkDodge()) return;
         if (this.getEffects().checkConfuse()) return;
 
-        int damage = (int)RandomUtil.range(attack * 0.71, attack * 0.85);
+        int damage = (int)RandomUtil.range(attack * 0.70, attack * 0.85);
         int reduced = calculateDamage(target, damage);
 
         System.out.println(ColorUtil.brightRed("→💔 King's Wrath hits for ")
@@ -189,7 +189,7 @@ public class World2Miniboss2 extends Enemy {
         // Skill 3
         System.out.println(ColorUtil.boldBrightYellow("  🔥 Ultimate – King’s Wrath"));
         System.out.println(ColorUtil.red(" 📜 Description : The Corrupted King unleashes a furious strike, overwhelming his enemy."));
-        System.out.println(ColorUtil.red(" 💥 Damage : (") + ColorUtil.boldBrightYellow((int)(attack * 0.71) + " — " + (int)(attack * 0.85)) + ColorUtil.red(")"));
+        System.out.println(ColorUtil.red(" 💥 Damage : (") + ColorUtil.boldBrightYellow((int)(attack * 0.70) + " — " + (int)(attack * 0.85)) + ColorUtil.red(")"));
         System.out.println(ColorUtil.red(" ✨ Effects :"));
         System.out.println(ColorUtil.red("    - ⚡ 30% chance to Stun the target"));
 

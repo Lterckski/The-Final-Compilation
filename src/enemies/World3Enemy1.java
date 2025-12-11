@@ -8,7 +8,7 @@ import utils.RandomUtil;
 
 public class World3Enemy1 extends Enemy {
 
-    public World3Enemy1() { super("Flame Revenant", 1080, 28, 240   ); }
+    public World3Enemy1() { super("Flame Revenant", 1080, 28, 240); }
 
     public void emberBurst(Character target) {
         PrintUtil.print(ColorUtil.boldBrightRed("                                                          \n" +
@@ -65,7 +65,7 @@ public class World3Enemy1 extends Enemy {
             System.out.println(ColorUtil.brightMagenta("✨ " + target.getName() + " resisted Burn 🔥 due to " + equippedArmor.getName() + "!"));
             PrintUtil.pause(800);
         } else {
-            target.getEffects().applyBurn(2);
+            target.getEffects().applyBurn(1);
         }
     }
 
@@ -77,7 +77,7 @@ public class World3Enemy1 extends Enemy {
         System.out.println(ColorUtil.red(" 📜 Description : Flame Revenants hurl blazing fireballs from afar, burning anything in its path."));
         System.out.println(ColorUtil.red(" 💥 Damage : (") + ColorUtil.boldBrightYellow((int)(attack * 1.00) + " — " + (int)(attack * 1.20)) + ColorUtil.red(")"));
         System.out.println(ColorUtil.red(" ✨ Effects :"));
-        System.out.println(ColorUtil.red("    - 🔥 Applies Burn for 2 turns"));
+        System.out.println(ColorUtil.red("    - 🔥 Applies Burn for 1 turn"));
         System.out.println(ColorUtil.boldBrightRed("└────────────────────────────────────────────────────────────────────────────────────────────────┘"));
         System.out.println();
     }

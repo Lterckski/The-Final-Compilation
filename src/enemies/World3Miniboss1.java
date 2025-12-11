@@ -31,7 +31,7 @@ public class World3Miniboss1 extends Enemy {
         System.out.println(ColorUtil.red(" 📜 Description : The Tower Warden raises its shield, increasing its defenses."));
         System.out.println(ColorUtil.red(" 💥 Damage : –"));
         System.out.println(ColorUtil.red(" ✨ Effects :"));
-        System.out.println(ColorUtil.red("    - 🛡️ Increases " + name + "'s DEF by 50 for 2 turns."));
+        System.out.println(ColorUtil.red("    - 🛡️ Increases DEF by 50 for 2 turns."));
 
         System.out.println(ColorUtil.boldBrightRed("└──────────────────────────────────────────────────────────────────────────────────────────────────┘"));
         System.out.println();

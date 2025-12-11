@@ -86,7 +86,7 @@ public class World3Enemy2 extends Enemy {
         System.out.println(ColorUtil.red(" 📜 Description : Bone Warlock casts Marrow Bolt, reducing the target's attack damage."));
         System.out.println(ColorUtil.red(" 💥 Damage : (") + ColorUtil.boldBrightYellow((int)(attack * 1.00) + " — " + (int)(attack * 1.20)) + ColorUtil.red(")"));
         System.out.println(ColorUtil.red(" ✨ Effects :"));
-        System.out.println(ColorUtil.red("    - ⚔️ 30% chance to apply ATK Debuff: reduces target's damage by 30%"));
+        System.out.println(ColorUtil.red("    - ⚔️ 30% chance to apply ATK Debuff: reduces target's damage by 30% for 2 turns"));
         System.out.println(ColorUtil.boldBrightRed("└────────────────────────────────────────────────────────────────────────────────────┘"));
         System.out.println();
     }
