@@ -15,6 +15,8 @@ public class SoundUtil {
     private static final String BASE_PATH = "The-Final-Compilation/src/audio/";
 
     private static Clip bgmClip;
+    private static Clip bgmClip2;
+
 
     // ---------- ONE-SHOT SFX ----------
 
@@ -122,5 +124,46 @@ public class SoundUtil {
         }).start();
     }
 
+    public static void playLoop2(String relativePath, float volume) {
+        stopLoop2();
+
+        String path = BASE_PATH + relativePath;
+
+        try {
+            File file = new File(path);
+            if (!file.exists()) {
+                System.out.println("BGM file not found: " + path);
+                return;
+            }
+
+            AudioInputStream audioStream = AudioSystem.getAudioInputStream(file);
+            bgmClip2 = AudioSystem.getClip();
+            bgmClip2.open(audioStream);
+
+            setVolume(bgmClip2, volume);
+            bgmClip2.loop(Clip.LOOP_CONTINUOUSLY);
+
+        } catch (Exception e) {
+            System.out.println("Error in playLoop2: " + e.getMessage());
+        }
+    }
+
+    public static void stopLoop2() {
+        if (bgmClip2 != null) {
+            if (bgmClip2.isRunning()) bgmClip2.stop();
+            bgmClip2.close();
+            bgmClip2 = null;
+        }
+    }
+
+    public static void playLoop2Delayed(String relativePath, float volume, int delayMs) {
+        new Thread(() -> {
+            try {
+                Thread.sleep(delayMs);
+            } catch (InterruptedException ignored) {}
+
+            playLoop2(relativePath, volume);
+        }).start();
+    }
 
 }
