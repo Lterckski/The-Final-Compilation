@@ -1,6 +1,6 @@
 package characters;
-import utils.SoundUtil;
 
+import utils.SoundUtil;
 import enemies.FinalBoss;
 import utils.ColorUtil;
 import utils.InputUtil;
@@ -27,20 +27,19 @@ public class Kael extends  Character{      // 15% crit chance
         System.out.println("  " + ColorUtil.cyan("📜 Description: A quick, fluid slash that catches the opponent off guard."));
         System.out.println("  " + ColorUtil.cyan("💥 Damage: (") + ColorUtil.boldBrightYellow((int)(attack * 1.15) + " — " + (int)(attack * 1.35)) + ColorUtil.cyan(")"));
         System.out.println("  " + ColorUtil.cyan("⚡ Effects:"));
-        System.out.println("    - " + ColorUtil.cyan("💪 30% chance to apply Strengthen (+15% ATK for 2 turns)\n"));
+        System.out.println("    - " + ColorUtil.cyan("💪 30% chance to apply Strengthen (+20% ATK for 2 turns)\n"));
 
 // Skill 2
         System.out.println("  " + ColorUtil.boldBrightYellow("⚔️ Skill 2 – Piercing Slash (🔋 10 Stamina)"));
         System.out.println("  " + ColorUtil.cyan("📜 Description: A powerful, focused strike aimed to pierce enemy's armor."));
-        System.out.println("  " + ColorUtil.cyan("💥 Damage: (") + ColorUtil.boldBrightYellow((int)(attack * 1.20) + " — " + (int)(attack * 1.40)) + ColorUtil.cyan(")"));
+        System.out.println("  " + ColorUtil.cyan("💥 Damage: (") + ColorUtil.boldBrightYellow((int)(attack * 1.35) + " — " + (int)(attack * 1.55)) + ColorUtil.cyan(") — Ignores Defense"));
         System.out.println("  " + ColorUtil.cyan("⚡ Effects:"));
-        System.out.println("    - " + ColorUtil.cyan("🛡️ Ignores target’s Defense"));
-        System.out.println("    - " + ColorUtil.cyan("💢 30% chance to apply Weaken (-15% ATK for 2 turns)\n"));
+        System.out.println("    - " + ColorUtil.cyan("💫 30% chance to Stun (1 turn)\n"));
 
 // Ultimate
         System.out.println("  " + ColorUtil.boldBrightYellow("✝️ Ultimate – Eternal Cross Slash (🔋 20 Stamina)"));
         System.out.println("  " + ColorUtil.cyan("📜 Description: Kael unleashes a flurry of crossing strikes infused with unyielding determination."));
-        System.out.println("  " + ColorUtil.cyan("💥 Damage: 3 hits, each dealing (") + ColorUtil.boldBrightYellow((int)(attack * 0.80) + " — " + (int)(attack * 1.30)) + ColorUtil.cyan(")"));
+        System.out.println("  " + ColorUtil.cyan("💥 Damage: 3 hits, each dealing (") + ColorUtil.boldBrightYellow((int)(attack * 1.00) + " — " + (int)(attack * 1.80)) + ColorUtil.cyan(")"));
         System.out.println("  " + ColorUtil.cyan("⚡ Effects:"));
         System.out.println("    - " + ColorUtil.cyan("🩸 Applies Bleed for 2 turns"));
         System.out.println("    - " + ColorUtil.cyan("🛡️ Grants Fortified (+20% DEF for 2 turns)"));
@@ -70,7 +69,7 @@ public class Kael extends  Character{      // 15% crit chance
     }
 
     // Passive - Blade Swift
-    private int bladeSwift(Character target, int damage) {
+    private int bladeSwift(int damage) {
         if (RandomUtil.chance(15)) {
             System.out.println(ColorUtil.brightMagenta("⚡ Critical Hit! Blade Swift activated!"));
             PrintUtil.pause(800);
@@ -85,31 +84,13 @@ public class Kael extends  Character{      // 15% crit chance
             System.out.println(ColorUtil.brightMagenta("✨ Gained +" + energyGained + " energy from precision! " + "(🔋 " + before + " → " + after + ")"));
             PrintUtil.pause(800);
         }
-
-        int reduced = damage;
-
-        // FinalBoss shield logic
-        if (target instanceof FinalBoss fb && fb.getShield() > 0) {
-            if (reduced >= fb.getShield()) {
-                int absorbed = fb.getShield();
-                fb.reduceShield(absorbed); // triggers shieldBroken
-                reduced -= absorbed;
-            } else {
-                fb.reduceShield(reduced); // just reduce shield
-                reduced = 0; // all damage absorbed
-            }
-        }
-
-        // Apply defense
-        reduced -= target.getDefense();
-        if (reduced < 0) reduced = 0;
-
-        return reduced;
+        return damage;
     }
 
     // Skill 1 - Blade Rush
     public void bladeRush(Character target){
-        SoundUtil.play("kael_skill1.wav");
+        PrintUtil.pause(500);
+        SoundUtil.playDelayed("characters/kael_skill1.wav", 500);
         PrintUtil.print(ColorUtil.boldBrightGreen("                                                          \n" +
                 "                .........                                 \n" +
                 "            .:-:.::-::...                                 \n" +
@@ -138,7 +119,8 @@ public class Kael extends  Character{      // 15% crit chance
         if(this.getEffects().checkConfuse()) return;
 
         int damage = (int) RandomUtil.range(attack * 1.15,attack * 1.35);
-        int reduced = bladeSwift(target,damage);
+        damage = bladeSwift(damage);
+        int reduced = calculateDamage(target, damage);
 
         System.out.println(
                 ColorUtil.brightGreen("💔 Target is hit for ") +
@@ -149,9 +131,9 @@ public class Kael extends  Character{      // 15% crit chance
         PrintUtil.pause(800);
         target.takeDamage(reduced);
 
-        // 30% chance to apply Strengthen (+15% ATK for 2 turns)
+        // 30% chance to apply Strengthen (+20% ATK for 2 turns)
         if (RandomUtil.chance(30)) {
-            this.getEffects().applyAttackBuff(15, 2);
+            getEffects().applyAttackBuff(20, 2);
         }
 
         this.getWeapon().applyEffects(this,target,reduced);
@@ -159,7 +141,7 @@ public class Kael extends  Character{      // 15% crit chance
 
     // Skill 2 - Piercing Slash
     public void piercingSlash(Character target){
-        SoundUtil.play("kael_skill2.wav");
+        SoundUtil.playDelayed("characters/kael_skill2.wav", 500);
         PrintUtil.print(ColorUtil.boldBrightGreen("                                                          \n" +
                 "                               ...                        \n" +
                 "                              .=@@*.                      \n" +
@@ -186,8 +168,7 @@ public class Kael extends  Character{      // 15% crit chance
         if(this.getEffects().checkConfuse()) return;
 
         int damage = (int) RandomUtil.range(attack * 1.35,attack * 1.55);
-        int reduced = bladeSwift(target, damage);
-        reduced += target.getDefense(); //for pure damage
+        int reduced = bladeSwift(damage);
 
         System.out.println(
                 ColorUtil.brightGreen("💔 Target is hit for ")
@@ -198,8 +179,10 @@ public class Kael extends  Character{      // 15% crit chance
         PrintUtil.pause(800);
         target.takeDamage(reduced);
 
+        // 30% chance to apply Stun (from the sheer impact)
         if (RandomUtil.chance(30)) {
-            target.getEffects().applyAttackDebuff(15, 2);
+            target.getEffects().applyStun();
+            if (target instanceof FinalBoss fb) fb.applyStun();
         }
 
         this.getWeapon().applyEffects(this,target,reduced);
@@ -207,7 +190,7 @@ public class Kael extends  Character{      // 15% crit chance
 
     //Ultimate - Eternal Cross Slash
     public void eternalCrossSlash(Character target){
-        SoundUtil.play("kael_skill3.wav");
+        SoundUtil.playDelayed("characters/kael_skill3.wav", 500);
         PrintUtil.print(ColorUtil.boldBrightGreen("                                                          \n" +
                 "                                ..:.                      \n" +
                 "             .:--:   ::::::--:        :.                  \n" +
@@ -236,8 +219,9 @@ public class Kael extends  Character{      // 15% crit chance
         PrintUtil.pause(800);
 
         for(int i = 1; i <= 3; i++){
-            int damage = (int) RandomUtil.range(attack * 0.80,attack * 1.30);
-            int reduced = bladeSwift(target, damage);
+            int damage = (int) RandomUtil.range(attack * 1.00,attack * 1.80);
+            damage = bladeSwift(damage);
+            int reduced = calculateDamage(target, damage);
 
             if(this.getEffects().checkConfuse()) reduced = 0;
             totalDamage += reduced;

@@ -5,6 +5,7 @@ import inventory.Armor;
 import utils.ColorUtil;
 import utils.PrintUtil;
 import utils.RandomUtil;
+import utils.SoundUtil;
 
 public class World1Enemy1 extends Enemy {
     // Constructor
@@ -12,6 +13,7 @@ public class World1Enemy1 extends Enemy {
 
     // Skill: Savage Howl (10–15 damage)
     public void savageHowl(Character target) {
+        SoundUtil.play("attack/wolf_attack.wav");
         PrintUtil.print(ColorUtil.boldBrightRed("                                                          \n" +
                 "                                                          \n" +
                 "           .+#@@@@@%#*=.       :-:              ::        \n" +

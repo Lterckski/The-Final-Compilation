@@ -6,10 +6,12 @@ import characters.Character;
 import utils.ColorUtil;
 import utils.InputUtil;
 import utils.PrintUtil;
+import utils.SoundUtil;
 
 public class World3Final {
 
     public void run(Character player) {
+        SoundUtil.playLoop("worldbgm/world3_bgm.wav", 0.2f);
         // --- THE NECROMANCER'S ASCENSION ---
         PrintUtil.pause(2000);
 
