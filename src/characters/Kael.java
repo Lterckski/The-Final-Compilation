@@ -1,4 +1,5 @@
 package characters;
+import utils.SoundUtil;
 
 import enemies.FinalBoss;
 import utils.ColorUtil;
@@ -88,6 +89,7 @@ public class Kael extends  Character{      // 15% crit chance
 
     // Skill 1 - Blade Rush
     public void bladeRush(Character target){
+        SoundUtil.play("kael_skill1.wav");
         PrintUtil.print(ColorUtil.boldBrightGreen("                                                          \n" +
                 "                .........                                 \n" +
                 "            .:-:.::-::...                                 \n" +
@@ -138,6 +140,7 @@ public class Kael extends  Character{      // 15% crit chance
 
     // Skill 2 - Piercing Slash
     public void piercingSlash(Character target){
+        SoundUtil.play("kael_skill2.wav");
         PrintUtil.print(ColorUtil.boldBrightGreen("                                                          \n" +
                 "                               ...                        \n" +
                 "                              .=@@*.                      \n" +
@@ -186,6 +189,7 @@ public class Kael extends  Character{      // 15% crit chance
 
     //Ultimate - Eternal Cross Slash
     public void eternalCrossSlash(Character target){
+        SoundUtil.play("kael_skill3.wav");
         PrintUtil.print(ColorUtil.boldBrightGreen("                                                          \n" +
                 "                                ..:.                      \n" +
                 "             .:--:   ::::::--:        :.                  \n" +

@@ -147,7 +147,7 @@ public class Tester {
             }
         } while (player == null);  // repeat until valid choice
         player.getInventory().setEquippedArmor(Armor.LEATHER_GUARD);
-
+/*
         // --- Pre Final Encounter ---
         System.out.println();
         PrintUtil.effect("""
@@ -257,18 +257,18 @@ public class Tester {
 
         World3Final finale = new World3Final();
         finale.run(player);
-
+*/
 //
-//        World1 world1 = new World1();
-//        world1.run(player);
+     //   World1 world1 = new World1();
+    //   world1.run(player);
 
-/*
-        MagicShop magicShop = new MagicShop(player);
+
+  //      MagicShop magicShop = new MagicShop(player);
 
         Enemy enemy1 = new World1Enemy1();
         Battle battle = new Battle(player,enemy1);
         battle.startBattle();
-
+/*
         enemy1.dropLoot(player);
 
         Enemy enemy2 = new World2Miniboss2();

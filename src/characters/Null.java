@@ -3,6 +3,7 @@ package characters;
 import utils.ColorUtil;
 import utils.InputUtil;
 import utils.PrintUtil;
+import utils.SoundUtil;
 
 public class Null extends Character {
 
@@ -67,6 +68,7 @@ public class Null extends Character {
 
     // Skill 1 – Direct Hit
     private void directHit(Character target) {
+        SoundUtil.play("null_skill1.wav");
         PrintUtil.print(ColorUtil.boldBrightGreen("                                                          \n" +
                 "                      .. .-..                             \n" +
                 "                     . . .:=-  .    .                     \n" +
@@ -115,6 +117,7 @@ public class Null extends Character {
 
     // Skill 2 – Obliterate
     private void obliterate(Character target) {
+        SoundUtil.play("null_skill2.wav");
         PrintUtil.print(ColorUtil.boldBrightGreen("                                                          \n" +
                 "                          .:.                             \n" +
                 "                        .#@@@#                            \n" +
@@ -164,6 +167,7 @@ public class Null extends Character {
 
     // Ultimate – World End
     private void worldEnd(Character target) {
+        SoundUtil.play("null_skill3.wav");
         PrintUtil.print(ColorUtil.boldBrightGreen("                                                          \n" +
                 "                                                          \n" +
                 "           .=:                             :-.            \n" +
