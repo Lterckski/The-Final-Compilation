@@ -11,7 +11,7 @@ import utils.SoundUtil;
 public class World3Final {
 
     public void run(Character player) {
-        SoundUtil.playLoop("worldbgm/world3_bgm.wav", 0.2f);
+        SoundUtil.playLoop("bossfight.wav", 0.2f);
         // --- THE NECROMANCER'S ASCENSION ---
         PrintUtil.pause(2000);
 
@@ -384,6 +384,7 @@ public class World3Final {
 
         InputUtil.pressEnterToContinue();
         PrintUtil.line();
+        SoundUtil.stopLoop();
         player.getEffects().resetAllEffects();
     }
 }

@@ -21,13 +21,13 @@ public class StoryEngine {
     public static int getCurrWorldLevel(){ return currWorldLevel; }
 
     public void start() {
-        SoundUtil.playLoop("intro1.wav", 0.1f);
-        SoundUtil.playLoop2Delayed("intro2.wav", 0.1f, 2);
+
         intro();
-        SoundUtil.stopLoop();
+
         SoundUtil.playLoop("charSelect.wav", 0.1f);
         Character player = chooseCharacter();
         SoundUtil.stopLoop();
+
         World1 w1 = new World1();
         w1.run(player);
 
@@ -114,8 +114,9 @@ public class StoryEngine {
     }
 
     // ---------- Scenes ----------
-    private void intro() {
-
+    public void intro() {
+        SoundUtil.playLoop("intro1.wav", 0.1f);
+        SoundUtil.playLoop2Delayed("intro2.wav", 0.1f, 2);
         PrintUtil.pause(1000);
         System.out.println();
         PrintUtil.title("╔═══════════════════════════════════════════════════════════════════════════════════════════════════════╗");
@@ -227,12 +228,18 @@ public class StoryEngine {
                 """
                 The moment you press "Start", the monitor ripples like water... 🌊
                 The screen glitches... ⚡
-                And the world turns to black as the room seems to wrap around you. 🕳️
-                
+                And the world turns to black as the room seems to wrap around you. 🕳️);                              
+                """
+        );
+        SoundUtil.stopLoop();
+        SoundUtil.stopLoop2();
+        PrintUtil.story(
+                """                          
                 When come to your senses, you're no longer in the lab. You wake up in an unfamiliar place.👁️
                 """
         );
 
+        SoundUtil.playLoop("charSelect.wav", 0.1f);
         PrintUtil.pause(2000);
         System.out.println();
         // --- SCENE 1: INTRO ---
@@ -309,7 +316,7 @@ public class StoryEngine {
         ));
         System.out.println();
         PrintUtil.pause(2000);
-
+        SoundUtil.stopLoop();
     }
 
     private Character chooseCharacter() {

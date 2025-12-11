@@ -12,7 +12,7 @@ import java.io.IOException;
 public class SoundUtil {
 
     // adjust this if your working directory is different
-    private static final String BASE_PATH = "The-Final-Compilation/src/audio/";
+    private static final String BASE_PATH = "src/audio/";
 
     private static Clip bgmClip;
     private static Clip bgmClip2;
@@ -88,6 +88,8 @@ public class SoundUtil {
         }
     }
 
+
+
     // ---------- VOLUME HELPER ----------
 
     private static void setVolume(Clip clip, float volume) {
@@ -155,6 +157,8 @@ public class SoundUtil {
             bgmClip2 = null;
         }
     }
+
+
 
     public static void playLoop2Delayed(String relativePath, float volume, int delayMs) {
         new Thread(() -> {

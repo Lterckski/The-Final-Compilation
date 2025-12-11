@@ -465,7 +465,7 @@ public class World3 {
                 "██    ██ ██ ██ ▀██ ██ ██▄█▀ ▀███▀ ▄▄██▀ ▄▄██▀   ██▄▄▄▄ ██ ▀██ ▀████ ▀███▀ ▀███▀ ██ ▀██   ██   ██▄▄▄ ██ ██ ▄ \n" +
                 "                                                                                                            ");
         PrintUtil.pause(500);
-
+        SoundUtil.playLoop("bossfight.wav", 0.2f);
         PrintUtil.event("                                                                                                                                           \n" +
                 "                                                                                                                                           \n" +
                 "██████ ▄▄ ▄▄ ▄▄▄▄  ▄▄▄▄  ▄▄ ▄▄ ▄▄          ██████ ▄▄ ▄▄ ▄▄▄▄▄   ██████ ▄▄▄  ▄▄   ▄▄ ▄▄▄▄▄ ▄▄▄▄    ██     ██  ▄▄▄  ▄▄▄▄  ▄▄▄▄  ▄▄▄▄▄ ▄▄  ▄▄ \n" +
@@ -545,6 +545,7 @@ public class World3 {
             """);
         PrintUtil.loot("You claim powerful artifacts from the fallen titan.");
         PrintUtil.line();
+        SoundUtil.playLoop("worldbgm/world3_bgm.wav", 0.2f);
         miniboss.dropLoot(player);
         InputUtil.pressEnterToContinue();
         System.out.println();
