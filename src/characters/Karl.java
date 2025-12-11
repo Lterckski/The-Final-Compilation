@@ -32,7 +32,7 @@ public class Karl extends Character{
         System.out.println("  " + ColorUtil.cyan("💥 Damage: (") + ColorUtil.boldBrightYellow((int)(attack * 1.10) + " — " + (int)(attack * 1.30)) + ColorUtil.cyan(")"));
         System.out.println("  " + ColorUtil.cyan("⚡ Effects:"));
         System.out.println("    - " + ColorUtil.cyan("🎯 Guaranteed Critical Hit (×1.5 multiplier)"));
-        System.out.println("    - " + ColorUtil.cyan("🔻 30% chance to apply Fragile (-30% DEF for 2 turns)\n"));
+        System.out.println("    - " + ColorUtil.cyan("🛡️ 30% chance to apply Weakness (-30% DEF for 2 turns)\n"));
 
         // Ultimate – Rain of a Thousand Arrows
         System.out.println("  " + ColorUtil.boldBrightYellow("🌩️ Ultimate – Rain of a Thousand Arrows (➶ 5 Arrows)"));
@@ -67,46 +67,23 @@ public class Karl extends Character{
         System.out.println();
     }
 
-    private int calculateCritDamage(Character target, int damage) {
-        int reduced = damage;
 
-        reduced = (int)(reduced * 1.5);
-        System.out.println(ColorUtil.brightMagenta("💥 Critical hit! Damage multiplied by 1.5x"));
-
-        // FinalBoss shield logic
-        if (target instanceof FinalBoss fb && fb.getShield() > 0) {
-            if (reduced >= fb.getShield()) {
-                int absorbed = fb.getShield();
-                fb.reduceShield(absorbed);
-                reduced -= absorbed;
-            } else {
-                fb.reduceShield(reduced);
-                reduced = 0;
-            }
-        }
-
-        // Apply defense
-        reduced -= target.getDefense();
-        if (reduced < 0) reduced = 0;
-
-        return reduced;
-    }
 
     // Passive - Hunter's Instinct
     private int hunterInstincts(int damage, Character target){
-       double hpPercent = (double) target.getHp() / target.maxHP;
+        double hpPercent = (double) target.getHp() / target.maxHP;
 
-       if(hpPercent < 0.3){
-           damage = (int) (damage * 1.2);
-           System.out.println(ColorUtil.brightMagenta("\uD83C\uDFAF Hunter's Instinct is active! Deals extra damage."));
-           PrintUtil.pause(800);
-       }
-       return damage;
+        if(hpPercent < 0.3){
+            damage = (int) (damage * 1.2);
+            System.out.println(ColorUtil.brightMagenta("\uD83C\uDFAF Hunter's Instinct is active! Deals extra damage."));
+            PrintUtil.pause(800);
+        }
+        return damage;
     }
 
     // Skill 1 - Piercing Arrow
     public void piercingArrow(Character target) {
-        SoundUtil.play("karl_skill1.wav");
+        SoundUtil.playDelayed("characters/karl_skill1.wav", 500);
         PrintUtil.print(ColorUtil.boldBrightGreen("                                             \n" +
                 "                                   ..                     \n" +
                 "                                   .   :                  \n" +
@@ -141,9 +118,7 @@ public class Karl extends Character{
         if (this.getEffects().checkConfuse()) return;
 
         int damage = (int) RandomUtil.range(attack * 1.00, attack * 1.25);
-        damage = hunterInstincts(damage, target);
-        int reduced = calculateDamage(target, damage);
-        reduced += target.getDefense(); //for pure damage
+        int reduced = hunterInstincts(damage, target);
 
         System.out.println(
                 ColorUtil.brightGreen("💔 Target is hit for ")
@@ -162,9 +137,34 @@ public class Karl extends Character{
         this.getWeapon().applyEffects(this,target,reduced);
     }
 
+    private int calculateCritDamage(Character target, int damage) {
+        int reduced = damage;
+
+        // Critical hit check (only if allowed)
+        reduced = (int)(reduced * 1.5);
+        System.out.println(ColorUtil.brightMagenta("💥 Critical hit! Damage multiplied by 1.5x"));
+
+        // FinalBoss shield logic
+        if (target instanceof FinalBoss fb && fb.getShield() > 0) {
+            if (reduced >= fb.getShield()) {
+                int absorbed = fb.getShield();
+                fb.reduceShield(absorbed);
+                reduced -= absorbed;
+            } else {
+                fb.reduceShield(reduced);
+                reduced = 0;
+            }
+        }
+
+        // Apply defense
+        reduced -= target.getDefense();
+        if (reduced < 0) reduced = 0;
+
+        return reduced;
+    }
     // Skill 2 - Bullseye
     public void bullsEye(Character target) {
-        SoundUtil.play("karl_skill2.wav");
+        SoundUtil.playDelayed("characters/karl_skill2.wav", 500);
         PrintUtil.print(ColorUtil.boldBrightGreen("                                                          \n" +
                 "                                         :*%%%%@%+        \n" +
                 "                                       .%#: .::  -@+      \n" +
@@ -222,7 +222,7 @@ public class Karl extends Character{
 
     // Ultimate - Rain of a Thousand Arrows
     public void rainOfAThousandArrows(Character target) {
-        SoundUtil.play("karl_skill3.wav");
+        SoundUtil.playDelayed("characters/karl_skill3.wav", 500);
         PrintUtil.print(ColorUtil.boldBrightGreen("                                                          \n" +
                 "                                                      ..:> \n" +
                 "                            :                  :*- .-=    \n" +

@@ -7,10 +7,12 @@ import events.MagicShop;
 import utils.ColorUtil;
 import utils.InputUtil;
 import utils.PrintUtil;
+import utils.SoundUtil;
 
 public class World2 {
 
     public void run(Character player) {
+        SoundUtil.playLoop("worldbgm/world2_bgm.wav", 0.2f);
         PrintUtil.pause(2000);
         System.out.println();
         PrintUtil.title("                                                                               ╦ ╦╔═╗╦═╗╦  ╔╦╗ ╔═╗ ");
@@ -168,6 +170,7 @@ public class World2 {
             """);
         PrintUtil.loot("You wipe the filth from your blade and claim your rewards.");
         PrintUtil.line();
+        SoundUtil.playLoop("worldbgm/world2_bgm.wav", 0.2f);
         InputUtil.pressEnterToContinue();
         player.getEffects().resetAllEffects();
 
@@ -267,6 +270,7 @@ public class World2 {
                 """);
         PrintUtil.loot("You search the robes of the fallen zealots and find useful items.");
         PrintUtil.line();
+        SoundUtil.playLoop("worldbgm/world2_bgm.wav", 0.2f);
         InputUtil.pressEnterToContinue();
         player.getEffects().resetAllEffects();
 
@@ -361,6 +365,7 @@ public class World2 {
                 """);
         PrintUtil.loot("You step over the remains, gathering strength for the battle ahead.");
         PrintUtil.line();
+        SoundUtil.playLoop("worldbgm/world2_bgm.wav", 0.2f);
         InputUtil.pressEnterToContinue();
         player.getEffects().resetAllEffects();
 
@@ -462,6 +467,7 @@ public class World2 {
                 """);
         PrintUtil.loot("You scavenge what you can from the fallen guards.");
         PrintUtil.line();
+        SoundUtil.playLoop("worldbgm/world2_bgm.wav", 0.2f);
         InputUtil.pressEnterToContinue();
         player.getEffects().resetAllEffects();
 
@@ -560,6 +566,7 @@ public class World2 {
                 """);
         PrintUtil.loot("You find a key on the Jailer's belt and a surge of new power.");
         PrintUtil.line();
+        SoundUtil.playLoop("worldbgm/world2_bgm.wav", 0.2f);
         miniBoss.dropLoot(player);
         InputUtil.pressEnterToContinue();
         PrintUtil.line();
@@ -675,6 +682,7 @@ public class World2 {
                 And the stone pulsing within it.
                 """);
         PrintUtil.line();
+        SoundUtil.playLoop("worldbgm/world2_bgm.wav", 0.2f);
         PrintUtil.pause(2000);
 
         boss.dropLoot(player);

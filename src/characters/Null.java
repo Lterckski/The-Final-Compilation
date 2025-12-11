@@ -68,7 +68,7 @@ public class Null extends Character {
 
     // Skill 1 – Direct Hit
     private void directHit(Character target) {
-        SoundUtil.play("null_skill1.wav");
+        SoundUtil.playDelayed("characters/null_skill1.wav", 500);
         PrintUtil.print(ColorUtil.boldBrightGreen("                                                          \n" +
                 "                      .. .-..                             \n" +
                 "                     . . .:=-  .    .                     \n" +
@@ -117,7 +117,7 @@ public class Null extends Character {
 
     // Skill 2 – Obliterate
     private void obliterate(Character target) {
-        SoundUtil.play("null_skill2.wav");
+        SoundUtil.playDelayed("characters/null_skill2.wav", 500);
         PrintUtil.print(ColorUtil.boldBrightGreen("                                                          \n" +
                 "                          .:.                             \n" +
                 "                        .#@@@#                            \n" +
@@ -167,7 +167,7 @@ public class Null extends Character {
 
     // Ultimate – World End
     private void worldEnd(Character target) {
-        SoundUtil.play("null_skill3.wav");
+        SoundUtil.playDelayed("characters/null_skill3.wav", 500);
         PrintUtil.print(ColorUtil.boldBrightGreen("                                                          \n" +
                 "                                                          \n" +
                 "           .=:                             :-.            \n" +

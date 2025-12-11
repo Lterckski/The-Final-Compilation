@@ -263,8 +263,8 @@ public class Tester {
         finale.run(player);
 */
 //
-     //   World1 world1 = new World1();
-    //   world1.run(player);
+        World1 world1 = new World1();
+       world1.run(player);
 
 
   //      MagicShop magicShop = new MagicShop(player);

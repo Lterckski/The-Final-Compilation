@@ -1,5 +1,7 @@
 package battle;
 
+
+import utils.SoundUtil;
 import characters.Character;
 import enemies.FinalBoss;
 import utils.ColorUtil;
@@ -19,6 +21,7 @@ public class Battle {
     }
 
     public void startBattle(){
+        SoundUtil.playLoop("battle/battle_theme.wav", 0.2f);
         preBattleOptions();
         battleLoop();
     }
