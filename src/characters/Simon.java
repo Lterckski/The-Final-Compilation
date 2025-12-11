@@ -79,7 +79,7 @@ public class Simon extends Character {
 
     // Skill 1 – Fireball
     public void fireball(Character target) {
-        SoundUtil.play("simon_skill1.wav");
+        SoundUtil.playDelayed("characters/simon_skill1.wav", 500);
         PrintUtil.print(ColorUtil.boldBrightGreen("                                                          \n" +
                 "                            %@*           :.              \n" +
                 "                            -@@@+     :+-  .:             \n" +
@@ -136,7 +136,7 @@ public class Simon extends Character {
 
     // Skill 2 – Ice Prison
     public void icePrison(Character target) {
-        SoundUtil.play("simon_skill2.wav");
+        SoundUtil.playDelayed("characters/simon_skill2.wav", 500);
         PrintUtil.print(ColorUtil.boldBrightGreen("                                                          \n" +
                 "                         ..                               \n" +
                 "                        ...                               \n" +
@@ -193,7 +193,7 @@ public class Simon extends Character {
 
     // Ultimate – Meteor Storm
     public void meteorStorm(Character target) {
-        SoundUtil.play("simon_skill3.wav");
+        SoundUtil.playDelayed("characters/simon_skill3.wav", 500);
         PrintUtil.print(ColorUtil.boldBrightGreen("                                                          \n" +
                 "                        ..  :.  .. ..                     \n" +
                 "                   .:.                  .:.               \n" +

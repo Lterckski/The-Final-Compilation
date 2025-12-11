@@ -7,11 +7,13 @@ import events.PrefiEncounter;
 import utils.ColorUtil;
 import utils.InputUtil;
 import utils.PrintUtil;
+import utils.SoundUtil;
 
 
 public class World3 {
 
     public void run(Character player) {
+        SoundUtil.playLoop("worldbgm/world3_bgm.wav", 0.2f);
         PrintUtil.pause(2000);
         System.out.println();
         PrintUtil.title("                                                      ╦ ╦╔═╗╦═╗╦  ╔╦╗  ═╗");
@@ -152,6 +154,7 @@ public class World3 {
             """);
         PrintUtil.loot("Experience flows into you. You gather the spoils before the heat returns.");
         PrintUtil.line();
+        SoundUtil.playLoop("worldbgm/world3_bgm.wav", 0.2f);
         InputUtil.pressEnterToContinue();
         player.getEffects().resetAllEffects();
 
@@ -255,6 +258,7 @@ public class World3 {
             """);
         PrintUtil.loot("You find ancient runes and potions among the pile of bones.");
         PrintUtil.line();
+        SoundUtil.playLoop("worldbgm/world3_bgm.wav", 0.2f);
         InputUtil.pressEnterToContinue();
         player.getEffects().resetAllEffects();
 
@@ -441,6 +445,7 @@ public class World3 {
             """);
         PrintUtil.loot("You catch your breath and prepare for the dangers above.");
         PrintUtil.line();
+        SoundUtil.playLoop("worldbgm/world3_bgm.wav", 0.2f);
         InputUtil.pressEnterToContinue();
         player.getEffects().resetAllEffects();
 
@@ -543,6 +548,7 @@ public class World3 {
         miniboss.dropLoot(player);
         InputUtil.pressEnterToContinue();
         System.out.println();
+        SoundUtil.playLoop("worldbgm/world3_bgm.wav", 0.2f);
         PrintUtil.line();
         player.getEffects().resetAllEffects();
 

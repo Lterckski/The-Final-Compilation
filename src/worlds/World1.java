@@ -6,10 +6,12 @@ import characters.Character;
 import utils.ColorUtil;
 import utils.InputUtil;
 import utils.PrintUtil;
+import utils.SoundUtil;
 
 public class World1 {
 
     public void run(Character player) {
+        SoundUtil.playLoop("worldbgm/world1_bgm.wav", 0.2f);
         // --- TITLE SEQUENCE ---
         PrintUtil.pause(1000);
         System.out.println();
@@ -94,6 +96,7 @@ public class World1 {
 
         PrintUtil.objective(("🎯 Objective: Defeat 3 Rotfang Wolves!"));
         PrintUtil.line();
+        SoundUtil.play("encounter/wolf_encounter.wav");
         InputUtil.pressEnterToContinue();
 
         Enemy enemy1 = new World1Enemy1();
@@ -107,7 +110,12 @@ public class World1 {
         for (int i = 1; i <= 3; i++) {
             System.out.println(ColorUtil.boldBrightRed("═══════════════════════════════════════"));
             PrintUtil.enemyEncounter("🐺 Rotfang Wolf " + i + " lunges from the dark!");
+<<<<<<< HEAD
             System.out.println(ColorUtil.boldBrightRed("═══════════════════════════════════════"));
+=======
+            SoundUtil.play("attack/wolf_attack.wav");
+            System.out.println(ColorUtil.boldBrightRed("════════════════════════════════════"));
+>>>>>>> 0248fb9533e67e7522781095c7bf02e4ebcb957a
 
             battle1.startBattle();
 
@@ -136,6 +144,7 @@ public class World1 {
                 """);
         PrintUtil.loot("You bandage your wounds and collect what little the wolves carried.");
         PrintUtil.line();
+        SoundUtil.playLoop("worldbgm/world1_bgm.wav");
         InputUtil.pressEnterToContinue();
         player.getEffects().resetAllEffects();
 
@@ -224,6 +233,7 @@ public class World1 {
                 """);
         PrintUtil.loot("You feel your strength returning after overcoming the darkness.");
         PrintUtil.line();
+        SoundUtil.playLoop("worldbgm/world1_bgm.wav");
         InputUtil.pressEnterToContinue();
         player.getEffects().resetAllEffects();
 
@@ -318,6 +328,7 @@ public class World1 {
                 """);
         PrintUtil.loot("You emerge covered in dust, but victorious. Treasures fall from the decaying wood.");
         PrintUtil.line();
+        SoundUtil.playLoop("worldbgm/world1_bgm.wav");
         InputUtil.pressEnterToContinue();
         player.getEffects().resetAllEffects();
 
@@ -404,6 +415,7 @@ public class World1 {
                 """);
         PrintUtil.loot("You catch your breath. You feel stronger... and richer.");
         PrintUtil.line();
+        SoundUtil.playLoop("worldbgm/world1_bgm.wav");
         InputUtil.pressEnterToContinue();
         player.getEffects().resetAllEffects();
 
@@ -513,6 +525,7 @@ public class World1 {
                 It dissolves into particles of pure light.
                 """);
         PrintUtil.line();
+        SoundUtil.playLoop("worldbgm/world1_bgm.wav");
         PrintUtil.pause(2000);
 
         miniboss.dropLoot(player);
