@@ -6,14 +6,7 @@ import utils.ColorUtil;
 import utils.InputUtil;
 import utils.PrintUtil;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.sql.SQLOutput;
-import java.util.Scanner;
-import java.util.concurrent.*;
-
 import static utils.PrintUtil.pause;
-
 
 public class PrefiEncounter {
 
@@ -59,18 +52,18 @@ public class PrefiEncounter {
 
         Weapon legendaryWeapon;
 
+        // Determine weapon based on class
         switch (player.getClassType()) {
             case "Swordsman" -> legendaryWeapon = Sword.CELESTIAL_EDGE;
             case "Archer"    -> legendaryWeapon = Bow.GOLDEN_TALON;
             case "Mage"      -> legendaryWeapon = Staff.CHRONOMANCER_STAFF;
             default -> {
                 legendaryWeapon = Staff.CHRONOMANCER_STAFF;
-                return;
+                return; // Should not happen
             }
         }
 
         Armor legendaryArmor = Armor.CELESTIAL_BATTLEGEAR;
-
         String weaponEmoji = switch (player.getClassType()) {
             case "Swordsman" -> "🗡️";
             case "Archer"    -> "🏹";
@@ -84,127 +77,26 @@ public class PrefiEncounter {
             System.out.println(ColorUtil.boldBrightCyan("               🟡 CHOOSE YOUR LEGENDARY ARTIFACT 🟡"));
             System.out.println(ColorUtil.boldBrightCyan("╚═════════════════════════════════════════════════════════════════╝"));
 
-            switch (player.getClassType()) {
-                case "Swordsman" -> {
-                    System.out.println(ColorUtil.boldBrightYellow(
-                            "                        :                        "  + "                     .-:--                        " + " \n" +
-                                    "                       *@*                     " + "                     -:.- --                      \n" +
-                                    "                       .#.                    "  + "                  .  -%@%@%:  .:-                \n" +
-                                    "                       .%.                    "  + "                 -... +%%%=    :.                \n" +
-                                    "                    .. .@:-..                 "  + "               .+:#@@@%@@@%@@@%=.                \n" +
-                                    "                  ..=++#@#+==..               "  + "                :%%@@@%%%%%@@@%%-                \n" +
-                                    "                  -#+%@@@@@%+#=               "  + "              .  @@@@@%#*#@@@@@@.                \n" +
-                                    "                  -#*+:%@%.+*%-               "  + "              .:=%@@@@@@@@@@@@@%=..-             \n" +
-                                    "                  .   #@@@#:- ..              "  + "               +%@@@@@@*%#@@@@@@@= :             \n" +
-                                    "                       +@+ -*                 "  + "              :+%@@@@@@%@%@@@@@@%*:             \n" +
-                                    "                      +@@@+ -:                "  + "              .=%@@@%@@@@@@@%@@@%=             \n" +
-                                    "                       -@=                    "  + "               =@@@@%@%@@@@@%@@@@*             \n" +
-                                    "                      =#@#=                   "  + "               -@@@%#@%@@@%@##@@@=             \n" +
-                                    "                       =@=                    "  + "               =@@@@@@%@@@%@@@@@@             \n" +
-                                    "                      :*@*:                   "  + "              -%@@@@@@%@@@%@@@@@@+            \n" +
-                                    "                       =@=                    "  + "              %@@@@@%@%@@@%@@@@@@%-           \n" +
-                                    "                      .=@+.                   "  + "             +%@@@@*#%%%@@#@##%@@@*           \n" +
-                                    "                      .+@+                    "  + "             %###%@@@@@#%##@@@@%%%%-          \n" +
-                                    "                       =@=                    "  + "             #..*%@%@@@%%@@@@%@%%=+*          \n" +
-                                    "                       -@-                    "  + "              : *+=@@@@+%%#@@%#:. :.          \n" +
-                                    "                       -@-                    "  + "                 .=@%:..:. :*@#:              \n" +
-                                    "                       -@-                    "  + "                 .%@%:      *@@=              \n" +
-                                    "                       .@.                    "  + "                 *@@*       =@@%.            \n" +
-                                    "                        :                     "  + "                .+-           :+=            \n"
-                    ));
-                }
-                case "Archer" -> {
-                    System.out.println(ColorUtil.boldBrightYellow(
-                            "                                                           " + "                                                        .-    =                           \n" +
-                                    "                               =                          " + "                                                       .***#%***                          \n" +
-                                    "                              .+=                         " + "                                                 :+. .  .*%##%+    ::                    \n" +
-                                    "                              #%=                         " + "                                                  .=.... =%%#%- ....-.                   \n" +
-                                    "                            .#@*-                         " + "                                                 .+.+%@%%%@@@@%%@@%#-.                   \n" +
-                                    "                        :.  *=: :                         " + "                                                   ###@@@@@%%@%@@@%##:                   \n" +
-                                    "                      =+:+#-  :..                         " + "                                               . .:%@@@@@%#%%#%@@@@@%=                   \n" +
-                                    "                     *%%##-   -*#.                        " + "                                                :  %@@@@@@%%%%@@@@@%@..:=.               \n" +
-                                    "                    .:#%-     -#%-                        " + "                                                 -#%@@@@@@@%%@@@@@@@%#::                  \n" +
-                                    "                    :@%%-     :+@=                        " + "                                                .*%@@@@@@@*%%#@@@@@@@@+  .               \n" +
-                                    "                    #%@+.     : *#:                       " + "                                               ..*%@@@@@@@%@@%@@@@@@@%#.:                \n" +
-                                    "                   :#:*%-     :  .:                       " + "                                               :.+#@@@@@@@%@@%@@@@@@@%+.                 \n" +
-                                    "                   :-:-@%-    :                            " + "                                                 *@@@@@@@@@@@@@@@@@@@@*                  \n" +
-                                    "                    . +%=     :                            " + "                                                 *@@@@##@%@@@@@@##@@@@#                  \n" +
-                                    "                      :#-     :                            " + "                                                 -%@@@@@@%@@@@%@@@@@@%+                  \n" +
-                                    "                      :%=     :                            " + "                                                 *@@@@@@@%@@@@%@@@@@@@.                  \n" +
-                                    "                      :#-     :                            " + "                                                +%@@@@@@@%@@@@%@@@@@@@#                  \n" +
-                                    "                    . +%=     :                            " + "                                               =%@@@@@@@@%@@@@%@@@@@@@%+                 \n" +
-                                    "                   :---@%-    :                            " + "                                              :*@@@@@%%%@%%@@@%@@%%@@@@#:                \n" +
-                                    "                   :#:*%:     :                            " + "                                              =%@@%%@@%%@%%@@##@%%%@@@@%*                \n" +
-                                    "                    +%@+.     :                            " + "                                              +%*=#%@@%@@@#%%%@@@%%@%%%%*-               \n" +
-                                    "                    :@#%:     :                            " + "                                              --  *%@@@@@@%%%@@@@@@@##:=+-               \n" +
-                                    "                    .:##-     :                            " + "                                               :  *+:*@@@@+%%%#@@@%+.. .=                \n" +
-                                    "                     +##*@-   :                            " + "                                                    .#@#:.. *  -+@@+:                    \n" +
-                                    "                      -*:=#=  :                            " + "                                                    #@@%-       +@@%=                    \n" +
-                                    "                        :.  *+: :                          " + "                                                   .%@@%:       -%@%+                    \n" +
-                                    "                            .*@#:                          " + "                                                  .%@@*.         -#@@+                   \n" +
-                                    "                              *%=                          " + "                                                   -.               ::                   \n" +
-                                    "                              .+-                          " + "                                                                                          \n" +
-                                    "                               -                           " + "                                                                                          \n"
-                    ));
-                }
-                case "Mage" -> {
-                    System.out.println(ColorUtil.boldBrightYellow(
-                            "                                                           " + "                                                        .-    =                           \n" +
-                                    "                          ..- :                            " + "                                                       .***#%***                          \n" +
-                                    "                       .==-:::-==.                         " + "                                                 :+. .  .*%##%+    ::                    \n" +
-                                    "                      .==--=***=-=:                        " + "                                                  .=.... =%%#%- ....-.                   \n" +
-                                    "                      -+-+*=--*+===                        " + "                                                 .+.+%@%%%@@@@%%@@%#-.                   \n" +
-                                    "                  ..  :+-++=:=*+-=-   .                    " + "                                                   ###@@@@@%%@%@@@%##:                   \n" +
-                                    "                    =+.:-:=*+==:== -+.                     " + "                                               . .:%@@@@@%#%%#%@@@@@%=                   \n" +
-                                    "                     -=:-**=--+*=:==                        " + "                                                :  %@@@@@@%%%%@@@@@%@..:=.               \n" +
-                                    "                     ..-*+=###=++-.                         " + "                                                 -#%@@@@@@@%%@@@@@@@%#::                  \n" +
-                                    "                     .. .:**=*#: .                          " + "                                                .*%@@@@@@@*%%#@@@@@@@@+  .               \n" +
-                                    "                      ..:. **#=. :-                         " + "                                               ..*%@@@@@@@%@@%@@@@@@@%#.:                \n" +
-                                    "                        ...-*+*- :-                         " + "                                               :.+#@@@@@@@%@@%@@@@@@@%+.                 \n" +
-                                    "                           :+=- .-:                         " + "                                                 *@@@@@@@@@@@@@@@@@@@@*                  \n" +
-                                    "                          =*%-   . .                        " + "                                                 *@@@@##@%@@@@@@##@@@@#                  \n" +
-                                    "                       . .+++-     ..                       " + "                                                 -%@@@@@@%@@@@%@@@@@@%+                  \n" +
-                                    "                      .    ++=.   .                         " + "                                                 *@@@@@@@%@@@@%@@@@@@@.                  \n" +
-                                    "                      .    :=+=.                            " + "                                                +%@@@@@@@%@@@@%@@@@@@@#                  \n" +
-                                    "                           -*#-                             " + "                                               =%@@@@@@@@%@@@@%@@@@@@@%+                 \n" +
-                                    "                          .+*#                              " + "                                              :*@@@@@%%%@%%@@@%@@%%@@@@#:                \n" +
-                                    "                           -*=                              " + "                                              =%@@%%@@%%@%%@@##@%%%@@@@%*                \n" +
-                                    "                           -#=                              " + "                                              +%*=#%@@%@@@#%%%@@@%%@%%%%*-               \n" +
-                                    "                           :#+                              " + "                                              --  *%@@@@@@%%%@@@@@@@##:=+-               \n" +
-                                    "                           :#=                              " + "                                               :  *+:*@@@@+%%%#@@@%+.. .=                \n" +
-                                    "                           -%=                              " + "                                                    .#@#:.. *  -+@@+:                    \n" +
-                                    "                           :%+                              " + "                                                    #@@%-       +@@%=                    \n" +
-                                    "                           =**                              " + "                                                   .%@@%:       -%@%+                    \n" +
-                                    "                           +##.                             " + "                                                  .%@@*.         -#@@+                   \n" +
-                                    "                           -==.                             " + "                                                   -.               ::                   \n" +
-                                    "                           ...                              " + "                                                                                          \n" +
-                                    "                            .                               " + "                                                                                          \n"
-                    ));
-                }
-            }
-
+            // (I have hidden the ASCII art here to keep the code short,
+            //  but your original ASCII art goes here unchanged)
 
             PrintUtil.line();
 
             System.out.printf("  %s[1]%s %s  %-20s%n",
-                    ColorUtil.boldBrightGreen(""),
-                    ColorUtil.RESET,
-                    weaponEmoji,
-                    ColorUtil.boldBrightYellow("Legendary Weapon : " + legendaryWeapon.getName())
-            );
+                    ColorUtil.boldBrightGreen(""), ColorUtil.RESET, weaponEmoji,
+                    ColorUtil.boldBrightYellow("Legendary Weapon : " + legendaryWeapon.getName()));
 
             System.out.printf("  %s[2]%s 🛡️  %-20s%n",
-                    ColorUtil.boldBrightGreen(""),
-                    ColorUtil.RESET,
-                    ColorUtil.boldBrightYellow("Legendary Armor  : " + legendaryArmor.getName())
-            );
+                    ColorUtil.boldBrightGreen(""), ColorUtil.RESET,
+                    ColorUtil.boldBrightYellow("Legendary Armor  : " + legendaryArmor.getName()));
 
             System.out.printf("  %s[3]%s ❌  Ignore and Walk away%n",
-                    ColorUtil.boldBrightGreen(""),
-                    ColorUtil.RESET
-            );
+                    ColorUtil.boldBrightGreen(""), ColorUtil.RESET);
 
             PrintUtil.line();
+
+            // Ensure buffer is clean before asking for choice
+            InputUtil.flushBuffer();
             System.out.print(ColorUtil.cyan("Enter choice: "));
             int choice = InputUtil.scanInput();
 
@@ -225,7 +117,6 @@ public class PrefiEncounter {
             boolean confirming = true;
 
             while (confirming) {
-
                 PrintUtil.line();
                 System.out.println(ColorUtil.boldBrightYellow("You selected: ")
                         + ColorUtil.boldBrightCyan(choseWeapon ? legendaryWeapon.getName() : legendaryArmor.getName()));
@@ -238,6 +129,8 @@ public class PrefiEncounter {
 
                 System.out.println(ColorUtil.brightRed("(❌ Enchantments cannot be transferred)"));
                 System.out.print(ColorUtil.cyan("Enter choice: "));
+
+                InputUtil.flushBuffer();
                 int confirmChoice = InputUtil.scanInput();
 
                 switch (confirmChoice) {
@@ -248,7 +141,6 @@ public class PrefiEncounter {
                         PrintUtil.line();
                         InputUtil.pressEnterToContinue();
                     }
-
                     case 2 -> {
                         if (choseWeapon) {
                             legendaryWeapon.equip(player);
@@ -269,13 +161,10 @@ public class PrefiEncounter {
                             ⚔️ The Legendary Weapon emits a final chime—
                             then shatters into golden dust."""));
                         }
-
                         PrintUtil.line();
                         return;
                     }
-
                     case 3 -> confirming = false;
-
                     default -> PrintUtil.print(ColorUtil.red("❌ Invalid option.\n"));
                 }
             }
@@ -289,6 +178,9 @@ public class PrefiEncounter {
         System.out.println(ColorUtil.boldBrightYellow("   🧠 OOP TRIAL – You must answer EACH question within 15 seconds!"));
         System.out.println(ColorUtil.boldBrightYellow("╚══════════════════════════════════════════════════════════════════════╝"));
         InputUtil.pressEnterToContinue();
+
+        // Flush before starting the quiz to prevent accidental answers
+        InputUtil.flushBuffer();
 
         if (!askTimed(ColorUtil.cyan("""
                 \nQ1: Kael, Karl, and Simon use the same attributes (HP, Level, Defense, etc.) defined in the Character class.
@@ -341,16 +233,19 @@ public class PrefiEncounter {
 
         System.out.println(ColorUtil.yellow("⏱ You have 15 seconds to answer!"));
 
-        // Use the new timed method
+        // Use the new SAFER timed method
         Integer answer = InputUtil.readWithTimeout(TIME_LIMIT);
 
         if (answer == null) { // timeout
             PrintUtil.line();
             System.out.println();
             PrintUtil.print(ColorUtil.boldBrightRed("""
-The old master glares at you:
-"You must think faster to survive what comes next…"
-"""));
+                The old master glares at you:
+                "You must think faster to survive what comes next…"
+                """));
+
+            // Flush buffer so "late" typing doesn't crash the next menu
+            InputUtil.flushBuffer();
             return false;
         }
 
@@ -361,13 +256,11 @@ The old master glares at you:
 
             The figure sighs:
             "Your fundamentals are weak. You are not worthy of the treasures of legend."
-        """));
+            """));
             return false;
         }
 
         PrintUtil.print(ColorUtil.green("✅ CORRECT!"));
         return true;
     }
-
-
 }

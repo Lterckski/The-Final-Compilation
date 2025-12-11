@@ -144,10 +144,6 @@ public class Tester {
         } while (player == null);  // repeat until valid choice
         player.getInventory().setEquippedArmor(Armor.LEATHER_GUARD);
 
-        Enemy testEnemy = new FinalBoss();
-        Battle testBattle = new Battle(player, testEnemy);
-        testBattle.startBattle();
-/*
         // --- Pre Final Encounter ---
         System.out.println();
         PrintUtil.effect("""
@@ -260,7 +256,11 @@ public class Tester {
 
         World3Final finale = new World3Final();
         finale.run(player);
-*/
+
+        Enemy testEnemy = new FinalBoss();
+        Battle testBattle = new Battle(player, testEnemy);
+        testBattle.startBattle();
+
 //
         World1 world1 = new World1();
        world1.run(player);
