@@ -9,7 +9,7 @@ import inventory.*;
 
 public class World2Enemy1 extends Enemy{
     public World2Enemy1(){
-        super("Plague Vermin", 520, 13, 108);
+        super("Plague Vermin", 520, 13, 90);
     }
 
     public void plagueBite(Character target){

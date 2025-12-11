@@ -128,7 +128,7 @@ public class StoryEngine {
                 💡 It's just another tuesday, you come in for your java examination. You walk in,
                 and Professor Khai greets you warmly as you sit before the CodeChum login screen, 
                 nerves heavy now knowing if you're ready but focus remains sharp.
-                You place your hands on the keyboard and login... L10X17W.... ⌨️
+                You place your hands on the keyboard and login... L15Y07W.... ⌨️
                 """
         );
         PrintUtil.specialCyan(

@@ -374,28 +374,30 @@ public abstract class Character {
             int oldAtk = baseAttack;
             int oldDef = baseDefense;
 
+            int worldLevel = StoryEngine.getCurrWorldLevel();
+
             switch (classType) {
                 case "Swordsman" -> {
-                    maxHP += 55 + (StoryEngine.getCurrWorldLevel() * 5);
-                    baseAttack += 5;
-                    baseDefense += 2;
+                    maxHP += 60 + (worldLevel * 5);
+                    baseAttack += 7 + worldLevel;
+                    baseDefense += 3 + worldLevel;
                 }
                 case "Archer" -> {
-                    maxHP += 50 + (StoryEngine.getCurrWorldLevel() * 5);
-                    baseAttack += 6;
-                    baseDefense += 1;
+                    maxHP += 56 + (worldLevel * 5);
+                    baseAttack += 8 + worldLevel;
+                    baseDefense += 2 + worldLevel;
                 }
                 case "Mage" -> {
-                    maxHP += 45 + (StoryEngine.getCurrWorldLevel() * 5);
-                    baseAttack += 8;
-                    baseDefense += 1;
+                    maxHP += 50 + (worldLevel * 5);
+                    baseAttack += 9 + worldLevel;
+                    baseDefense += 1 + worldLevel;
                 }
             }
 
-            hp += (int)(maxHP * 0.25);
+            hp += (int)(maxHP * 0.50);
             if (hp > maxHP) hp = maxHP;
 
-            energy += (int)(maxEnergy * 0.25);
+            energy += (int)(maxEnergy * 0.50);
             if (energy > maxEnergy) energy = maxEnergy;
 
             exp -= nextLevelExp;
@@ -406,7 +408,7 @@ public abstract class Character {
             PrintUtil.specialCyan(String.format("%-10s : +%d → %d", "💚 Max HP ", (maxHP - oldHp), maxHP));
             PrintUtil.specialCyan(String.format("%-10s : +%d → %d", "⚔️ Max ATK", (baseAttack - oldAtk), attack));
             PrintUtil.specialCyan(String.format("%-10s  : +%d → %d", "🛡️ DEF  ", (baseDefense - oldDef), defense));
-            PrintUtil.specialCyan("25% of 💖 HP & " + getEnergyEmoji() + " " + getEnergyName() + " Restored!");
+            PrintUtil.specialCyan("50% of 💖 HP & " + getEnergyEmoji() + " " + getEnergyName() + " Restored!");
             PrintUtil.specialCyan("═════════════════════════════════════");
             System.out.println();
             PrintUtil.pause(800);

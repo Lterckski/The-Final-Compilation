@@ -21,7 +21,7 @@ public class Simon extends Character {
         System.out.println("  " + ColorUtil.cyan("💥 Damage: (") + ColorUtil.boldBrightYellow((int)(attack * 1.25) + " — " + (int)(attack * 1.55)) + ColorUtil.cyan(")"));
         System.out.println("  " + ColorUtil.cyan("⚡ Effects:"));
         System.out.println("    - " + ColorUtil.cyan("🔥 Applies Burn (1 turn)"));
-        System.out.println("    - " + ColorUtil.cyan("🛡️ 30% chance to Weaken target (-20% ATK for 2 turns)\n"));
+        System.out.println("    - " + ColorUtil.cyan("💢 30% chance to Weaken target (-15% ATK for 2 turns)\n"));
 
         // Skill 2 – Ice Prison
         System.out.println("  " + ColorUtil.boldBrightYellow("❄️ Skill 2 – Ice Prison (💧 25 Mana)"));
@@ -29,7 +29,7 @@ public class Simon extends Character {
         System.out.println("  " + ColorUtil.cyan("💥 Damage: (") + ColorUtil.boldBrightYellow((int)(attack * 1.00) + " — " + (int)(attack * 1.25)) + ColorUtil.cyan(")"));
         System.out.println("  " + ColorUtil.cyan("⚡ Effects:"));
         System.out.println("    - " + ColorUtil.cyan("❄️ 30% chance to Freeze (target skips 1 turn)"));
-        System.out.println("    - " + ColorUtil.cyan("🛡️ If frozen: reduces DEF by 15% for 1 turn\n"));
+        System.out.println("    - " + ColorUtil.cyan("🛡️ If frozen: Apply Fragile (-15% DEF for 1 turn)\n"));
 
         // Ultimate – Meteor Storm
         System.out.println("  " + ColorUtil.boldBrightYellow("☄️ Ultimate – Meteor Storm (💧 40 Mana)"));
@@ -126,7 +126,7 @@ public class Simon extends Character {
 
         // 30% chance to apply Weaken
         if (RandomUtil.chance(30)) {
-            target.getEffects().applyAttackDebuff(20, 2);
+            target.getEffects().applyAttackDebuff(15, 2);
         }
         arcaneFlow();
 

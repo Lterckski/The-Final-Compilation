@@ -12,7 +12,7 @@ import utils.RandomUtil;
 public class World1Miniboss1 extends Enemy {
     // Constructor
     public World1Miniboss1() {
-        super("The Hollow Stag", 450, 21, 118);
+        super("The Hollow Stag", 450, 21, 100);
     }
 
     // Skill 1: Deathly Charge (ATK × 1.00–1.20), 30% chance to Stun
@@ -170,7 +170,6 @@ public class World1Miniboss1 extends Enemy {
         if (player.getClassType().equals("Swordsman")) {
             Sword ironShortsword = Sword.IRON_SHORTSWORD;
             System.out.println(ColorUtil.boldBrightGreen("                                                       \n" +
-                    "                                                       \n" +
                     "       .+.                                             \n" +
                     "       -@-                                             \n" +
                     "       -@=                                             \n" +
@@ -206,9 +205,6 @@ public class World1Miniboss1 extends Enemy {
         } else if (player.getClassType().equals("Archer")) {
             Bow oakLongbow = Bow.OAK_LONGBOW;
             System.out.println(ColorUtil.boldBrightGreen("                                                       \n" +
-                    "                                                       \n" +
-                    "                                                       \n" +
-                    "                                                       \n" +
                     "          -                                            \n" +
                     "         .#                                            \n" +
                     "         -#-                                           \n" +
@@ -278,7 +274,6 @@ public class World1Miniboss1 extends Enemy {
 
         Armor ironVanguard = Armor.IRON_VANGUARD;
         System.out.println(ColorUtil.boldBrightGreen("                                                       \n" +
-                "                                                       \n" +
                 "                                                       \n" +
                 "       -#%###*###%#-                                   \n" +
                 "       -=. .:-:. .=-                                   \n" +

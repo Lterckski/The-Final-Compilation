@@ -65,6 +65,7 @@ public class World1 {
         System.out.println();
         PrintUtil.line();
         PrintUtil.effect("Khai fades back into the mist. A low growl vibrates through the ground.");
+        System.out.println();
         PrintUtil.pause(1000);
 
         PrintUtil.story("""
@@ -104,16 +105,16 @@ public class World1 {
         System.out.println();
 
         for (int i = 1; i <= 3; i++) {
-            System.out.println(ColorUtil.boldBrightRed("════════════════════════════════════"));
+            System.out.println(ColorUtil.boldBrightRed("═══════════════════════════════════════"));
             PrintUtil.enemyEncounter("🐺 Rotfang Wolf " + i + " lunges from the dark!");
-            System.out.println(ColorUtil.boldBrightRed("════════════════════════════════════"));
+            System.out.println(ColorUtil.boldBrightRed("═══════════════════════════════════════"));
 
             battle1.startBattle();
 
             System.out.println();
-            System.out.println(ColorUtil.boldBrightGreen("───────────────────────────────────────"));
+            System.out.println(ColorUtil.boldBrightGreen("─────────────────────────────────────────────────────────"));
             PrintUtil.enemyDefeated("✅ The wolf whimpers and dissolves into black smoke (" + i + "/3)");
-            System.out.println(ColorUtil.boldBrightGreen("───────────────────────────────────────"));
+            System.out.println(ColorUtil.boldBrightGreen("─────────────────────────────────────────────────────────"));
             enemy1.dropLoot(player);
 
             if (i < 3) { // reset for another wolf
@@ -198,9 +199,9 @@ public class World1 {
             battle2.startBattle();
 
             System.out.println();
-            System.out.println(ColorUtil.boldBrightGreen("────────────────────────────────────"));
+            System.out.println(ColorUtil.boldBrightGreen("──────────────────────────────────────"));
             PrintUtil.enemyDefeated("✅ You dispelled Shade Sprite " + i + "! (" + i + "/2)");
-            System.out.println(ColorUtil.boldBrightGreen("────────────────────────────────────"));
+            System.out.println(ColorUtil.boldBrightGreen("──────────────────────────────────────"));
             enemy2.dropLoot(player);
 
             if (i < 2) { // reset for another shade
@@ -293,9 +294,9 @@ public class World1 {
             battle3.startBattle();
 
             System.out.println();
-            System.out.println(ColorUtil.boldBrightGreen("─────────────────────────────────────"));
+            System.out.println(ColorUtil.boldBrightGreen("────────────────────────────────────────"));
             PrintUtil.enemyDefeated("✅ You felled Dreadbark Treant " + i + "! (" + i + "/2)");
-            System.out.println(ColorUtil.boldBrightGreen("─────────────────────────────────────"));
+            System.out.println(ColorUtil.boldBrightGreen("────────────────────────────────────────"));
             enemy3.dropLoot(player);
 
             if (i < 2) {
@@ -378,9 +379,9 @@ public class World1 {
             battle4.startBattle();
 
             System.out.println();
-            System.out.println(ColorUtil.boldBrightGreen("─────────────────────────────"));
+            System.out.println(ColorUtil.boldBrightGreen("──────────────────────────────────"));
             PrintUtil.enemyDefeated("✅ You slayed Carrion Bat " + i + "! (" + i + "/4)");
-            System.out.println(ColorUtil.boldBrightGreen("─────────────────────────────"));
+            System.out.println(ColorUtil.boldBrightGreen("──────────────────────────────────"));
             enemy4.dropLoot(player);
 
             if (i < 4) {

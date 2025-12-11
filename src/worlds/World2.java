@@ -84,6 +84,7 @@ public class World2 {
         System.out.println();
         PrintUtil.line();
         PrintUtil.effect("A scratching sound echoes from the gutters. The shadows near your feet begin to move.");
+        System.out.println();
         PrintUtil.pause(1000);
 
         PrintUtil.story("""
@@ -137,16 +138,16 @@ public class World2 {
         System.out.println();
 
         for(int i = 1; i <= 3; i++){
-            System.out.println(ColorUtil.boldBrightRed("════════════════════════════════════════════════════"));
+            System.out.println(ColorUtil.boldBrightRed("═════════════════════════════════════════"));
             PrintUtil.enemyEncounter("🐀 Plague Vermin " + i + " lunges, teeth snapping!");
-            System.out.println(ColorUtil.boldBrightRed("════════════════════════════════════════════════════"));
+            System.out.println(ColorUtil.boldBrightRed("══════════════════════════════════════════"));
 
             battle1.startBattle();
 
             System.out.println();
-            System.out.println(ColorUtil.boldBrightGreen("───────────────────────────────────────"));
+            System.out.println(ColorUtil.boldBrightGreen("──────────────────────────────────────────"));
             PrintUtil.enemyDefeated("✅ You have crushed Plague Vermin " + i + "! (" + i + "/3)");
-            System.out.println(ColorUtil.boldBrightGreen("───────────────────────────────────────"));
+            System.out.println(ColorUtil.boldBrightGreen("──────────────────────────────────────────"));
             enemy1.dropLoot(player);
 
             if (i < 3) { // reset for next vermin
@@ -329,17 +330,17 @@ public class World2 {
         System.out.println();
 
         for (int i = 1; i <= 3; i++) {
-            System.out.println(ColorUtil.boldBrightRed("══════════════════════════════════════════════════"));
+            System.out.println(ColorUtil.boldBrightRed("═══════════════════════════════════════════════"));
             PrintUtil.enemyEncounter("🐕 Blight Hound " + i + " snaps its jaws and lunges!");
-            System.out.println(ColorUtil.boldBrightRed("══════════════════════════════════════════════════"));
+            System.out.println(ColorUtil.boldBrightRed("═══════════════════════════════════════════════"));
             InputUtil.pressEnterToContinue();
 
             battle3.startBattle();
 
             System.out.println();
-            System.out.println(ColorUtil.boldBrightGreen("───────────────────────────────────────"));
+            System.out.println(ColorUtil.boldBrightGreen("──────────────────────────────────────────"));
             PrintUtil.enemyDefeated("✅ You have put down Blight Hound " + i + "! (" + i + "/3)");
-            System.out.println(ColorUtil.boldBrightGreen("───────────────────────────────────────"));
+            System.out.println(ColorUtil.boldBrightGreen("──────────────────────────────────────────"));
             enemy3.dropLoot(player);
 
             if (i < 3) {

@@ -8,7 +8,7 @@ import utils.RandomUtil;
 
 public class World3Enemy2 extends Enemy {
 
-    public World3Enemy2() { super("Bone Warlock", 1280, 41, 292); }
+    public World3Enemy2() { super("Bone Warlock", 1280, 41, 262); }
 
     public void marrowBolt(Character target) {
         PrintUtil.print(ColorUtil.boldBrightRed("                                                          \n" +

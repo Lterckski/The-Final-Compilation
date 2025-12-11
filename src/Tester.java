@@ -39,13 +39,8 @@ public class Tester {
 //
 //
 //
-//
-//
 //        Inventory inven = new Inventory(kael);
 //        FinalBoss fb = new FinalBoss();
-//
-//
-//
 //
 //
 //        /*
@@ -148,6 +143,10 @@ public class Tester {
             }
         } while (player == null);  // repeat until valid choice
         player.getInventory().setEquippedArmor(Armor.LEATHER_GUARD);
+
+        Enemy testEnemy = new World2Miniboss1();
+        Battle testBattle = new Battle(player, testEnemy);
+        testBattle.startBattle();
 /*
         // --- Pre Final Encounter ---
         System.out.println();

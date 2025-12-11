@@ -2,6 +2,7 @@ package utils;
 
 import java.io.IOException;
 import java.util.Scanner;
+import java.util.concurrent.*;
 
 public class InputUtil {
     public static final Scanner scan = new Scanner(System.in);
@@ -30,29 +31,38 @@ public class InputUtil {
     public static Integer readWithTimeout(int seconds) {
         System.out.print(ColorUtil.cyan("Enter choice: "));
 
-        long startTime = System.currentTimeMillis();
-        long endTime = startTime + (seconds * 1000L);
+        // 1. Create a separate thread to handle the input
+        ExecutorService executor = Executors.newSingleThreadExecutor();
+
+        // 2. Define the task: Wait for input and parse it
+        Future<Integer> result = executor.submit(() -> {
+            try {
+                // This line BLOCKS until the user types something
+                String input = scan.nextLine().trim();
+                return Integer.parseInt(input);
+            } catch (NumberFormatException e) {
+                return null; // Invalid number
+            } catch (Exception e) {
+                return null;
+            }
+        });
 
         try {
-            while (System.currentTimeMillis() < endTime) {
-                if (System.in.available() > 0) {
-                    String input = scan.nextLine().trim();
-                    try {
-                        return Integer.parseInt(input);
-                    } catch (NumberFormatException e) {
-                        System.out.println(ColorUtil.red("❌ Invalid input. Enter a number: "));
-                        System.out.print(ColorUtil.cyan("Enter choice: "));
-                    }
-                }
+            // 3. Wait for the result for a maximum of 'seconds'
+            return result.get(seconds, TimeUnit.SECONDS);
 
-                Thread.sleep(200);
-            }
-        } catch (IOException | InterruptedException e) {
+        } catch (TimeoutException e) {
+            // 4. Handle the timeout
+            System.out.println(ColorUtil.boldBrightRed("\n⏱ TIME'S UP!"));
+            result.cancel(true); // Stop waiting for the input
+            return null;
+        } catch (InterruptedException | ExecutionException e) {
             e.printStackTrace();
+            return null;
+        } finally {
+            // 5. Clean up the thread
+            executor.shutdownNow();
         }
-
-        System.out.println(ColorUtil.boldBrightRed("\n⏱ TIME'S UP!"));
-        return null;
     }
 
     public static void flushBuffer() {
