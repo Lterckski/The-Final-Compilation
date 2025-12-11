@@ -108,13 +108,19 @@ public class World1 {
         System.out.println();
 
         for (int i = 1; i <= 3; i++) {
-            System.out.println(ColorUtil.boldBrightRed("═══════════════════════════════════════"));
+            System.out.println(ColorUtil.boldBrightRed("════════════════════════════════════════"));
             PrintUtil.enemyEncounter("🐺 Rotfang Wolf " + i + " lunges from the dark!");
+
 
             System.out.println(ColorUtil.boldBrightRed("═══════════════════════════════════════"));
 
             SoundUtil.play("attack/wolf_attack.wav");
             System.out.println(ColorUtil.boldBrightRed("════════════════════════════════════"));
+
+            System.out.println(ColorUtil.boldBrightRed("════════════════════════════════════════"));
+
+//            SoundUtil.play("attack/wolf_attack.wav");
+
 
 
             battle1.startBattle();
