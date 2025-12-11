@@ -1,10 +1,7 @@
 package characters;
 
 import enemies.FinalBoss;
-import utils.ColorUtil;
-import utils.InputUtil;
-import utils.PrintUtil;
-import utils.RandomUtil;
+import utils.*;
 
 public class Karl extends Character{
 
@@ -86,6 +83,7 @@ public class Karl extends Character{
 
     // Skill 1 - Piercing Arrow
     public void piercingArrow(Character target) {
+        SoundUtil.play("karl_skill1.wav");
         PrintUtil.print(ColorUtil.boldBrightGreen("                                             \n" +
                 "                                   ..                     \n" +
                 "                                   .   :                  \n" +
@@ -166,6 +164,7 @@ public class Karl extends Character{
     }
     // Skill 2 - Bullseye
     public void bullsEye(Character target) {
+        SoundUtil.play("karl_skill2.wav");
         PrintUtil.print(ColorUtil.boldBrightGreen("                                                          \n" +
                 "                                         :*%%%%@%+        \n" +
                 "                                       .%#: .::  -@+      \n" +
@@ -223,6 +222,7 @@ public class Karl extends Character{
 
     // Ultimate - Rain of a Thousand Arrows
     public void rainOfAThousandArrows(Character target) {
+        SoundUtil.play("karl_skill3.wav");
         PrintUtil.print(ColorUtil.boldBrightGreen("                                                          \n" +
                 "                                                      ..:> \n" +
                 "                            :                  :*- .-=    \n" +

@@ -1,9 +1,6 @@
 package characters;
 
-import utils.ColorUtil;
-import utils.InputUtil;
-import utils.PrintUtil;
-import utils.RandomUtil;
+import utils.*;
 
 public class Simon extends Character {
 
@@ -82,6 +79,7 @@ public class Simon extends Character {
 
     // Skill 1 – Fireball
     public void fireball(Character target) {
+        SoundUtil.play("simon_skill1.wav");
         PrintUtil.print(ColorUtil.boldBrightGreen("                                                          \n" +
                 "                            %@*           :.              \n" +
                 "                            -@@@+     :+-  .:             \n" +
@@ -138,6 +136,7 @@ public class Simon extends Character {
 
     // Skill 2 – Ice Prison
     public void icePrison(Character target) {
+        SoundUtil.play("simon_skill2.wav");
         PrintUtil.print(ColorUtil.boldBrightGreen("                                                          \n" +
                 "                         ..                               \n" +
                 "                        ...                               \n" +
@@ -194,6 +193,7 @@ public class Simon extends Character {
 
     // Ultimate – Meteor Storm
     public void meteorStorm(Character target) {
+        SoundUtil.play("simon_skill3.wav");
         PrintUtil.print(ColorUtil.boldBrightGreen("                                                          \n" +
                 "                        ..  :.  .. ..                     \n" +
                 "                   .:.                  .:.               \n" +
