@@ -4,6 +4,7 @@ import characters.Character;
 import enemies.*;
 import events.MagicShop;
 import events.PrefiEncounter;
+import events.ReviveTrial;
 import inventory.*;
 
 import utils.ColorUtil;
@@ -148,6 +149,11 @@ public class Tester {
         } while (player == null);  // repeat until valid choice
         player.getInventory().setEquippedArmor(Armor.LEATHER_GUARD);
 
+//
+//        Enemy enemy1 = new World2Miniboss1();
+//        Battle battle = new Battle(player,enemy1);
+//        battle.startBattle();
+
         // --- Pre Final Encounter ---
         System.out.println();
         PrintUtil.effect("""
@@ -215,6 +221,8 @@ public class Tester {
                 "                   -*##%%%%%%######**+:                   \n" +
                 "                                                          ");
 
+
+
         PrefiEncounter prefiEncounter = new PrefiEncounter();
         prefiEncounter.start(player);
 
@@ -255,6 +263,7 @@ public class Tester {
 
         PrintUtil.hr();
 
+
         World3Final finale = new World3Final();
         finale.run(player);
 
@@ -265,9 +274,7 @@ public class Tester {
 /*
         MagicShop magicShop = new MagicShop(player);
 
-        Enemy enemy1 = new World1Enemy1();
-        Battle battle = new Battle(player,enemy1);
-        battle.startBattle();
+
 
         enemy1.dropLoot(player);
 

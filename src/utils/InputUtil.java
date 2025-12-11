@@ -1,62 +1,66 @@
 package utils;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
+import java.io.IOException;
 import java.util.Scanner;
 
-import static utils.PrintUtil.pause;
-
 public class InputUtil {
-    // Single Scanner instance for the entire project
     public static final Scanner scan = new Scanner(System.in);
 
     public static void pressEnterToContinue() {
         PrintUtil.pause(800);
         System.out.print(ColorUtil.brightGray("[Press ENTER to continue]"));
-
-        scan.nextLine();
+        try {
+            scan.nextLine();
+        } catch (Exception e) {
+        }
     }
 
-
     public static int scanInput() {
-        String input = scan.nextLine();
         try {
-            // Split by whitespace; if more than one token, it's invalid
-            String[] tokens = input.split("\\s+");
-            if (tokens.length == 1) {
-                return Integer.parseInt(tokens[0]);
-            } else {
+            String input = scan.nextLine().trim();
+            if (input.isEmpty() || input.split("\\s+").length > 1) {
                 return 99;
             }
+            return Integer.parseInt(input);
         } catch (NumberFormatException e) {
             return 99;
         }
     }
 
-    // ---------------- TIMED INPUT ----------------
     public static Integer readWithTimeout(int seconds) {
-        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-        long endTime = System.currentTimeMillis() + seconds * 1000L;
-
         System.out.print(ColorUtil.cyan("Enter choice: "));
+
+        long startTime = System.currentTimeMillis();
+        long endTime = startTime + (seconds * 1000L);
 
         try {
             while (System.currentTimeMillis() < endTime) {
-                if (reader.ready()) {  // input is available
-                    String line = reader.readLine().trim();
+                if (System.in.available() > 0) {
+                    String input = scan.nextLine().trim();
                     try {
-                        return Integer.parseInt(line);
+                        return Integer.parseInt(input);
                     } catch (NumberFormatException e) {
-                        System.out.print(ColorUtil.red("❌ Invalid input. Enter a number: "));
+                        System.out.println(ColorUtil.red("❌ Invalid input. Enter a number: "));
+                        System.out.print(ColorUtil.cyan("Enter choice: "));
                     }
                 }
-                pause(50); // small delay to avoid CPU hog
-            }
 
-            return null;
-        } catch (Exception e) {
-            return null;
+                Thread.sleep(200);
+            }
+        } catch (IOException | InterruptedException e) {
+            e.printStackTrace();
         }
+
+        System.out.println(ColorUtil.boldBrightRed("\n⏱ TIME'S UP!"));
+        return null;
     }
 
+    public static void flushBuffer() {
+        try {
+            while (System.in.available() > 0) {
+                scan.nextLine();
+            }
+        } catch (IOException e) {
+        }
+    }
 }
