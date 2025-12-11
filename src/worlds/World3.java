@@ -635,22 +635,6 @@ public class World3 {
         System.out.println();
         PrintUtil.effect("The air hums as your final answer locks into place.");
         PrintUtil.pause(1000);
-
-        PrintUtil.story("""
-                The oppressive weight of the trial lifts, replaced by a resonant clarity.
-                The cloaked figure nods slowly, a rare sign of respect.
-                """);
-
-        PrintUtil.pause(1500);
-
-        PrintUtil.sayGreen("""
-                "You possess the clarity of a true architect," the figure intones.
-                "You have proven that your strength lies not just in your blade, but in your mind.
-                Take this. May it serve you when steel fails."
-                """);
-
-        PrintUtil.pause(1000);
-        PrintUtil.loot("A chest materializes from the mist. You open it and claim the LEGENDARY ARTIFACT!");
         InputUtil.pressEnterToContinue();
 
         // --- THE REVELATION ---

@@ -729,7 +729,7 @@ public class StoryEngine {
 
     public static String center(String text) {
         int consoleWidth = 170;
-        int manualShift = 5;
+        int manualShift = 8;
 
         StringBuilder result = new StringBuilder();
         String[] lines = text.split("\n");
