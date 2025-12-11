@@ -12,7 +12,7 @@ import java.io.IOException;
 public class SoundUtil {
 
     // adjust this if your working directory is different
-    private static final String BASE_PATH = "The-Final-Compilation/src/audio/";
+    private static final String BASE_PATH = "src/audio/";
 
     private static Clip bgmClip;
     private static Clip bgmClip2;
