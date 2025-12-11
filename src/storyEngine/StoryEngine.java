@@ -9,6 +9,7 @@ import inventory.Sword;
 import utils.ColorUtil;
 import utils.InputUtil;
 import utils.PrintUtil;
+import utils.SoundUtil;
 import worlds.*;
 
 public class StoryEngine {
@@ -20,9 +21,13 @@ public class StoryEngine {
     public static int getCurrWorldLevel(){ return currWorldLevel; }
 
     public void start() {
+        SoundUtil.playLoop("intro1.wav", 0.1f);
+        SoundUtil.playLoop2Delayed("intro2.wav", 0.1f, 2);
         intro();
+        SoundUtil.stopLoop();
+        SoundUtil.playLoop("charSelect.wav", 0.1f);
         Character player = chooseCharacter();
-
+        SoundUtil.stopLoop();
         World1 w1 = new World1();
         w1.run(player);
 
@@ -110,6 +115,7 @@ public class StoryEngine {
 
     // ---------- Scenes ----------
     private void intro() {
+
         PrintUtil.pause(1000);
         System.out.println();
         PrintUtil.title("╔═══════════════════════════════════════════════════════════════════════════════════════════════════════╗");
@@ -303,6 +309,7 @@ public class StoryEngine {
         ));
         System.out.println();
         PrintUtil.pause(2000);
+
     }
 
     private Character chooseCharacter() {
