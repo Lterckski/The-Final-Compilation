@@ -271,18 +271,18 @@ public class Tester {
 
 
 
-        enemy1.dropLoot(player);
+//        enemy1.dropLoot(player);
+//
+//        Enemy enemy2 = new World2Miniboss2();
+////      Battle battle2 = new Battle(player, enemy2);
+////      battle2.startBattle();
+//
+//        enemy2.dropLoot(player);
+//
+//        player.lootSoulShards(90);
+//        MagicShop shop = new MagicShop(player);
+//        shop.openShop();
 
-        Enemy enemy2 = new World2Miniboss2();
-//      Battle battle2 = new Battle(player, enemy2);
-//      battle2.startBattle();
-
-        enemy2.dropLoot(player);
-
-        player.lootSoulShards(90);
-        MagicShop shop = new MagicShop(player);
-        shop.openShop();
-*/
 //        Enemy enemy3 = new FinalBoss();
 //        Battle battle3 = new Battle(player, enemy3);
 //

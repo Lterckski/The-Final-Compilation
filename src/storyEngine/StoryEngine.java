@@ -615,37 +615,86 @@ public class StoryEngine {
     private void transitionToWorld2() {
         currWorldLevel = 2;
         System.out.println();
+        PrintUtil.line();
+
+        PrintUtil.effect("Sir Khai's staff strikes the scorched earth with a resonant hum.");
+        PrintUtil.pause(1000);
+
+        // ASCII Art representing life returning
+        System.out.println(ColorUtil.boldBrightGreen(
+                "           * .   * .      *\n" +
+                        "       .      _\\|/_   * _\\|/_      .\n" +
+                        "      * /|\\     .   /|\\        *\n" +
+                        "    .    _\\|/_  |  _\\|/_    |    _\\|/_\n" +
+                        "          /|\\   |   /|\\     |     /|\\\n" +
+                        "   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n"
+        ));
 
         PrintUtil.story("""
-            Sir Khai's staff strikes the scorched earth. The forest around you shudders—its colors slowly returning.
-            The corruption fades, leaving behind faint sparks of life glowing in the air.
-            A path begins to part through the settling ash, leading into a wall of fog and distant thunder.
-            """);
+        The forest around you shudders—not in pain, but in relief.
+        Gray bark cracks to reveal rich brown wood, and the ash on the ground blooms into lush green moss.
+        The corruption fades, leaving behind faint sparks of life glowing in the air.
+        """);
+
+        PrintUtil.pause(2000);
 
         PrintUtil.sayGreen("""
-            "This forest is saved. Life is beautiful," Sir Khai murmurs.
-            "But our journey is far from over. Two more Stones remain… and darkness gathers ahead."
-            """);
+        "This forest is saved. Life is beautiful," Sir Khai murmurs, watching a small flower bloom.
+        "But our journey is far from over. Two more Stones remain… and darkness gathers ahead."
+        """);
+
+        PrintUtil.pause(1500);
+        System.out.println();
+
+        PrintUtil.effect("""
+        A path begins to part through the trees, leading out of the forest...
+        It winds toward a valley shrouded in a wall of thick fog and the sound of distant thunder.
+        """);
 
         InputUtil.pressEnterToContinue();
     }
 
 
-
     private void transitionToWorld3() {
         currWorldLevel = 3;
         System.out.println();
+        PrintUtil.line();
+
+        PrintUtil.effect("The Second Stone vibrates violently in your grasp, reacting to Khai's presence.");
+        PrintUtil.pause(1000);
 
         PrintUtil.story("""
-            Sir Khai’s staff ignites with a silver flame as the Second Stone vibrates in your grasp.
-            Thunder rumbles across a storm-choked horizon, where the sky seems to twist unnaturally.
-            The air grows colder—heavier—as if something ancient is waking beneath the clouds.
-            """);
+        Sir Khai’s staff ignites with a brilliant SILVER FLAME, cutting through the castle's gloom.
+        Outside, the sky begins to twist unnaturally.
+        """);
+
+        PrintUtil.pause(1500);
+        System.out.println(ColorUtil.boldBrightCyan(
+                "              .     :             .   \n" +
+                        "           .      .  _    .   .       \n" +
+                        "            _      /  \\      .      \n" +
+                        "           / \\    |    |        _   \n" +
+                        "     .    |   |   |    |       / \\  \n" +
+                        "          |   |  _|    |_     |   | \n" +
+                        "     _   _|   |_/        \\_   |   | \n" +
+                        "    / \\ /                  \\ _|   | \n" +
+                        "   |   |    STORM  RISING   /     | \n" +
+                        "___|___|___________________|_______|___\n"
+        ));
+        System.out.println();
+
+        PrintUtil.effect("""
+        Thunder rumbles across a storm-choked horizon.
+        The air grows colder—heavier—as if something ancient is waking beneath the clouds.
+        """);
+
+        PrintUtil.pause(2000);
 
         PrintUtil.sayGreen("""
-            "The final trial awaits," Khai says quietly.
-            "Beyond that storm lies a realm where even light cannot survive… and where the last Stone is kept."
-            """);
+        "The final trial awaits," Khai says quietly, looking toward the dark peaks.
+        "Beyond that storm lies a realm where even light cannot survive..."
+        "That is where the Last Stone is kept. And where the Necromancer waits."
+        """);
 
         InputUtil.pressEnterToContinue();
     }

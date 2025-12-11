@@ -48,30 +48,51 @@ public class World2 {
         InputUtil.pressEnterToContinue();
         System.out.println();
 
-        System.out.println("════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════");
+        // --- STORY INTRO ---
+        System.out.println("══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════");
         System.out.println();
-        PrintUtil.story(
-                """
-                        As you make your way through the forest, you finally reach its edge and find that there lies a town.
-                        Relief surges—until you get nearer and see the town closer.The place is diseased.
-                        """
-        );
-        PrintUtil.sayGreen("Khai the Gray says, \"Children cough in alleys, merchants peddle spoiled goods, and hollow-eyed guards demand bribes.\"");
-        System.out.println();
-        PrintUtil.story("This town used to be the epitome of peace and unity. Now, every face tells the same story: something has poisoned this world.");
+        PrintUtil.story("""
+                You emerge from the forest's edge, gasping as the clean air turns heavy and sour.
+                Ahead lies a town, huddled against the gray sky.
+                Relief surges for a moment—until the wind changes. It carries the copper scent of blood and the sickly sweet smell of rot.
+                """);
 
-//        PrintUtil.sayGreen("\"The Stones,\" Khai murmurs. \"They are both a curse and a cure.\"\n");
-        System.out.println("════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════");
+        PrintUtil.pause(2000);
+
+        PrintUtil.story("""
+                You walk through the broken gates. The mud is thick and black.
+                This place is diseased. The buildings lean like dying men, and the silence is broken only by wet, hacking coughs.
+                """);
+
+        PrintUtil.pause(1500);
+
+        PrintUtil.sayGreen("""
+                Khai stops, his face twisting in grief.
+                "Look at them," he whispers.
+                "Children cough in alleys, merchants peddle spoiled goods, and hollow-eyed guards demand bribes just to look the other way."
+                """);
+
+        PrintUtil.story("""
+                "This town used to be the epitome of peace and unity," Khai continues, gripping his staff.
+                "Now, every face tells the same story: something has poisoned the very heart of this world."
+                """);
+
+        System.out.println("══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════");
         InputUtil.pressEnterToContinue();
 
         // -------------------- Plague Vermins --------------------
         System.out.println();
         PrintUtil.line();
+        PrintUtil.effect("A scratching sound echoes from the gutters. The shadows near your feet begin to move.");
+        PrintUtil.pause(1000);
+
         PrintUtil.story("""
-        🐀 The stench of rot fills the air.
-        From the sewers, three Plague Vermins scuttle out—diseased, hissing, and hungry.
-        Their claws drip with venomous filth.
-        """);
+                🐀 The stench of rot suddenly intensifies.
+                From the sewers and piles of filth, three PLAGUE VERMINS scuttle out.
+                
+                They are the size of dogs, hairless and covered in weeping sores.
+                They hiss, their yellow teeth bared, claws dripping with venomous filth.
+                """);
 
         PrintUtil.pause(1500);
         System.out.println();
@@ -79,8 +100,8 @@ public class World2 {
         PrintUtil.enemyEncounter("                --.                                       ");
         PrintUtil.enemyEncounter("              .-++       ..                               ");
         PrintUtil.enemyEncounter("             -=:.     :==*#*+=-:      *%%*:               ");
-        PrintUtil.enemyEncounter("             -*++.   :+%%%%%%#+-.    .*  .=*=             ");
-        PrintUtil.enemyEncounter("              .+-  .= .+%%%%%%%*=.    *     -=.           ");
+        PrintUtil.enemyEncounter("             -*++.   :+%%%%%%#+-.    .* .=*=             ");
+        PrintUtil.enemyEncounter("              .+-  .= .+%%%%%%%*=.    * -=.           ");
         PrintUtil.enemyEncounter("               .=.    -#%%%%%%@@%-  .+-      -.           ");
         PrintUtil.enemyEncounter("               .+%-.=+#@@@%@@@@@%*##%#=      .            ");
         PrintUtil.enemyEncounter("  .             .+. %%@@##@@@@@@@@@==:   ..               ");
@@ -116,20 +137,23 @@ public class World2 {
         System.out.println();
 
         for(int i = 1; i <= 3; i++){
-            System.out.println(ColorUtil.boldBrightRed("═══════════════════════════════════"));
-            PrintUtil.enemyEncounter("🐀 Plague Vermin " + i + " lunges at you!");
-            System.out.println(ColorUtil.boldBrightRed("═══════════════════════════════════"));
-            InputUtil.pressEnterToContinue();
+            System.out.println(ColorUtil.boldBrightRed("════════════════════════════════════════════════════"));
+            PrintUtil.enemyEncounter("🐀 Plague Vermin " + i + " lunges, teeth snapping!");
+            System.out.println(ColorUtil.boldBrightRed("════════════════════════════════════════════════════"));
 
             battle1.startBattle();
 
             System.out.println();
             System.out.println(ColorUtil.boldBrightGreen("───────────────────────────────────────"));
-            PrintUtil.enemyDefeated("✅ You have defeated Plague Vermin " + i + "!");
+            PrintUtil.enemyDefeated("✅ You have crushed Plague Vermin " + i + "! (" + i + "/3)");
             System.out.println(ColorUtil.boldBrightGreen("───────────────────────────────────────"));
             enemy1.dropLoot(player);
 
             if (i < 3) { // reset for next vermin
+                PrintUtil.pause(800);
+                System.out.println();
+                PrintUtil.effect("More scratching... another vermin crawls from the muck!");
+                System.out.println();
                 enemy1 = new World2Enemy1();
                 battle1 = new Battle(player, enemy1);
             }
@@ -139,10 +163,10 @@ public class World2 {
         System.out.println();
         PrintUtil.line();
         PrintUtil.victory("""
-            🎉 Victory! The last of the Plague Vermin's collapses into the sludge.
-            The foul air clears just enough for you to breathe again.
+            🎉 Victory! The last of the Plague Vermins collapses into the sludge.
+            The foul air clears just enough for you to breathe again, but the town remains silent.
             """);
-        PrintUtil.loot("You gain experience and claim the rewards from the grim battle.");
+        PrintUtil.loot("You wipe the filth from your blade and claim your rewards.");
         PrintUtil.line();
         InputUtil.pressEnterToContinue();
         player.getEffects().resetAllEffects();
@@ -150,40 +174,47 @@ public class World2 {
         // -------------------- Forsaken Cultists --------------------
         System.out.println();
         PrintUtil.line();
-        PrintUtil.effect("You wander through the town's crumbling streets.");
-        PrintUtil.effect("Townsfolk whisper rumors between coughs.");
-        System.out.println();
-        PrintUtil.story(
-                "You can trade, gather rumors, and help townsfolk—small acts of kindness that might matter later.\n" +
-                        "They tell you of the *Necromancer*, a phantom who rules from the shadows.\n" +
-                        "His grip spreads from the Black Castle, where the Corrupted King hoards the Second Stone.\n"
-        );
-        InputUtil.pressEnterToContinue();
+        PrintUtil.effect("You wander through the town's crumbling streets. The air is thick with despair.");
+        PrintUtil.pause(1000);
 
-        PrintUtil.story("The townsfolk warn of zealots who worship decay itself...");
         System.out.println();
         PrintUtil.story("""
-                In a ruined chapel, two Forsaken Cultists emerge,
-                their eyes glowing with fanatic light as they chant forbidden rites.
+                You stop to help a beggar, offering a small kindness in a cruel world.
+                He grabs your wrist, his eyes wide with fear.
+                """);
+
+        PrintUtil.sayGreen("""
+                "Beware the Black Castle," he rasps. "The Corrupted King hoards the Second Stone there."
+                "But the real master... is the Necromancer. He is a phantom who rules from the shadows."
+                """);
+
+        PrintUtil.pause(2000);
+
+        PrintUtil.story("""
+                Following the beggar's warning, you investigate a ruined chapel at the edge of town.
+                Inside, the air hums with dark energy.
+                
+                Two FORSAKEN CULTISTS stand before a defiled altar.
+                They turn slowly, their eyes glowing with fanatic light as they chant forbidden rites.
                 """);
 
         PrintUtil.pause(1500);
         System.out.println();
         PrintUtil.enemyEncounter("        . -                                                ");
-        PrintUtil.enemyEncounter("       ==+#*   +@@*..                  :-.                 ");
+        PrintUtil.enemyEncounter("       ==+#* +@@*..                  :-.                 ");
         PrintUtil.enemyEncounter("       .+%++  -@@@@@@@@*.        .-+%@@@@@:                ");
         PrintUtil.enemyEncounter("         -#    *@@@@@@@@#       :%@@@@@@@@-                ");
-        PrintUtil.enemyEncounter("         :*.   :=%@@@@@@@*.    :%@@@@@@@@*                 ");
-        PrintUtil.enemyEncounter("         :.*     @@%@@@@@%#.  :%@@@@@@@:=.                 ");
-        PrintUtil.enemyEncounter("         : *   .*@..=@@@@*#+  %*#@@@%*%:.                  ");
-        PrintUtil.enemyEncounter("           #@%%#%+ :#@@@@%#+ .%#%@@@%#@*                   ");
+        PrintUtil.enemyEncounter("         :*.   :=%@@@@@@@*.    :%@@@@@@@@* ");
+        PrintUtil.enemyEncounter("         :.* @@%@@@@@%#.  :%@@@@@@@:=.                 ");
+        PrintUtil.enemyEncounter("         : * .*@..=@@@@*#+  %*#@@@%*%:.                  ");
+        PrintUtil.enemyEncounter("           #@%%#%+ :#@@@@%#+ .%#%@@@%#@* ");
         PrintUtil.enemyEncounter("            =.  - .#@@@@@@@=. *@@@@@@#-#-                  ");
-        PrintUtil.enemyEncounter("            .*   :#%@@@@@@@%- #@@@@@@@*=@:                 ");
+        PrintUtil.enemyEncounter("            .* :#%@@@@@@@%- #@@@@@@@*=@:                 ");
         PrintUtil.enemyEncounter("             -.  .+@@@@@@@@-  =@@@@@@@#:#@=                ");
         PrintUtil.enemyEncounter("             -=   %@@@@@@@@=  +@@@@@@@@-  -%*.             ");
         PrintUtil.enemyEncounter("             .-. -@@@@@@@@@=  +@@@@@@@@%     *%=.          ");
         PrintUtil.enemyEncounter("              =- -@@@@@@@@@+  *@@@@@@@@%                   ");
-        PrintUtil.enemyEncounter("              .-..@@@@@@@@@*  *@@@@@@@@#                   ");
+        PrintUtil.enemyEncounter("              .-..@@@@@@@@@* *@@@@@@@@#                   ");
         PrintUtil.enemyEncounter("               +:.@@@@@@@@@#. %@@@@@@@@#                   ");
         PrintUtil.enemyEncounter("               .=.%@@@@@@@@#..#@@@@@@@@=                   ");
         PrintUtil.enemyEncounter("                *=@@@@@@@@@@=+@@@@@@@@@#                   ");
@@ -205,7 +236,7 @@ public class World2 {
 
         for (int i = 1; i <= 2; i++) {
             System.out.println(ColorUtil.boldBrightRed("═══════════════════════════════════════════════════"));
-            PrintUtil.enemyEncounter("☠️ Forsaken Cultist " + i + " has began chanting a spell!");
+            PrintUtil.enemyEncounter("☠️ Forsaken Cultist " + i + " screams a curse and attacks!");
             System.out.println(ColorUtil.boldBrightRed("═══════════════════════════════════════════════════"));
             InputUtil.pressEnterToContinue();
 
@@ -213,11 +244,15 @@ public class World2 {
 
             System.out.println();
             System.out.println(ColorUtil.boldBrightGreen("─────────────────────────────────────────"));
-            PrintUtil.enemyDefeated("✅ You have defeated Forsaken Cultist " + i + "!");
+            PrintUtil.enemyDefeated("✅ You silenced Forsaken Cultist " + i + "! (" + i + "/2)");
             System.out.println(ColorUtil.boldBrightGreen("─────────────────────────────────────────"));
             enemy2.dropLoot(player);
 
             if (i < 2) {
+                PrintUtil.pause(1000);
+                System.out.println();
+                PrintUtil.effect("The second cultist roars in fury, the dark energy around him intensifying!");
+                System.out.println();
                 enemy2 = new World2Enemy2();
                 battle2 = new Battle(player, enemy2);
             }
@@ -228,9 +263,9 @@ public class World2 {
         PrintUtil.line();
         PrintUtil.victory("""
                 🎉 Victory! The cultists’ chants fade into silence.
-                The air still hums with dark energy, but you stand victorious.
+                The oppressive weight in the chapel lifts, though the altar remains stained with corruption.
                 """);
-        PrintUtil.loot("You gain experience and rewards from your victorious fight.");
+        PrintUtil.loot("You search the robes of the fallen zealots and find useful items.");
         PrintUtil.line();
         InputUtil.pressEnterToContinue();
         player.getEffects().resetAllEffects();
@@ -238,23 +273,28 @@ public class World2 {
         // -------------------- Blight Hounds --------------------
         System.out.println();
         PrintUtil.line();
-        PrintUtil.effect("A low growl echoes from the halls ahead...");
+        PrintUtil.effect("You leave the ruined chapel and head toward the castle outskirts. The air grows heavy with sulfur.");
+        PrintUtil.pause(1000);
+
         System.out.println();
         PrintUtil.story("""
-                From the black mist, three Blight Hounds leap forth,
-                their fangs glinting and bodies wrapped in poisonous clouds.
+                A low, wet growl echoes from the fog ahead.
+                Green toxic fumes swirl around your legs, burning your skin.
+                
+                From the black mist, three BLIGHT HOUNDS leap forth!
+                Their fur is gone, replaced by callous skin, and their fangs drip with poisonous sludge.
                 """);
 
         PrintUtil.pause(1500);
         System.out.println();
         PrintUtil.enemyEncounter("                  -             .-=+-. ::      .:         ");
         PrintUtil.enemyEncounter("            .- ....=               :-*%%%@+..+%-.         ");
-        PrintUtil.enemyEncounter("            :-*%@%@@%*             .::+%*#@@%@@%*=.       ");
+        PrintUtil.enemyEncounter("            :-*%@%@@%* .::+%*#@@%@@%*=.       ");
         PrintUtil.enemyEncounter("     --    .*%@@@@@@@%#-::.           . -%@@@@@@@%%+.     ");
         PrintUtil.enemyEncounter("    =#:   +@@@%@@@@@@%@#-:-    ::=. :+@@@@@@@@@@@%@@=     ");
         PrintUtil.enemyEncounter("   ::   :%@@@%@%%@@@@%%@@#:   .+. .+#@@%%%*@@@@% :#*#.    ");
         PrintUtil.enemyEncounter("  .=  .**.@%:*@#%@#%--@@%-     .::..#@:.%%:=%-+#%-        ");
-        PrintUtil.enemyEncounter("   :*+: =#= -%=:*@-@= .++:        +-  :*    ++.  =+       ");
+        PrintUtil.enemyEncounter("   :*+: =#= -%=:*@-@= .++:        +-  :* ++.  =+       ");
         PrintUtil.enemyEncounter("        %:   =+. -@-%-.          ==    =*:   =*.          ");
         PrintUtil.enemyEncounter("        --     .  -*-:.                       .:.         ");
         PrintUtil.enemyEncounter("                                                          ");
@@ -270,7 +310,7 @@ public class World2 {
         PrintUtil.enemyEncounter("                           :% @%%- *@%+. :**#*%.  +%#+    ");
         PrintUtil.enemyEncounter("                            #++:#- .%%:     +@-   .%%=    ");
         PrintUtil.enemyEncounter("                            =@: ++  :%%%-   =*.   .%*.    ");
-        PrintUtil.enemyEncounter("                            :=: .+-  .##.         =*      ");
+        PrintUtil.enemyEncounter("                            :=: .+-  .##.         =* ");
         PrintUtil.enemyEncounter("                                  -:   :*:       :=       ");
         PrintUtil.enemyEncounter("                                         .:.               ");
         PrintUtil.enemyEncounter("                                                          ");
@@ -289,20 +329,24 @@ public class World2 {
         System.out.println();
 
         for (int i = 1; i <= 3; i++) {
-            System.out.println(ColorUtil.boldBrightRed("═════════════════════════════════════"));
-            PrintUtil.enemyEncounter("🐕 Blight Hound " + i + " snarls and lunges!");
-            System.out.println(ColorUtil.boldBrightRed("═════════════════════════════════════"));
+            System.out.println(ColorUtil.boldBrightRed("══════════════════════════════════════════════════"));
+            PrintUtil.enemyEncounter("🐕 Blight Hound " + i + " snaps its jaws and lunges!");
+            System.out.println(ColorUtil.boldBrightRed("══════════════════════════════════════════════════"));
             InputUtil.pressEnterToContinue();
 
             battle3.startBattle();
 
             System.out.println();
             System.out.println(ColorUtil.boldBrightGreen("───────────────────────────────────────"));
-            PrintUtil.enemyDefeated("✅ You have defeated Blight Hound " + i + "!");
+            PrintUtil.enemyDefeated("✅ You have put down Blight Hound " + i + "! (" + i + "/3)");
             System.out.println(ColorUtil.boldBrightGreen("───────────────────────────────────────"));
             enemy3.dropLoot(player);
 
             if (i < 3) {
+                PrintUtil.pause(800);
+                System.out.println();
+                PrintUtil.effect("Another hound bursts through the poisonous cloud!");
+                System.out.println();
                 enemy3 = new World2Enemy3();
                 battle3 = new Battle(player, enemy3);
             }
@@ -312,10 +356,10 @@ public class World2 {
         System.out.println();
         PrintUtil.line();
         PrintUtil.victory("""
-                🎉 Victory! The Blight Hounds are no more.
-                The air still hums with dark energy, but you stand victorious.
+                🎉 Victory! The pack is silenced.
+                The hounds dissolve into puddles of toxic sludge, clearing the way forward.
                 """);
-        PrintUtil.loot("You gain experience and loot from the defeated enemies.");
+        PrintUtil.loot("You step over the remains, gathering strength for the battle ahead.");
         PrintUtil.line();
         InputUtil.pressEnterToContinue();
         player.getEffects().resetAllEffects();
@@ -323,15 +367,23 @@ public class World2 {
         // -------------------- Ghoul Footmen --------------------
         System.out.println();
         PrintUtil.line();
+        PrintUtil.effect("You stand before the towering iron gates. The metal is cold to the touch.");
+        PrintUtil.pause(1000);
+
+        System.out.println();
         PrintUtil.title("THE BLACK CASTLE");
         System.out.println();
+        PrintUtil.pause(1000);
 
-        PrintUtil.event("Thunder cracks as you push open the gates.");
-        PrintUtil.effect("Once Honorable Knights are now found with cracked armor and bleeding eyes lurch from the darkness.");
+        PrintUtil.event("Thunder cracks overhead as you push open the heavy gates.");
+        PrintUtil.pause(1000);
 
         PrintUtil.story("""
-                Two Ghoul Footmen emerge, dragging rusted blades.
-                Their movements are jerky, puppets of a cruel master.
+                Inside, the halls are silent except for the scrape of metal on stone.
+                Figures lurch from the darkness—once honorable knights, now twisted by the plague.
+                
+                Two GHOUL FOOTMEN emerge.
+                Their armor is cracked, their eyes bleed darkness, and they drag rusted blades behind them.
                 """);
 
         PrintUtil.pause(1500);
@@ -342,13 +394,13 @@ public class World2 {
         PrintUtil.enemyEncounter("    ..           :%@@+-#-                                 ");
         PrintUtil.enemyEncounter("    :=.           .#@%-.**.          -*-                  ");
         PrintUtil.enemyEncounter("  .=.=-              :-  -*:     .:.-@@#+: ::             ");
-        PrintUtil.enemyEncounter("  :%@@@@*                  *%*  .=#@@@@@@%%%+:            ");
+        PrintUtil.enemyEncounter("  :%@@@@* *%* .=#@@@@@@%%%+:            ");
         PrintUtil.enemyEncounter("   +@%*#-                  +@@:.*@@@@@@@@@%*+#=-.         ");
-        PrintUtil.enemyEncounter("   .+#:*=        =%*  .:   :@@*%@@@@@@%#@@@@@@#.          ");
+        PrintUtil.enemyEncounter("   .+#:*=        =%* .:   :@@*%@@@@@@%#@@@@@@#.          ");
         PrintUtil.enemyEncounter("     -=:#      .-%@@%**+-  .#@@@@@@@@@@%%@@@@@@-          ");
-        PrintUtil.enemyEncounter("      . ==     .*@@@@@%###: :*@%#+#@@@@@@@@@@@@*          ");
+        PrintUtil.enemyEncounter("      . ==     .*@@@@@%###: :*@%#+#@@@@@@@@@@@@* ");
         PrintUtil.enemyEncounter("       ..*.    :#@@@@@@@@@*.  -=. .*@@@@@@@%#@@%:         ");
-        PrintUtil.enemyEncounter("         .*    .#@@@@@@@@%@#.  .  .#@@@%@%%@@@@@%:        ");
+        PrintUtil.enemyEncounter("         .* .#@@@@@@@@%@#.  .  .#@@@%@%%@@@@@%:        ");
         PrintUtil.enemyEncounter("          ==   :#@%@@@@@@@%@%=   .*@@@@@@@@@@@@%#*:       ");
         PrintUtil.enemyEncounter("          =@%#%@@+:-@@@@@%%@@#-  -%@@@@@@@@@@@@%+:-       ");
         PrintUtil.enemyEncounter("           :+ :++..#@@@@@@@@@++..*@@@@@@@@@@@@@@=::.      ");
@@ -378,20 +430,24 @@ public class World2 {
         System.out.println();
 
         for(int i = 1; i <= 2; i++){
-            System.out.println(ColorUtil.boldBrightRed("════════════════════════════════════════"));
-            PrintUtil.enemyEncounter("🪓 Ghoul Footman " + i + " staggers toward you!");
-            System.out.println(ColorUtil.boldBrightRed("════════════════════════════════════════"));
+            System.out.println(ColorUtil.boldBrightRed("═════════════════════════════════════════════════════════"));
+            PrintUtil.enemyEncounter("🪓 Ghoul Footman " + i + " raises a rusty axe and staggers forward!");
+            System.out.println(ColorUtil.boldBrightRed("═════════════════════════════════════════════════════════"));
             InputUtil.pressEnterToContinue();
 
             battle4.startBattle();
 
             System.out.println();
             System.out.println(ColorUtil.boldBrightGreen("───────────────────────────────────────"));
-            PrintUtil.enemyDefeated("✅ You have defeated Ghoul Footman " + i + "!");
+            PrintUtil.enemyDefeated("✅ You have laid Ghoul Footman " + i + " to rest! (" + i + "/2)");
             System.out.println(ColorUtil.boldBrightGreen("───────────────────────────────────────"));
             enemy4.dropLoot(player);
 
             if (i < 2) {
+                PrintUtil.pause(1000);
+                System.out.println();
+                PrintUtil.effect("The second guard drags his blade across the stone floor, approaching slowly.");
+                System.out.println();
                 enemy4 = new World2Enemy4();
                 battle4 = new Battle(player, enemy4);
             }
@@ -401,15 +457,22 @@ public class World2 {
         System.out.println();
         PrintUtil.line();
         PrintUtil.victory("""
-                🎉 Victory! The last ghoul crumbles into dust.
-                You tighten your grip on your weapon, ready for whatever lies ahead.
+                🎉 Victory! The armor clatters to the floor, empty.
+                The knights are at peace, but the master of the castle still waits.
                 """);
-        PrintUtil.loot("You gain experience and gather loot from your triumph.");
+        PrintUtil.loot("You scavenge what you can from the fallen guards.");
         PrintUtil.line();
         InputUtil.pressEnterToContinue();
         player.getEffects().resetAllEffects();
 
         // -------------------- Mini-Boss: The Black Jailer --------------------
+        System.out.println();
+        PrintUtil.line();
+        PrintUtil.effect("You descend into the castle's damp underbelly. The air grows cold.");
+        PrintUtil.effect("The sound of dripping water is drowned out by the heavy dragging of iron.");
+        PrintUtil.pause(1500);
+
+        // --- TITLE SEQUENCE ---
         System.out.println();
         PrintUtil.event("                                                                                                            \n" +
                 "                                                                                                            \n" +
@@ -417,7 +480,7 @@ public class World2 {
                 "██ ▀▀ ██ ██ ███▄██ ██ ██▄██ ██▀██ ███▄▄ ███▄▄   ██▄▄   ███▄██ ██▀▀▀ ██▀██ ██ ██ ███▄██   ██   ██▄▄  ██▄█▄ ▀ \n" +
                 "██    ██ ██ ██ ▀██ ██ ██▄█▀ ▀███▀ ▄▄██▀ ▄▄██▀   ██▄▄▄▄ ██ ▀██ ▀████ ▀███▀ ▀███▀ ██ ▀██   ██   ██▄▄▄ ██ ██ ▄ \n" +
                 "                                                                                                            ");
-        PrintUtil.pause(1500);
+        PrintUtil.pause(500);
 
         PrintUtil.event("                                                                                       \n" +
                 "                                                                                       \n" +
@@ -426,13 +489,19 @@ public class World2 {
                 "            ██   ██ ██ ██▄▄▄   ██▄▄█▀ ██▄▄▄ ██▀██ ▀████ ██ ██   ████▀ ██▀██ ██ ██▄▄▄ ██▄▄▄ ██ ██ \n" +
                 "                                                                                       ");
 
-        PrintUtil.objective("═════════════════════════════════════════════════════════════════════════════════");
+        System.out.println();
+        PrintUtil.pause(1000);
+
+        PrintUtil.objective("═════════════════════════════════════════════════════════════════════════════════════════════════════════════════");
         System.out.println();
         PrintUtil.effect("""
-               In the dungeons below, chains rattle.
-               The Black Jailer steps from the shadows, dragging hooks and blades behind him.
+               "Clank... Drag... Clank..."
+               
+               In the flickering torchlight, a massive figure blocks the path.
+               The Black Jailer steps from the shadows, his face hidden behind an iron mask.
+               He drags meat hooks and rusted blades behind him, stained with the blood of the innocent.
                 """);
-        PrintUtil.objective("═════════════════════════════════════════════════════════════════════════════════");
+        PrintUtil.objective("═════════════════════════════════════════════════════════════════════════════════════════════════════════════════");
         System.out.println();
 
         PrintUtil.pause(1500);
@@ -444,19 +513,19 @@ public class World2 {
         PrintUtil.enemyEncounter("                     .+*=#%%#%%*+*:     .%#:              ");
         PrintUtil.enemyEncounter("                    %@@@%%%#%#%%%@@#.   .*+               ");
         PrintUtil.enemyEncounter("                   *@@@@%#@%%#%#%@@@+    +-               ");
-        PrintUtil.enemyEncounter("                   #%#%#%%%@@%%%%#%%*   .+-               ");
+        PrintUtil.enemyEncounter("                   #%#%#%%%@@%%%%#%%* .+-               ");
         PrintUtil.enemyEncounter("                  =@%%@@@@@%@@%@@@%%%+:.=#=.              ");
         PrintUtil.enemyEncounter("                 *#@%%%@@@%@@@@%@@@@%@@%#%#:              ");
         PrintUtil.enemyEncounter("                :#%%%%@%##%%%%%##@@@%#*==#.               ");
         PrintUtil.enemyEncounter("                =%@@@@@%%%*#%#*#%%@@@@- .#.               ");
         PrintUtil.enemyEncounter("        *-+:   .*%#=@%%@#%%%@@#%*@@@@@@#-#                ");
-        PrintUtil.enemyEncounter("     .+%@%@%*  :*%#%@%@%#%#%@@#%#%@@@@@@@%:               ");
+        PrintUtil.enemyEncounter("     .+%@%@%* :*%#%@%@%#%#%@@#%#%@@@@@@@%:               ");
         PrintUtil.enemyEncounter("     .+@@%@@#**+---@@@@%##%#@@@%#%@@@@@@@@@%*:           ");
         PrintUtil.enemyEncounter("       *@@%@@=    :@@%@%%%%%@@@%%@@@@@@@@@@@@@@#-        ");
         PrintUtil.enemyEncounter("       =%@@@@%=   =@@%%%@@@%@@@@@%#@@@@@@%#%%%#@@@+.      ");
         PrintUtil.enemyEncounter("       +@%%#@%+   -@@%@@@%%@@@%%@@%@@@@@@@#-...- .*%-     ");
         PrintUtil.enemyEncounter("       .=###+:    :@#%@@@%@@@%@%@@@@@@@@@@@@*.     .-:    ");
-        PrintUtil.enemyEncounter("                   +@%%%#@@@@@@%%%%%@@@@@@@@@@*           ");
+        PrintUtil.enemyEncounter("                   +@%%%#@@@@@@%%%%%@@@@@@@@@@* ");
         PrintUtil.enemyEncounter("                    %%@@@@@@@@@%@@@@@##%@#  .-*=          ");
         PrintUtil.enemyEncounter("                     %@@@@*=###%%@@@@@@-#.    ..          ");
         PrintUtil.enemyEncounter("                    .@@#-*%-.#. :%@+ .-=%:                ");
@@ -484,11 +553,12 @@ public class World2 {
         System.out.println();
         PrintUtil.line();
         PrintUtil.victory("""
-                ✅🏆 Mini-Boss Defeated!
-                The Black Jailer drops to his knees, his chains falling silent.
-                You have triumphed over his tyranny.
+                ✅🏆 MINI-BOSS DEFEATED!
+                
+                The Black Jailer drops to his knees, his iron mask falling away to reveal nothing but ash.
+                The chains that bound the dungeon fall silent. You have broken his tyranny.
                 """);
-        PrintUtil.loot("You gain rare loot and a surge of experience!");
+        PrintUtil.loot("You find a key on the Jailer's belt and a surge of new power.");
         PrintUtil.line();
         miniBoss.dropLoot(player);
         InputUtil.pressEnterToContinue();
@@ -496,6 +566,13 @@ public class World2 {
         player.getEffects().resetAllEffects();
 
         // -------------------- Boss: The Corrupted King --------------------
+        System.out.println();
+        PrintUtil.line();
+        PrintUtil.effect("You ascend the spiral staircase. The air grows thin and smells of ancient dust.");
+        PrintUtil.effect("At the top, the massive doors to the Throne Room stand slightly ajar.");
+        PrintUtil.pause(1500);
+
+        // --- BOSS TITLE CARD ---
         System.out.println();
         PrintUtil.event("                                                                                                            \n" +
                 "                                                                                          \n" +
@@ -512,14 +589,27 @@ public class World2 {
                 "██     ██  ██   ██   ██████ ██▄▄   ██▄▄██▄         ██   ██████ ██▄▄     ██     ██  ██ ██▄▄██▄ ██▄▄██▄ ██  ██ ██▄▄█▀   ██   ██▄▄   ██  ██   ████   ██ ██ ▀▄██ ██  ▄▄▄ \n" +
                 "██████ ▀████▀   ██   ██  ██ ██▄▄▄▄ ██   ██  ▄      ██   ██  ██ ██▄▄▄▄   ▀█████ ▀████▀ ██   ██ ██   ██ ▀████▀ ██       ██   ██▄▄▄▄ ████▀    ██ ▀█▄ ██ ██   ██  ▀███▀  \n" +
                 "                                           ▀                                                                                                                         ");
-        PrintUtil.pause(1500);
+        PrintUtil.pause(2000);
 
         PrintUtil.objective("════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════");
         System.out.println();
-        PrintUtil.effect(
-                "In the throne room, the King sits slumped—his crown fused to his skull. and on it, you see the second stone as its centerpiece.\n" +
-                        "YOU DARE CHALLENGE MY AUTHORITY?! YOUR SKULL WILL BECOME BUT ANOTHER TROPHY IN MY HALLS."
-        );
+        PrintUtil.story("""
+                In the center of the room, on a throne of jagged iron, sits the King.
+                He is slumped forward, his body fused to the chair by the corruption.
+                
+                Embedded in his rusted crown, pulsating with a sickly green light, is the SECOND STONE.
+                """);
+
+        PrintUtil.pause(1000);
+
+        PrintUtil.effect("The King slowly lifts his head. His eyes are hollow voids.");
+        System.out.println(ColorUtil.boldBrightRed("""
+                
+                "YOU DARE CHALLENGE MY AUTHORITY?!"
+                
+                "YOUR SKULL WILL BECOME BUT ANOTHER TROPHY IN MY HALLS!"
+                """));
+
         System.out.println();
         PrintUtil.objective("════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════");
         System.out.println();
@@ -529,7 +619,7 @@ public class World2 {
         PrintUtil.enemyEncounter("@@@@@@@@@#+-:                               .-*#@@@@@@@@@@");
         PrintUtil.enemyEncounter("@@@@@@##@+                                      +%#%@@@@@@");
         PrintUtil.enemyEncounter("@@@@@##%%%.                  :                  %%###@@@@@");
-        PrintUtil.enemyEncounter("@@@%+#%##%*                :.=-.               #@####+%@@@");
+        PrintUtil.enemyEncounter("@@@%+#%##%* :.=-.               #@####+%@@@");
         PrintUtil.enemyEncounter("@@@@#%@##%@.               +%%*-              .%%##@%#@@@@");
         PrintUtil.enemyEncounter("@@%*:#@@%%@-               *#@#:              #@%#@@#-*%@@");
         PrintUtil.enemyEncounter("@@#- -%@%%@#           ..  -%@+    .          =@%#@@= -#@@");
@@ -543,7 +633,7 @@ public class World2 {
         PrintUtil.enemyEncounter("@@+.  .%@%-      .-  .*- +@%%@#@%+:=*:.  .     :%@%:  .+@@");
         PrintUtil.enemyEncounter("@@+:  .%@%-       :::=*::+%@@@@@%*: *- :++:    :%@%:  -*@@");
         PrintUtil.enemyEncounter("@@+-  .%@#-          *+.+@@@@@@#%*.:##+:       :#@%: .-+%@");
-        PrintUtil.enemyEncounter("@%+-  :%@#-          #:-#@@@@@@@%%*#%*         :#@@- .-+@@");
+        PrintUtil.enemyEncounter("@%+-  :%@#-          #:-#@@@@@@@%%*#%* :#@@- .-+@@");
         PrintUtil.enemyEncounter("@@+-: :%@#-          ==-%@@@@@##%@@%:          :*@@=..-*@@");
         PrintUtil.enemyEncounter("@@+-. :%@%-           :*@@@@#%#@%%*-*:         :#@@+:.-*@@");
         PrintUtil.enemyEncounter("@@*=. :%@%= .:.      ..=*#%%%%#*#%*:           :%@%+-:-*@@");
@@ -578,26 +668,34 @@ public class World2 {
         System.out.println();
         PrintUtil.line();
         PrintUtil.victory("""
-                ✅👑 Final Victory! - Boss Defeated!
-                The Corrupted King’s crown falls to the floor, echoing through the halls.
-                The Darkness fades, and you stand as the savior of this cursed land.
+                ✅🏆 FINAL VICTORY - BOSS DEFEATED!
+                
+                The King screams as the corruption is torn from his body.
+                He crumbles into dust, leaving only his rusted crown on the throne...
+                And the stone pulsing within it.
                 """);
-        PrintUtil.loot("You gain immense experience and legendary loot!");
         PrintUtil.line();
+        PrintUtil.pause(2000);
+
         boss.dropLoot(player);
         InputUtil.pressEnterToContinue();
-        PrintUtil.line();
         player.getEffects().resetAllEffects();
 
         //-------------------------------------------------
         System.out.println();
-        PrintUtil.effect("The King's breath rattles. A faint glimmer of humanity returns to his eyes.");
+        PrintUtil.effect("The King's breath rattles. A faint glimmer of humanity returns to his hollow eyes.");
+        PrintUtil.pause(1500);
+
         System.out.println();
         PrintUtil.sayRed("Corrupted King", "\"It's… It's you!!! NO!!!…\"");
+
+        PrintUtil.pause(1000);
         System.out.println();
-        PrintUtil.effect("He screams with his dying breath as his body crumbles into dust, leaving only confusion of who he was referring to.");
+        PrintUtil.effect("He screams with his dying breath as his body crumbles into dust.");
+        PrintUtil.effect("He leaves behind only a pile of ash... and confusion about who he was referring to.");
         InputUtil.pressEnterToContinue();
 
+        // --- THE SECOND STONE ---
         System.out.println(ColorUtil.brightCyan("                                     \n" +
                 "                                                             \n" +
                 "                                                             \n" +
@@ -613,71 +711,83 @@ public class World2 {
                 "                          *@@@%%##@@@@@@@@@@@@@@@@@@@@@@@@+  \n" +
                 "                          *@@%%%##%@%%##%@@@@@@@@@@@@@@@@@+  \n" +
                 "                          *@%%%%%#######%@@@@@@@@@@@@@@@@@+  \n" +
-                "                          *%%%%%%%#####%%@@@@@@@@@@@@@@@@@*  \n" +
+                "                          *%%%%%%%#####%%@@@@@@@@@@@@@@@@@* \n" +
                 "                           =%@@@@@#%@@@@@@@@@@@@@@%%@@@@%:   \n" +
                 "                             +@@@@%###%%@@%%@@@@@@%@@@%=     \n" +
                 "                               *@@%#######%%@@@@@@#%@=       \n" +
-                "                                .#@####%%%%%%%@@@%#*         \n" +
+                "                                .#@####%%%%%%%@@@%#* \n" +
                 "                                  :+*************+           \n" +
                 "                                                             \n" +
                 "                                                             "));
 
-        PrintUtil.loot("You lift the Second Stone from his crown, feeling its dark energy pulse in your hands.");
-        PrintUtil.pause(800);
+        PrintUtil.loot("You lift the SECOND STONE from the ash, feeling its dark energy pulse in your hands.");
+        PrintUtil.pause(1000);
+
         System.out.println();
-        PrintUtil.effect("A cold wind sweeps through the empty halls, extinguishing every torch and whispering secrets of the past.");
+        PrintUtil.effect("A cold wind sweeps through the empty halls, extinguishing every torch.");
+        PrintUtil.effect("The room is plunged into silence... whispering secrets of the past.");
         InputUtil.pressEnterToContinue();
         PrintUtil.line();
 
         // ---------------------- MAGIC SHOP ------------------------
         System.out.println();
         PrintUtil.story("""
-        As you take a step forward, a strange pull brushes against your soul.
-        The world itself feels like it is shifting around you.
-        """);
+                As you take a step forward, a strange pull brushes against your soul.
+                The world itself feels like it is shifting around you.
+                """);
+        PrintUtil.pause(1500);
 
-        //type slow
-        PrintUtil.effect("""
-        ✨ Something… or someone… is calling to you.
-        """);
+        PrintUtil.effect("✨ Something… or someone… is calling to you.");
         InputUtil.pressEnterToContinue();
         PrintUtil.line();
 
-        PrintUtil.effect("""
-        🔮 A brilliant flash lights up the room!
-        From the shattered shadows, a glowing arcane doorway forms before you.
-        
-        A calm, ancient voice echoes:
-        "Hero of this land… you are granted *one chance* to reshape your fate."
-        
-        🏺 The **One-Time Magic Shop** has appeared.
-        ❗ Once you close it… it will disappear forever.
-        """);
+        System.out.println(ColorUtil.boldBrightMagenta("🔮 A BRILLIANT FLASH LIGHTS UP THE ROOM!"));
+        PrintUtil.pause(800);
+
+        PrintUtil.story("""
+                From the shattered shadows, a glowing arcane doorway forms before you.
+                
+                A calm, ancient voice echoes:
+                "Hero of this land… you are granted *one chance* to reshape your fate."
+                """);
+
+        System.out.println("════════════════════════════════════════════════════════════════════════════");
+        PrintUtil.title("🏺 THE MYSTIC MERCHANT APPEARS");
+        System.out.println("════════════════════════════════════════════════════════════════════════════");
+        System.out.println();
+        PrintUtil.sayGreen("""
+                "I appear only to those who have conquered great darkness," the merchant says.
+                "Stock up now. Once you leave, I will vanish forever."
+                """);
+
         InputUtil.pressEnterToContinue();
         PrintUtil.line();
 
+        // --- SHOP LOGIC ---
         MagicShop shop = new MagicShop(player);
         shop.openShop();
 
+        // --- POST SHOP ---
         PrintUtil.line();
         PrintUtil.effect("🌟 The glow of the Magic Shop fades, leaving only silence behind.");
-        PrintUtil.effect("""
-        The doorway vanishes as suddenly as it appeared,
-        leaving you alone in the quiet halls of the castle.
-        
-        🌟 Whatever choices you made within… will echo in the battles to come.
-        Your journey continues, hero. The fate of this land rests in your hands.
-        """);
+        PrintUtil.story("""
+                The doorway vanishes as suddenly as it appeared,
+                leaving you alone in the quiet halls of the castle.
+                
+                Whatever choices you made within… will echo in the battles to come.
+                """);
+
         InputUtil.pressEnterToContinue();
         PrintUtil.line();
 
         PrintUtil.effect("""
-        The castle seems to hold its breath.
-        The choices you've made, the treasures you've claimed…
-        all will shape the path ahead.
-        """);
+                The castle seems to hold its breath.
+                The choices you've made, the treasures you've claimed…
+                all will shape the path ahead.
+                """);
         InputUtil.pressEnterToContinue();
         PrintUtil.line();
+
 
     }
 }
