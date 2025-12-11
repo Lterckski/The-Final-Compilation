@@ -376,18 +376,18 @@ public abstract class Character {
 
             switch (classType) {
                 case "Swordsman" -> {
-                    maxHP += 60 + (int)(maxHP * 0.01);
-                    baseAttack += 5 + (int)(attack * 0.01);
+                    maxHP += 55 + (StoryEngine.getCurrWorldLevel() * 5);
+                    baseAttack += 5;
                     baseDefense += 2;
                 }
                 case "Archer" -> {
-                    maxHP += 55 + (int)(maxHP * 0.01);
-                    baseAttack += 6 + (int)(attack * 0.01);
+                    maxHP += 50 + (StoryEngine.getCurrWorldLevel() * 5);
+                    baseAttack += 6;
                     baseDefense += 1;
                 }
                 case "Mage" -> {
-                    maxHP += 50 + (int)(maxHP * 0.01);
-                    baseAttack += 8 + (int)(attack * 0.01);
+                    maxHP += 45 + (StoryEngine.getCurrWorldLevel() * 5);
+                    baseAttack += 8;
                     baseDefense += 1;
                 }
             }

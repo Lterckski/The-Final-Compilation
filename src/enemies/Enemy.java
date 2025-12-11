@@ -40,8 +40,6 @@ public abstract class Enemy extends Character{
 
     }
 
-
-
     public abstract void dropLoot(Character player);
     public abstract int rewardExp();
 
