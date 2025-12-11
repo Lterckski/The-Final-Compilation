@@ -144,7 +144,7 @@ public class Tester {
         } while (player == null);  // repeat until valid choice
         player.getInventory().setEquippedArmor(Armor.LEATHER_GUARD);
 
-        Enemy testEnemy = new World2Miniboss1();
+        Enemy testEnemy = new FinalBoss();
         Battle testBattle = new Battle(player, testEnemy);
         testBattle.startBattle();
 /*

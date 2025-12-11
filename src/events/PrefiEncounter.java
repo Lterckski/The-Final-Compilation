@@ -18,11 +18,6 @@ import static utils.PrintUtil.pause;
 public class PrefiEncounter {
 
     private static final int TIME_LIMIT = 15; // seconds
-    private static final Scanner SCANNER = new Scanner(System.in);
-
-    // Executor for timed input
-    private static final ExecutorService INPUT_EXECUTOR =
-            Executors.newSingleThreadExecutor();
 
     // ---------------- START ENCOUNTER ----------------
     public void start(Character player) {
