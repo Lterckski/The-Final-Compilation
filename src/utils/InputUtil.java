@@ -31,36 +31,38 @@ public class InputUtil {
     public static Integer readWithTimeout(int seconds) {
         System.out.print(ColorUtil.cyan("Enter choice: "));
 
-        // 1. Create a separate thread to handle the input
         ExecutorService executor = Executors.newSingleThreadExecutor();
 
-        // 2. Define the task: Wait for input and parse it
         Future<Integer> result = executor.submit(() -> {
             try {
-                // This line BLOCKS until the user types something
-                String input = scan.nextLine().trim();
-                return Integer.parseInt(input);
-            } catch (NumberFormatException e) {
-                return null; // Invalid number
+                StringBuilder sb = new StringBuilder();
+
+                long start = System.currentTimeMillis();
+                while (true) {
+
+                    if (System.currentTimeMillis() - start > seconds * 1000) {
+                        return null;
+                    }
+
+                    if (System.in.available() > 0) {
+                        char c = (char) System.in.read();
+                        if (c == '\n') break;
+                        sb.append(c);
+                    }
+                }
+
+                return Integer.parseInt(sb.toString().trim());
             } catch (Exception e) {
                 return null;
             }
         });
 
         try {
-            // 3. Wait for the result for a maximum of 'seconds'
-            return result.get(seconds, TimeUnit.SECONDS);
-
-        } catch (TimeoutException e) {
-            // 4. Handle the timeout
-            System.out.println(ColorUtil.boldBrightRed("\n⏱ TIME'S UP!"));
-            result.cancel(true); // Stop waiting for the input
-            return null;
-        } catch (InterruptedException | ExecutionException e) {
-            e.printStackTrace();
+            return result.get(seconds + 1, TimeUnit.SECONDS);
+        } catch (Exception e) {
+            result.cancel(true);
             return null;
         } finally {
-            // 5. Clean up the thread
             executor.shutdownNow();
         }
     }
