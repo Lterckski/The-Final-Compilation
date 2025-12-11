@@ -8,7 +8,7 @@ import utils.RandomUtil;
 
 public class World1Enemy1 extends Enemy {
     // Constructor
-    public World1Enemy1() { super("Rotfang Wolf", 40, 3, 10); }
+    public World1Enemy1() { super("Rotfang Wolf", 40, 3, 14); }
 
     // Skill: Savage Howl (10–15 damage)
     public void savageHowl(Character target) {

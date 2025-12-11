@@ -296,7 +296,7 @@ public class PrefiEncounter {
         InputUtil.pressEnterToContinue();
 
         if (!askTimed(ColorUtil.cyan("""
-                \nQ1: Kael, Karl, and Simon share HP/Energy from the Character class.
+                \nQ1: Kael, Karl, and Simon use the same attributes (HP, Level, Defense, etc.) defined in the Character class.
                 Which OOP concept is this?
 
                   1. Polymorphism
@@ -316,7 +316,7 @@ public class PrefiEncounter {
             """), 2)) return false;
 
         if (!askTimed(ColorUtil.cyan("""
-                \nQ3: Kael.attack() and Simon.attack() behave differently, overriding Character.attack().
+                \nQ3: The showBackstory() methods of Kael, Karl, and Simon override Character.showBackstory(), so calling them prints a unique backstory for each character.
                 Which OOP concept is this?
 
                   1. Abstraction
@@ -326,7 +326,7 @@ public class PrefiEncounter {
             """), 2)) return false;
 
         if (!askTimed(ColorUtil.cyan("""
-                \nQ4: Weapon is abstract, and Sword/Bow/Staff implement it differently, but share the same interface.
+                \nQ4: Weapon is an abstract class. Sword, Bow, and Staff extend it and implement its methods differently, but all share the same abstract interface defined by Weapon.
                 Which OOP concept is this?
 
                   1. Encapsulation
@@ -350,15 +350,12 @@ public class PrefiEncounter {
         Integer answer = InputUtil.readWithTimeout(TIME_LIMIT);
 
         if (answer == null) { // timeout
-            System.out.println();
             PrintUtil.line();
             System.out.println();
             PrintUtil.print(ColorUtil.boldBrightRed("""
-⏱ TIME'S UP!
-
 The old master glares at you:
 "You must think faster to survive what comes next…"
-        """));
+"""));
             return false;
         }
 
