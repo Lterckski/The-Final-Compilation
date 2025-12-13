@@ -1,148 +1,83 @@
- The-# The-Final-Compilation
-A text-based RPG built in Java for our course project. Players explore three distinct worlds, battle enemies, interact with NPCs, and uncover a twist-filled story as they collect the Three Stones to return home. Inspired by classic RPGs and fantasy themes, designed for console play.
+# 🎮 OOP1 RPG – The Final Compilation
 
-# How to Collaborate on GitHub (For Absolute Beginners)
+## 📌 Project Overview
 
-Welcome to our collaborative project! This guide will walk you through the essential steps for working together using GitHub, even if you have zero experience.
+**OOP1 RPG – The Final Compilation** is a console-based role-playing game developed as part of our **Object-Oriented Programming 1** course. The game demonstrates core OOP principles such as **Inheritance, Encapsulation, Polymorphism, and Abstraction** through an interactive RPG experience.
 
----
-## 1. **Set Up Git and GitHub**
-
-1. **Create a GitHub account** at https://github.com/.
-2. **Install Git** on your computer:
-   - Download: https://git-scm.com/downloads
-   - Follow the install instructions for your operating system.
-
-3. **Configure Git** (run these in your terminal or command prompt):
-   ```
-   git config --global user.name "Your Name"
-   git config --global user.email "your@email.com"
-   ```
+Players are transported into another dimension, choose a character class, battle enemies across different worlds, defeat bosses, and progress through a story-driven adventure.
 
 ---
 
-## 2. **Clone the Repository**
+## 🧩 Key Features
 
-This copies the project to your computer.
-
-1. Go to: https://github.com/Lterckski/The-Final-Compilation
-2. Click the green **Code** button, then copy the URL.
-3. In your terminal, run:
-   ```
-   git clone https://github.com/Lterckski/The-Final-Compilation.git
-   ```
-4. Change into the project folder:
-   ```
-   cd The-Final-Compilation
-   ```
+* 🧙 Multiple playable character classes (e.g., Swordsman, Archer, Mage)
+* ⚔️ Turn-based combat system with skill effects and temporary status effects
+* 🧠 Buff and debuff effects using collections
+* 🌍 World-based progression with enemies and bosses
+* 📈 Leveling and experience system
+* 🛒 Inventory and Magic Shop system for managing and acquiring items
+* 🎵 Sound effects and background music
+* 🎨 Colored console output for better immersion
 
 ---
 
-## 3. **Create a New Branch**
+## 🛠️ Technologies Used
 
-Branches let you work on your own copy without disturbing the main project.
-
-1. To create a new branch (replace `your-branch-name` with something descriptive, e.g., `add-battle-system`):
-   ```
-   git checkout -b your-branch-name
-   ```
-2. Now, you’re working on your branch! You can make changes freely.
+* **Java** (JDK 17 or compatible)
+* **Object-Oriented Programming principles**
+* Console-based UI
 
 ---
 
-## 4. **Make Changes and Commit**
+## ▶️ How to Run the Game
 
-1. Open project files in your code editor and make your changes.
-2. Save your files.
-3. Check what changed:
+1. Clone the repository:
+
+   ```bash
+   git clone <https://github.com/Lterckski/The-Final-Compilation.git>
    ```
-   git status
-   ```
-4. Stage your changes (prepare them for commit):
-   ```
-   git add .
-   ```
-   (The `.` means “add everything that changed.”)
-5. Commit your changes with a message:
-   ```
-   git commit -m "Describe what you changed"
-   ```
+2. Open the project in your Java IDE (IntelliJ IDEA / Eclipse / VS Code)
+3. Ensure the **src** folder is properly marked as a resource root
+4. Run the `Game` class
 
 ---
 
-## 5. **Push Your Changes to GitHub**
+## 🎮 Gameplay Objective
 
-1. Push your branch and changes to GitHub:
-   ```
-   git push origin your-branch-name
-   ```
+The objective of the game is to **survive battles, defeat enemies and bosses, acquire powerful items, and complete each world** while uncovering the story behind the mysterious dimension you were pulled into.
 
 ---
 
-## 6. **Open a Pull Request (PR)**
+## 📚 OOP Concepts Applied
 
-This lets the team review and merge your work into the main project.
-
-1. Go to the repository on GitHub.
-2. You’ll see a banner offering to open a pull request for your branch. Click it, or:
-   - Click **Pull requests**
-   - Click **New pull request**
-   - Select your branch as the compare branch.
-3. Add a clear title and description, then click **Create pull request**.
+* **Inheritance** – Shared attributes and methods through abstract base classes
+* **Polymorphism** – Different behaviors for characters, enemies, and skills
+* **Encapsulation** – Controlled access using private/protected fields and methods
+* **Abstraction** – Abstract classes and interfaces for game structure
 
 ---
 
-## 7. **Review and Merge Pull Requests**
+## 👥 Team Members
 
-- Team members can comment, request changes, or approve.
-- Once approved, click **Merge pull request**.
-
----
-
-## 8. **Keep Your Local Project Up to Date**
-
-1. Switch to the main branch:
-   ```
-   git checkout main
-   ```
-2. Pull the latest changes:
-   ```
-   git pull origin main
-   ```
-3. If you want to update your branch with the latest main changes:
-   ```
-   git checkout your-branch-name
-   git merge main
-   ```
-   - If you see a conflict, ask for help or search online for "git resolve conflict".
+Zyril Ryle R. Restauro
+John Michael A. Arcenal
+Karl Cyrus P. Solinap
+Marcel Simon C. Belino
+Luther Derrick E. Dira
 
 ---
 
-## 9. **General Workflow Tips**
+## 📜 Notes
 
-- Always create a new branch for each new feature or fix.
-- Pull the latest changes from `main` before starting new work.
-- Commit often with clear messages.
-- Never code directly on the `main` branch.
-- Ask for help if you get stuck!
+* This project is for **educational purposes only**
+* Assets and sounds are used solely for academic demonstration
 
 ---
 
-## 10. **Common Commands Cheat Sheet**
+## ✅ Status
 
-| Action                        | Command                                    |
-|-------------------------------|--------------------------------------------|
-| Check current branch          | `git branch`                               |
-| List all branches             | `git branch -a`                            |
-| Switch to a branch            | `git checkout branch-name`                 |
-| Create a new branch           | `git checkout -b branch-name`              |
-| See what’s changed            | `git status`                               |
-| Add changes                   | `git add .`                                |
-| Commit with a message         | `git commit -m "your message"`             |
-| Push branch to GitHub         | `git push origin branch-name`              |
-| Pull latest from main         | `git pull origin main`                     |
-| Merge main into your branch   | `git merge main`                           |
+✔️ Completed and submitted as part of **OOP1 Final Project**
 
 ---
 
-If you have ANY questions, don’t hesitate to ask the team or search for tutorials on YouTube. We’re all learning together!
+Enjoy the game and explore the code! 🚀
