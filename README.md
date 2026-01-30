@@ -1,6 +1,6 @@
-# 🎮 OOP1 RPG – The Final Compilation
+# OOP1 RPG – The Final Compilation
 
-## 📌 Project Overview
+## Project Overview
 
 **OOP1 RPG – The Final Compilation** is a console-based role-playing game developed as part of our **Object-Oriented Programming 1** course. The game demonstrates core OOP principles such as **Inheritance, Encapsulation, Polymorphism, and Abstraction** through an interactive RPG experience.
 
@@ -8,20 +8,20 @@ Players are transported into another dimension, choose a character class, battle
 
 ---
 
-## 🧩 Key Features
+## Key Features
 
-* 🧙 Multiple playable character classes (e.g., Swordsman, Archer, Mage)
-* ⚔️ Turn-based combat system with skill effects and temporary status effects
-* 🧠 Buff and debuff effects using collections
-* 🌍 World-based progression with enemies and bosses
-* 📈 Leveling and experience system
-* 🛒 Inventory and Magic Shop system for managing and acquiring items
-* 🎵 Sound effects and background music
-* 🎨 Colored console output for better immersion
+* Multiple playable character classes (e.g., Swordsman, Archer, Mage)
+* Turn-based combat system with skill effects and temporary status effects
+* Buff and debuff effects using collections
+* World-based progression with enemies and bosses
+* Leveling and experience system
+* Inventory and Magic Shop system for managing and acquiring items
+* Sound effects and background music
+* Colored console output for better immersion
 
 ---
 
-## 🛠️ Technologies Used
+## Technologies Used
 
 * **Java** (JDK 17 or compatible)
 * **Object-Oriented Programming principles**
@@ -29,7 +29,7 @@ Players are transported into another dimension, choose a character class, battle
 
 ---
 
-## ▶️ How to Run the Game
+## How to Run the Game
 
 1. Clone the repository:
 
@@ -42,13 +42,13 @@ Players are transported into another dimension, choose a character class, battle
 
 ---
 
-## 🎮 Gameplay Objective
+## Gameplay Objective
 
 The objective of the game is to **survive battles, defeat enemies and bosses, acquire powerful items, and complete each world** while uncovering the story behind the mysterious dimension you were pulled into.
 
 ---
 
-## 📚 OOP Concepts Applied
+## OOP Concepts Applied
 
 * **Inheritance** – Shared attributes and methods through abstract base classes
 * **Polymorphism** – Different behaviors for characters, enemies, and skills
@@ -57,7 +57,7 @@ The objective of the game is to **survive battles, defeat enemies and bosses, ac
 
 ---
 
-## 👥 Team Members
+## Team Members
 
 Zyril Ryle R. Restauro
 John Michael A. Arcenal
@@ -67,17 +67,17 @@ Luther Derrick E. Dira
 
 ---
 
-## 📜 Notes
+## Notes
 
 * This project is for **educational purposes only**
 * Assets and sounds are used solely for academic demonstration
 
 ---
 
-## ✅ Status
+## Status
 
 ✔️ Completed and submitted as part of **OOP1 Final Project**
 
 ---
 
-Enjoy the game and explore the code! 🚀
+Enjoy the game and explore the code! 
