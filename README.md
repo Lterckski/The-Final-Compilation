@@ -59,11 +59,11 @@ The objective of the game is to **survive battles, defeat enemies and bosses, ac
 
 ## Team Members
 
-Zyril Ryle R. Restauro
-John Michael A. Arcenal
-Karl Cyrus P. Solinap
-Marcel Simon C. Belino
-Luther Derrick E. Dira
+* Zyril Ryle R. Restauro
+* John Michael A. Arcenal
+* Karl Cyrus P. Solinap
+* Marcel Simon C. Belino
+* Luther Derrick E. Dira
 
 ---
 
