@@ -76,7 +76,7 @@ Luther Derrick E. Dira
 
 ## Status
 
-✔️ Completed and submitted as part of **OOP1 Final Project**
+Completed and submitted as part of **OOP1 Final Project**
 
 ---
 
